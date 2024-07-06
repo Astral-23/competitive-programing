@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Datastructure/offline_connectivity.hpp
     title: offline_connectivity
   - icon: ':x:'

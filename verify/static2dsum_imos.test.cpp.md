@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Datastructure/static2dsum.hpp
     title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':question:'

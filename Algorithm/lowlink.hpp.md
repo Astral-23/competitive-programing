@@ -6,7 +6,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lowlink_bridge.test.cpp
     title: verify/lowlink_bridge.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lowlink_joint.test.cpp
     title: verify/lowlink_joint.test.cpp
   - icon: ':x:'

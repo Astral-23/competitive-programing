@@ -9,12 +9,12 @@ data:
     path: "\u7802\u5834/simple_treap.henkou.cpp"
     title: "\u7802\u5834/simple_treap.henkou.cpp"
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/simpletreap.test.cpp
     title: verify/simpletreap.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/simpletreap.md
     document_title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
@@ -152,7 +152,7 @@ data:
   - "\u7802\u5834/simple_treap.henkou.cpp"
   - example/simple_treap.example.cpp
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/simpletreap.test.cpp
 documentation_of: Datastructure/simple_treap.hpp
