@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/jumpontree.test.cpp
     title: verify/jumpontree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/oneside_range_edge_graph.test.cpp
     title: verify/oneside_range_edge_graph.test.cpp
   - icon: ':x:'

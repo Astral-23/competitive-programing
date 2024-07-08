@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/dynamicseg.hpp
     title: "\u52D5\u7684\u30BB\u30B0\u6728"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/online2dseg.hpp
     title: "\u5DE8\u5927\u306A\u30B0\u30EA\u30C3\u30C9\u3078\u306E1\u70B9\u52A0\u7B97\
       \u30FB\u77E9\u5F62\u548C"
@@ -13,9 +13,9 @@ data:
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -110,7 +110,7 @@ data:
   path: verify/point_add_rec_sum.test.cpp
   requiredBy: []
   timestamp: '2024-07-09 04:15:19+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/point_add_rec_sum.test.cpp
 layout: document

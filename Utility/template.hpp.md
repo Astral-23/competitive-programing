@@ -81,46 +81,46 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lazyseg_bina.test.cpp
     title: verify/lazyseg_bina.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/limited_knapsack.test.cpp
     title: verify/limited_knapsack.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lowlink_bridge.test.cpp
     title: verify/lowlink_bridge.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lowlink_joint.test.cpp
     title: verify/lowlink_joint.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/manacher.test.cpp
     title: verify/manacher.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/maxflow.test.cpp
     title: verify/maxflow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/maximum_independent_set.test.cpp
     title: verify/maximum_independent_set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/mo.test.cpp
     title: verify/mo.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/offline_connectivity.test.cpp
     title: verify/offline_connectivity.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/offline_connectivity_more.test.cpp
     title: verify/offline_connectivity_more.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/oneside_range_edge_graph.test.cpp
     title: verify/oneside_range_edge_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/pbds_set.test.cpp
     title: verify/pbds_set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/point_add_rec_sum.test.cpp
     title: verify/point_add_rec_sum.test.cpp
   - icon: ':x:'

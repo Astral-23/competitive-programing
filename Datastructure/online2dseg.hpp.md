@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/point_add_rec_sum.test.cpp
     title: verify/point_add_rec_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/2dseg.md
     document_title: "\u5DE8\u5927\u306A\u30B0\u30EA\u30C3\u30C9\u3078\u306E1\u70B9\
@@ -66,7 +66,7 @@ data:
   path: Datastructure/online2dseg.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/point_add_rec_sum.test.cpp
 documentation_of: Datastructure/online2dseg.hpp
