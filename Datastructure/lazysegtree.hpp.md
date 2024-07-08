@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lazyseg_bina.test.cpp
     title: verify/lazyseg_bina.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: doc/lazysegtree.md
     document_title: lazysegtree
@@ -121,7 +121,7 @@ data:
   path: Datastructure/lazysegtree.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/lazyseg_bina.test.cpp
   - verify/lazysegtree.test.cpp

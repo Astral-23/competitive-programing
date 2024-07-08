@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Algorithm/Mo.hpp
     title: "Mo\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Datastructure/segtree.hpp
     title: segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
-    title: "\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+    title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_inversions_query
@@ -24,22 +24,19 @@ data:
     \n\n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n#define rall(x) rbegin(x), rend(x)\n\n#define TT template<typename\
-    \ T>\nTT using vec = vector<T>;\ntemplate<class T1, class T2> bool chmin(T1 &x,\
-    \ T2 y) { return x > y ? (x = y, true) : false; }\ntemplate<class T1, class T2>\
-    \ bool chmax(T1 &x, T2 y) { return x < y ? (x = y, true) : false; }\n\nstruct\
-    \ io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n       \
-    \ std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n    }\n\
-    } io_setup;\n\n/*\n@brief \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"\
-    Algorithm/Mo.hpp\"\n\nstruct Mo {\n    int n, q;\n    vec<pair<int, int>> qs;\n\
-    \    vec<int> qi;\n    Mo(int N, vec<pair<int, int>> QS) : n(N), qs(QS), q(QS.size())\
-    \ {   \n        qi = vec<int>(q);\n        iota(all(qi), 0);\n        int width\
-    \ = max<int>(1, 1.0 * n / max(1.0, sqrt(q * 2.0 / 3.0)));\n        sort(all(qi),\
-    \ [&](int i, int j) {\n            if(qs[i].first/width != qs[j].first/width)\
-    \ {\n                return qs[i].first < qs[j].first;\n            }\n      \
-    \      else {\n                int g = qs[i].first / width;\n                if(g\
-    \ % 2 == 0) {\n                    return qs[i].second < qs[j].second;\n     \
-    \           }\n                else {\n                    return qs[i].second\
+    \ all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT using vec = vector<T>;\n\
+    template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
+    \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
+    \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
+    \u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/Mo.hpp\"\n\nstruct Mo {\n    int n,\
+    \ q;\n    vec<pair<int, int>> qs;\n    vec<int> qi;\n    Mo(int N, vec<pair<int,\
+    \ int>> QS) : n(N), qs(QS), q(QS.size()) {   \n        qi = vec<int>(q);\n   \
+    \     iota(all(qi), 0);\n        int width = max<int>(1, 1.0 * n / max(1.0, sqrt(q\
+    \ * 2.0 / 3.0)));\n        sort(all(qi), [&](int i, int j) {\n            if(qs[i].first/width\
+    \ != qs[j].first/width) {\n                return qs[i].first < qs[j].first;\n\
+    \            }\n            else {\n                int g = qs[i].first / width;\n\
+    \                if(g % 2 == 0) {\n                    return qs[i].second < qs[j].second;\n\
+    \                }\n                else {\n                    return qs[i].second\
     \ > qs[j].second;\n                }\n            }\n        });\n    }\n    \n\
     \    template<class AL, class AR, class DL, class DR, class REM> void run(AL addL,\
     \ AR addR, DL delL, DR delR, REM rem) {\n        int l = 0, r = 0;\n        for(int\
@@ -129,8 +126,8 @@ data:
   isVerificationFile: true
   path: verify/mo.test.cpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-07-09 04:15:19+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/mo.test.cpp
 layout: document

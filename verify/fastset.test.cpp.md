@@ -4,9 +4,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/fastset.hpp
     title: "\u975E\u8CA0\u6574\u6570\u3092\u7BA1\u7406\u3059\u308B64\u5206\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
-    title: "\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+    title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -21,66 +21,63 @@ data:
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n#define rall(x) rbegin(x), rend(x)\n\n#define TT template<typename\
-    \ T>\nTT using vec = vector<T>;\ntemplate<class T1, class T2> bool chmin(T1 &x,\
-    \ T2 y) { return x > y ? (x = y, true) : false; }\ntemplate<class T1, class T2>\
-    \ bool chmax(T1 &x, T2 y) { return x < y ? (x = y, true) : false; }\n\nstruct\
-    \ io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n       \
-    \ std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n    }\n\
-    } io_setup;\n\n/*\n@brief \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"\
-    Datastructure/fastset.hpp\"\ntemplate<int W>\nstruct fastset {\n    using ll =\
-    \ long long;\n    using ull = unsigned long long;\n\n    ll siz;\n    vector<int>\
-    \ B = {0, 6, 12, 18, 24, 30, 36, 42};\n    vector<ull> mask;\n    vector<ull>\
-    \ mask_rev;\n    vector<vector<ull>> tr;\n\n    fastset() {\n        tr.resize(W);\n\
-    \        mask.resize(65, 0);\n        mask_rev.resize(65, 18446744073709551615ULL);\n\
-    \        siz = 0;\n        for (int i = 0; i < W; i++) {\n            tr[i].resize(1ULL\
-    \ << B[W - i - 1], 0);\n        }\n        for (int i = 1; i <= 64; i++) {\n \
-    \           mask[i] = mask[i - 1] << 1 | 1;\n        }\n        for (int i = 63;\
-    \ i >= 0; i--) {\n            mask_rev[i] = mask_rev[i + 1] << 1;\n        }\n\
-    \    }\n\n  private:\n    ull Q(ull x, int w) {  // x \u3092 2^w \u3067\u5272\u3063\
-    \u305F\u5546\n        return x >> w;\n    }\n\n    ull lower_bound__(ull x, int\
-    \ i, ull res) {\n        if (i < 0) return res;\n        if (res == Q(x, B[i +\
-    \ 1])) {\n            if (tr[i][res] >> (Q(x, B[i]) & 63) & 1) {\n           \
-    \     if ((tr[i][res] & mask_rev[63 - (Q(x, B[i]) & 63)]) == 0)\n            \
-    \        return lower_bound__(\n                        x, i - 1,\n          \
-    \              res << 6 |\n                            __builtin_ctzll(tr[i][res]\
-    \ &\n                                            mask_rev[64 - (Q(x, B[i]) & 63)]));\n\
-    \                return min(\n                    lower_bound__(\n           \
-    \             x, i - 1,\n                        res << 6 |\n                \
-    \            __builtin_ctzll(tr[i][res] &\n                                  \
-    \          mask_rev[64 - (Q(x, B[i]) & 63)])),\n                    lower_bound__(\n\
-    \                        x, i - 1,\n                        res << 6 |\n     \
-    \                       __builtin_ctzll(tr[i][res] &\n                       \
-    \                     mask_rev[63 - (Q(x, B[i]) & 63)])));\n            } else\
-    \ {\n                if ((tr[i][res] & mask_rev[63 - (Q(x, B[i]) & 63)]) == 0)\n\
-    \                    return 18446744073709551615ULL;\n                return lower_bound__(\n\
-    \                    x, i - 1,\n                    res << 6 |\n             \
-    \           __builtin_ctzll(tr[i][res] &\n                                   \
-    \     mask_rev[63 - (Q(x, B[i]) & 63)]));\n            }\n        } else {\n \
-    \           return lower_bound__(x, i - 1,\n                                 res\
-    \ << 6 | __builtin_ctzll(tr[i][res]));\n        }\n    }\n\n    ull lower_left_bound__(ull\
-    \ x, int i, ull res) {\n        if (i < 0) return res;\n        if (res == Q(x,\
-    \ B[i + 1])) {\n            if (tr[i][res] >> (Q(x, B[i]) & 63) & 1) {\n     \
-    \           if ((tr[i][res] & mask[(Q(x, B[i]) & 63)]) == 0)\n               \
-    \     return lower_left_bound__(\n                        x, i - 1,\n        \
-    \                res << 6 | (63 - __builtin_clzll(\n                         \
-    \                    tr[i][res] &\n                                          \
-    \   mask[(Q(x, B[i]) & 63) + 1])));\n                return max(\n           \
-    \         lower_left_bound__(\n                        x, i - 1,\n           \
-    \             res << 6 |\n                            (63 - __builtin_clzll(tr[i][res]\
-    \ &\n                                                  mask[(Q(x, B[i]) & 63)]))),\n\
-    \                    lower_left_bound__(\n                        x, i - 1,\n\
-    \                        res << 6 | (63 - __builtin_clzll(\n                 \
-    \                            tr[i][res] &\n                                  \
-    \           mask[(Q(x, B[i]) & 63) + 1]))));\n            } else {\n         \
-    \       if ((tr[i][res] & mask[(Q(x, B[i]) & 63)]) == 0) return 0ULL;\n      \
-    \          return lower_left_bound__(\n                    x, i - 1,\n       \
-    \             res << 6 | (63 - __builtin_clzll(tr[i][res] &\n                \
-    \                                     mask[(Q(x, B[i]) & 63)])));\n          \
-    \  }\n        } else {\n            return lower_left_bound__(\n             \
-    \   x, i - 1, res << 6 | (63 - __builtin_clzll(tr[i][res])));\n        }\n   \
-    \ }\n\n  public:\n    void insert(ll x) {\n        if (count(x)) return;\n   \
-    \     siz++;\n        for (int i = W - 1; i >= 0; i--) {\n            tr[i][Q(x,\
+    \ all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT using vec = vector<T>;\n\
+    template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
+    \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
+    \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
+    \u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/fastset.hpp\"\ntemplate<int W>\n\
+    struct fastset {\n    using ll = long long;\n    using ull = unsigned long long;\n\
+    \n    ll siz;\n    vector<int> B = {0, 6, 12, 18, 24, 30, 36, 42};\n    vector<ull>\
+    \ mask;\n    vector<ull> mask_rev;\n    vector<vector<ull>> tr;\n\n    fastset()\
+    \ {\n        tr.resize(W);\n        mask.resize(65, 0);\n        mask_rev.resize(65,\
+    \ 18446744073709551615ULL);\n        siz = 0;\n        for (int i = 0; i < W;\
+    \ i++) {\n            tr[i].resize(1ULL << B[W - i - 1], 0);\n        }\n    \
+    \    for (int i = 1; i <= 64; i++) {\n            mask[i] = mask[i - 1] << 1 |\
+    \ 1;\n        }\n        for (int i = 63; i >= 0; i--) {\n            mask_rev[i]\
+    \ = mask_rev[i + 1] << 1;\n        }\n    }\n\n  private:\n    ull Q(ull x, int\
+    \ w) {  // x \u3092 2^w \u3067\u5272\u3063\u305F\u5546\n        return x >> w;\n\
+    \    }\n\n    ull lower_bound__(ull x, int i, ull res) {\n        if (i < 0) return\
+    \ res;\n        if (res == Q(x, B[i + 1])) {\n            if (tr[i][res] >> (Q(x,\
+    \ B[i]) & 63) & 1) {\n                if ((tr[i][res] & mask_rev[63 - (Q(x, B[i])\
+    \ & 63)]) == 0)\n                    return lower_bound__(\n                 \
+    \       x, i - 1,\n                        res << 6 |\n                      \
+    \      __builtin_ctzll(tr[i][res] &\n                                        \
+    \    mask_rev[64 - (Q(x, B[i]) & 63)]));\n                return min(\n      \
+    \              lower_bound__(\n                        x, i - 1,\n           \
+    \             res << 6 |\n                            __builtin_ctzll(tr[i][res]\
+    \ &\n                                            mask_rev[64 - (Q(x, B[i]) & 63)])),\n\
+    \                    lower_bound__(\n                        x, i - 1,\n     \
+    \                   res << 6 |\n                            __builtin_ctzll(tr[i][res]\
+    \ &\n                                            mask_rev[63 - (Q(x, B[i]) & 63)])));\n\
+    \            } else {\n                if ((tr[i][res] & mask_rev[63 - (Q(x, B[i])\
+    \ & 63)]) == 0)\n                    return 18446744073709551615ULL;\n       \
+    \         return lower_bound__(\n                    x, i - 1,\n             \
+    \       res << 6 |\n                        __builtin_ctzll(tr[i][res] &\n   \
+    \                                     mask_rev[63 - (Q(x, B[i]) & 63)]));\n  \
+    \          }\n        } else {\n            return lower_bound__(x, i - 1,\n \
+    \                                res << 6 | __builtin_ctzll(tr[i][res]));\n  \
+    \      }\n    }\n\n    ull lower_left_bound__(ull x, int i, ull res) {\n     \
+    \   if (i < 0) return res;\n        if (res == Q(x, B[i + 1])) {\n           \
+    \ if (tr[i][res] >> (Q(x, B[i]) & 63) & 1) {\n                if ((tr[i][res]\
+    \ & mask[(Q(x, B[i]) & 63)]) == 0)\n                    return lower_left_bound__(\n\
+    \                        x, i - 1,\n                        res << 6 | (63 - __builtin_clzll(\n\
+    \                                             tr[i][res] &\n                 \
+    \                            mask[(Q(x, B[i]) & 63) + 1])));\n               \
+    \ return max(\n                    lower_left_bound__(\n                     \
+    \   x, i - 1,\n                        res << 6 |\n                          \
+    \  (63 - __builtin_clzll(tr[i][res] &\n                                      \
+    \            mask[(Q(x, B[i]) & 63)]))),\n                    lower_left_bound__(\n\
+    \                        x, i - 1,\n                        res << 6 | (63 - __builtin_clzll(\n\
+    \                                             tr[i][res] &\n                 \
+    \                            mask[(Q(x, B[i]) & 63) + 1]))));\n            } else\
+    \ {\n                if ((tr[i][res] & mask[(Q(x, B[i]) & 63)]) == 0) return 0ULL;\n\
+    \                return lower_left_bound__(\n                    x, i - 1,\n \
+    \                   res << 6 | (63 - __builtin_clzll(tr[i][res] &\n          \
+    \                                           mask[(Q(x, B[i]) & 63)])));\n    \
+    \        }\n        } else {\n            return lower_left_bound__(\n       \
+    \         x, i - 1, res << 6 | (63 - __builtin_clzll(tr[i][res])));\n        }\n\
+    \    }\n\n  public:\n    void insert(ll x) {\n        if (count(x)) return;\n\
+    \        siz++;\n        for (int i = W - 1; i >= 0; i--) {\n            tr[i][Q(x,\
     \ B[i + 1])] |= 1ULL << (Q(x, B[i]) & 63);\n        }\n    }\n\n    void erase(ll\
     \ x) {\n        if (!count(x)) return;\n        siz--;\n        tr[0][Q(x, 6)]\
     \ ^= 1ULL << (x & 63);\n        for (int i = 1; i < W; i++) {\n            ull\
@@ -143,7 +140,7 @@ data:
   isVerificationFile: true
   path: verify/fastset.test.cpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-07-09 04:15:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fastset.test.cpp

@@ -6,12 +6,12 @@ data:
     path: example/range_edge_graph.example.cpp
     title: example/range_edge_graph.example.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/range_edge_graph.test.cpp
     title: verify/range_edge_graph.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: doc/range_edge_graph.md
     document_title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF"
@@ -76,7 +76,7 @@ data:
   requiredBy:
   - example/range_edge_graph.example.cpp
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/range_edge_graph.test.cpp
 documentation_of: Datastructure/range_edge_graph.hpp

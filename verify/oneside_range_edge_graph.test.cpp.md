@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Algorithm/hld.hpp
     title: HLD
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/oneside_range_edge_graph.hpp
     title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF(\u7279\u6B8A\u7248\
       )"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
-    title: "\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+    title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/4022
@@ -25,67 +25,65 @@ data:
     \ \"https://onlinejudge.u-aizu.ac.jp/problems/4022\"\n#line 1 \"Utility/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
     \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for(ll\
-    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n#define\
-    \ rall(x) rbegin(x), rend(x)\n\n#define TT template<typename T>\nTT using vec\
-    \ = vector<T>;\ntemplate<class T1, class T2> bool chmin(T1 &x, T2 y) { return\
-    \ x > y ? (x = y, true) : false; }\ntemplate<class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) { return x < y ? (x = y, true) : false; }\n\nstruct io_setup {\n \
-    \   io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/oneside_range_edge_graph.hpp\"\
-    \n/*\n\u6CE8\u610F: \u3053\u308C\u306B\u3088\u308A\u5F97\u3089\u308C\u305F\u30B0\
-    \u30E9\u30D5\u3067\u6700\u77ED\u8DDD\u96E2\u3092\u6C42\u3081\u308B\u5834\u5408\
-    \u3001\u9802\u70B9\u756A\u53F7\u3092\u305A\u3089\u3057\u3066\u5229\u7528\u3059\
-    \u308B\u5FC5\u8981\u304C\u3042\u308B\u3002\n\u7406\u7531: \u30BB\u30B0\u6728\u306E\
-    \u6700\u4E0B\u6BB5\u3092\u751F\u306E\u9802\u70B9\u3068\u3057\u3066\u6271\u3063\
-    \u3066\u3044\u308B\u3002\n*/\nstruct range_edge_graph {\n    #define pb push_back\n\
-    \    struct edge {\n        int to;\n        ll cost;\n        //ll cap; \u30D5\
-    \u30ED\u30FC\u306A\u3089\u3053\u308C\u3082\u4F7F\u3046\u3002\n        edge(){}\n\
-    \        edge(int a, ll b, ll c) : to(a), cost(b) {}\n        //edge(int a, ll\
-    \ b, ll c) : to(a), cost(b), cap(c) {}\n        //\u30D5\u30ED\u30FC\u306E\u6642\
-    \u306E\u30B3\u30F3\u30B9\u30C8\u30E9\u30AF\u30BF\n    };\n\n    edge e(int to)\
-    \ {\n        return edge(to, 0, LLONG_MAX);\n    }\n  \n    int n;\n    int sz\
-    \ = 1;\n    int node;\n    vec<vec<edge>> g;\n\n    range_edge_graph(int N) :\
-    \ n(N) {\n        while(sz < n) sz <<= 1;\n\n        g = vec<vec<edge>>(2 * sz);\n\
-    \        node = 2 * sz;\n        rep(i, 1, sz) {\n            g[i].pb( e(i * 2)\
-    \ );\n            g[i].pb( e(i * 2 + 1 ) );\n        }\n    }\n\n    void point_range(int\
-    \ s, int tl, int tr, ll cost) {\n        s += sz;\n        tl += sz;\n       \
-    \ tr += sz;\n\n        while(tl < tr) {\n            if(tl & 1) g[s].pb( edge(tl,\
-    \ cost, 0) ), tl++;\n            if(tr & 1) tr--, g[s].pb( edge(tr, cost, 0) );\
-    \ \n            tl >>= 1, tr >>= 1;\n        }\n    }\n\n    void range_point(int\
-    \ sl, int sr, int t, ll cost) {\n        sl += sz;\n        sr += sz;\n      \
-    \  t += sz;\n\n        while(sl < sr) {\n            if(sl & 1) g[sl].pb( edge(t,\
-    \ cost, 0) ), sl++;\n            if(sr & 1) sr--, g[sr].pb ( edge(t, cost, 0)\
-    \ );\n            sl >>= 1, sr >>= 1;\n        }\n    }\n\n    void add_edge(int\
-    \ s, int t, ll cost, ll cap) {\n        s += sz, t += sz;\n        g[s].pb( edge(t,\
-    \ cost, cap) );\n    }\n\n    vec<vec<edge>> graph() {\n        return g;\n  \
-    \  }\n\n    #undef pb\n};\n\n/*\n@brief \u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\
-    \u30C6\u30AF(\u7279\u6B8A\u7248)\n*/\n#line 1 \"Algorithm/hld.hpp\"\nstruct HLD\
-    \ {\n    using vi = vec<int>;\n    using pi = pair<int, int>;\n    vi in, out,\
-    \ par, root, rev, dep, pre_vs;\n    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\
-    \u4E2D\u8EAB\u2192\u9802\u70B9\u756A\u53F7\n    int n, r;//\u9802\u70B9\u6570\u3001\
-    \u6839\n    \n  \n    HLD(vec<vi> &g, int a): n(g.size()), r(a) {\n        vi\
-    \ siz(n, 0);\n        in = out = root = rev = vi(n);\n        par = vi(n, -1);\n\
-    \        dep = vi(n, 0);\n        root[r] = r;\n\n        auto dfs_siz = [&](auto\
-    \ f, int v) -> void {\n            siz[v]++;\n            for(int& to : g[v])\
-    \ if(to != par[v]) {\n                dep[to] = dep[v] + 1;\n                par[to]\
-    \ = v;\n                f(f, to);\n                siz[v] += siz[to];\n      \
-    \          if(siz[to] > siz[g[v][0]] || g[v][0] == par[v]) swap(to, g[v][0]);\n\
-    \            }\n            return;\n        };\n\n        dfs_siz(dfs_siz, r);\n\
-    \        \n        int t = 0;\n\n        auto dfs_hld = [&](auto f, int v) ->\
-    \ void {\n            rev[t] = v;\n            in[v]=t++;\n            for(int\
-    \ to : g[v]) if(to != par[v]) {\n                root[to] = (to == g[v][0] ? root[v]\
-    \ : to);\n                f(f, to);\n            }\n            out[v] = t;\n\
-    \        };\n\n        dfs_hld(dfs_hld, r);\n    }\n\n\n    //\u4EE5\u4E0B\u3001\
-    \u6B32\u3057\u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n\n\n    int lca(int a,\
-    \ int b) {\n        while(1) {\n            if(in[a] > in[b]) swap(a, b);\n  \
-    \          if(root[a] == root[b]) return a;\n            b = par[root[b]];\n \
-    \       }\n    }\n\n    int dist(int a, int b) {\n        int lc = lca(a, b);\n\
-    \        return dep[a] + dep[b] - 2 * dep[lc];\n    }\n\n    vec<pi> path(int\
-    \ s, int t, bool edge) {\n        vec<pi> ls, rs;\n        while(root[s] != root[t])\
-    \ {\n            if(dep[root[s]] > dep[root[t]]) {\n                ls.emplace_back(in[s]\
-    \ + 1, in[root[s]]);//\u4E0A\u308A\n                s = par[root[s]];\n      \
-    \      }\n            else {\n                rs.emplace_back(in[root[t]], in[t]\
+    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
+    \ TT template<typename T>\nTT using vec = vector<T>;\ntemplate<class T1, class\
+    \ T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y, true) : false; }\ntemplate<class\
+    \ T1, class T2> bool chmax(T1 &x, T2 y) { return x < y ? (x = y, true) : false;\
+    \ }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line\
+    \ 1 \"Datastructure/oneside_range_edge_graph.hpp\"\n/*\n\u6CE8\u610F: \u3053\u308C\
+    \u306B\u3088\u308A\u5F97\u3089\u308C\u305F\u30B0\u30E9\u30D5\u3067\u6700\u77ED\
+    \u8DDD\u96E2\u3092\u6C42\u3081\u308B\u5834\u5408\u3001\u9802\u70B9\u756A\u53F7\
+    \u3092\u305A\u3089\u3057\u3066\u5229\u7528\u3059\u308B\u5FC5\u8981\u304C\u3042\
+    \u308B\u3002\n\u7406\u7531: \u30BB\u30B0\u6728\u306E\u6700\u4E0B\u6BB5\u3092\u751F\
+    \u306E\u9802\u70B9\u3068\u3057\u3066\u6271\u3063\u3066\u3044\u308B\u3002\n*/\n\
+    struct range_edge_graph {\n    #define pb push_back\n    struct edge {\n     \
+    \   int to;\n        ll cost;\n        //ll cap; \u30D5\u30ED\u30FC\u306A\u3089\
+    \u3053\u308C\u3082\u4F7F\u3046\u3002\n        edge(){}\n        edge(int a, ll\
+    \ b, ll c) : to(a), cost(b) {}\n        //edge(int a, ll b, ll c) : to(a), cost(b),\
+    \ cap(c) {}\n        //\u30D5\u30ED\u30FC\u306E\u6642\u306E\u30B3\u30F3\u30B9\u30C8\
+    \u30E9\u30AF\u30BF\n    };\n\n    edge e(int to) {\n        return edge(to, 0,\
+    \ LLONG_MAX);\n    }\n  \n    int n;\n    int sz = 1;\n    int node;\n    vec<vec<edge>>\
+    \ g;\n\n    range_edge_graph(int N) : n(N) {\n        while(sz < n) sz <<= 1;\n\
+    \n        g = vec<vec<edge>>(2 * sz);\n        node = 2 * sz;\n        rep(i,\
+    \ 1, sz) {\n            g[i].pb( e(i * 2) );\n            g[i].pb( e(i * 2 + 1\
+    \ ) );\n        }\n    }\n\n    void point_range(int s, int tl, int tr, ll cost)\
+    \ {\n        s += sz;\n        tl += sz;\n        tr += sz;\n\n        while(tl\
+    \ < tr) {\n            if(tl & 1) g[s].pb( edge(tl, cost, 0) ), tl++;\n      \
+    \      if(tr & 1) tr--, g[s].pb( edge(tr, cost, 0) ); \n            tl >>= 1,\
+    \ tr >>= 1;\n        }\n    }\n\n    void range_point(int sl, int sr, int t, ll\
+    \ cost) {\n        sl += sz;\n        sr += sz;\n        t += sz;\n\n        while(sl\
+    \ < sr) {\n            if(sl & 1) g[sl].pb( edge(t, cost, 0) ), sl++;\n      \
+    \      if(sr & 1) sr--, g[sr].pb ( edge(t, cost, 0) );\n            sl >>= 1,\
+    \ sr >>= 1;\n        }\n    }\n\n    void add_edge(int s, int t, ll cost, ll cap)\
+    \ {\n        s += sz, t += sz;\n        g[s].pb( edge(t, cost, cap) );\n    }\n\
+    \n    vec<vec<edge>> graph() {\n        return g;\n    }\n\n    #undef pb\n};\n\
+    \n/*\n@brief \u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF(\u7279\u6B8A\
+    \u7248)\n*/\n#line 1 \"Algorithm/hld.hpp\"\nstruct HLD {\n    using vi = vec<int>;\n\
+    \    using pi = pair<int, int>;\n    vi in, out, par, root, rev, dep, pre_vs;\n\
+    \    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\u4E2D\u8EAB\u2192\u9802\
+    \u70B9\u756A\u53F7\n    int n, r;//\u9802\u70B9\u6570\u3001\u6839\n    \n  \n\
+    \    HLD(vec<vi> &g, int a): n(g.size()), r(a) {\n        vi siz(n, 0);\n    \
+    \    in = out = root = rev = vi(n);\n        par = vi(n, -1);\n        dep = vi(n,\
+    \ 0);\n        root[r] = r;\n\n        auto dfs_siz = [&](auto f, int v) -> void\
+    \ {\n            siz[v]++;\n            for(int& to : g[v]) if(to != par[v]) {\n\
+    \                dep[to] = dep[v] + 1;\n                par[to] = v;\n       \
+    \         f(f, to);\n                siz[v] += siz[to];\n                if(siz[to]\
+    \ > siz[g[v][0]] || g[v][0] == par[v]) swap(to, g[v][0]);\n            }\n   \
+    \         return;\n        };\n\n        dfs_siz(dfs_siz, r);\n        \n    \
+    \    int t = 0;\n\n        auto dfs_hld = [&](auto f, int v) -> void {\n     \
+    \       rev[t] = v;\n            in[v]=t++;\n            for(int to : g[v]) if(to\
+    \ != par[v]) {\n                root[to] = (to == g[v][0] ? root[v] : to);\n \
+    \               f(f, to);\n            }\n            out[v] = t;\n        };\n\
+    \n        dfs_hld(dfs_hld, r);\n    }\n\n\n    //\u4EE5\u4E0B\u3001\u6B32\u3057\
+    \u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n\n\n    int lca(int a, int b) {\n\
+    \        while(1) {\n            if(in[a] > in[b]) swap(a, b);\n            if(root[a]\
+    \ == root[b]) return a;\n            b = par[root[b]];\n        }\n    }\n\n \
+    \   int dist(int a, int b) {\n        int lc = lca(a, b);\n        return dep[a]\
+    \ + dep[b] - 2 * dep[lc];\n    }\n\n    vec<pi> path(int s, int t, bool edge)\
+    \ {\n        vec<pi> ls, rs;\n        while(root[s] != root[t]) {\n          \
+    \  if(dep[root[s]] > dep[root[t]]) {\n                ls.emplace_back(in[s] +\
+    \ 1, in[root[s]]);//\u4E0A\u308A\n                s = par[root[s]];\n        \
+    \    }\n            else {\n                rs.emplace_back(in[root[t]], in[t]\
     \ + 1);//\u4E0B\u308A\n                t = par[root[t]];\n            }\n    \
     \    }\n\n        if(dep[s] > dep[t]) ls.emplace_back(in[s] + 1, in[t] + edge);//\u4E0A\
     \u308A\n        else rs.emplace_back(in[s] + edge, in[t] + 1);//\u4E0B\u308A\n\
@@ -189,8 +187,8 @@ data:
   isVerificationFile: true
   path: verify/oneside_range_edge_graph.test.cpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-07-09 04:15:19+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/oneside_range_edge_graph.test.cpp
 layout: document

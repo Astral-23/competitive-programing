@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/static1dsum.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/static2dsum.hpp
     title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
-    title: "\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+    title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -24,26 +24,23 @@ data:
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n#define rall(x) rbegin(x), rend(x)\n\n#define TT template<typename\
-    \ T>\nTT using vec = vector<T>;\ntemplate<class T1, class T2> bool chmin(T1 &x,\
-    \ T2 y) { return x > y ? (x = y, true) : false; }\ntemplate<class T1, class T2>\
-    \ bool chmax(T1 &x, T2 y) { return x < y ? (x = y, true) : false; }\n\nstruct\
-    \ io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n       \
-    \ std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n    }\n\
-    } io_setup;\n\n/*\n@brief \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"\
-    Datastructure/static1dsum.hpp\"\nTT struct static1dsum {\n    int n;\n    vec<T>\
-    \ dat;\n    bool f = false;\n\n    static1dsum(int N) : n(N) {\n        dat =\
-    \ vec<T>(n, 0);\n    }\n\n    void add(int i, T x) {\n        assert(!f);\n  \
-    \      dat[i] += x;\n    }\n\n    void imos_add(int i, T x) {\n        add(i,\
-    \ x);\n    }\n\n    void imos_add(int l, int r, T x) {\n        assert(!f);\n\
-    \        chmax(l, 0); \n        chmin(r, n);\n        if(l >= r) return;\n   \
-    \     dat[l] += x;\n        if(r < n) dat[r] -= x;\n        return;\n    }\n\n\
-    \    void build() {\n        rep(i, 0, n-1) dat[i+1] += dat[i];\n        f = true;\n\
-    \    }\n\n    T get(int i) {\n        assert(f);\n        assert(0 <= i && i <\
-    \ n);\n        return dat[i];\n    }\n\n    T imos_get(int i) {\n        return\
-    \ prod(0, i+1);\n    }\n\n    T prod(int l, int r) {\n        assert(f);\n   \
-    \     assert(l >= 0);\n        assert(r <= n);\n        assert(l <= r);\n    \
-    \    T res = dat[r-1];\n        if(l) res -= dat[l-1];\n        return res;\n\
+    \ all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT using vec = vector<T>;\n\
+    template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
+    \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
+    \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
+    \u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/static1dsum.hpp\"\nTT struct static1dsum\
+    \ {\n    int n;\n    vec<T> dat;\n    bool f = false;\n\n    static1dsum(int N)\
+    \ : n(N) {\n        dat = vec<T>(n, 0);\n    }\n\n    void add(int i, T x) {\n\
+    \        assert(!f);\n        dat[i] += x;\n    }\n\n    void imos_add(int i,\
+    \ T x) {\n        add(i, x);\n    }\n\n    void imos_add(int l, int r, T x) {\n\
+    \        assert(!f);\n        chmax(l, 0); \n        chmin(r, n);\n        if(l\
+    \ >= r) return;\n        dat[l] += x;\n        if(r < n) dat[r] -= x;\n      \
+    \  return;\n    }\n\n    void build() {\n        rep(i, 0, n-1) dat[i+1] += dat[i];\n\
+    \        f = true;\n    }\n\n    T get(int i) {\n        assert(f);\n        assert(0\
+    \ <= i && i < n);\n        return dat[i];\n    }\n\n    T imos_get(int i) {\n\
+    \        return prod(0, i+1);\n    }\n\n    T prod(int l, int r) {\n        assert(f);\n\
+    \        assert(l >= 0);\n        assert(r <= n);\n        assert(l <= r);\n \
+    \       T res = dat[r-1];\n        if(l) res -= dat[l-1];\n        return res;\n\
     \    }\n\n};\n\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\n@doc docs/static1dsum.md\n\
     \n\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\nTT struct static2dsum {\n \
     \   int h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\n    static2dsum(int\
@@ -91,8 +88,8 @@ data:
   isVerificationFile: true
   path: verify/static1dsum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-07-09 04:15:19+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/static1dsum.test.cpp
 layout: document
