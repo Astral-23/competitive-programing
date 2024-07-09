@@ -18,12 +18,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/oneside_range_edge_graph.test.cpp
     title: verify/oneside_range_edge_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/range_edge_graph.test.cpp
     title: verify/range_edge_graph.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/hld.md
     document_title: HLD
@@ -138,7 +138,7 @@ data:
   path: Algorithm/hld.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/hld_lca.test.cpp
   - verify/aux_tree.test.cpp

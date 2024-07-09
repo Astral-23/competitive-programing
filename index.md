@@ -6,13 +6,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/Mo.hpp
       title: "Mo\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/hld.hpp
       title: HLD
     - icon: ':heavy_check_mark:'
       path: Algorithm/limited_knapsack.hpp
       title: Algorithm/limited_knapsack.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/lowlink.hpp
       title: lowlink
     - icon: ':warning:'
@@ -27,10 +27,10 @@ data:
     - icon: ':warning:'
       path: Algorithm/mincostflow.cpp
       title: Mincostflow
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/treedp.hpp
       title: "\u5168\u65B9\u4F4D\u6728DP"
   - name: Datastructure
@@ -59,7 +59,7 @@ data:
     - icon: ':warning:'
       path: Datastructure/li_chao_tree.hpp
       title: Li chao tree
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/offline_connectivity.hpp
       title: offline_connectivity
     - icon: ':heavy_check_mark:'
@@ -76,10 +76,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/pbds_set.hpp
       title: "pdbs\u306E\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/potential_dsu.hpp
       title: potential dsu
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/range_edge_graph.hpp
       title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF"
     - icon: ':warning:'
@@ -89,10 +89,10 @@ data:
       path: Datastructure/rangeset2.cpp
       title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset( i], [i+1 \u3092\u7D71\
         \u5408\u3057\u306A\u3044ver)"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/segtree.hpp
       title: segtree
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/simple_treap.hpp
       title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
     - icon: ':warning:'
@@ -104,29 +104,29 @@ data:
     - icon: ':warning:'
       path: Datastructure/splayset.cpp
       title: "splay_tree(set) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3\u306Bsplay"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/static1dsum.hpp
       title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':warning:'
       path: Datastructure/static2Drectanglesum.hpp
       title: "\u9759\u7684\u3067\u5DE8\u5927\u306A\u30B0\u30EA\u30C3\u30C9\u306E\u77E9\
         \u5F62\u548C"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/static2dsum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/swag.hpp
       title: SWAG
     - icon: ':warning:'
       path: Datastructure/top2.cpp
       title: "top2(\u524A\u9664\u4E0D\u53EF)"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/treap.hpp
       title: treap
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/undabledsu.hpp
       title: undable dsu
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/value_dsu.hpp
       title: "\u5024\u96C6\u7D04\u30FB\u5909\u66F4\u53EF\u80FD\u306Adsu"
   - name: Math
@@ -168,13 +168,13 @@ data:
     - icon: ':warning:'
       path: Utility/icpc_template.hpp
       title: Utility/icpc_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: "\u81EA\u4F5C\u306Epair"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -315,58 +315,58 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/point_add_rec_sum.test.cpp
       title: verify/point_add_rec_sum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/potential_dsu.test.cpp
       title: verify/potential_dsu.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/range_edge_graph.test.cpp
       title: verify/range_edge_graph.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/scc.test.cpp
       title: verify/scc.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/seg_prod.test.cpp
       title: verify/seg_prod.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/segtree.test.cpp
       title: verify/segtree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/simpletreap.test.cpp
       title: verify/simpletreap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/static1dsum.test.cpp
       title: verify/static1dsum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/static2dsum.test.cpp
       title: verify/static2dsum.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/static2dsum_imos.test.cpp
       title: verify/static2dsum_imos.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/swag.test.cpp
       title: verify/swag.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/swag_more.test.cpp
       title: verify/swag_more.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/treap.test.cpp
       title: verify/treap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/treedp.test.cpp
       title: verify/treedp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/undabledsu.test.cpp
       title: verify/undabledsu.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/value_dsu.test.cpp
       title: verify/value_dsu.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
       title: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3\
         .test.cpp"
   - name: "\u7802\u5834"
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: "\u7802\u5834/swag.test.cpp"
       title: "\u7802\u5834/swag.test.cpp"
 layout: toppage

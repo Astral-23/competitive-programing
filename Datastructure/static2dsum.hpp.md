@@ -3,18 +3,18 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/static1dsum.test.cpp
     title: verify/static1dsum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/static2dsum.test.cpp
     title: verify/static2dsum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/static2dsum_imos.test.cpp
     title: verify/static2dsum_imos.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     links: []
@@ -71,7 +71,7 @@ data:
   path: Datastructure/static2dsum.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/static2dsum.test.cpp
   - verify/static1dsum.test.cpp

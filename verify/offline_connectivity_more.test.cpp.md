@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/offline_connectivity.hpp
     title: offline_connectivity
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/undabledsu.hpp
     title: undable dsu
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

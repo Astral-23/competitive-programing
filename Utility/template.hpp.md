@@ -123,60 +123,60 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/point_add_rec_sum.test.cpp
     title: verify/point_add_rec_sum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/potential_dsu.test.cpp
     title: verify/potential_dsu.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/range_edge_graph.test.cpp
     title: verify/range_edge_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/scc.test.cpp
     title: verify/scc.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/seg_prod.test.cpp
     title: verify/seg_prod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/segtree.test.cpp
     title: verify/segtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/simpletreap.test.cpp
     title: verify/simpletreap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/static1dsum.test.cpp
     title: verify/static1dsum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/static2dsum.test.cpp
     title: verify/static2dsum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/static2dsum_imos.test.cpp
     title: verify/static2dsum_imos.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/swag.test.cpp
     title: verify/swag.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/swag_more.test.cpp
     title: verify/swag_more.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/treap.test.cpp
     title: verify/treap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/undabledsu.test.cpp
     title: verify/undabledsu.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/value_dsu.test.cpp
     title: verify/value_dsu.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
     title: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -207,7 +207,7 @@ data:
   - example/simple_treap.example.cpp
   - example/offline_connectivity.example.cpp
   timestamp: '2024-07-09 04:15:19+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - "\u7802\u5834/swag.test.cpp"
   - verify/extgcd.test.cpp

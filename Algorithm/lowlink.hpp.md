@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lowlink_joint.test.cpp
     title: verify/lowlink_joint.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
     title: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/lowlink.md
     document_title: lowlink
@@ -69,7 +69,7 @@ data:
   path: Algorithm/lowlink.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/lowlink_joint.test.cpp
   - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
