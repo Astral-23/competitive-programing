@@ -2,7 +2,7 @@
 2dセグ木
 
 ## コンストラクタ
-`segtree2d<S, op, e> seg (int h, int w)` ...  [0, h) * [0, w)のグリッドを作る。**半開区間**
+`segtree2d<S, op, e>(int h, int w)` ...  [0, h) * [0, w)のグリッドを作る。**半開区間**
 - 計算量 $O(HW)$
 
 ## 関数

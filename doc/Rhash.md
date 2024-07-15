@@ -9,7 +9,7 @@ Rolling hash。半開区間に注意。
 
 
 ## コンストラクタ
-`TT Rhash rh(T S)` ... Sのハッシュを計算する。Sはstringや配列。
+`TT Rhash (T S)` ... Sのハッシュを計算する。Sはstringや配列。
 - 計算量
     $O(|S|)$
 

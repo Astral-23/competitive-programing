@@ -81,7 +81,7 @@ title: 2dbit
 add, prod(y, x), prod(sy, sx, ty, tx) の + , - , += , -= を全て変更する。
 
 ## コンストラクタ 
-`bit2d<T> bit (int h, int w)` ... T : 値の型。 [0, h) * [0, w)の配列を作る. 初期値は0。 
+`bit2d<T>(int h, int w)` ... T : 値の型。 [0, h) * [0, w)の配列を作る. 初期値は0。 
 - 計算量 $O(HW)$
 
 ## 関数

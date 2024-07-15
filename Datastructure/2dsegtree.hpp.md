@@ -93,7 +93,7 @@ title: "2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
 2dセグ木
 
 ## コンストラクタ
-`segtree2d<S, op, e> seg (int h, int w)` ...  [0, h) * [0, w)のグリッドを作る。**半開区間**
+`segtree2d<S, op, e>(int h, int w)` ...  [0, h) * [0, w)のグリッドを作る。**半開区間**
 - 計算量 $O(HW)$
 
 ## 関数
