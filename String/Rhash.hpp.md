@@ -107,27 +107,33 @@ title: Rolling_hash
 ---
 ## 概要
 Rolling hash。半開区間に注意。
-最大文字列長・brh(ある項が取りうる値の種類数より大) には毎回注意(pw配列のサイズ。)
+
+## 使用時に変更する物
+`ll brh` ...値の種類数  
+
+`vec<rhash> pw(5000001, 1)` ... 最大文字列長
+
 
 
 ## コンストラクタ
-TT Rhash rh(T S) ... Sのハッシュを計算する。Sはstringや配列。
-- **計算量**
+`TT Rhash rh(T S)` ... Sのハッシュを計算する。Sはstringや配列。
+- 計算量
     $O(|S|)$
 
 ## 関数
 以下、|S| = nと置く。時間計算量は全てO(1)
-- **rhash get(int l, int r)**... [l, r)のハッシュを返す。区間が潰れていた場合、0を返す。
-    - **制約**
+
+- `rhash get(int l, int r)`... [l, r)のハッシュを返す。区間が潰れていた場合、0を返す。
+    - 制約
     $0 \le l , r \le n$
 
-- **rhash get(int p)**... p文字目のハッシュを返す。
-    - **制約**
+- `rhash get(int p)`... p文字目のハッシュを返す。
+    - 制約
     $0 \le p  < n$
     
-- **pair<int, int> conv(int l, int r)**...reverseしたハッシュを逆方向として、正方向の[l, r)と対応する逆方向の区間を返す。回文判定に使う。
+- `pair<int, int> conv(int l, int r)`...reverseしたハッシュを逆方向として、正方向の[l, r)と対応する逆方向の区間を返す。回文判定に使う。
 
-- **rhash unit(rhash mae, rhash usiro, int len_of_usiro)** ... ハッシュを結合する。
+- `rhash unit(rhash mae, rhash usiro, int len_of_usiro)` ... ハッシュを結合する。
   
 ## 使用例
 
