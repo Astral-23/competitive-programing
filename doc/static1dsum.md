@@ -17,7 +17,9 @@ add, prod(y, x), prod(sy, sx, ty, tx) の + , - , += , -= を全て変更する�
 
 - `void build()` ... 累積和を計算する。以降add不可能。また、buildを呼ぶ前はget.prod不可。(どちらも、assertが反応する) 
     - 計算量 $O(n)$
+
 - `T get(int i)` ... A[i]を返す。
+
 - `T prod(int l, int r)` ... [l, r)の範囲領域の和を返す。**半開区間**
 
 <br>
