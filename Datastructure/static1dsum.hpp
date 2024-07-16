@@ -3,7 +3,7 @@ TT struct static1dsum {
     vec<T> dat;
     bool f = false;
 
-    static1dsum(int N = 0) : static1dsum(vec<T>(n, T())) {}
+    static1dsum(int n = 0) : static1dsum(vec<T>(n, T())) {}
 
     static1dsum(vec<T> dat) : n(dat.size()), dat(dat) {}
 

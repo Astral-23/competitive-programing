@@ -3,8 +3,8 @@ TT struct static2dsum {
     vec<vec<T>> dat;
     bool f = false;
 
-    static2dsum(int H = 0, int W = 0)
-        : static2dsum(vec<vec<T>>(H, vec<T>(W, T()))) {}
+    static2dsum(int h = 0, int w = 0)
+        : static2dsum(vec<vec<T>>(h, vec<T>(w, T()))) {}
 
     static2dsum(vec<vec<T>> dat) : dat(dat) {
         h = dat.size();
