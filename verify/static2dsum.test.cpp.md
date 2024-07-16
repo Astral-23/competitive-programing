@@ -50,7 +50,7 @@ data:
     \ = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy\
     \ > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res += dat[sy -\
     \ 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\
-    \u548C\n@doc docs/static2dsum.md\n*/\n#line 4 \"verify/static2dsum.test.cpp\"\n\
+    \u548C\n@docs doc/static2dsum.md\n*/\n#line 4 \"verify/static2dsum.test.cpp\"\n\
     \nint main() {\n    int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n\
     \    static2dsum<ll> J(h, w);\n    static2dsum<ll> O(h, w);\n    static2dsum<ll>\
     \ I(h, w);\n\n\n    rep(i, 0, h) rep(j, 0, w) {\n        char a;\n        cin\
@@ -77,7 +77,7 @@ data:
   isVerificationFile: true
   path: verify/static2dsum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-17 07:05:16+09:00'
+  timestamp: '2024-07-17 08:08:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/static2dsum.test.cpp

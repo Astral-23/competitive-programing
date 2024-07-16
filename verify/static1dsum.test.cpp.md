@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Datastructure/static1dsum.hpp
-    title: Datastructure/static1dsum.hpp
+    title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
     path: Datastructure/static2dsum.hpp
     title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
@@ -41,7 +41,8 @@ data:
     \  }\n\n    T imos_get(int i) { return prod(0, i + 1); }\n\n    T prod(int l,\
     \ int r) {\n        assert(f);\n        assert(l >= 0);\n        assert(r <= n);\n\
     \        assert(l <= r);\n        T res = dat[r - 1];\n        if (l) res -= dat[l\
-    \ - 1];\n        return res;\n    }\n};\n#line 1 \"Datastructure/static2dsum.hpp\"\
+    \ - 1];\n        return res;\n    }\n};\n\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\
+    \u548C\n@docs doc/static1dsum.md\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\
     \nTT struct static2dsum {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\
     \n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h,\
     \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
@@ -66,7 +67,7 @@ data:
     \ = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy\
     \ > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res += dat[sy -\
     \ 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\
-    \u548C\n@doc docs/static2dsum.md\n*/\n#line 5 \"verify/static1dsum.test.cpp\"\n\
+    \u548C\n@docs doc/static2dsum.md\n*/\n#line 5 \"verify/static1dsum.test.cpp\"\n\
     \n\nint main() {\n    int n, q;\n    cin >> n >> q;\n    static1dsum<ll> sum1(n);\n\
     \    static2dsum<ll> sum2(1, n);\n\n    rep(i, 0, n) {\n        ll a;\n      \
     \  cin >> a;\n        sum1.add(i, a);\n        sum2.add(0, i, a);\n    }\n\n \
@@ -89,7 +90,7 @@ data:
   isVerificationFile: true
   path: verify/static1dsum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-17 07:05:16+09:00'
+  timestamp: '2024-07-17 08:08:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/static1dsum.test.cpp

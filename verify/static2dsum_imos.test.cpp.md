@@ -50,7 +50,7 @@ data:
     \ = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy\
     \ > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res += dat[sy -\
     \ 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\
-    \u548C\n@doc docs/static2dsum.md\n*/\n#line 4 \"verify/static2dsum_imos.test.cpp\"\
+    \u548C\n@docs doc/static2dsum.md\n*/\n#line 4 \"verify/static2dsum_imos.test.cpp\"\
     \n\nint main() { \n    int n;\n    cin >> n;\n    static2dsum<ll> sum(1001, 1001);\n\
     \n    rep(i, 0, n) {\n        int sx, sy, tx, ty;\n        cin >> sx >> sy >>\
     \ tx >> ty;\n        sum.imos_add(sy, ty, sx, tx, 1);\n    }\n\n    sum.build();\n\
@@ -71,7 +71,7 @@ data:
   isVerificationFile: true
   path: verify/static2dsum_imos.test.cpp
   requiredBy: []
-  timestamp: '2024-07-17 07:05:16+09:00'
+  timestamp: '2024-07-17 08:08:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/static2dsum_imos.test.cpp

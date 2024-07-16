@@ -16,6 +16,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: doc/static2dsum.md
     document_title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     links: []
   bundledCode: "#line 1 \"Datastructure/static2dsum.hpp\"\nTT struct static2dsum {\n\
@@ -43,7 +44,7 @@ data:
     \ = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy\
     \ > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res += dat[sy -\
     \ 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\
-    \u548C\n@doc docs/static2dsum.md\n*/\n"
+    \u548C\n@docs doc/static2dsum.md\n*/\n"
   code: "TT struct static2dsum {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f\
     \ = false;\n\n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h,\
     \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
@@ -68,12 +69,12 @@ data:
     \ = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy\
     \ > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res += dat[sy -\
     \ 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\
-    \u548C\n@doc docs/static2dsum.md\n*/"
+    \u548C\n@docs doc/static2dsum.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Datastructure/static2dsum.hpp
   requiredBy: []
-  timestamp: '2024-07-17 07:05:16+09:00'
+  timestamp: '2024-07-17 08:08:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/static1dsum.test.cpp
@@ -86,3 +87,29 @@ redirect_from:
 - /library/Datastructure/static2dsum.hpp.html
 title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
 ---
+## 概要
+2次元累積和
+
+## +演算を他の演算に変えたくなった時
+逆元があれば良い。
+add, prod(y, x), prod(sy, sx, ty, tx) の + , - , += , -= を全て変更する。
+**計算量 $O(HW)$ **
+## コンストラクタ
+**static2dsum\<T\> sum (int h, int w)** ... T : 値の型。 [0, h) * [0, w)の配列を作る. 初期値は0。 計算量 $O(HW)$
+
+## 関数
+基本、計算量は $O(1)$
+・1点加算/区間取得
+- **add(int y, int x, T v)** ... A[y][x] += v
+- **build()** ... 累積和を計算する。以降add不可能。また、buildを呼ぶ前はget.prod不可。(どちらも、assertが反応する) 計算量 $O(HW)$
+- **get(int y, int x)** ... A[y][x]を返す。
+- **prod(int sy, int ty, int sx, int tx)** ... [sy, ty) * [sx, tx)の矩形領域の和を返す。**半開区間**
+
+
+
+・区間加算/1点取得(**上の関数と併用しないこと**)
+- **imos_add(int y, int x, T v)** ... A[y][x] += v
+- **imos_add(int sy, int ty, int sx, int tx, T v)** ... [sy, ty) * [sx, tx) の区間に一様に += v。**半開区間**
+- **build()** ... 累積和を計算する。以降add不可能。また、buildを呼ぶ前はget.prod不可。(どちらも、assertが反応する) 計算量 $O(HW)$
+- **imos_get(int y, int x, T v)** ... A[y][x]を返す。
+

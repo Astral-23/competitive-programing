@@ -106,7 +106,7 @@ data:
       title: "splay_tree(set) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3\u306Bsplay"
     - icon: ':heavy_check_mark:'
       path: Datastructure/static1dsum.hpp
-      title: Datastructure/static1dsum.hpp
+      title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':warning:'
       path: Datastructure/static2Drectanglesum.hpp
       title: "\u9759\u7684\u3067\u5DE8\u5927\u306A\u30B0\u30EA\u30C3\u30C9\u306E\u77E9\
