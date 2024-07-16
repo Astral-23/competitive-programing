@@ -47,3 +47,8 @@ TT struct static1dsum {
         return res;
     }
 };
+
+/*
+@brief 1次元累積和
+@doc docs/static1dsum.md
+*/
