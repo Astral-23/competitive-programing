@@ -7,7 +7,6 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
-    document_title: "\u81EA\u4F5C\u306Epair"
     links: []
   bundledCode: "#line 1 \"Utility/mypair.hpp\"\ntemplate<typename T1, typename T2>\n\
     struct MYPAIR {\n\tT1 FIRST_V; \n\tT2 SECOND_V;\n\tMYPAIR () {}\n\tMYPAIR (T1\
@@ -17,8 +16,8 @@ data:
     \ MYPAIR& a) {\n\t\tif(FIRST_V != a.FIRST_V) return FIRST_V > a.FIRST_V;\n\t\t\
     else return SECOND_V > a.SECOND_V;\n\t}\n\tbool operator==(const MYPAIR& a) {\n\
     \t\treturn (FIRST_V==a.FIRST_V) && (SECOND_V == a.SECOND_V);\n\t}\n\tbool operator!=(const\
-    \ MYPAIR& a) {\n\t\treturn !(*this == a);\n\t}\n};\n\n/*\n@brief \u81EA\u4F5C\u306E\
-    pair\n*/\n"
+    \ MYPAIR& a) {\n\t\treturn !(*this == a);\n\t}\n}; \n\n/*\n@ brief \u81EA\u4F5C\
+    \u306Epair\n*/\n"
   code: "template<typename T1, typename T2>\nstruct MYPAIR {\n\tT1 FIRST_V; \n\tT2\
     \ SECOND_V;\n\tMYPAIR () {}\n\tMYPAIR (T1 _FIRST_V, T2 _SECOND_V) : FIRST_V(_FIRST_V),\
     \ SECOND_V(_SECOND_V) {}\n\tbool operator<(const MYPAIR& a) {\n\t\tif(FIRST_V\
@@ -26,13 +25,13 @@ data:
     \t}\n\tbool operator>(const MYPAIR& a) {\n\t\tif(FIRST_V != a.FIRST_V) return\
     \ FIRST_V > a.FIRST_V;\n\t\telse return SECOND_V > a.SECOND_V;\n\t}\n\tbool operator==(const\
     \ MYPAIR& a) {\n\t\treturn (FIRST_V==a.FIRST_V) && (SECOND_V == a.SECOND_V);\n\
-    \t}\n\tbool operator!=(const MYPAIR& a) {\n\t\treturn !(*this == a);\n\t}\n};\n\
-    \n/*\n@brief \u81EA\u4F5C\u306Epair\n*/\n"
+    \t}\n\tbool operator!=(const MYPAIR& a) {\n\t\treturn !(*this == a);\n\t}\n};\
+    \ \n\n/*\n@ brief \u81EA\u4F5C\u306Epair\n*/\n"
   dependsOn: []
   isVerificationFile: false
   path: Utility/mypair.hpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-07-17 06:52:44+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Utility/mypair.hpp
@@ -40,5 +39,5 @@ layout: document
 redirect_from:
 - /library/Utility/mypair.hpp
 - /library/Utility/mypair.hpp.html
-title: "\u81EA\u4F5C\u306Epair"
+title: Utility/mypair.hpp
 ---

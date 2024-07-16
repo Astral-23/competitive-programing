@@ -173,7 +173,7 @@ data:
       title: modint
     - icon: ':warning:'
       path: Utility/mypair.hpp
-      title: "\u81EA\u4F5C\u306Epair"
+      title: Utility/mypair.hpp
     - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
