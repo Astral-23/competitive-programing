@@ -63,7 +63,7 @@ title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
 ## +演算を他の演算に変えたくなった時
 逆元があれば良い。
 add, prod(y, x), prod(sy, sx, ty, tx) の + , - , += , -= を全て変更する。
-**計算量 $O(HW)$ **
+
 ## コンストラクタ
 `template<typename T> static1dsum(int n)` ... T : 値の型。 [0, n) の配列を作る. 初期値は0
 - 計算量 $O(n)$
@@ -76,7 +76,9 @@ add, prod(y, x), prod(sy, sx, ty, tx) の + , - , += , -= を全て変更する�
 
 - `void build()` ... 累積和を計算する。以降add不可能。また、buildを呼ぶ前はget.prod不可。(どちらも、assertが反応する) 
     - 計算量 $O(n)$
+
 - `T get(int i)` ... A[i]を返す。
+
 - `T prod(int l, int r)` ... [l, r)の範囲領域の和を返す。**半開区間**
 
 <br>
