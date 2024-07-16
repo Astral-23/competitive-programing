@@ -14,10 +14,6 @@ TT struct static2dsum {
             w = 0;
     }
 
-    static2dsum(int H, int W) : h(H), w(W) {
-        dat = vec<vec<T>>(h, vec<T>(w, 0));
-    }
-
     void add(int i, int j, T x) {
         assert(!f);
         dat[i][j] += x;
