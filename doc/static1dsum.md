@@ -4,7 +4,7 @@
 ## +演算を他の演算に変えたくなった時
 逆元があれば良い。
 add, prod(y, x), prod(sy, sx, ty, tx) の + , - , += , -= を全て変更する。
-**計算量 $O(HW)$ **
+
 ## コンストラクタ
 `template<typename T> static1dsum(int n)` ... T : 値の型。 [0, n) の配列を作る. 初期値は0
 - 計算量 $O(n)$
