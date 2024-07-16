@@ -18,8 +18,8 @@ struct MYPAIR {
 	bool operator!=(const MYPAIR& a) {
 		return !(*this == a);
 	}
-};
+}; 
 
 /*
-@brief 自作のpair
+@ brief 自作のpair
 */
