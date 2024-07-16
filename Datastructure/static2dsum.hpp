@@ -75,5 +75,5 @@ TT struct static2dsum {
 };
 /*
 @brief 2次元累積和
-@doc docs/static2dsum.md
+@docs doc/static2dsum.md
 */

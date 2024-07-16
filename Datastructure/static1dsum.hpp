@@ -50,5 +50,5 @@ TT struct static1dsum {
 
 /*
 @brief 1次元累積和
-@doc docs/static1dsum.md
+@docs doc/static1dsum.md
 */
