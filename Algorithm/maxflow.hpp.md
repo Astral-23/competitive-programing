@@ -6,105 +6,110 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/maxflow.test.cpp
     title: verify/maxflow.test.cpp
-  _isVerificationFailed: false
+  - icon: ':x:'
+    path: verify/maxflow_lowerbound.test.cpp
+    title: verify/maxflow_lowerbound.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: doc/maxflow.md
     document_title: Maxflow
     links: []
-  bundledCode: "#line 1 \"Algorithm/maxflow.hpp\"\ntemplate<class T> \nstruct mf_graph\
+  bundledCode: "#line 1 \"Algorithm/maxflow.hpp\"\ntemplate <class T> struct mf_graph\
     \ {\n    struct edge {\n        int st, to;\n        T cap, flow;\n    };\n\n\
     \    struct nedge {\n        int to, rev;\n        T cap;\n    };\n\n    int n;\n\
     \    vec<unordered_map<int, int>> rev;\n    vec<pair<int, int>> pos;\n    vec<vec<nedge>>\
     \ g;\n\n    mf_graph(int _n) : n(_n), g(n), rev(n) {}\n\n    int add_edge(int\
     \ s, int t, T cap) {\n        int m = pos.size();\n        pos.push_back({s, g[s].size()});\n\
-    \        int fi = g[s].size(); int ti = g[t].size();\n        if(s==t)ti++;\n\
-    \        g[s].push_back(nedge{t, ti, cap});\n        g[t].push_back(nedge{s, fi,\
-    \ 0});\n        rev[s][t] = m;\n        return m;\n    }\n\n    T flow(int s,\
-    \ int t, T flow_limit = numeric_limits<T>::max()) {\n        vec<int> lv(n), it(n,\
-    \ 0);\n\n        auto bfs = [&]() {\n            queue<int> que;\n           \
-    \ fill(lv.begin(), lv.end(), -1);\n            lv[s] = 0;\n            que.push(s);\n\
-    \            while(!que.empty()) {\n                int v = que.front();\n   \
-    \             que.pop();\n\n                for(auto e : g[v]) {\n           \
-    \         if(e.cap == 0 || lv[e.to] >= 0) continue;\n                    lv[e.to]\
-    \ = lv[v] + 1;\n                    if(e.to == t) return;\n                  \
-    \  que.push(e.to);\n                }\n            }\n        };\n\n        auto\
-    \ dfs = [&](auto f, int v, T up) {\n            if(v==s) return up;\n        \
-    \    T res = 0;\n            int LV = lv[v];\n            for(int& i = it[v];\
-    \ i < int(g[v].size()); i++) {\n                nedge& e = g[v][i];\n        \
-    \        if(LV <= lv[e.to] || g[e.to][e.rev].cap == 0) continue;\n           \
-    \     T d = f(f, e.to, min(up - res, g[e.to][e.rev].cap));\n                if(d\
-    \ <= 0) continue;\n                g[v][i].cap += d;\n                g[e.to][e.rev].cap\
-    \ -= d;\n                res += d;\n                if(res == up) return res;\n\
+    \        int fi = g[s].size();\n        int ti = g[t].size();\n        if (s ==\
+    \ t) ti++;\n        g[s].push_back(nedge{t, ti, cap});\n        g[t].push_back(nedge{s,\
+    \ fi, 0});\n        rev[s][t] = m;\n        return m;\n    }\n\n    T flow(int\
+    \ s, int t, T flow_limit = numeric_limits<T>::max()) {\n        vec<int> lv(n),\
+    \ it(n, 0);\n\n        auto bfs = [&]() {\n            queue<int> que;\n     \
+    \       fill(lv.begin(), lv.end(), -1);\n            lv[s] = 0;\n            que.push(s);\n\
+    \            while (!que.empty()) {\n                int v = que.front();\n  \
+    \              que.pop();\n\n                for (auto e : g[v]) {\n         \
+    \           if (e.cap == 0 || lv[e.to] >= 0) continue;\n                    lv[e.to]\
+    \ = lv[v] + 1;\n                    if (e.to == t) return;\n                 \
+    \   que.push(e.to);\n                }\n            }\n        };\n\n        auto\
+    \ dfs = [&](auto f, int v, T up) {\n            if (v == s) return up;\n     \
+    \       T res = 0;\n            int LV = lv[v];\n            for (int &i = it[v];\
+    \ i < int(g[v].size()); i++) {\n                nedge &e = g[v][i];\n        \
+    \        if (LV <= lv[e.to] || g[e.to][e.rev].cap == 0) continue;\n          \
+    \      T d = f(f, e.to, min(up - res, g[e.to][e.rev].cap));\n                if\
+    \ (d <= 0) continue;\n                g[v][i].cap += d;\n                g[e.to][e.rev].cap\
+    \ -= d;\n                res += d;\n                if (res == up) return res;\n\
     \            }\n            lv[v] = n;\n            return res;\n        };\n\n\
-    \        T flow = 0;\n        while(flow < flow_limit) {\n            bfs();\n\
-    \            if(lv[t] == -1) break;\n            fill(it.begin(), it.end(), 0);\n\
-    \            T f = dfs(dfs, t, flow_limit - flow);\n            if(!f) break;\n\
-    \            flow += f;\n        }\n        return flow;\n    }\n\n    //\u4EE5\
+    \        T flow = 0;\n        while (flow < flow_limit) {\n            bfs();\n\
+    \            if (lv[t] == -1) break;\n            fill(it.begin(), it.end(), 0);\n\
+    \            T f = dfs(dfs, t, flow_limit - flow);\n            if (!f) break;\n\
+    \            flow += f;\n        }\n        return flow;\n    }\n\n    // \u4EE5\
     \u4E0B\u3001\u4E0D\u8981\u306A\u3089\u7701\u7565\n\n    int get_id(int s, int\
-    \ t) {\n        return rev[s][t];\n    }\n\n    edge get_edge(int i) {\n     \
-    \   int m = pos.size();\n        auto e = g[pos[i].first][pos[i].second];\n  \
-    \      auto re = g[e.to][e.rev];\n        return edge{pos[i].first, e.to, e.cap\
-    \ + re.cap, re.cap};\n    }\n\n    void change_edge(int i, T nc, T nf) {\n   \
-    \     int m = pos.size();\n        auto& e = g[pos[i].first][pos[i].second];\n\
-    \        auto& re = g[e.to][e.rev];\n        e.cap = nc - nf;\n        re.cap\
-    \ = nf;\n    }\n\n    vec<bool> min_cut(int s) {\n        vec<bool> seen(n);\n\
-    \        queue<int> que;\n        que.push(s);\n        while(!que.empty()) {\n\
-    \            int p = que.front();\n            que.pop();\n            seen[p]=true;\n\
-    \            for(auto e : g[p]) {\n                if(e.cap && !seen[e.to]) {\n\
-    \                    seen[e.to] = true;\n                    que.push(e.to);\n\
-    \                }\n            }\n        }\n        return seen;\n    }\n\n\
-    };\n\n\n\n/*\n@brief Maxflow\n@docs doc/maxflow.md\n*/\n"
-  code: "template<class T> \nstruct mf_graph {\n    struct edge {\n        int st,\
+    \ t) { return rev[s][t]; }\n\n    edge get_edge(int i) {\n        int m = pos.size();\n\
+    \        auto e = g[pos[i].first][pos[i].second];\n        auto re = g[e.to][e.rev];\n\
+    \        return edge{pos[i].first, e.to, e.cap + re.cap, re.cap};\n    }\n\n \
+    \   void change_edge(int i, T nc, T nf) {\n        int m = pos.size();\n     \
+    \   auto &e = g[pos[i].first][pos[i].second];\n        auto &re = g[e.to][e.rev];\n\
+    \        e.cap = nc - nf;\n        re.cap = nf;\n    }\n\n    vec<bool> min_cut(int\
+    \ s) {\n        vec<bool> seen(n);\n        queue<int> que;\n        que.push(s);\n\
+    \        while (!que.empty()) {\n            int p = que.front();\n          \
+    \  que.pop();\n            seen[p] = true;\n            for (auto e : g[p]) {\n\
+    \                if (e.cap && !seen[e.to]) {\n                    seen[e.to] =\
+    \ true;\n                    que.push(e.to);\n                }\n            }\n\
+    \        }\n        return seen;\n    }\n};\n\n/*\n@brief Maxflow\n@docs doc/maxflow.md\n\
+    */\n"
+  code: "template <class T> struct mf_graph {\n    struct edge {\n        int st,\
     \ to;\n        T cap, flow;\n    };\n\n    struct nedge {\n        int to, rev;\n\
     \        T cap;\n    };\n\n    int n;\n    vec<unordered_map<int, int>> rev;\n\
     \    vec<pair<int, int>> pos;\n    vec<vec<nedge>> g;\n\n    mf_graph(int _n)\
     \ : n(_n), g(n), rev(n) {}\n\n    int add_edge(int s, int t, T cap) {\n      \
     \  int m = pos.size();\n        pos.push_back({s, g[s].size()});\n        int\
-    \ fi = g[s].size(); int ti = g[t].size();\n        if(s==t)ti++;\n        g[s].push_back(nedge{t,\
-    \ ti, cap});\n        g[t].push_back(nedge{s, fi, 0});\n        rev[s][t] = m;\n\
-    \        return m;\n    }\n\n    T flow(int s, int t, T flow_limit = numeric_limits<T>::max())\
-    \ {\n        vec<int> lv(n), it(n, 0);\n\n        auto bfs = [&]() {\n       \
-    \     queue<int> que;\n            fill(lv.begin(), lv.end(), -1);\n         \
-    \   lv[s] = 0;\n            que.push(s);\n            while(!que.empty()) {\n\
-    \                int v = que.front();\n                que.pop();\n\n        \
-    \        for(auto e : g[v]) {\n                    if(e.cap == 0 || lv[e.to] >=\
-    \ 0) continue;\n                    lv[e.to] = lv[v] + 1;\n                  \
-    \  if(e.to == t) return;\n                    que.push(e.to);\n              \
-    \  }\n            }\n        };\n\n        auto dfs = [&](auto f, int v, T up)\
-    \ {\n            if(v==s) return up;\n            T res = 0;\n            int\
-    \ LV = lv[v];\n            for(int& i = it[v]; i < int(g[v].size()); i++) {\n\
-    \                nedge& e = g[v][i];\n                if(LV <= lv[e.to] || g[e.to][e.rev].cap\
-    \ == 0) continue;\n                T d = f(f, e.to, min(up - res, g[e.to][e.rev].cap));\n\
-    \                if(d <= 0) continue;\n                g[v][i].cap += d;\n   \
-    \             g[e.to][e.rev].cap -= d;\n                res += d;\n          \
-    \      if(res == up) return res;\n            }\n            lv[v] = n;\n    \
-    \        return res;\n        };\n\n        T flow = 0;\n        while(flow <\
-    \ flow_limit) {\n            bfs();\n            if(lv[t] == -1) break;\n    \
-    \        fill(it.begin(), it.end(), 0);\n            T f = dfs(dfs, t, flow_limit\
-    \ - flow);\n            if(!f) break;\n            flow += f;\n        }\n   \
-    \     return flow;\n    }\n\n    //\u4EE5\u4E0B\u3001\u4E0D\u8981\u306A\u3089\u7701\
-    \u7565\n\n    int get_id(int s, int t) {\n        return rev[s][t];\n    }\n\n\
-    \    edge get_edge(int i) {\n        int m = pos.size();\n        auto e = g[pos[i].first][pos[i].second];\n\
-    \        auto re = g[e.to][e.rev];\n        return edge{pos[i].first, e.to, e.cap\
-    \ + re.cap, re.cap};\n    }\n\n    void change_edge(int i, T nc, T nf) {\n   \
-    \     int m = pos.size();\n        auto& e = g[pos[i].first][pos[i].second];\n\
-    \        auto& re = g[e.to][e.rev];\n        e.cap = nc - nf;\n        re.cap\
-    \ = nf;\n    }\n\n    vec<bool> min_cut(int s) {\n        vec<bool> seen(n);\n\
-    \        queue<int> que;\n        que.push(s);\n        while(!que.empty()) {\n\
-    \            int p = que.front();\n            que.pop();\n            seen[p]=true;\n\
-    \            for(auto e : g[p]) {\n                if(e.cap && !seen[e.to]) {\n\
-    \                    seen[e.to] = true;\n                    que.push(e.to);\n\
-    \                }\n            }\n        }\n        return seen;\n    }\n\n\
-    };\n\n\n\n/*\n@brief Maxflow\n@docs doc/maxflow.md\n*/\n"
+    \ fi = g[s].size();\n        int ti = g[t].size();\n        if (s == t) ti++;\n\
+    \        g[s].push_back(nedge{t, ti, cap});\n        g[t].push_back(nedge{s, fi,\
+    \ 0});\n        rev[s][t] = m;\n        return m;\n    }\n\n    T flow(int s,\
+    \ int t, T flow_limit = numeric_limits<T>::max()) {\n        vec<int> lv(n), it(n,\
+    \ 0);\n\n        auto bfs = [&]() {\n            queue<int> que;\n           \
+    \ fill(lv.begin(), lv.end(), -1);\n            lv[s] = 0;\n            que.push(s);\n\
+    \            while (!que.empty()) {\n                int v = que.front();\n  \
+    \              que.pop();\n\n                for (auto e : g[v]) {\n         \
+    \           if (e.cap == 0 || lv[e.to] >= 0) continue;\n                    lv[e.to]\
+    \ = lv[v] + 1;\n                    if (e.to == t) return;\n                 \
+    \   que.push(e.to);\n                }\n            }\n        };\n\n        auto\
+    \ dfs = [&](auto f, int v, T up) {\n            if (v == s) return up;\n     \
+    \       T res = 0;\n            int LV = lv[v];\n            for (int &i = it[v];\
+    \ i < int(g[v].size()); i++) {\n                nedge &e = g[v][i];\n        \
+    \        if (LV <= lv[e.to] || g[e.to][e.rev].cap == 0) continue;\n          \
+    \      T d = f(f, e.to, min(up - res, g[e.to][e.rev].cap));\n                if\
+    \ (d <= 0) continue;\n                g[v][i].cap += d;\n                g[e.to][e.rev].cap\
+    \ -= d;\n                res += d;\n                if (res == up) return res;\n\
+    \            }\n            lv[v] = n;\n            return res;\n        };\n\n\
+    \        T flow = 0;\n        while (flow < flow_limit) {\n            bfs();\n\
+    \            if (lv[t] == -1) break;\n            fill(it.begin(), it.end(), 0);\n\
+    \            T f = dfs(dfs, t, flow_limit - flow);\n            if (!f) break;\n\
+    \            flow += f;\n        }\n        return flow;\n    }\n\n    // \u4EE5\
+    \u4E0B\u3001\u4E0D\u8981\u306A\u3089\u7701\u7565\n\n    int get_id(int s, int\
+    \ t) { return rev[s][t]; }\n\n    edge get_edge(int i) {\n        int m = pos.size();\n\
+    \        auto e = g[pos[i].first][pos[i].second];\n        auto re = g[e.to][e.rev];\n\
+    \        return edge{pos[i].first, e.to, e.cap + re.cap, re.cap};\n    }\n\n \
+    \   void change_edge(int i, T nc, T nf) {\n        int m = pos.size();\n     \
+    \   auto &e = g[pos[i].first][pos[i].second];\n        auto &re = g[e.to][e.rev];\n\
+    \        e.cap = nc - nf;\n        re.cap = nf;\n    }\n\n    vec<bool> min_cut(int\
+    \ s) {\n        vec<bool> seen(n);\n        queue<int> que;\n        que.push(s);\n\
+    \        while (!que.empty()) {\n            int p = que.front();\n          \
+    \  que.pop();\n            seen[p] = true;\n            for (auto e : g[p]) {\n\
+    \                if (e.cap && !seen[e.to]) {\n                    seen[e.to] =\
+    \ true;\n                    que.push(e.to);\n                }\n            }\n\
+    \        }\n        return seen;\n    }\n};\n\n/*\n@brief Maxflow\n@docs doc/maxflow.md\n\
+    */\n"
   dependsOn: []
   isVerificationFile: false
   path: Algorithm/maxflow.hpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-07-19 19:51:39+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
+  - verify/maxflow_lowerbound.test.cpp
   - verify/maxflow.test.cpp
 documentation_of: Algorithm/maxflow.hpp
 layout: document

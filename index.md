@@ -18,9 +18,12 @@ data:
     - icon: ':warning:'
       path: Algorithm/maxflow.cpp
       title: Maxflow
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Algorithm/maxflow.hpp
       title: Maxflow
+    - icon: ':x:'
+      path: Algorithm/maxflow_lowerbound.hpp
+      title: Algorithm/maxflow_lowerbound.hpp
     - icon: ':heavy_check_mark:'
       path: Algorithm/maximum_independent_set.hpp
       title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
@@ -174,7 +177,7 @@ data:
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -294,6 +297,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/maxflow.test.cpp
       title: verify/maxflow.test.cpp
+    - icon: ':x:'
+      path: verify/maxflow_lowerbound.test.cpp
+      title: verify/maxflow_lowerbound.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/maximum_independent_set.test.cpp
       title: verify/maximum_independent_set.test.cpp
