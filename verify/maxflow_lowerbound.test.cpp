@@ -10,7 +10,6 @@ int main() {
     int n, m;
     while (1) {
         cin >> n >> m;
-
         if (n == 0) break;
 
         vector<pll> es;
@@ -25,8 +24,13 @@ int main() {
         int ans_m = -1;
         int ans_M = -1;
 
-        rrep(mi, 0, m + 1) {
-            rrep(Mi, 0, m + 1) if (mi <= Mi) {
+
+
+
+        rep(wi, 0, m + 1) {
+            rrep(mi, 0, m + 1) {
+                int Mi = mi + wi;
+                if(Mi > m) continue;
                 int s = n + m;
                 int t = s + 1;
 
@@ -44,6 +48,8 @@ int main() {
                     if (chmin(w, Mi - mi)) {
                         ans_m = mi;
                         ans_M = Mi;
+                        wi = m;
+                        mi = m;
                     }
                 }
             }
