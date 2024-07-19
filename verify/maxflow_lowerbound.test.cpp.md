@@ -90,42 +90,47 @@ data:
     \        vector<ll> res;\n        rep(i, 0, lows.size()) { res.push_back(lows[i]\
     \ + mf.get_edge(i).flow); }\n        return res;\n    }\n};\n#line 5 \"verify/maxflow_lowerbound.test.cpp\"\
     \n\n\nusing pll = pair<ll, ll>;\n\nint main() {\n    int n, m;\n    while (1)\
-    \ {\n        cin >> n >> m;\n        if (n == 0) break;\n\n        vector<pll>\
+    \ {\n        cin >> n >> m;\n\n        if (n == 0) break;\n\n        vector<pll>\
     \ es;\n        rep(i, 0, m) {\n            int u, v;\n            cin >> u >>\
     \ v;\n            u--, v--;\n            es.emplace_back(u, v);\n        }\n\n\
-    \        int w = n + 100;\n        int ans_m = -1;\n        int ans_M = -1;\n\n\
-    \n\n\n        rep(wi, 0, m + 1) {\n            rrep(mi, 0, m + 1) {\n        \
-    \        int Mi = mi + wi;\n                if(Mi > m) continue;\n           \
-    \     int s = n + m;\n                int t = s + 1;\n\n                mf_graph_with_lowerbound\
-    \ mf(t + 1);\n\n                rep(i, 0, m) {\n                    mf.add_edge(s,\
-    \ i, 1, 1);\n                    mf.add_edge(i, m + es[i].first, 0, 1);\n    \
-    \                mf.add_edge(i, m + es[i].second, 0, 1);\n                }\n\n\
-    \                rep(i, 0, n) { mf.add_edge(m + i, t, mi, Mi); }\n\n         \
-    \       if (mf.is_feasable(s, t)) {\n                    if (chmin(w, Mi - mi))\
-    \ {\n                        ans_m = mi;\n                        ans_M = Mi;\n\
-    \                        wi = m;\n                        mi = m;\n          \
-    \          }\n                }\n            }\n        }\n\n        cout << ans_m\
-    \ << \" \" << ans_M << endl;\n    }\n}\n"
+    \        int ans_m = -1;\n        int ans_M = -1;\n\n        auto che = [&](int\
+    \ mi, int Mi) {\n            int s = n + m;\n            int t = s + 1;\n\n  \
+    \          mf_graph_with_lowerbound mf(t + 1);\n\n            rep(i, 0, m) {\n\
+    \                mf.add_edge(s, i, 1, 1);\n                mf.add_edge(i, m +\
+    \ es[i].first, 0, 1);\n                mf.add_edge(i, m + es[i].second, 0, 1);\n\
+    \            }\n\n            rep(i, 0, n) { mf.add_edge(m + i, t, mi, Mi); }\n\
+    \n            if (mf.is_feasable(s, t)) {\n                return true;\n    \
+    \        } else\n                return false;\n        };\n\n        ll w = 1e7;\n\
+    \        rrep(mi, 0, n + 1) {\n            ll li = 0;\n            ll ri = li\
+    \ + min<ll>(w, m);\n            while (li < ri) {  /// xxxxoooo\n            \
+    \    ll mid = (li + ri) / 2;\n                if (che(mi, mi + mid)) {\n     \
+    \               ri = mid;\n                } else {\n                    li =\
+    \ mid + 1;\n                }\n            }\n            if (che(mi, mi + li)\
+    \ && chmin(w, li - mi)) {\n                ans_m = mi;\n                ans_M\
+    \ = mi + li;\n            }\n        }\n\n        cout << ans_m << \" \" << ans_M\
+    \ << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1615\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Algorithm/maxflow.hpp\"\n\
     #include \"../Algorithm/maxflow_lowerbound.hpp\"\n\n\nusing pll = pair<ll, ll>;\n\
-    \nint main() {\n    int n, m;\n    while (1) {\n        cin >> n >> m;\n     \
-    \   if (n == 0) break;\n\n        vector<pll> es;\n        rep(i, 0, m) {\n  \
-    \          int u, v;\n            cin >> u >> v;\n            u--, v--;\n    \
-    \        es.emplace_back(u, v);\n        }\n\n        int w = n + 100;\n     \
-    \   int ans_m = -1;\n        int ans_M = -1;\n\n\n\n\n        rep(wi, 0, m + 1)\
-    \ {\n            rrep(mi, 0, m + 1) {\n                int Mi = mi + wi;\n   \
-    \             if(Mi > m) continue;\n                int s = n + m;\n         \
-    \       int t = s + 1;\n\n                mf_graph_with_lowerbound mf(t + 1);\n\
-    \n                rep(i, 0, m) {\n                    mf.add_edge(s, i, 1, 1);\n\
-    \                    mf.add_edge(i, m + es[i].first, 0, 1);\n                \
-    \    mf.add_edge(i, m + es[i].second, 0, 1);\n                }\n\n          \
-    \      rep(i, 0, n) { mf.add_edge(m + i, t, mi, Mi); }\n\n                if (mf.is_feasable(s,\
-    \ t)) {\n                    if (chmin(w, Mi - mi)) {\n                      \
-    \  ans_m = mi;\n                        ans_M = Mi;\n                        wi\
-    \ = m;\n                        mi = m;\n                    }\n             \
-    \   }\n            }\n        }\n\n        cout << ans_m << \" \" << ans_M <<\
-    \ endl;\n    }\n}"
+    \nint main() {\n    int n, m;\n    while (1) {\n        cin >> n >> m;\n\n   \
+    \     if (n == 0) break;\n\n        vector<pll> es;\n        rep(i, 0, m) {\n\
+    \            int u, v;\n            cin >> u >> v;\n            u--, v--;\n  \
+    \          es.emplace_back(u, v);\n        }\n\n        int ans_m = -1;\n    \
+    \    int ans_M = -1;\n\n        auto che = [&](int mi, int Mi) {\n           \
+    \ int s = n + m;\n            int t = s + 1;\n\n            mf_graph_with_lowerbound\
+    \ mf(t + 1);\n\n            rep(i, 0, m) {\n                mf.add_edge(s, i,\
+    \ 1, 1);\n                mf.add_edge(i, m + es[i].first, 0, 1);\n           \
+    \     mf.add_edge(i, m + es[i].second, 0, 1);\n            }\n\n            rep(i,\
+    \ 0, n) { mf.add_edge(m + i, t, mi, Mi); }\n\n            if (mf.is_feasable(s,\
+    \ t)) {\n                return true;\n            } else\n                return\
+    \ false;\n        };\n\n        ll w = 1e7;\n        rrep(mi, 0, n + 1) {\n  \
+    \          ll li = 0;\n            ll ri = li + min<ll>(w, m);\n            while\
+    \ (li < ri) {  /// xxxxoooo\n                ll mid = (li + ri) / 2;\n       \
+    \         if (che(mi, mi + mid)) {\n                    ri = mid;\n          \
+    \      } else {\n                    li = mid + 1;\n                }\n      \
+    \      }\n            if (che(mi, mi + li) && chmin(w, li - mi)) {\n         \
+    \       ans_m = mi;\n                ans_M = mi + li;\n            }\n       \
+    \ }\n\n        cout << ans_m << \" \" << ans_M << endl;\n    }\n}"
   dependsOn:
   - Utility/template.hpp
   - Algorithm/maxflow.hpp
@@ -133,7 +138,7 @@ data:
   isVerificationFile: true
   path: verify/maxflow_lowerbound.test.cpp
   requiredBy: []
-  timestamp: '2024-07-19 20:27:09+09:00'
+  timestamp: '2024-07-19 20:47:05+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/maxflow_lowerbound.test.cpp
