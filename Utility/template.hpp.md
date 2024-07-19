@@ -102,7 +102,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/maxflow.test.cpp
     title: verify/maxflow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/maxflow_lowerbound.test.cpp
     title: verify/maxflow_lowerbound.test.cpp
   - icon: ':heavy_check_mark:'
@@ -177,9 +177,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -210,7 +210,7 @@ data:
   - example/range_edge_graph.example.cpp
   - example/simple_treap.example.cpp
   timestamp: '2024-07-09 04:15:19+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/swag_more.test.cpp
   - verify/maxflow_lowerbound.test.cpp

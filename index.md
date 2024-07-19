@@ -18,10 +18,10 @@ data:
     - icon: ':warning:'
       path: Algorithm/maxflow.cpp
       title: Maxflow
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/maxflow.hpp
       title: Maxflow
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/maxflow_lowerbound.hpp
       title: Algorithm/maxflow_lowerbound.hpp
     - icon: ':heavy_check_mark:'
@@ -177,7 +177,7 @@ data:
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -297,7 +297,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/maxflow.test.cpp
       title: verify/maxflow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/maxflow_lowerbound.test.cpp
       title: verify/maxflow_lowerbound.test.cpp
     - icon: ':heavy_check_mark:'
