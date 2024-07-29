@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/offset_manager.hpp
     title: offset_manager
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/swag.hpp
     title: SWAG
   - icon: ':question:'

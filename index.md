@@ -33,7 +33,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/treedp.hpp
       title: "\u5168\u65B9\u4F4D\u6728DP"
   - name: Datastructure
@@ -117,7 +117,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/static2dsum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/swag.hpp
       title: SWAG
     - icon: ':warning:'
@@ -171,7 +171,7 @@ data:
     - icon: ':warning:'
       path: Utility/icpc_template.hpp
       title: Utility/icpc_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
     - icon: ':warning:'
@@ -357,7 +357,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/treap.test.cpp
       title: verify/treap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/treedp.test.cpp
       title: verify/treedp.test.cpp
     - icon: ':heavy_check_mark:'
@@ -372,7 +372,7 @@ data:
         .test.cpp"
   - name: "\u7802\u5834"
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: "\u7802\u5834/swag.test.cpp"
       title: "\u7802\u5834/swag.test.cpp"
 layout: toppage

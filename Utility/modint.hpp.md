@@ -30,15 +30,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/treap.test.cpp
     title: verify/treap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: modint
     links: []
@@ -95,7 +95,7 @@ data:
   requiredBy:
   - example/matrix.example.cpp
   timestamp: '2024-07-29 19:50:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/combination.test.cpp
   - verify/matrix.test.cpp
