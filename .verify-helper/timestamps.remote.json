@@ -43,7 +43,9 @@
 "verify/swag.test.cpp": "2024-07-29 19:50:15 +0900",
 "verify/swag_more.test.cpp": "2024-07-29 19:50:15 +0900",
 "verify/treap.test.cpp": "2024-07-29 19:50:15 +0900",
+"verify/treedp.test.cpp": "2024-07-29 19:50:15 +0900",
 "verify/undabledsu.test.cpp": "2024-07-09 04:15:19 +0900",
 "verify/value_dsu.test.cpp": "2024-07-09 04:15:19 +0900",
-"verify/\u4e8c\u91cd\u9802\u70b9\u9023\u7d50\u6210\u5206\u5206\u89e3.test.cpp": "2024-07-09 04:15:19 +0900"
+"verify/\u4e8c\u91cd\u9802\u70b9\u9023\u7d50\u6210\u5206\u5206\u89e3.test.cpp": "2024-07-09 04:15:19 +0900",
+"\u7802\u5834/swag.test.cpp": "2024-07-29 19:50:15 +0900"
 }
