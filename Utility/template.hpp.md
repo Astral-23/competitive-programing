@@ -36,10 +36,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/2dsegtree_max.test.cpp
     title: verify/2dsegtree_max.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Rhash.test.cpp
     title: verify/Rhash.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Rhash_more.test.cpp
     title: verify/Rhash_more.test.cpp
   - icon: ':heavy_check_mark:'
@@ -177,9 +177,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -210,7 +210,7 @@ data:
   - "\u7802\u5834/binarytrie.example.cpp"
   - "\u7802\u5834/simple_treap.henkou.cpp"
   timestamp: '2024-07-09 04:15:19+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/combination.test.cpp
   - verify/point_add_rec_sum.test.cpp
