@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/Rhash.hpp
     title: Rolling_hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Utility/bigmodint.hpp
     title: big_modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -32,7 +32,7 @@ data:
     */\n\n//\u52D5\u7684mod : template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\
     \u306E\u65B9\u3067\u5909\u6570mod\u3092\u5BA3\u8A00\ntemplate<uint64_t mod>\n\
     struct modint{\n    using mm = modint;\n    uint64_t x;\n\n    modint() : x(0){}\n\
-    \    TT modint(T a=0) : x((a % mod + mod) % mod){}\n\n    friend mm operator+(mm\
+    \    TT modint(T a=0) : x((ll(a) % mod + mod) % mod){}\n\n    friend mm operator+(mm\
     \ a, mm b) {\n        a.x += b.x;\n        if(a.x >= mod) a.x -= mod;\n      \
     \  return a;\n    }\n   friend mm operator-(mm a, mm b) {\n        a.x -= b.x;\n\
     \        if(a.x >= mod) a.x += mod;\n        return a;\n    }\n\n    // + \u3068\
@@ -109,7 +109,7 @@ data:
   isVerificationFile: false
   path: example/rhash.example.cpp
   requiredBy: []
-  timestamp: '2024-07-09 04:15:19+09:00'
+  timestamp: '2024-07-29 19:50:15+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: example/rhash.example.cpp

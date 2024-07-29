@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/swag_more.test.cpp
     title: verify/swag_more.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: doc/swag.md
     document_title: SWAG
@@ -92,11 +92,11 @@ data:
   path: Datastructure/swag.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/swag_more.test.cpp
-  - verify/swag.test.cpp
   - verify/limited_knapsack.test.cpp
+  - verify/swag.test.cpp
+  - verify/swag_more.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Datastructure/swag.hpp
 layout: document

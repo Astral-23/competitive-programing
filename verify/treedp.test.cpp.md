@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Algorithm/treedp.hpp
     title: "\u5168\u65B9\u4F4D\u6728DP"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_path_composite_sum
@@ -32,10 +32,10 @@ data:
     \ template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\u306E\u65B9\u3067\u5909\
     \u6570mod\u3092\u5BA3\u8A00\ntemplate<uint32_t mod>\nstruct modint{\n    using\
     \ mm = modint;\n    uint32_t x;\n    modint() : x(0) {}\n    TT modint(T a=0)\
-    \ : x((a % mod + mod) % mod){}\n\n    friend mm operator+(mm a, mm b) {\n    \
-    \    a.x += b.x;\n        if(a.x >= mod) a.x -= mod;\n        return a;\n    }\n\
-    \   friend mm operator-(mm a, mm b) {\n        a.x -= b.x;\n        if(a.x >=\
-    \ mod) a.x += mod;\n        return a;\n    }\n\n    //+\u3068-\u3060\u3051\u3067\
+    \ : x((ll(a) % mod + mod) % mod){}\n\n    friend mm operator+(mm a, mm b) {\n\
+    \        a.x += b.x;\n        if(a.x >= mod) a.x -= mod;\n        return a;\n\
+    \    }\n   friend mm operator-(mm a, mm b) {\n        a.x -= b.x;\n        if(a.x\
+    \ >= mod) a.x += mod;\n        return a;\n    }\n\n    //+\u3068-\u3060\u3051\u3067\
     \u5341\u5206\u306A\u5834\u5408\u3001\u4EE5\u4E0B\u306F\u7701\u7565\u3057\u3066\
     \u826F\u3044\u3067\u3059\u3002\n\n    friend mm operator*(mm a, mm b) { return\
     \ (uint64_t)(a.x) * b.x; }\n    friend mm operator/(mm a, mm b) { return a * b.inv();\
@@ -132,8 +132,8 @@ data:
   isVerificationFile: true
   path: verify/treedp.test.cpp
   requiredBy: []
-  timestamp: '2024-07-09 04:15:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-07-29 19:50:15+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/treedp.test.cpp
 layout: document

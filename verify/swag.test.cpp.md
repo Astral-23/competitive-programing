@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Datastructure/swag.hpp
     title: SWAG
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -63,7 +63,7 @@ data:
     */\n#line 1 \"Utility/modint.hpp\"\n\n//\u52D5\u7684mod : template<int mod> \u3092\
     \u6D88\u3057\u3066\u3001\u4E0A\u306E\u65B9\u3067\u5909\u6570mod\u3092\u5BA3\u8A00\
     \ntemplate<uint32_t mod>\nstruct modint{\n    using mm = modint;\n    uint32_t\
-    \ x;\n    modint() : x(0) {}\n    TT modint(T a=0) : x((a % mod + mod) % mod){}\n\
+    \ x;\n    modint() : x(0) {}\n    TT modint(T a=0) : x((ll(a) % mod + mod) % mod){}\n\
     \n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n        if(a.x >=\
     \ mod) a.x -= mod;\n        return a;\n    }\n   friend mm operator-(mm a, mm\
     \ b) {\n        a.x -= b.x;\n        if(a.x >= mod) a.x += mod;\n        return\
@@ -114,7 +114,7 @@ data:
   isVerificationFile: true
   path: verify/swag.test.cpp
   requiredBy: []
-  timestamp: '2024-07-09 04:15:19+09:00'
+  timestamp: '2024-07-29 19:50:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/swag.test.cpp

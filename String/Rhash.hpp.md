@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Utility/bigmodint.hpp
     title: big_modint
   _extendedRequiredBy:
@@ -9,15 +9,15 @@ data:
     path: example/rhash.example.cpp
     title: example/rhash.example.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Rhash.test.cpp
     title: verify/Rhash.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Rhash_more.test.cpp
     title: verify/Rhash_more.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: doc/Rhash.md
     document_title: Rolling_hash
@@ -29,8 +29,8 @@ data:
     \ * b.x; \u2192 (__uint128_t)(a.x) * b.x;\n*/\n\n//\u52D5\u7684mod : template<int\
     \ mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\u306E\u65B9\u3067\u5909\u6570mod\u3092\
     \u5BA3\u8A00\ntemplate<uint64_t mod>\nstruct modint{\n    using mm = modint;\n\
-    \    uint64_t x;\n\n    modint() : x(0){}\n    TT modint(T a=0) : x((a % mod +\
-    \ mod) % mod){}\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
+    \    uint64_t x;\n\n    modint() : x(0){}\n    TT modint(T a=0) : x((ll(a) % mod\
+    \ + mod) % mod){}\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
     \        if(a.x >= mod) a.x -= mod;\n        return a;\n    }\n   friend mm operator-(mm\
     \ a, mm b) {\n        a.x -= b.x;\n        if(a.x >= mod) a.x += mod;\n      \
     \  return a;\n    }\n\n    // + \u3068 -\u3060\u3051\u306A\u3089\u3053\u3053\u307E\
@@ -93,11 +93,11 @@ data:
   path: String/Rhash.hpp
   requiredBy:
   - example/rhash.example.cpp
-  timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-07-29 19:50:15+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
-  - verify/Rhash_more.test.cpp
   - verify/Rhash.test.cpp
+  - verify/Rhash_more.test.cpp
 documentation_of: String/Rhash.hpp
 layout: document
 redirect_from:

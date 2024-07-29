@@ -30,23 +30,23 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/treap.test.cpp
     title: verify/treap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: modint
     links: []
   bundledCode: "#line 1 \"Utility/modint.hpp\"\n\n//\u52D5\u7684mod : template<int\
     \ mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\u306E\u65B9\u3067\u5909\u6570mod\u3092\
     \u5BA3\u8A00\ntemplate<uint32_t mod>\nstruct modint{\n    using mm = modint;\n\
-    \    uint32_t x;\n    modint() : x(0) {}\n    TT modint(T a=0) : x((a % mod +\
-    \ mod) % mod){}\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
+    \    uint32_t x;\n    modint() : x(0) {}\n    TT modint(T a=0) : x((ll(a) % mod\
+    \ + mod) % mod){}\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
     \        if(a.x >= mod) a.x -= mod;\n        return a;\n    }\n   friend mm operator-(mm\
     \ a, mm b) {\n        a.x -= b.x;\n        if(a.x >= mod) a.x += mod;\n      \
     \  return a;\n    }\n\n    //+\u3068-\u3060\u3051\u3067\u5341\u5206\u306A\u5834\
@@ -69,7 +69,7 @@ data:
   code: "\n//\u52D5\u7684mod : template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\
     \u306E\u65B9\u3067\u5909\u6570mod\u3092\u5BA3\u8A00\ntemplate<uint32_t mod>\n\
     struct modint{\n    using mm = modint;\n    uint32_t x;\n    modint() : x(0) {}\n\
-    \    TT modint(T a=0) : x((a % mod + mod) % mod){}\n\n    friend mm operator+(mm\
+    \    TT modint(T a=0) : x((ll(a) % mod + mod) % mod){}\n\n    friend mm operator+(mm\
     \ a, mm b) {\n        a.x += b.x;\n        if(a.x >= mod) a.x -= mod;\n      \
     \  return a;\n    }\n   friend mm operator-(mm a, mm b) {\n        a.x -= b.x;\n\
     \        if(a.x >= mod) a.x += mod;\n        return a;\n    }\n\n    //+\u3068\
@@ -94,17 +94,17 @@ data:
   path: Utility/modint.hpp
   requiredBy:
   - example/matrix.example.cpp
-  timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-07-29 19:50:15+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/swag_more.test.cpp
-  - verify/swag.test.cpp
-  - verify/treap.test.cpp
-  - verify/seg_prod.test.cpp
-  - verify/treedp.test.cpp
-  - verify/dynamicseg.test.cpp
-  - verify/matrix.test.cpp
   - verify/combination.test.cpp
+  - verify/matrix.test.cpp
+  - verify/dynamicseg.test.cpp
+  - verify/treedp.test.cpp
+  - verify/swag.test.cpp
+  - verify/seg_prod.test.cpp
+  - verify/treap.test.cpp
+  - verify/swag_more.test.cpp
   - verify/lazysegtree.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Utility/modint.hpp

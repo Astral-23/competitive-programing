@@ -33,7 +33,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Algorithm/treedp.hpp
       title: "\u5168\u65B9\u4F4D\u6728DP"
   - name: Datastructure
@@ -117,7 +117,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/static2dsum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Datastructure/swag.hpp
       title: SWAG
     - icon: ':warning:'
@@ -154,7 +154,7 @@ data:
       title: "\u7D20\u6570\u7BE9(\u5DE6\u7AEF\u4EFB\u610F)"
   - name: String
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: String/Rhash.hpp
       title: Rolling_hash
     - icon: ':heavy_check_mark:'
@@ -165,19 +165,19 @@ data:
       title: "mp\u6CD5"
   - name: Utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Utility/bigmodint.hpp
       title: big_modint
     - icon: ':warning:'
       path: Utility/icpc_template.hpp
       title: Utility/icpc_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/modint.hpp
       title: modint
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -231,10 +231,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/2dsegtree_max.test.cpp
       title: verify/2dsegtree_max.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/Rhash.test.cpp
       title: verify/Rhash.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/Rhash_more.test.cpp
       title: verify/Rhash_more.test.cpp
     - icon: ':heavy_check_mark:'
@@ -357,7 +357,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/treap.test.cpp
       title: verify/treap.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/treedp.test.cpp
       title: verify/treedp.test.cpp
     - icon: ':heavy_check_mark:'
@@ -372,7 +372,7 @@ data:
         .test.cpp"
   - name: "\u7802\u5834"
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: "\u7802\u5834/swag.test.cpp"
       title: "\u7802\u5834/swag.test.cpp"
 layout: toppage
