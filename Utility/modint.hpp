@@ -5,7 +5,7 @@ struct modint{
     using mm = modint;
     uint32_t x;
     modint() : x(0) {}
-    TT modint(T a=0) : x((a % mod + mod) % mod){}
+    TT modint(T a=0) : x((ll(a) % mod + mod) % mod){}
 
     friend mm operator+(mm a, mm b) {
         a.x += b.x;
