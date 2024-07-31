@@ -8,6 +8,7 @@
 "verify/aux_tree.test.cpp": "2024-07-09 04:15:19 +0900",
 "verify/binary_trie.test.cpp": "2024-07-09 04:15:19 +0900",
 "verify/binary_trie_xor.test.cpp": "2024-07-09 04:15:19 +0900",
+"verify/bitwise_and_convolution.test.cpp": "2024-07-31 11:21:37 +0900",
 "verify/combination.test.cpp": "2024-07-29 19:50:15 +0900",
 "verify/dsu.test.cpp": "2024-07-09 04:15:19 +0900",
 "verify/dynamicseg.test.cpp": "2024-07-29 19:50:15 +0900",
