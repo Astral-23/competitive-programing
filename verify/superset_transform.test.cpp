@@ -1,3 +1,4 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/bitwise_and_convolution"
 #include "../Utility/template.hpp"
 #include "../Utility/modint.hpp"
 #include "../Algorithm/superset_transform.hpp"
