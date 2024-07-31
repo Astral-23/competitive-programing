@@ -7,6 +7,9 @@ data:
     title: example/matrix.example.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/bitwise_and_convolution.test.cpp
+    title: verify/bitwise_and_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
   - icon: ':heavy_check_mark:'
@@ -21,7 +24,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/seg_prod.test.cpp
     title: verify/seg_prod.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
   - icon: ':heavy_check_mark:'
@@ -39,9 +42,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: modint
     links: []
@@ -98,9 +101,10 @@ data:
   requiredBy:
   - example/matrix.example.cpp
   timestamp: '2024-07-29 19:50:15+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/combination.test.cpp
+  - verify/bitwise_and_convolution.test.cpp
   - verify/matrix.test.cpp
   - verify/dynamicseg.test.cpp
   - verify/treedp.test.cpp

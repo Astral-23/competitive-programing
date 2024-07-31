@@ -5,6 +5,9 @@ data:
     path: Algorithm/superset_transform.hpp
     title: Algorithm/superset_transform.hpp
   - icon: ':heavy_check_mark:'
+    path: Convolution/bitwise_and_convolution.hpp
+    title: Convolution/bitwise_and_convolution.hpp
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':heavy_check_mark:'
@@ -20,8 +23,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/bitwise_and_convolution
     links:
     - https://judge.yosupo.jp/problem/bitwise_and_convolution
-  bundledCode: "#line 1 \"verify/superset_transform.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n#line 1 \"Utility/template.hpp\"\
+  bundledCode: "#line 1 \"verify/bitwise_and_convolution.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\n#line 1 \"Utility/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
     \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for(ll\
     \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
@@ -61,50 +64,45 @@ data:
     \    rep(s, 0, 1LL << n) {\n            if((s & (1 << i)) == 0) { // if i in s\n\
     \                f[s] = op(f[s], inv(f[s ^ (1 << i)]));\n                //f[s]\
     \ = f[s] -  f[s ^ (1 << i)];\n            }\n        }\n    }\n    return f;\n\
-    }\n#line 5 \"verify/superset_transform.test.cpp\"\n\nusing mint = modint998244353;\n\
-    \nusing S = mint;\nS op(S l, S r) {\n    return l + r;\n}\n\nS inv(S x) {\n  \
-    \  return -1 * x;\n}\n\nS zero() {\n    return 0;\n}\n\ntemplate<class S, S (*op)(S,\
-    \ S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_and_convolution(vec<S> A, vec<S>\
-    \ B) {\n    ll lg = 1;\n    while(A.size() > (1LL << lg)) lg++;\n    while(B.size()\
-    \ > (1LL << lg)) lg++;\n    A.resize(1LL << lg, zero());\n    B.resize(1LL <<\
-    \ lg, zero());\n\n    vec<mint> FA = superset_zeta_transform<S, op>(A, lg);\n\
-    \    vec<mint> FB = superset_zeta_transform<S, op>(B, lg);\n    rep(i, 0, 1 <<\
-    \ lg) FA[i] *= FB[i];\n    vec<mint> f = superset_mobius_transform<S, op, inv>(FA,\
+    }\n#line 2 \"Convolution/bitwise_and_convolution.hpp\"\n\ntemplate<class S, S\
+    \ (*op)(S, S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_and_convolution(vec<S>\
+    \ A, vec<S> B) {\n    ll lg = 1;\n    while(A.size() > (1LL << lg)) lg++;\n  \
+    \  while(B.size() > (1LL << lg)) lg++;\n    A.resize(1LL << lg, zero());\n   \
+    \ B.resize(1LL << lg, zero());\n\n    vec<S> FA = superset_zeta_transform<S, op>(A,\
+    \ lg);\n    vec<S> FB = superset_zeta_transform<S, op>(B, lg);\n    rep(i, 0,\
+    \ 1 << lg) FA[i] *= FB[i];\n    vec<S> f = superset_mobius_transform<S, op, inv>(FA,\
     \ lg);\n    return f;\n}\n//\u4EE5\u964D\u306E\u9805\u306B\u3064\u3044\u3066\u3001\
-    0\u3067\u3042\u308B\u3002\n\nint main() {\n    int n;\n    cin >> n;\n    vec<mint>\
-    \ A(1 << n), B(1 << n);\n    rep(i, 0, 1 << n) cin >> A[i];\n    rep(i, 0, 1 <<\
-    \ n) cin >> B[i];\n\n    auto f = bitwise_and_convolution<S, op, inv, zero>(A,\
-    \ B);\n    rep(i, 0, 1 << n) cout << f[i] << \" \";\n    cout << endl;\n\n}\n"
+    0\u3067\u3042\u308B\u3002\n#line 5 \"verify/bitwise_and_convolution.test.cpp\"\
+    \n\nusing mint = modint998244353;\n\nusing S = mint;\nS op(S l, S r) {\n    return\
+    \ l + r;\n}\n\nS inv(S x) {\n    return -1 * x;\n}\n\nS zero() {\n    return 0;\n\
+    }\n\n\n\nint main() {\n    int n;\n    cin >> n;\n    vec<mint> A(1 << n), B(1\
+    \ << n);\n    rep(i, 0, 1 << n) cin >> A[i];\n    rep(i, 0, 1 << n) cin >> B[i];\n\
+    \n    auto f = bitwise_and_convolution<S, op, inv, zero>(A, B);\n    rep(i, 0,\
+    \ 1 << n) cout << f[i] << \" \";\n    cout << endl;\n\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/bitwise_and_convolution\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include\
-    \ \"../Algorithm/superset_transform.hpp\"\n\nusing mint = modint998244353;\n\n\
-    using S = mint;\nS op(S l, S r) {\n    return l + r;\n}\n\nS inv(S x) {\n    return\
-    \ -1 * x;\n}\n\nS zero() {\n    return 0;\n}\n\ntemplate<class S, S (*op)(S, S),\
-    \ S (*inv)(S),  S(*zero)()> vec<S> bitwise_and_convolution(vec<S> A, vec<S> B)\
-    \ {\n    ll lg = 1;\n    while(A.size() > (1LL << lg)) lg++;\n    while(B.size()\
-    \ > (1LL << lg)) lg++;\n    A.resize(1LL << lg, zero());\n    B.resize(1LL <<\
-    \ lg, zero());\n\n    vec<mint> FA = superset_zeta_transform<S, op>(A, lg);\n\
-    \    vec<mint> FB = superset_zeta_transform<S, op>(B, lg);\n    rep(i, 0, 1 <<\
-    \ lg) FA[i] *= FB[i];\n    vec<mint> f = superset_mobius_transform<S, op, inv>(FA,\
-    \ lg);\n    return f;\n}\n//\u4EE5\u964D\u306E\u9805\u306B\u3064\u3044\u3066\u3001\
-    0\u3067\u3042\u308B\u3002\n\nint main() {\n    int n;\n    cin >> n;\n    vec<mint>\
-    \ A(1 << n), B(1 << n);\n    rep(i, 0, 1 << n) cin >> A[i];\n    rep(i, 0, 1 <<\
-    \ n) cin >> B[i];\n\n    auto f = bitwise_and_convolution<S, op, inv, zero>(A,\
-    \ B);\n    rep(i, 0, 1 << n) cout << f[i] << \" \";\n    cout << endl;\n\n}"
+    \ \"../Convolution/bitwise_and_convolution.hpp\"\n\nusing mint = modint998244353;\n\
+    \nusing S = mint;\nS op(S l, S r) {\n    return l + r;\n}\n\nS inv(S x) {\n  \
+    \  return -1 * x;\n}\n\nS zero() {\n    return 0;\n}\n\n\n\nint main() {\n   \
+    \ int n;\n    cin >> n;\n    vec<mint> A(1 << n), B(1 << n);\n    rep(i, 0, 1\
+    \ << n) cin >> A[i];\n    rep(i, 0, 1 << n) cin >> B[i];\n\n    auto f = bitwise_and_convolution<S,\
+    \ op, inv, zero>(A, B);\n    rep(i, 0, 1 << n) cout << f[i] << \" \";\n    cout\
+    \ << endl;\n\n}"
   dependsOn:
   - Utility/template.hpp
   - Utility/modint.hpp
+  - Convolution/bitwise_and_convolution.hpp
   - Algorithm/superset_transform.hpp
   isVerificationFile: true
-  path: verify/superset_transform.test.cpp
+  path: verify/bitwise_and_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 11:17:07+09:00'
+  timestamp: '2024-07-31 11:21:37+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/superset_transform.test.cpp
+documentation_of: verify/bitwise_and_convolution.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/superset_transform.test.cpp
-- /verify/verify/superset_transform.test.cpp.html
-title: verify/superset_transform.test.cpp
+- /verify/verify/bitwise_and_convolution.test.cpp
+- /verify/verify/bitwise_and_convolution.test.cpp.html
+title: verify/bitwise_and_convolution.test.cpp
 ---

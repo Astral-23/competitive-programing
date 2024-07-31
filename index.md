@@ -36,12 +36,17 @@ data:
     - icon: ':warning:'
       path: Algorithm/subset_transform.hpp
       title: Algorithm/subset_transform.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/superset_transform.hpp
       title: Algorithm/superset_transform.hpp
     - icon: ':heavy_check_mark:'
       path: Algorithm/treedp.hpp
       title: "\u5168\u65B9\u4F4D\u6728DP"
+  - name: Convolution
+    pages:
+    - icon: ':heavy_check_mark:'
+      path: Convolution/bitwise_and_convolution.hpp
+      title: Convolution/bitwise_and_convolution.hpp
   - name: Datastructure
     pages:
     - icon: ':heavy_check_mark:'
@@ -177,13 +182,13 @@ data:
     - icon: ':warning:'
       path: Utility/icpc_template.hpp
       title: Utility/icpc_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -252,6 +257,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/binary_trie_xor.test.cpp
       title: verify/binary_trie_xor.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/bitwise_and_convolution.test.cpp
+      title: verify/bitwise_and_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/combination.test.cpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
@@ -354,7 +362,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/static2dsum_imos.test.cpp
       title: verify/static2dsum_imos.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/superset_transform.test.cpp
       title: verify/superset_transform.test.cpp
     - icon: ':heavy_check_mark:'

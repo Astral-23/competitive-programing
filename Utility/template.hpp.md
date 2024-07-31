@@ -52,6 +52,9 @@ data:
     path: verify/binary_trie_xor.test.cpp
     title: verify/binary_trie_xor.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/bitwise_and_convolution.test.cpp
+    title: verify/bitwise_and_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
   - icon: ':heavy_check_mark:'
@@ -153,7 +156,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/static2dsum_imos.test.cpp
     title: verify/static2dsum_imos.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
   - icon: ':heavy_check_mark:'
@@ -180,9 +183,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -213,10 +216,11 @@ data:
   - "\u7802\u5834/binarytrie.example.cpp"
   - "\u7802\u5834/simple_treap.henkou.cpp"
   timestamp: '2024-07-09 04:15:19+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/combination.test.cpp
   - verify/point_add_rec_sum.test.cpp
+  - verify/bitwise_and_convolution.test.cpp
   - verify/offline_connectivity_more.test.cpp
   - verify/floor_sum.test.cpp
   - verify/hld_lca.test.cpp

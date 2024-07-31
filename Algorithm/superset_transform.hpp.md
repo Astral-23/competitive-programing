@@ -1,14 +1,20 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Convolution/bitwise_and_convolution.hpp
+    title: Convolution/bitwise_and_convolution.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
+    path: verify/bitwise_and_convolution.test.cpp
+    title: verify/bitwise_and_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Algorithm/superset_transform.hpp\"\ntemplate<class S, S\
@@ -33,10 +39,12 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Algorithm/superset_transform.hpp
-  requiredBy: []
+  requiredBy:
+  - Convolution/bitwise_and_convolution.hpp
   timestamp: '2024-07-31 11:08:52+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/bitwise_and_convolution.test.cpp
   - verify/superset_transform.test.cpp
 documentation_of: Algorithm/superset_transform.hpp
 layout: document
