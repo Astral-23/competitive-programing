@@ -42,6 +42,7 @@
 "verify/static1dsum.test.cpp": "2024-07-17 08:08:36 +0900",
 "verify/static2dsum.test.cpp": "2024-07-17 08:08:36 +0900",
 "verify/static2dsum_imos.test.cpp": "2024-07-17 08:08:36 +0900",
+"verify/superset_transform.test.cpp": "2024-07-31 11:17:07 +0900",
 "verify/swag.test.cpp": "2024-07-29 19:50:15 +0900",
 "verify/swag_more.test.cpp": "2024-07-29 19:50:15 +0900",
 "verify/treap.test.cpp": "2024-07-29 19:50:15 +0900",
