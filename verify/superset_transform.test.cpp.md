@@ -59,22 +59,34 @@ data:
     \                //f[s] = f[s] -  f[s ^ (1 << i)];\n            }\n        }\n\
     \    }\n    return f;\n}\n#line 4 \"verify/superset_transform.test.cpp\"\n\nusing\
     \ mint = modint998244353;\n\nusing S = mint;\nS op(S l, S r) {\n    return l +\
-    \ r;\n}\n\nS inv(S x) {\n    return -1 * x;\n}\n\nint main() {\n    int n;\n \
-    \   cin >> n;\n    vec<mint> A(1 << n), B(1 << n);\n    rep(i, 0, 1 << n) cin\
-    \ >> A[i];\n    rep(i, 0, 1 << n) cin >> B[i];\n\n    vec<mint> FA = superset_zeta_transform<S,\
-    \ op>(A, n);\n    vec<mint> FB = superset_zeta_transform<S, op>(B, n);\n\n   \
-    \ rep(i, 0, 1 << n) FA[i] *= FB[i];\n\n    vec<mint> f = superset_mobius_transform<S,\
-    \ op, inv>(FA, n);\n\n    rep(i, 0, 1 << n) cout << f[i] << \" \";\n    cout <<\
-    \ endl;\n\n}\n"
+    \ r;\n}\n\nS inv(S x) {\n    return -1 * x;\n}\n\nS zero() {\n    return 0;\n\
+    }\n\ntemplate<class S, S (*op)(S, S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_and_convolution(vec<S>\
+    \ A, vec<S> B) {\n    ll lg = 1;\n    while(A.size() > (1LL << lg)) lg++;\n  \
+    \  while(B.size() > (1LL << lg)) lg++;\n    A.resize(1LL << lg, zero());\n   \
+    \ B.resize(1LL << lg, zero());\n\n    vec<mint> FA = superset_zeta_transform<S,\
+    \ op>(A, lg);\n    vec<mint> FB = superset_zeta_transform<S, op>(B, lg);\n   \
+    \ rep(i, 0, 1 << lg) FA[i] *= FB[i];\n    vec<mint> f = superset_mobius_transform<S,\
+    \ op, inv>(FA, lg);\n    return f;\n}\n//\u4EE5\u964D\u306E\u9805\u306B\u3064\u3044\
+    \u3066\u30010\u3067\u3042\u308B\u3002\n\nint main() {\n    int n;\n    cin >>\
+    \ n;\n    vec<mint> A(1 << n), B(1 << n);\n    rep(i, 0, 1 << n) cin >> A[i];\n\
+    \    rep(i, 0, 1 << n) cin >> B[i];\n\n    auto f = bitwise_and_convolution<S,\
+    \ op, inv, zero>(A, B);\n    rep(i, 0, 1 << n) cout << f[i] << \" \";\n    cout\
+    \ << endl;\n\n}\n"
   code: "#include \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n\
     #include \"../Algorithm/superset_transform.hpp\"\n\nusing mint = modint998244353;\n\
     \nusing S = mint;\nS op(S l, S r) {\n    return l + r;\n}\n\nS inv(S x) {\n  \
-    \  return -1 * x;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    vec<mint>\
+    \  return -1 * x;\n}\n\nS zero() {\n    return 0;\n}\n\ntemplate<class S, S (*op)(S,\
+    \ S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_and_convolution(vec<S> A, vec<S>\
+    \ B) {\n    ll lg = 1;\n    while(A.size() > (1LL << lg)) lg++;\n    while(B.size()\
+    \ > (1LL << lg)) lg++;\n    A.resize(1LL << lg, zero());\n    B.resize(1LL <<\
+    \ lg, zero());\n\n    vec<mint> FA = superset_zeta_transform<S, op>(A, lg);\n\
+    \    vec<mint> FB = superset_zeta_transform<S, op>(B, lg);\n    rep(i, 0, 1 <<\
+    \ lg) FA[i] *= FB[i];\n    vec<mint> f = superset_mobius_transform<S, op, inv>(FA,\
+    \ lg);\n    return f;\n}\n//\u4EE5\u964D\u306E\u9805\u306B\u3064\u3044\u3066\u3001\
+    0\u3067\u3042\u308B\u3002\n\nint main() {\n    int n;\n    cin >> n;\n    vec<mint>\
     \ A(1 << n), B(1 << n);\n    rep(i, 0, 1 << n) cin >> A[i];\n    rep(i, 0, 1 <<\
-    \ n) cin >> B[i];\n\n    vec<mint> FA = superset_zeta_transform<S, op>(A, n);\n\
-    \    vec<mint> FB = superset_zeta_transform<S, op>(B, n);\n\n    rep(i, 0, 1 <<\
-    \ n) FA[i] *= FB[i];\n\n    vec<mint> f = superset_mobius_transform<S, op, inv>(FA,\
-    \ n);\n\n    rep(i, 0, 1 << n) cout << f[i] << \" \";\n    cout << endl;\n\n}"
+    \ n) cin >> B[i];\n\n    auto f = bitwise_and_convolution<S, op, inv, zero>(A,\
+    \ B);\n    rep(i, 0, 1 << n) cout << f[i] << \" \";\n    cout << endl;\n\n}"
   dependsOn:
   - Utility/template.hpp
   - Utility/modint.hpp
@@ -82,7 +94,7 @@ data:
   isVerificationFile: true
   path: verify/superset_transform.test.cpp
   requiredBy: []
-  timestamp: '2024-07-31 11:08:52+09:00'
+  timestamp: '2024-07-31 11:16:26+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/superset_transform.test.cpp
