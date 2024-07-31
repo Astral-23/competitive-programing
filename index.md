@@ -33,6 +33,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
+    - icon: ':warning:'
+      path: Algorithm/subset_transform.hpp
+      title: Algorithm/subset_transform.hpp
+    - icon: ':x:'
+      path: Algorithm/superset_transform.hpp
+      title: Algorithm/superset_transform.hpp
     - icon: ':heavy_check_mark:'
       path: Algorithm/treedp.hpp
       title: "\u5168\u65B9\u4F4D\u6728DP"
@@ -171,13 +177,13 @@ data:
     - icon: ':warning:'
       path: Utility/icpc_template.hpp
       title: Utility/icpc_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/modint.hpp
       title: modint
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -348,6 +354,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/static2dsum_imos.test.cpp
       title: verify/static2dsum_imos.test.cpp
+    - icon: ':x:'
+      path: verify/superset_transform.test.cpp
+      title: verify/superset_transform.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/swag.test.cpp
       title: verify/swag.test.cpp

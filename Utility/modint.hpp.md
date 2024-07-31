@@ -21,6 +21,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/seg_prod.test.cpp
     title: verify/seg_prod.test.cpp
+  - icon: ':x:'
+    path: verify/superset_transform.test.cpp
+    title: verify/superset_transform.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/swag.test.cpp
     title: verify/swag.test.cpp
@@ -36,9 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: modint
     links: []
@@ -95,7 +98,7 @@ data:
   requiredBy:
   - example/matrix.example.cpp
   timestamp: '2024-07-29 19:50:15+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/combination.test.cpp
   - verify/matrix.test.cpp
@@ -104,6 +107,7 @@ data:
   - verify/swag.test.cpp
   - verify/seg_prod.test.cpp
   - verify/treap.test.cpp
+  - verify/superset_transform.test.cpp
   - verify/swag_more.test.cpp
   - verify/lazysegtree.test.cpp
   - "\u7802\u5834/swag.test.cpp"
