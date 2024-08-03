@@ -71,6 +71,9 @@ data:
       path: Datastructure/imos1d.hpp
       title: Datastructure/imos1d.hpp
     - icon: ':heavy_check_mark:'
+      path: Datastructure/imos2d.hpp
+      title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
+    - icon: ':heavy_check_mark:'
       path: Datastructure/lazysegtree.hpp
       title: lazysegtree
     - icon: ':warning:'
@@ -291,6 +294,9 @@ data:
       path: verify/hld_lca.test.cpp
       title: verify/hld_lca.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/imos2d.test.cpp
+      title: verify/imos2d.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/jumpontree.test.cpp
       title: verify/jumpontree.test.cpp
     - icon: ':heavy_check_mark:'
@@ -365,9 +371,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/static2dsum.test.cpp
       title: verify/static2dsum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/static2dsum_imos.test.cpp
-      title: verify/static2dsum_imos.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/superset_transform.test.cpp
       title: verify/superset_transform.test.cpp

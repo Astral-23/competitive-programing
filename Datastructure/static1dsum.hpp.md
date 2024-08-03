@@ -21,10 +21,9 @@ data:
     \ 1] += dat[i];\n        built = true;\n    }\n\n    T operator[](int i) const\
     \ {\n        assert(built == true);\n        assert(0 <= i && i < n);\n      \
     \  return prod(i, i + 1);\n    }\n\n    T prod(int l, int r) {\n        assert(built);\n\
-    \        assert(l >= 0);\n        assert(r <= n);\n        assert(l <= r);\n \
-    \       T res = dat[r - 1];\n        if (l) res -= dat[l - 1];\n        return\
-    \ res;\n    }\n};\n\n\n\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static1dsum.md\n\
-    */\n"
+    \        assert(0 <= l && r <= n);\n        assert(l <= r);\n        T res = dat[r\
+    \ - 1];\n        if (l) res -= dat[l - 1];\n        return res;\n    }\n};\n\n\
+    \n\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static1dsum.md\n*/\n"
   code: "TT struct static1dsum {\n    int n;\n    vec<T> dat;\n    bool built = false;\n\
     \n    static1dsum(int n = 0) : static1dsum(vec<T>(n, T())) {}\n\n    static1dsum(vec<T>\
     \ dat) : n(dat.size()), dat(dat) {}\n\n    void add(int i, T x) {\n        assert(!built);\n\
@@ -32,15 +31,14 @@ data:
     \ + 1] += dat[i];\n        built = true;\n    }\n\n    T operator[](int i) const\
     \ {\n        assert(built == true);\n        assert(0 <= i && i < n);\n      \
     \  return prod(i, i + 1);\n    }\n\n    T prod(int l, int r) {\n        assert(built);\n\
-    \        assert(l >= 0);\n        assert(r <= n);\n        assert(l <= r);\n \
-    \       T res = dat[r - 1];\n        if (l) res -= dat[l - 1];\n        return\
-    \ res;\n    }\n};\n\n\n\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static1dsum.md\n\
-    */"
+    \        assert(0 <= l && r <= n);\n        assert(l <= r);\n        T res = dat[r\
+    \ - 1];\n        if (l) res -= dat[l - 1];\n        return res;\n    }\n};\n\n\
+    \n\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static1dsum.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Datastructure/static1dsum.hpp
   requiredBy: []
-  timestamp: '2024-08-03 18:57:29+09:00'
+  timestamp: '2024-08-03 19:07:07+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/static1dsum.test.cpp

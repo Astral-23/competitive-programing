@@ -82,6 +82,9 @@ data:
     path: verify/hld_lca.test.cpp
     title: verify/hld_lca.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/imos2d.test.cpp
+    title: verify/imos2d.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/jumpontree.test.cpp
     title: verify/jumpontree.test.cpp
   - icon: ':heavy_check_mark:'
@@ -157,9 +160,6 @@ data:
     path: verify/static2dsum.test.cpp
     title: verify/static2dsum.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/static2dsum_imos.test.cpp
-    title: verify/static2dsum_imos.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
   - icon: ':heavy_check_mark:'
@@ -234,7 +234,6 @@ data:
   - verify/lowlink_joint.test.cpp
   - verify/seg_prod.test.cpp
   - verify/undabledsu.test.cpp
-  - verify/static2dsum_imos.test.cpp
   - verify/value_dsu.test.cpp
   - verify/static1dsum.test.cpp
   - verify/oneside_range_edge_graph.test.cpp
@@ -255,6 +254,7 @@ data:
   - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
   - verify/Rhash_more.test.cpp
   - verify/1dimos.test.cpp
+  - verify/imos2d.test.cpp
   - verify/point_add_rec_sum.test.cpp
   - verify/treedp.test.cpp
   - verify/swag.test.cpp
