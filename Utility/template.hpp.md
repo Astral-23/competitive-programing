@@ -25,6 +25,9 @@ data:
     title: "\u7802\u5834/simple_treap.henkou.cpp"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/1dimos.test.cpp
+    title: verify/1dimos.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/2dbit.test.cpp
     title: verify/2dbit.test.cpp
   - icon: ':heavy_check_mark:'
@@ -210,66 +213,67 @@ data:
   requiredBy:
   - example/matrix.example.cpp
   - example/rhash.example.cpp
-  - example/simple_treap.example.cpp
-  - example/range_edge_graph.example.cpp
   - example/offline_connectivity.example.cpp
-  - "\u7802\u5834/binarytrie.example.cpp"
+  - example/range_edge_graph.example.cpp
+  - example/simple_treap.example.cpp
   - "\u7802\u5834/simple_treap.henkou.cpp"
+  - "\u7802\u5834/binarytrie.example.cpp"
   timestamp: '2024-07-09 04:15:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/combination.test.cpp
-  - verify/point_add_rec_sum.test.cpp
-  - verify/bitwise_and_convolution.test.cpp
-  - verify/offline_connectivity_more.test.cpp
-  - verify/floor_sum.test.cpp
-  - verify/hld_lca.test.cpp
-  - verify/aux_tree.test.cpp
-  - verify/binary_trie.test.cpp
-  - verify/maxflow_lowerbound.test.cpp
-  - verify/fastset.test.cpp
-  - verify/maximum_independent_set.test.cpp
-  - verify/lowlink_joint.test.cpp
-  - verify/scc.test.cpp
-  - verify/undabledsu.test.cpp
   - verify/mo.test.cpp
   - verify/matrix.test.cpp
-  - verify/oneside_range_edge_graph.test.cpp
-  - verify/limited_knapsack.test.cpp
-  - verify/dynamicseg.test.cpp
-  - verify/2dsegtree_max.test.cpp
-  - verify/potential_dsu.test.cpp
-  - verify/pbds_set.test.cpp
-  - verify/manacher.test.cpp
+  - verify/2dbit.test.cpp
+  - verify/binary_trie_xor.test.cpp
+  - verify/scc.test.cpp
+  - verify/static2dsum.test.cpp
+  - verify/offline_connectivity_more.test.cpp
+  - verify/hld_lca.test.cpp
+  - verify/hld.test.cpp
+  - verify/superset_transform.test.cpp
+  - verify/lowlink_joint.test.cpp
+  - verify/seg_prod.test.cpp
+  - verify/undabledsu.test.cpp
   - verify/static2dsum_imos.test.cpp
   - verify/value_dsu.test.cpp
-  - verify/treedp.test.cpp
+  - verify/static1dsum.test.cpp
+  - verify/oneside_range_edge_graph.test.cpp
+  - verify/fastset.test.cpp
+  - verify/2dsegtree_add.test.cpp
+  - verify/maximum_independent_set.test.cpp
   - verify/lazyseg_bina.test.cpp
-  - verify/swag.test.cpp
-  - verify/seg_prod.test.cpp
-  - verify/2dbit_imos.test.cpp
-  - verify/range_edge_graph.test.cpp
-  - verify/Rhash.test.cpp
-  - verify/static2dsum.test.cpp
+  - verify/lazysegtree.test.cpp
   - verify/jumpontree.test.cpp
   - verify/segtree.test.cpp
-  - verify/treap.test.cpp
-  - verify/binary_trie_xor.test.cpp
-  - verify/extgcd.test.cpp
-  - verify/2dbit.test.cpp
-  - verify/superset_transform.test.cpp
+  - verify/dynamicseg.test.cpp
+  - verify/Rhash.test.cpp
   - verify/swag_more.test.cpp
-  - verify/static1dsum.test.cpp
+  - verify/lowlink_bridge.test.cpp
+  - verify/simpletreap.test.cpp
+  - verify/limited_knapsack.test.cpp
+  - verify/potential_dsu.test.cpp
   - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
   - verify/Rhash_more.test.cpp
-  - verify/dsu.test.cpp
-  - verify/lowlink_bridge.test.cpp
-  - verify/lazysegtree.test.cpp
+  - verify/1dimos.test.cpp
+  - verify/point_add_rec_sum.test.cpp
+  - verify/treedp.test.cpp
+  - verify/swag.test.cpp
+  - verify/maxflow_lowerbound.test.cpp
+  - verify/aux_tree.test.cpp
+  - verify/bitwise_and_convolution.test.cpp
   - verify/maxflow.test.cpp
-  - verify/simpletreap.test.cpp
-  - verify/hld.test.cpp
+  - verify/binary_trie.test.cpp
+  - verify/treap.test.cpp
+  - verify/extgcd.test.cpp
+  - verify/combination.test.cpp
+  - verify/dsu.test.cpp
+  - verify/range_edge_graph.test.cpp
   - verify/offline_connectivity.test.cpp
-  - verify/2dsegtree_add.test.cpp
+  - verify/pbds_set.test.cpp
+  - verify/2dbit_imos.test.cpp
+  - verify/manacher.test.cpp
+  - verify/2dsegtree_max.test.cpp
+  - verify/floor_sum.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Utility/template.hpp
 layout: document

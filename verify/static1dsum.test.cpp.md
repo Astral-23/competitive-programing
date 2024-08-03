@@ -29,39 +29,36 @@ data:
     \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
     \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
     \u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/static1dsum.hpp\"\nTT struct static1dsum\
-    \ {\n    int n;\n    vec<T> dat;\n    bool f = false;\n\n    static1dsum(int n\
-    \ = 0) : static1dsum(vec<T>(n, T())) {}\n\n    static1dsum(vec<T> dat) : n(dat.size()),\
-    \ dat(dat) {}\n\n    void add(int i, T x) {\n        assert(!f);\n        dat[i]\
-    \ += x;\n    }\n\n    void imos_add(int i, T x) { add(i, x); }\n\n    void imos_add(int\
-    \ l, int r, T x) {\n        assert(!f);\n        chmax(l, 0);\n        chmin(r,\
-    \ n);\n        if (l >= r) return;\n        dat[l] += x;\n        if (r < n) dat[r]\
-    \ -= x;\n        return;\n    }\n\n    void build() {\n        rep(i, 0, n - 1)\
-    \ dat[i + 1] += dat[i];\n        f = true;\n    }\n\n    T get(int i) {\n    \
-    \    assert(f);\n        assert(0 <= i && i < n);\n        return dat[i];\n  \
-    \  }\n\n    T imos_get(int i) { return prod(0, i + 1); }\n\n    T prod(int l,\
-    \ int r) {\n        assert(f);\n        assert(l >= 0);\n        assert(r <= n);\n\
-    \        assert(l <= r);\n        T res = dat[r - 1];\n        if (l) res -= dat[l\
-    \ - 1];\n        return res;\n    }\n};\n\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\
-    \u548C\n@docs doc/static1dsum.md\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\
-    \nTT struct static2dsum {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\
-    \n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h,\
-    \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
-    \   h = dat.size();\n        if (h)\n            w = dat[0].size();\n        else\n\
-    \            w = 0;\n    }\n\n    void add(int i, int j, T x) {\n        assert(!f);\n\
-    \        dat[i][j] += x;\n    }\n\n    void imos_add(int i, int j, T x) { add(i,\
-    \ j, x); }\n\n    void imos_add(int sy, int ty, int sx, int tx, T x) {\n     \
-    \   assert(!f);\n        chmax(sx, 0);\n        chmax(sy, 0);\n        chmin(tx,\
-    \ w);\n        chmin(ty, h);\n        if (sx >= tx || sy >= ty) return;\n    \
-    \    dat[sy][sx] += x;\n        if (ty < h) dat[ty][sx] -= x;\n        if (tx\
-    \ < w) dat[sy][tx] -= x;\n        if (tx < w && ty < h) dat[ty][tx] += x;\n  \
-    \      return;\n    }\n\n    void build() {\n        rep(i, 0, h) {\n        \
-    \    rep(j, 0, w - 1) { dat[i][j + 1] += dat[i][j]; }\n        }\n\n        rep(j,\
-    \ 0, w) {\n            rep(i, 0, h - 1) { dat[i + 1][j] += dat[i][j]; }\n    \
-    \    }\n\n        f = true;\n    }\n\n    T imos_get(int i, int j) { return prod(0,\
-    \ i + 1, 0, j + 1); }\n\n    T get(int i, int j) {\n        assert(f);\n     \
-    \   assert(0 <= i && i < h);\n        assert(0 <= j && j < w);\n        return\
-    \ dat[i][j];\n    }\n\n    T prod(int sy, int ty, int sx, int tx) {\n        assert(f);\n\
-    \        assert(sy >= 0);\n        assert(ty <= h);\n        assert(sx >= 0);\n\
+    \ {\n    int n;\n    vec<T> dat;\n    bool built = false;\n\n    static1dsum(int\
+    \ n = 0) : static1dsum(vec<T>(n, T())) {}\n\n    static1dsum(vec<T> dat) : n(dat.size()),\
+    \ dat(dat) {}\n\n    void add(int i, T x) {\n        assert(!built);\n       \
+    \ dat[i] += x;\n    }\n\n    void build() {\n        rep(i, 0, n - 1) dat[i +\
+    \ 1] += dat[i];\n        built = true;\n    }\n\n    T operator[](int i) const\
+    \ {\n        assert(built == true);\n        assert(0 <= i && i < n);\n      \
+    \  return prod(i, i + 1);\n    }\n\n    T prod(int l, int r) {\n        assert(built);\n\
+    \        assert(l >= 0);\n        assert(r <= n);\n        assert(l <= r);\n \
+    \       T res = dat[r - 1];\n        if (l) res -= dat[l - 1];\n        return\
+    \ res;\n    }\n};\n\n\n\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static1dsum.md\n\
+    */\n#line 1 \"Datastructure/static2dsum.hpp\"\nTT struct static2dsum {\n    int\
+    \ h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\n    static2dsum(int h =\
+    \ 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h, vec<T>(w, T()))) {}\n\n\
+    \    static2dsum(vec<vec<T>> dat) : dat(dat) {\n        h = dat.size();\n    \
+    \    if (h)\n            w = dat[0].size();\n        else\n            w = 0;\n\
+    \    }\n\n    void add(int i, int j, T x) {\n        assert(!f);\n        dat[i][j]\
+    \ += x;\n    }\n\n    void imos_add(int i, int j, T x) { add(i, j, x); }\n\n \
+    \   void imos_add(int sy, int ty, int sx, int tx, T x) {\n        assert(!f);\n\
+    \        chmax(sx, 0);\n        chmax(sy, 0);\n        chmin(tx, w);\n       \
+    \ chmin(ty, h);\n        if (sx >= tx || sy >= ty) return;\n        dat[sy][sx]\
+    \ += x;\n        if (ty < h) dat[ty][sx] -= x;\n        if (tx < w) dat[sy][tx]\
+    \ -= x;\n        if (tx < w && ty < h) dat[ty][tx] += x;\n        return;\n  \
+    \  }\n\n    void build() {\n        rep(i, 0, h) {\n            rep(j, 0, w -\
+    \ 1) { dat[i][j + 1] += dat[i][j]; }\n        }\n\n        rep(j, 0, w) {\n  \
+    \          rep(i, 0, h - 1) { dat[i + 1][j] += dat[i][j]; }\n        }\n\n   \
+    \     f = true;\n    }\n\n    T imos_get(int i, int j) { return prod(0, i + 1,\
+    \ 0, j + 1); }\n\n    T get(int i, int j) {\n        assert(f);\n        assert(0\
+    \ <= i && i < h);\n        assert(0 <= j && j < w);\n        return dat[i][j];\n\
+    \    }\n\n    T prod(int sy, int ty, int sx, int tx) {\n        assert(f);\n \
+    \       assert(sy >= 0);\n        assert(ty <= h);\n        assert(sx >= 0);\n\
     \        assert(tx <= w);\n        assert(sy <= ty);\n        assert(sx <= tx);\n\
     \        if (sx >= tx || sy >= ty) return 0;\n        tx--, ty--;\n        T res\
     \ = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy\
@@ -90,7 +87,7 @@ data:
   isVerificationFile: true
   path: verify/static1dsum.test.cpp
   requiredBy: []
-  timestamp: '2024-07-17 08:08:36+09:00'
+  timestamp: '2024-08-03 18:57:29+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/static1dsum.test.cpp

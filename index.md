@@ -68,6 +68,9 @@ data:
       path: Datastructure/fastset.hpp
       title: "\u975E\u8CA0\u6574\u6570\u3092\u7BA1\u7406\u3059\u308B64\u5206\u6728"
     - icon: ':heavy_check_mark:'
+      path: Datastructure/imos1d.hpp
+      title: Datastructure/imos1d.hpp
+    - icon: ':heavy_check_mark:'
       path: Datastructure/lazysegtree.hpp
       title: lazysegtree
     - icon: ':warning:'
@@ -230,6 +233,9 @@ data:
   verificationCategories:
   - name: verify
     pages:
+    - icon: ':heavy_check_mark:'
+      path: verify/1dimos.test.cpp
+      title: verify/1dimos.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/2dbit.test.cpp
       title: verify/2dbit.test.cpp
