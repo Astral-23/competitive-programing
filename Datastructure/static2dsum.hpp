@@ -19,21 +19,6 @@ TT struct static2dsum {
         dat[i][j] += x;
     }
 
-    void imos_add(int i, int j, T x) { add(i, j, x); }
-
-    void imos_add(int sy, int ty, int sx, int tx, T x) {
-        assert(!f);
-        chmax(sx, 0);
-        chmax(sy, 0);
-        chmin(tx, w);
-        chmin(ty, h);
-        if (sx >= tx || sy >= ty) return;
-        dat[sy][sx] += x;
-        if (ty < h) dat[ty][sx] -= x;
-        if (tx < w) dat[sy][tx] -= x;
-        if (tx < w && ty < h) dat[ty][tx] += x;
-        return;
-    }
 
     void build() {
         rep(i, 0, h) {
@@ -47,8 +32,6 @@ TT struct static2dsum {
         f = true;
     }
 
-    T imos_get(int i, int j) { return prod(0, i + 1, 0, j + 1); }
-
     T get(int i, int j) {
         assert(f);
         assert(0 <= i && i < h);
@@ -58,13 +41,10 @@ TT struct static2dsum {
 
     T prod(int sy, int ty, int sx, int tx) {
         assert(f);
-        assert(sy >= 0);
-        assert(ty <= h);
-        assert(sx >= 0);
-        assert(tx <= w);
+        assert(0 <= sy && ty <= h);
+        assert(0 <= sx && tx <= w);
         assert(sy <= ty);
         assert(sx <= tx);
-        if (sx >= tx || sy >= ty) return 0;
         tx--, ty--;
         T res = dat[ty][tx];
         if (sx > 0) res -= dat[ty][sx - 1];

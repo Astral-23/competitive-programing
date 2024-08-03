@@ -25,8 +25,7 @@ TT struct static1dsum {
 
     T prod(int l, int r) {
         assert(built);
-        assert(l >= 0);
-        assert(r <= n);
+        assert(0 <= l && r <= n);
         assert(l <= r);
         T res = dat[r - 1];
         if (l) res -= dat[l - 1];

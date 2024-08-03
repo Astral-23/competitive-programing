@@ -1,11 +1,11 @@
 #define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja"
 #include "../Utility/template.hpp"
-#include "../Datastructure/static2dsum.hpp"
+#include "../Datastructure/imos2d.hpp"
 
 int main() { 
     int n;
     cin >> n;
-    static2dsum<ll> sum(1001, 1001);
+    imos2d<ll> sum(1001, 1001);
 
     rep(i, 0, n) {
         int sx, sy, tx, ty;
