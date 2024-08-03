@@ -1,44 +1,30 @@
 TT struct static1dsum {
     int n;
     vec<T> dat;
-    bool f = false;
+    bool built = false;
 
     static1dsum(int n = 0) : static1dsum(vec<T>(n, T())) {}
 
     static1dsum(vec<T> dat) : n(dat.size()), dat(dat) {}
 
     void add(int i, T x) {
-        assert(!f);
+        assert(!built);
         dat[i] += x;
-    }
-
-    void imos_add(int i, T x) { add(i, x); }
-
-    void imos_add(int l, int r, T x) {
-        assert(!f);
-        chmax(l, 0);
-        chmin(r, n);
-        if (l >= r) return;
-        dat[l] += x;
-        if (r < n) dat[r] -= x;
-        return;
     }
 
     void build() {
         rep(i, 0, n - 1) dat[i + 1] += dat[i];
-        f = true;
+        built = true;
     }
 
-    T get(int i) {
-        assert(f);
+    T operator[](int i) const {
+        assert(built == true);
         assert(0 <= i && i < n);
-        return dat[i];
+        return prod(i, i + 1);
     }
-
-    T imos_get(int i) { return prod(0, i + 1); }
 
     T prod(int l, int r) {
-        assert(f);
+        assert(built);
         assert(l >= 0);
         assert(r <= n);
         assert(l <= r);
@@ -47,6 +33,8 @@ TT struct static1dsum {
         return res;
     }
 };
+
+
 
 /*
 @brief 1次元累積和
