@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Datastructure/imos2d.hpp
-    title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
+    title: "2\u6B21\u5143imos\u6CD5"
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -37,13 +37,13 @@ data:
     \ - 1) { dat[i][j + 1] += dat[i][j]; }\n        }\n        rep(j, 0, w) {\n  \
     \          rep(i, 0, h - 1) { dat[i + 1][j] += dat[i][j]; }\n        }\n     \
     \   f = true;\n    }\n\n    T imos_get(int i, int j) { return dat[i][j]; }\n};\n\
-    /*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/\n#line\
-    \ 4 \"verify/imos2d.test.cpp\"\n\nint main() { \n    int n;\n    cin >> n;\n \
-    \   imos2d<ll> sum(1001, 1001);\n\n    rep(i, 0, n) {\n        int sx, sy, tx,\
-    \ ty;\n        cin >> sx >> sy >> tx >> ty;\n        sum.imos_add(sy, ty, sx,\
-    \ tx, 1);\n    }\n\n    sum.build();\n    int ans = 0;\n    rep(i, 0, 1001) {\n\
-    \        rep(j, 0, 1001){ \n            chmax(ans, sum.imos_get(i, j));\n    \
-    \    }\n    }\n\n    cout << ans << endl;\n\n}\n"
+    /*\n@brief 2\u6B21\u5143imos\u6CD5\n\n*/\n#line 4 \"verify/imos2d.test.cpp\"\n\
+    \nint main() { \n    int n;\n    cin >> n;\n    imos2d<ll> sum(1001, 1001);\n\n\
+    \    rep(i, 0, n) {\n        int sx, sy, tx, ty;\n        cin >> sx >> sy >> tx\
+    \ >> ty;\n        sum.imos_add(sy, ty, sx, tx, 1);\n    }\n\n    sum.build();\n\
+    \    int ans = 0;\n    rep(i, 0, 1001) {\n        rep(j, 0, 1001){ \n        \
+    \    chmax(ans, sum.imos_get(i, j));\n        }\n    }\n\n    cout << ans << endl;\n\
+    \n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/imos2d.hpp\"\
     \n\nint main() { \n    int n;\n    cin >> n;\n    imos2d<ll> sum(1001, 1001);\n\
@@ -58,7 +58,7 @@ data:
   isVerificationFile: true
   path: verify/imos2d.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 19:07:07+09:00'
+  timestamp: '2024-08-03 19:09:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/imos2d.test.cpp

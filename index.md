@@ -69,10 +69,10 @@ data:
       title: "\u975E\u8CA0\u6574\u6570\u3092\u7BA1\u7406\u3059\u308B64\u5206\u6728"
     - icon: ':heavy_check_mark:'
       path: Datastructure/imos1d.hpp
-      title: Datastructure/imos1d.hpp
+      title: "1\u6B21\u5143imos\u6CD5"
     - icon: ':heavy_check_mark:'
       path: Datastructure/imos2d.hpp
-      title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
+      title: "2\u6B21\u5143imos\u6CD5"
     - icon: ':heavy_check_mark:'
       path: Datastructure/lazysegtree.hpp
       title: lazysegtree

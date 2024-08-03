@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Datastructure/imos1d.hpp
-    title: Datastructure/imos1d.hpp
+    title: "1\u6B21\u5143imos\u6CD5"
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -34,7 +34,7 @@ data:
     \ += x;\n        if (r < n) dat[r] -= x;\n    }\n\n    void build() {\n      \
     \  rep(i, 0, n - 1) dat[i + 1] += dat[i];\n        built = true;\n    }\n\n  \
     \  T operator[](int i) const {\n        assert(built == true);\n        assert(0\
-    \ <= i && i < n);\n        return dat[i];\n    }\n};\n\n/*\n@bried 1\u6B21\u5143\
+    \ <= i && i < n);\n        return dat[i];\n    }\n};\n\n/*\n@brief 1\u6B21\u5143\
     imos\u6CD5\n*/\n#line 5 \"verify/1dimos.test.cpp\"\n\n\nint main() {\n    imos1d<ll>\
     \ imos(1001);\n    int a, b;\n    cin >> a >> b;\n    imos.imos_add(a, b, 1);\n\
     \n    int n;\n    cin >> n;\n    while(n--) {\n        int s, f;\n        cin\
@@ -56,7 +56,7 @@ data:
   isVerificationFile: true
   path: verify/1dimos.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 18:57:29+09:00'
+  timestamp: '2024-08-03 19:09:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/1dimos.test.cpp
