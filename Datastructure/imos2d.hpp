@@ -34,6 +34,6 @@ TT struct imos2d {
     T imos_get(int i, int j) { return dat[i][j]; }
 };
 /*
-@brief 2次元累積和
+@brief 2次元imos法
 @docs doc/static2dsum.md
 */
