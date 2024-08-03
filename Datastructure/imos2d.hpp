@@ -35,5 +35,5 @@ TT struct imos2d {
 };
 /*
 @brief 2次元imos法
-@docs doc/static2dsum.md
+
 */

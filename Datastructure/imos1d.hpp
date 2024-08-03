@@ -31,5 +31,5 @@ TT struct imos1d {
 };
 
 /*
-@bried 1次元imos法
+@brief 1次元imos法
 */
