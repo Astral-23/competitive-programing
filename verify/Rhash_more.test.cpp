@@ -19,7 +19,7 @@ int main() {
             while(li < ri) {//oooxxx
                 ll mid = (li + ri + 1) >> 1;
                 auto [l, r] = rs.conv(i - mid + 1, i + mid);
-                if(rs.get(i - mid + 1, i + mid).x == rev.get(l, r).x) {
+                if(rs.prod(i - mid + 1, i + mid).x == rev.prod(l, r).x) {
                     li = mid;
                 }
                 else {
@@ -35,7 +35,7 @@ int main() {
             while(li < ri) {
                 ll mid = (li + ri + 1) >> 1;
                 auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);
-                if(rs.get(i - mid + 1, i + mid + 1).x == rev.get(l, r).x) {
+                if(rs.prod(i - mid + 1, i + mid + 1).x == rev.prod(l, r).x) {
                     li = mid;
                 }
                 else {

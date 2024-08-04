@@ -14,7 +14,7 @@ int main() {
 
         while(li < ri) {//ooxxxx   
             int mid = (li + ri + 1) >> 1;
-            if(rs.get(i, i + mid).x == rs.get(0, mid).x) {
+            if(rs.prod(i, i + mid) == rs.prod(0, mid)) {
                 li = mid;
             }
             else {
