@@ -2,11 +2,16 @@
 Rolling hash。半開区間に注意。
 
 ## 使用時に変更する物
-`ll brh` ...値の種類数  
+`const rhash Rhash::brh = 200224;` ...値の種類数以上  
 
-`vec<rhash> pw(5000001, 1)` ... 最大文字列長
+`const int Rhash::MAX_SIZE = 500000;` ... Rhash型で管理できる最大文字列長
+- rhash型で管理する場合には関係がない
+    - 例えば、後述のpowを用いる事で、長さが10^9の文字列のハッシュを計算することはできる
+    - Rhashで管理するメリットは区間取得ができる事のみである
+- 他、後述のpowの計算量に関わってくる
 
 
+注意: 値0に相当する文字を作ると、その項の寄与は0
 
 ## コンストラクタ
 `TT Rhash (T S)` ... Sのハッシュを計算する。Sはstringや配列。
@@ -14,19 +19,27 @@ Rolling hash。半開区間に注意。
     $O(|S|)$
 
 ## 関数
-以下、|S| = nと置く。時間計算量は全てO(1)
+以下、|S| = nと置く。時間計算量は基本O(1)
 
-- `rhash get(int l, int r)`... [l, r)のハッシュを返す。区間が潰れていた場合、0を返す。
+- `rhash prod(ll l, ll r)`... [l, r)のハッシュを返す。区間が潰れていた場合、0を返す。
     - 制約
     $0 \le l , r \le n$
 
-- `rhash get(int p)`... p文字目のハッシュを返す。
+- `rhash get(ll p)`... p文字目のハッシュを返す。
     - 制約
     $0 \le p  < n$
     
-- `pair<int, int> conv(int l, int r)`...reverseしたハッシュを逆方向として、正方向の[l, r)と対応する逆方向の区間を返す。回文判定に使う。
+- `pair<ll, ll> conv(ll l, ll r)`...reverseしたハッシュを逆方向として、正方向の[l, r)と対応する逆方向の区間を返す。回文判定に使う。
 
-- `rhash unit(rhash mae, rhash usiro, int len_of_usiro)` ... ハッシュを結合する。
+- `rhash connect(rhash mae, rhash usiro, ll len_of_usiro)` ... ハッシュを結合する。
+    - 計算量
+        - len_of_usiro $\le$ MAX_SIZE の時: $O(1)$
+        - len_of_usiro > MAX_SIZE の時: $O(\log LenOfUsiro)$
+- `rhash rhash_pow(const rhash &x, const ll &y, ll len)`... ハッシュ = x, 長さ = len に対応する文字列を y　個連結した文字列のハッシュを返す
+    - 計算量
+        - y $\times$ len $\le$ MAX_SIZE の時: $O(\log y)$
+        - y $\times$ len > MAX_SIZE の時: $O(\log y \log (y \times len))$
+
   
 ## 使用例
 
@@ -41,13 +54,13 @@ int main() {
     string t = "abcde";
     Rhash T(t);
     
-    cout << S.get(0, 2) << endl; //s の [0, 2)、つまり"ab"に対応するハッシュを出力
+    cout << S.prod(0, 2) << endl; //s の [0, 2)、つまり"ab"に対応するハッシュを出力
 
-    if(S.get(0, 3) == T.get(0, 3)) {
+    if(S.prod(0, 3) == T.prod(0, 3)) {
         cout << "一致" << endl;
     }
 
-    if(S.get(0, 3) != T.get(2, 5)) {
+    if(S.prod(0, 3) != T.prod(2, 5)) {
         cout << "不一致" << endl;
     }
 
@@ -67,7 +80,7 @@ int main() {
 
     auto[rl, rr] = K.conv(1, 4);//Kの[1, 4)は、そのreverse文字列のどこに対応するか
 
-    if(K.get(1, 4) == RK.get(rl, rr)) {
+    if(K.prod(1, 4) == RK.prod(rl, rr)) {
         cout << "bcbは回文" << endl;
     }
 }
