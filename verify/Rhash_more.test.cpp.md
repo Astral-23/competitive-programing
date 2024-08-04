@@ -56,42 +56,44 @@ data:
     \n    bool operator==(mm a) {return x == a.x;}\n    bool operator!=(mm a) {return\
     \ x != a.x;}\n    //bool operator<(const mm& a) const {return x < a.x;}\n};\n\n\
     using rhash = modint<(1LL << 61) - 1>;\n/*\n@brief big_modint\n*/\n#line 2 \"\
-    String/Rhash.hpp\"\n\n\nconst ll brh = 2312312;\nvec<rhash> pw(5000001, 1);\n\n\
-    struct Rhash {\n    int n;\n    vec<rhash> H;\n\n    TT Rhash(T S) : n(S.size())\
-    \ {\n        H = vec<rhash>(n, 0);\n        pw[0] = 1;\n\n        rep(i, 0, n)\
-    \ {\n            H[i] += S[i];\n            if(i) {\n                H[i] += H[i-1]\
-    \ * brh;\n                pw[i] = pw[i-1] * brh;\n            }\n        }\n \
-    \   }\n\n    rhash get(int l, int r) {\n        assert(0 <= l && r <= n);\n  \
-    \      if(l >= r) return 0;\n        rhash res = H[r-1];\n        if(l) res -=\
-    \ H[l-1] * pw[r-l];\n        return res;\n    }\n\n    rhash get(int p) {\n  \
-    \      return get(p, p+1);\n    }\n\n    //reverse\u3057\u305F\u30CF\u30C3\u30B7\
-    \u30E5\u3092\u9006\u65B9\u5411\u3068\u3057\u3066\u3001\u6B63\u65B9\u5411\u306E\
-    [l, r)\u3068\u5BFE\u5FDC\u3059\u308B\u9006\u65B9\u5411\u306E\u533A\u9593\u3092\
-    \u8FD4\u3059\u3002\n    //\u56DE\u6587\u5224\u5B9A\u306B\u4F7F\u3046\u3002\n\n\
-    \    pair<int, int> conv(int l, int r) {\n        return make_pair(n - r, n -\
-    \ l);\n    }\n\n\n    //\u8981\u7D20\u8FFD\u52A0\u3057\u305F\u3044\u6642\n   \
-    \ TT void push_back(T &h) {\n        n++;\n        H.resize(n);\n        pw[n-1]\
-    \ = pw[n-2] * brh;\n        H[n-1] = h + H[n-2] * brh;\n    }\n    \n};\n\n\n\
-    //\u30CF\u30C3\u30B7\u30E5\u306E\u7D50\u5408\nrhash unit(rhash mae, rhash usiro,\
-    \ int len_of_usiro) {\n    return mae * pw[len_of_usiro] + usiro;\n}\n\n/*\n@brief\
-    \ Rolling_hash\n@docs doc/Rhash.md\n*/\n#line 4 \"verify/Rhash_more.test.cpp\"\
+    String/Rhash.hpp\"\n\nstruct Rhash {\n    static const rhash brh;\n    static\
+    \ vec<rhash> pw;\n    static const int MAX_SIZE;\n    int n;\n    vec<rhash> H;\n\
+    \n    static void initialize_pow() {\n        pw.resize(MAX_SIZE + 1);\n     \
+    \   pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i - 1] * brh; }\n\
+    \    }\n\n    Rhash() {\n        if (pw.empty()) initialize_pow();\n    }\n\n\
+    \    Rhash(string S) : n(S.size()) {\n        if (pw.empty()) initialize_pow();\n\
+    \        H = vec<rhash>(n, 0);\n\n        rep(i, 0, n) {\n            H[i] +=\
+    \ S[i];\n            if (i) {\n                H[i] += H[i - 1] * brh;\n     \
+    \       }\n        }\n    }\n\n    rhash prod(ll l, ll r) {\n        assert(0\
+    \ <= l && r <= n);\n        if (l >= r) return 0;\n        rhash res = H[r - 1];\n\
+    \        if (l) res -= H[l - 1] * pw[r - l];\n        return res;\n    }\n\n \
+    \   rhash get(int p) {\n        return prod(p, p + 1);\n    }\n\n    pair<ll,\
+    \ ll> conv(ll l, ll r) {\n        return make_pair(n - r, n - l);\n    }\n};\n\
+    \nconst rhash Rhash::brh = 200224;\nconst int Rhash::MAX_SIZE = 500000;\nvec<rhash>\
+    \ Rhash::pw;\n\nrhash connect(rhash mae, rhash usiro, ll len_of_usiro) {\n   \
+    \ if (len_of_usiro <= Rhash::MAX_SIZE) {\n        return mae * Rhash::pw[len_of_usiro]\
+    \ + usiro;\n    } else {\n        return mae * Rhash::brh.pow(len_of_usiro) +\
+    \ usiro;\n    }\n}\n\nrhash rhash_pow(const rhash &x, const ll &y, ll len) {\n\
+    \    if (!y) return 0;\n    rhash res = rhash_pow(x, y / 2, len);\n    res = connect(res,\
+    \ res, (y / 2) * len);\n    if(y & 1) res = connect(res, x, len);\n    return\
+    \ res;\n}\n\n/*\n@brief Rolling_hash\n@docs doc/Rhash.md\n*/\n#line 4 \"verify/Rhash_more.test.cpp\"\
     \n\nint main() {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n    reverse(all(S));\n\
     \    Rhash rev(S);\n    reverse(all(S));\n\n    rep(ti, 0, ll(S.size()) * 2 -\
     \ 1) {\n        if(ti%2==0) {//\u6587\u5B57\n            int i = ti/2;\n     \
     \       ll li = 1;\n            ll ri = min<int>(i+1, (ll)S.size() - i);\n   \
     \         while(li < ri) {//oooxxx\n                ll mid = (li + ri + 1) >>\
     \ 1;\n                auto [l, r] = rs.conv(i - mid + 1, i + mid);\n         \
-    \       if(rs.get(i - mid + 1, i + mid).x == rev.get(l, r).x) {\n            \
-    \        li = mid;\n                }\n                else {\n              \
-    \      ri = mid - 1;\n                }\n            }\n            cout << li*2-1\
-    \ << \" \";\n        }\n        else {\n            int i = ti/2;\n          \
-    \  ll li = 0;\n            ll ri = min<int>(i+1, (ll)S.size() - i - 1);\n    \
-    \        while(li < ri) {\n                ll mid = (li + ri + 1) >> 1;\n    \
-    \            auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);\n              \
-    \  if(rs.get(i - mid + 1, i + mid + 1).x == rev.get(l, r).x) {\n             \
-    \       li = mid;\n                }\n                else {\n               \
-    \     ri = mid - 1;\n                }\n            }\n            cout << li*2\
-    \ << \" \";\n        }\n    }\n    \n}\n"
+    \       if(rs.prod(i - mid + 1, i + mid).x == rev.prod(l, r).x) {\n          \
+    \          li = mid;\n                }\n                else {\n            \
+    \        ri = mid - 1;\n                }\n            }\n            cout <<\
+    \ li*2-1 << \" \";\n        }\n        else {\n            int i = ti/2;\n   \
+    \         ll li = 0;\n            ll ri = min<int>(i+1, (ll)S.size() - i - 1);\n\
+    \            while(li < ri) {\n                ll mid = (li + ri + 1) >> 1;\n\
+    \                auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);\n          \
+    \      if(rs.prod(i - mid + 1, i + mid + 1).x == rev.prod(l, r).x) {\n       \
+    \             li = mid;\n                }\n                else {\n         \
+    \           ri = mid - 1;\n                }\n            }\n            cout\
+    \ << li*2 << \" \";\n        }\n    }\n    \n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../String/Rhash.hpp\"\n\nint\
     \ main() {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n    reverse(all(S));\n\
@@ -100,17 +102,17 @@ data:
     \       ll li = 1;\n            ll ri = min<int>(i+1, (ll)S.size() - i);\n   \
     \         while(li < ri) {//oooxxx\n                ll mid = (li + ri + 1) >>\
     \ 1;\n                auto [l, r] = rs.conv(i - mid + 1, i + mid);\n         \
-    \       if(rs.get(i - mid + 1, i + mid).x == rev.get(l, r).x) {\n            \
-    \        li = mid;\n                }\n                else {\n              \
-    \      ri = mid - 1;\n                }\n            }\n            cout << li*2-1\
-    \ << \" \";\n        }\n        else {\n            int i = ti/2;\n          \
-    \  ll li = 0;\n            ll ri = min<int>(i+1, (ll)S.size() - i - 1);\n    \
-    \        while(li < ri) {\n                ll mid = (li + ri + 1) >> 1;\n    \
-    \            auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);\n              \
-    \  if(rs.get(i - mid + 1, i + mid + 1).x == rev.get(l, r).x) {\n             \
-    \       li = mid;\n                }\n                else {\n               \
-    \     ri = mid - 1;\n                }\n            }\n            cout << li*2\
-    \ << \" \";\n        }\n    }\n    \n}"
+    \       if(rs.prod(i - mid + 1, i + mid).x == rev.prod(l, r).x) {\n          \
+    \          li = mid;\n                }\n                else {\n            \
+    \        ri = mid - 1;\n                }\n            }\n            cout <<\
+    \ li*2-1 << \" \";\n        }\n        else {\n            int i = ti/2;\n   \
+    \         ll li = 0;\n            ll ri = min<int>(i+1, (ll)S.size() - i - 1);\n\
+    \            while(li < ri) {\n                ll mid = (li + ri + 1) >> 1;\n\
+    \                auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);\n          \
+    \      if(rs.prod(i - mid + 1, i + mid + 1).x == rev.prod(l, r).x) {\n       \
+    \             li = mid;\n                }\n                else {\n         \
+    \           ri = mid - 1;\n                }\n            }\n            cout\
+    \ << li*2 << \" \";\n        }\n    }\n    \n}"
   dependsOn:
   - Utility/template.hpp
   - String/Rhash.hpp
@@ -118,7 +120,7 @@ data:
   isVerificationFile: true
   path: verify/Rhash_more.test.cpp
   requiredBy: []
-  timestamp: '2024-07-29 21:23:26+09:00'
+  timestamp: '2024-08-05 00:16:53+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Rhash_more.test.cpp

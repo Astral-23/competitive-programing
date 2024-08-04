@@ -49,51 +49,55 @@ data:
     \ os << a.x;\n    }\n\n    bool operator==(mm a) {return x == a.x;}\n    bool\
     \ operator!=(mm a) {return x != a.x;}\n    //bool operator<(const mm& a) const\
     \ {return x < a.x;}\n};\n\nusing rhash = modint<(1LL << 61) - 1>;\n/*\n@brief\
-    \ big_modint\n*/\n#line 2 \"String/Rhash.hpp\"\n\n\nconst ll brh = 2312312;\n\
-    vec<rhash> pw(5000001, 1);\n\nstruct Rhash {\n    int n;\n    vec<rhash> H;\n\n\
-    \    TT Rhash(T S) : n(S.size()) {\n        H = vec<rhash>(n, 0);\n        pw[0]\
-    \ = 1;\n\n        rep(i, 0, n) {\n            H[i] += S[i];\n            if(i)\
-    \ {\n                H[i] += H[i-1] * brh;\n                pw[i] = pw[i-1] *\
-    \ brh;\n            }\n        }\n    }\n\n    rhash get(int l, int r) {\n   \
-    \     assert(0 <= l && r <= n);\n        if(l >= r) return 0;\n        rhash res\
-    \ = H[r-1];\n        if(l) res -= H[l-1] * pw[r-l];\n        return res;\n   \
-    \ }\n\n    rhash get(int p) {\n        return get(p, p+1);\n    }\n\n    //reverse\u3057\
-    \u305F\u30CF\u30C3\u30B7\u30E5\u3092\u9006\u65B9\u5411\u3068\u3057\u3066\u3001\
-    \u6B63\u65B9\u5411\u306E[l, r)\u3068\u5BFE\u5FDC\u3059\u308B\u9006\u65B9\u5411\
-    \u306E\u533A\u9593\u3092\u8FD4\u3059\u3002\n    //\u56DE\u6587\u5224\u5B9A\u306B\
-    \u4F7F\u3046\u3002\n\n    pair<int, int> conv(int l, int r) {\n        return\
-    \ make_pair(n - r, n - l);\n    }\n\n\n    //\u8981\u7D20\u8FFD\u52A0\u3057\u305F\
-    \u3044\u6642\n    TT void push_back(T &h) {\n        n++;\n        H.resize(n);\n\
-    \        pw[n-1] = pw[n-2] * brh;\n        H[n-1] = h + H[n-2] * brh;\n    }\n\
-    \    \n};\n\n\n//\u30CF\u30C3\u30B7\u30E5\u306E\u7D50\u5408\nrhash unit(rhash\
-    \ mae, rhash usiro, int len_of_usiro) {\n    return mae * pw[len_of_usiro] + usiro;\n\
-    }\n\n/*\n@brief Rolling_hash\n@docs doc/Rhash.md\n*/\n"
-  code: "#include \"../Utility/bigmodint.hpp\"\n\n\nconst ll brh = 2312312;\nvec<rhash>\
-    \ pw(5000001, 1);\n\nstruct Rhash {\n    int n;\n    vec<rhash> H;\n\n    TT Rhash(T\
-    \ S) : n(S.size()) {\n        H = vec<rhash>(n, 0);\n        pw[0] = 1;\n\n  \
-    \      rep(i, 0, n) {\n            H[i] += S[i];\n            if(i) {\n      \
-    \          H[i] += H[i-1] * brh;\n                pw[i] = pw[i-1] * brh;\n   \
-    \         }\n        }\n    }\n\n    rhash get(int l, int r) {\n        assert(0\
-    \ <= l && r <= n);\n        if(l >= r) return 0;\n        rhash res = H[r-1];\n\
-    \        if(l) res -= H[l-1] * pw[r-l];\n        return res;\n    }\n\n    rhash\
-    \ get(int p) {\n        return get(p, p+1);\n    }\n\n    //reverse\u3057\u305F\
-    \u30CF\u30C3\u30B7\u30E5\u3092\u9006\u65B9\u5411\u3068\u3057\u3066\u3001\u6B63\
-    \u65B9\u5411\u306E[l, r)\u3068\u5BFE\u5FDC\u3059\u308B\u9006\u65B9\u5411\u306E\
-    \u533A\u9593\u3092\u8FD4\u3059\u3002\n    //\u56DE\u6587\u5224\u5B9A\u306B\u4F7F\
-    \u3046\u3002\n\n    pair<int, int> conv(int l, int r) {\n        return make_pair(n\
-    \ - r, n - l);\n    }\n\n\n    //\u8981\u7D20\u8FFD\u52A0\u3057\u305F\u3044\u6642\
-    \n    TT void push_back(T &h) {\n        n++;\n        H.resize(n);\n        pw[n-1]\
-    \ = pw[n-2] * brh;\n        H[n-1] = h + H[n-2] * brh;\n    }\n    \n};\n\n\n\
-    //\u30CF\u30C3\u30B7\u30E5\u306E\u7D50\u5408\nrhash unit(rhash mae, rhash usiro,\
-    \ int len_of_usiro) {\n    return mae * pw[len_of_usiro] + usiro;\n}\n\n/*\n@brief\
-    \ Rolling_hash\n@docs doc/Rhash.md\n*/"
+    \ big_modint\n*/\n#line 2 \"String/Rhash.hpp\"\n\nstruct Rhash {\n    static const\
+    \ rhash brh;\n    static vec<rhash> pw;\n    static const int MAX_SIZE;\n    int\
+    \ n;\n    vec<rhash> H;\n\n    static void initialize_pow() {\n        pw.resize(MAX_SIZE\
+    \ + 1);\n        pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i -\
+    \ 1] * brh; }\n    }\n\n    Rhash() {\n        if (pw.empty()) initialize_pow();\n\
+    \    }\n\n    Rhash(string S) : n(S.size()) {\n        if (pw.empty()) initialize_pow();\n\
+    \        H = vec<rhash>(n, 0);\n\n        rep(i, 0, n) {\n            H[i] +=\
+    \ S[i];\n            if (i) {\n                H[i] += H[i - 1] * brh;\n     \
+    \       }\n        }\n    }\n\n    rhash prod(ll l, ll r) {\n        assert(0\
+    \ <= l && r <= n);\n        if (l >= r) return 0;\n        rhash res = H[r - 1];\n\
+    \        if (l) res -= H[l - 1] * pw[r - l];\n        return res;\n    }\n\n \
+    \   rhash get(int p) {\n        return prod(p, p + 1);\n    }\n\n    pair<ll,\
+    \ ll> conv(ll l, ll r) {\n        return make_pair(n - r, n - l);\n    }\n};\n\
+    \nconst rhash Rhash::brh = 200224;\nconst int Rhash::MAX_SIZE = 500000;\nvec<rhash>\
+    \ Rhash::pw;\n\nrhash connect(rhash mae, rhash usiro, ll len_of_usiro) {\n   \
+    \ if (len_of_usiro <= Rhash::MAX_SIZE) {\n        return mae * Rhash::pw[len_of_usiro]\
+    \ + usiro;\n    } else {\n        return mae * Rhash::brh.pow(len_of_usiro) +\
+    \ usiro;\n    }\n}\n\nrhash rhash_pow(const rhash &x, const ll &y, ll len) {\n\
+    \    if (!y) return 0;\n    rhash res = rhash_pow(x, y / 2, len);\n    res = connect(res,\
+    \ res, (y / 2) * len);\n    if(y & 1) res = connect(res, x, len);\n    return\
+    \ res;\n}\n\n/*\n@brief Rolling_hash\n@docs doc/Rhash.md\n*/\n"
+  code: "#include \"../Utility/bigmodint.hpp\"\n\nstruct Rhash {\n    static const\
+    \ rhash brh;\n    static vec<rhash> pw;\n    static const int MAX_SIZE;\n    int\
+    \ n;\n    vec<rhash> H;\n\n    static void initialize_pow() {\n        pw.resize(MAX_SIZE\
+    \ + 1);\n        pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i -\
+    \ 1] * brh; }\n    }\n\n    Rhash() {\n        if (pw.empty()) initialize_pow();\n\
+    \    }\n\n    Rhash(string S) : n(S.size()) {\n        if (pw.empty()) initialize_pow();\n\
+    \        H = vec<rhash>(n, 0);\n\n        rep(i, 0, n) {\n            H[i] +=\
+    \ S[i];\n            if (i) {\n                H[i] += H[i - 1] * brh;\n     \
+    \       }\n        }\n    }\n\n    rhash prod(ll l, ll r) {\n        assert(0\
+    \ <= l && r <= n);\n        if (l >= r) return 0;\n        rhash res = H[r - 1];\n\
+    \        if (l) res -= H[l - 1] * pw[r - l];\n        return res;\n    }\n\n \
+    \   rhash get(int p) {\n        return prod(p, p + 1);\n    }\n\n    pair<ll,\
+    \ ll> conv(ll l, ll r) {\n        return make_pair(n - r, n - l);\n    }\n};\n\
+    \nconst rhash Rhash::brh = 200224;\nconst int Rhash::MAX_SIZE = 500000;\nvec<rhash>\
+    \ Rhash::pw;\n\nrhash connect(rhash mae, rhash usiro, ll len_of_usiro) {\n   \
+    \ if (len_of_usiro <= Rhash::MAX_SIZE) {\n        return mae * Rhash::pw[len_of_usiro]\
+    \ + usiro;\n    } else {\n        return mae * Rhash::brh.pow(len_of_usiro) +\
+    \ usiro;\n    }\n}\n\nrhash rhash_pow(const rhash &x, const ll &y, ll len) {\n\
+    \    if (!y) return 0;\n    rhash res = rhash_pow(x, y / 2, len);\n    res = connect(res,\
+    \ res, (y / 2) * len);\n    if(y & 1) res = connect(res, x, len);\n    return\
+    \ res;\n}\n\n/*\n@brief Rolling_hash\n@docs doc/Rhash.md\n*/"
   dependsOn:
   - Utility/bigmodint.hpp
   isVerificationFile: false
   path: String/Rhash.hpp
   requiredBy:
   - example/rhash.example.cpp
-  timestamp: '2024-07-29 21:23:26+09:00'
+  timestamp: '2024-08-05 00:16:53+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Rhash.test.cpp
