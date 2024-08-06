@@ -30,19 +30,19 @@ data:
     \ >> 61) + (t & mod);\n        return (t >= mod) ? t - mod : t;\n    }\n    friend\
     \ mm &operator+=(mm &a, mm b) { return a = a + b; }\n    friend mm &operator-=(mm\
     \ &a, mm b) { return a = a - b; }\n    friend mm &operator*=(mm &a, mm b) { return\
-    \ a = a * b; }\n\n    mm pow(const ll &y) const {\n        if (!y) return 1;\n\
-    \        mm res = pow(y >> 1);\n        res *= res;\n        if (y & 1) res *=\
-    \ *this;\n        return res;\n    }\n\n    friend istream &operator>>(istream\
-    \ &is, mm &a) {\n        ll t;\n\n        cin >> t;\n        a = mm(t);\n    \
-    \    return is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) {\
-    \ return os << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool\
-    \ operator!=(mm a) { return x != a.x; }\n    bool operator<(const mm &a) const\
-    \ { return x < a.x; }\n};\n\nstruct Rhash {\n    static const rhash brh;\n   \
-    \ static vec<rhash> pw;\n    static const int MAX_SIZE;\n    int n;\n    vec<rhash>\
-    \ H;\n\n    static void initialize_pow() {\n        pw.resize(MAX_SIZE + 1);\n\
-    \        pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i - 1] * brh;\
-    \ }\n    }\n\n    Rhash() {\n        if (pw.empty()) initialize_pow();\n    }\n\
-    \n    Rhash(string S) : n(S.size()) {\n        if (pw.empty()) initialize_pow();\n\
+    \ a = a * b; }\n\n    mm pow(ll y) const {\n        mm res = 1;\n        mm v\
+    \ = *this;\n        while (y) {\n            if (y & 1) res *= v;\n          \
+    \  v *= v;\n            y /= 2;\n        }\n        return res;\n    }\n\n   \
+    \ friend istream &operator>>(istream &is, mm &a) {\n        ll t;\n\n        cin\
+    \ >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend ostream &operator<<(ostream\
+    \ &os, mm a) { return os << a.x; }\n\n    bool operator==(mm a) { return x ==\
+    \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n    bool operator<(const\
+    \ mm &a) const { return x < a.x; }\n};\n\nstruct Rhash {\n    static const rhash\
+    \ brh;\n    static vec<rhash> pw;\n    static const int MAX_SIZE;\n    int n;\n\
+    \    vec<rhash> H;\n\n    static void initialize_pow() {\n        pw.resize(MAX_SIZE\
+    \ + 1);\n        pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i -\
+    \ 1] * brh; }\n    }\n\n    Rhash() {\n        if (pw.empty()) initialize_pow();\n\
+    \    }\n\n    Rhash(string S) : n(S.size()) {\n        if (pw.empty()) initialize_pow();\n\
     \        H = vec<rhash>(n, 0);\n\n        rep(i, 0, n) {\n            H[i] +=\
     \ S[i];\n            if (i) {\n                H[i] += H[i - 1] * brh;\n     \
     \       }\n        }\n    }\n\n    rhash prod(ll l, ll r) {\n        assert(0\
@@ -69,42 +69,42 @@ data:
     \ (__uint128_t)(a.x) * b.x;\n        t = (t >> 61) + (t & mod);\n        return\
     \ (t >= mod) ? t - mod : t;\n    }\n    friend mm &operator+=(mm &a, mm b) { return\
     \ a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return a = a - b; }\n\
-    \    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n\n    mm pow(const\
-    \ ll &y) const {\n        if (!y) return 1;\n        mm res = pow(y >> 1);\n \
-    \       res *= res;\n        if (y & 1) res *= *this;\n        return res;\n \
-    \   }\n\n    friend istream &operator>>(istream &is, mm &a) {\n        ll t;\n\
-    \n        cin >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend\
-    \ ostream &operator<<(ostream &os, mm a) { return os << a.x; }\n\n    bool operator==(mm\
-    \ a) { return x == a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n  \
-    \  bool operator<(const mm &a) const { return x < a.x; }\n};\n\nstruct Rhash {\n\
-    \    static const rhash brh;\n    static vec<rhash> pw;\n    static const int\
-    \ MAX_SIZE;\n    int n;\n    vec<rhash> H;\n\n    static void initialize_pow()\
-    \ {\n        pw.resize(MAX_SIZE + 1);\n        pw[0] = 1;\n        rep(i, 1, MAX_SIZE\
-    \ + 1) { pw[i] = pw[i - 1] * brh; }\n    }\n\n    Rhash() {\n        if (pw.empty())\
-    \ initialize_pow();\n    }\n\n    Rhash(string S) : n(S.size()) {\n        if\
-    \ (pw.empty()) initialize_pow();\n        H = vec<rhash>(n, 0);\n\n        rep(i,\
-    \ 0, n) {\n            H[i] += S[i];\n            if (i) {\n                H[i]\
-    \ += H[i - 1] * brh;\n            }\n        }\n    }\n\n    rhash prod(ll l,\
-    \ ll r) {\n        assert(0 <= l && r <= n);\n        if (l >= r) return 0;\n\
-    \        rhash res = H[r - 1];\n        if (l) res -= H[l - 1] * pw[r - l];\n\
-    \        return res;\n    }\n\n    rhash get(int p) { return prod(p, p + 1); }\n\
-    \n    pair<ll, ll> conv(ll l, ll r) { return make_pair(n - r, n - l); }\n};\n\n\
-    const rhash Rhash::brh = 200224;\nconst int Rhash::MAX_SIZE = 500000;\nvec<rhash>\
-    \ Rhash::pw;\n\nrhash connect(rhash mae, rhash usiro, ll len_of_usiro) {\n   \
-    \ if (len_of_usiro <= Rhash::MAX_SIZE) {\n        return mae * Rhash::pw[len_of_usiro]\
-    \ + usiro;\n    } else {\n        return mae * Rhash::brh.pow(len_of_usiro) +\
-    \ usiro;\n    }\n}\n\nrhash rhash_pow(rhash x, ll y, ll len) {\n    rhash res\
-    \ = 0;\n    rhash len_pw;\n    if (len <= Rhash::MAX_SIZE)\n        len_pw = Rhash::pw[len];\n\
-    \    else\n        len_pw = Rhash::brh.pow(len);\n\n    while (y) {\n        if\
-    \ (y & 1) {\n            res = res * len_pw + x;\n        }\n        x = x * len_pw\
-    \ + x;\n        y /= 2;\n        len_pw *= len_pw;\n    }\n    return res;\n}\n\
-    \n/*\n@brief Rolling_hash\n@docs doc/Rhash.md\n*/"
+    \    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n\n    mm pow(ll\
+    \ y) const {\n        mm res = 1;\n        mm v = *this;\n        while (y) {\n\
+    \            if (y & 1) res *= v;\n            v *= v;\n            y /= 2;\n\
+    \        }\n        return res;\n    }\n\n    friend istream &operator>>(istream\
+    \ &is, mm &a) {\n        ll t;\n\n        cin >> t;\n        a = mm(t);\n    \
+    \    return is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) {\
+    \ return os << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool\
+    \ operator!=(mm a) { return x != a.x; }\n    bool operator<(const mm &a) const\
+    \ { return x < a.x; }\n};\n\nstruct Rhash {\n    static const rhash brh;\n   \
+    \ static vec<rhash> pw;\n    static const int MAX_SIZE;\n    int n;\n    vec<rhash>\
+    \ H;\n\n    static void initialize_pow() {\n        pw.resize(MAX_SIZE + 1);\n\
+    \        pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i - 1] * brh;\
+    \ }\n    }\n\n    Rhash() {\n        if (pw.empty()) initialize_pow();\n    }\n\
+    \n    Rhash(string S) : n(S.size()) {\n        if (pw.empty()) initialize_pow();\n\
+    \        H = vec<rhash>(n, 0);\n\n        rep(i, 0, n) {\n            H[i] +=\
+    \ S[i];\n            if (i) {\n                H[i] += H[i - 1] * brh;\n     \
+    \       }\n        }\n    }\n\n    rhash prod(ll l, ll r) {\n        assert(0\
+    \ <= l && r <= n);\n        if (l >= r) return 0;\n        rhash res = H[r - 1];\n\
+    \        if (l) res -= H[l - 1] * pw[r - l];\n        return res;\n    }\n\n \
+    \   rhash get(int p) { return prod(p, p + 1); }\n\n    pair<ll, ll> conv(ll l,\
+    \ ll r) { return make_pair(n - r, n - l); }\n};\n\nconst rhash Rhash::brh = 200224;\n\
+    const int Rhash::MAX_SIZE = 500000;\nvec<rhash> Rhash::pw;\n\nrhash connect(rhash\
+    \ mae, rhash usiro, ll len_of_usiro) {\n    if (len_of_usiro <= Rhash::MAX_SIZE)\
+    \ {\n        return mae * Rhash::pw[len_of_usiro] + usiro;\n    } else {\n   \
+    \     return mae * Rhash::brh.pow(len_of_usiro) + usiro;\n    }\n}\n\nrhash rhash_pow(rhash\
+    \ x, ll y, ll len) {\n    rhash res = 0;\n    rhash len_pw;\n    if (len <= Rhash::MAX_SIZE)\n\
+    \        len_pw = Rhash::pw[len];\n    else\n        len_pw = Rhash::brh.pow(len);\n\
+    \n    while (y) {\n        if (y & 1) {\n            res = res * len_pw + x;\n\
+    \        }\n        x = x * len_pw + x;\n        y /= 2;\n        len_pw *= len_pw;\n\
+    \    }\n    return res;\n}\n\n/*\n@brief Rolling_hash\n@docs doc/Rhash.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: String/Rhash.hpp
   requiredBy:
   - example/rhash.example.cpp
-  timestamp: '2024-08-06 18:04:28+09:00'
+  timestamp: '2024-08-06 18:24:28+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Rhash.test.cpp
