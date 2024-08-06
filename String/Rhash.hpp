@@ -1,4 +1,55 @@
-#include "../Utility/bigmodint.hpp"
+struct rhash {
+    static const uint64_t mod = (1LL << 61) - 1;
+    using mm = rhash;
+    uint64_t x;
+
+    rhash() : x(0) {}
+    TT rhash(T a = 0) : x((__int128_t(a) % mod + mod)) {
+        if (x >= mod) x -= mod;
+    }
+
+    friend mm operator+(mm a, mm b) {
+        a.x += b.x;
+        if (a.x >= mod) a.x -= mod;
+        return a;
+    }
+    friend mm operator-(mm a, mm b) {
+        a.x -= b.x;
+        if (a.x >= mod) a.x += mod;
+        return a;
+    }
+
+    friend mm operator*(mm a, mm b) {
+        __uint128_t t = (__uint128_t)(a.x) * b.x;
+        t = (t >> 61) + (t & mod);
+        return (t >= mod) ? t - mod : t;
+    }
+    friend mm &operator+=(mm &a, mm b) { return a = a + b; }
+    friend mm &operator-=(mm &a, mm b) { return a = a - b; }
+    friend mm &operator*=(mm &a, mm b) { return a = a * b; }
+
+    mm pow(const ll &y) const {
+        if (!y) return 1;
+        mm res = pow(y >> 1);
+        res *= res;
+        if (y & 1) res *= *this;
+        return res;
+    }
+
+    friend istream &operator>>(istream &is, mm &a) {
+        ll t;
+
+        cin >> t;
+        a = mm(t);
+        return is;
+    }
+
+    friend ostream &operator<<(ostream &os, mm a) { return os << a.x; }
+
+    bool operator==(mm a) { return x == a.x; }
+    bool operator!=(mm a) { return x != a.x; }
+    bool operator<(const mm &a) const { return x < a.x; }
+};
 
 struct Rhash {
     static const rhash brh;
@@ -37,13 +88,9 @@ struct Rhash {
         return res;
     }
 
-    rhash get(int p) {
-        return prod(p, p + 1);
-    }
+    rhash get(int p) { return prod(p, p + 1); }
 
-    pair<ll, ll> conv(ll l, ll r) {
-        return make_pair(n - r, n - l);
-    }
+    pair<ll, ll> conv(ll l, ll r) { return make_pair(n - r, n - l); }
 };
 
 const rhash Rhash::brh = 200224;
@@ -58,11 +105,22 @@ rhash connect(rhash mae, rhash usiro, ll len_of_usiro) {
     }
 }
 
-rhash rhash_pow(const rhash &x, const ll &y, ll len) {
-    if (!y) return 0;
-    rhash res = rhash_pow(x, y / 2, len);
-    res = connect(res, res, (y / 2) * len);
-    if(y & 1) res = connect(res, x, len);
+rhash rhash_pow(rhash x, ll y, ll len) {
+    rhash res = 0;
+    rhash len_pw;
+    if (len <= Rhash::MAX_SIZE)
+        len_pw = Rhash::pw[len];
+    else
+        len_pw = Rhash::brh.pow(len);
+
+    while (y) {
+        if (y & 1) {
+            res = res * len_pw + x;
+        }
+        x = x * len_pw + x;
+        y /= 2;
+        len_pw *= len_pw;
+    }
     return res;
 }
 
