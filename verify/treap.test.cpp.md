@@ -61,67 +61,70 @@ data:
     \ (*composition)(F, F), F (*id)()>\nstruct treap {\n    xorshift rnd;\n    int\
     \ sz = 0; \n    private:\n        struct node_t{\n            node_t* lch;\n \
     \           node_t* rch;\n            int pri, cnt;\n            S val, acc;\n\
-    \            F lazy;\n            bool rev;\n \n            node_t(S v, int p)\
-    \ : val(v), pri(p), acc(v) , lch(nullptr), rch(nullptr), rev(false), cnt(1) {\n\
-    \                lch = rch = nullptr;\n                rev = false;\n        \
-    \        lazy = id();\n            }\n        };\n\n        using np = node_t*;\n\
-    \n        np root = nullptr;\n\n        long long count(np t) {return !t ? 0 :\
-    \ t -> cnt;}\n        \n        S acc(np t) {return !t ? e() : t -> acc; }\n\n\
-    \        np pushup(np t) {\n            if(t) {\n                t -> cnt = count(t\
-    \ -> lch) + count(t -> rch) + 1;\n                t -> acc = op(op(acc(t -> lch),\
-    \ t -> val),  acc(t -> rch));\n            }\n            return t;\n        }\n\
-    \ \n        void pushdown(node_t *t) {\n            if(t && t -> rev) {\n    \
-    \            swap(t -> lch, t -> rch);\n                if(t -> lch) t -> lch\
-    \ -> rev ^= 1;\n                if(t -> rch) t -> rch -> rev ^= 1;\n         \
-    \       t -> rev = false;\n            }\n\n            if(t) {\n            \
-    \    if(t -> lch) {\n                    t -> lch-> lazy = composition(t -> lazy,\
-    \ t -> lch -> lazy);\n                    t -> lch -> acc = mapping(t -> lazy,\
-    \ t -> lch -> acc);\n                }\n\n                if(t -> rch) {\n   \
-    \                 t -> rch -> lazy = composition(t -> lazy, t -> rch -> lazy);\n\
-    \                    t -> rch -> acc = mapping(t -> lazy, t -> rch -> acc);\n\
+    \            F lazy;\n            bool rev;\n            bool have_e;\n \n   \
+    \         node_t(S v, int p) : val(v), pri(p), acc(v) , lch(nullptr), rch(nullptr),\
+    \ rev(false), cnt(1) {\n                lch = rch = nullptr;\n               \
+    \ rev = false;\n                have_e = false;\n                lazy = id();\n\
+    \            }\n        };\n\n        using np = node_t*;\n\n        np root =\
+    \ nullptr;\n\n        long long count(np t) {return !t ? 0 : t -> cnt;}\n    \
+    \    \n        S acc(np t) {return !t ? e() : t -> acc; }\n\n        np pushup(np\
+    \ t) {\n            if(t) {\n                t -> cnt = count(t -> lch) + count(t\
+    \ -> rch) + 1;\n                t -> acc = op(op(acc(t -> lch), t -> val),  acc(t\
+    \ -> rch));\n            }\n            return t;\n        }\n \n        void\
+    \ pushdown(node_t *t) {\n            if(t && t -> rev) {\n                swap(t\
+    \ -> lch, t -> rch);\n                if(t -> lch) t -> lch -> rev ^= 1;\n   \
+    \             if(t -> rch) t -> rch -> rev ^= 1;\n                t -> rev = false;\n\
+    \            }\n\n            if(t && t -> have_e) {\n                if(t ->\
+    \ lch) {\n                    t -> lch-> lazy = composition(t -> lazy, t -> lch\
+    \ -> lazy);\n                    t -> lch -> acc = mapping(t -> lazy, t -> lch\
+    \ -> acc);\n                    t -> lch -> have_e = true;\n                }\n\
+    \n                if(t -> rch) {\n                    t -> rch -> lazy = composition(t\
+    \ -> lazy, t -> rch -> lazy);\n                    t -> rch -> acc = mapping(t\
+    \ -> lazy, t -> rch -> acc);\n                    t -> rch -> have_e = true;\n\
     \                }\n                t -> val = mapping(t -> lazy, t -> val);\n\
-    \                t -> lazy = id();\n            }\n            pushup(t);\n  \
-    \      }\n \n        void merge(np& t, np l, np r) {\n            pushdown(l),\
-    \ pushdown(r);\n            if(!l || !r) t =  !l ? r : l;\n            else if(l\
-    \ -> pri > r -> pri) {\n                merge(l -> rch, l -> rch, r);\n      \
-    \          t = l;\n            } else {\n               merge(r -> lch, l,r ->\
-    \ lch);\n               t = r;\n            }\n            pushup(t);\n      \
-    \  }\n\n        void split(np t, int k, np& tl, np& tr) {// [0, k) [k, n)\n  \
-    \          if(!t) {\n                tl = nullptr, tr = nullptr;\n           \
-    \     return;\n            }\n            pushdown(t);\n \n            if(k <=\
-    \ count(t -> lch)) {\n                split(t -> lch, k, tl, t -> lch);\n    \
-    \            tr = t;\n            }else {\n                split(t -> rch, k -\
-    \ count(t -> lch) - 1, t -> rch, tr);\n                tl = t;\n            }\n\
-    \            pushup(t);\n        }\n\n        \n        void dump__(np t, vector<S>&\
-    \ res) {\n            if(!t) return;\n            pushdown(t);\n            dump__(t\
-    \ -> lch, res);\n            res.push_back(t -> val);\n            dump__(t ->\
-    \ rch, res);\n        }\n\n\n    public:\n        void insert(int p, S val) {\n\
-    \            assert(0 <= p && p <= size());\n            np nw = new node_t(val,\
-    \ rnd.random());\n            np tl; np tr;\n            split(root, p, tl, tr);\n\
-    \            merge(tl, tl, nw);\n            merge(root, tl, tr);\n          \
-    \  sz++;\n        }\n\n        void push_back(S val) {insert(size(), val);}\n\
-    \ \n        void erase(int p) {\n            assert(0 <= p && p < size());\n \
-    \           np tl; np tm; np tr;\n            split(root, p+1, tl, tm);\n    \
-    \        split(tl, p, tl, tr);\n            merge(root, tl, tm);\n           \
-    \ sz--;\n        }\n\n        void pop_back() {\n            assert(size()>0);\n\
-    \            erase(size()-1);\n        }\n\n\n        S prod(int l, int r) {\n\
-    \            if(l >= r) return e();\n            assert(0 <= l && r <= size());\n\
+    \                t -> lazy = id();\n                t -> have_e = false;\n   \
+    \         }\n            pushup(t);\n        }\n \n        void merge(np& t, np\
+    \ l, np r) {\n            pushdown(l), pushdown(r);\n            if(!l || !r)\
+    \ t =  !l ? r : l;\n            else if(l -> pri > r -> pri) {\n             \
+    \   merge(l -> rch, l -> rch, r);\n                t = l;\n            } else\
+    \ {\n               merge(r -> lch, l,r -> lch);\n               t = r;\n    \
+    \        }\n            pushup(t);\n        }\n\n        void split(np t, int\
+    \ k, np& tl, np& tr) {// [0, k) [k, n)\n            if(!t) {\n               \
+    \ tl = nullptr, tr = nullptr;\n                return;\n            }\n      \
+    \      pushdown(t);\n \n            if(k <= count(t -> lch)) {\n             \
+    \   split(t -> lch, k, tl, t -> lch);\n                tr = t;\n            }else\
+    \ {\n                split(t -> rch, k - count(t -> lch) - 1, t -> rch, tr);\n\
+    \                tl = t;\n            }\n            pushup(t);\n        }\n\n\
+    \        \n        void dump__(np t, vector<S>& res) {\n            if(!t) return;\n\
+    \            pushdown(t);\n            dump__(t -> lch, res);\n            res.push_back(t\
+    \ -> val);\n            dump__(t -> rch, res);\n        }\n\n\n    public:\n \
+    \       void insert(int p, S val) {\n            assert(0 <= p && p <= size());\n\
+    \            np nw = new node_t(val, rnd.random());\n            np tl; np tr;\n\
+    \            split(root, p, tl, tr);\n            merge(tl, tl, nw);\n       \
+    \     merge(root, tl, tr);\n            sz++;\n        }\n\n        void push_back(S\
+    \ val) {insert(size(), val);}\n \n        void erase(int p) {\n            assert(0\
+    \ <= p && p < size());\n            np tl; np tm; np tr;\n            split(root,\
+    \ p+1, tl, tm);\n            split(tl, p, tl, tr);\n            merge(root, tl,\
+    \ tm);\n            sz--;\n        }\n\n        void pop_back() {\n          \
+    \  assert(size()>0);\n            erase(size()-1);\n        }\n\n\n        S prod(int\
+    \ l, int r) {\n            if(l >= r) return e();\n            assert(0 <= l &&\
+    \ r <= size());\n            np tl; np tm; np tr;\n            split(root, l,\
+    \ tl, tm);\n            split(tm, r-l, tm, tr);\n            S res = acc(tm);\n\
+    \            merge(tm, tm, tr);\n            merge(root, tl, tm);\n          \
+    \  return res;\n        }\n\n        S all_prod() {\n            assert(size()\
+    \ > 0);\n            pushdown(root);\n            pushup(root);\n            return\
+    \ root -> acc;\n        }\n\n        S get(int p) {\n            assert(0 <= p\
+    \ && p < size());\n            return prod(p, p+1);\n        }\n\n        void\
+    \ apply(int p, F f) {apply(p, p+1, f);}\n\n        void apply(int l, int r, F\
+    \ f) {\n            if(l >= r) return;\n            assert(0 <= l && r <= size());\n\
     \            np tl; np tm; np tr;\n            split(root, l, tl, tm);\n     \
-    \       split(tm, r-l, tm, tr);\n            S res = acc(tm);\n            merge(tm,\
-    \ tm, tr);\n            merge(root, tl, tm);\n            return res;\n      \
-    \  }\n\n        S all_prod() {\n            assert(size() > 0);\n            pushdown(root);\n\
-    \            pushup(root);\n            return root -> acc;\n        }\n\n   \
-    \     S get(int p) {\n            assert(0 <= p && p < size());\n            return\
-    \ prod(p, p+1);\n        }\n\n        void apply(int p, F f) {apply(p, p+1, f);}\n\
-    \n        void apply(int l, int r, F f) {\n            if(l >= r) return;\n  \
-    \          assert(0 <= l && r <= size());\n            np tl; np tm; np tr;\n\
-    \            split(root, l, tl, tm);\n            split(tm, r - l, tm, tr);\n\
-    \            tm -> lazy = composition(tm -> lazy, f);\n            tm -> acc =\
-    \ mapping(f, tm -> acc);\n            merge(tm, tm, tr);\n            merge(root,\
-    \ tl, tm);\n        }\n\n\n        void reverse(int l, int r) {//[l, r)\u3092\
-    reverse\n            if(l >= r) return;\n            assert(0 <= l && r <= size());\n\
-    \            np tl; np tm; np tr;\n            split(root, l, tl, tm);\n     \
-    \       split(tm, r - l, tm, tr);\n            tm -> rev ^= 1;\n            merge(tm,\
+    \       split(tm, r - l, tm, tr);\n            tm -> have_e = true;\n        \
+    \    tm -> lazy = composition(tm -> lazy, f);\n            tm -> acc = mapping(f,\
+    \ tm -> acc);\n            merge(tm, tm, tr);\n            merge(root, tl, tm);\n\
+    \        }\n\n\n        void reverse(int l, int r) {//[l, r)\u3092reverse\n  \
+    \          if(l >= r) return;\n            assert(0 <= l && r <= size());\n  \
+    \          np tl; np tm; np tr;\n            split(root, l, tl, tm);\n       \
+    \     split(tm, r - l, tm, tr);\n            tm -> rev ^= 1;\n            merge(tm,\
     \ tm, tr);\n            merge(root, tl, tm);\n        }\n \n        void rotate(int\
     \ l, int m, int r) {//[l, r) \u3092 m\u304C\u5148\u982D\u306B\u6765\u308B\u69D8\
     \u306Breverse\n            if(l >= r) return;\n            assert(l <= m && m\
@@ -129,7 +132,7 @@ data:
     \            reverse(l, l + r - m);\n            reverse(l + r - m, r);\n    \
     \    }\n      \n        vector<S> dump() {\n            vector<S> res;\n     \
     \       dump__(root, res);\n            return res;\n        }\n\n        int\
-    \ size() {\n            return sz;\n        }\n \n};\n\n\n/*\n@brief treap\n@docs\
+    \ size() {\n            return sz;\n        }\n \n};\n/*\n@brief treap\n@docs\
     \ doc/treap.md\n*/\n#line 5 \"verify/treap.test.cpp\"\nusing mint = modint<998244353>;\n\
     \nstruct S {\n     mint s; int sz;\n};\n\nS op(S l, S r) {\n    return S{l.s +\
     \ r.s, l.sz + r.sz};\n}\n\nS e() {\n    return S{mint(0), 0};\n}\n\nstruct F {\n\
@@ -181,7 +184,7 @@ data:
   isVerificationFile: true
   path: verify/treap.test.cpp
   requiredBy: []
-  timestamp: '2024-08-06 18:23:20+09:00'
+  timestamp: '2024-08-06 18:45:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/treap.test.cpp
