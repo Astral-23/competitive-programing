@@ -1,23 +1,11 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
-    path: String/Rhash.hpp
-    title: Rolling_hash
-  - icon: ':warning:'
-    path: example/rhash.example.cpp
-    title: example/rhash.example.cpp
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/Rhash.test.cpp
-    title: verify/Rhash.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/Rhash_more.test.cpp
-    title: verify/Rhash_more.test.cpp
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     document_title: big_modint
     links: []
@@ -79,14 +67,10 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Utility/bigmodint.hpp
-  requiredBy:
-  - example/rhash.example.cpp
-  - String/Rhash.hpp
+  requiredBy: []
   timestamp: '2024-07-29 21:23:26+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/Rhash.test.cpp
-  - verify/Rhash_more.test.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: Utility/bigmodint.hpp
 layout: document
 redirect_from:

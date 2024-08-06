@@ -182,7 +182,7 @@ data:
       title: "mp\u6CD5"
   - name: Utility
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':warning:'
       path: Utility/bigmodint.hpp
       title: big_modint
     - icon: ':warning:'
