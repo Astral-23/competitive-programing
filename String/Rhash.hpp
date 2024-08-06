@@ -28,11 +28,14 @@ struct rhash {
     friend mm &operator-=(mm &a, mm b) { return a = a - b; }
     friend mm &operator*=(mm &a, mm b) { return a = a * b; }
 
-    mm pow(const ll &y) const {
-        if (!y) return 1;
-        mm res = pow(y >> 1);
-        res *= res;
-        if (y & 1) res *= *this;
+    mm pow(ll y) const {
+        mm res = 1;
+        mm v = *this;
+        while (y) {
+            if (y & 1) res *= v;
+            v *= v;
+            y /= 2;
+        }
         return res;
     }
 
