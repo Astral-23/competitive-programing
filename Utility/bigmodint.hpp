@@ -18,7 +18,9 @@ struct modint{
     uint64_t x;
 
     modint() : x(0){}
-    TT modint(T a=0) : x((__int128_t(a) % mod + mod) % mod){}
+    TT modint(T a=0) : x((__int128_t(a) % mod + mod)){
+        if(x >= mod) x -= mod;
+    }
 
     friend mm operator+(mm a, mm b) {
         a.x += b.x;
