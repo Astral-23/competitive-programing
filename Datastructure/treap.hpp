@@ -27,10 +27,12 @@ struct treap {
             S val, acc;
             F lazy;
             bool rev;
+            bool have_e;
  
             node_t(S v, int p) : val(v), pri(p), acc(v) , lch(nullptr), rch(nullptr), rev(false), cnt(1) {
                 lch = rch = nullptr;
                 rev = false;
+                have_e = false;
                 lazy = id();
             }
         };
@@ -59,18 +61,21 @@ struct treap {
                 t -> rev = false;
             }
 
-            if(t) {
+            if(t && t -> have_e) {
                 if(t -> lch) {
                     t -> lch-> lazy = composition(t -> lazy, t -> lch -> lazy);
                     t -> lch -> acc = mapping(t -> lazy, t -> lch -> acc);
+                    t -> lch -> have_e = true;
                 }
 
                 if(t -> rch) {
                     t -> rch -> lazy = composition(t -> lazy, t -> rch -> lazy);
                     t -> rch -> acc = mapping(t -> lazy, t -> rch -> acc);
+                    t -> rch -> have_e = true;
                 }
                 t -> val = mapping(t -> lazy, t -> val);
                 t -> lazy = id();
+                t -> have_e = false;
             }
             pushup(t);
         }
@@ -175,6 +180,7 @@ struct treap {
             np tl; np tm; np tr;
             split(root, l, tl, tm);
             split(tm, r - l, tm, tr);
+            tm -> have_e = true;
             tm -> lazy = composition(tm -> lazy, f);
             tm -> acc = mapping(f, tm -> acc);
             merge(tm, tm, tr);
@@ -213,8 +219,6 @@ struct treap {
         }
  
 };
-
-
 /*
 @brief treap
 @docs doc/treap.md
