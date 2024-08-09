@@ -17,12 +17,6 @@ TT struct static1dsum {
         built = true;
     }
 
-    T operator[](int i) const {
-        assert(built == true);
-        assert(0 <= i && i < n);
-        return prod(i, i + 1);
-    }
-
     T prod(int l, int r) {
         assert(built);
         assert(0 <= l && r <= n);

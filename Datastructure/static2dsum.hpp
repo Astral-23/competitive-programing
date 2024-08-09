@@ -32,13 +32,6 @@ TT struct static2dsum {
         f = true;
     }
 
-    T get(int i, int j) {
-        assert(f);
-        assert(0 <= i && i < h);
-        assert(0 <= j && j < w);
-        return dat[i][j];
-    }
-
     T prod(int sy, int ty, int sx, int tx) {
         assert(f);
         assert(0 <= sy && ty <= h);
