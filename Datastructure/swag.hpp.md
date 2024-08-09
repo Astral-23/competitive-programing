@@ -95,8 +95,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/swag_more.test.cpp
-  - verify/limited_knapsack.test.cpp
   - verify/swag.test.cpp
+  - verify/limited_knapsack.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Datastructure/swag.hpp
 layout: document

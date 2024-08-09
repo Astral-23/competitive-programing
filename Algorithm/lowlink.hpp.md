@@ -71,9 +71,9 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lowlink_joint.test.cpp
-  - verify/lowlink_bridge.test.cpp
   - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
+  - verify/lowlink_bridge.test.cpp
+  - verify/lowlink_joint.test.cpp
 documentation_of: Algorithm/lowlink.hpp
 layout: document
 redirect_from:

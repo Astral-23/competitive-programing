@@ -34,15 +34,13 @@ data:
     \ += x;\n    }\n\n\n    void build() {\n        rep(i, 0, h) {\n            rep(j,\
     \ 0, w - 1) { dat[i][j + 1] += dat[i][j]; }\n        }\n\n        rep(j, 0, w)\
     \ {\n            rep(i, 0, h - 1) { dat[i + 1][j] += dat[i][j]; }\n        }\n\
-    \n        f = true;\n    }\n\n    T get(int i, int j) {\n        assert(f);\n\
-    \        assert(0 <= i && i < h);\n        assert(0 <= j && j < w);\n        return\
-    \ dat[i][j];\n    }\n\n    T prod(int sy, int ty, int sx, int tx) {\n        assert(f);\n\
-    \        assert(0 <= sy && ty <= h);\n        assert(0 <= sx && tx <= w);\n  \
-    \      assert(sy <= ty);\n        assert(sx <= tx);\n        tx--, ty--;\n   \
-    \     T res = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n    \
-    \    if (sy > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res +=\
-    \ dat[sy - 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\
-    \u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/\n#line 4 \"verify/static2dsum.test.cpp\"\
+    \n        f = true;\n    }\n\n    T prod(int sy, int ty, int sx, int tx) {\n \
+    \       assert(f);\n        assert(0 <= sy && ty <= h);\n        assert(0 <= sx\
+    \ && tx <= w);\n        assert(sy <= ty);\n        assert(sx <= tx);\n       \
+    \ tx--, ty--;\n        T res = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx\
+    \ - 1];\n        if (sy > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy\
+    \ > 0) res += dat[sy - 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief\
+    \ 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/\n#line 4 \"verify/static2dsum.test.cpp\"\
     \n\nint main() {\n    int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n\
     \    static2dsum<ll> J(h, w);\n    static2dsum<ll> O(h, w);\n    static2dsum<ll>\
     \ I(h, w);\n\n\n    rep(i, 0, h) rep(j, 0, w) {\n        char a;\n        cin\
@@ -69,7 +67,7 @@ data:
   isVerificationFile: true
   path: verify/static2dsum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-03 19:07:07+09:00'
+  timestamp: '2024-08-10 06:12:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/static2dsum.test.cpp
