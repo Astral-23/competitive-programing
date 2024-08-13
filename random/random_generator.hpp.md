@@ -8,25 +8,25 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"random/random_generator.hpp\"\nstruct RNG {\n    mt19937_64\
-    \ mt;\n    RNG() {mt = mt19937_64(clock());}\n\n    int rndint(int l, int r) {\
-    \ return mt()%(r-l+1)+l; }\n    ll rndll(ll l, ll r) { return mt()%(r-l+1)+l;\
-    \ }\n    TT vec<T> rvec(int n, T l, T r) {\n        vec<T> res(n);\n        for(T&\
-    \ x : res) x = rndll(l, r);\n        return res;\n    }\n\n    string rstr(int\
-    \ n, char l, char r) {\n        string res;\n        rep(i, 0, n) res += l + rndint(0,\
-    \ r-l);\n        return res;\n    }\n    \n};\n"
-  code: "struct RNG {\n    mt19937_64 mt;\n    RNG() {mt = mt19937_64(clock());}\n\
-    \n    int rndint(int l, int r) { return mt()%(r-l+1)+l; }\n    ll rndll(ll l,\
-    \ ll r) { return mt()%(r-l+1)+l; }\n    TT vec<T> rvec(int n, T l, T r) {\n  \
-    \      vec<T> res(n);\n        for(T& x : res) x = rndll(l, r);\n        return\
-    \ res;\n    }\n\n    string rstr(int n, char l, char r) {\n        string res;\n\
-    \        rep(i, 0, n) res += l + rndint(0, r-l);\n        return res;\n    }\n\
-    \    \n};\n"
+  bundledCode: "#line 1 \"random/random_generator.hpp\"\nnamespace RNG {\nstatic mt19937_64\
+    \ engine(clock());\ntemplate <typename T = long long> T rnd(T l, T r) {\n    return\
+    \ engine() % (r - l) + l;\n}\nstring rstr(ll len, char l, char r) {\n    string\
+    \ res;\n    for (int i = 0; i < len; i++) res += l + rnd(0, int(r - l));\n   \
+    \ return res;\n}\ntemplate <typename T> vector<T> rvec(ll len, T l, T r) {\n \
+    \   vector<T> res(len);\n    for (T &x : res) x = rnd<T>(l, r);\n    return res;\n\
+    }\n}  // namespace RNG\nusing namespace RNG;\n"
+  code: "namespace RNG {\nstatic mt19937_64 engine(clock());\ntemplate <typename T\
+    \ = long long> T rnd(T l, T r) {\n    return engine() % (r - l) + l;\n}\nstring\
+    \ rstr(ll len, char l, char r) {\n    string res;\n    for (int i = 0; i < len;\
+    \ i++) res += l + rnd(0, int(r - l));\n    return res;\n}\ntemplate <typename\
+    \ T> vector<T> rvec(ll len, T l, T r) {\n    vector<T> res(len);\n    for (T &x\
+    \ : res) x = rnd<T>(l, r);\n    return res;\n}\n}  // namespace RNG\nusing namespace\
+    \ RNG;"
   dependsOn: []
   isVerificationFile: false
   path: random/random_generator.hpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-13 15:37:38+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: random/random_generator.hpp
