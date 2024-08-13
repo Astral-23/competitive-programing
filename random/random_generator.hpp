@@ -1,19 +1,17 @@
-struct RNG {
-    mt19937_64 mt;
-    RNG() {mt = mt19937_64(clock());}
-
-    int rndint(int l, int r) { return mt()%(r-l+1)+l; }
-    ll rndll(ll l, ll r) { return mt()%(r-l+1)+l; }
-    TT vec<T> rvec(int n, T l, T r) {
-        vec<T> res(n);
-        for(T& x : res) x = rndll(l, r);
-        return res;
-    }
-
-    string rstr(int n, char l, char r) {
-        string res;
-        rep(i, 0, n) res += l + rndint(0, r-l);
-        return res;
-    }
-    
-};
+namespace RNG {
+static mt19937_64 engine(clock());
+template <typename T = long long> T rnd(T l, T r) {
+    return engine() % (r - l) + l;
+}
+string rstr(ll len, char l, char r) {
+    string res;
+    for (int i = 0; i < len; i++) res += l + rnd(0, int(r - l));
+    return res;
+}
+template <typename T> vector<T> rvec(ll len, T l, T r) {
+    vector<T> res(len);
+    for (T &x : res) x = rnd<T>(l, r);
+    return res;
+}
+}  // namespace RNG
+using namespace RNG;
