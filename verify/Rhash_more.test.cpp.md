@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: String/Rhash.hpp
-    title: String/Rhash.hpp
+    title: rolling_hash
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -25,13 +25,13 @@ data:
     template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
     \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
     \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
-    \u30EC\u30FC\u30C8\n*/\n#line 1 \"String/Rhash.hpp\"\nnamespace rolling_hash {\n\
-    struct rhash {\n    static const uint64_t mod = (1LL << 61) - 1;\n    using mm\
-    \ = rhash;\n    uint64_t x;\n\n    rhash() : x(0) {}\n    TT rhash(T a = 0) :\
-    \ x((__int128_t(a) % mod + mod)) {\n        if (x >= mod) x -= mod;\n    }\n\n\
-    \    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n        if (a.x >=\
-    \ mod) a.x -= mod;\n        return a;\n    }\n    friend mm operator-(mm a, mm\
-    \ b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x += mod;\n        return\
+    \u30EC\u30FC\u30C8\n*/\n#line 1 \"String/Rhash.hpp\"\n\nnamespace rolling_hash\
+    \ {\nstruct rhash {\n    static const uint64_t mod = (1LL << 61) - 1;\n    using\
+    \ mm = rhash;\n    uint64_t x;\n\n    rhash() : x(0) {}\n    TT rhash(T a = 0)\
+    \ : x((__int128_t(a) % mod + mod)) {\n        if (x >= mod) x -= mod;\n    }\n\
+    \n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n        if (a.x\
+    \ >= mod) a.x -= mod;\n        return a;\n    }\n    friend mm operator-(mm a,\
+    \ mm b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x += mod;\n        return\
     \ a;\n    }\n\n    friend mm operator*(mm a, mm b) {\n        __uint128_t t =\
     \ (__uint128_t)(a.x) * b.x;\n        t = (t >> 61) + (t & mod);\n        return\
     \ (t >= mod) ? t - mod : t;\n    }\n    friend mm &operator+=(mm &a, mm b) { return\
@@ -44,7 +44,7 @@ data:
     \    return is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) {\
     \ return os << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool\
     \ operator!=(mm a) { return x != a.x; }\n    bool operator<(const mm &a) const\
-    \ { return x < a.x; }\n};\n\nconst rhash brh = 200224;\nconst int MAX_SIZE = 500000;\n\
+    \ { return x < a.x; }\n};\n\nconst rhash brh = 200224;\nconst int MAX_SIZE = 50'000'000;\n\
     array<rhash, MAX_SIZE + 1> pw;\n\nstruct Initializer {\n    Initializer() {\n\
     \        pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i - 1] * brh;\
     \ }\n    }\n};\nInitializer initializer;\n\nstruct Rhash {\n    int n;\n    vec<rhash>\
@@ -63,24 +63,25 @@ data:
     \        len_pw = pw[len];\n    else\n        len_pw = brh.pow(len);\n\n    while\
     \ (y) {\n        if (y & 1) {\n            res = res * len_pw + x;\n        }\n\
     \        x = x * len_pw + x;\n        y /= 2;\n        len_pw *= len_pw;\n   \
-    \ }\n    return res;\n}\n}  // namespace rolling_hash\n#line 4 \"verify/Rhash_more.test.cpp\"\
-    \nusing namespace rolling_hash;\nint main() {\n    string S;\n    cin >> S;\n\n\
-    \    Rhash rs(S);\n    reverse(all(S));\n    Rhash rev(S);\n    reverse(all(S));\n\
-    \n    rep(ti, 0, ll(S.size()) * 2 - 1) {\n        if(ti%2==0) {//\u6587\u5B57\n\
-    \            int i = ti/2;\n            ll li = 1;\n            ll ri = min<int>(i+1,\
-    \ (ll)S.size() - i);\n            while(li < ri) {//oooxxx\n                ll\
-    \ mid = (li + ri + 1) >> 1;\n                auto [l, r] = rs.conv(i - mid + 1,\
-    \ i + mid);\n                if(rs.prod(i - mid + 1, i + mid).x == rev.prod(l,\
-    \ r).x) {\n                    li = mid;\n                }\n                else\
-    \ {\n                    ri = mid - 1;\n                }\n            }\n   \
-    \         cout << li*2-1 << \" \";\n        }\n        else {\n            int\
-    \ i = ti/2;\n            ll li = 0;\n            ll ri = min<int>(i+1, (ll)S.size()\
-    \ - i - 1);\n            while(li < ri) {\n                ll mid = (li + ri +\
-    \ 1) >> 1;\n                auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);\n\
-    \                if(rs.prod(i - mid + 1, i + mid + 1).x == rev.prod(l, r).x) {\n\
-    \                    li = mid;\n                }\n                else {\n  \
-    \                  ri = mid - 1;\n                }\n            }\n         \
-    \   cout << li*2 << \" \";\n        }\n    }\n    \n}\n"
+    \ }\n    return res;\n}\n}  // namespace rolling_hash\n/*\n@brief rolling_hash\n\
+    @docs doc/Rhash.md\n*/\n#line 4 \"verify/Rhash_more.test.cpp\"\nusing namespace\
+    \ rolling_hash;\nint main() {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n\
+    \    reverse(all(S));\n    Rhash rev(S);\n    reverse(all(S));\n\n    rep(ti,\
+    \ 0, ll(S.size()) * 2 - 1) {\n        if(ti%2==0) {//\u6587\u5B57\n          \
+    \  int i = ti/2;\n            ll li = 1;\n            ll ri = min<int>(i+1, (ll)S.size()\
+    \ - i);\n            while(li < ri) {//oooxxx\n                ll mid = (li +\
+    \ ri + 1) >> 1;\n                auto [l, r] = rs.conv(i - mid + 1, i + mid);\n\
+    \                if(rs.prod(i - mid + 1, i + mid).x == rev.prod(l, r).x) {\n \
+    \                   li = mid;\n                }\n                else {\n   \
+    \                 ri = mid - 1;\n                }\n            }\n          \
+    \  cout << li*2-1 << \" \";\n        }\n        else {\n            int i = ti/2;\n\
+    \            ll li = 0;\n            ll ri = min<int>(i+1, (ll)S.size() - i -\
+    \ 1);\n            while(li < ri) {\n                ll mid = (li + ri + 1) >>\
+    \ 1;\n                auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);\n     \
+    \           if(rs.prod(i - mid + 1, i + mid + 1).x == rev.prod(l, r).x) {\n  \
+    \                  li = mid;\n                }\n                else {\n    \
+    \                ri = mid - 1;\n                }\n            }\n           \
+    \ cout << li*2 << \" \";\n        }\n    }\n    \n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../String/Rhash.hpp\"\nusing\
     \ namespace rolling_hash;\nint main() {\n    string S;\n    cin >> S;\n\n    Rhash\
@@ -106,7 +107,7 @@ data:
   isVerificationFile: true
   path: verify/Rhash_more.test.cpp
   requiredBy: []
-  timestamp: '2024-08-14 19:19:10+09:00'
+  timestamp: '2024-08-14 19:25:27+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Rhash_more.test.cpp

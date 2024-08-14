@@ -173,7 +173,7 @@ data:
     pages:
     - icon: ':heavy_check_mark:'
       path: String/Rhash.hpp
-      title: String/Rhash.hpp
+      title: rolling_hash
     - icon: ':heavy_check_mark:'
       path: String/manacher.hpp
       title: String/manacher.hpp
