@@ -1,3 +1,4 @@
+namespace rolling_hash {
 struct rhash {
     static const uint64_t mod = (1LL << 61) - 1;
     using mm = rhash;
@@ -54,25 +55,26 @@ struct rhash {
     bool operator<(const mm &a) const { return x < a.x; }
 };
 
-struct Rhash {
-    static const rhash brh;
-    static vec<rhash> pw;
-    static const int MAX_SIZE;
-    int n;
-    vec<rhash> H;
+const rhash brh = 200224;
+const int MAX_SIZE = 500000;
+vec<rhash> pw(MAX_SIZE + 1);
 
-    static void initialize_pow() {
+struct Initializer {
+    Initializer() {
         pw.resize(MAX_SIZE + 1);
         pw[0] = 1;
         rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i - 1] * brh; }
     }
+};
+Initializer initializer;
 
-    Rhash() {
-        if (pw.empty()) initialize_pow();
-    }
+struct Rhash {
+    int n;
+    vec<rhash> H;
+
+    Rhash() {}
 
     Rhash(string S) : n(S.size()) {
-        if (pw.empty()) initialize_pow();
         H = vec<rhash>(n, 0);
 
         rep(i, 0, n) {
@@ -96,25 +98,23 @@ struct Rhash {
     pair<ll, ll> conv(ll l, ll r) { return make_pair(n - r, n - l); }
 };
 
-const rhash Rhash::brh = 200224;
-const int Rhash::MAX_SIZE = 500000;
-vec<rhash> Rhash::pw;
+rhash cal_rhash(string S) { return Rhash(S).prod(0, S.size()); }
 
 rhash connect(rhash mae, rhash usiro, ll len_of_usiro) {
-    if (len_of_usiro <= Rhash::MAX_SIZE) {
-        return mae * Rhash::pw[len_of_usiro] + usiro;
+    if (len_of_usiro <= MAX_SIZE) {
+        return mae * pw[len_of_usiro] + usiro;
     } else {
-        return mae * Rhash::brh.pow(len_of_usiro) + usiro;
+        return mae * brh.pow(len_of_usiro) + usiro;
     }
 }
 
 rhash rhash_pow(rhash x, ll y, ll len) {
     rhash res = 0;
     rhash len_pw;
-    if (len <= Rhash::MAX_SIZE)
-        len_pw = Rhash::pw[len];
+    if (len <= MAX_SIZE)
+        len_pw = pw[len];
     else
-        len_pw = Rhash::brh.pow(len);
+        len_pw = brh.pow(len);
 
     while (y) {
         if (y & 1) {
@@ -126,8 +126,4 @@ rhash rhash_pow(rhash x, ll y, ll len) {
     }
     return res;
 }
-
-/*
-@brief Rolling_hash
-@docs doc/Rhash.md
-*/
+}  // namespace rolling_hash
