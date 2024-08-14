@@ -49,6 +49,8 @@ Rolling hash。半開区間に注意。
 #include "../Utility/template.hpp"
 #include "../String/Rhash.hpp"
 
+using namespace rolling_hash;
+
 int main() {
     string s = "abc";
     Rhash S(s); //sのローリングハッシュを持つ構造体を宣言した。
