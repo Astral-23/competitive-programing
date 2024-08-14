@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/Rhash.hpp
     title: Rolling_hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/enumerate_palindromes
@@ -65,26 +65,8 @@ data:
     \n    while (y) {\n        if (y & 1) {\n            res = res * len_pw + x;\n\
     \        }\n        x = x * len_pw + x;\n        y /= 2;\n        len_pw *= len_pw;\n\
     \    }\n    return res;\n}\n\n/*\n@brief Rolling_hash\n@docs doc/Rhash.md\n*/\n\
-    #line 4 \"verify/Rhash_more.test.cpp\"\n\nint main() {\n    string S;\n    cin\
-    \ >> S;\n\n    Rhash rs(S);\n    reverse(all(S));\n    Rhash rev(S);\n    reverse(all(S));\n\
-    \n    rep(ti, 0, ll(S.size()) * 2 - 1) {\n        if(ti%2==0) {//\u6587\u5B57\n\
-    \            int i = ti/2;\n            ll li = 1;\n            ll ri = min<int>(i+1,\
-    \ (ll)S.size() - i);\n            while(li < ri) {//oooxxx\n                ll\
-    \ mid = (li + ri + 1) >> 1;\n                auto [l, r] = rs.conv(i - mid + 1,\
-    \ i + mid);\n                if(rs.prod(i - mid + 1, i + mid).x == rev.prod(l,\
-    \ r).x) {\n                    li = mid;\n                }\n                else\
-    \ {\n                    ri = mid - 1;\n                }\n            }\n   \
-    \         cout << li*2-1 << \" \";\n        }\n        else {\n            int\
-    \ i = ti/2;\n            ll li = 0;\n            ll ri = min<int>(i+1, (ll)S.size()\
-    \ - i - 1);\n            while(li < ri) {\n                ll mid = (li + ri +\
-    \ 1) >> 1;\n                auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);\n\
-    \                if(rs.prod(i - mid + 1, i + mid + 1).x == rev.prod(l, r).x) {\n\
-    \                    li = mid;\n                }\n                else {\n  \
-    \                  ri = mid - 1;\n                }\n            }\n         \
-    \   cout << li*2 << \" \";\n        }\n    }\n    \n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
-    \n#include \"../Utility/template.hpp\"\n#include \"../String/Rhash.hpp\"\n\nint\
-    \ main() {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n    reverse(all(S));\n\
+    #line 4 \"verify/Rhash_more.test.cpp\"\nusing namespace rolling_hash;\nint main()\
+    \ {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n    reverse(all(S));\n\
     \    Rhash rev(S);\n    reverse(all(S));\n\n    rep(ti, 0, ll(S.size()) * 2 -\
     \ 1) {\n        if(ti%2==0) {//\u6587\u5B57\n            int i = ti/2;\n     \
     \       ll li = 1;\n            ll ri = min<int>(i+1, (ll)S.size() - i);\n   \
@@ -100,15 +82,34 @@ data:
     \      if(rs.prod(i - mid + 1, i + mid + 1).x == rev.prod(l, r).x) {\n       \
     \             li = mid;\n                }\n                else {\n         \
     \           ri = mid - 1;\n                }\n            }\n            cout\
-    \ << li*2 << \" \";\n        }\n    }\n    \n}"
+    \ << li*2 << \" \";\n        }\n    }\n    \n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
+    \n#include \"../Utility/template.hpp\"\n#include \"../String/Rhash.hpp\"\nusing\
+    \ namespace rolling_hash;\nint main() {\n    string S;\n    cin >> S;\n\n    Rhash\
+    \ rs(S);\n    reverse(all(S));\n    Rhash rev(S);\n    reverse(all(S));\n\n  \
+    \  rep(ti, 0, ll(S.size()) * 2 - 1) {\n        if(ti%2==0) {//\u6587\u5B57\n \
+    \           int i = ti/2;\n            ll li = 1;\n            ll ri = min<int>(i+1,\
+    \ (ll)S.size() - i);\n            while(li < ri) {//oooxxx\n                ll\
+    \ mid = (li + ri + 1) >> 1;\n                auto [l, r] = rs.conv(i - mid + 1,\
+    \ i + mid);\n                if(rs.prod(i - mid + 1, i + mid).x == rev.prod(l,\
+    \ r).x) {\n                    li = mid;\n                }\n                else\
+    \ {\n                    ri = mid - 1;\n                }\n            }\n   \
+    \         cout << li*2-1 << \" \";\n        }\n        else {\n            int\
+    \ i = ti/2;\n            ll li = 0;\n            ll ri = min<int>(i+1, (ll)S.size()\
+    \ - i - 1);\n            while(li < ri) {\n                ll mid = (li + ri +\
+    \ 1) >> 1;\n                auto [l, r] = rs.conv(i - mid + 1, i + mid + 1);\n\
+    \                if(rs.prod(i - mid + 1, i + mid + 1).x == rev.prod(l, r).x) {\n\
+    \                    li = mid;\n                }\n                else {\n  \
+    \                  ri = mid - 1;\n                }\n            }\n         \
+    \   cout << li*2 << \" \";\n        }\n    }\n    \n}"
   dependsOn:
   - Utility/template.hpp
   - String/Rhash.hpp
   isVerificationFile: true
   path: verify/Rhash_more.test.cpp
   requiredBy: []
-  timestamp: '2024-08-06 18:24:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-08-14 19:11:55+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/Rhash_more.test.cpp
 layout: document

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: String/Rhash.hpp
     title: Rolling_hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/zalgorithm
@@ -65,29 +65,30 @@ data:
     \n    while (y) {\n        if (y & 1) {\n            res = res * len_pw + x;\n\
     \        }\n        x = x * len_pw + x;\n        y /= 2;\n        len_pw *= len_pw;\n\
     \    }\n    return res;\n}\n\n/*\n@brief Rolling_hash\n@docs doc/Rhash.md\n*/\n\
-    #line 4 \"verify/Rhash.test.cpp\"\n\nint main() {\n    string S;\n    cin >> S;\n\
-    \n    Rhash rs(S);\n\n    rep(i, 0, S.size()) {\n        int li = 0;\n       \
-    \ int ri = int(S.size()) - i;\n\n        while(li < ri) {//ooxxxx   \n       \
-    \     int mid = (li + ri + 1) >> 1;\n            if(rs.prod(i, i + mid) == rs.prod(0,\
-    \ mid)) {\n                li = mid;\n            }\n            else {\n    \
-    \            ri = mid - 1;\n            }\n        }\n\n        cout << li <<\
-    \ \" \";\n    }\n    \n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
-    \ \"../Utility/template.hpp\"\n#include \"../String/Rhash.hpp\"\n\nint main()\
-    \ {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n\n    rep(i, 0, S.size())\
-    \ {\n        int li = 0;\n        int ri = int(S.size()) - i;\n\n        while(li\
+    #line 4 \"verify/Rhash.test.cpp\"\nusing namespace rolling_hash;\nint main() {\n\
+    \    string S;\n    cin >> S;\n\n    Rhash rs(S);\n\n    rep(i, 0, S.size()) {\n\
+    \        int li = 0;\n        int ri = int(S.size()) - i;\n\n        while(li\
     \ < ri) {//ooxxxx   \n            int mid = (li + ri + 1) >> 1;\n            if(rs.prod(i,\
     \ i + mid) == rs.prod(0, mid)) {\n                li = mid;\n            }\n \
     \           else {\n                ri = mid - 1;\n            }\n        }\n\n\
-    \        cout << li << \" \";\n    }\n    \n}"
+    \        cout << li << \" \";\n    }\n    \n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
+    \ \"../Utility/template.hpp\"\n#include \"../String/Rhash.hpp\"\nusing namespace\
+    \ rolling_hash;\nint main() {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n\
+    \n    rep(i, 0, S.size()) {\n        int li = 0;\n        int ri = int(S.size())\
+    \ - i;\n\n        while(li < ri) {//ooxxxx   \n            int mid = (li + ri\
+    \ + 1) >> 1;\n            if(rs.prod(i, i + mid) == rs.prod(0, mid)) {\n     \
+    \           li = mid;\n            }\n            else {\n                ri =\
+    \ mid - 1;\n            }\n        }\n\n        cout << li << \" \";\n    }\n\
+    \    \n}"
   dependsOn:
   - Utility/template.hpp
   - String/Rhash.hpp
   isVerificationFile: true
   path: verify/Rhash.test.cpp
   requiredBy: []
-  timestamp: '2024-08-06 18:24:28+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-08-14 19:11:55+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/Rhash.test.cpp
 layout: document

@@ -6,15 +6,15 @@ data:
     path: example/rhash.example.cpp
     title: example/rhash.example.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Rhash.test.cpp
     title: verify/Rhash.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Rhash_more.test.cpp
     title: verify/Rhash_more.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: doc/Rhash.md
     document_title: Rolling_hash
@@ -105,7 +105,7 @@ data:
   requiredBy:
   - example/rhash.example.cpp
   timestamp: '2024-08-06 18:24:28+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/Rhash.test.cpp
   - verify/Rhash_more.test.cpp
