@@ -57,11 +57,10 @@ struct rhash {
 
 const rhash brh = 200224;
 const int MAX_SIZE = 500000;
-vec<rhash> pw(MAX_SIZE + 1);
+array<rhash, MAX_SIZE> pw;
 
 struct Initializer {
     Initializer() {
-        pw.resize(MAX_SIZE + 1);
         pw[0] = 1;
         rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i - 1] * brh; }
     }
