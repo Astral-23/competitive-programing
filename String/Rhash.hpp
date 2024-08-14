@@ -57,7 +57,7 @@ struct rhash {
 
 const rhash brh = 200224;
 const int MAX_SIZE = 500000;
-array<rhash, MAX_SIZE> pw;
+array<rhash, MAX_SIZE + 1> pw;
 
 struct Initializer {
     Initializer() {
