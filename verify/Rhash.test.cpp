@@ -1,7 +1,7 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/zalgorithm"
 #include "../Utility/template.hpp"
 #include "../String/Rhash.hpp"
-
+using namespace rolling_hash;
 int main() {
     string S;
     cin >> S;
