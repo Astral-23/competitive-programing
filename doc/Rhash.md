@@ -2,9 +2,9 @@
 Rolling hash。半開区間に注意。
 
 ## 使用時に変更する物
-`const rhash Rhash::brh = 200224;` ...値の種類数以上  
+`const rhash brh = 200224;` ...値の種類数以上  
 
-`const int Rhash::MAX_SIZE = 500000;` ... Rhash型で管理できる最大文字列長
+`const int MAX_SIZE = 500000;` ... Rhash型で管理できる最大文字列長
 - rhash型で管理する場合には関係がない
     - 例えば、後述のpowを用いる事で、長さが10^9の文字列のハッシュを計算することはできる
     - Rhashで管理するメリットは区間取得ができる事のみである
@@ -38,9 +38,10 @@ Rolling hash。半開区間に注意。
         - len_of_usiro > MAX_SIZE の時: $O(\log LenOfUsiro)$
 - `rhash rhash_pow(const rhash &x, const ll &y, ll len)`... ハッシュ = x, 長さ = len に対応する文字列を y　個連結した文字列のハッシュを返す
     - 計算量
-        - y $\times$ len $\le$ MAX_SIZE の時: $O(\log y)$
-        - y $\times$ len > MAX_SIZE の時: $O(\log y \log (y \times len))$
-
+        -  $O(\log y)$
+- `rhash cal_rhash(string S)`...string Sのハッシュを計算して返す。
+    - 計算量
+        - $O(|S|)$
   
 ## 使用例
 
