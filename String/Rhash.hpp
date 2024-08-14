@@ -1,3 +1,4 @@
+
 namespace rolling_hash {
 struct rhash {
     static const uint64_t mod = (1LL << 61) - 1;
@@ -56,7 +57,7 @@ struct rhash {
 };
 
 const rhash brh = 200224;
-const int MAX_SIZE = 500000;
+const int MAX_SIZE = 50'000'000;
 array<rhash, MAX_SIZE + 1> pw;
 
 struct Initializer {
@@ -126,3 +127,7 @@ rhash rhash_pow(rhash x, ll y, ll len) {
     return res;
 }
 }  // namespace rolling_hash
+/*
+@brief rolling_hash
+@docs doc/Rhash.md
+*/
