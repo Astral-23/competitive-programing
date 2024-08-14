@@ -171,9 +171,9 @@ data:
       title: "\u7D20\u6570\u7BE9(\u5DE6\u7AEF\u4EFB\u610F)"
   - name: String
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/Rhash.hpp
-      title: Rolling_hash
+      title: String/Rhash.hpp
     - icon: ':heavy_check_mark:'
       path: String/manacher.hpp
       title: String/manacher.hpp
@@ -194,7 +194,7 @@ data:
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -251,10 +251,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/2dsegtree_max.test.cpp
       title: verify/2dsegtree_max.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/Rhash.test.cpp
       title: verify/Rhash.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/Rhash_more.test.cpp
       title: verify/Rhash_more.test.cpp
     - icon: ':heavy_check_mark:'
