@@ -4,12 +4,12 @@ ll floor_sum(ll n, ll m, ll a, ll b) {
     using ull = unsigned long long;
 
     ull ans = 0;
-    if(a < 0) {
+    if (a < 0) {
         ull a2 = (a % m + m) % m;
-        ans -= 1ULL * n * (n-1) / 2 * ((a2 - a) / m);
+        ans -= 1ULL * n * (n - 1) / 2 * ((a2 - a) / m);
         a = a2;
     }
-    if(b < 0) {
+    if (b < 0) {
         ull b2 = (b % m + m) % m;
         ans -= 1ULL * n * ((b2 - b) / m);
         b = b2;
@@ -17,27 +17,26 @@ ll floor_sum(ll n, ll m, ll a, ll b) {
 
     auto uns_fl = [](ull n, ull m, ull a, ull b) {
         ull res = 0;
-        while(1) {
-            if(a >= m) {
-                res += n * (n-1) / 2 * (a / m);
+        while (1) {
+            if (a >= m) {
+                res += n * (n - 1) / 2 * (a / m);
                 a %= m;
             }
-            if(b >= m) {
+            if (b >= m) {
                 res += n * (b / m);
                 b %= m;
             }
-    
+
             ull y = a * n + b;
-            if(y < m) break;
+            if (y < m) break;
             n = (ull)(y / m);
             b = (ull)(y % m);
             swap(m, a);
         }
         return res;
     };
-    
-    return ans + uns_fl(n ,m, a, b);
 
+    return ans + uns_fl(n, m, a, b);
 }
 
 /*

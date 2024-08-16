@@ -68,8 +68,6 @@ template <uint64_t mod> struct modint {
     bool operator!=(mm a) { return x != a.x; }
     // bool operator<(const mm& a) const {return x < a.x;}
 };
-
-using rhash = modint<(1LL << 61) - 1>;
 /*
 @brief big_modint
 */

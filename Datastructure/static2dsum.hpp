@@ -19,7 +19,6 @@ TT struct static2dsum {
         dat[i][j] += x;
     }
 
-
     void build() {
         rep(i, 0, h) {
             rep(j, 0, w - 1) { dat[i][j + 1] += dat[i][j]; }

@@ -52,12 +52,10 @@ template <uint32_t mod> struct modint {
     bool operator==(mm a) { return x == a.x; }
     bool operator!=(mm a) { return x != a.x; }
 
-    // bool operator<(const mm& a) const {return x < a.x;}
+    bool operator<(const mm &a) const { return x < a.x; }
 };
-
 using modint998244353 = modint<998244353>;
 using modint1000000007 = modint<1'000'000'007>;
-
 /*
 @brief modint
 */
