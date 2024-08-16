@@ -9,6 +9,7 @@
 "verify/aux_tree.test.cpp": "2024-07-09 04:15:19 +0900",
 "verify/binary_trie.test.cpp": "2024-07-09 04:15:19 +0900",
 "verify/binary_trie_xor.test.cpp": "2024-07-09 04:15:19 +0900",
+"verify/bisect.test.cpp": "2024-08-16 18:25:38 +0900",
 "verify/bitwise_and_convolution.test.cpp": "2024-08-06 18:23:20 +0900",
 "verify/combination.test.cpp": "2024-08-06 18:23:20 +0900",
 "verify/dsu.test.cpp": "2024-07-09 04:15:19 +0900",
