@@ -12,4 +12,5 @@ template <typename T, typename F> T bisect(T ok, T ng, F pred) {
 }
 /*
 @brief 抽象化二分探索
+@docs doc/bisect.md
 */
