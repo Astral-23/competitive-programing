@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/offline_connectivity.hpp
     title: offline_connectivity
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/value_dsu.hpp
     title: "\u5024\u96C6\u7D04\u30FB\u5909\u66F4\u53EF\u80FD\u306Adsu"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum
@@ -23,19 +23,19 @@ data:
   bundledCode: "#line 1 \"verify/value_dsu.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT using vec = vector<T>;\n\
-    template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
-    \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
-    \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
-    \u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/value_dsu.hpp\"\ntemplate<class\
-    \ S, S (*op)(S, S), S (*e) ()> struct dsu {\n    using vi = vec<int>;\n    using\
-    \ vvi = vec<vi>;   \n\n    struct dat {\n        int r, u, v, p;\n        dat(){}\n\
-    \        dat(int a, int b, int c, int d) : r(a), u(b), v(c), p(d) {}\n    };\n\
-    \   \n    int cc;\n    vi par, sz, es, lv, lch, rch, rank;\n    vec<S> A, acc;\n\
-    \    stack<dat> his;\n   \n\n    dsu(int n) {\n        cc = n;\n        par =\
-    \ vi(n);\n        lv = rank = es = vi(n, 0);\n        sz = vi(n, 1);\n       \
-    \ lch = rch = vi(n, -1);\n        A = acc = vec<S>(n, e());\n        iota(all(par),\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/value_dsu.hpp\"\
+    \ntemplate<class S, S (*op)(S, S), S (*e) ()> struct dsu {\n    using vi = vec<int>;\n\
+    \    using vvi = vec<vi>;   \n\n    struct dat {\n        int r, u, v, p;\n  \
+    \      dat(){}\n        dat(int a, int b, int c, int d) : r(a), u(b), v(c), p(d)\
+    \ {}\n    };\n   \n    int cc;\n    vi par, sz, es, lv, lch, rch, rank;\n    vec<S>\
+    \ A, acc;\n    stack<dat> his;\n   \n\n    dsu(int n) {\n        cc = n;\n   \
+    \     par = vi(n);\n        lv = rank = es = vi(n, 0);\n        sz = vi(n, 1);\n\
+    \        lch = rch = vi(n, -1);\n        A = acc = vec<S>(n, e());\n        iota(all(par),\
     \ 0);\n    }\n  \n    int leader(int u) {\n        while(par[u] != u) {\n    \
     \        u = par[u];\n        }\n        return u;\n    }\n    \n    bool same(int\
     \ a, int b) {\n        return leader(a) == leader(b);\n    }\n\n    int update(int\
@@ -146,8 +146,8 @@ data:
   isVerificationFile: true
   path: verify/value_dsu.test.cpp
   requiredBy: []
-  timestamp: '2024-07-09 04:15:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-08-16 18:32:51+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/value_dsu.test.cpp
 layout: document

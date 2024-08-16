@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Algorithm/hld.hpp
     title: HLD
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/range_edge_graph.hpp
     title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/4022
@@ -23,16 +23,16 @@ data:
   bundledCode: "#line 1 \"verify/range_edge_graph.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/4022\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT using vec = vector<T>;\n\
-    template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
-    \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
-    \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
-    \u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/range_edge_graph.hpp\"\nstruct\
-    \ range_edge_graph {\n    #define pb push_back\n    struct edge {\n        int\
-    \ to;\n        ll cost;\n        //ll cap; \u30D5\u30ED\u30FC\u306A\u3089\u3053\
-    \u308C\u3082\u4F7F\u3046\u3002\n        edge(){}\n        edge(int a, ll b, ll\
-    \ c) : to(a), cost(b) {}\n        //edge(int a, ll b, ll c) : to(a), cost(b),\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/range_edge_graph.hpp\"\
+    \nstruct range_edge_graph {\n    #define pb push_back\n    struct edge {\n   \
+    \     int to;\n        ll cost;\n        //ll cap; \u30D5\u30ED\u30FC\u306A\u3089\
+    \u3053\u308C\u3082\u4F7F\u3046\u3002\n        edge(){}\n        edge(int a, ll\
+    \ b, ll c) : to(a), cost(b) {}\n        //edge(int a, ll b, ll c) : to(a), cost(b),\
     \ cap(c) {}\n        //\u30D5\u30ED\u30FC\u306E\u6642\u306E\u30B3\u30F3\u30B9\u30C8\
     \u30E9\u30AF\u30BF\n    };\n\n    edge e(int to) {\n        return edge(to, 0,\
     \ LLONG_MAX/4);\n    }\n  \n    int n;\n    int sz = 1;\n    int node;\n    vec<vec<edge>>\
@@ -185,8 +185,8 @@ data:
   isVerificationFile: true
   path: verify/range_edge_graph.test.cpp
   requiredBy: []
-  timestamp: '2024-07-09 04:15:19+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-08-16 18:32:51+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/range_edge_graph.test.cpp
 layout: document

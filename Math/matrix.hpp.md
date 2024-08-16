@@ -6,12 +6,12 @@ data:
     path: example/matrix.example.cpp
     title: example/matrix.example.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: doc/matrix.md
     document_title: "\u884C\u5217\u306E\u578B"
@@ -51,7 +51,7 @@ data:
   requiredBy:
   - example/matrix.example.cpp
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/matrix.test.cpp
 documentation_of: Math/matrix.hpp

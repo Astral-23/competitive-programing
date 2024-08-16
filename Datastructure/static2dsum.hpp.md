@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/static1dsum.test.cpp
     title: verify/static1dsum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/static2dsum.test.cpp
     title: verify/static2dsum.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: doc/static2dsum.md
     document_title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
@@ -22,7 +22,7 @@ data:
     \n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n        h = dat.size();\n   \
     \     if (h)\n            w = dat[0].size();\n        else\n            w = 0;\n\
     \    }\n\n    void add(int i, int j, T x) {\n        assert(!f);\n        dat[i][j]\
-    \ += x;\n    }\n\n\n    void build() {\n        rep(i, 0, h) {\n            rep(j,\
+    \ += x;\n    }\n\n    void build() {\n        rep(i, 0, h) {\n            rep(j,\
     \ 0, w - 1) { dat[i][j + 1] += dat[i][j]; }\n        }\n\n        rep(j, 0, w)\
     \ {\n            rep(i, 0, h - 1) { dat[i + 1][j] += dat[i][j]; }\n        }\n\
     \n        f = true;\n    }\n\n    T prod(int sy, int ty, int sx, int tx) {\n \
@@ -37,9 +37,9 @@ data:
     \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
     \   h = dat.size();\n        if (h)\n            w = dat[0].size();\n        else\n\
     \            w = 0;\n    }\n\n    void add(int i, int j, T x) {\n        assert(!f);\n\
-    \        dat[i][j] += x;\n    }\n\n\n    void build() {\n        rep(i, 0, h)\
-    \ {\n            rep(j, 0, w - 1) { dat[i][j + 1] += dat[i][j]; }\n        }\n\
-    \n        rep(j, 0, w) {\n            rep(i, 0, h - 1) { dat[i + 1][j] += dat[i][j];\
+    \        dat[i][j] += x;\n    }\n\n    void build() {\n        rep(i, 0, h) {\n\
+    \            rep(j, 0, w - 1) { dat[i][j + 1] += dat[i][j]; }\n        }\n\n \
+    \       rep(j, 0, w) {\n            rep(i, 0, h - 1) { dat[i + 1][j] += dat[i][j];\
     \ }\n        }\n\n        f = true;\n    }\n\n    T prod(int sy, int ty, int sx,\
     \ int tx) {\n        assert(f);\n        assert(0 <= sy && ty <= h);\n       \
     \ assert(0 <= sx && tx <= w);\n        assert(sy <= ty);\n        assert(sx <=\
@@ -52,8 +52,8 @@ data:
   isVerificationFile: false
   path: Datastructure/static2dsum.hpp
   requiredBy: []
-  timestamp: '2024-08-10 06:12:32+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-08-16 18:32:51+09:00'
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/static2dsum.test.cpp
   - verify/static1dsum.test.cpp

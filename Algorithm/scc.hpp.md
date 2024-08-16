@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/scc.test.cpp
     title: verify/scc.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: doc/scc.md
     document_title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
@@ -41,7 +41,7 @@ data:
   path: Algorithm/scc.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/scc.test.cpp
 documentation_of: Algorithm/scc.hpp

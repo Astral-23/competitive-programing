@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Algorithm/hld.hpp
     title: HLD
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -20,25 +20,25 @@ data:
   bundledCode: "#line 1 \"verify/aux_tree.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0439\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT using vec = vector<T>;\n\
-    template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
-    \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
-    \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
-    \u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/hld.hpp\"\nstruct HLD {\n    using\
-    \ vi = vec<int>;\n    using pi = pair<int, int>;\n    vi in, out, par, root, rev,\
-    \ dep, pre_vs;\n    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\u4E2D\u8EAB\
-    \u2192\u9802\u70B9\u756A\u53F7\n    int n, r;//\u9802\u70B9\u6570\u3001\u6839\n\
-    \    \n  \n    HLD(vec<vi> &g, int a): n(g.size()), r(a) {\n        vi siz(n,\
-    \ 0);\n        in = out = root = rev = vi(n);\n        par = vi(n, -1);\n    \
-    \    dep = vi(n, 0);\n        root[r] = r;\n\n        auto dfs_siz = [&](auto\
-    \ f, int v) -> void {\n            siz[v]++;\n            for(int& to : g[v])\
-    \ if(to != par[v]) {\n                dep[to] = dep[v] + 1;\n                par[to]\
-    \ = v;\n                f(f, to);\n                siz[v] += siz[to];\n      \
-    \          if(siz[to] > siz[g[v][0]] || g[v][0] == par[v]) swap(to, g[v][0]);\n\
-    \            }\n            return;\n        };\n\n        dfs_siz(dfs_siz, r);\n\
-    \        \n        int t = 0;\n\n        auto dfs_hld = [&](auto f, int v) ->\
-    \ void {\n            rev[t] = v;\n            in[v]=t++;\n            for(int\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/hld.hpp\"\nstruct\
+    \ HLD {\n    using vi = vec<int>;\n    using pi = pair<int, int>;\n    vi in,\
+    \ out, par, root, rev, dep, pre_vs;\n    //          \u89AA/\u6210\u5206\u306E\
+    top/in\u306E\u4E2D\u8EAB\u2192\u9802\u70B9\u756A\u53F7\n    int n, r;//\u9802\u70B9\
+    \u6570\u3001\u6839\n    \n  \n    HLD(vec<vi> &g, int a): n(g.size()), r(a) {\n\
+    \        vi siz(n, 0);\n        in = out = root = rev = vi(n);\n        par =\
+    \ vi(n, -1);\n        dep = vi(n, 0);\n        root[r] = r;\n\n        auto dfs_siz\
+    \ = [&](auto f, int v) -> void {\n            siz[v]++;\n            for(int&\
+    \ to : g[v]) if(to != par[v]) {\n                dep[to] = dep[v] + 1;\n     \
+    \           par[to] = v;\n                f(f, to);\n                siz[v] +=\
+    \ siz[to];\n                if(siz[to] > siz[g[v][0]] || g[v][0] == par[v]) swap(to,\
+    \ g[v][0]);\n            }\n            return;\n        };\n\n        dfs_siz(dfs_siz,\
+    \ r);\n        \n        int t = 0;\n\n        auto dfs_hld = [&](auto f, int\
+    \ v) -> void {\n            rev[t] = v;\n            in[v]=t++;\n            for(int\
     \ to : g[v]) if(to != par[v]) {\n                root[to] = (to == g[v][0] ? root[v]\
     \ : to);\n                f(f, to);\n            }\n            out[v] = t;\n\
     \        };\n\n        dfs_hld(dfs_hld, r);\n    }\n\n\n    //\u4EE5\u4E0B\u3001\
@@ -140,7 +140,7 @@ data:
   isVerificationFile: true
   path: verify/aux_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-07-09 04:15:19+09:00'
+  timestamp: '2024-08-16 18:32:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aux_tree.test.cpp

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/simple_treap.hpp
     title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -16,12 +16,12 @@ data:
     links: []
   bundledCode: "#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing\
     \ namespace std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i\
-    \ < (ll)(t); i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s);\
-    \ i--)\n#define all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT\
-    \ using vec = vector<T>;\ntemplate<class T1, class T2> bool chmin(T1 &x, T2 y)\
-    \ { return x > y ? (x = y, true) : false; }\ntemplate<class T1, class T2> bool\
-    \ chmax(T1 &x, T2 y) { return x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/simple_treap.hpp\"\
+    \ < (ll)(t); i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s);\
+    \ i--)\n#define all(x) begin(x), end(x)\n\n#define TT template <typename T>\n\
+    TT using vec = vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2\
+    \ y) {\n    return x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class\
+    \ T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n\
+    /*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/simple_treap.hpp\"\
     \n\nclass xorshift {\n    uint64_t x;\n    public:\n        xorshift() {\n   \
     \         mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());\n\
     \            x = rnd();\n            for (int i = 0; i < 100; i++) {\n       \
@@ -106,7 +106,7 @@ data:
   isVerificationFile: false
   path: example/simple_treap.example.cpp
   requiredBy: []
-  timestamp: '2024-07-09 04:15:19+09:00'
+  timestamp: '2024-08-16 18:32:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: example/simple_treap.example.cpp

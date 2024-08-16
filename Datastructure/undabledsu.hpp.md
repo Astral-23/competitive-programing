@@ -6,18 +6,18 @@ data:
     path: example/offline_connectivity.example.cpp
     title: example/offline_connectivity.example.cpp
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/offline_connectivity.test.cpp
     title: verify/offline_connectivity.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/offline_connectivity_more.test.cpp
     title: verify/offline_connectivity_more.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/undabledsu.test.cpp
     title: verify/undabledsu.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     _deprecated_at_docs: doc/undodsu.md
     document_title: undable dsu
@@ -95,7 +95,7 @@ data:
   requiredBy:
   - example/offline_connectivity.example.cpp
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/offline_connectivity.test.cpp
   - verify/undabledsu.test.cpp

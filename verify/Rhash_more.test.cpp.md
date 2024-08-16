@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/Rhash.hpp
     title: rolling_hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -20,26 +20,26 @@ data:
   bundledCode: "#line 1 \"verify/Rhash_more.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/enumerate_palindromes\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT using vec = vector<T>;\n\
-    template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
-    \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
-    \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
-    \u30EC\u30FC\u30C8\n*/\n#line 1 \"String/Rhash.hpp\"\n\nnamespace rolling_hash\
-    \ {\nstruct rhash {\n    static const uint64_t mod = (1LL << 61) - 1;\n    using\
-    \ mm = rhash;\n    uint64_t x;\n\n    rhash() : x(0) {}\n    TT rhash(T a = 0)\
-    \ : x((__int128_t(a) % mod + mod)) {\n        if (x >= mod) x -= mod;\n    }\n\
-    \n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n        if (a.x\
-    \ >= mod) a.x -= mod;\n        return a;\n    }\n    friend mm operator-(mm a,\
-    \ mm b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x += mod;\n        return\
-    \ a;\n    }\n\n    friend mm operator*(mm a, mm b) {\n        __uint128_t t =\
-    \ (__uint128_t)(a.x) * b.x;\n        t = (t >> 61) + (t & mod);\n        return\
-    \ (t >= mod) ? t - mod : t;\n    }\n    friend mm &operator+=(mm &a, mm b) { return\
-    \ a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return a = a - b; }\n\
-    \    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n\n    mm pow(ll\
-    \ y) const {\n        mm res = 1;\n        mm v = *this;\n        while (y) {\n\
-    \            if (y & 1) res *= v;\n            v *= v;\n            y /= 2;\n\
-    \        }\n        return res;\n    }\n\n    friend istream &operator>>(istream\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"String/Rhash.hpp\"\n\nnamespace\
+    \ rolling_hash {\nstruct rhash {\n    static const uint64_t mod = (1LL << 61)\
+    \ - 1;\n    using mm = rhash;\n    uint64_t x;\n\n    rhash() : x(0) {}\n    TT\
+    \ rhash(T a = 0) : x((__int128_t(a) % mod + mod)) {\n        if (x >= mod) x -=\
+    \ mod;\n    }\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
+    \        if (a.x >= mod) a.x -= mod;\n        return a;\n    }\n    friend mm\
+    \ operator-(mm a, mm b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x +=\
+    \ mod;\n        return a;\n    }\n\n    friend mm operator*(mm a, mm b) {\n  \
+    \      __uint128_t t = (__uint128_t)(a.x) * b.x;\n        t = (t >> 61) + (t &\
+    \ mod);\n        return (t >= mod) ? t - mod : t;\n    }\n    friend mm &operator+=(mm\
+    \ &a, mm b) { return a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return\
+    \ a = a - b; }\n    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n\
+    \n    mm pow(ll y) const {\n        mm res = 1;\n        mm v = *this;\n     \
+    \   while (y) {\n            if (y & 1) res *= v;\n            v *= v;\n     \
+    \       y /= 2;\n        }\n        return res;\n    }\n\n    friend istream &operator>>(istream\
     \ &is, mm &a) {\n        ll t;\n\n        cin >> t;\n        a = mm(t);\n    \
     \    return is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) {\
     \ return os << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool\
@@ -107,7 +107,7 @@ data:
   isVerificationFile: true
   path: verify/Rhash_more.test.cpp
   requiredBy: []
-  timestamp: '2024-08-14 19:25:27+09:00'
+  timestamp: '2024-08-16 18:32:51+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Rhash_more.test.cpp

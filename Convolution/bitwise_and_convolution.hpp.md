@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Algorithm/superset_transform.hpp
     title: Algorithm/superset_transform.hpp
   _extendedRequiredBy: []

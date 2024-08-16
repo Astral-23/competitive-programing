@@ -15,36 +15,36 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/dynamicseg.test.cpp
     title: verify/dynamicseg.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/seg_prod.test.cpp
     title: verify/seg_prod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/swag.test.cpp
     title: verify/swag.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/swag_more.test.cpp
     title: verify/swag_more.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/treap.test.cpp
     title: verify/treap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: modint
     links: []
@@ -69,9 +69,9 @@ data:
     \ &operator>>(istream &is, mm &a) {\n        ll t;\n        cin >> t;\n      \
     \  a = mm(t);\n        return is;\n    }\n\n    friend ostream &operator<<(ostream\
     \ &os, mm a) { return os << a.x; }\n\n    bool operator==(mm a) { return x ==\
-    \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n    // bool operator<(const\
-    \ mm& a) const {return x < a.x;}\n};\n\nusing modint998244353 = modint<998244353>;\n\
-    using modint1000000007 = modint<1'000'000'007>;\n\n/*\n@brief modint\n*/\n"
+    \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n    bool operator<(const\
+    \ mm &a) const { return x < a.x; }\n};\nusing modint998244353 = modint<998244353>;\n\
+    using modint1000000007 = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n"
   code: "\n// \u52D5\u7684mod : template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\
     \u306E\u65B9\u3067\u5909\u6570mod\u3092\u5BA3\u8A00\ntemplate <uint32_t mod> struct\
     \ modint {\n    using mm = modint;\n    uint32_t x;\n    modint() : x(0) {}\n\
@@ -93,16 +93,16 @@ data:
     \ &a) {\n        ll t;\n        cin >> t;\n        a = mm(t);\n        return\
     \ is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) { return os\
     \ << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
-    \ a) { return x != a.x; }\n\n    // bool operator<(const mm& a) const {return\
-    \ x < a.x;}\n};\n\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
-    \ = modint<1'000'000'007>;\n\n/*\n@brief modint\n*/"
+    \ a) { return x != a.x; }\n\n    bool operator<(const mm &a) const { return x\
+    \ < a.x; }\n};\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
+    \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Utility/modint.hpp
   requiredBy:
   - example/matrix.example.cpp
-  timestamp: '2024-08-06 18:23:20+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-08-16 18:32:51+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/treedp.test.cpp
   - verify/bitwise_and_convolution.test.cpp

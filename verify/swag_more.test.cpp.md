@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/swag.hpp
     title: SWAG
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/deque_operate_all_composite
@@ -23,19 +23,19 @@ data:
   bundledCode: "#line 1 \"verify/swag_more.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/deque_operate_all_composite\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT using vec = vector<T>;\n\
-    template<class T1, class T2> bool chmin(T1 &x, T2 y) { return x > y ? (x = y,\
-    \ true) : false; }\ntemplate<class T1, class T2> bool chmax(T1 &x, T2 y) { return\
-    \ x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\
-    \u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\n\ntemplate<class S,\
-    \ S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack {\n        stack<S>\
-    \ data;\n        stack<S> res;\n        foldable_stack(){}\n\n        void push(S\
-    \ a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\u8FFD\u52A0\u3001\
-    \u3064\u307E\u308AR  type == 0 : \u914D\u5217\u306E\u5DE6\u306B\u8FFD\u52A0\u3001\
-    \u3064\u307E\u308AL \n            data.push(a);\n            if(!res.empty())\
-    \ {\n               if(type == 0) res.push(op(a, res.top()));//res\u304C\u7A7A\
-    \u306A\u3089\u305D\u308C\u3092\u5165\u308C\u308B\n               else res.push(op(res.top(),\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\n\
+    \ntemplate<class S, S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack {\n\
+    \        stack<S> data;\n        stack<S> res;\n        foldable_stack(){}\n\n\
+    \        void push(S a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\
+    \u8FFD\u52A0\u3001\u3064\u307E\u308AR  type == 0 : \u914D\u5217\u306E\u5DE6\u306B\
+    \u8FFD\u52A0\u3001\u3064\u307E\u308AL \n            data.push(a);\n          \
+    \  if(!res.empty()) {\n               if(type == 0) res.push(op(a, res.top()));//res\u304C\
+    \u7A7A\u306A\u3089\u305D\u308C\u3092\u5165\u308C\u308B\n               else res.push(op(res.top(),\
     \ a));\n            }\n            else res.push(a);\n            return;\n  \
     \      }\n\n        void pop() {\n            assert(!data.empty());\n       \
     \     data.pop();\n            res.pop();\n            return;\n        }\n\n\
@@ -81,9 +81,9 @@ data:
     \ &operator>>(istream &is, mm &a) {\n        ll t;\n        cin >> t;\n      \
     \  a = mm(t);\n        return is;\n    }\n\n    friend ostream &operator<<(ostream\
     \ &os, mm a) { return os << a.x; }\n\n    bool operator==(mm a) { return x ==\
-    \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n    // bool operator<(const\
-    \ mm& a) const {return x < a.x;}\n};\n\nusing modint998244353 = modint<998244353>;\n\
-    using modint1000000007 = modint<1'000'000'007>;\n\n/*\n@brief modint\n*/\n#line\
+    \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n    bool operator<(const\
+    \ mm &a) const { return x < a.x; }\n};\nusing modint998244353 = modint<998244353>;\n\
+    using modint1000000007 = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line\
     \ 5 \"verify/swag_more.test.cpp\"\n\nusing mint = modint998244353;\n\nstruct S\
     \ {\n    mint a, b;\n    S() {}\n    S(mint c, mint d) : a(c), b(d) {}\n};\n\n\
     S op(S l, S r) {\n    l.a *= r.a;\n    l.b *= r.a;\n    l.b += r.b;\n    return\
@@ -121,8 +121,8 @@ data:
   isVerificationFile: true
   path: verify/swag_more.test.cpp
   requiredBy: []
-  timestamp: '2024-08-06 18:23:20+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-08-16 18:32:51+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/swag_more.test.cpp
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/range_edge_graph.hpp
     title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -16,12 +16,12 @@ data:
     links: []
   bundledCode: "#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing\
     \ namespace std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i\
-    \ < (ll)(t); i++)\n#define rrep(i, s, t) for(ll i = (ll)(t) - 1; i >= (ll)(s);\
-    \ i--)\n#define all(x) begin(x), end(x)\n\n#define TT template<typename T>\nTT\
-    \ using vec = vector<T>;\ntemplate<class T1, class T2> bool chmin(T1 &x, T2 y)\
-    \ { return x > y ? (x = y, true) : false; }\ntemplate<class T1, class T2> bool\
-    \ chmax(T1 &x, T2 y) { return x < y ? (x = y, true) : false; }\n\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/range_edge_graph.hpp\"\
+    \ < (ll)(t); i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s);\
+    \ i--)\n#define all(x) begin(x), end(x)\n\n#define TT template <typename T>\n\
+    TT using vec = vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2\
+    \ y) {\n    return x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class\
+    \ T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n\
+    /*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/range_edge_graph.hpp\"\
     \nstruct range_edge_graph {\n    #define pb push_back\n    struct edge {\n   \
     \     int to;\n        ll cost;\n        //ll cap; \u30D5\u30ED\u30FC\u306A\u3089\
     \u3053\u308C\u3082\u4F7F\u3046\u3002\n        edge(){}\n        edge(int a, ll\
@@ -88,7 +88,7 @@ data:
   isVerificationFile: false
   path: example/range_edge_graph.example.cpp
   requiredBy: []
-  timestamp: '2024-07-09 04:15:19+09:00'
+  timestamp: '2024-08-16 18:32:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: example/range_edge_graph.example.cpp

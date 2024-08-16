@@ -13,36 +13,35 @@ data:
     _deprecated_at_docs: doc/cmb.md
     document_title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
     links: []
-  bundledCode: "#line 1 \"Math/combination.hpp\"\nstruct CMB {//must\u7D20\u6570\n\
-    \    using vl = vec<ll>;\n    vl fac;\n    vl ifac;\n    vl inv;\n    ll mb =\
-    \ 0;\n    int N;\n  \n    CMB (int r, ll _mod) : mb(_mod), N(r+1), fac(r+1, 1),\
-    \ ifac(r+1, 1), inv(r+1, 1) {\n        rep(i, 2, N) {\n            fac[i] = fac[i-1]\
-    \ * i % mb;\n            inv[i] = mb - inv[mb%i]*(mb/i) % mb;\n            ifac[i]\
-    \ = ifac[i-1] * inv[i] % mb;\n        }\n    }\n\n    ll C(int n, int k) { \n\
-    \        if(n < k) return 0LL;\n        if(n < 0 || k < 0) return 0LL;\n     \
-    \   return fac[n] * (ifac[k] * ifac[n-k]%mb)%mb;\n    }\n  \n\n    ll B(int n)\
-    \ { \n      return fac[n];\n    }\n  \n    ll invB(int n) {\n        return ifac[n];\n\
-    \    }\n  \n    ll H(int n, int k) { \n        return C(n+k-1, k);\n    }\n  \n\
-    \    ll Cn(int n) { \n        return C(2*n, n) * inv[n+1] % mb;\n    }\n};\n\n\
-    /*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs doc/cmb.md\n\
-    */\n"
-  code: "struct CMB {//must\u7D20\u6570\n    using vl = vec<ll>;\n    vl fac;\n  \
-    \  vl ifac;\n    vl inv;\n    ll mb = 0;\n    int N;\n  \n    CMB (int r, ll _mod)\
-    \ : mb(_mod), N(r+1), fac(r+1, 1), ifac(r+1, 1), inv(r+1, 1) {\n        rep(i,\
-    \ 2, N) {\n            fac[i] = fac[i-1] * i % mb;\n            inv[i] = mb -\
-    \ inv[mb%i]*(mb/i) % mb;\n            ifac[i] = ifac[i-1] * inv[i] % mb;\n   \
-    \     }\n    }\n\n    ll C(int n, int k) { \n        if(n < k) return 0LL;\n \
-    \       if(n < 0 || k < 0) return 0LL;\n        return fac[n] * (ifac[k] * ifac[n-k]%mb)%mb;\n\
-    \    }\n  \n\n    ll B(int n) { \n      return fac[n];\n    }\n  \n    ll invB(int\
-    \ n) {\n        return ifac[n];\n    }\n  \n    ll H(int n, int k) { \n      \
-    \  return C(n+k-1, k);\n    }\n  \n    ll Cn(int n) { \n        return C(2*n,\
-    \ n) * inv[n+1] % mb;\n    }\n};\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\
-    \u30E7\u30F3\n@docs doc/cmb.md\n*/"
+  bundledCode: "#line 1 \"Math/combination.hpp\"\nstruct CMB {  // must\u7D20\u6570\
+    \n    using vl = vec<ll>;\n    vl fac;\n    vl ifac;\n    vl inv;\n    ll mb =\
+    \ 0;\n    int N;\n\n    CMB(int r, ll _mod)\n        : mb(_mod), N(r + 1), fac(r\
+    \ + 1, 1), ifac(r + 1, 1), inv(r + 1, 1) {\n        rep(i, 2, N) {\n         \
+    \   fac[i] = fac[i - 1] * i % mb;\n            inv[i] = mb - inv[mb % i] * (mb\
+    \ / i) % mb;\n            ifac[i] = ifac[i - 1] * inv[i] % mb;\n        }\n  \
+    \  }\n\n    ll C(int n, int k) {\n        if (n < k) return 0LL;\n        if (n\
+    \ < 0 || k < 0) return 0LL;\n        return fac[n] * (ifac[k] * ifac[n - k] %\
+    \ mb) % mb;\n    }\n\n    ll B(int n) { return fac[n]; }\n\n    ll invB(int n)\
+    \ { return ifac[n]; }\n\n    ll H(int n, int k) { return C(n + k - 1, k); }\n\n\
+    \    ll Cn(int n) { return C(2 * n, n) * inv[n + 1] % mb; }\n};\n/*\n@brief \u30B3\
+    \u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs doc/cmb.md\n*/\n"
+  code: "struct CMB {  // must\u7D20\u6570\n    using vl = vec<ll>;\n    vl fac;\n\
+    \    vl ifac;\n    vl inv;\n    ll mb = 0;\n    int N;\n\n    CMB(int r, ll _mod)\n\
+    \        : mb(_mod), N(r + 1), fac(r + 1, 1), ifac(r + 1, 1), inv(r + 1, 1) {\n\
+    \        rep(i, 2, N) {\n            fac[i] = fac[i - 1] * i % mb;\n         \
+    \   inv[i] = mb - inv[mb % i] * (mb / i) % mb;\n            ifac[i] = ifac[i -\
+    \ 1] * inv[i] % mb;\n        }\n    }\n\n    ll C(int n, int k) {\n        if\
+    \ (n < k) return 0LL;\n        if (n < 0 || k < 0) return 0LL;\n        return\
+    \ fac[n] * (ifac[k] * ifac[n - k] % mb) % mb;\n    }\n\n    ll B(int n) { return\
+    \ fac[n]; }\n\n    ll invB(int n) { return ifac[n]; }\n\n    ll H(int n, int k)\
+    \ { return C(n + k - 1, k); }\n\n    ll Cn(int n) { return C(2 * n, n) * inv[n\
+    \ + 1] % mb; }\n};\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\
+    \n@docs doc/cmb.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Math/combination.hpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-16 18:32:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/combination.test.cpp

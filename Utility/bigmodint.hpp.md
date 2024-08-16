@@ -36,8 +36,7 @@ data:
     \  return is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) { return\
     \ os << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
     \ a) { return x != a.x; }\n    // bool operator<(const mm& a) const {return x\
-    \ < a.x;}\n};\n\nusing rhash = modint<(1LL << 61) - 1>;\n/*\n@brief big_modint\n\
-    */\n"
+    \ < a.x;}\n};\n/*\n@brief big_modint\n*/\n"
   code: "\n/*\nmodint\u304B\u3089\u306E\u5909\u66F4\u70B9:\n[1] 1\u884C\u76EE(template\u306E\
     \u4E2D\u8EAB)\nuint32_t mod \u2192 uint64_t mod\n\n[2] 4\u884C\u76EE(\u5909\u6570\
     x\u306E\u578B)\nuint32_t x \u2192 uint64_t x\n\n[3]friend mm operator*\u306B\u3064\
@@ -64,13 +63,13 @@ data:
     \  cin >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend ostream\
     \ &operator<<(ostream &os, mm a) { return os << a.x; }\n\n    bool operator==(mm\
     \ a) { return x == a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n  \
-    \  // bool operator<(const mm& a) const {return x < a.x;}\n};\n\nusing rhash =\
-    \ modint<(1LL << 61) - 1>;\n/*\n@brief big_modint\n*/"
+    \  // bool operator<(const mm& a) const {return x < a.x;}\n};\n/*\n@brief big_modint\n\
+    */"
   dependsOn: []
   isVerificationFile: false
   path: Utility/bigmodint.hpp
   requiredBy: []
-  timestamp: '2024-08-06 18:23:20+09:00'
+  timestamp: '2024-08-16 18:32:51+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Utility/bigmodint.hpp
