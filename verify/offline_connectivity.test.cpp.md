@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Datastructure/offline_connectivity.hpp
     title: offline_connectivity
-  - icon: ':x:'
+  - icon: ':question:'
     path: Datastructure/undabledsu.hpp
     title: undable dsu
   - icon: ':question:'
@@ -12,9 +12,9 @@ data:
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum
@@ -133,7 +133,7 @@ data:
   path: verify/offline_connectivity.test.cpp
   requiredBy: []
   timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/offline_connectivity.test.cpp
 layout: document

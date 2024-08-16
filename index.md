@@ -3,7 +3,7 @@ data:
   libraryCategories:
   - name: Algorithm
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/Mo.hpp
       title: "Mo\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
     - icon: ':heavy_check_mark:'
@@ -15,19 +15,19 @@ data:
     - icon: ':x:'
       path: Algorithm/limited_knapsack.hpp
       title: Algorithm/limited_knapsack.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: Algorithm/lowlink.hpp
       title: lowlink
     - icon: ':warning:'
       path: Algorithm/maxflow.cpp
       title: Maxflow
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/maxflow.hpp
       title: Maxflow
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/maxflow_lowerbound.hpp
       title: Algorithm/maxflow_lowerbound.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/maximum_independent_set.hpp
       title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
     - icon: ':warning:'
@@ -73,22 +73,22 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/imos1d.hpp
       title: "1\u6B21\u5143imos\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/imos2d.hpp
       title: "2\u6B21\u5143imos\u6CD5"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/lazysegtree.hpp
       title: lazysegtree
     - icon: ':warning:'
       path: Datastructure/li_chao_tree.hpp
       title: Li chao tree
-    - icon: ':x:'
+    - icon: ':question:'
       path: Datastructure/offline_connectivity.hpp
       title: offline_connectivity
     - icon: ':x:'
       path: Datastructure/offset_manager.hpp
       title: offset_manager
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/oneside_range_edge_graph.hpp
       title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF(\u7279\u6B8A\u7248\
         )"
@@ -96,7 +96,7 @@ data:
       path: Datastructure/online2dseg.hpp
       title: "\u5DE8\u5927\u306A\u30B0\u30EA\u30C3\u30C9\u3078\u306E1\u70B9\u52A0\u7B97\
         \u30FB\u77E9\u5F62\u548C"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/pbds_set.hpp
       title: "pdbs\u306E\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':x:'
@@ -146,7 +146,7 @@ data:
     - icon: ':x:'
       path: Datastructure/treap.hpp
       title: treap
-    - icon: ':x:'
+    - icon: ':question:'
       path: Datastructure/undabledsu.hpp
       title: undable dsu
     - icon: ':x:'
@@ -163,7 +163,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/floor_sum.hpp
       title: floor_sum
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/matrix.hpp
       title: "\u884C\u5217\u306E\u578B"
     - icon: ':warning:'
@@ -177,7 +177,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: String/Rhash.hpp
       title: rolling_hash
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: String/manacher.hpp
       title: String/manacher.hpp
     - icon: ':warning:'
@@ -299,55 +299,55 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/hld_lca.test.cpp
       title: verify/hld_lca.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/imos2d.test.cpp
       title: verify/imos2d.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/jumpontree.test.cpp
       title: verify/jumpontree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/lazyseg_bina.test.cpp
       title: verify/lazyseg_bina.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/lazysegtree.test.cpp
       title: verify/lazysegtree.test.cpp
     - icon: ':x:'
       path: verify/limited_knapsack.test.cpp
       title: verify/limited_knapsack.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/lowlink_bridge.test.cpp
       title: verify/lowlink_bridge.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/lowlink_joint.test.cpp
       title: verify/lowlink_joint.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/manacher.test.cpp
       title: verify/manacher.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/matrix.test.cpp
       title: verify/matrix.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/maxflow.test.cpp
       title: verify/maxflow.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/maxflow_lowerbound.test.cpp
       title: verify/maxflow_lowerbound.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/maximum_independent_set.test.cpp
       title: verify/maximum_independent_set.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/mo.test.cpp
       title: verify/mo.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/offline_connectivity.test.cpp
       title: verify/offline_connectivity.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/offline_connectivity_more.test.cpp
       title: verify/offline_connectivity_more.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/oneside_range_edge_graph.test.cpp
       title: verify/oneside_range_edge_graph.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/pbds_set.test.cpp
       title: verify/pbds_set.test.cpp
     - icon: ':x:'
