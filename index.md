@@ -6,7 +6,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/Mo.hpp
       title: "Mo\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/bisect.hpp
       title: "\u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22"
     - icon: ':heavy_check_mark:'
@@ -197,7 +197,7 @@ data:
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -269,7 +269,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/binary_trie_xor.test.cpp
       title: verify/binary_trie_xor.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/bisect.test.cpp
       title: verify/bisect.test.cpp
     - icon: ':heavy_check_mark:'

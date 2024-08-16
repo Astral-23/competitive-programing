@@ -3,33 +3,33 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/bisect.test.cpp
     title: verify/bisect.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/bisect.md
     document_title: "\u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22"
     links: []
   bundledCode: "#line 1 \"Algorithm/bisect.hpp\"\ntemplate <typename T, typename F>\
     \ T bisect(T ok, T ng, F pred) {\n    if(ok <= ng) ng++;\n    else ng--;\n   \
-    \ \n    if (!pred(ok)) return ok;\n\n    while (ng > ok + 1 || ok > ng + 1) {\n\
-    \        T mid = std::midpoint(ok, ng);\n        (pred(mid) ? ok : ng) = mid;\n\
-    \    }\n    return ok;\n}\n/*\n@brief \u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22\
-    \n@docs doc/bisect.md\n*/\n"
+    \ \n    if (!pred(ok)) return ok;\n\n\n    while (ng > ok + 1 || ok > ng + 1)\
+    \ {\n        T mid = ((ok ^ ng) >> 1) + (ok & ng);\n        (pred(mid) ? ok :\
+    \ ng) = mid;\n    }\n    return ok;\n}\n/*\n@brief \u62BD\u8C61\u5316\u4E8C\u5206\
+    \u63A2\u7D22\n@docs doc/bisect.md\n*/\n"
   code: "template <typename T, typename F> T bisect(T ok, T ng, F pred) {\n    if(ok\
-    \ <= ng) ng++;\n    else ng--;\n    \n    if (!pred(ok)) return ok;\n\n    while\
-    \ (ng > ok + 1 || ok > ng + 1) {\n        T mid = std::midpoint(ok, ng);\n   \
-    \     (pred(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n/*\n@brief \u62BD\
+    \ <= ng) ng++;\n    else ng--;\n    \n    if (!pred(ok)) return ok;\n\n\n    while\
+    \ (ng > ok + 1 || ok > ng + 1) {\n        T mid = ((ok ^ ng) >> 1) + (ok & ng);\n\
+    \        (pred(mid) ? ok : ng) = mid;\n    }\n    return ok;\n}\n/*\n@brief \u62BD\
     \u8C61\u5316\u4E8C\u5206\u63A2\u7D22\n@docs doc/bisect.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Algorithm/bisect.hpp
   requiredBy: []
-  timestamp: '2024-08-16 18:19:08+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  timestamp: '2024-08-16 18:25:38+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/bisect.test.cpp
 documentation_of: Algorithm/bisect.hpp
