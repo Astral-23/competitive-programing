@@ -3,7 +3,7 @@ struct Mo {
     int n, q;
     vec<pair<int, int>> qs;
     vec<int> qi;
-    Mo(int N, vec<pair<int, int>> QS) : n(N), qs(QS), q(QS.size()) {   
+    Mo(int n, vec<pair<int, int>> qs) : n(n), q(qs.size()), qs(qs) {   
         qi = vec<int>(q);
         iota(all(qi), 0);
         int width = max<int>(1, 1.0 * n / max(1.0, sqrt(q * 2.0 / 3.0)));
