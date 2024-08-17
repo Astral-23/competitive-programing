@@ -13,10 +13,10 @@ data:
     document_title: "Mo\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
     links: []
   bundledCode: "#line 1 \"Algorithm/Mo.hpp\"\n\nstruct Mo {\n    int n, q;\n    vec<pair<int,\
-    \ int>> qs;\n    vec<int> qi;\n    Mo(int N, vec<pair<int, int>> QS) : n(N), qs(QS),\
-    \ q(QS.size()) {   \n        qi = vec<int>(q);\n        iota(all(qi), 0);\n  \
-    \      int width = max<int>(1, 1.0 * n / max(1.0, sqrt(q * 2.0 / 3.0)));\n   \
-    \     sort(all(qi), [&](int i, int j) {\n            if(qs[i].first/width != qs[j].first/width)\
+    \ int>> qs;\n    vec<int> qi;\n    Mo(int n, vec<pair<int, int>> qs) : n(n), q(qs.size()),\
+    \ qs(qs) {   \n        qi = vec<int>(q);\n        iota(all(qi), 0);\n        int\
+    \ width = max<int>(1, 1.0 * n / max(1.0, sqrt(q * 2.0 / 3.0)));\n        sort(all(qi),\
+    \ [&](int i, int j) {\n            if(qs[i].first/width != qs[j].first/width)\
     \ {\n                return qs[i].first < qs[j].first;\n            }\n      \
     \      else {\n                int g = qs[i].first / width;\n                if(g\
     \ % 2 == 0) {\n                    return qs[i].second < qs[j].second;\n     \
@@ -30,7 +30,7 @@ data:
     \       \n        }\n    }\n};\n\n/*\n@brief Mo\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0\
     \n*/\n"
   code: "\nstruct Mo {\n    int n, q;\n    vec<pair<int, int>> qs;\n    vec<int> qi;\n\
-    \    Mo(int N, vec<pair<int, int>> QS) : n(N), qs(QS), q(QS.size()) {   \n   \
+    \    Mo(int n, vec<pair<int, int>> qs) : n(n), q(qs.size()), qs(qs) {   \n   \
     \     qi = vec<int>(q);\n        iota(all(qi), 0);\n        int width = max<int>(1,\
     \ 1.0 * n / max(1.0, sqrt(q * 2.0 / 3.0)));\n        sort(all(qi), [&](int i,\
     \ int j) {\n            if(qs[i].first/width != qs[j].first/width) {\n       \
@@ -49,7 +49,7 @@ data:
   isVerificationFile: false
   path: Algorithm/Mo.hpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-17 22:36:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/mo.test.cpp

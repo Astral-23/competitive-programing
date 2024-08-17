@@ -30,7 +30,7 @@ data:
     \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
     \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/Mo.hpp\"\n\nstruct\
     \ Mo {\n    int n, q;\n    vec<pair<int, int>> qs;\n    vec<int> qi;\n    Mo(int\
-    \ N, vec<pair<int, int>> QS) : n(N), qs(QS), q(QS.size()) {   \n        qi = vec<int>(q);\n\
+    \ n, vec<pair<int, int>> qs) : n(n), q(qs.size()), qs(qs) {   \n        qi = vec<int>(q);\n\
     \        iota(all(qi), 0);\n        int width = max<int>(1, 1.0 * n / max(1.0,\
     \ sqrt(q * 2.0 / 3.0)));\n        sort(all(qi), [&](int i, int j) {\n        \
     \    if(qs[i].first/width != qs[j].first/width) {\n                return qs[i].first\
@@ -127,7 +127,7 @@ data:
   isVerificationFile: true
   path: verify/mo.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-08-17 22:36:46+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/mo.test.cpp
