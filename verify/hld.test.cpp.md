@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Algorithm/hld.hpp
     title: HLD
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/segtree.hpp
     title: segtree
   - icon: ':question:'

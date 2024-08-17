@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Algorithm/Mo.hpp
     title: "Mo\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/segtree.hpp
     title: segtree
   - icon: ':question:'

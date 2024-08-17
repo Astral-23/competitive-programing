@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Algorithm/hld.hpp
     title: HLD
   - icon: ':heavy_check_mark:'

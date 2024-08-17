@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/offline_connectivity.hpp
     title: offline_connectivity
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/undabledsu.hpp
     title: undable dsu
   - icon: ':question:'

@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/simple_treap.hpp
     title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
   - icon: ':question:'
