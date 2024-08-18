@@ -1,3 +1,4 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/chromatic_number"
 #include "../Utility/template.hpp"
 #include "../Gragh/Chromatic_Number_with_restoration.hpp"
 

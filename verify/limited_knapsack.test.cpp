@@ -1,8 +1,8 @@
 //#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp"
-#include "../Utility/template.hpp" 
-#include "../Datastructure/swag.hpp"
-#include "../Datastructure/offset_manager.hpp"
-#include "../Algorithm/limited_knapsack.hpp"
+//#include "../Utility/template.hpp" 
+//#include "../Datastructure/swag.hpp"
+//#include "../Datastructure/offset_manager.hpp"
+//#include "../Algorithm/limited_knapsack.hpp"
 int main() { //O(NW)
     ll n, w;
     cin >> n >> w;
