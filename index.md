@@ -152,6 +152,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/value_dsu.hpp
       title: "\u5024\u96C6\u7D04\u30FB\u5909\u66F4\u53EF\u80FD\u306Adsu"
+  - name: Gragh
+    pages:
+    - icon: ':warning:'
+      path: Gragh/Chromatic_Number_with_restoration.hpp
+      title: "\u5F69\u8272\u6570(\u5FA9\u5143\u4ED8\u304D)"
   - name: Math
     pages:
     - icon: ':heavy_check_mark:'
@@ -275,6 +280,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/bitwise_and_convolution.test.cpp
       title: verify/bitwise_and_convolution.test.cpp
+    - icon: ':x:'
+      path: verify/chromatic_num_with_restore.test.cpp
+      title: verify/chromatic_num_with_restore.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/combination.test.cpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
