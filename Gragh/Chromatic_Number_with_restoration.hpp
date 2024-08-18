@@ -1,19 +1,21 @@
-#include "../Utility/modint.hpp"
+#include "../Convolution/bitwise_or_convolution.hpp"
 
-using mint = modint998244353;
-int chromatic_number(const vec<vec<int>> &g) {
-    if (g.empty()) return 0;
+pair<int, vec<int>> chromatic_number(const vec<vec<int>> &g) {
+    if (g.empty()) return {0, {}};
     int n = g.size();
 
-    vec<mint> dp(1LL << n, -1);  // dp[i][S] := S は i 色彩色可能か？
-    dp[0] = 1;
-    rep(i, 0, n) dp[1LL << i] = 1;
+    vec<vec<ll>> dps(1, vec<ll>(1 << n, 0));
+    dps[0][0] = 1;
 
-    rep(s, 0, 1LL << n) if (dp[s] == -1) {
+    vec<ll> dp(1 << n, -1);  // dp[i][S] := S は i 色彩色可能か？
+    dp[0] = 1;
+    rep(i, 0, n) dp[1 << i] = 1;
+
+    rep(s, 0, 1 << n) if (dp[s] == -1) {
         int lat = -1;
         rep(i, 0, n) if (s >> i & 1) lat = i;
 
-        ll sub = s ^ (1LL << lat);
+        int sub = s ^ (1 << lat);
         if (dp[sub] == 0) {
             dp[s] = 0;
             continue;
@@ -29,36 +31,35 @@ int chromatic_number(const vec<vec<int>> &g) {
             dp[s] = 1;
     }
 
-    if(dp[(1 << n) - 1] != 0) {
-        return 1;
+    dps.push_back(dp);
+
+    while (dps.back()[(1 << n) - 1] == 0) {
+        dps.push_back(bitwise_or_convolution<S, op, inv, zero>(
+            dps[1], dps[dps.size() - 1]));
+        rep(i, 0, n) if (dps[dps.size() - 1][i] != 0) dps[dps.size() - 1][i] =
+            1;
     }
 
-    vec<mint> DP = dp;
+    int K = dps.size() - 1;
+    vec<int> res(n, -1);
 
+    auto dfs = [&](auto f, int S,
+                   int l) -> void {  // 集合 Sを、 [l, K)を使って彩色。
+        if (S == 0) return;
+        int sub = S;
+        do {
+            if (dps[1][sub] && dps[K - l - 1][S ^ sub]) {
+                rep(i, 0, n) if (sub >> i & 1) res[i] = l;
 
-    rep(i, 0, n) {
-        rep(s, 0, 1LL << n) {
-            if((s & (1 << i)) != 0) { // if i in s
-                DP[s] += DP[s ^ (1 << i)];
+                f(f, S ^ sub, l + 1);
+                break;
             }
-        }
-    }
 
+            sub = (sub - 1) & S;
+        } while (sub != S);
+    };
 
-    vec<mint> DPK = DP;
+    dfs(dfs, (1 << n) - 1, 0);
 
-    rep(k, 2, n + 1) {
-        rep(i, 0, 1 << n) DPK[i] *= DP[i];
-        mint v = 0;
-        ll sup = (1LL << n) - 1;
-        rep(s, 0, 1LL << n) {
-            if(__builtin_popcountll(sup ^ s)%2 == 0) v += DPK[s];
-            else v -= DPK[s];
-        }
-        if(v != 0) return k;
-        else continue;
-    }
-    return -1;
+    return {K, res};
 }
-
-

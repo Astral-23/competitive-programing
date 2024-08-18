@@ -49,20 +49,12 @@ int chromatic_number(const vec<vec<int>> &g) {
         rep(i, 0, 1 << n) DPK[i] *= DP[i];
         mint v = 0;
         ll sup = (1LL << n) - 1;
-        ll sub = sup;
-        do {
-            ll diff = sup ^ sub;
-            ll p = __builtin_popcountll(diff);
-            if (p % 2 == 0)
-                p = 1;
+        rep(s, 0, 1LL << n) {
+            if (__builtin_popcountll(sup ^ s) % 2 == 0)
+                v += DPK[s];
             else
-                p = -1;
-
-            v += p * DPK[sub];
-
-            sub = (sub - 1) & sup;
-        } while (sub != sup);
-
+                v -= DPK[s];
+        }
         if (v != 0)
             return k;
         else
