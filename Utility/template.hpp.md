@@ -39,9 +39,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/2dsegtree_max.test.cpp
     title: verify/2dsegtree_max.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
+  - icon: ':x:'
+    path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
+    title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Rhash.test.cpp
     title: verify/Rhash.test.cpp
@@ -63,6 +66,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/bitwise_and_convolution.test.cpp
     title: verify/bitwise_and_convolution.test.cpp
+  - icon: ':x:'
+    path: verify/chromatic_num_with_restore.test.cpp
+    title: verify/chromatic_num_with_restore.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
@@ -229,6 +235,7 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/manacher.test.cpp
+  - verify/Chromatic_Number_with_restoration.test.cpp.cpp
   - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
   - verify/Rhash.test.cpp
   - verify/static2dsum.test.cpp
@@ -244,6 +251,7 @@ data:
   - verify/superset_transform.test.cpp
   - verify/seg_prod.test.cpp
   - verify/lazysegtree.test.cpp
+  - verify/chromatic_num_with_restore.test.cpp
   - verify/lowlink_bridge.test.cpp
   - verify/combination.test.cpp
   - verify/scc.test.cpp

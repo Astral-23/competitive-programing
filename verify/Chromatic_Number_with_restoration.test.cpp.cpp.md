@@ -69,7 +69,7 @@ data:
     \ = l;\n\n                f(f, sup ^ sub, l + 1);\n                break;\n  \
     \          }\n\n            sub = (sub - 1) & sup;\n        } while (sub != sup);\n\
     \    };\n\n    dfs(dfs, (1 << n) - 1, 0);\n\n    return {K, res};\n}\n/*\n@brief\
-    \ \u5F69\u8272\u6570(\u5FA9\u5143\u4ED8\u304D)\n*/\n#line 3 \"verify/chromatic_num_with_restore.test.cpp\"\
+    \ \u5F69\u8272\u6570(\u5FA9\u5143\u4ED8\u304D)\n*/\n#line 3 \"verify/Chromatic_Number_with_restoration.test.cpp.cpp\"\
     \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n\
     \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    auto [ans, col] = chromatic_number(g);\n\
@@ -91,15 +91,15 @@ data:
   - Convolution/bitwise_or_convolution.hpp
   - Algorithm/subset_transform.hpp
   isVerificationFile: true
-  path: verify/chromatic_num_with_restore.test.cpp
+  path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
   requiredBy: []
   timestamp: '2024-08-18 17:09:25+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/chromatic_num_with_restore.test.cpp
+documentation_of: verify/Chromatic_Number_with_restoration.test.cpp.cpp
 layout: document
 redirect_from:
-- /verify/verify/chromatic_num_with_restore.test.cpp
-- /verify/verify/chromatic_num_with_restore.test.cpp.html
-title: verify/chromatic_num_with_restore.test.cpp
+- /verify/verify/Chromatic_Number_with_restoration.test.cpp.cpp
+- /verify/verify/Chromatic_Number_with_restoration.test.cpp.cpp.html
+title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
 ---

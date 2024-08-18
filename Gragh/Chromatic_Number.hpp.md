@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "\u5F69\u8272\u6570"
     links: []
@@ -89,7 +89,7 @@ data:
   path: Gragh/Chromatic_Number.hpp
   requiredBy: []
   timestamp: '2024-08-18 17:06:05+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Chromatic_Number.test.cpp
 documentation_of: Gragh/Chromatic_Number.hpp

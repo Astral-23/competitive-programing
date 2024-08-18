@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Algorithm/subset_transform.hpp
       title: Algorithm/subset_transform.hpp
     - icon: ':heavy_check_mark:'
@@ -50,6 +50,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Convolution/bitwise_and_convolution.hpp
       title: Convolution/bitwise_and_convolution.hpp
+    - icon: ':x:'
+      path: Convolution/bitwise_or_convolution.hpp
+      title: Convolution/bitwise_or_convolution.hpp
   - name: Datastructure
     pages:
     - icon: ':heavy_check_mark:'
@@ -154,10 +157,10 @@ data:
       title: "\u5024\u96C6\u7D04\u30FB\u5909\u66F4\u53EF\u80FD\u306Adsu"
   - name: Gragh
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Gragh/Chromatic_Number.hpp
       title: "\u5F69\u8272\u6570"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Gragh/Chromatic_Number_with_restoration.hpp
       title: "\u5F69\u8272\u6570(\u5FA9\u5143\u4ED8\u304D)"
   - name: Math
@@ -199,7 +202,7 @@ data:
     - icon: ':warning:'
       path: Utility/icpc_template.hpp
       title: Utility/icpc_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
     - icon: ':warning:'
@@ -262,9 +265,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/2dsegtree_max.test.cpp
       title: verify/2dsegtree_max.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number.test.cpp
       title: verify/Chromatic_Number.test.cpp
+    - icon: ':x:'
+      path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
+      title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Rhash.test.cpp
       title: verify/Rhash.test.cpp

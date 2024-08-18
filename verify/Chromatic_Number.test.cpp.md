@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Gragh/Chromatic_Number.hpp
     title: "\u5F69\u8272\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':question:'
@@ -12,22 +12,25 @@ data:
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
-  bundledCode: "#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing\
-    \ namespace std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i\
-    \ < (ll)(t); i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s);\
-    \ i--)\n#define all(x) begin(x), end(x)\n\n#define TT template <typename T>\n\
-    TT using vec = vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2\
-    \ y) {\n    return x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class\
-    \ T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n\
-    /*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Utility/modint.hpp\"\
-    \n\n// \u52D5\u7684mod : template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\
-    \u306E\u65B9\u3067\u5909\u6570mod\u3092\u5BA3\u8A00\ntemplate <uint32_t mod> struct\
+    PROBLEM: https://judge.yosupo.jp/problem/chromatic_number
+    links:
+    - https://judge.yosupo.jp/problem/chromatic_number
+  bundledCode: "#line 1 \"verify/Chromatic_Number.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/chromatic_number\"\
+    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Utility/modint.hpp\"\n\n//\
+    \ \u52D5\u7684mod : template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\u306E\
+    \u65B9\u3067\u5909\u6570mod\u3092\u5BA3\u8A00\ntemplate <uint32_t mod> struct\
     \ modint {\n    using mm = modint;\n    uint32_t x;\n    modint() : x(0) {}\n\
     \    TT modint(T a = 0) : x((ll(a) % mod + mod)) {\n        if (x >= mod) x -=\
     \ mod;\n    }\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
@@ -70,14 +73,15 @@ data:
     \           p = -1;\n\n            v += p * DPK[sub];\n\n            sub = (sub\
     \ - 1) & sup;\n        } while (sub != sup);\n\n        if (v != 0)\n        \
     \    return k;\n        else\n            continue;\n    }\n    return -1;\n}\n\
-    /*\n@brief \u5F69\u8272\u6570\n*/\n#line 3 \"verify/Chromatic_Number.test.cpp\"\
+    /*\n@brief \u5F69\u8272\u6570\n*/\n#line 4 \"verify/Chromatic_Number.test.cpp\"\
     \nint main() {\n    int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n \
     \   rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    int ans = chromatic_number(g);\n\n \
     \   cout << ans << endl;\n\n}\n"
-  code: "#include \"../Utility/template.hpp\"\n#include \"../Gragh/Chromatic_Number.hpp\"\
-    \nint main() {\n    int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n \
-    \   rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/chromatic_number\"\n#include\
+    \ \"../Utility/template.hpp\"\n#include \"../Gragh/Chromatic_Number.hpp\"\nint\
+    \ main() {\n    int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n    rep(i,\
+    \ 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    int ans = chromatic_number(g);\n\n \
     \   cout << ans << endl;\n\n}"
   dependsOn:
@@ -87,8 +91,8 @@ data:
   isVerificationFile: true
   path: verify/Chromatic_Number.test.cpp
   requiredBy: []
-  timestamp: '2024-08-18 17:06:05+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-08-18 17:09:25+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Chromatic_Number.test.cpp
 layout: document
