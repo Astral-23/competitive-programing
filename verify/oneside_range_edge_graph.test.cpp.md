@@ -8,7 +8,7 @@ data:
     path: Datastructure/oneside_range_edge_graph.hpp
     title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF(\u7279\u6B8A\u7248\
       )"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

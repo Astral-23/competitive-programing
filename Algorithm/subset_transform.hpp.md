@@ -2,19 +2,13 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':heavy_check_mark:'
+  - icon: ':warning:'
     path: Convolution/bitwise_or_convolution.hpp
     title: Convolution/bitwise_or_convolution.hpp
-  - icon: ':heavy_check_mark:'
-    path: Gragh/Chromatic_Number_with_restoration.hpp
-    title: "\u5F69\u8272\u6570(\u5FA9\u5143\u4ED8\u304D)"
-  _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
-    path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
-    title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Algorithm/subset_transform.hpp\"\ntemplate<class S, S (*op)(S,\
@@ -38,12 +32,10 @@ data:
   isVerificationFile: false
   path: Algorithm/subset_transform.hpp
   requiredBy:
-  - Gragh/Chromatic_Number_with_restoration.hpp
   - Convolution/bitwise_or_convolution.hpp
   timestamp: '2024-07-31 11:08:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/Chromatic_Number_with_restoration.test.cpp.cpp
+  verificationStatus: LIBRARY_NO_TESTS
+  verifiedWith: []
 documentation_of: Algorithm/subset_transform.hpp
 layout: document
 redirect_from:

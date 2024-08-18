@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/simple_treap.hpp
     title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

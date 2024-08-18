@@ -42,7 +42,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
     title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
   - icon: ':heavy_check_mark:'
@@ -192,9 +192,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -226,7 +226,7 @@ data:
   - "\u7802\u5834/simple_treap.henkou.cpp"
   - "\u7802\u5834/binarytrie.example.cpp"
   timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/manacher.test.cpp
   - verify/Chromatic_Number_with_restoration.test.cpp.cpp
