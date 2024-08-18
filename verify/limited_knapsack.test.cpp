@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp"
+//#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp"
 #include "../Utility/template.hpp" 
 #include "../Datastructure/swag.hpp"
 #include "../Datastructure/offset_manager.hpp"
