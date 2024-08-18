@@ -42,7 +42,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
     title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
   - icon: ':heavy_check_mark:'
@@ -66,9 +66,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/bitwise_and_convolution.test.cpp
     title: verify/bitwise_and_convolution.test.cpp
-  - icon: ':x:'
-    path: verify/chromatic_num_with_restore.test.cpp
-    title: verify/chromatic_num_with_restore.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
@@ -105,9 +102,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  - icon: ':x:'
-    path: verify/limited_knapsack.test.cpp
-    title: verify/limited_knapsack.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lowlink_bridge.test.cpp
     title: verify/lowlink_bridge.test.cpp
@@ -198,9 +192,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -232,7 +226,7 @@ data:
   - "\u7802\u5834/simple_treap.henkou.cpp"
   - "\u7802\u5834/binarytrie.example.cpp"
   timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/manacher.test.cpp
   - verify/Chromatic_Number_with_restoration.test.cpp.cpp
@@ -251,7 +245,6 @@ data:
   - verify/superset_transform.test.cpp
   - verify/seg_prod.test.cpp
   - verify/lazysegtree.test.cpp
-  - verify/chromatic_num_with_restore.test.cpp
   - verify/lowlink_bridge.test.cpp
   - verify/combination.test.cpp
   - verify/scc.test.cpp
@@ -290,7 +283,6 @@ data:
   - verify/value_dsu.test.cpp
   - verify/lowlink_joint.test.cpp
   - verify/fastset.test.cpp
-  - verify/limited_knapsack.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Utility/template.hpp
 layout: document

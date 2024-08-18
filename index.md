@@ -12,7 +12,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/hld.hpp
       title: HLD
-    - icon: ':x:'
+    - icon: ':warning:'
       path: Algorithm/limited_knapsack.hpp
       title: Algorithm/limited_knapsack.hpp
     - icon: ':heavy_check_mark:'
@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/subset_transform.hpp
       title: Algorithm/subset_transform.hpp
     - icon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Convolution/bitwise_and_convolution.hpp
       title: Convolution/bitwise_and_convolution.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Convolution/bitwise_or_convolution.hpp
       title: Convolution/bitwise_or_convolution.hpp
   - name: Datastructure
@@ -88,7 +88,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/offline_connectivity.hpp
       title: offline_connectivity
-    - icon: ':x:'
+    - icon: ':warning:'
       path: Datastructure/offset_manager.hpp
       title: offset_manager
     - icon: ':heavy_check_mark:'
@@ -140,7 +140,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/static2dsum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/swag.hpp
       title: SWAG
     - icon: ':warning:'
@@ -160,7 +160,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Gragh/Chromatic_Number.hpp
       title: "\u5F69\u8272\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Gragh/Chromatic_Number_with_restoration.hpp
       title: "\u5F69\u8272\u6570(\u5FA9\u5143\u4ED8\u304D)"
   - name: Math
@@ -208,7 +208,7 @@ data:
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -268,7 +268,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number.test.cpp
       title: verify/Chromatic_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
       title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
     - icon: ':heavy_check_mark:'
@@ -292,9 +292,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/bitwise_and_convolution.test.cpp
       title: verify/bitwise_and_convolution.test.cpp
-    - icon: ':x:'
-      path: verify/chromatic_num_with_restore.test.cpp
-      title: verify/chromatic_num_with_restore.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/combination.test.cpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
