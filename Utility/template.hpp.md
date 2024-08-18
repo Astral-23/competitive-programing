@@ -39,6 +39,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/2dsegtree_max.test.cpp
     title: verify/2dsegtree_max.test.cpp
+  - icon: ':x:'
+    path: verify/Chromatic_Number.test.cpp
+    title: verify/Chromatic_Number.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Rhash.test.cpp
     title: verify/Rhash.test.cpp
@@ -268,6 +271,7 @@ data:
   - verify/binary_trie_xor.test.cpp
   - verify/imos2d.test.cpp
   - verify/extgcd.test.cpp
+  - verify/Chromatic_Number.test.cpp
   - verify/offline_connectivity_more.test.cpp
   - verify/floor_sum.test.cpp
   - verify/hld_lca.test.cpp

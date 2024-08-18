@@ -2,10 +2,16 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
+  - icon: ':x:'
+    path: Gragh/Chromatic_Number.hpp
+    title: "\u5F69\u8272\u6570"
   - icon: ':warning:'
     path: example/matrix.example.cpp
     title: example/matrix.example.cpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/Chromatic_Number.test.cpp
+    title: verify/Chromatic_Number.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/bitwise_and_convolution.test.cpp
     title: verify/bitwise_and_convolution.test.cpp
@@ -42,9 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: modint
     links: []
@@ -100,9 +106,10 @@ data:
   isVerificationFile: false
   path: Utility/modint.hpp
   requiredBy:
+  - Gragh/Chromatic_Number.hpp
   - example/matrix.example.cpp
   timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/treedp.test.cpp
   - verify/bitwise_and_convolution.test.cpp
@@ -115,6 +122,7 @@ data:
   - verify/matrix.test.cpp
   - verify/treap.test.cpp
   - verify/dynamicseg.test.cpp
+  - verify/Chromatic_Number.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Utility/modint.hpp
 layout: document

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/segtree.hpp
     title: segtree
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':question:'

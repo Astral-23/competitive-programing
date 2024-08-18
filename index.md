@@ -154,6 +154,9 @@ data:
       title: "\u5024\u96C6\u7D04\u30FB\u5909\u66F4\u53EF\u80FD\u306Adsu"
   - name: Gragh
     pages:
+    - icon: ':x:'
+      path: Gragh/Chromatic_Number.hpp
+      title: "\u5F69\u8272\u6570"
     - icon: ':warning:'
       path: Gragh/Chromatic_Number_with_restoration.hpp
       title: "\u5F69\u8272\u6570(\u5FA9\u5143\u4ED8\u304D)"
@@ -196,7 +199,7 @@ data:
     - icon: ':warning:'
       path: Utility/icpc_template.hpp
       title: Utility/icpc_template.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/modint.hpp
       title: modint
     - icon: ':warning:'
@@ -259,6 +262,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/2dsegtree_max.test.cpp
       title: verify/2dsegtree_max.test.cpp
+    - icon: ':x:'
+      path: verify/Chromatic_Number.test.cpp
+      title: verify/Chromatic_Number.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Rhash.test.cpp
       title: verify/Rhash.test.cpp

@@ -7,7 +7,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Convolution/bitwise_and_convolution.hpp
     title: Convolution/bitwise_and_convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':question:'

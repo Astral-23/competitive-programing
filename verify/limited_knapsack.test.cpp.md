@@ -20,25 +20,25 @@ data:
   _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp
-  bundledCode: "#line 1 \"verify/limited_knapsack.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\n\
-    \ntemplate<class S, S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack {\n\
-    \        stack<S> data;\n        stack<S> res;\n        foldable_stack(){}\n\n\
-    \        void push(S a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\
-    \u8FFD\u52A0\u3001\u3064\u307E\u308AR  type == 0 : \u914D\u5217\u306E\u5DE6\u306B\
-    \u8FFD\u52A0\u3001\u3064\u307E\u308AL \n            data.push(a);\n          \
-    \  if(!res.empty()) {\n               if(type == 0) res.push(op(a, res.top()));//res\u304C\
-    \u7A7A\u306A\u3089\u305D\u308C\u3092\u5165\u308C\u308B\n               else res.push(op(res.top(),\
+  bundledCode: "#line 1 \"verify/limited_knapsack.test.cpp\"\n//#define PROBLEM \"\
+    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp\"\n\
+    #line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
+    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
+    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
+    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
+    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
+    \ {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\
+    \u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\n\ntemplate<class\
+    \ S, S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack {\n        stack<S>\
+    \ data;\n        stack<S> res;\n        foldable_stack(){}\n\n        void push(S\
+    \ a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\u8FFD\u52A0\u3001\
+    \u3064\u307E\u308AR  type == 0 : \u914D\u5217\u306E\u5DE6\u306B\u8FFD\u52A0\u3001\
+    \u3064\u307E\u308AL \n            data.push(a);\n            if(!res.empty())\
+    \ {\n               if(type == 0) res.push(op(a, res.top()));//res\u304C\u7A7A\
+    \u306A\u3089\u305D\u308C\u3092\u5165\u308C\u308B\n               else res.push(op(res.top(),\
     \ a));\n            }\n            else res.push(a);\n            return;\n  \
     \      }\n\n        void pop() {\n            assert(!data.empty());\n       \
     \     data.pop();\n            res.pop();\n            return;\n        }\n\n\
@@ -90,7 +90,7 @@ data:
     \nint main() { //O(NW)\n    ll n, w;\n    cin >> n >> w;\n    vec<ll> V(n), W(n),\
     \ M(n);\n    rep(i, 0, n) cin >> V[i] >> W[i] >> M[i];\n    cout << limited_knapsack(V,\
     \ W, M, w) << endl;\n\n    \n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp\"\
+  code: "//#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DPL_1_G&lang=jp\"\
     \n#include \"../Utility/template.hpp\" \n#include \"../Datastructure/swag.hpp\"\
     \n#include \"../Datastructure/offset_manager.hpp\"\n#include \"../Algorithm/limited_knapsack.hpp\"\
     \nint main() { //O(NW)\n    ll n, w;\n    cin >> n >> w;\n    vec<ll> V(n), W(n),\
@@ -104,7 +104,7 @@ data:
   isVerificationFile: true
   path: verify/limited_knapsack.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-08-18 17:06:05+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/limited_knapsack.test.cpp
