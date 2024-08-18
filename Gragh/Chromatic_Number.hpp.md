@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   _extendedRequiredBy: []
@@ -54,13 +54,11 @@ data:
     \ in s\n                DP[s] += DP[s ^ (1 << i)];\n            }\n        }\n\
     \    }\n\n    vec<mint> DPK = DP;\n\n    rep(k, 2, n + 1) {\n        rep(i, 0,\
     \ 1 << n) DPK[i] *= DP[i];\n        mint v = 0;\n        ll sup = (1LL << n) -\
-    \ 1;\n        ll sub = sup;\n        do {\n            ll diff = sup ^ sub;\n\
-    \            ll p = __builtin_popcountll(diff);\n            if (p % 2 == 0)\n\
-    \                p = 1;\n            else\n                p = -1;\n\n       \
-    \     v += p * DPK[sub];\n\n            sub = (sub - 1) & sup;\n        } while\
-    \ (sub != sup);\n\n        if (v != 0)\n            return k;\n        else\n\
-    \            continue;\n    }\n    return -1;\n}\n/*\n@brief \u5F69\u8272\u6570\
-    \n*/\n"
+    \ 1;\n        rep(s, 0, 1LL << n) {\n            if (__builtin_popcountll(sup\
+    \ ^ s) % 2 == 0)\n                v += DPK[s];\n            else\n           \
+    \     v -= DPK[s];\n        }\n        if (v != 0)\n            return k;\n  \
+    \      else\n            continue;\n    }\n    return -1;\n}\n/*\n@brief \u5F69\
+    \u8272\u6570\n*/\n"
   code: "#include \"../Utility/modint.hpp\"\n\nusing mint = modint998244353;\nint\
     \ chromatic_number(const vec<vec<int>> &g) {\n    if (g.empty()) return 0;\n \
     \   int n = g.size();\n\n    vec<mint> dp(1LL << n, -1);  // dp[i][S] := S \u306F\
@@ -76,19 +74,17 @@ data:
     \ i)) != 0) {  // if i in s\n                DP[s] += DP[s ^ (1 << i)];\n    \
     \        }\n        }\n    }\n\n    vec<mint> DPK = DP;\n\n    rep(k, 2, n + 1)\
     \ {\n        rep(i, 0, 1 << n) DPK[i] *= DP[i];\n        mint v = 0;\n       \
-    \ ll sup = (1LL << n) - 1;\n        ll sub = sup;\n        do {\n            ll\
-    \ diff = sup ^ sub;\n            ll p = __builtin_popcountll(diff);\n        \
-    \    if (p % 2 == 0)\n                p = 1;\n            else\n             \
-    \   p = -1;\n\n            v += p * DPK[sub];\n\n            sub = (sub - 1) &\
-    \ sup;\n        } while (sub != sup);\n\n        if (v != 0)\n            return\
-    \ k;\n        else\n            continue;\n    }\n    return -1;\n}\n/*\n@brief\
-    \ \u5F69\u8272\u6570\n*/\n"
+    \ ll sup = (1LL << n) - 1;\n        rep(s, 0, 1LL << n) {\n            if (__builtin_popcountll(sup\
+    \ ^ s) % 2 == 0)\n                v += DPK[s];\n            else\n           \
+    \     v -= DPK[s];\n        }\n        if (v != 0)\n            return k;\n  \
+    \      else\n            continue;\n    }\n    return -1;\n}\n/*\n@brief \u5F69\
+    \u8272\u6570\n*/"
   dependsOn:
   - Utility/modint.hpp
   isVerificationFile: false
   path: Gragh/Chromatic_Number.hpp
   requiredBy: []
-  timestamp: '2024-08-18 17:06:05+09:00'
+  timestamp: '2024-08-18 17:42:47+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Chromatic_Number.test.cpp

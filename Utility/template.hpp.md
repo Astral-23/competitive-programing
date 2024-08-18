@@ -43,8 +43,8 @@ data:
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
   - icon: ':x:'
-    path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
-    title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
+    path: verify/Chromatic_Number_with_restoration.test.cpp
+    title: verify/Chromatic_Number_with_restoration.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Rhash.test.cpp
     title: verify/Rhash.test.cpp
@@ -229,7 +229,6 @@ data:
   verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/manacher.test.cpp
-  - verify/Chromatic_Number_with_restoration.test.cpp.cpp
   - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
   - verify/Rhash.test.cpp
   - verify/static2dsum.test.cpp
@@ -273,6 +272,7 @@ data:
   - verify/imos2d.test.cpp
   - verify/extgcd.test.cpp
   - verify/Chromatic_Number.test.cpp
+  - verify/Chromatic_Number_with_restoration.test.cpp
   - verify/offline_connectivity_more.test.cpp
   - verify/floor_sum.test.cpp
   - verify/hld_lca.test.cpp

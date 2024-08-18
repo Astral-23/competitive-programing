@@ -1,14 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':warning:'
+  - icon: ':x:'
     path: Algorithm/subset_transform.hpp
     title: Algorithm/subset_transform.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _extendedRequiredBy:
+  - icon: ':x:'
+    path: Gragh/Chromatic_Number_with_restoration.hpp
+    title: Gragh/Chromatic_Number_with_restoration.hpp
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/Chromatic_Number_with_restoration.test.cpp
+    title: verify/Chromatic_Number_with_restoration.test.cpp
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':x:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Algorithm/subset_transform.hpp\"\ntemplate<class S, S (*op)(S,\
@@ -41,10 +47,12 @@ data:
   - Algorithm/subset_transform.hpp
   isVerificationFile: false
   path: Convolution/bitwise_or_convolution.hpp
-  requiredBy: []
+  requiredBy:
+  - Gragh/Chromatic_Number_with_restoration.hpp
   timestamp: '2024-08-18 17:09:25+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/Chromatic_Number_with_restoration.test.cpp
 documentation_of: Convolution/bitwise_or_convolution.hpp
 layout: document
 redirect_from:

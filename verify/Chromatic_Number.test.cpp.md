@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Gragh/Chromatic_Number.hpp
     title: "\u5F69\u8272\u6570"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':question:'
@@ -67,13 +67,11 @@ data:
     \ << n) {\n            if ((s & (1 << i)) != 0) {  // if i in s\n            \
     \    DP[s] += DP[s ^ (1 << i)];\n            }\n        }\n    }\n\n    vec<mint>\
     \ DPK = DP;\n\n    rep(k, 2, n + 1) {\n        rep(i, 0, 1 << n) DPK[i] *= DP[i];\n\
-    \        mint v = 0;\n        ll sup = (1LL << n) - 1;\n        ll sub = sup;\n\
-    \        do {\n            ll diff = sup ^ sub;\n            ll p = __builtin_popcountll(diff);\n\
-    \            if (p % 2 == 0)\n                p = 1;\n            else\n     \
-    \           p = -1;\n\n            v += p * DPK[sub];\n\n            sub = (sub\
-    \ - 1) & sup;\n        } while (sub != sup);\n\n        if (v != 0)\n        \
-    \    return k;\n        else\n            continue;\n    }\n    return -1;\n}\n\
-    /*\n@brief \u5F69\u8272\u6570\n*/\n#line 4 \"verify/Chromatic_Number.test.cpp\"\
+    \        mint v = 0;\n        ll sup = (1LL << n) - 1;\n        rep(s, 0, 1LL\
+    \ << n) {\n            if (__builtin_popcountll(sup ^ s) % 2 == 0)\n         \
+    \       v += DPK[s];\n            else\n                v -= DPK[s];\n       \
+    \ }\n        if (v != 0)\n            return k;\n        else\n            continue;\n\
+    \    }\n    return -1;\n}\n/*\n@brief \u5F69\u8272\u6570\n*/\n#line 4 \"verify/Chromatic_Number.test.cpp\"\
     \nint main() {\n    int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n \
     \   rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    int ans = chromatic_number(g);\n\n \
@@ -91,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/Chromatic_Number.test.cpp
   requiredBy: []
-  timestamp: '2024-08-18 17:09:25+09:00'
+  timestamp: '2024-08-18 17:42:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Chromatic_Number.test.cpp

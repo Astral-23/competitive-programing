@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Algorithm/subset_transform.hpp
       title: Algorithm/subset_transform.hpp
     - icon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Convolution/bitwise_and_convolution.hpp
       title: Convolution/bitwise_and_convolution.hpp
-    - icon: ':warning:'
+    - icon: ':x:'
       path: Convolution/bitwise_or_convolution.hpp
       title: Convolution/bitwise_or_convolution.hpp
   - name: Datastructure
@@ -202,7 +202,7 @@ data:
     - icon: ':warning:'
       path: Utility/icpc_template.hpp
       title: Utility/icpc_template.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
     - icon: ':warning:'
@@ -269,8 +269,8 @@ data:
       path: verify/Chromatic_Number.test.cpp
       title: verify/Chromatic_Number.test.cpp
     - icon: ':x:'
-      path: verify/Chromatic_Number_with_restoration.test.cpp.cpp
-      title: verify/Chromatic_Number_with_restoration.test.cpp.cpp
+      path: verify/Chromatic_Number_with_restoration.test.cpp
+      title: verify/Chromatic_Number_with_restoration.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Rhash.test.cpp
       title: verify/Rhash.test.cpp
@@ -421,6 +421,9 @@ data:
         .test.cpp"
   - name: "\u7802\u5834"
     pages:
+    - icon: ':x:'
+      path: "\u7802\u5834/limited_knapsack.test.cpp"
+      title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':heavy_check_mark:'
       path: "\u7802\u5834/swag.test.cpp"
       title: "\u7802\u5834/swag.test.cpp"
