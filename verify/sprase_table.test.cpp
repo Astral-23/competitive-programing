@@ -1,3 +1,4 @@
+#define PROBLEM "https://judge.yosupo.jp/problem/staticrmq"
 #include "../Utility/template.hpp"
 #include "../Datastructure/sparse_table.hpp"
 
