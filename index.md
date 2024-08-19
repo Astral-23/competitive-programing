@@ -36,7 +36,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/scc.hpp
       title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/subset_transform.hpp
       title: Algorithm/subset_transform.hpp
     - icon: ':heavy_check_mark:'
@@ -50,7 +50,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Convolution/bitwise_and_convolution.hpp
       title: Convolution/bitwise_and_convolution.hpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Convolution/bitwise_or_convolution.hpp
       title: Convolution/bitwise_or_convolution.hpp
   - name: Datastructure
@@ -163,7 +163,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Gragh/Chromatic_Number.hpp
       title: "\u5F69\u8272\u6570"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Gragh/Chromatic_Number_with_restoration.hpp
       title: Gragh/Chromatic_Number_with_restoration.hpp
   - name: Math
@@ -271,7 +271,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number.test.cpp
       title: verify/Chromatic_Number.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number_with_restoration.test.cpp
       title: verify/Chromatic_Number_with_restoration.test.cpp
     - icon: ':heavy_check_mark:'

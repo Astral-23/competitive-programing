@@ -42,7 +42,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number_with_restoration.test.cpp
     title: verify/Chromatic_Number_with_restoration.test.cpp
   - icon: ':heavy_check_mark:'
