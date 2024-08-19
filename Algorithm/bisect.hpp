@@ -4,7 +4,14 @@ template <typename T, typename F> T bisect(T ok, T ng, F pred) {
     else
         ng--;
 
-    if (!pred(ok)) return ok;
+    if (!pred(ok)) {
+        if(ok <= ng) {
+            return ok - 1;
+        }
+        else {
+            return ok + 1;
+        }
+    }
 
     while (ng > ok + 1 || ok > ng + 1) {
         T mid = ((ok ^ ng) >> 1) + (ok & ng);
