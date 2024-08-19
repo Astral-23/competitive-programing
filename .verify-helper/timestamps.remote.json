@@ -5,6 +5,7 @@
 "verify/2dsegtree_add.test.cpp": "2024-08-16 18:32:51 +0900",
 "verify/2dsegtree_max.test.cpp": "2024-08-16 18:32:51 +0900",
 "verify/Chromatic_Number.test.cpp": "2024-08-18 17:42:47 +0900",
+"verify/Chromatic_Number_with_restoration.test.cpp": "2024-08-19 13:20:26 +0900",
 "verify/Rhash.test.cpp": "2024-08-16 18:32:51 +0900",
 "verify/Rhash_more.test.cpp": "2024-08-16 18:32:51 +0900",
 "verify/aux_tree.test.cpp": "2024-08-16 18:32:51 +0900",
