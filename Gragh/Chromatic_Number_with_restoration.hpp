@@ -1,5 +1,16 @@
 #include "../Convolution/bitwise_or_convolution.hpp"
 
+using S = ll;
+S op(S a, S b) {
+    return a + b;
+}
+S inv(S x) {
+    return -x;
+}
+S zero() {
+    return 0;
+}
+
 pair<int, vec<int>> chromatic_number(const vec<vec<int>> &g) {
     if (g.empty()) return {0, {}};
     int n = g.size();
