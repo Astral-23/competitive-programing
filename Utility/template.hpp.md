@@ -159,6 +159,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/simpletreap.test.cpp
     title: verify/simpletreap.test.cpp
+  - icon: ':x:'
+    path: verify/sprase_table.test.cpp
+    title: verify/sprase_table.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/static1dsum.test.cpp
     title: verify/static1dsum.test.cpp
@@ -239,6 +242,7 @@ data:
   - verify/pbds_set.test.cpp
   - verify/swag_more.test.cpp
   - verify/2dbit_imos.test.cpp
+  - verify/sprase_table.test.cpp
   - verify/binary_trie.test.cpp
   - verify/simpletreap.test.cpp
   - verify/superset_transform.test.cpp

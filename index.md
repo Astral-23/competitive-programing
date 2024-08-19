@@ -121,6 +121,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/simple_treap.hpp
       title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
+    - icon: ':x:'
+      path: Datastructure/sparse_table.hpp
+      title: sprase_table
     - icon: ':warning:'
       path: Datastructure/splaymap.cpp
       title: "splaytree(map) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3splay"
@@ -388,6 +391,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/simpletreap.test.cpp
       title: verify/simpletreap.test.cpp
+    - icon: ':x:'
+      path: verify/sprase_table.test.cpp
+      title: verify/sprase_table.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/static1dsum.test.cpp
       title: verify/static1dsum.test.cpp
