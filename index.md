@@ -121,7 +121,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/simple_treap.hpp
       title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/sparse_table.hpp
       title: sprase_table
     - icon: ':warning:'
@@ -211,7 +211,7 @@ data:
     - icon: ':warning:'
       path: Utility/mypair.hpp
       title: Utility/mypair.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -331,9 +331,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/lazysegtree.test.cpp
       title: verify/lazysegtree.test.cpp
-    - icon: ':x:'
-      path: verify/limited_knapsack.test.cpp
-      title: verify/limited_knapsack.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/lowlink_bridge.test.cpp
       title: verify/lowlink_bridge.test.cpp
@@ -391,7 +388,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/simpletreap.test.cpp
       title: verify/simpletreap.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/sprase_table.test.cpp
       title: verify/sprase_table.test.cpp
     - icon: ':heavy_check_mark:'
@@ -427,9 +424,6 @@ data:
         .test.cpp"
   - name: "\u7802\u5834"
     pages:
-    - icon: ':x:'
-      path: "\u7802\u5834/limited_knapsack.test.cpp"
-      title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':heavy_check_mark:'
       path: "\u7802\u5834/swag.test.cpp"
       title: "\u7802\u5834/swag.test.cpp"

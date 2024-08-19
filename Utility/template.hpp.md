@@ -159,7 +159,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/simpletreap.test.cpp
     title: verify/simpletreap.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/sprase_table.test.cpp
     title: verify/sprase_table.test.cpp
   - icon: ':heavy_check_mark:'
@@ -195,9 +195,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -229,7 +229,7 @@ data:
   - "\u7802\u5834/simple_treap.henkou.cpp"
   - "\u7802\u5834/binarytrie.example.cpp"
   timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/manacher.test.cpp
   - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"

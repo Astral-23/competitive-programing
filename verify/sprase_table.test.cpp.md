@@ -1,28 +1,31 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/sparse_table.hpp
     title: sprase_table
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    links: []
-  bundledCode: "#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing\
-    \ namespace std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i\
-    \ < (ll)(t); i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s);\
-    \ i--)\n#define all(x) begin(x), end(x)\n\n#define TT template <typename T>\n\
-    TT using vec = vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2\
-    \ y) {\n    return x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class\
-    \ T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n\
-    /*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/sparse_table.hpp\"\
+    PROBLEM: https://judge.yosupo.jp/problem/staticrmq
+    links:
+    - https://judge.yosupo.jp/problem/staticrmq
+  bundledCode: "#line 1 \"verify/sprase_table.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\
+    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/sparse_table.hpp\"\
     \ntemplate <class S, S (*op)(S, S), S (*e)()> struct sparse_table {\n    vector<vector<S>>\
     \ d;\n    vector<int> lookup;\n    bool built = true;\n\n    sparse_table() {}\n\
     \n    sparse_table(const vector<S> &v) {\n        int n = v.size();\n        int\
@@ -35,14 +38,15 @@ data:
     \ i++) {\n            lookup[i] = lookup[i >> 1] + 1;\n        }\n    }\n\n  \
     \  S prod(int l, int r) {\n        assert(l <= r);\n        if (l == r) return\
     \ e();\n        int lg = lookup[r - l];\n        return op(d[lg][l], d[lg][r -\
-    \ (1LL << lg)]);\n    }\n};\n/*\n@brief sprase_table\n*/\n#line 3 \"verify/sprase_table.test.cpp\"\
+    \ (1LL << lg)]);\n    }\n};\n/*\n@brief sprase_table\n*/\n#line 4 \"verify/sprase_table.test.cpp\"\
     \n\nusing S = int;\nS op(S l, S r) { return min(l, r); }\nS e() { return INT_MAX;\
     \ }\nusing stable = sparse_table<S, op, e>;\n\nint main() {\n    int n, q;\n \
     \   cin >> n >> q;\n    vec<S> A(n);\n    rep(i, 0, n) cin >> A[i];\n    stable\
     \ st(A);\n    while(q--) {\n        int l, r;\n        cin >> l >> r;\n      \
     \  cout << st.prod(l, r) << '\\n';\n    }\n}\n"
-  code: "#include \"../Utility/template.hpp\"\n#include \"../Datastructure/sparse_table.hpp\"\
-    \n\nusing S = int;\nS op(S l, S r) { return min(l, r); }\nS e() { return INT_MAX;\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/staticrmq\"\n#include \"\
+    ../Utility/template.hpp\"\n#include \"../Datastructure/sparse_table.hpp\"\n\n\
+    using S = int;\nS op(S l, S r) { return min(l, r); }\nS e() { return INT_MAX;\
     \ }\nusing stable = sparse_table<S, op, e>;\n\nint main() {\n    int n, q;\n \
     \   cin >> n >> q;\n    vec<S> A(n);\n    rep(i, 0, n) cin >> A[i];\n    stable\
     \ st(A);\n    while(q--) {\n        int l, r;\n        cin >> l >> r;\n      \
@@ -53,8 +57,8 @@ data:
   isVerificationFile: true
   path: verify/sprase_table.test.cpp
   requiredBy: []
-  timestamp: '2024-08-19 13:17:23+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-08-19 13:22:38+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/sprase_table.test.cpp
 layout: document
