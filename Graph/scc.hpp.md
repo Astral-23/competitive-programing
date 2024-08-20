@@ -13,7 +13,7 @@ data:
     _deprecated_at_docs: doc/scc.md
     document_title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
     links: []
-  bundledCode: "#line 1 \"Gragh/scc.hpp\"\nnamespace SCC {\nvec<int> ids(const vec<vec<int>>\
+  bundledCode: "#line 1 \"Graph/scc.hpp\"\nnamespace SCC {\nvec<int> ids(const vec<vec<int>>\
     \ &g) {\n    using vi = vec<int>;\n    using vvi = vec<vi>;\n\n    int n = g.size();\n\
     \    vvi rg(n);\n    vi vs, cmp(n, -1);\n    vec<bool> seen(n, false), nees(n,\
     \ false);\n\n    rep(i, 0, n) for (int to : g[i]) rg[to].push_back(i);\n\n   \
@@ -61,17 +61,17 @@ data:
     )\n@docs doc/scc.md\n*/"
   dependsOn: []
   isVerificationFile: false
-  path: Gragh/scc.hpp
+  path: Graph/scc.hpp
   requiredBy: []
-  timestamp: '2024-08-20 17:53:10+09:00'
+  timestamp: '2024-08-20 17:56:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/scc.test.cpp
-documentation_of: Gragh/scc.hpp
+documentation_of: Graph/scc.hpp
 layout: document
 redirect_from:
-- /library/Gragh/scc.hpp
-- /library/Gragh/scc.hpp.html
+- /library/Graph/scc.hpp
+- /library/Graph/scc.hpp.html
 title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
 ---
 ## 概要

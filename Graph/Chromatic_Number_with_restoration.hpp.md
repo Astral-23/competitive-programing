@@ -33,7 +33,7 @@ data:
     \ lg);\n    vec<S> FB = subset_zeta_transform<S, op>(B, lg);\n    rep(i, 0, 1\
     \ << lg) FA[i] *= FB[i];\n    vec<S> f = subset_mobius_transform<S, op, inv>(FA,\
     \ lg);\n    return f;\n}\n//\u4EE5\u964D\u306E\u9805\u306B\u3064\u3044\u3066\u3001\
-    0\u3067\u3042\u308B\u3002\n#line 2 \"Gragh/Chromatic_Number_with_restoration.hpp\"\
+    0\u3067\u3042\u308B\u3002\n#line 2 \"Graph/Chromatic_Number_with_restoration.hpp\"\
     \n\nusing S = ll;\nS op(S a, S b) {\n    return a + b;\n}\nS inv(S x) {\n    return\
     \ -x;\n}\nS zero() {\n    return 0;\n}\n\npair<int, vec<int>> chromatic_number(const\
     \ vec<vec<int>> &g) {\n    if (g.empty()) return {0, {}};\n    int n = g.size();\n\
@@ -85,16 +85,16 @@ data:
   - Convolution/bitwise_or_convolution.hpp
   - Algorithm/subset_transform.hpp
   isVerificationFile: false
-  path: Gragh/Chromatic_Number_with_restoration.hpp
+  path: Graph/Chromatic_Number_with_restoration.hpp
   requiredBy: []
-  timestamp: '2024-08-19 13:20:26+09:00'
+  timestamp: '2024-08-20 17:56:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Chromatic_Number_with_restoration.test.cpp
-documentation_of: Gragh/Chromatic_Number_with_restoration.hpp
+documentation_of: Graph/Chromatic_Number_with_restoration.hpp
 layout: document
 redirect_from:
-- /library/Gragh/Chromatic_Number_with_restoration.hpp
-- /library/Gragh/Chromatic_Number_with_restoration.hpp.html
-title: Gragh/Chromatic_Number_with_restoration.hpp
+- /library/Graph/Chromatic_Number_with_restoration.hpp
+- /library/Graph/Chromatic_Number_with_restoration.hpp.html
+title: Graph/Chromatic_Number_with_restoration.hpp
 ---

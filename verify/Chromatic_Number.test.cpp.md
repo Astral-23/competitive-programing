@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Gragh/Chromatic_Number.hpp
+    path: Graph/Chromatic_Number.hpp
     title: "\u5F69\u8272\u6570"
   - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
@@ -52,7 +52,7 @@ data:
     \ << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
     \ a) { return x != a.x; }\n\n    bool operator<(const mm &a) const { return x\
     \ < a.x; }\n};\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
-    \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line 2 \"Gragh/Chromatic_Number.hpp\"\
+    \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line 2 \"Graph/Chromatic_Number.hpp\"\
     \n\nusing mint = modint998244353;\nint chromatic_number(const vec<vec<int>> &g)\
     \ {\n    if (g.empty()) return 0;\n    int n = g.size();\n\n    vec<mint> dp(1LL\
     \ << n, -1);  // dp[i][S] := S \u306F i \u8272\u5F69\u8272\u53EF\u80FD\u304B\uFF1F\
@@ -77,19 +77,19 @@ data:
     \        g[v].push_back(u);\n    }\n\n    int ans = chromatic_number(g);\n\n \
     \   cout << ans << endl;\n\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/chromatic_number\"\n#include\
-    \ \"../Utility/template.hpp\"\n#include \"../Gragh/Chromatic_Number.hpp\"\nint\
+    \ \"../Utility/template.hpp\"\n#include \"../Graph/Chromatic_Number.hpp\"\nint\
     \ main() {\n    int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n    rep(i,\
     \ 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    int ans = chromatic_number(g);\n\n \
     \   cout << ans << endl;\n\n}"
   dependsOn:
   - Utility/template.hpp
-  - Gragh/Chromatic_Number.hpp
+  - Graph/Chromatic_Number.hpp
   - Utility/modint.hpp
   isVerificationFile: true
   path: verify/Chromatic_Number.test.cpp
   requiredBy: []
-  timestamp: '2024-08-18 17:42:47+09:00'
+  timestamp: '2024-08-20 17:56:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Chromatic_Number.test.cpp

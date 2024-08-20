@@ -39,7 +39,7 @@ data:
     \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n    bool operator<(const\
     \ mm &a) const { return x < a.x; }\n};\nusing modint998244353 = modint<998244353>;\n\
     using modint1000000007 = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line\
-    \ 2 \"Gragh/Chromatic_Number.hpp\"\n\nusing mint = modint998244353;\nint chromatic_number(const\
+    \ 2 \"Graph/Chromatic_Number.hpp\"\n\nusing mint = modint998244353;\nint chromatic_number(const\
     \ vec<vec<int>> &g) {\n    if (g.empty()) return 0;\n    int n = g.size();\n\n\
     \    vec<mint> dp(1LL << n, -1);  // dp[i][S] := S \u306F i \u8272\u5F69\u8272\
     \u53EF\u80FD\u304B\uFF1F\n    dp[0] = 1;\n    rep(i, 0, n) dp[1LL << i] = 1;\n\
@@ -82,16 +82,16 @@ data:
   dependsOn:
   - Utility/modint.hpp
   isVerificationFile: false
-  path: Gragh/Chromatic_Number.hpp
+  path: Graph/Chromatic_Number.hpp
   requiredBy: []
-  timestamp: '2024-08-18 17:42:47+09:00'
+  timestamp: '2024-08-20 17:56:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Chromatic_Number.test.cpp
-documentation_of: Gragh/Chromatic_Number.hpp
+documentation_of: Graph/Chromatic_Number.hpp
 layout: document
 redirect_from:
-- /library/Gragh/Chromatic_Number.hpp
-- /library/Gragh/Chromatic_Number.hpp.html
+- /library/Graph/Chromatic_Number.hpp
+- /library/Graph/Chromatic_Number.hpp.html
 title: "\u5F69\u8272\u6570"
 ---

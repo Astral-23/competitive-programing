@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Gragh/Chromatic_Number.hpp
+    path: Graph/Chromatic_Number.hpp
     title: "\u5F69\u8272\u6570"
   - icon: ':warning:'
     path: example/matrix.example.cpp
@@ -106,8 +106,8 @@ data:
   isVerificationFile: false
   path: Utility/modint.hpp
   requiredBy:
-  - Gragh/Chromatic_Number.hpp
   - example/matrix.example.cpp
+  - Graph/Chromatic_Number.hpp
   timestamp: '2024-08-16 18:32:51+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

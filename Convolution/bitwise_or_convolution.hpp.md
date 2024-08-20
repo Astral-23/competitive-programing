@@ -6,8 +6,8 @@ data:
     title: Algorithm/subset_transform.hpp
   _extendedRequiredBy:
   - icon: ':heavy_check_mark:'
-    path: Gragh/Chromatic_Number_with_restoration.hpp
-    title: Gragh/Chromatic_Number_with_restoration.hpp
+    path: Graph/Chromatic_Number_with_restoration.hpp
+    title: Graph/Chromatic_Number_with_restoration.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number_with_restoration.test.cpp
@@ -48,7 +48,7 @@ data:
   isVerificationFile: false
   path: Convolution/bitwise_or_convolution.hpp
   requiredBy:
-  - Gragh/Chromatic_Number_with_restoration.hpp
+  - Graph/Chromatic_Number_with_restoration.hpp
   timestamp: '2024-08-18 17:09:25+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

@@ -155,16 +155,16 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/value_dsu.hpp
       title: "\u5024\u96C6\u7D04\u30FB\u5909\u66F4\u53EF\u80FD\u306Adsu"
-  - name: Gragh
+  - name: Graph
     pages:
     - icon: ':heavy_check_mark:'
-      path: Gragh/Chromatic_Number.hpp
+      path: Graph/Chromatic_Number.hpp
       title: "\u5F69\u8272\u6570"
     - icon: ':heavy_check_mark:'
-      path: Gragh/Chromatic_Number_with_restoration.hpp
-      title: Gragh/Chromatic_Number_with_restoration.hpp
+      path: Graph/Chromatic_Number_with_restoration.hpp
+      title: Graph/Chromatic_Number_with_restoration.hpp
     - icon: ':heavy_check_mark:'
-      path: Gragh/scc.hpp
+      path: Graph/scc.hpp
       title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
   - name: Math
     pages:

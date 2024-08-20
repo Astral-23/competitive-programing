@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Gragh/scc.hpp
+    path: Graph/scc.hpp
     title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
@@ -25,7 +25,7 @@ data:
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
     \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Gragh/scc.hpp\"\nnamespace\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/scc.hpp\"\nnamespace\
     \ SCC {\nvec<int> ids(const vec<vec<int>> &g) {\n    using vi = vec<int>;\n  \
     \  using vvi = vec<vi>;\n\n    int n = g.size();\n    vvi rg(n);\n    vi vs, cmp(n,\
     \ -1);\n    vec<bool> seen(n, false), nees(n, false);\n\n    rep(i, 0, n) for\
@@ -55,7 +55,7 @@ data:
     \   for(auto v : res[i]) cout << v << \" \";\n        cout << endl;\n    }\n}\n\
     \n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n#include \"../Utility/template.hpp\"\
-    \n#include \"../Gragh/scc.hpp\"\n\nint main() {\n    int n, m;\n    cin >> n >>\
+    \n#include \"../Graph/scc.hpp\"\n\nint main() {\n    int n, m;\n    cin >> n >>\
     \ m;\n    vec<vec<int>> g(n);\n    rep(i, 0, m) {\n        int u, v;\n       \
     \ cin >> u >> v;\n        g[u].push_back(v);\n    }\n\n    auto res = SCC::groups(g);\n\
     \    \n    cout << res.size() << endl;\n\n    rep(i, 0, res.size()) {\n      \
@@ -63,11 +63,11 @@ data:
     \ \" \";\n        cout << endl;\n    }\n}\n\n"
   dependsOn:
   - Utility/template.hpp
-  - Gragh/scc.hpp
+  - Graph/scc.hpp
   isVerificationFile: true
   path: verify/scc.test.cpp
   requiredBy: []
-  timestamp: '2024-08-20 17:53:10+09:00'
+  timestamp: '2024-08-20 17:56:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/scc.test.cpp

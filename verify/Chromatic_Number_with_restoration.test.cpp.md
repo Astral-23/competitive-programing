@@ -8,8 +8,8 @@ data:
     path: Convolution/bitwise_or_convolution.hpp
     title: Convolution/bitwise_or_convolution.hpp
   - icon: ':heavy_check_mark:'
-    path: Gragh/Chromatic_Number_with_restoration.hpp
-    title: Gragh/Chromatic_Number_with_restoration.hpp
+    path: Graph/Chromatic_Number_with_restoration.hpp
+    title: Graph/Chromatic_Number_with_restoration.hpp
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -48,7 +48,7 @@ data:
     \ lg);\n    vec<S> FB = subset_zeta_transform<S, op>(B, lg);\n    rep(i, 0, 1\
     \ << lg) FA[i] *= FB[i];\n    vec<S> f = subset_mobius_transform<S, op, inv>(FA,\
     \ lg);\n    return f;\n}\n//\u4EE5\u964D\u306E\u9805\u306B\u3064\u3044\u3066\u3001\
-    0\u3067\u3042\u308B\u3002\n#line 2 \"Gragh/Chromatic_Number_with_restoration.hpp\"\
+    0\u3067\u3042\u308B\u3002\n#line 2 \"Graph/Chromatic_Number_with_restoration.hpp\"\
     \n\nusing S = ll;\nS op(S a, S b) {\n    return a + b;\n}\nS inv(S x) {\n    return\
     \ -x;\n}\nS zero() {\n    return 0;\n}\n\npair<int, vec<int>> chromatic_number(const\
     \ vec<vec<int>> &g) {\n    if (g.empty()) return {0, {}};\n    int n = g.size();\n\
@@ -80,7 +80,7 @@ data:
     \ {\n            assert(col[i] != col[to]);\n        }\n    }\n\n    rep(i, 0,\
     \ ans) assert(cnt[i] != 0);\n\n    cout << ans << endl;\n\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/chromatic_number\"\n#include\
-    \ \"../Utility/template.hpp\"\n#include \"../Gragh/Chromatic_Number_with_restoration.hpp\"\
+    \ \"../Utility/template.hpp\"\n#include \"../Graph/Chromatic_Number_with_restoration.hpp\"\
     \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n\
     \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n\
     \        g[v].push_back(u);\n    }\n\n    auto [ans, col] = chromatic_number(g);\n\
@@ -90,13 +90,13 @@ data:
     \ ans) assert(cnt[i] != 0);\n\n    cout << ans << endl;\n\n}"
   dependsOn:
   - Utility/template.hpp
-  - Gragh/Chromatic_Number_with_restoration.hpp
+  - Graph/Chromatic_Number_with_restoration.hpp
   - Convolution/bitwise_or_convolution.hpp
   - Algorithm/subset_transform.hpp
   isVerificationFile: true
   path: verify/Chromatic_Number_with_restoration.test.cpp
   requiredBy: []
-  timestamp: '2024-08-19 13:20:26+09:00'
+  timestamp: '2024-08-20 17:56:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Chromatic_Number_with_restoration.test.cpp
