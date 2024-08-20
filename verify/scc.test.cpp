@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/scc"
 #include "../Utility/template.hpp"
-#include "../Gragh/scc.hpp"
+#include "../Graph/scc.hpp"
 
 int main() {
     int n, m;

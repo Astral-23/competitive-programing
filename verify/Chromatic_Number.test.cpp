@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/chromatic_number"
 #include "../Utility/template.hpp"
-#include "../Gragh/Chromatic_Number.hpp"
+#include "../Graph/Chromatic_Number.hpp"
 int main() {
     int n, m;
     cin >> n >> m;
