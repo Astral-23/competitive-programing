@@ -34,9 +34,6 @@ data:
       path: Algorithm/mincostflow.cpp
       title: Mincostflow
     - icon: ':heavy_check_mark:'
-      path: Algorithm/scc.hpp
-      title: "\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3"
-    - icon: ':heavy_check_mark:'
       path: Algorithm/subset_transform.hpp
       title: Algorithm/subset_transform.hpp
     - icon: ':heavy_check_mark:'
@@ -166,6 +163,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Gragh/Chromatic_Number_with_restoration.hpp
       title: Gragh/Chromatic_Number_with_restoration.hpp
+    - icon: ':heavy_check_mark:'
+      path: Gragh/scc.hpp
+      title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
   - name: Math
     pages:
     - icon: ':heavy_check_mark:'
