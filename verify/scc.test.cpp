@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/scc"
 #include "../Utility/template.hpp"
-#include "../Algorithm/scc.hpp"
+#include "../Gragh/scc.hpp"
 
 int main() {
     int n, m;
@@ -12,19 +12,13 @@ int main() {
         g[u].push_back(v);
     }
 
-    auto res = SCC(g);
-    vec<vec<int>> vs(n);
-    rep(i, 0, n) vs[res[i]].push_back(i);
+    auto res = SCC::groups(g);
     
-    int c = 0;
-    rep(i, 0, n) if(vs[i].size() > 0)c++;
-    cout << c << endl;
+    cout << res.size() << endl;
 
-     
-
-    rep(i, 0, n) if(vs[i].size() > 0) {
-        cout << vs[i].size() << " ";
-        for(auto v : vs[i]) cout << v << " ";
+    rep(i, 0, res.size()) {
+        cout << res[i].size() << " ";
+        for(auto v : res[i]) cout << v << " ";
         cout << endl;
     }
 }
