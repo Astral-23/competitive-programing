@@ -8,7 +8,7 @@ data:
   _verificationStatusIcon: ':warning:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"Utility/icpc_template.hpp\"\n#include <atcoder/all>\n#include\
+  bundledCode: "#line 1 \"Others/icpc_template.hpp\"\n#include <atcoder/all>\n#include\
     \ <boost/multiprecision/cpp_dec_float.hpp>\n#include <boost/multiprecision/cpp_int.hpp>\n\
     #include <boost/rational.hpp>\n#include <bits/stdc++.h>\n\nusing namespace std;\n\
     using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
@@ -49,15 +49,15 @@ data:
     using Rat = boost::rational<Bint>;\n\n\n\n\n"
   dependsOn: []
   isVerificationFile: false
-  path: Utility/icpc_template.hpp
+  path: Others/icpc_template.hpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-22 21:20:23+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Utility/icpc_template.hpp
+documentation_of: Others/icpc_template.hpp
 layout: document
 redirect_from:
-- /library/Utility/icpc_template.hpp
-- /library/Utility/icpc_template.hpp.html
-title: Utility/icpc_template.hpp
+- /library/Others/icpc_template.hpp
+- /library/Others/icpc_template.hpp.html
+title: Others/icpc_template.hpp
 ---

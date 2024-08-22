@@ -164,11 +164,17 @@ data:
   - name: Others
     pages:
     - icon: ':warning:'
+      path: Others/icpc_template.hpp
+      title: Others/icpc_template.hpp
+    - icon: ':warning:'
       path: Others/maxflow.cpp
       title: Maxflow
     - icon: ':warning:'
       path: Others/mincostflow.cpp
       title: Mincostflow
+    - icon: ':warning:'
+      path: Others/mypair.hpp
+      title: Others/mypair.hpp
     - icon: ':warning:'
       path: Others/rangeset.cpp
       title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset"
@@ -188,6 +194,9 @@ data:
     - icon: ':warning:'
       path: Others/top2.cpp
       title: "top2(\u524A\u9664\u4E0D\u53EF)"
+    - icon: ':warning:'
+      path: Others/xorshift.hpp
+      title: xorshift
   - name: String
     pages:
     - icon: ':heavy_check_mark:'
@@ -204,24 +213,15 @@ data:
     - icon: ':warning:'
       path: Utility/bigmodint.hpp
       title: big_modint
-    - icon: ':warning:'
-      path: Utility/icpc_template.hpp
-      title: Utility/icpc_template.hpp
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':warning:'
-      path: Utility/mypair.hpp
-      title: Utility/mypair.hpp
     - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
       path: Utility/timer.hpp
       title: Timer
-    - icon: ':warning:'
-      path: Utility/xorshift.hpp
-      title: xorshift
   - name: example
     pages:
     - icon: ':warning:'
