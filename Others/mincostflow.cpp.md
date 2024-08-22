@@ -9,7 +9,7 @@ data:
   attributes:
     document_title: Mincostflow
     links: []
-  bundledCode: "#line 1 \"Algorithm/mincostflow.cpp\"\nstruct MinCostFlow {\n\tusing\
+  bundledCode: "#line 1 \"Others/mincostflow.cpp\"\nstruct MinCostFlow {\n\tusing\
     \ ll = long long;\n\tusing pli = pair<long long, int>;\n\tusing vl = vector<ll>;\n\
     \tusing vi = vector<int>;\n\n\tstruct Edge {\n\t\tint to, rev;\n\t\tll cap, cost;\n\
     \t\tEdge(){}\n\t\tEdge(int _to, int _rev, ll _cap, ll _cost) : to(_to), rev(_rev),\
@@ -191,15 +191,15 @@ data:
     \u306B\u306F\u6D41\u308C\u306A\u3044\u3002\n\t*/\n};\n"
   dependsOn: []
   isVerificationFile: false
-  path: Algorithm/mincostflow.cpp
+  path: Others/mincostflow.cpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-22 21:19:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Algorithm/mincostflow.cpp
+documentation_of: Others/mincostflow.cpp
 layout: document
 redirect_from:
-- /library/Algorithm/mincostflow.cpp
-- /library/Algorithm/mincostflow.cpp.html
+- /library/Others/mincostflow.cpp
+- /library/Others/mincostflow.cpp.html
 title: Mincostflow
 ---

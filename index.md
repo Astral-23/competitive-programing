@@ -18,9 +18,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/lowlink.hpp
       title: lowlink
-    - icon: ':warning:'
-      path: Algorithm/maxflow.cpp
-      title: Maxflow
     - icon: ':heavy_check_mark:'
       path: Algorithm/maxflow.hpp
       title: Maxflow
@@ -30,9 +27,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/maximum_independent_set.hpp
       title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
-    - icon: ':warning:'
-      path: Algorithm/mincostflow.cpp
-      title: Mincostflow
     - icon: ':heavy_check_mark:'
       path: Algorithm/subset_transform.hpp
       title: Algorithm/subset_transform.hpp
@@ -105,13 +99,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/range_edge_graph.hpp
       title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF"
-    - icon: ':warning:'
-      path: Datastructure/rangeset.cpp
-      title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset"
-    - icon: ':warning:'
-      path: Datastructure/rangeset2.cpp
-      title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset( i], [i+1 \u3092\u7D71\
-        \u5408\u3057\u306A\u3044ver)"
     - icon: ':heavy_check_mark:'
       path: Datastructure/segtree.hpp
       title: segtree
@@ -121,15 +108,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/sparse_table.hpp
       title: sprase_table
-    - icon: ':warning:'
-      path: Datastructure/splaymap.cpp
-      title: "splaytree(map) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3splay"
-    - icon: ':warning:'
-      path: Datastructure/splaymultiset.cpp
-      title: "splaytree(multiset) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3splay"
-    - icon: ':warning:'
-      path: Datastructure/splayset.cpp
-      title: "splay_tree(set) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3\u306Bsplay"
     - icon: ':heavy_check_mark:'
       path: Datastructure/static1dsum.hpp
       title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
@@ -143,9 +121,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/swag.hpp
       title: SWAG
-    - icon: ':warning:'
-      path: Datastructure/top2.cpp
-      title: "top2(\u524A\u9664\u4E0D\u53EF)"
     - icon: ':heavy_check_mark:'
       path: Datastructure/treap.hpp
       title: treap
@@ -186,6 +161,33 @@ data:
     - icon: ':warning:'
       path: Math/sieve2.hpp
       title: "\u7D20\u6570\u7BE9(\u5DE6\u7AEF\u4EFB\u610F)"
+  - name: Others
+    pages:
+    - icon: ':warning:'
+      path: Others/maxflow.cpp
+      title: Maxflow
+    - icon: ':warning:'
+      path: Others/mincostflow.cpp
+      title: Mincostflow
+    - icon: ':warning:'
+      path: Others/rangeset.cpp
+      title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset"
+    - icon: ':warning:'
+      path: Others/rangeset2.cpp
+      title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset( i], [i+1 \u3092\u7D71\
+        \u5408\u3057\u306A\u3044ver)"
+    - icon: ':warning:'
+      path: Others/splaymap.cpp
+      title: "splaytree(map) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3splay"
+    - icon: ':warning:'
+      path: Others/splaymultiset.cpp
+      title: "splaytree(multiset) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3splay"
+    - icon: ':warning:'
+      path: Others/splayset.cpp
+      title: "splay_tree(set) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3\u306Bsplay"
+    - icon: ':warning:'
+      path: Others/top2.cpp
+      title: "top2(\u524A\u9664\u4E0D\u53EF)"
   - name: String
     pages:
     - icon: ':heavy_check_mark:'

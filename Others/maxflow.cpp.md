@@ -9,8 +9,8 @@ data:
   attributes:
     document_title: Maxflow
     links: []
-  bundledCode: "#line 1 \"Algorithm/maxflow.cpp\"\nstruct Edge {\n    int to;\n  \
-    \  ll cap;\n    int rev;//\u5BFE\u5FDC\u3059\u308B\u8FBA\u306E\u3001G[\u76F8\u624B\
+  bundledCode: "#line 1 \"Others/maxflow.cpp\"\nstruct Edge {\n    int to;\n    ll\
+    \ cap;\n    int rev;//\u5BFE\u5FDC\u3059\u308B\u8FBA\u306E\u3001G[\u76F8\u624B\
     ]\u306E\u30A4\u30F3\u30C7\u30C3\u30AF\u30B9\n};\n\nstruct Maxflow {\n\n  \n\t\
     vector<vector<Edge>> G;\n   \n  int siz;\n  vector<pair<int, Edge>> es;//\u8FBA\
     \u306E\u60C5\u5831 [from, EDGE]\n  vector<unordered_map<int, int>> getid;\n  vector<int>\
@@ -111,15 +111,15 @@ data:
     */"
   dependsOn: []
   isVerificationFile: false
-  path: Algorithm/maxflow.cpp
+  path: Others/maxflow.cpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-22 21:19:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Algorithm/maxflow.cpp
+documentation_of: Others/maxflow.cpp
 layout: document
 redirect_from:
-- /library/Algorithm/maxflow.cpp
-- /library/Algorithm/maxflow.cpp.html
+- /library/Others/maxflow.cpp
+- /library/Others/maxflow.cpp.html
 title: Maxflow
 ---

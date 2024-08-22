@@ -9,57 +9,57 @@ data:
   attributes:
     document_title: "splaytree(map) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3splay"
     links: []
-  bundledCode: "#line 1 \"Datastructure/splaymap.cpp\"\ntemplate<typename K, typename\
-    \ X>\nstruct node_t {\n        K key;\n        X val;\n        int sum = 0;\n\
-    \        node_t* lch;\n        node_t* rch;\n        node_t(K k, X v): key(k),\
-    \ val(v) {\n            sum = 1;\n            lch = nullptr;\n            rch\
-    \ = nullptr;\n        }\n};\n\n\ntemplate<typename K, typename X>\nstruct splay_map\
-    \ {\n    using NODE = node_t<K, X>;\n    NODE* root = nullptr;//Splay\u6728\u306E\
-    \u6839\u3092\u8868\u3059\u30CE\u30FC\u30C9\u3002\n    long long size_of_tree =\
-    \ 0;//\u6728\u306B\u767B\u9332\u3055\u308C\u3066\u3044\u308B\u8981\u7D20\u6570\
-    \u3092\u8FD4\u3059\u3002\n    splay_map(){}\n\n    private:\n\n        long long\
-    \ count(NODE* now) {return now == nullptr ? 0 : now -> sum;}\n\n        NODE*\
-    \ pushup(NODE* now) {\n            if(now != nullptr) now -> sum = count(now ->\
-    \ lch) + count(now -> rch) + 1;\n            return now;\n        }\n\n\n    \
-    \    NODE* rotate(NODE* now, int b) {//\u30CE\u30FC\u30C9now\u3092\u56DE\u8EE2\
-    \u3055\u305B\u308B\u51E6\u7406\u3002b = 1\u3067\u53F3\u56DE\u8EE2\u3001 b = 0\u3067\
-    \u5DE6\u56DE\u8EE2\u3002\u300D\n            if(b==1) {\n                NODE*\
-    \ s = now -> lch;\n                now -> lch = s -> rch;\n                s ->\
-    \ rch = now;\n                pushup(now), pushup(s);\n                return\
-    \ s;//\u623B\u308A\u5024\u306F\u3001\u56DE\u8EE2\u3057\u305F\u5F8Cnow\u306E\u4F4D\
-    \u7F6E\u306B\u304F\u308B\u30CE\u30FC\u30C9\u306E\u30DD\u30A4\u30F3\u30BF\u3002\
-    \n            }\n            else {\n                NODE* s = now -> rch;\n \
-    \               now -> rch = s -> lch;\n                s -> lch = now;\n    \
-    \            pushup(now), pushup(s);\n                return s;\n            }\n\
-    \        }\n\n        NODE* splay_sub(NODE* now, const K& k, pair<int, NODE*>&\
-    \ history, bool& found) {\n            if(now == nullptr) {\n                found\
-    \ = false;\n                return now;\n            } \n            if(now ->\
-    \ key == k) {\n                return now;\n            }\n\n            int b\
-    \ = 1;\n            if(k > now -> key) {\n                now -> rch = splay_sub(now\
-    \ -> rch, k, history, found);\n                pushup(now);\n            }\n \
-    \           else if(k < now -> key) {\n                b = 0, now -> lch = splay_sub(now\
-    \ -> lch, k, history, found);\n                pushup(now);\n            } \n\n\
-    \            if(!found) return now;\n\n            auto [pb, pn] = history;\n\
-    \            if(pn == nullptr) history = make_pair(b, now);\n            else\
-    \ {\n                history = make_pair(-1, nullptr);\n                if(b ==\
-    \ pb) {\n                    now = rotate(now, 1 - b);\n                    now\
-    \ = rotate(now, 1 - b);\n                }\n                else {\n         \
-    \           if(b==1) now -> rch = rotate(pn, 1 - pb);\n                    else\
-    \ now -> lch = rotate(pn, 1 - pb);\n                    pushup(now);\n       \
-    \             now = rotate(now, 1 - b);\n                }\n            }\n  \
-    \          return now;\n        }\n\n        void splay(NODE* now, const K& k)\
-    \ {\n            bool found = true;\n            pair<int, NODE*> h(-1, nullptr);\n\
-    \            root = splay_sub(now, k, h, found);\n            if(found && h.second\
-    \ != nullptr) {\n                root = rotate(root, 1 - h.first);\n         \
-    \   }\n            return ;\n            \n        }\n \n \n        NODE* change__(NODE*\
-    \ now, K& k, X& x) {//\u73FE\u5728\u898B\u3066\u3044\u308B\u30CE\u30FC\u30C9 |\
-    \ \u633F\u5165\u3059\u308B\u5024\n            if(now == nullptr) {\n         \
-    \       size_of_tree++;\n                return new NODE(k, x);\n            }\n\
-    \            if(k == now -> key) {//\u3082\u3046\u5024x\u304C\u5B58\u5728\u3059\
-    \u308B\u306A\u3089\u3070\n                now -> val = x;\n                pushup(now);\n\
-    \                return now;\n            }\n            else {//\u5B58\u5728\u3057\
-    \u306A\u3044\u306A\u3089\u3070\n                if(k > now -> key) {\n       \
-    \             now -> rch = change__(now -> rch, k, x);\n                    pushup(now);\n\
+  bundledCode: "#line 1 \"Others/splaymap.cpp\"\ntemplate<typename K, typename X>\n\
+    struct node_t {\n        K key;\n        X val;\n        int sum = 0;\n      \
+    \  node_t* lch;\n        node_t* rch;\n        node_t(K k, X v): key(k), val(v)\
+    \ {\n            sum = 1;\n            lch = nullptr;\n            rch = nullptr;\n\
+    \        }\n};\n\n\ntemplate<typename K, typename X>\nstruct splay_map {\n   \
+    \ using NODE = node_t<K, X>;\n    NODE* root = nullptr;//Splay\u6728\u306E\u6839\
+    \u3092\u8868\u3059\u30CE\u30FC\u30C9\u3002\n    long long size_of_tree = 0;//\u6728\
+    \u306B\u767B\u9332\u3055\u308C\u3066\u3044\u308B\u8981\u7D20\u6570\u3092\u8FD4\
+    \u3059\u3002\n    splay_map(){}\n\n    private:\n\n        long long count(NODE*\
+    \ now) {return now == nullptr ? 0 : now -> sum;}\n\n        NODE* pushup(NODE*\
+    \ now) {\n            if(now != nullptr) now -> sum = count(now -> lch) + count(now\
+    \ -> rch) + 1;\n            return now;\n        }\n\n\n        NODE* rotate(NODE*\
+    \ now, int b) {//\u30CE\u30FC\u30C9now\u3092\u56DE\u8EE2\u3055\u305B\u308B\u51E6\
+    \u7406\u3002b = 1\u3067\u53F3\u56DE\u8EE2\u3001 b = 0\u3067\u5DE6\u56DE\u8EE2\u3002\
+    \u300D\n            if(b==1) {\n                NODE* s = now -> lch;\n      \
+    \          now -> lch = s -> rch;\n                s -> rch = now;\n         \
+    \       pushup(now), pushup(s);\n                return s;//\u623B\u308A\u5024\
+    \u306F\u3001\u56DE\u8EE2\u3057\u305F\u5F8Cnow\u306E\u4F4D\u7F6E\u306B\u304F\u308B\
+    \u30CE\u30FC\u30C9\u306E\u30DD\u30A4\u30F3\u30BF\u3002\n            }\n      \
+    \      else {\n                NODE* s = now -> rch;\n                now -> rch\
+    \ = s -> lch;\n                s -> lch = now;\n                pushup(now), pushup(s);\n\
+    \                return s;\n            }\n        }\n\n        NODE* splay_sub(NODE*\
+    \ now, const K& k, pair<int, NODE*>& history, bool& found) {\n            if(now\
+    \ == nullptr) {\n                found = false;\n                return now;\n\
+    \            } \n            if(now -> key == k) {\n                return now;\n\
+    \            }\n\n            int b = 1;\n            if(k > now -> key) {\n \
+    \               now -> rch = splay_sub(now -> rch, k, history, found);\n     \
+    \           pushup(now);\n            }\n            else if(k < now -> key) {\n\
+    \                b = 0, now -> lch = splay_sub(now -> lch, k, history, found);\n\
+    \                pushup(now);\n            } \n\n            if(!found) return\
+    \ now;\n\n            auto [pb, pn] = history;\n            if(pn == nullptr)\
+    \ history = make_pair(b, now);\n            else {\n                history =\
+    \ make_pair(-1, nullptr);\n                if(b == pb) {\n                   \
+    \ now = rotate(now, 1 - b);\n                    now = rotate(now, 1 - b);\n \
+    \               }\n                else {\n                    if(b==1) now ->\
+    \ rch = rotate(pn, 1 - pb);\n                    else now -> lch = rotate(pn,\
+    \ 1 - pb);\n                    pushup(now);\n                    now = rotate(now,\
+    \ 1 - b);\n                }\n            }\n            return now;\n       \
+    \ }\n\n        void splay(NODE* now, const K& k) {\n            bool found = true;\n\
+    \            pair<int, NODE*> h(-1, nullptr);\n            root = splay_sub(now,\
+    \ k, h, found);\n            if(found && h.second != nullptr) {\n            \
+    \    root = rotate(root, 1 - h.first);\n            }\n            return ;\n\
+    \            \n        }\n \n \n        NODE* change__(NODE* now, K& k, X& x)\
+    \ {//\u73FE\u5728\u898B\u3066\u3044\u308B\u30CE\u30FC\u30C9 | \u633F\u5165\u3059\
+    \u308B\u5024\n            if(now == nullptr) {\n                size_of_tree++;\n\
+    \                return new NODE(k, x);\n            }\n            if(k == now\
+    \ -> key) {//\u3082\u3046\u5024x\u304C\u5B58\u5728\u3059\u308B\u306A\u3089\u3070\
+    \n                now -> val = x;\n                pushup(now);\n            \
+    \    return now;\n            }\n            else {//\u5B58\u5728\u3057\u306A\u3044\
+    \u306A\u3089\u3070\n                if(k > now -> key) {\n                   \
+    \ now -> rch = change__(now -> rch, k, x);\n                    pushup(now);\n\
     \                    return now;\n                }\n                else {\n\
     \                    now -> lch = change__(now -> lch, k, x);\n              \
     \      pushup(now);\n                    return now;\n                       \
@@ -507,15 +507,15 @@ data:
     \u30C0\u30A6\u30F3splay\n*/"
   dependsOn: []
   isVerificationFile: false
-  path: Datastructure/splaymap.cpp
+  path: Others/splaymap.cpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-22 21:19:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Datastructure/splaymap.cpp
+documentation_of: Others/splaymap.cpp
 layout: document
 redirect_from:
-- /library/Datastructure/splaymap.cpp
-- /library/Datastructure/splaymap.cpp.html
+- /library/Others/splaymap.cpp
+- /library/Others/splaymap.cpp.html
 title: "splaytree(map) \u30C8\u30C3\u30D7\u30C0\u30A6\u30F3splay"
 ---

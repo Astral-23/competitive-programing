@@ -9,11 +9,11 @@ data:
   attributes:
     document_title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset"
     links: []
-  bundledCode: "#line 1 \"Datastructure/rangeset.cpp\"\ntemplate<typename T>\nstruct\
-    \ rangeset {//\u533A\u9593\u3092\u7BA1\u7406\u3059\u308B\u3002\u3064\u3044\u3067\
-    \u3067\u3001mex\u3092\u53D6\u5F97\u3067\u304D\u308B\u3002\n    set<pair<T, T>>\
-    \ s;\n    long long sum; //\u533A\u9593\u9577\u306E\u5408\u8A08\u3002\n\n    rangeset()\
-    \ {\n        T M = numeric_limits<T>::max();\n        T m = numeric_limits<T>::min();\n\
+  bundledCode: "#line 1 \"Others/rangeset.cpp\"\ntemplate<typename T>\nstruct rangeset\
+    \ {//\u533A\u9593\u3092\u7BA1\u7406\u3059\u308B\u3002\u3064\u3044\u3067\u3067\u3001\
+    mex\u3092\u53D6\u5F97\u3067\u304D\u308B\u3002\n    set<pair<T, T>> s;\n    long\
+    \ long sum; //\u533A\u9593\u9577\u306E\u5408\u8A08\u3002\n\n    rangeset() {\n\
+    \        T M = numeric_limits<T>::max();\n        T m = numeric_limits<T>::min();\n\
     \        s.emplace(m, m);\n        s.emplace(M, M);\n        sum = 0;\n    }\n\
     \n    private:\n        void insert__(T x) {\n            auto nitr = s.lower_bound(make_pair(x+1,\
     \ x+1));\n            auto itr = prev(nitr);\n            auto[nl, nr] = *nitr;\n\
@@ -220,15 +220,15 @@ data:
     \n\t\t*/\n         \n};"
   dependsOn: []
   isVerificationFile: false
-  path: Datastructure/rangeset.cpp
+  path: Others/rangeset.cpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-22 21:19:26+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Datastructure/rangeset.cpp
+documentation_of: Others/rangeset.cpp
 layout: document
 redirect_from:
-- /library/Datastructure/rangeset.cpp
-- /library/Datastructure/rangeset.cpp.html
+- /library/Others/rangeset.cpp
+- /library/Others/rangeset.cpp.html
 title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset"
 ---
