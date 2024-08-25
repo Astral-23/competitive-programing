@@ -107,7 +107,7 @@ data:
       title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
     - icon: ':heavy_check_mark:'
       path: Datastructure/sparse_table.hpp
-      title: sprase_table
+      title: sparse_table
     - icon: ':heavy_check_mark:'
       path: Datastructure/static1dsum.hpp
       title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
