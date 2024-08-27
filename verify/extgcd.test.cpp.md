@@ -26,13 +26,13 @@ data:
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
     \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
     \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Math/ext_gcd.hpp\"\nll extgcd(ll\
-    \ a, ll b, ll &x, ll &y) {\n    if(b == 0) {\n        x = 1;\n        y = 0;\n\
-    \        return a;\n    }\n\n    ll d = extgcd(b, a%b, y, x);\n    y -= a / b\
-    \ * x;\n    return d;\n}\n\nll modinv(ll a,ll MOD) {\n    ll x, y;\n    extgcd(a,\
-    \ MOD, x, y);\n    return (x%MOD + MOD)%MOD;\n}\n\n/*\n@brief ext_ecd\n*/\n#line\
-    \ 4 \"verify/extgcd.test.cpp\"\n\nint main() {\n    ll a, b;\n    cin >> a >>\
-    \ b;\n    ll x, y;\n    extgcd(a, b, x, y);\n    cout << x << \" \" << y << endl;\n\
-    }\n"
+    \ a, ll b, ll &x, ll &y) {\n    if (b == 0) {\n        x = 1;\n        y = 0;\n\
+    \        return a;\n    }\n\n    ll d = extgcd(b, a % b, y, x);\n    y -= a /\
+    \ b * x;\n    return d;\n}\n\nll modinv(ll a, ll MOD) {\n    ll x, y;\n    extgcd(a,\
+    \ MOD, x, y);\n    return (x % MOD + MOD) % MOD;\n}\n\n/*\n@brief ext_ecd\n*/\n\
+    #line 4 \"verify/extgcd.test.cpp\"\n\nint main() {\n    ll a, b;\n    cin >> a\
+    \ >> b;\n    ll x, y;\n    extgcd(a, b, x, y);\n    cout << x << \" \" << y <<\
+    \ endl;\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=NTL_1_E&lang=ja\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Math/ext_gcd.hpp\"\n\nint\
     \ main() {\n    ll a, b;\n    cin >> a >> b;\n    ll x, y;\n    extgcd(a, b, x,\
@@ -43,7 +43,7 @@ data:
   isVerificationFile: true
   path: verify/extgcd.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-08-27 18:05:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/extgcd.test.cpp

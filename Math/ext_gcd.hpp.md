@@ -13,20 +13,20 @@ data:
     document_title: ext_ecd
     links: []
   bundledCode: "#line 1 \"Math/ext_gcd.hpp\"\nll extgcd(ll a, ll b, ll &x, ll &y)\
-    \ {\n    if(b == 0) {\n        x = 1;\n        y = 0;\n        return a;\n   \
-    \ }\n\n    ll d = extgcd(b, a%b, y, x);\n    y -= a / b * x;\n    return d;\n\
-    }\n\nll modinv(ll a,ll MOD) {\n    ll x, y;\n    extgcd(a, MOD, x, y);\n    return\
-    \ (x%MOD + MOD)%MOD;\n}\n\n/*\n@brief ext_ecd\n*/\n"
-  code: "ll extgcd(ll a, ll b, ll &x, ll &y) {\n    if(b == 0) {\n        x = 1;\n\
-    \        y = 0;\n        return a;\n    }\n\n    ll d = extgcd(b, a%b, y, x);\n\
-    \    y -= a / b * x;\n    return d;\n}\n\nll modinv(ll a,ll MOD) {\n    ll x,\
-    \ y;\n    extgcd(a, MOD, x, y);\n    return (x%MOD + MOD)%MOD;\n}\n\n/*\n@brief\
-    \ ext_ecd\n*/"
+    \ {\n    if (b == 0) {\n        x = 1;\n        y = 0;\n        return a;\n  \
+    \  }\n\n    ll d = extgcd(b, a % b, y, x);\n    y -= a / b * x;\n    return d;\n\
+    }\n\nll modinv(ll a, ll MOD) {\n    ll x, y;\n    extgcd(a, MOD, x, y);\n    return\
+    \ (x % MOD + MOD) % MOD;\n}\n\n/*\n@brief ext_ecd\n*/\n"
+  code: "ll extgcd(ll a, ll b, ll &x, ll &y) {\n    if (b == 0) {\n        x = 1;\n\
+    \        y = 0;\n        return a;\n    }\n\n    ll d = extgcd(b, a % b, y, x);\n\
+    \    y -= a / b * x;\n    return d;\n}\n\nll modinv(ll a, ll MOD) {\n    ll x,\
+    \ y;\n    extgcd(a, MOD, x, y);\n    return (x % MOD + MOD) % MOD;\n}\n\n/*\n\
+    @brief ext_ecd\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Math/ext_gcd.hpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-08-27 18:05:12+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/extgcd.test.cpp

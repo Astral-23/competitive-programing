@@ -54,29 +54,28 @@ data:
     \ a) { return x != a.x; }\n\n    bool operator<(const mm &a) const { return x\
     \ < a.x; }\n};\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
     \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line 1 \"Math/combination.hpp\"\
-    \nstruct CMB {  // must\u7D20\u6570\n    using vl = vec<ll>;\n    vl fac;\n  \
-    \  vl ifac;\n    vl inv;\n    ll mb = 0;\n    int N;\n\n    CMB(int r, ll _mod)\n\
-    \        : mb(_mod), N(r + 1), fac(r + 1, 1), ifac(r + 1, 1), inv(r + 1, 1) {\n\
-    \        rep(i, 2, N) {\n            fac[i] = fac[i - 1] * i % mb;\n         \
-    \   inv[i] = mb - inv[mb % i] * (mb / i) % mb;\n            ifac[i] = ifac[i -\
-    \ 1] * inv[i] % mb;\n        }\n    }\n\n    ll C(int n, int k) {\n        if\
-    \ (n < k) return 0LL;\n        if (n < 0 || k < 0) return 0LL;\n        return\
-    \ fac[n] * (ifac[k] * ifac[n - k] % mb) % mb;\n    }\n\n    ll B(int n) { return\
-    \ fac[n]; }\n\n    ll invB(int n) { return ifac[n]; }\n\n    ll H(int n, int k)\
-    \ { return C(n + k - 1, k); }\n\n    ll Cn(int n) { return C(2 * n, n) * inv[n\
-    \ + 1] % mb; }\n};\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\
-    \n@docs doc/cmb.md\n*/\n#line 5 \"verify/combination.test.cpp\"\n\n\n/*\n@brief\
-    \ \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint = modint998244353;\n\
-    CMB cmb(1000000, 998244353);\n\nint main() {\n\tll N, M, T;\n\tcin >> N >> M >>\
-    \ T;\n\n\tmint p = 0;\n\n\n\trep(k, 1, N+1) {\n\t\tmint s = 1;\n\t\tmint ue =\
-    \ M * N - k * M;\n\n\n\t\trep(t, 1, T+1) {\n\t\t\tmint rev = M*N - (t-1);\n\t\t\
-    \ts *= ue * (rev.inv());\n\t\t\tue -= 1;\n\t\t}\n\n        s *= cmb.C(N, k);\n\
-    \t\tif(k%2==1) p += s;\n\t\telse p -= s;\n\n\t}\n\n\tcout << (1 - p).x << endl;\n\
-    \n}\n"
+    \nTT struct CMB {  // must\u7D20\u6570\n    ll n, mb;\n    vec<ll> fac, ifac,\
+    \ inv;\n\n    CMB(ll MAX_N, ll mod)\n        : n(MAX_N), mb(mod), fac(n + 1, 1),\
+    \ ifac(n + 1, 1), inv(n + 1, 1) {\n        for (ll i = 2; i <= n; i++) {\n   \
+    \         fac[i] = fac[i - 1] * i % mb;\n            inv[i] = mb - inv[mb % i]\
+    \ * (mb / i) % mb;\n            ifac[i] = ifac[i - 1] * inv[i] % mb;\n       \
+    \ }\n    }\n\n    T C(int n, int k) {\n        if (n < k) return 0LL;\n      \
+    \  if (n < 0 || k < 0) return 0LL;\n        return fac[n] * (ifac[k] * ifac[n\
+    \ - k] % mb) % mb;\n    }\n\n    T B(int n) { return fac[n]; }\n\n    T invB(int\
+    \ n) { return ifac[n]; }\n\n    T H(int n, int k) { return C(n + k - 1, k); }\n\
+    \n    T Cn(int n) { return C(2 * n, n) * inv[n + 1] % mb; }\n};\n/*\n@brief \u30B3\
+    \u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs doc/cmb.md\n*/\n#line 5 \"verify/combination.test.cpp\"\
+    \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
+    \ = modint998244353;\nCMB<mint> cmb(1000000, 998244353);\n\nint main() {\n\tll\
+    \ N, M, T;\n\tcin >> N >> M >> T;\n\n\tmint p = 0;\n\n\n\trep(k, 1, N+1) {\n\t\
+    \tmint s = 1;\n\t\tmint ue = M * N - k * M;\n\n\n\t\trep(t, 1, T+1) {\n\t\t\t\
+    mint rev = M*N - (t-1);\n\t\t\ts *= ue * (rev.inv());\n\t\t\tue -= 1;\n\t\t}\n\
+    \n        s *= cmb.C(N, k);\n\t\tif(k%2==1) p += s;\n\t\telse p -= s;\n\n\t}\n\
+    \n\tcout << (1 - p).x << endl;\n\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/4020\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include \"\
     ../Math/combination.hpp\"\n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\
-    \u30E7\u30F3\n*/\nusing mint = modint998244353;\nCMB cmb(1000000, 998244353);\n\
+    \u30E7\u30F3\n*/\nusing mint = modint998244353;\nCMB<mint> cmb(1000000, 998244353);\n\
     \nint main() {\n\tll N, M, T;\n\tcin >> N >> M >> T;\n\n\tmint p = 0;\n\n\n\t\
     rep(k, 1, N+1) {\n\t\tmint s = 1;\n\t\tmint ue = M * N - k * M;\n\n\n\t\trep(t,\
     \ 1, T+1) {\n\t\t\tmint rev = M*N - (t-1);\n\t\t\ts *= ue * (rev.inv());\n\t\t\
@@ -89,7 +88,7 @@ data:
   isVerificationFile: true
   path: verify/combination.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-08-27 18:05:12+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/combination.test.cpp
