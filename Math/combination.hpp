@@ -1,33 +1,29 @@
-struct CMB {  // must素数
-    using vl = vec<ll>;
-    vl fac;
-    vl ifac;
-    vl inv;
-    ll mb = 0;
-    int N;
+TT struct CMB {  // must素数
+    ll n, mb;
+    vec<ll> fac, ifac, inv;
 
-    CMB(int r, ll _mod)
-        : mb(_mod), N(r + 1), fac(r + 1, 1), ifac(r + 1, 1), inv(r + 1, 1) {
-        rep(i, 2, N) {
+    CMB(ll MAX_N, ll mod)
+        : n(MAX_N), mb(mod), fac(n + 1, 1), ifac(n + 1, 1), inv(n + 1, 1) {
+        for (ll i = 2; i <= n; i++) {
             fac[i] = fac[i - 1] * i % mb;
             inv[i] = mb - inv[mb % i] * (mb / i) % mb;
             ifac[i] = ifac[i - 1] * inv[i] % mb;
         }
     }
 
-    ll C(int n, int k) {
+    T C(int n, int k) {
         if (n < k) return 0LL;
         if (n < 0 || k < 0) return 0LL;
         return fac[n] * (ifac[k] * ifac[n - k] % mb) % mb;
     }
 
-    ll B(int n) { return fac[n]; }
+    T B(int n) { return fac[n]; }
 
-    ll invB(int n) { return ifac[n]; }
+    T invB(int n) { return ifac[n]; }
 
-    ll H(int n, int k) { return C(n + k - 1, k); }
+    T H(int n, int k) { return C(n + k - 1, k); }
 
-    ll Cn(int n) { return C(2 * n, n) * inv[n + 1] % mb; }
+    T Cn(int n) { return C(2 * n, n) * inv[n + 1] % mb; }
 };
 /*
 @brief コンビネーション

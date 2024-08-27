@@ -8,7 +8,7 @@
 @brief コンビネーション
 */
 using mint = modint998244353;
-CMB cmb(1000000, 998244353);
+CMB<mint> cmb(1000000, 998244353);
 
 int main() {
 	ll N, M, T;
