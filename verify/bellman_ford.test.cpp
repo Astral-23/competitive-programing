@@ -22,7 +22,7 @@ int main() {
     }
     else {
         for(ll x : G.distance()) {
-            if(x == LLONG_MAX / 4) cout << "INF" << endl;
+            if(x == LLONG_MAX / 2) cout << "INF" << endl;
 else             cout << x << endl;
         }
     }
