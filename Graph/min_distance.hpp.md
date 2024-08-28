@@ -13,6 +13,7 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    document_title: "\u6700\u77ED\u7D4C\u8DEF"
     links: []
   bundledCode: "#line 1 \"Graph/min_distance.hpp\"\ntemplate <typename T> struct min_distance\
     \ {\n    using pll = pair<ll, ll>;\n\n  private:\n    int n, s;\n    vec<vec<pll>>\
@@ -45,7 +46,7 @@ data:
     \ cnt;\n    }\n\n    vec<int> path(int t) {\n        assert(built != 0);\n   \
     \     vec<int> res;\n        while (1) {\n            res.push_back(t);\n    \
     \        if (t == s) break;\n            t = pre[t];\n        }\n        reverse(all(res));\n\
-    \        return res;\n    }\n};\n"
+    \        return res;\n    }\n};\n/*\n@brief \u6700\u77ED\u7D4C\u8DEF\n*/\n"
   code: "template <typename T> struct min_distance {\n    using pll = pair<ll, ll>;\n\
     \n  private:\n    int n, s;\n    vec<vec<pll>> g;\n    vec<ll> dist;\n    vec<T>\
     \ cnt;\n    vec<int> pre;\n    int built;\n    ll inf = LLONG_MAX / 4;\n\n   \
@@ -77,12 +78,12 @@ data:
     \ cnt;\n    }\n\n    vec<int> path(int t) {\n        assert(built != 0);\n   \
     \     vec<int> res;\n        while (1) {\n            res.push_back(t);\n    \
     \        if (t == s) break;\n            t = pre[t];\n        }\n        reverse(all(res));\n\
-    \        return res;\n    }\n};\n"
+    \        return res;\n    }\n};\n/*\n@brief \u6700\u77ED\u7D4C\u8DEF\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Graph/min_distance.hpp
   requiredBy: []
-  timestamp: '2024-08-28 13:18:15+09:00'
+  timestamp: '2024-08-28 13:21:36+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/dijkstra.test.cpp
@@ -92,5 +93,5 @@ layout: document
 redirect_from:
 - /library/Graph/min_distance.hpp
 - /library/Graph/min_distance.hpp.html
-title: Graph/min_distance.hpp
+title: "\u6700\u77ED\u7D4C\u8DEF"
 ---

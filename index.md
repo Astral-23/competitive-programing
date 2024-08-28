@@ -140,7 +140,7 @@ data:
       title: Graph/Chromatic_Number_with_restoration.hpp
     - icon: ':heavy_check_mark:'
       path: Graph/min_distance.hpp
-      title: Graph/min_distance.hpp
+      title: "\u6700\u77ED\u7D4C\u8DEF"
     - icon: ':heavy_check_mark:'
       path: Graph/scc.hpp
       title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"

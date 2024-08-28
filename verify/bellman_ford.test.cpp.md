@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Graph/min_distance.hpp
-    title: Graph/min_distance.hpp
+    title: "\u6700\u77ED\u7D4C\u8DEF"
   - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
@@ -84,14 +84,15 @@ data:
     \ cnt;\n    }\n\n    vec<int> path(int t) {\n        assert(built != 0);\n   \
     \     vec<int> res;\n        while (1) {\n            res.push_back(t);\n    \
     \        if (t == s) break;\n            t = pre[t];\n        }\n        reverse(all(res));\n\
-    \        return res;\n    }\n};\n#line 5 \"verify/bellman_ford.test.cpp\"\n\n\n\
-    int main() {\n    \n    \n    int n, m, r;\n    cin >> n >> m >> r;\n    vec<vec<pair<long\
-    \ long, long long>>> g(n);\n    rep(i, 0, m) {\n        ll s, t, d;\n        cin\
-    \ >> s >> t >> d;\n        g[s].push_back({d, t});\n    }\n    min_distance<modint998244353>\
-    \ G(n, g);\n    if(G.run_bellman_ford(r)) {\n        cout << \"NEGATIVE CYCLE\"\
-    \ << endl;\n        return 0;\n    }\n    else {\n        for(ll x : G.distance())\
-    \ {\n            if(x == LLONG_MAX / 4) cout << \"INF\" << endl;\nelse       \
-    \      cout << x << endl;\n        }\n    }\n}\n"
+    \        return res;\n    }\n};\n/*\n@brief \u6700\u77ED\u7D4C\u8DEF\n*/\n#line\
+    \ 5 \"verify/bellman_ford.test.cpp\"\n\n\nint main() {\n    \n    \n    int n,\
+    \ m, r;\n    cin >> n >> m >> r;\n    vec<vec<pair<long long, long long>>> g(n);\n\
+    \    rep(i, 0, m) {\n        ll s, t, d;\n        cin >> s >> t >> d;\n      \
+    \  g[s].push_back({d, t});\n    }\n    min_distance<modint998244353> G(n, g);\n\
+    \    if(G.run_bellman_ford(r)) {\n        cout << \"NEGATIVE CYCLE\" << endl;\n\
+    \        return 0;\n    }\n    else {\n        for(ll x : G.distance()) {\n  \
+    \          if(x == LLONG_MAX / 4) cout << \"INF\" << endl;\nelse             cout\
+    \ << x << endl;\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=jp\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include\
     \ \"../Graph/min_distance.hpp\"\n\n\nint main() {\n    \n    \n    int n, m, r;\n\
@@ -109,7 +110,7 @@ data:
   isVerificationFile: true
   path: verify/bellman_ford.test.cpp
   requiredBy: []
-  timestamp: '2024-08-28 13:18:15+09:00'
+  timestamp: '2024-08-28 13:21:36+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/bellman_ford.test.cpp
