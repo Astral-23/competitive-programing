@@ -59,7 +59,7 @@ template <typename T> struct min_distance {
         int last = -1;
         rep(i, 0, n) {
             bool found = false;
-            rep(v, 0, n) if(dist[v] != inf) {
+            rep(v, 0, n) if (dist[v] != inf) {
                 for (auto [cost, to] : g[v]) {
                     if (chmin(dist[to], dist[v] + cost)) {
                         found = true;
@@ -67,10 +67,10 @@ template <typename T> struct min_distance {
                     }
                 }
             }
-            if(found) last = i;
+            if (found) last = i;
         }
 
-        if(last == n - 1) return true;
+        if (last == n - 1) return true;
         return false;
     }
 
@@ -99,5 +99,4 @@ template <typename T> struct min_distance {
 /*
 @brief 最短経路
 @docs doc/min_distance.md
-
 */
