@@ -98,4 +98,6 @@ template <typename T> struct min_distance {
 };
 /*
 @brief 最短経路
+@docs doc/min_distance.md
+
 */
