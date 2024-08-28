@@ -138,6 +138,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/Chromatic_Number_with_restoration.hpp
       title: Graph/Chromatic_Number_with_restoration.hpp
+    - icon: ':question:'
+      path: Graph/min_distance.hpp
+      title: Graph/min_distance.hpp
     - icon: ':heavy_check_mark:'
       path: Graph/scc.hpp
       title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
@@ -213,10 +216,10 @@ data:
     - icon: ':warning:'
       path: Utility/bigmodint.hpp
       title: big_modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -285,6 +288,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aux_tree.test.cpp
       title: verify/aux_tree.test.cpp
+    - icon: ':x:'
+      path: verify/bellman_ford.test.cpp
+      title: verify/bellman_ford.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/binary_trie.test.cpp
       title: verify/binary_trie.test.cpp
@@ -300,6 +306,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/combination.test.cpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+    - icon: ':heavy_check_mark:'
+      path: verify/dijkstra.test.cpp
+      title: verify/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/dsu.test.cpp
       title: verify/dsu.test.cpp

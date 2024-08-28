@@ -12,12 +12,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
+  - icon: ':x:'
+    path: verify/bellman_ford.test.cpp
+    title: verify/bellman_ford.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/bitwise_and_convolution.test.cpp
     title: verify/bitwise_and_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+  - icon: ':heavy_check_mark:'
+    path: verify/dijkstra.test.cpp
+    title: verify/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/dynamicseg.test.cpp
     title: verify/dynamicseg.test.cpp
@@ -48,9 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: modint
     links: []
@@ -109,10 +115,11 @@ data:
   - example/matrix.example.cpp
   - Graph/Chromatic_Number.hpp
   timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/treedp.test.cpp
   - verify/bitwise_and_convolution.test.cpp
+  - verify/dijkstra.test.cpp
   - verify/swag_more.test.cpp
   - verify/superset_transform.test.cpp
   - verify/seg_prod.test.cpp
@@ -120,6 +127,7 @@ data:
   - verify/combination.test.cpp
   - verify/swag.test.cpp
   - verify/matrix.test.cpp
+  - verify/bellman_ford.test.cpp
   - verify/treap.test.cpp
   - verify/dynamicseg.test.cpp
   - verify/Chromatic_Number.test.cpp

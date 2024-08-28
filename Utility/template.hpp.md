@@ -54,6 +54,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aux_tree.test.cpp
     title: verify/aux_tree.test.cpp
+  - icon: ':x:'
+    path: verify/bellman_ford.test.cpp
+    title: verify/bellman_ford.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/binary_trie.test.cpp
     title: verify/binary_trie.test.cpp
@@ -69,6 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+  - icon: ':heavy_check_mark:'
+    path: verify/dijkstra.test.cpp
+    title: verify/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/dsu.test.cpp
     title: verify/dsu.test.cpp
@@ -195,9 +201,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -229,7 +235,7 @@ data:
   - "\u7802\u5834/simple_treap.henkou.cpp"
   - "\u7802\u5834/binarytrie.example.cpp"
   timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/manacher.test.cpp
   - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
@@ -239,6 +245,7 @@ data:
   - verify/maxflow_lowerbound.test.cpp
   - verify/bisect.test.cpp
   - verify/bitwise_and_convolution.test.cpp
+  - verify/dijkstra.test.cpp
   - verify/pbds_set.test.cpp
   - verify/swag_more.test.cpp
   - verify/2dbit_imos.test.cpp
@@ -257,6 +264,7 @@ data:
   - verify/swag.test.cpp
   - verify/lazyseg_bina.test.cpp
   - verify/matrix.test.cpp
+  - verify/bellman_ford.test.cpp
   - verify/range_edge_graph.test.cpp
   - verify/hld.test.cpp
   - verify/static1dsum.test.cpp
