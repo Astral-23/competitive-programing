@@ -138,7 +138,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/Chromatic_Number_with_restoration.hpp
       title: Graph/Chromatic_Number_with_restoration.hpp
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Graph/min_distance.hpp
       title: Graph/min_distance.hpp
     - icon: ':heavy_check_mark:'
@@ -216,10 +216,10 @@ data:
     - icon: ':warning:'
       path: Utility/bigmodint.hpp
       title: big_modint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -288,7 +288,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/aux_tree.test.cpp
       title: verify/aux_tree.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/bellman_ford.test.cpp
       title: verify/bellman_ford.test.cpp
     - icon: ':heavy_check_mark:'

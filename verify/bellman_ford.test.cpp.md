@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Graph/min_distance.hpp
     title: Graph/min_distance.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=jp
@@ -72,22 +72,22 @@ data:
     \ to});\n\n                } else if (dist[to] == cost + c) {\n              \
     \      cnt[to] += cnt[v];\n                }\n            }\n        }\n    }\n\
     \n    bool run_bellman_ford(int S) {\n        built = 2;\n        init();\n  \
-    \      s = S;\n        dist[s] = 0;\n        cnt[s] = 1;\n        rep(i, 0, n)\
-    \ {\n            bool found = false;\n            rep(v, 0, n) {\n           \
-    \     for (auto [cost, to] : g[v]) {\n                    if (chmin(dist[to],\
-    \ dist[v] + cost)) {\n                        found = true;\n                \
-    \        pre[to] = v;\n                    }\n                }\n            }\n\
-    \            if (i == n - 1 && found) {\n                return true;\n      \
-    \      }\n        }\n        return false;\n    }\n\n    vec<ll> distance() {\n\
-    \        assert(built != 0);\n        return dist;\n    }\n\n    vec<T> count_path()\
-    \ {\n        assert(built == 1);\n        return cnt;\n    }\n\n    vec<int> path(int\
-    \ t) {\n        assert(built != 0);\n        vec<int> res;\n        while (1)\
-    \ {\n            res.push_back(t);\n            if (t == s) break;\n         \
-    \   t = pre[t];\n        }\n        reverse(all(res));\n        return res;\n\
-    \    }\n};\n#line 5 \"verify/bellman_ford.test.cpp\"\n\n\nint main() {\n    \n\
-    \    \n    int n, m, r;\n    cin >> n >> m >> r;\n    vec<vec<pair<long long,\
-    \ long long>>> g(n);\n    rep(i, 0, m) {\n        ll s, t, d;\n        cin >>\
-    \ s >> t >> d;\n        g[s].push_back({d, t});\n    }\n    min_distance<modint998244353>\
+    \      s = S;\n        dist[s] = 0;\n        cnt[s] = 1;\n        int last = -1;\n\
+    \        rep(i, 0, n) {\n            bool found = false;\n            rep(v, 0,\
+    \ n) if(dist[v] != inf) {\n                for (auto [cost, to] : g[v]) {\n  \
+    \                  if (chmin(dist[to], dist[v] + cost)) {\n                  \
+    \      found = true;\n                        pre[to] = v;\n                 \
+    \   }\n                }\n            }\n            if(found) last = i;\n   \
+    \     }\n\n        if(last == n - 1) return true;\n        return false;\n   \
+    \ }\n\n    vec<ll> distance() {\n        assert(built != 0);\n        return dist;\n\
+    \    }\n\n    vec<T> count_path() {\n        assert(built == 1);\n        return\
+    \ cnt;\n    }\n\n    vec<int> path(int t) {\n        assert(built != 0);\n   \
+    \     vec<int> res;\n        while (1) {\n            res.push_back(t);\n    \
+    \        if (t == s) break;\n            t = pre[t];\n        }\n        reverse(all(res));\n\
+    \        return res;\n    }\n};\n#line 5 \"verify/bellman_ford.test.cpp\"\n\n\n\
+    int main() {\n    \n    \n    int n, m, r;\n    cin >> n >> m >> r;\n    vec<vec<pair<long\
+    \ long, long long>>> g(n);\n    rep(i, 0, m) {\n        ll s, t, d;\n        cin\
+    \ >> s >> t >> d;\n        g[s].push_back({d, t});\n    }\n    min_distance<modint998244353>\
     \ G(n, g);\n    if(G.run_bellman_ford(r)) {\n        cout << \"NEGATIVE CYCLE\"\
     \ << endl;\n        return 0;\n    }\n    else {\n        for(ll x : G.distance())\
     \ {\n            if(x == LLONG_MAX / 4) cout << \"INF\" << endl;\nelse       \
@@ -109,8 +109,8 @@ data:
   isVerificationFile: true
   path: verify/bellman_ford.test.cpp
   requiredBy: []
-  timestamp: '2024-08-28 13:10:44+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-08-28 13:18:15+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/bellman_ford.test.cpp
 layout: document

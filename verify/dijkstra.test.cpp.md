@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Graph/min_distance.hpp
     title: Graph/min_distance.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -72,27 +72,27 @@ data:
     \ to});\n\n                } else if (dist[to] == cost + c) {\n              \
     \      cnt[to] += cnt[v];\n                }\n            }\n        }\n    }\n\
     \n    bool run_bellman_ford(int S) {\n        built = 2;\n        init();\n  \
-    \      s = S;\n        dist[s] = 0;\n        cnt[s] = 1;\n        rep(i, 0, n)\
-    \ {\n            bool found = false;\n            rep(v, 0, n) {\n           \
-    \     for (auto [cost, to] : g[v]) {\n                    if (chmin(dist[to],\
-    \ dist[v] + cost)) {\n                        found = true;\n                \
-    \        pre[to] = v;\n                    }\n                }\n            }\n\
-    \            if (i == n - 1 && found) {\n                return true;\n      \
-    \      }\n        }\n        return false;\n    }\n\n    vec<ll> distance() {\n\
-    \        assert(built != 0);\n        return dist;\n    }\n\n    vec<T> count_path()\
-    \ {\n        assert(built == 1);\n        return cnt;\n    }\n\n    vec<int> path(int\
-    \ t) {\n        assert(built != 0);\n        vec<int> res;\n        while (1)\
-    \ {\n            res.push_back(t);\n            if (t == s) break;\n         \
-    \   t = pre[t];\n        }\n        reverse(all(res));\n        return res;\n\
-    \    }\n};\n#line 5 \"verify/dijkstra.test.cpp\"\n\nint main() {\n    ll n, m,\
-    \ s, t;\n    cin >> n >> m >> s >> t;\n    vec<vec<pair<ll, ll>>> g(n);\n    rep(i,\
-    \ 0, m) {\n        ll a, b, c;\n        cin >> a >> b >> c;\n        g[a].push_back({c,\
-    \ b});\n    }\n    min_distance<modint998244353> G(n, g);\n\n   \n    G.run_dijkstra(s);\n\
-    \    auto dist = G.distance();\n\n   \n    if (dist[t] == LLONG_MAX / 4) {\n \
-    \       cout << -1 << endl;\n        return 0;\n    }\n\n    auto ps = G.path(t);\n\
-    \    cout << dist[t] << \" \" << ps.size() - 1 << '\\n';\n\n    rep(i, 0, ps.size()\
-    \ - 1) { cout << ps[i] << \" \" << ps[i + 1] << '\\n'; }\n    cout << endl;\n\
-    }\n"
+    \      s = S;\n        dist[s] = 0;\n        cnt[s] = 1;\n        int last = -1;\n\
+    \        rep(i, 0, n) {\n            bool found = false;\n            rep(v, 0,\
+    \ n) if(dist[v] != inf) {\n                for (auto [cost, to] : g[v]) {\n  \
+    \                  if (chmin(dist[to], dist[v] + cost)) {\n                  \
+    \      found = true;\n                        pre[to] = v;\n                 \
+    \   }\n                }\n            }\n            if(found) last = i;\n   \
+    \     }\n\n        if(last == n - 1) return true;\n        return false;\n   \
+    \ }\n\n    vec<ll> distance() {\n        assert(built != 0);\n        return dist;\n\
+    \    }\n\n    vec<T> count_path() {\n        assert(built == 1);\n        return\
+    \ cnt;\n    }\n\n    vec<int> path(int t) {\n        assert(built != 0);\n   \
+    \     vec<int> res;\n        while (1) {\n            res.push_back(t);\n    \
+    \        if (t == s) break;\n            t = pre[t];\n        }\n        reverse(all(res));\n\
+    \        return res;\n    }\n};\n#line 5 \"verify/dijkstra.test.cpp\"\n\nint main()\
+    \ {\n    ll n, m, s, t;\n    cin >> n >> m >> s >> t;\n    vec<vec<pair<ll, ll>>>\
+    \ g(n);\n    rep(i, 0, m) {\n        ll a, b, c;\n        cin >> a >> b >> c;\n\
+    \        g[a].push_back({c, b});\n    }\n    min_distance<modint998244353> G(n,\
+    \ g);\n\n   \n    G.run_dijkstra(s);\n    auto dist = G.distance();\n\n   \n \
+    \   if (dist[t] == LLONG_MAX / 4) {\n        cout << -1 << endl;\n        return\
+    \ 0;\n    }\n\n    auto ps = G.path(t);\n    cout << dist[t] << \" \" << ps.size()\
+    \ - 1 << '\\n';\n\n    rep(i, 0, ps.size() - 1) { cout << ps[i] << \" \" << ps[i\
+    \ + 1] << '\\n'; }\n    cout << endl;\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/shortest_path\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include \"\
     ../Graph/min_distance.hpp\"\n\nint main() {\n    ll n, m, s, t;\n    cin >> n\
@@ -110,7 +110,7 @@ data:
   isVerificationFile: true
   path: verify/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2024-08-28 13:10:44+09:00'
+  timestamp: '2024-08-28 13:18:15+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/dijkstra.test.cpp
