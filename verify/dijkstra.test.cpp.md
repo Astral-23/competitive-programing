@@ -74,20 +74,20 @@ data:
     \n    bool run_bellman_ford(int S) {\n        built = 2;\n        init();\n  \
     \      s = S;\n        dist[s] = 0;\n        cnt[s] = 1;\n        int last = -1;\n\
     \        rep(i, 0, n) {\n            bool found = false;\n            rep(v, 0,\
-    \ n) if(dist[v] != inf) {\n                for (auto [cost, to] : g[v]) {\n  \
-    \                  if (chmin(dist[to], dist[v] + cost)) {\n                  \
-    \      found = true;\n                        pre[to] = v;\n                 \
-    \   }\n                }\n            }\n            if(found) last = i;\n   \
-    \     }\n\n        if(last == n - 1) return true;\n        return false;\n   \
-    \ }\n\n    vec<ll> distance() {\n        assert(built != 0);\n        return dist;\n\
-    \    }\n\n    vec<T> count_path() {\n        assert(built == 1);\n        return\
-    \ cnt;\n    }\n\n    vec<int> path(int t) {\n        assert(built != 0);\n   \
-    \     vec<int> res;\n        while (1) {\n            res.push_back(t);\n    \
-    \        if (t == s) break;\n            t = pre[t];\n        }\n        reverse(all(res));\n\
-    \        return res;\n    }\n};\n/*\n@brief \u6700\u77ED\u7D4C\u8DEF\n*/\n#line\
-    \ 5 \"verify/dijkstra.test.cpp\"\n\nint main() {\n    ll n, m, s, t;\n    cin\
-    \ >> n >> m >> s >> t;\n    vec<vec<pair<ll, ll>>> g(n);\n    rep(i, 0, m) {\n\
-    \        ll a, b, c;\n        cin >> a >> b >> c;\n        g[a].push_back({c,\
+    \ n) if (dist[v] != inf) {\n                for (auto [cost, to] : g[v]) {\n \
+    \                   if (chmin(dist[to], dist[v] + cost)) {\n                 \
+    \       found = true;\n                        pre[to] = v;\n                \
+    \    }\n                }\n            }\n            if (found) last = i;\n \
+    \       }\n\n        if (last == n - 1) return true;\n        return false;\n\
+    \    }\n\n    vec<ll> distance() {\n        assert(built != 0);\n        return\
+    \ dist;\n    }\n\n    vec<T> count_path() {\n        assert(built == 1);\n   \
+    \     return cnt;\n    }\n\n    vec<int> path(int t) {\n        assert(built !=\
+    \ 0);\n        vec<int> res;\n        while (1) {\n            res.push_back(t);\n\
+    \            if (t == s) break;\n            t = pre[t];\n        }\n        reverse(all(res));\n\
+    \        return res;\n    }\n};\n/*\n@brief \u6700\u77ED\u7D4C\u8DEF\n@docs doc/min_distance.md\n\
+    */\n#line 5 \"verify/dijkstra.test.cpp\"\n\nint main() {\n    ll n, m, s, t;\n\
+    \    cin >> n >> m >> s >> t;\n    vec<vec<pair<ll, ll>>> g(n);\n    rep(i, 0,\
+    \ m) {\n        ll a, b, c;\n        cin >> a >> b >> c;\n        g[a].push_back({c,\
     \ b});\n    }\n    min_distance<modint998244353> G(n, g);\n\n   \n    G.run_dijkstra(s);\n\
     \    auto dist = G.distance();\n\n   \n    if (dist[t] == LLONG_MAX / 4) {\n \
     \       cout << -1 << endl;\n        return 0;\n    }\n\n    auto ps = G.path(t);\n\
@@ -111,7 +111,7 @@ data:
   isVerificationFile: true
   path: verify/dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2024-08-28 13:21:36+09:00'
+  timestamp: '2024-08-28 13:23:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/dijkstra.test.cpp
