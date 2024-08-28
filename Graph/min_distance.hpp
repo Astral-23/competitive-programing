@@ -8,7 +8,7 @@ template <typename T> struct min_distance {
     vec<T> cnt;
     vec<int> pre;
     int built;
-    ll inf = LLONG_MAX / 4;
+    ll inf = LLONG_MAX / 2;
 
     void init() {
         fill(all(dist), inf);
@@ -56,6 +56,7 @@ template <typename T> struct min_distance {
         s = S;
         dist[s] = 0;
         cnt[s] = 1;
+        int last = -1;
         rep(i, 0, n) {
             bool found = false;
             rep(v, 0, n) {
@@ -66,10 +67,11 @@ template <typename T> struct min_distance {
                     }
                 }
             }
-            if (i == n - 1 && found) {
-                return true;
-            }
+            if(found) last = i;
         }
+
+        rep(v, 0, n) if(dist[v] > inf / 2) dist[v] = inf;
+        if(last == n - 1) return true;
         return false;
     }
 
