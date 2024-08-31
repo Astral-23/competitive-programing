@@ -1,3 +1,4 @@
+
 template <typename T> struct min_distance {
     using pll = pair<ll, ll>;
 
@@ -72,6 +73,20 @@ template <typename T> struct min_distance {
 
         if (last == n - 1) return true;
         return false;
+    }
+
+    vec<vec<ll>> run_warshall_floyd() {
+        vec<vec<ll>> d(n, vec<ll>(n, inf));
+        rep(i, 0, n) d[i][i] = 0;
+        rep(i, 0, n) for (auto [cost, to] : g[i]) {
+            chmin(d[i][to], cost);
+            chmin(d[to][i], cost);
+        }
+
+        rep(k, 0, n) rep(i, 0, n) rep(j, 0, n) {
+            chmin(d[i][j], d[i][k] + d[k][j]);
+        }
+        return d;
     }
 
     vec<ll> distance() {
