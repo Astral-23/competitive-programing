@@ -17,9 +17,9 @@ TT struct CMB {  // must素数
         return fac[n] * (ifac[k] * ifac[n - k] % mb) % mb;
     }
 
-    T B(int n) { return fac[n]; }
+    T B(int n) { return (n < 0 ? 0 : fac[n]); }
 
-    T invB(int n) { return ifac[n]; }
+    T invB(int n) { return (n < 0 ? 0 : ifac[n]); }
 
     T H(int n, int k) { return C(n + k - 1, k); }
 
