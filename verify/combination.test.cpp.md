@@ -61,17 +61,18 @@ data:
     \ * (mb / i) % mb;\n            ifac[i] = ifac[i - 1] * inv[i] % mb;\n       \
     \ }\n    }\n\n    T C(int n, int k) {\n        if (n < k) return 0LL;\n      \
     \  if (n < 0 || k < 0) return 0LL;\n        return fac[n] * (ifac[k] * ifac[n\
-    \ - k] % mb) % mb;\n    }\n\n    T B(int n) { return fac[n]; }\n\n    T invB(int\
-    \ n) { return ifac[n]; }\n\n    T H(int n, int k) { return C(n + k - 1, k); }\n\
-    \n    T Cn(int n) { return C(2 * n, n) * inv[n + 1] % mb; }\n};\n/*\n@brief \u30B3\
-    \u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs doc/cmb.md\n*/\n#line 5 \"verify/combination.test.cpp\"\
-    \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
-    \ = modint998244353;\nCMB<mint> cmb(1000000, 998244353);\n\nint main() {\n\tll\
-    \ N, M, T;\n\tcin >> N >> M >> T;\n\n\tmint p = 0;\n\n\n\trep(k, 1, N+1) {\n\t\
-    \tmint s = 1;\n\t\tmint ue = M * N - k * M;\n\n\n\t\trep(t, 1, T+1) {\n\t\t\t\
-    mint rev = M*N - (t-1);\n\t\t\ts *= ue * (rev.inv());\n\t\t\tue -= 1;\n\t\t}\n\
-    \n        s *= cmb.C(N, k);\n\t\tif(k%2==1) p += s;\n\t\telse p -= s;\n\n\t}\n\
-    \n\tcout << (1 - p).x << endl;\n\n}\n"
+    \ - k] % mb) % mb;\n    }\n\n    T B(int n) { return (n < 0 ? 0 : fac[n]); }\n\
+    \n    T invB(int n) { return (n < 0 ? 0 : ifac[n]); }\n\n    T H(int n, int k)\
+    \ { return C(n + k - 1, k); }\n\n    T Cn(int n) { return C(2 * n, n) * inv[n\
+    \ + 1] % mb; }\n};\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\
+    \n@docs doc/cmb.md\n*/\n#line 5 \"verify/combination.test.cpp\"\n\n\n/*\n@brief\
+    \ \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint = modint998244353;\n\
+    CMB<mint> cmb(1000000, 998244353);\n\nint main() {\n\tll N, M, T;\n\tcin >> N\
+    \ >> M >> T;\n\n\tmint p = 0;\n\n\n\trep(k, 1, N+1) {\n\t\tmint s = 1;\n\t\tmint\
+    \ ue = M * N - k * M;\n\n\n\t\trep(t, 1, T+1) {\n\t\t\tmint rev = M*N - (t-1);\n\
+    \t\t\ts *= ue * (rev.inv());\n\t\t\tue -= 1;\n\t\t}\n\n        s *= cmb.C(N, k);\n\
+    \t\tif(k%2==1) p += s;\n\t\telse p -= s;\n\n\t}\n\n\tcout << (1 - p).x << endl;\n\
+    \n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/4020\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include \"\
     ../Math/combination.hpp\"\n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\
@@ -88,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/combination.test.cpp
   requiredBy: []
-  timestamp: '2024-08-27 18:05:12+09:00'
+  timestamp: '2024-09-01 11:25:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/combination.test.cpp
