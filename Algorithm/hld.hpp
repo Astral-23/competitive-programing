@@ -44,7 +44,10 @@ struct HLD {
 
 
     //以下、欲しいもののみ書く
-
+   
+    int operator()(int v) const {
+        return in[v];
+    }
 
     int lca(int a, int b) {
         while(1) {
