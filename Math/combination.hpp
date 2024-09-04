@@ -1,10 +1,10 @@
 TT struct CMB {  // must素数
-    ll n, mb;
+    ll mb;
     vec<ll> fac, ifac, inv;
 
     CMB(ll MAX_N, ll mod)
-        : n(MAX_N), mb(mod), fac(n + 1, 1), ifac(n + 1, 1), inv(n + 1, 1) {
-        for (ll i = 2; i <= n; i++) {
+        :  mb(mod), fac(MAX_N + 1, 1), ifac(MAX_N + 1, 1), inv(MAX_N + 1, 1) {
+        for (ll i = 2; i <= MAX_N; i++) {
             fac[i] = fac[i - 1] * i % mb;
             inv[i] = mb - inv[mb % i] * (mb / i) % mb;
             ifac[i] = ifac[i - 1] * inv[i] % mb;
