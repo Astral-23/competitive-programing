@@ -45,8 +45,62 @@ data:
     \ != par[v]) {\n                root[to] = (to == g[v][0] ? root[v] : to);\n \
     \               f(f, to);\n            }\n            out[v] = t;\n        };\n\
     \n        dfs_hld(dfs_hld, r);\n    }\n\n\n    //\u4EE5\u4E0B\u3001\u6B32\u3057\
-    \u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n\n\n    int lca(int a, int b) {\n\
-    \        while(1) {\n            if(in[a] > in[b]) swap(a, b);\n            if(root[a]\
+    \u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n   \n    int operator()(int v) const\
+    \ {\n        return in[v];\n    }\n\n    int lca(int a, int b) {\n        while(1)\
+    \ {\n            if(in[a] > in[b]) swap(a, b);\n            if(root[a] == root[b])\
+    \ return a;\n            b = par[root[b]];\n        }\n    }\n\n    int dist(int\
+    \ a, int b) {\n        int lc = lca(a, b);\n        return dep[a] + dep[b] - 2\
+    \ * dep[lc];\n    }\n\n    vec<pi> path(int s, int t, bool edge) {\n        vec<pi>\
+    \ ls, rs;\n        while(root[s] != root[t]) {\n            if(dep[root[s]] >\
+    \ dep[root[t]]) {\n                ls.emplace_back(in[s] + 1, in[root[s]]);//\u4E0A\
+    \u308A\n                s = par[root[s]];\n            }\n            else {\n\
+    \                rs.emplace_back(in[root[t]], in[t] + 1);//\u4E0B\u308A\n    \
+    \            t = par[root[t]];\n            }\n        }\n\n        if(dep[s]\
+    \ > dep[t]) ls.emplace_back(in[s] + 1, in[t] + edge);//\u4E0A\u308A\n        else\
+    \ rs.emplace_back(in[s] + edge, in[t] + 1);//\u4E0B\u308A\n        \n        reverse(all(rs));\n\
+    \        for(auto &p : rs) ls.push_back(p);\n        return ls;\n    }\n\n   \
+    \ pi subtree(int u, bool edge) {\n        return pi(in[u]+edge, out[u]);\n   \
+    \ }\n\n    int kth_ancestor(int v, int k) {\n        if(k > dep[v]) return -1;\n\
+    \        while(v >= 0) {\n            if(k <= dep[v] - dep[root[v]]) {\n     \
+    \           return rev[in[v] - k];\n            }\n            else {\n      \
+    \          k -= dep[v] - dep[root[v]] + 1;\n                v = par[root[v]];\n\
+    \            }\n        }\n    }\n\n    int jump(int s, int t, int k) {\n    \
+    \    int m = lca(s, t);\n        int le = dep[s] - dep[m];\n        int ri = dep[t]\
+    \ - dep[m];\n        if(0 <= k && k <= le + ri) {\n            if(k < le) return\
+    \ kth_ancestor(s, k);\n            else return kth_ancestor(t, le + ri - k);\n\
+    \        }\n        return -1;\n    }\n\n    int aux_tree(vi vs, vec<vi> &g) {\n\
+    \        if(vs.empty()) return -1;\n        \n        auto cmp = [&](int i, int\
+    \ j) { return in[i] < in[j]; };\n        sort(all(vs), cmp);\n        int m =\
+    \ vs.size();\n\n        rep(i, 0, m-1) vs.push_back(lca(vs[i], vs[i + 1]));\n\
+    \        sort(all(vs), cmp);\n        vs.erase(unique(all(vs)), vs.end());\n\n\
+    \        vi st;\n        for(auto v : vs) {\n            while(st.size()) {\n\
+    \                int p = st.back();\n                if(in[p] < in[v] && in[v]\
+    \ < out[p]) break;\n                st.pop_back();\n            }\n          \
+    \  if(st.size()) {\n                g[st.back()].push_back(v);\n             \
+    \   g[v].push_back(st.back());\n            }\n            st.push_back(v);\n\
+    \        }\n\n        swap(vs, pre_vs);\n        return pre_vs[0];\n    }\n\n\
+    \    void clean(vec<vi> &g) {\n        for(auto v : pre_vs) g[v] = vi();\n   \
+    \     pre_vs = vi();\n        return;\n    }\n};  \n\n\n\n/*\n@brief HLD\n@docs\
+    \ doc/hld.md\n*/\n"
+  code: "struct HLD {\n    using vi = vec<int>;\n    using pi = pair<int, int>;\n\
+    \    vi in, out, par, root, rev, dep, pre_vs;\n    //          \u89AA/\u6210\u5206\
+    \u306Etop/in\u306E\u4E2D\u8EAB\u2192\u9802\u70B9\u756A\u53F7\n    int n, r;//\u9802\
+    \u70B9\u6570\u3001\u6839\n    \n  \n    HLD(vec<vi> &g, int a): n(g.size()), r(a)\
+    \ {\n        vi siz(n, 0);\n        in = out = root = rev = vi(n);\n        par\
+    \ = vi(n, -1);\n        dep = vi(n, 0);\n        root[r] = r;\n\n        auto\
+    \ dfs_siz = [&](auto f, int v) -> void {\n            siz[v]++;\n            for(int&\
+    \ to : g[v]) if(to != par[v]) {\n                dep[to] = dep[v] + 1;\n     \
+    \           par[to] = v;\n                f(f, to);\n                siz[v] +=\
+    \ siz[to];\n                if(siz[to] > siz[g[v][0]] || g[v][0] == par[v]) swap(to,\
+    \ g[v][0]);\n            }\n            return;\n        };\n\n        dfs_siz(dfs_siz,\
+    \ r);\n        \n        int t = 0;\n\n        auto dfs_hld = [&](auto f, int\
+    \ v) -> void {\n            rev[t] = v;\n            in[v]=t++;\n            for(int\
+    \ to : g[v]) if(to != par[v]) {\n                root[to] = (to == g[v][0] ? root[v]\
+    \ : to);\n                f(f, to);\n            }\n            out[v] = t;\n\
+    \        };\n\n        dfs_hld(dfs_hld, r);\n    }\n\n\n    //\u4EE5\u4E0B\u3001\
+    \u6B32\u3057\u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n   \n    int operator()(int\
+    \ v) const {\n        return in[v];\n    }\n\n    int lca(int a, int b) {\n  \
+    \      while(1) {\n            if(in[a] > in[b]) swap(a, b);\n            if(root[a]\
     \ == root[b]) return a;\n            b = par[root[b]];\n        }\n    }\n\n \
     \   int dist(int a, int b) {\n        int lc = lca(a, b);\n        return dep[a]\
     \ + dep[b] - 2 * dep[lc];\n    }\n\n    vec<pi> path(int s, int t, bool edge)\
@@ -81,63 +135,11 @@ data:
     \    void clean(vec<vi> &g) {\n        for(auto v : pre_vs) g[v] = vi();\n   \
     \     pre_vs = vi();\n        return;\n    }\n};  \n\n\n\n/*\n@brief HLD\n@docs\
     \ doc/hld.md\n*/\n"
-  code: "struct HLD {\n    using vi = vec<int>;\n    using pi = pair<int, int>;\n\
-    \    vi in, out, par, root, rev, dep, pre_vs;\n    //          \u89AA/\u6210\u5206\
-    \u306Etop/in\u306E\u4E2D\u8EAB\u2192\u9802\u70B9\u756A\u53F7\n    int n, r;//\u9802\
-    \u70B9\u6570\u3001\u6839\n    \n  \n    HLD(vec<vi> &g, int a): n(g.size()), r(a)\
-    \ {\n        vi siz(n, 0);\n        in = out = root = rev = vi(n);\n        par\
-    \ = vi(n, -1);\n        dep = vi(n, 0);\n        root[r] = r;\n\n        auto\
-    \ dfs_siz = [&](auto f, int v) -> void {\n            siz[v]++;\n            for(int&\
-    \ to : g[v]) if(to != par[v]) {\n                dep[to] = dep[v] + 1;\n     \
-    \           par[to] = v;\n                f(f, to);\n                siz[v] +=\
-    \ siz[to];\n                if(siz[to] > siz[g[v][0]] || g[v][0] == par[v]) swap(to,\
-    \ g[v][0]);\n            }\n            return;\n        };\n\n        dfs_siz(dfs_siz,\
-    \ r);\n        \n        int t = 0;\n\n        auto dfs_hld = [&](auto f, int\
-    \ v) -> void {\n            rev[t] = v;\n            in[v]=t++;\n            for(int\
-    \ to : g[v]) if(to != par[v]) {\n                root[to] = (to == g[v][0] ? root[v]\
-    \ : to);\n                f(f, to);\n            }\n            out[v] = t;\n\
-    \        };\n\n        dfs_hld(dfs_hld, r);\n    }\n\n\n    //\u4EE5\u4E0B\u3001\
-    \u6B32\u3057\u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n\n\n    int lca(int a,\
-    \ int b) {\n        while(1) {\n            if(in[a] > in[b]) swap(a, b);\n  \
-    \          if(root[a] == root[b]) return a;\n            b = par[root[b]];\n \
-    \       }\n    }\n\n    int dist(int a, int b) {\n        int lc = lca(a, b);\n\
-    \        return dep[a] + dep[b] - 2 * dep[lc];\n    }\n\n    vec<pi> path(int\
-    \ s, int t, bool edge) {\n        vec<pi> ls, rs;\n        while(root[s] != root[t])\
-    \ {\n            if(dep[root[s]] > dep[root[t]]) {\n                ls.emplace_back(in[s]\
-    \ + 1, in[root[s]]);//\u4E0A\u308A\n                s = par[root[s]];\n      \
-    \      }\n            else {\n                rs.emplace_back(in[root[t]], in[t]\
-    \ + 1);//\u4E0B\u308A\n                t = par[root[t]];\n            }\n    \
-    \    }\n\n        if(dep[s] > dep[t]) ls.emplace_back(in[s] + 1, in[t] + edge);//\u4E0A\
-    \u308A\n        else rs.emplace_back(in[s] + edge, in[t] + 1);//\u4E0B\u308A\n\
-    \        \n        reverse(all(rs));\n        for(auto &p : rs) ls.push_back(p);\n\
-    \        return ls;\n    }\n\n    pi subtree(int u, bool edge) {\n        return\
-    \ pi(in[u]+edge, out[u]);\n    }\n\n    int kth_ancestor(int v, int k) {\n   \
-    \     if(k > dep[v]) return -1;\n        while(v >= 0) {\n            if(k <=\
-    \ dep[v] - dep[root[v]]) {\n                return rev[in[v] - k];\n         \
-    \   }\n            else {\n                k -= dep[v] - dep[root[v]] + 1;\n \
-    \               v = par[root[v]];\n            }\n        }\n    }\n\n    int\
-    \ jump(int s, int t, int k) {\n        int m = lca(s, t);\n        int le = dep[s]\
-    \ - dep[m];\n        int ri = dep[t] - dep[m];\n        if(0 <= k && k <= le +\
-    \ ri) {\n            if(k < le) return kth_ancestor(s, k);\n            else return\
-    \ kth_ancestor(t, le + ri - k);\n        }\n        return -1;\n    }\n\n    int\
-    \ aux_tree(vi vs, vec<vi> &g) {\n        if(vs.empty()) return -1;\n        \n\
-    \        auto cmp = [&](int i, int j) { return in[i] < in[j]; };\n        sort(all(vs),\
-    \ cmp);\n        int m = vs.size();\n\n        rep(i, 0, m-1) vs.push_back(lca(vs[i],\
-    \ vs[i + 1]));\n        sort(all(vs), cmp);\n        vs.erase(unique(all(vs)),\
-    \ vs.end());\n\n        vi st;\n        for(auto v : vs) {\n            while(st.size())\
-    \ {\n                int p = st.back();\n                if(in[p] < in[v] && in[v]\
-    \ < out[p]) break;\n                st.pop_back();\n            }\n          \
-    \  if(st.size()) {\n                g[st.back()].push_back(v);\n             \
-    \   g[v].push_back(st.back());\n            }\n            st.push_back(v);\n\
-    \        }\n\n        swap(vs, pre_vs);\n        return pre_vs[0];\n    }\n\n\
-    \    void clean(vec<vi> &g) {\n        for(auto v : pre_vs) g[v] = vi();\n   \
-    \     pre_vs = vi();\n        return;\n    }\n};  \n\n\n\n/*\n@brief HLD\n@docs\
-    \ doc/hld.md\n*/\n"
   dependsOn: []
   isVerificationFile: false
   path: Algorithm/hld.hpp
   requiredBy: []
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-09-04 12:58:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/aux_tree.test.cpp
@@ -155,29 +157,49 @@ title: HLD
 ---
 ## 概要
 Heavy Light Decompositionをする。
-データ構造などは載せずに、単にパスの集合を返すような実装である。
-実装の参考 : https://ebi-fly13.github.io/icpc_library/tree/HeavyLightDecomposition.hpp
+データ構造などは載せずに、単にパスの集合を返すような実装である。<br>
+実装の参考 : https://ebi-fly13.github.io/icpc_library/tree/HeavyLightDecomposition.hpp <br>
 実装の参考 : https://github.com/saphmitchy/deliair-lib
 
-## 省略できるもの
-//必要なものだけ書く
-以下
 
 ## コンストラクタ
-HLD hld(vec\<vec\<int\>\> Graph, int root) ... グラフと根を指定する。 $O(頂点数)$
+` HLD(vec<vi> &g, int a)` ... グラフと根を指定する。 
+- 計算量 $O(頂点数)$
 
 ## 関数
-以下、頂点数をnと置く。特に断りのない限り、計算量は $O(logN)$ である。
-- **lca(int a, int b)**...lca(a, b)   
-- **vec<pair<int, int>> path(int s, int t, bool edge)**... s→tのパスに対応する区間の集合を返す。また、edge = trueならば辺属性、 falseならば頂点属性である。
-- **pair<int, int> subtree(int u, bool edge)**...uの部分木に対応する区間を返す。また、edge = trueならば辺属性、 falseならば頂点属性である。
-    - 計算量 O(1)
-- **kth_ancestor(int v, int k)** ...vからk個だけ辺を登った所にある頂点を返す。そのような頂点が存在しないなら-1を返す。
-- **jump(int s, int t, int k)**... sからtの方向に丁度k個辺を辿った所にある頂点を返す。tを超えてしまう場合は-1を返す。
-- **int aux_tree(vec\<int\> vs, vec\<vec\<int\>\> &g)** 元の木から、「vsに含まれる頂点 と、 vsに含まれる頂点同士のLCAとなりうる頂点」を残して圧縮した木をgとして返す。戻り値は、圧縮した木の根。グラフが空の場合-1を返す。
-    - 計算量 $O(\|vs\|log\|vs\|)
+以下、頂点数をnと置く。特に断りのない限り、計算量は $O(\log n)$ である。
+
+- `int operator()(int v)`... 頂点v の　行きがけ順を返す。
+    - 計算量 $O(1)$
+- `int lca(int a, int b)`...lca(a, b)  
+
+- `vec<pair<int, int>> path(int s, int t, bool edge)` s→tのパスに対応する区間の集合を返す。また、edge = trueならば辺属性、 falseならば頂点属性である。
+- `pair<int, int> subtree(int u, bool edge)`...uの部分木に対応する区間を返す。また、edge = trueならば辺属性、 falseならば頂点属性である。
+    - 計算量 $O(1)$
+- `kth_ancestor(int v, int k)` ...vからk個だけ辺を登った所にある頂点を返す。そのような頂点が存在しないなら-1を返す。
+- `jump(int s, int t, int k)` ... sからtの方向に丁度k個辺を辿った所にある頂点を返す。tを超えてしまう場合は-1を返す。
+- `int aux_tree(vec<int> vs, vec<vec<int>> &g)` 元の木から、「vsに含まれる頂点 と、 vsに含まれる頂点同士のLCAとなりうる頂点」を残して圧縮した木をgとして返す。戻り値は、圧縮した木の根。グラフが空の場合-1を返す。
+    - 計算量 $O(\|vs\|log\|vs\|)$
     - 木のサイズ $O(|vs|)$
+
 aux_tree 参考 : https://atcoder.jp/contests/abc340/editorial/9249
+
+## 用語
+- 頂点属性 <br>
+
+頂点の値を管理する。
+
+- 辺属性 <br>
+
+辺の値を管理する。 <br>
+
+辺の番号について、「頂点 v から根に伸びる辺」が　番号 v の辺である。ここで、辺 root は存在しない。 <br>
+
+部分木内の辺の値を変更するといった場合、部分木から上に伸びる辺を含めたくなく、そういった事情から`edge`フラグが存在する。
+
+また、パスについても、「lcaの頂点から根に伸びる辺」を含めたくない場合が多く、`edge == true`だとそれを含めない。
+
+
 
 ## 使い方
 **セグメント木等と対応させる場合、
@@ -189,7 +211,7 @@ sge[i] := hld.in[i] の頂点の値
 ```
 HLD hld(G, 0);
 vec<ll> B(N);
-rep(i,0,N) B[hld.in[i]] = A[i];
+rep(i,0,N) B[hld(i)] = A[i];
 segtree<S, op, e> seg(B);
 
 ```
@@ -242,9 +264,9 @@ for(auto [l, r] : ps) {
 注意: 元の頂点番号でセグ木に変更をかけてはいけない。
 セグ木の時
 ```
-int id = hld.in[v];
-seg.set(id, new_val);
-seg2.set(id, new_val);
+
+seg.set(hld(v), new_val);
+seg2.set(hld(v), new_val);
 ```
 
 遅延セグ木の時
@@ -292,6 +314,13 @@ int main() {
 
     // (5) 計算したい頂点集合がまだある場合、(2)に戻る。
 }
+```
+
+頂点に、頂点番号もデータとして与えたい時
+```
+rep(i, 0, n) { first_val[hld(i)] = S{dep[i], i};} ... 正しい
+
+rep(i, 0, n) {first_val[hld(i)] = S{dep[hld(i)], hld(i)}; } ... 誤り！
 ```
 ### 使用上の注意
 [1]gには、サイズがnである空の配列 vec\<vec\<int\>\> g(n)を参照渡しする。

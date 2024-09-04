@@ -72,35 +72,35 @@ data:
     \ (to == g[v][0] ? root[v] : to);\n                f(f, to);\n            }\n\
     \            out[v] = t;\n        };\n\n        dfs_hld(dfs_hld, r);\n    }\n\n\
     \n    //\u4EE5\u4E0B\u3001\u6B32\u3057\u3044\u3082\u306E\u306E\u307F\u66F8\u304F\
-    \n\n\n    int lca(int a, int b) {\n        while(1) {\n            if(in[a] >\
-    \ in[b]) swap(a, b);\n            if(root[a] == root[b]) return a;\n         \
-    \   b = par[root[b]];\n        }\n    }\n\n    int dist(int a, int b) {\n    \
-    \    int lc = lca(a, b);\n        return dep[a] + dep[b] - 2 * dep[lc];\n    }\n\
-    \n    vec<pi> path(int s, int t, bool edge) {\n        vec<pi> ls, rs;\n     \
-    \   while(root[s] != root[t]) {\n            if(dep[root[s]] > dep[root[t]]) {\n\
-    \                ls.emplace_back(in[s] + 1, in[root[s]]);//\u4E0A\u308A\n    \
-    \            s = par[root[s]];\n            }\n            else {\n          \
-    \      rs.emplace_back(in[root[t]], in[t] + 1);//\u4E0B\u308A\n              \
-    \  t = par[root[t]];\n            }\n        }\n\n        if(dep[s] > dep[t])\
-    \ ls.emplace_back(in[s] + 1, in[t] + edge);//\u4E0A\u308A\n        else rs.emplace_back(in[s]\
-    \ + edge, in[t] + 1);//\u4E0B\u308A\n        \n        reverse(all(rs));\n   \
-    \     for(auto &p : rs) ls.push_back(p);\n        return ls;\n    }\n\n    pi\
-    \ subtree(int u, bool edge) {\n        return pi(in[u]+edge, out[u]);\n    }\n\
-    \n    int kth_ancestor(int v, int k) {\n        if(k > dep[v]) return -1;\n  \
-    \      while(v >= 0) {\n            if(k <= dep[v] - dep[root[v]]) {\n       \
-    \         return rev[in[v] - k];\n            }\n            else {\n        \
-    \        k -= dep[v] - dep[root[v]] + 1;\n                v = par[root[v]];\n\
-    \            }\n        }\n    }\n\n    int jump(int s, int t, int k) {\n    \
-    \    int m = lca(s, t);\n        int le = dep[s] - dep[m];\n        int ri = dep[t]\
-    \ - dep[m];\n        if(0 <= k && k <= le + ri) {\n            if(k < le) return\
-    \ kth_ancestor(s, k);\n            else return kth_ancestor(t, le + ri - k);\n\
-    \        }\n        return -1;\n    }\n\n    int aux_tree(vi vs, vec<vi> &g) {\n\
-    \        if(vs.empty()) return -1;\n        \n        auto cmp = [&](int i, int\
-    \ j) { return in[i] < in[j]; };\n        sort(all(vs), cmp);\n        int m =\
-    \ vs.size();\n\n        rep(i, 0, m-1) vs.push_back(lca(vs[i], vs[i + 1]));\n\
-    \        sort(all(vs), cmp);\n        vs.erase(unique(all(vs)), vs.end());\n\n\
-    \        vi st;\n        for(auto v : vs) {\n            while(st.size()) {\n\
-    \                int p = st.back();\n                if(in[p] < in[v] && in[v]\
+    \n   \n    int operator()(int v) const {\n        return in[v];\n    }\n\n   \
+    \ int lca(int a, int b) {\n        while(1) {\n            if(in[a] > in[b]) swap(a,\
+    \ b);\n            if(root[a] == root[b]) return a;\n            b = par[root[b]];\n\
+    \        }\n    }\n\n    int dist(int a, int b) {\n        int lc = lca(a, b);\n\
+    \        return dep[a] + dep[b] - 2 * dep[lc];\n    }\n\n    vec<pi> path(int\
+    \ s, int t, bool edge) {\n        vec<pi> ls, rs;\n        while(root[s] != root[t])\
+    \ {\n            if(dep[root[s]] > dep[root[t]]) {\n                ls.emplace_back(in[s]\
+    \ + 1, in[root[s]]);//\u4E0A\u308A\n                s = par[root[s]];\n      \
+    \      }\n            else {\n                rs.emplace_back(in[root[t]], in[t]\
+    \ + 1);//\u4E0B\u308A\n                t = par[root[t]];\n            }\n    \
+    \    }\n\n        if(dep[s] > dep[t]) ls.emplace_back(in[s] + 1, in[t] + edge);//\u4E0A\
+    \u308A\n        else rs.emplace_back(in[s] + edge, in[t] + 1);//\u4E0B\u308A\n\
+    \        \n        reverse(all(rs));\n        for(auto &p : rs) ls.push_back(p);\n\
+    \        return ls;\n    }\n\n    pi subtree(int u, bool edge) {\n        return\
+    \ pi(in[u]+edge, out[u]);\n    }\n\n    int kth_ancestor(int v, int k) {\n   \
+    \     if(k > dep[v]) return -1;\n        while(v >= 0) {\n            if(k <=\
+    \ dep[v] - dep[root[v]]) {\n                return rev[in[v] - k];\n         \
+    \   }\n            else {\n                k -= dep[v] - dep[root[v]] + 1;\n \
+    \               v = par[root[v]];\n            }\n        }\n    }\n\n    int\
+    \ jump(int s, int t, int k) {\n        int m = lca(s, t);\n        int le = dep[s]\
+    \ - dep[m];\n        int ri = dep[t] - dep[m];\n        if(0 <= k && k <= le +\
+    \ ri) {\n            if(k < le) return kth_ancestor(s, k);\n            else return\
+    \ kth_ancestor(t, le + ri - k);\n        }\n        return -1;\n    }\n\n    int\
+    \ aux_tree(vi vs, vec<vi> &g) {\n        if(vs.empty()) return -1;\n        \n\
+    \        auto cmp = [&](int i, int j) { return in[i] < in[j]; };\n        sort(all(vs),\
+    \ cmp);\n        int m = vs.size();\n\n        rep(i, 0, m-1) vs.push_back(lca(vs[i],\
+    \ vs[i + 1]));\n        sort(all(vs), cmp);\n        vs.erase(unique(all(vs)),\
+    \ vs.end());\n\n        vi st;\n        for(auto v : vs) {\n            while(st.size())\
+    \ {\n                int p = st.back();\n                if(in[p] < in[v] && in[v]\
     \ < out[p]) break;\n                st.pop_back();\n            }\n          \
     \  if(st.size()) {\n                g[st.back()].push_back(v);\n             \
     \   g[v].push_back(st.back());\n            }\n            st.push_back(v);\n\
@@ -185,7 +185,7 @@ data:
   isVerificationFile: true
   path: verify/range_edge_graph.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-09-04 12:58:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/range_edge_graph.test.cpp

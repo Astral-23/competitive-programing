@@ -42,15 +42,16 @@ data:
     \ to : g[v]) if(to != par[v]) {\n                root[to] = (to == g[v][0] ? root[v]\
     \ : to);\n                f(f, to);\n            }\n            out[v] = t;\n\
     \        };\n\n        dfs_hld(dfs_hld, r);\n    }\n\n\n    //\u4EE5\u4E0B\u3001\
-    \u6B32\u3057\u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n\n\n    int lca(int a,\
-    \ int b) {\n        while(1) {\n            if(in[a] > in[b]) swap(a, b);\n  \
-    \          if(root[a] == root[b]) return a;\n            b = par[root[b]];\n \
-    \       }\n    }\n\n    int dist(int a, int b) {\n        int lc = lca(a, b);\n\
-    \        return dep[a] + dep[b] - 2 * dep[lc];\n    }\n\n    vec<pi> path(int\
-    \ s, int t, bool edge) {\n        vec<pi> ls, rs;\n        while(root[s] != root[t])\
-    \ {\n            if(dep[root[s]] > dep[root[t]]) {\n                ls.emplace_back(in[s]\
-    \ + 1, in[root[s]]);//\u4E0A\u308A\n                s = par[root[s]];\n      \
-    \      }\n            else {\n                rs.emplace_back(in[root[t]], in[t]\
+    \u6B32\u3057\u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n   \n    int operator()(int\
+    \ v) const {\n        return in[v];\n    }\n\n    int lca(int a, int b) {\n  \
+    \      while(1) {\n            if(in[a] > in[b]) swap(a, b);\n            if(root[a]\
+    \ == root[b]) return a;\n            b = par[root[b]];\n        }\n    }\n\n \
+    \   int dist(int a, int b) {\n        int lc = lca(a, b);\n        return dep[a]\
+    \ + dep[b] - 2 * dep[lc];\n    }\n\n    vec<pi> path(int s, int t, bool edge)\
+    \ {\n        vec<pi> ls, rs;\n        while(root[s] != root[t]) {\n          \
+    \  if(dep[root[s]] > dep[root[t]]) {\n                ls.emplace_back(in[s] +\
+    \ 1, in[root[s]]);//\u4E0A\u308A\n                s = par[root[s]];\n        \
+    \    }\n            else {\n                rs.emplace_back(in[root[t]], in[t]\
     \ + 1);//\u4E0B\u308A\n                t = par[root[t]];\n            }\n    \
     \    }\n\n        if(dep[s] > dep[t]) ls.emplace_back(in[s] + 1, in[t] + edge);//\u4E0A\
     \u308A\n        else rs.emplace_back(in[s] + edge, in[t] + 1);//\u4E0B\u308A\n\
@@ -140,7 +141,7 @@ data:
   isVerificationFile: true
   path: verify/aux_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-09-04 12:58:57+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aux_tree.test.cpp

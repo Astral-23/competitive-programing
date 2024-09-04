@@ -1,28 +1,48 @@
 ## 概要
 Heavy Light Decompositionをする。
-データ構造などは載せずに、単にパスの集合を返すような実装である。
-実装の参考 : https://ebi-fly13.github.io/icpc_library/tree/HeavyLightDecomposition.hpp
+データ構造などは載せずに、単にパスの集合を返すような実装である。<br>
+実装の参考 : https://ebi-fly13.github.io/icpc_library/tree/HeavyLightDecomposition.hpp <br>
 実装の参考 : https://github.com/saphmitchy/deliair-lib
 
-## 省略できるもの
-//必要なものだけ書く
-以下
 
 ## コンストラクタ
-HLD hld(vec\<vec\<int\>\> Graph, int root) ... グラフと根を指定する。 $O(頂点数)$
+` HLD(vec<vi> &g, int a)` ... グラフと根を指定する。 
+- 計算量 $O(頂点数)$
 
 ## 関数
-以下、頂点数をnと置く。特に断りのない限り、計算量は $O(logN)$ である。
-- **lca(int a, int b)**...lca(a, b)   
-- **vec<pair<int, int>> path(int s, int t, bool edge)**... s→tのパスに対応する区間の集合を返す。また、edge = trueならば辺属性、 falseならば頂点属性である。
-- **pair<int, int> subtree(int u, bool edge)**...uの部分木に対応する区間を返す。また、edge = trueならば辺属性、 falseならば頂点属性である。
-    - 計算量 O(1)
-- **kth_ancestor(int v, int k)** ...vからk個だけ辺を登った所にある頂点を返す。そのような頂点が存在しないなら-1を返す。
-- **jump(int s, int t, int k)**... sからtの方向に丁度k個辺を辿った所にある頂点を返す。tを超えてしまう場合は-1を返す。
-- **int aux_tree(vec\<int\> vs, vec\<vec\<int\>\> &g)** 元の木から、「vsに含まれる頂点 と、 vsに含まれる頂点同士のLCAとなりうる頂点」を残して圧縮した木をgとして返す。戻り値は、圧縮した木の根。グラフが空の場合-1を返す。
-    - 計算量 $O(\|vs\|log\|vs\|)
+以下、頂点数をnと置く。特に断りのない限り、計算量は $O(\log n)$ である。
+
+- `int operator()(int v)`... 頂点v の　行きがけ順を返す。
+    - 計算量 $O(1)$
+- `int lca(int a, int b)`...lca(a, b)  
+
+- `vec<pair<int, int>> path(int s, int t, bool edge)` s→tのパスに対応する区間の集合を返す。また、edge = trueならば辺属性、 falseならば頂点属性である。
+- `pair<int, int> subtree(int u, bool edge)`...uの部分木に対応する区間を返す。また、edge = trueならば辺属性、 falseならば頂点属性である。
+    - 計算量 $O(1)$
+- `kth_ancestor(int v, int k)` ...vからk個だけ辺を登った所にある頂点を返す。そのような頂点が存在しないなら-1を返す。
+- `jump(int s, int t, int k)` ... sからtの方向に丁度k個辺を辿った所にある頂点を返す。tを超えてしまう場合は-1を返す。
+- `int aux_tree(vec<int> vs, vec<vec<int>> &g)` 元の木から、「vsに含まれる頂点 と、 vsに含まれる頂点同士のLCAとなりうる頂点」を残して圧縮した木をgとして返す。戻り値は、圧縮した木の根。グラフが空の場合-1を返す。
+    - 計算量 $O(\|vs\|log\|vs\|)$
     - 木のサイズ $O(|vs|)$
+
 aux_tree 参考 : https://atcoder.jp/contests/abc340/editorial/9249
+
+## 用語
+- 頂点属性 <br>
+
+頂点の値を管理する。
+
+- 辺属性 <br>
+
+辺の値を管理する。 <br>
+
+辺の番号について、「頂点 v から根に伸びる辺」が　番号 v の辺である。ここで、辺 root は存在しない。 <br>
+
+部分木内の辺の値を変更するといった場合、部分木から上に伸びる辺を含めたくなく、そういった事情から`edge`フラグが存在する。
+
+また、パスについても、「lcaの頂点から根に伸びる辺」を含めたくない場合が多く、`edge == true`だとそれを含めない。
+
+
 
 ## 使い方
 **セグメント木等と対応させる場合、
@@ -34,7 +54,7 @@ sge[i] := hld.in[i] の頂点の値
 ```
 HLD hld(G, 0);
 vec<ll> B(N);
-rep(i,0,N) B[hld.in[i]] = A[i];
+rep(i,0,N) B[hld(i)] = A[i];
 segtree<S, op, e> seg(B);
 
 ```
@@ -87,9 +107,9 @@ for(auto [l, r] : ps) {
 注意: 元の頂点番号でセグ木に変更をかけてはいけない。
 セグ木の時
 ```
-int id = hld.in[v];
-seg.set(id, new_val);
-seg2.set(id, new_val);
+
+seg.set(hld(v), new_val);
+seg2.set(hld(v), new_val);
 ```
 
 遅延セグ木の時
@@ -137,6 +157,13 @@ int main() {
 
     // (5) 計算したい頂点集合がまだある場合、(2)に戻る。
 }
+```
+
+頂点に、頂点番号もデータとして与えたい時
+```
+rep(i, 0, n) { first_val[hld(i)] = S{dep[i], i};} ... 正しい
+
+rep(i, 0, n) {first_val[hld(i)] = S{dep[hld(i)], hld(i)}; } ... 誤り！
 ```
 ### 使用上の注意
 [1]gには、サイズがnである空の配列 vec\<vec\<int\>\> g(n)を参照渡しする。
