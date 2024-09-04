@@ -97,9 +97,9 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/offline_connectivity.test.cpp
   - verify/undabledsu.test.cpp
   - verify/offline_connectivity_more.test.cpp
+  - verify/offline_connectivity.test.cpp
 documentation_of: Datastructure/undabledsu.hpp
 layout: document
 redirect_from:

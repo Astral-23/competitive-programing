@@ -38,8 +38,8 @@ data:
   isVerificationFile: false
   path: Algorithm/subset_transform.hpp
   requiredBy:
-  - Convolution/bitwise_or_convolution.hpp
   - Graph/Chromatic_Number_with_restoration.hpp
+  - Convolution/bitwise_or_convolution.hpp
   timestamp: '2024-07-31 11:08:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

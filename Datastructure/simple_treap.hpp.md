@@ -149,8 +149,8 @@ data:
   isVerificationFile: false
   path: Datastructure/simple_treap.hpp
   requiredBy:
-  - example/simple_treap.example.cpp
   - "\u7802\u5834/simple_treap.henkou.cpp"
+  - example/simple_treap.example.cpp
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:

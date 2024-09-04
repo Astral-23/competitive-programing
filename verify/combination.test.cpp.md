@@ -54,10 +54,10 @@ data:
     \ a) { return x != a.x; }\n\n    bool operator<(const mm &a) const { return x\
     \ < a.x; }\n};\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
     \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line 1 \"Math/combination.hpp\"\
-    \nTT struct CMB {  // must\u7D20\u6570\n    ll n, mb;\n    vec<ll> fac, ifac,\
-    \ inv;\n\n    CMB(ll MAX_N, ll mod)\n        : n(MAX_N), mb(mod), fac(n + 1, 1),\
-    \ ifac(n + 1, 1), inv(n + 1, 1) {\n        for (ll i = 2; i <= n; i++) {\n   \
-    \         fac[i] = fac[i - 1] * i % mb;\n            inv[i] = mb - inv[mb % i]\
+    \nTT struct CMB {  // must\u7D20\u6570\n    ll mb;\n    vec<ll> fac, ifac, inv;\n\
+    \n    CMB(ll MAX_N, ll mod)\n        :  mb(mod), fac(MAX_N + 1, 1), ifac(MAX_N\
+    \ + 1, 1), inv(MAX_N + 1, 1) {\n        for (ll i = 2; i <= MAX_N; i++) {\n  \
+    \          fac[i] = fac[i - 1] * i % mb;\n            inv[i] = mb - inv[mb % i]\
     \ * (mb / i) % mb;\n            ifac[i] = ifac[i - 1] * inv[i] % mb;\n       \
     \ }\n    }\n\n    T C(int n, int k) {\n        if (n < k) return 0LL;\n      \
     \  if (n < 0 || k < 0) return 0LL;\n        return fac[n] * (ifac[k] * ifac[n\
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/combination.test.cpp
   requiredBy: []
-  timestamp: '2024-09-01 11:25:32+09:00'
+  timestamp: '2024-09-04 14:28:31+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/combination.test.cpp
