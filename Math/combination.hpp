@@ -11,6 +11,12 @@ TT struct CMB {  // must素数
         }
     }
 
+    T P(int n, int k) {
+        if(n < k) return 0LL;
+        if(n < 0 || k < 0) return 0LL;
+        return fac[n] * ifac[n - k] % mb;
+    }
+
     T C(int n, int k) {
         if (n < k) return 0LL;
         if (n < 0 || k < 0) return 0LL;
