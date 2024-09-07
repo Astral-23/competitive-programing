@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Math/combination.hpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/4020
@@ -59,13 +59,15 @@ data:
     \ + 1, 1), inv(MAX_N + 1, 1) {\n        for (ll i = 2; i <= MAX_N; i++) {\n  \
     \          fac[i] = fac[i - 1] * i % mb;\n            inv[i] = mb - inv[mb % i]\
     \ * (mb / i) % mb;\n            ifac[i] = ifac[i - 1] * inv[i] % mb;\n       \
-    \ }\n    }\n\n    T C(int n, int k) {\n        if (n < k) return 0LL;\n      \
-    \  if (n < 0 || k < 0) return 0LL;\n        return fac[n] * (ifac[k] * ifac[n\
-    \ - k] % mb) % mb;\n    }\n\n    T B(int n) { return (n < 0 ? 0 : fac[n]); }\n\
-    \n    T invB(int n) { return (n < 0 ? 0 : ifac[n]); }\n\n    T H(int n, int k)\
-    \ { return C(n + k - 1, k); }\n\n    T Cn(int n) { return C(2 * n, n) * inv[n\
-    \ + 1] % mb; }\n};\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\
-    \n@docs doc/cmb.md\n*/\n#line 5 \"verify/combination.test.cpp\"\n\n\n/*\n@brief\
+    \ }\n    }\n\n    T P(int n, int k) {\n        if(n < k) return 0LL;\n       \
+    \ if(n < 0 || k < 0) return 0LL;\n        return fac[n] * ifac[n - k] % mb;\n\
+    \    }\n\n    T C(int n, int k) {\n        if (n < k) return 0LL;\n        if\
+    \ (n < 0 || k < 0) return 0LL;\n        return fac[n] * (ifac[k] * ifac[n - k]\
+    \ % mb) % mb;\n    }\n\n    T B(int n) { return (n < 0 ? 0 : fac[n]); }\n\n  \
+    \  T invB(int n) { return (n < 0 ? 0 : ifac[n]); }\n\n    T H(int n, int k) {\
+    \ return C(n + k - 1, k); }\n\n    T Cn(int n) { return C(2 * n, n) * inv[n +\
+    \ 1] % mb; }\n};\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n\
+    @docs doc/cmb.md\n*/\n#line 5 \"verify/combination.test.cpp\"\n\n\n/*\n@brief\
     \ \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint = modint998244353;\n\
     CMB<mint> cmb(1000000, 998244353);\n\nint main() {\n\tll N, M, T;\n\tcin >> N\
     \ >> M >> T;\n\n\tmint p = 0;\n\n\n\trep(k, 1, N+1) {\n\t\tmint s = 1;\n\t\tmint\
@@ -89,8 +91,8 @@ data:
   isVerificationFile: true
   path: verify/combination.test.cpp
   requiredBy: []
-  timestamp: '2024-09-04 14:28:31+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-09-07 20:24:16+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/combination.test.cpp
 layout: document
