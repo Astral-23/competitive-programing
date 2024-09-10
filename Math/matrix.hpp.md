@@ -14,43 +14,48 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/matrix.md
-    document_title: "\u884C\u5217\u306E\u578B"
+    document_title: Matrix
     links: []
-  bundledCode: "#line 1 \"Math/matrix.hpp\"\ntemplate<typename T>\nstruct Matrix \
-    \ {\n    int h, w;\n    vector<vector<T>> d;\n    Matrix() {}\n    Matrix(int\
-    \ h, int w, T val = 0): h(h), w(w), d(h, vector<T>(w, val)){}\n    Matrix& unit()\
-    \ {\n        assert(h == w);\n        rep(i, 0, h) {\n            d[i][i] = 1;\n\
-    \        }\n     return *this;\n    }\n    const vector<T>& operator[](int i)\
-    \ const{return d[i];}\n    vector<T>& operator[](int i) {return d[i];}\n    Matrix\
-    \ operator*(const Matrix&a) const{\n        assert(w == a.h);\n        Matrix\
-    \ r(h, a.w);\n        rep(i, 0, h) {\n            rep(k, 0, w) {\n           \
-    \     rep(j, 0, a.w) {\n                    r[i][j] += d[i][k] * a[k][j];\n  \
-    \              }\n            }\n        }\n        return r;\n    }\n    Matrix\
-    \ pow(ll t) const {\n        assert(h == w);\n        if(!t) return Matrix(h,\
-    \ h).unit();\n        if(t == 1) return *this;\n        Matrix r = pow(t >> 1);\n\
-    \        r = r * r;\n        if(t&1) r = r*(*this);\n        return r;\n    }\n\
-    \n    vec<vec<T>> dump() const {\n        return d;\n    }\n};\n/*\n@brief \u884C\
-    \u5217\u306E\u578B\n@docs doc/matrix.md\n*/\n"
-  code: "template<typename T>\nstruct Matrix  {\n    int h, w;\n    vector<vector<T>>\
-    \ d;\n    Matrix() {}\n    Matrix(int h, int w, T val = 0): h(h), w(w), d(h, vector<T>(w,\
-    \ val)){}\n    Matrix& unit() {\n        assert(h == w);\n        rep(i, 0, h)\
-    \ {\n            d[i][i] = 1;\n        }\n     return *this;\n    }\n    const\
-    \ vector<T>& operator[](int i) const{return d[i];}\n    vector<T>& operator[](int\
-    \ i) {return d[i];}\n    Matrix operator*(const Matrix&a) const{\n        assert(w\
+  bundledCode: "#line 1 \"Math/matrix.hpp\"\ntemplate <typename T> struct Matrix {\n\
+    \    int h, w;\n    vector<vector<T>> d;\n    Matrix() {}\n    Matrix(int h, int\
+    \ w, T val = 0) : h(h), w(w), d(h, vector<T>(w, val)) {}\n    Matrix &unit() {\n\
+    \        assert(h == w);\n        rep(i, 0, h) { d[i][i] = 1; }\n        return\
+    \ *this;\n    }\n    const vector<T> &operator[](int i) const { return d[i]; }\n\
+    \    vector<T> &operator[](int i) { return d[i]; }\n    Matrix operator*(const\
+    \ Matrix &a) const {\n        assert(w == a.h);\n        Matrix r(h, a.w);\n \
+    \       rep(i, 0, h) {\n            rep(k, 0, w) {\n                rep(j, 0,\
+    \ a.w) { r[i][j] += d[i][k] * a[k][j]; }\n            }\n        }\n        return\
+    \ r;\n    }\n    Matrix pow(ll t) const {\n        assert(h == w);\n        Matrix\
+    \ res = Matrix(h, h).unit();\n        Matrix x = (*this);\n        while (t >\
+    \ 0) {\n            if (t & 1) res = res * x;\n            x = x * x;\n      \
+    \      t >>= 1;\n        }\n        return res;\n    }\n\n    friend ostream &operator<<(ostream\
+    \ &os, Matrix a) {\n        for (int i = 0; i < a.h; i++) {\n            for (int\
+    \ j = 0; j < a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \"\
+    \ \" : \"\");\n            }\n            os << endl;\n        }\n        return\
+    \ os;\n    }\n};\n/*\n@brief Matrix\n@docs doc/matrix.md\n*/\n"
+  code: "template <typename T> struct Matrix {\n    int h, w;\n    vector<vector<T>>\
+    \ d;\n    Matrix() {}\n    Matrix(int h, int w, T val = 0) : h(h), w(w), d(h,\
+    \ vector<T>(w, val)) {}\n    Matrix &unit() {\n        assert(h == w);\n     \
+    \   rep(i, 0, h) { d[i][i] = 1; }\n        return *this;\n    }\n    const vector<T>\
+    \ &operator[](int i) const { return d[i]; }\n    vector<T> &operator[](int i)\
+    \ { return d[i]; }\n    Matrix operator*(const Matrix &a) const {\n        assert(w\
     \ == a.h);\n        Matrix r(h, a.w);\n        rep(i, 0, h) {\n            rep(k,\
-    \ 0, w) {\n                rep(j, 0, a.w) {\n                    r[i][j] += d[i][k]\
-    \ * a[k][j];\n                }\n            }\n        }\n        return r;\n\
-    \    }\n    Matrix pow(ll t) const {\n        assert(h == w);\n        if(!t)\
-    \ return Matrix(h, h).unit();\n        if(t == 1) return *this;\n        Matrix\
-    \ r = pow(t >> 1);\n        r = r * r;\n        if(t&1) r = r*(*this);\n     \
-    \   return r;\n    }\n\n    vec<vec<T>> dump() const {\n        return d;\n  \
-    \  }\n};\n/*\n@brief \u884C\u5217\u306E\u578B\n@docs doc/matrix.md\n*/"
+    \ 0, w) {\n                rep(j, 0, a.w) { r[i][j] += d[i][k] * a[k][j]; }\n\
+    \            }\n        }\n        return r;\n    }\n    Matrix pow(ll t) const\
+    \ {\n        assert(h == w);\n        Matrix res = Matrix(h, h).unit();\n    \
+    \    Matrix x = (*this);\n        while (t > 0) {\n            if (t & 1) res\
+    \ = res * x;\n            x = x * x;\n            t >>= 1;\n        }\n      \
+    \  return res;\n    }\n\n    friend ostream &operator<<(ostream &os, Matrix a)\
+    \ {\n        for (int i = 0; i < a.h; i++) {\n            for (int j = 0; j <\
+    \ a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \" \" : \"\");\n\
+    \            }\n            os << endl;\n        }\n        return os;\n    }\n\
+    };\n/*\n@brief Matrix\n@docs doc/matrix.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Math/matrix.hpp
   requiredBy:
   - example/matrix.example.cpp
-  timestamp: '2024-07-06 20:37:29+09:00'
+  timestamp: '2024-09-10 09:48:46+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix.test.cpp
@@ -59,7 +64,7 @@ layout: document
 redirect_from:
 - /library/Math/matrix.hpp
 - /library/Math/matrix.hpp.html
-title: "\u884C\u5217\u306E\u578B"
+title: Matrix
 ---
 ## 概要
 行列 <br>

@@ -3,11 +3,11 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Math/matrix.hpp
-    title: "\u884C\u5217\u306E\u578B"
-  - icon: ':question:'
+    title: Matrix
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -49,38 +49,41 @@ data:
     \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n    bool operator<(const\
     \ mm &a) const { return x < a.x; }\n};\nusing modint998244353 = modint<998244353>;\n\
     using modint1000000007 = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line\
-    \ 1 \"Math/matrix.hpp\"\ntemplate<typename T>\nstruct Matrix  {\n    int h, w;\n\
-    \    vector<vector<T>> d;\n    Matrix() {}\n    Matrix(int h, int w, T val = 0):\
-    \ h(h), w(w), d(h, vector<T>(w, val)){}\n    Matrix& unit() {\n        assert(h\
-    \ == w);\n        rep(i, 0, h) {\n            d[i][i] = 1;\n        }\n     return\
-    \ *this;\n    }\n    const vector<T>& operator[](int i) const{return d[i];}\n\
-    \    vector<T>& operator[](int i) {return d[i];}\n    Matrix operator*(const Matrix&a)\
-    \ const{\n        assert(w == a.h);\n        Matrix r(h, a.w);\n        rep(i,\
-    \ 0, h) {\n            rep(k, 0, w) {\n                rep(j, 0, a.w) {\n    \
-    \                r[i][j] += d[i][k] * a[k][j];\n                }\n          \
-    \  }\n        }\n        return r;\n    }\n    Matrix pow(ll t) const {\n    \
-    \    assert(h == w);\n        if(!t) return Matrix(h, h).unit();\n        if(t\
-    \ == 1) return *this;\n        Matrix r = pow(t >> 1);\n        r = r * r;\n \
-    \       if(t&1) r = r*(*this);\n        return r;\n    }\n\n    vec<vec<T>> dump()\
-    \ const {\n        return d;\n    }\n};\n/*\n@brief \u884C\u5217\u306E\u578B\n\
-    @docs doc/matrix.md\n*/\n#line 5 \"example/matrix.example.cpp\"\nusing mint =\
-    \ modint998244353;\n\nint main() {\n    int n = 3; \n    Matrix<mint>  mat(n,\
-    \ n, 3); // n * n\u3067\u521D\u671F\u5024\u304C mint(0) \u306E\u884C\u5217\u3092\
-    \u751F\u6210\n\n    mat[0][0] = 1; // (0, 0)\u6210\u5206\u3092 1 \u306B\u5909\u66F4\
-    \n    mat[0][1] += 10; //(0, 1)\u6210\u5206\u306B 10\u3000\u52A0\u7B97\n    //mat[3][3]\
-    \ = 100; //\u914D\u5217\u5916\u53C2\u7167 assert \u7121\u3057\n\n    auto pow_mat\
-    \ = mat.pow(5); // mat\u306E 100 \u4E57\u3092\u53D7\u3051\u53D6\u308B\u3002 mat\u306F\
-    \u7834\u58CA\u3055\u308C\u306A\u3044\u3002\n\n    auto print_vec = [](vec<vec<mint>>\
-    \ v) {\n        rep(i, 0, v.size()) {\n            rep(j, 0, v[i].size()) cout\
-    \ << v[i][j] << \" \";\n            cout << endl;\n        }\n    };\n\n    print_vec(mat.dump());//\
-    \ dump\u3067\u8FD4\u3055\u308C\u305F\u4E8C\u6B21\u5143\u914D\u5217\u3092\u51FA\
-    \u529B\n    print_vec(pow_mat.dump());// 5\u4E57\u3055\u308C\u3066\u3044\u308B\
-    \u3002\n\n    Matrix<mint> v(n, 1, 1); //n * 1\u306E\u884C\u5217\u3002\u64EC\u4F3C\
-    \u7684\u306A\u30D9\u30AF\u30C8\u30EB\u3068\u3057\u3066\u6271\u3048\u308B\u3002\
-    \n\n    Matrix<mint> res = mat * v;//\u884C\u5217\u540C\u58EB\u306E\u639B\u3051\
-    \u7B97\u3002\u884C\u5217\u7D2F\u4E57\u306E\u969B\u3001\u3053\u306E\u3088\u3046\
-    \u306A\u51E6\u7406\u3092\u66F8\u304F\u304B\u3082\u3057\u308C\u306A\u3044\u3002\
-    \n    print_vec(res.dump());\n    cout << res[0][0] << endl;\n\n}\n"
+    \ 1 \"Math/matrix.hpp\"\ntemplate <typename T> struct Matrix {\n    int h, w;\n\
+    \    vector<vector<T>> d;\n    Matrix() {}\n    Matrix(int h, int w, T val = 0)\
+    \ : h(h), w(w), d(h, vector<T>(w, val)) {}\n    Matrix &unit() {\n        assert(h\
+    \ == w);\n        rep(i, 0, h) { d[i][i] = 1; }\n        return *this;\n    }\n\
+    \    const vector<T> &operator[](int i) const { return d[i]; }\n    vector<T>\
+    \ &operator[](int i) { return d[i]; }\n    Matrix operator*(const Matrix &a) const\
+    \ {\n        assert(w == a.h);\n        Matrix r(h, a.w);\n        rep(i, 0, h)\
+    \ {\n            rep(k, 0, w) {\n                rep(j, 0, a.w) { r[i][j] += d[i][k]\
+    \ * a[k][j]; }\n            }\n        }\n        return r;\n    }\n    Matrix\
+    \ pow(ll t) const {\n        assert(h == w);\n        Matrix res = Matrix(h, h).unit();\n\
+    \        Matrix x = (*this);\n        while (t > 0) {\n            if (t & 1)\
+    \ res = res * x;\n            x = x * x;\n            t >>= 1;\n        }\n  \
+    \      return res;\n    }\n\n    friend ostream &operator<<(ostream &os, Matrix\
+    \ a) {\n        for (int i = 0; i < a.h; i++) {\n            for (int j = 0; j\
+    \ < a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \" \" : \"\"\
+    );\n            }\n            os << endl;\n        }\n        return os;\n  \
+    \  }\n};\n/*\n@brief Matrix\n@docs doc/matrix.md\n*/\n#line 5 \"example/matrix.example.cpp\"\
+    \nusing mint = modint998244353;\n\nint main() {\n    int n = 3; \n    Matrix<mint>\
+    \  mat(n, n, 3); // n * n\u3067\u521D\u671F\u5024\u304C mint(0) \u306E\u884C\u5217\
+    \u3092\u751F\u6210\n\n    mat[0][0] = 1; // (0, 0)\u6210\u5206\u3092 1 \u306B\u5909\
+    \u66F4\n    mat[0][1] += 10; //(0, 1)\u6210\u5206\u306B 10\u3000\u52A0\u7B97\n\
+    \    //mat[3][3] = 100; //\u914D\u5217\u5916\u53C2\u7167 assert \u7121\u3057\n\
+    \n    auto pow_mat = mat.pow(5); // mat\u306E 100 \u4E57\u3092\u53D7\u3051\u53D6\
+    \u308B\u3002 mat\u306F\u7834\u58CA\u3055\u308C\u306A\u3044\u3002\n\n    auto print_vec\
+    \ = [](vec<vec<mint>> v) {\n        rep(i, 0, v.size()) {\n            rep(j,\
+    \ 0, v[i].size()) cout << v[i][j] << \" \";\n            cout << endl;\n     \
+    \   }\n    };\n\n    print_vec(mat.dump());// dump\u3067\u8FD4\u3055\u308C\u305F\
+    \u4E8C\u6B21\u5143\u914D\u5217\u3092\u51FA\u529B\n    print_vec(pow_mat.dump());//\
+    \ 5\u4E57\u3055\u308C\u3066\u3044\u308B\u3002\n\n    Matrix<mint> v(n, 1, 1);\
+    \ //n * 1\u306E\u884C\u5217\u3002\u64EC\u4F3C\u7684\u306A\u30D9\u30AF\u30C8\u30EB\
+    \u3068\u3057\u3066\u6271\u3048\u308B\u3002\n\n    Matrix<mint> res = mat * v;//\u884C\
+    \u5217\u540C\u58EB\u306E\u639B\u3051\u7B97\u3002\u884C\u5217\u7D2F\u4E57\u306E\
+    \u969B\u3001\u3053\u306E\u3088\u3046\u306A\u51E6\u7406\u3092\u66F8\u304F\u304B\
+    \u3082\u3057\u308C\u306A\u3044\u3002\n    print_vec(res.dump());\n    cout <<\
+    \ res[0][0] << endl;\n\n}\n"
   code: "\n#include \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\
     \n#include \"../Math/matrix.hpp\"\nusing mint = modint998244353;\n\nint main()\
     \ {\n    int n = 3; \n    Matrix<mint>  mat(n, n, 3); // n * n\u3067\u521D\u671F\
@@ -107,7 +110,7 @@ data:
   isVerificationFile: false
   path: example/matrix.example.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-09-10 09:48:46+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: example/matrix.example.cpp

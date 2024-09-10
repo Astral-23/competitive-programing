@@ -146,7 +146,7 @@ data:
       title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
   - name: Math
     pages:
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Math/combination.hpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
     - icon: ':heavy_check_mark:'
@@ -157,7 +157,7 @@ data:
       title: floor_sum
     - icon: ':heavy_check_mark:'
       path: Math/matrix.hpp
-      title: "\u884C\u5217\u306E\u578B"
+      title: Matrix
     - icon: ':warning:'
       path: Math/sieve.hpp
       title: "\u7D20\u6570\u7BE9"
@@ -216,10 +216,10 @@ data:
     - icon: ':warning:'
       path: Utility/bigmodint.hpp
       title: big_modint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -303,7 +303,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/bitwise_and_convolution.test.cpp
       title: verify/bitwise_and_convolution.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/combination.test.cpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
     - icon: ':heavy_check_mark:'
