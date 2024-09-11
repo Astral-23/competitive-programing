@@ -14,7 +14,7 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/matrix.md
-    document_title: Matrix
+    document_title: matrix
     links: []
   bundledCode: "#line 1 \"Math/matrix.hpp\"\ntemplate <typename T> struct Matrix {\n\
     \    int h, w;\n    vector<vector<T>> d;\n    Matrix() {}\n    Matrix(int h, int\
@@ -28,11 +28,12 @@ data:
     \ r;\n    }\n    Matrix pow(ll t) const {\n        assert(h == w);\n        Matrix\
     \ res = Matrix(h, h).unit();\n        Matrix x = (*this);\n        while (t >\
     \ 0) {\n            if (t & 1) res = res * x;\n            x = x * x;\n      \
-    \      t >>= 1;\n        }\n        return res;\n    }\n\n    friend ostream &operator<<(ostream\
-    \ &os, Matrix a) {\n        for (int i = 0; i < a.h; i++) {\n            for (int\
-    \ j = 0; j < a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \"\
-    \ \" : \"\");\n            }\n            os << endl;\n        }\n        return\
-    \ os;\n    }\n};\n/*\n@brief Matrix\n@docs doc/matrix.md\n*/\n"
+    \      t >>= 1;\n        }\n        return res;\n    }\n\n    friend ostream&\
+    \ operator<<(ostream& os, Matrix a) {\n        for(int i = 0; i < a.h; i++) {\n\
+    \            for(int j = 0; j < a.w; j++) {\n                os << a[i][j] <<\
+    \ (j != a.w - 1? \" \" : \"\");\n            }\n            os << (i != a.h -\
+    \ 1 ? \"\\n\" : \"\");\n        }\n        return os;\n    }\n};\n/*\n@brief matrix\n\
+    @docs doc/matrix.md\n*/\n"
   code: "template <typename T> struct Matrix {\n    int h, w;\n    vector<vector<T>>\
     \ d;\n    Matrix() {}\n    Matrix(int h, int w, T val = 0) : h(h), w(w), d(h,\
     \ vector<T>(w, val)) {}\n    Matrix &unit() {\n        assert(h == w);\n     \
@@ -45,17 +46,17 @@ data:
     \ {\n        assert(h == w);\n        Matrix res = Matrix(h, h).unit();\n    \
     \    Matrix x = (*this);\n        while (t > 0) {\n            if (t & 1) res\
     \ = res * x;\n            x = x * x;\n            t >>= 1;\n        }\n      \
-    \  return res;\n    }\n\n    friend ostream &operator<<(ostream &os, Matrix a)\
-    \ {\n        for (int i = 0; i < a.h; i++) {\n            for (int j = 0; j <\
-    \ a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \" \" : \"\");\n\
-    \            }\n            os << endl;\n        }\n        return os;\n    }\n\
-    };\n/*\n@brief Matrix\n@docs doc/matrix.md\n*/"
+    \  return res;\n    }\n\n    friend ostream& operator<<(ostream& os, Matrix a)\
+    \ {\n        for(int i = 0; i < a.h; i++) {\n            for(int j = 0; j < a.w;\
+    \ j++) {\n                os << a[i][j] << (j != a.w - 1? \" \" : \"\");\n   \
+    \         }\n            os << (i != a.h - 1 ? \"\\n\" : \"\");\n        }\n \
+    \       return os;\n    }\n};\n/*\n@brief matrix\n@docs doc/matrix.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Math/matrix.hpp
   requiredBy:
   - example/matrix.example.cpp
-  timestamp: '2024-09-10 09:48:46+09:00'
+  timestamp: '2024-09-11 16:35:59+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix.test.cpp
@@ -64,7 +65,7 @@ layout: document
 redirect_from:
 - /library/Math/matrix.hpp
 - /library/Math/matrix.hpp.html
-title: Matrix
+title: matrix
 ---
 ## 概要
 行列 <br>

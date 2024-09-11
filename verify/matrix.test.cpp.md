@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Math/matrix.hpp
-    title: Matrix
+    title: matrix
   - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
@@ -65,16 +65,16 @@ data:
     \ {\n        assert(h == w);\n        Matrix res = Matrix(h, h).unit();\n    \
     \    Matrix x = (*this);\n        while (t > 0) {\n            if (t & 1) res\
     \ = res * x;\n            x = x * x;\n            t >>= 1;\n        }\n      \
-    \  return res;\n    }\n\n    friend ostream &operator<<(ostream &os, Matrix a)\
-    \ {\n        for (int i = 0; i < a.h; i++) {\n            for (int j = 0; j <\
-    \ a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \" \" : \"\");\n\
-    \            }\n            os << endl;\n        }\n        return os;\n    }\n\
-    };\n/*\n@brief Matrix\n@docs doc/matrix.md\n*/\n#line 5 \"verify/matrix.test.cpp\"\
-    \nusing mint = modint998244353;\nint main() {\n    ll N, K;\n    cin >> N >> K;\n\
-    \    Matrix<mint> A(N, N, 0);\n    rep(i, 0, N) rep(j, 0, N) {\n        cin >>\
-    \ A[i][j];\n    }\n    A = A.pow(K);\n    rep(i, 0, N) {\n        rep(j, 0, N)\
-    \ {\n            cout << A[i][j].x << \" \";\n        }\n        cout << '\\n';\n\
-    \    }\n}\n"
+    \  return res;\n    }\n\n    friend ostream& operator<<(ostream& os, Matrix a)\
+    \ {\n        for(int i = 0; i < a.h; i++) {\n            for(int j = 0; j < a.w;\
+    \ j++) {\n                os << a[i][j] << (j != a.w - 1? \" \" : \"\");\n   \
+    \         }\n            os << (i != a.h - 1 ? \"\\n\" : \"\");\n        }\n \
+    \       return os;\n    }\n};\n/*\n@brief matrix\n@docs doc/matrix.md\n*/\n#line\
+    \ 5 \"verify/matrix.test.cpp\"\nusing mint = modint998244353;\nint main() {\n\
+    \    ll N, K;\n    cin >> N >> K;\n    Matrix<mint> A(N, N, 0);\n    rep(i, 0,\
+    \ N) rep(j, 0, N) {\n        cin >> A[i][j];\n    }\n    A = A.pow(K);\n    rep(i,\
+    \ 0, N) {\n        rep(j, 0, N) {\n            cout << A[i][j].x << \" \";\n \
+    \       }\n        cout << '\\n';\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include \"\
     ../Math/matrix.hpp\"\nusing mint = modint998244353;\nint main() {\n    ll N, K;\n\
@@ -89,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/matrix.test.cpp
   requiredBy: []
-  timestamp: '2024-09-10 09:48:46+09:00'
+  timestamp: '2024-09-11 16:35:59+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/matrix.test.cpp

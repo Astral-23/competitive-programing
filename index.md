@@ -157,7 +157,7 @@ data:
       title: floor_sum
     - icon: ':heavy_check_mark:'
       path: Math/matrix.hpp
-      title: Matrix
+      title: matrix
     - icon: ':warning:'
       path: Math/sieve.hpp
       title: "\u7D20\u6570\u7BE9"
