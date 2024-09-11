@@ -32,17 +32,17 @@ template <typename T> struct Matrix {
         return res;
     }
 
-    friend ostream &operator<<(ostream &os, Matrix a) {
-        for (int i = 0; i < a.h; i++) {
-            for (int j = 0; j < a.w; j++) {
-                os << a[i][j] << (j != a.w - 1 ? " " : "");
+    friend ostream& operator<<(ostream& os, Matrix a) {
+        for(int i = 0; i < a.h; i++) {
+            for(int j = 0; j < a.w; j++) {
+                os << a[i][j] << (j != a.w - 1? " " : "");
             }
-            os << endl;
+            os << (i != a.h - 1 ? "\n" : "");
         }
         return os;
     }
 };
 /*
-@brief Matrix
+@brief matrix
 @docs doc/matrix.md
 */
