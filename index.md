@@ -140,7 +140,7 @@ data:
       title: Graph/Chromatic_Number_with_restoration.hpp
     - icon: ':heavy_check_mark:'
       path: Graph/cycle_detection.hpp
-      title: Graph/cycle_detection.hpp
+      title: cycle_detection
     - icon: ':heavy_check_mark:'
       path: Graph/min_distance.hpp
       title: "\u6700\u77ED\u7D4C\u8DEF"

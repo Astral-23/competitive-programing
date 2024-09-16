@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Graph/cycle_detection.hpp
-    title: Graph/cycle_detection.hpp
+    title: cycle_detection
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -56,14 +56,14 @@ data:
     \              dfs(dfs, i, -1);\n                if (vs.empty() == false) {\n\
     \                    reverse(vs.begin(), vs.end());\n                    reverse(es.begin(),\
     \ es.end());\n                    return make_pair(vs, es);\n                }\n\
-    \            }\n        }\n        return make_pair(vs, es);\n    }\n};\n#line\
-    \ 4 \"verify/cycle_detection_1.test.cpp\"\n\nint main() {\n    int n, m;\n   \
-    \ cin >> n >> m;\n    cycle_detection<true> cyc(n);\n    rep(i, 0, m) {\n    \
-    \    int u, v;\n        cin >> u >> v;\n        cyc.add_edge(u, v);\n    }\n \
-    \   auto [vs, es] = cyc.run();\n    if (vs.empty()) {\n        cout << -1 << endl;\n\
-    \    } else {\n        cout << vs.size() << endl;\n        // cout << vs << endl;\n\
-    \        for (int id : es) {\n            cout << id << endl;\n        }\n   \
-    \ }\n}\n"
+    \            }\n        }\n        return make_pair(vs, es);\n    }\n};\n/*\n\
+    @brief cycle_detection\n@docs doc/cycle_detection.md\n*/\n#line 4 \"verify/cycle_detection_1.test.cpp\"\
+    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    cycle_detection<true>\
+    \ cyc(n);\n    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n   \
+    \     cyc.add_edge(u, v);\n    }\n    auto [vs, es] = cyc.run();\n    if (vs.empty())\
+    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
+    \        // cout << vs << endl;\n        for (int id : es) {\n            cout\
+    \ << id << endl;\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Graph/cycle_detection.hpp\"\n\nint\
     \ main() {\n    int n, m;\n    cin >> n >> m;\n    cycle_detection<true> cyc(n);\n\
@@ -78,7 +78,7 @@ data:
   isVerificationFile: true
   path: verify/cycle_detection_1.test.cpp
   requiredBy: []
-  timestamp: '2024-09-16 21:01:16+09:00'
+  timestamp: '2024-09-16 21:07:20+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/cycle_detection_1.test.cpp

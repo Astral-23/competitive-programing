@@ -13,6 +13,8 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    _deprecated_at_docs: doc/cycle_detection.md
+    document_title: cycle_detection
     links: []
   bundledCode: "#line 1 \"Graph/cycle_detection.hpp\"\ntemplate <bool directed> struct\
     \ cycle_detection {\n    int n, ec;\n    vector<vector<pair<int, int>>> g;\n \
@@ -44,7 +46,8 @@ data:
     \              dfs(dfs, i, -1);\n                if (vs.empty() == false) {\n\
     \                    reverse(vs.begin(), vs.end());\n                    reverse(es.begin(),\
     \ es.end());\n                    return make_pair(vs, es);\n                }\n\
-    \            }\n        }\n        return make_pair(vs, es);\n    }\n};\n"
+    \            }\n        }\n        return make_pair(vs, es);\n    }\n};\n/*\n\
+    @brief cycle_detection\n@docs doc/cycle_detection.md\n*/\n"
   code: "template <bool directed> struct cycle_detection {\n    int n, ec;\n    vector<vector<pair<int,\
     \ int>>> g;\n    cycle_detection(int n) : n(n), ec(0), g(n) {}\n\n    void add_edge(int\
     \ u, int v) {\n        g[u].emplace_back(v, ec);\n        if (directed == false)\
@@ -74,12 +77,13 @@ data:
     \              dfs(dfs, i, -1);\n                if (vs.empty() == false) {\n\
     \                    reverse(vs.begin(), vs.end());\n                    reverse(es.begin(),\
     \ es.end());\n                    return make_pair(vs, es);\n                }\n\
-    \            }\n        }\n        return make_pair(vs, es);\n    }\n};\n"
+    \            }\n        }\n        return make_pair(vs, es);\n    }\n};\n/*\n\
+    @brief cycle_detection\n@docs doc/cycle_detection.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Graph/cycle_detection.hpp
   requiredBy: []
-  timestamp: '2024-09-16 21:01:16+09:00'
+  timestamp: '2024-09-16 21:07:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/cycle_detection_1.test.cpp
@@ -89,5 +93,20 @@ layout: document
 redirect_from:
 - /library/Graph/cycle_detection.hpp
 - /library/Graph/cycle_detection.hpp.html
-title: Graph/cycle_detection.hpp
+title: cycle_detection
 ---
+## 概要
+cycle検出
+
+## コンストラクタ 
+`cycle_detection<directed> (int n)`  directed = true : 有向グラフ　/ directed = false : 無向グラフ　として、n頂点0辺のグラフを生成
+
+## 関数
+- `void add_edge(int u, int v)` ... directed = true : 辺 u -> vを追加 / directed = false : 辺 u <-> v を追加
+    - 計算量 $O(1)$
+  
+- `pair<vec<int>, vec<int>> run()` ... サイクルを探す。 {{サイクルに含まれる頂点}, {サイクルに使われた辺の番号(:= 何番目に追加されたか)}} を返す。サイクルがない場合、空の配列を返す。頂点及び辺の格納時順は
+  [こちら](https://judge.yosupo.jp/problem/cycle_detection_undirected)を参照
+    - 計算量 $O(|V| + |E|)$
+
+
