@@ -71,3 +71,7 @@ template <bool directed> struct cycle_detection {
         return make_pair(vs, es);
     }
 };
+/*
+@brief cycle_detection
+@docs doc/cycle_detection.md
+*/
