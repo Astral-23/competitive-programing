@@ -73,6 +73,12 @@ data:
     path: verify/combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
   - icon: ':heavy_check_mark:'
+    path: verify/cycle_detection_1.test.cpp
+    title: verify/cycle_detection_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/cycle_detection_2.test.cpp
+    title: verify/cycle_detection_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/dijkstra.test.cpp
     title: verify/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
@@ -249,6 +255,7 @@ data:
   - verify/Rhash.test.cpp
   - verify/static1dsum.test.cpp
   - verify/hld.test.cpp
+  - verify/cycle_detection_1.test.cpp
   - verify/oneside_range_edge_graph.test.cpp
   - verify/binary_trie.test.cpp
   - verify/binary_trie_xor.test.cpp
@@ -287,6 +294,7 @@ data:
   - verify/bitwise_and_convolution.test.cpp
   - verify/sprase_table.test.cpp
   - verify/swag_more.test.cpp
+  - verify/cycle_detection_2.test.cpp
   - verify/dynamicseg.test.cpp
   - verify/point_add_rec_sum.test.cpp
   - verify/1dimos.test.cpp

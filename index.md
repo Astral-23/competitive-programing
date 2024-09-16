@@ -139,6 +139,9 @@ data:
       path: Graph/Chromatic_Number_with_restoration.hpp
       title: Graph/Chromatic_Number_with_restoration.hpp
     - icon: ':heavy_check_mark:'
+      path: Graph/cycle_detection.hpp
+      title: Graph/cycle_detection.hpp
+    - icon: ':heavy_check_mark:'
       path: Graph/min_distance.hpp
       title: "\u6700\u77ED\u7D4C\u8DEF"
     - icon: ':heavy_check_mark:'
@@ -306,6 +309,12 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/combination.test.cpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+    - icon: ':heavy_check_mark:'
+      path: verify/cycle_detection_1.test.cpp
+      title: verify/cycle_detection_1.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/cycle_detection_2.test.cpp
+      title: verify/cycle_detection_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/dijkstra.test.cpp
       title: verify/dijkstra.test.cpp
