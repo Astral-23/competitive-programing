@@ -63,8 +63,8 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/2dbit.test.cpp
   - verify/2dbit_imos.test.cpp
+  - verify/2dbit.test.cpp
 documentation_of: Datastructure/2dbit.hpp
 layout: document
 redirect_from:

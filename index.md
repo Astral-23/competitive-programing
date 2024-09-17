@@ -182,7 +182,7 @@ data:
       path: Others/mypair.hpp
       title: Others/mypair.hpp
     - icon: ':warning:'
-      path: Others/rangeset.cpp
+      path: Others/rangeset.hpp
       title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset"
     - icon: ':warning:'
       path: Others/rangeset2.cpp

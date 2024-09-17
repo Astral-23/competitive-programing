@@ -4,12 +4,13 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: cpp
+  _pathExtension: hpp
   _verificationStatusIcon: ':warning:'
   attributes:
+    _deprecated_at_docs: doc/rangeset.md
     document_title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset"
     links: []
-  bundledCode: "#line 1 \"Others/rangeset.cpp\"\ntemplate <typename T>\nstruct rangeset\
+  bundledCode: "#line 1 \"Others/rangeset.hpp\"\ntemplate <typename T>\nstruct rangeset\
     \ {  // \u533A\u9593\u3092\u7BA1\u7406\u3059\u308B\u3002\u3064\u3044\u3067\u3067\
     \u3001mex\u3092\u53D6\u5F97\u3067\u304D\u308B\u3002\n    set<pair<T, T>> s;\n\
     \    long long sum;  // \u533A\u9593\u9577\u306E\u5408\u8A08\u3002\n\n    rangeset()\
@@ -95,21 +96,8 @@ data:
     \ 1, x + 1));\n        it--;\n        auto [l, r] = *it;\n        if (l <= x &&\
     \ x <= r) {\n            return l - 1;\n        } else {\n            return x;\n\
     \        }\n    }\n\n    int size() { return int(s.size()) - 2; }\n\n    long\
-    \ long getsum() { return sum; }\n\n    /*\n        rangeset<T>   T...\u533A\u9593\
-    \u306E\u6065\u3092\u8868\u3059\u6574\u6570\u306E\u578B O(1)  \u901A\u5E38: int\
-    \ or long long\n            @brief \u533A\u9593\u3092\u7BA1\u7406\u3059\u308B\
-    set\n            count(x) ... x\u304C\u542B\u307E\u308C\u308B\u304B   O(logN)\n\
-    \            insert(x) ... x\u3092\u633F\u5165\u3002\u5B58\u5728\u3059\u308B\u306A\
-    \u3089\u4F55\u3082\u3057\u306A\u3044  O(logN)\n            erase(x) ... x\u3092\
-    \u524A\u9664\u3002\u5B58\u5728\u3059\u308B\u306A\u3089\u4F55\u3082\u3057\u306A\
-    \u3044 O(logN)\n            insert(l, r) ... [l, r]\u3092\u633F\u5165\u3002[l,\n\
-    \       r]\u3092\u5185\u5305\u3059\u308B\u533A\u9593\u304C\u3042\u3063\u305F\u3089\
-    \u4F55\u3082\u3057\u306A\u3044 O(logN) erase(l, r) ... [l,\n       r]\u3092\u524A\
-    \u9664\u3002[l, r]\u304C\u5B8C\u5168\u306B\u306A\u304B\u3063\u305F\u3089\u4F55\
-    \u3057\u306A\u3044  O(logN) mex(x) ... [x,\n       LLONG_MAX]\u3067\u5B58\u5728\
-    \u3057\u306A\u3044\u6700\u5C0F\u306E\u8981\u7D20  O(logN) size() ... \u533A\u9593\
-    \u306E\u7DCF\u6570 O(1)\n            getsum()... \u8981\u7D20\u306E\u7DCF\u6570\
-    \ O(1)\n\n    */\n};\n"
+    \ long getsum() { return sum; }\n};\n\n/*\n@brief \u533A\u9593\u3092\u7BA1\u7406\
+    \u3059\u308Bset\n@docs doc/rangeset.md\n*/\n"
   code: "template <typename T>\nstruct rangeset {  // \u533A\u9593\u3092\u7BA1\u7406\
     \u3059\u308B\u3002\u3064\u3044\u3067\u3067\u3001mex\u3092\u53D6\u5F97\u3067\u304D\
     \u308B\u3002\n    set<pair<T, T>> s;\n    long long sum;  // \u533A\u9593\u9577\
@@ -196,32 +184,49 @@ data:
     \ 1, x + 1));\n        it--;\n        auto [l, r] = *it;\n        if (l <= x &&\
     \ x <= r) {\n            return l - 1;\n        } else {\n            return x;\n\
     \        }\n    }\n\n    int size() { return int(s.size()) - 2; }\n\n    long\
-    \ long getsum() { return sum; }\n\n    /*\n        rangeset<T>   T...\u533A\u9593\
-    \u306E\u6065\u3092\u8868\u3059\u6574\u6570\u306E\u578B O(1)  \u901A\u5E38: int\
-    \ or long long\n            @brief \u533A\u9593\u3092\u7BA1\u7406\u3059\u308B\
-    set\n            count(x) ... x\u304C\u542B\u307E\u308C\u308B\u304B   O(logN)\n\
-    \            insert(x) ... x\u3092\u633F\u5165\u3002\u5B58\u5728\u3059\u308B\u306A\
-    \u3089\u4F55\u3082\u3057\u306A\u3044  O(logN)\n            erase(x) ... x\u3092\
-    \u524A\u9664\u3002\u5B58\u5728\u3059\u308B\u306A\u3089\u4F55\u3082\u3057\u306A\
-    \u3044 O(logN)\n            insert(l, r) ... [l, r]\u3092\u633F\u5165\u3002[l,\n\
-    \       r]\u3092\u5185\u5305\u3059\u308B\u533A\u9593\u304C\u3042\u3063\u305F\u3089\
-    \u4F55\u3082\u3057\u306A\u3044 O(logN) erase(l, r) ... [l,\n       r]\u3092\u524A\
-    \u9664\u3002[l, r]\u304C\u5B8C\u5168\u306B\u306A\u304B\u3063\u305F\u3089\u4F55\
-    \u3057\u306A\u3044  O(logN) mex(x) ... [x,\n       LLONG_MAX]\u3067\u5B58\u5728\
-    \u3057\u306A\u3044\u6700\u5C0F\u306E\u8981\u7D20  O(logN) size() ... \u533A\u9593\
-    \u306E\u7DCF\u6570 O(1)\n            getsum()... \u8981\u7D20\u306E\u7DCF\u6570\
-    \ O(1)\n\n    */\n};"
+    \ long getsum() { return sum; }\n};\n\n/*\n@brief \u533A\u9593\u3092\u7BA1\u7406\
+    \u3059\u308Bset\n@docs doc/rangeset.md\n*/"
   dependsOn: []
   isVerificationFile: false
-  path: Others/rangeset.cpp
+  path: Others/rangeset.hpp
   requiredBy: []
-  timestamp: '2024-09-05 10:42:06+09:00'
+  timestamp: '2024-09-18 00:09:50+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: Others/rangeset.cpp
+documentation_of: Others/rangeset.hpp
 layout: document
 redirect_from:
-- /library/Others/rangeset.cpp
-- /library/Others/rangeset.cpp.html
+- /library/Others/rangeset.hpp
+- /library/Others/rangeset.hpp.html
 title: "\u533A\u9593\u3092\u7BA1\u7406\u3059\u308Bset"
 ---
+## 概要
+区間を管理するset <br>
+i], [i + 1　は統合する
+
+## コンストラクタ 
+`rangeset<T>()` ... T : 区間の端を管理する値の型。<T>のnumeric_limits::max及びmin 周辺の値を追加してはいけない。
+- 計算量 $O(1)$
+
+## 関数
+注釈のない限り、計算量は 償却 $O(\log n)$
+
+- `void insert(T x)` ... xを追加する。既に存在したら何もしない。
+
+- `void insert(T l, T r)` ... [l, r]を追加する。既に存在する部分については何もしない。**閉区間**
+- `void erase(T x)` ... xを削除する。存在しなかったら何もしない。
+  
+- `void erase(T l, T r)` ... [l, r]を削除する。存在しない部分については何もしない。**閉区間**
+
+- `bool count(T x)` ... xが存在するかを返す。
+
+- `T mex(T x)`... x以上の整数であって、setに存在しない最小の整数を返す。
+
+- `T mex_left(T x)` ... x以下の整数であって、setに存在しない最大の整数を返す。
+
+- `int size()`... 存在する区間の個数を返す
+    - 計算量 $O(1)$
+
+- `long long getsum()` ... 存在する整数の個数を返す。
+    - 計算量 $O(1)$
+    - 備考 insert(-inf, inf)等をするとオーバーフロウする。適宜、なんとかしてほしい。(__int128_tを使うことは有効な解決策の1つであろう。)

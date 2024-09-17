@@ -105,8 +105,8 @@ data:
   timestamp: '2024-08-14 19:25:27+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Rhash.test.cpp
   - verify/Rhash_more.test.cpp
+  - verify/Rhash.test.cpp
 documentation_of: String/Rhash.hpp
 layout: document
 redirect_from:

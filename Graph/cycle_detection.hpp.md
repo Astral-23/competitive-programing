@@ -86,8 +86,8 @@ data:
   timestamp: '2024-09-16 21:07:20+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/cycle_detection_1.test.cpp
   - verify/cycle_detection_2.test.cpp
+  - verify/cycle_detection_1.test.cpp
 documentation_of: Graph/cycle_detection.hpp
 layout: document
 redirect_from:
