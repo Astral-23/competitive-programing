@@ -155,6 +155,9 @@ Rolling hash。半開区間に注意。
 - `rhash rhash_pow(const rhash &x, const ll &y, ll len)`... ハッシュ = x, 長さ = len に対応する文字列を y　個連結した文字列のハッシュを返す
     - 計算量
         -  $O(\log y)$
+    - 備考
+        - 文字数がmodに近くなっていくにつれ、ローリングハッシュの衝突の可能性は高くなる
+        - 例えば、rhash_pow(???, mod - 1, ???)はなかなかの確率で0になる
 - `rhash cal_rhash(string S)`...string Sのハッシュを計算して返す。
     - 計算量
         - $O(|S|)$
