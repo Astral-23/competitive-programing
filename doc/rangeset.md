@@ -3,7 +3,7 @@
 i], [i + 1　は統合する
 
 ## コンストラクタ 
-`rangeset<T>()` ... T : 区間の端を管理する値の型。<T>のnumeric_limits::max及びmin 周辺の値を追加してはいけない。
+`rangeset<T>()` ... T : 区間の端を管理する値の型。Tのnumeric_limits::max及びmin 周辺の値を追加してはいけない。
 - 計算量 $O(1)$
 
 ## 関数
