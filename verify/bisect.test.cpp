@@ -16,7 +16,8 @@ int main() {
         return n >= __int128_t(x)*(x+1);
     };
 
-    ll x = bisect(0LL, n + 1, ok);
+    ll x = bisect(0LL, n, ok);
+    x++;
 
     vec<ll> ans;
     rep(i, 1, x) ans.push_back(n / i);
