@@ -16,12 +16,12 @@ int main() {
         return n >= __int128_t(x)*(x+1);
     };
 
-    ll x = bisect(0LL, n, ok);
+    ll x = bisect(0LL, n + 1, ok);
 
     vec<ll> ans;
-    rep(i, 1, x+1) ans.push_back(n / i);
+    rep(i, 1, x) ans.push_back(n / i);
    
-    for(ll i = n/(x+1); i >= 1; i--) ans.push_back(i);
+    for(ll i = n/x; i >= 1; i--) ans.push_back(i);
 
     reverse(all(ans));
     cout << ans.size() << endl;
