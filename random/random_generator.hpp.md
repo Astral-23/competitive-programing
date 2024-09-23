@@ -20,18 +20,19 @@ data:
     \ v))\n            continue;\n        else {\n            uf.merge(u, v);\n  \
     \          res.emplace_back(u, v);\n        }\n    }\n    return res;\n}\n\ntemplate\
     \ <bool simple> vector<pair<int, int>> rndgraph(int n, int m) {\n    vector<pair<int,\
-    \ int>> res;\n    set<pair<int, int>> cnt;\n    while (res.size() < m) {\n   \
-    \     int u = rnd(0, n);\n        int v = rnd(0, n);\n        if (u == v && simple)\
+    \ int>> res;\n    set<pair<int, int>> cnt;\n    while (int(res.size()) < m) {\n\
+    \        int u = rnd(0, n);\n        int v = rnd(0, n);\n        if (u == v &&\
+    \ simple) continue;\n        if (u > v) swap(u, v);\n        if (simple && cnt.count(make_pair(u,\
+    \ v))) continue;\n        res.emplace_back(u, v);\n        if (simple) cnt.insert(make_pair(u,\
+    \ v));\n    }\n    return res;\n}  // \u9023\u7D50\u3068\u306F\u9650\u3089\u306A\
+    \u3044\u304B\u3089\u6CE8\u610F\n\ntemplate <bool simple> vector<pair<int, int>>\
+    \ rndgraph_connected(int n) {\n    vector<pair<int, int>> res;\n    set<pair<int,\
+    \ int>> cnt;\n    atcoder::dsu uf(n);\n    while (uf.size(0) != n) {\n       \
+    \ int u = rnd(0, n);\n        int v = rnd(0, n);\n        if (u == v && simple)\
     \ continue;\n        if (u > v) swap(u, v);\n        if (simple && cnt.count(make_pair(u,\
-    \ v))) continue;\n        res.emplace_back(u, v);\n        if(simple) cnt.insert(make_pair(u,\
-    \ v));\n    }\n    return res;\n}//\u9023\u7D50\u3068\u306F\u9650\u3089\u306A\u3044\
-    \u304B\u3089\u6CE8\u610F\n\ntemplate <bool simple> vector<pair<int, int>> rndgraph_connected(int\
-    \ n) {\n    vector<pair<int, int>> res;\n    set<pair<int, int>> cnt;\n    atcoder::dsu\
-    \ uf(n);\n    while(uf.size(0) != n) {\n        int u = rnd(0, n):\n        int\
-    \ v = rnd(0, n);\n        if(u == v && simple) continue;\n        if(u > v) swap(u,\
-    \ v);\n        if(simple && cnt.count(make_pair(u, v)))continue;\n        res.emplace_back(u,\
-    \ v);\n        uf.merge(u, v);\n        if(simple) cnt.insert(make_pair(u, v));\n\
-    \    }\n    return res;\n}\n}  // namespace RNG\nusing namespace RNG;\n"
+    \ v))) continue;\n        res.emplace_back(u, v);\n        uf.merge(u, v);\n \
+    \       if (simple) cnt.insert(make_pair(u, v));\n    }\n    return res;\n}\n\
+    }  // namespace RNG\nusing namespace RNG;\n"
   code: "namespace RNG {\nstatic mt19937_64 engine(clock());\ntemplate <typename T\
     \ = long long> T rnd(T l, T r) {\n    return engine() % (r - l) + l;\n}\nstring\
     \ rndstr(ll len, char l, char r) {\n    string res;\n    for (int i = 0; i < len;\
@@ -44,23 +45,24 @@ data:
     \   else {\n            uf.merge(u, v);\n            res.emplace_back(u, v);\n\
     \        }\n    }\n    return res;\n}\n\ntemplate <bool simple> vector<pair<int,\
     \ int>> rndgraph(int n, int m) {\n    vector<pair<int, int>> res;\n    set<pair<int,\
-    \ int>> cnt;\n    while (res.size() < m) {\n        int u = rnd(0, n);\n     \
-    \   int v = rnd(0, n);\n        if (u == v && simple) continue;\n        if (u\
-    \ > v) swap(u, v);\n        if (simple && cnt.count(make_pair(u, v))) continue;\n\
-    \        res.emplace_back(u, v);\n        if(simple) cnt.insert(make_pair(u, v));\n\
-    \    }\n    return res;\n}//\u9023\u7D50\u3068\u306F\u9650\u3089\u306A\u3044\u304B\
-    \u3089\u6CE8\u610F\n\ntemplate <bool simple> vector<pair<int, int>> rndgraph_connected(int\
-    \ n) {\n    vector<pair<int, int>> res;\n    set<pair<int, int>> cnt;\n    atcoder::dsu\
-    \ uf(n);\n    while(uf.size(0) != n) {\n        int u = rnd(0, n):\n        int\
-    \ v = rnd(0, n);\n        if(u == v && simple) continue;\n        if(u > v) swap(u,\
-    \ v);\n        if(simple && cnt.count(make_pair(u, v)))continue;\n        res.emplace_back(u,\
-    \ v);\n        uf.merge(u, v);\n        if(simple) cnt.insert(make_pair(u, v));\n\
-    \    }\n    return res;\n}\n}  // namespace RNG\nusing namespace RNG;"
+    \ int>> cnt;\n    while (int(res.size()) < m) {\n        int u = rnd(0, n);\n\
+    \        int v = rnd(0, n);\n        if (u == v && simple) continue;\n       \
+    \ if (u > v) swap(u, v);\n        if (simple && cnt.count(make_pair(u, v))) continue;\n\
+    \        res.emplace_back(u, v);\n        if (simple) cnt.insert(make_pair(u,\
+    \ v));\n    }\n    return res;\n}  // \u9023\u7D50\u3068\u306F\u9650\u3089\u306A\
+    \u3044\u304B\u3089\u6CE8\u610F\n\ntemplate <bool simple> vector<pair<int, int>>\
+    \ rndgraph_connected(int n) {\n    vector<pair<int, int>> res;\n    set<pair<int,\
+    \ int>> cnt;\n    atcoder::dsu uf(n);\n    while (uf.size(0) != n) {\n       \
+    \ int u = rnd(0, n);\n        int v = rnd(0, n);\n        if (u == v && simple)\
+    \ continue;\n        if (u > v) swap(u, v);\n        if (simple && cnt.count(make_pair(u,\
+    \ v))) continue;\n        res.emplace_back(u, v);\n        uf.merge(u, v);\n \
+    \       if (simple) cnt.insert(make_pair(u, v));\n    }\n    return res;\n}\n\
+    }  // namespace RNG\nusing namespace RNG;"
   dependsOn: []
   isVerificationFile: false
   path: random/random_generator.hpp
   requiredBy: []
-  timestamp: '2024-09-24 04:07:30+09:00'
+  timestamp: '2024-09-24 04:11:58+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: random/random_generator.hpp
