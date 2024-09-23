@@ -121,6 +121,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/swag.hpp
       title: SWAG
+    - icon: ':warning:'
+      path: Datastructure/top_value_dsu.hpp
+      title: dsu
     - icon: ':heavy_check_mark:'
       path: Datastructure/treap.hpp
       title: treap
