@@ -31,17 +31,17 @@ data:
     \   cycle_detection(int n) : n(n), ec(0), g(n) {}\n\n    void add_edge(int u,\
     \ int v) {\n        g[u].emplace_back(v, ec);\n        if (directed == false)\
     \ g[v].emplace_back(u, ec);\n        ec++;\n    }\n\n    pair<vector<int>, vector<int>>\
-    \ run() {\n        vector<bool> in(n, false);\n        vector<bool> out(n, false);\n\
-    \        vector<int> vs;\n        vector<int> es;\n        const int fin = INT_MAX;\n\
-    \        auto dfs = [&](auto f, int v, int p) -> int {\n            bool prev_edge\
-    \ = false;\n            in[v] = true;\n\n            for (auto [to, id] : g[v])\
-    \ {\n                if (to == p) {\n                    if (directed == false)\
-    \ {\n                        if (prev_edge == false) {\n                     \
-    \       prev_edge = true;\n                            continue;\n           \
-    \             } else {\n                            vs.push_back(v);\n       \
-    \                     es.push_back(id);\n                            out[v] =\
-    \ true;\n                            return to;\n                        }\n \
-    \                   }\n                }\n\n                if (in[to] == true\
+    \ run(int vertex = -1) {\n        vector<bool> in(n, false);\n        vector<bool>\
+    \ out(n, false);\n        vector<int> vs;\n        vector<int> es;\n        const\
+    \ int fin = INT_MAX;\n        auto dfs = [&](auto f, int v, int p) -> int {\n\
+    \            bool prev_edge = false;\n            in[v] = true;\n\n          \
+    \  for (auto [to, id] : g[v]) {\n                if (to == p) {\n            \
+    \        if (directed == false) {\n                        if (prev_edge == false)\
+    \ {\n                            prev_edge = true;\n                         \
+    \   continue;\n                        } else {\n                            vs.push_back(v);\n\
+    \                            es.push_back(id);\n                            out[v]\
+    \ = true;\n                            return to;\n                        }\n\
+    \                    }\n                }\n\n                if (in[to] == true\
     \ && out[to] == false) {\n                    vs.push_back(v);\n             \
     \       es.push_back(id);\n                    out[v] = true;\n              \
     \      return (v == to ? fin : to);\n                }\n\n                if (in[to]\
@@ -52,9 +52,10 @@ data:
     \  } else if (root == fin) {\n                        out[v] = true;\n       \
     \                 return fin;\n                    }\n                }\n    \
     \        }\n            out[v] = true;\n            return -1;\n        };\n\n\
-    \        for (int i = 0; i < n; i++) {\n            if (in[i] == false) {\n  \
-    \              dfs(dfs, i, -1);\n                if (vs.empty() == false) {\n\
-    \                    reverse(vs.begin(), vs.end());\n                    reverse(es.begin(),\
+    \        int s = 0, t = n;\n        if (vertex != -1) s = vertex, t = vertex +\
+    \ 1;\n\n        for (int i = s; i < t; i++) {\n            if (in[i] == false)\
+    \ {\n                dfs(dfs, i, -1);\n                if (vs.empty() == false)\
+    \ {\n                    reverse(vs.begin(), vs.end());\n                    reverse(es.begin(),\
     \ es.end());\n                    return make_pair(vs, es);\n                }\n\
     \            }\n        }\n        return make_pair(vs, es);\n    }\n};\n/*\n\
     @brief cycle_detection\n@docs doc/cycle_detection.md\n*/\n#line 4 \"verify/cycle_detection_2.test.cpp\"\
@@ -78,7 +79,7 @@ data:
   isVerificationFile: true
   path: verify/cycle_detection_2.test.cpp
   requiredBy: []
-  timestamp: '2024-09-16 21:07:20+09:00'
+  timestamp: '2024-09-24 03:56:55+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/cycle_detection_2.test.cpp
