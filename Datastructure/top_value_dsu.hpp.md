@@ -11,28 +11,28 @@ data:
     document_title: dsu
     links: []
   bundledCode: "#line 1 \"Datastructure/top_value_dsu.hpp\"\ntemplate<class S, S (*op)(S,\
-    \ S), S (*e)()> struct dsu {\n    using vi = vector<int>;   \n    using vvi =\
-    \ vector<vector<int>>;\n    vi par, sz, es;\n    int cc;\n    vector<S> dat;\n\
-    \n    dsu(const vector<S> d) : dat(d) {\n        int n = d.size();\n        par\
-    \ = vi(n);\n        sz = vi(n, 1);\n        es = vi(n, 0);\n        cc = n;\n\
-    \        iota(all(par), 0);\n    }\n  \n    int leader(int u) {\n        if (par[u]\
-    \ != u) {\n            return par[u] = leader(par[u]);\n        }    \n      \
-    \   return u;\n    }\n    \n    bool same(int a, int b) {\n        return leader(a)\
-    \ == leader(b);\n    }\n    \n    bool merge(int a, int b) {\n        a = leader(a),\
-    \ b = leader(b);\n        if(sz[a] < sz[b]) swap(a, b);\n\n        if(a == b)\
-    \ {\n            ++es[a];\n            return false;\n        }\n        else\
-    \ {\n            cc--;\n            par[b] = leader(a);\n            sz[a] +=\
-    \ sz[b];\n            es[a] += es[b] + 1;\n            dat[a] = op(dat[a], dat[b]);\n\
-    \            return true;\n        }\n    }\n\n    //\u4EE5\u4E0B\u3001\u5FC5\u8981\
-    \u306A\u7269\u3092\u66F8\u304F\n\n    int size(int u) {\n        return sz[leader(u)];\n\
-    \    }\n\n    S value(int u) {\n        return dat[leader(u)];\n    }\n    \n\
-    \    int componentcnt() {\n        return cc;\n    }\n    \n    int edgecnt(int\
-    \ u) {\n        return es[leader(u)];\n    }\n\n    vvi groups() {\n        int\
-    \ n = par.size();\n        vvi ms(n);\n        rep(v, 0, n) {\n            ms[leader(v)].push_back(v);\n\
+    \ S)> struct dsu {\n    using vi = vector<int>;   \n    using vvi = vector<vector<int>>;\n\
+    \    vi par, sz, es;\n    int cc;\n    vector<S> dat;\n\n    dsu(const vector<S>\
+    \ d) : dat(d) {\n        int n = d.size();\n        par = vi(n);\n        sz =\
+    \ vi(n, 1);\n        es = vi(n, 0);\n        cc = n;\n        iota(all(par), 0);\n\
+    \    }\n  \n    int leader(int u) {\n        if (par[u] != u) {\n            return\
+    \ par[u] = leader(par[u]);\n        }    \n         return u;\n    }\n    \n \
+    \   bool same(int a, int b) {\n        return leader(a) == leader(b);\n    }\n\
+    \    \n    bool merge(int a, int b) {\n        a = leader(a), b = leader(b);\n\
+    \        if(sz[a] < sz[b]) swap(a, b);\n\n        if(a == b) {\n            ++es[a];\n\
+    \            return false;\n        }\n        else {\n            cc--;\n   \
+    \         par[b] = leader(a);\n            sz[a] += sz[b];\n            es[a]\
+    \ += es[b] + 1;\n            dat[a] = op(dat[a], dat[b]);\n            return\
+    \ true;\n        }\n    }\n\n    //\u4EE5\u4E0B\u3001\u5FC5\u8981\u306A\u7269\u3092\
+    \u66F8\u304F\n\n    int size(int u) {\n        return sz[leader(u)];\n    }\n\n\
+    \    S value(int u) {\n        return dat[leader(u)];\n    }\n    \n    int componentcnt()\
+    \ {\n        return cc;\n    }\n    \n    int edgecnt(int u) {\n        return\
+    \ es[leader(u)];\n    }\n\n    vvi groups() {\n        int n = par.size();\n \
+    \       vvi ms(n);\n        rep(v, 0, n) {\n            ms[leader(v)].push_back(v);\n\
     \        }\n\n        vvi res;\n        rep(i, 0, n) if(ms[i].size() > 0) {\n\
     \            res.push_back(ms[i]);\n        }\n\n        return res;\n    }\n\n\
     };\n\n/*\n@brief dsu\n@docs doc/dsu.md\n*/\n"
-  code: "template<class S, S (*op)(S, S), S (*e)()> struct dsu {\n    using vi = vector<int>;\
+  code: "template<class S, S (*op)(S, S)> struct dsu {\n    using vi = vector<int>;\
     \   \n    using vvi = vector<vector<int>>;\n    vi par, sz, es;\n    int cc;\n\
     \    vector<S> dat;\n\n    dsu(const vector<S> d) : dat(d) {\n        int n =\
     \ d.size();\n        par = vi(n);\n        sz = vi(n, 1);\n        es = vi(n,\
@@ -58,7 +58,7 @@ data:
   isVerificationFile: false
   path: Datastructure/top_value_dsu.hpp
   requiredBy: []
-  timestamp: '2024-09-24 04:32:15+09:00'
+  timestamp: '2024-09-24 04:35:33+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Datastructure/top_value_dsu.hpp
