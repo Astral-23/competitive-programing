@@ -9,7 +9,7 @@ template <bool directed> struct cycle_detection {
         ec++;
     }
 
-    pair<vector<int>, vector<int>> run() {
+    pair<vector<int>, vector<int>> run(int vertex = -1) {
         vector<bool> in(n, false);
         vector<bool> out(n, false);
         vector<int> vs;
@@ -58,7 +58,10 @@ template <bool directed> struct cycle_detection {
             return -1;
         };
 
-        for (int i = 0; i < n; i++) {
+        int s = 0, t = n;
+        if (vertex != -1) s = vertex, t = vertex + 1;
+
+        for (int i = s; i < t; i++) {
             if (in[i] == false) {
                 dfs(dfs, i, -1);
                 if (vs.empty() == false) {
