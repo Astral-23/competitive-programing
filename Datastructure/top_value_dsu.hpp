@@ -1,4 +1,4 @@
-template<class S, S (*op)(S, S), S (*e)()> struct dsu {
+template<class S, S (*op)(S, S)> struct dsu {
     using vi = vector<int>;   
     using vvi = vector<vector<int>>;
     vi par, sz, es;
