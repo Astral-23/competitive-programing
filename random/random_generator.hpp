@@ -33,31 +33,31 @@ vector<pair<int, int>> rndtree(int n) {
 template <bool simple> vector<pair<int, int>> rndgraph(int n, int m) {
     vector<pair<int, int>> res;
     set<pair<int, int>> cnt;
-    while (res.size() < m) {
+    while (int(res.size()) < m) {
         int u = rnd(0, n);
         int v = rnd(0, n);
         if (u == v && simple) continue;
         if (u > v) swap(u, v);
         if (simple && cnt.count(make_pair(u, v))) continue;
         res.emplace_back(u, v);
-        if(simple) cnt.insert(make_pair(u, v));
+        if (simple) cnt.insert(make_pair(u, v));
     }
     return res;
-}//連結とは限らないから注意
+}  // 連結とは限らないから注意
 
 template <bool simple> vector<pair<int, int>> rndgraph_connected(int n) {
     vector<pair<int, int>> res;
     set<pair<int, int>> cnt;
     atcoder::dsu uf(n);
-    while(uf.size(0) != n) {
-        int u = rnd(0, n):
+    while (uf.size(0) != n) {
+        int u = rnd(0, n);
         int v = rnd(0, n);
-        if(u == v && simple) continue;
-        if(u > v) swap(u, v);
-        if(simple && cnt.count(make_pair(u, v)))continue;
+        if (u == v && simple) continue;
+        if (u > v) swap(u, v);
+        if (simple && cnt.count(make_pair(u, v))) continue;
         res.emplace_back(u, v);
         uf.merge(u, v);
-        if(simple) cnt.insert(make_pair(u, v));
+        if (simple) cnt.insert(make_pair(u, v));
     }
     return res;
 }
