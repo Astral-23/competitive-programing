@@ -37,6 +37,7 @@ TT struct static2dsum {
         assert(0 <= sx && tx <= w);
         assert(sy <= ty);
         assert(sx <= tx);
+        if(sy == ty || sx == tx) return 0;
         tx--, ty--;
         T res = dat[ty][tx];
         if (sx > 0) res -= dat[ty][sx - 1];

@@ -29,7 +29,7 @@ TT struct potential_dsu {
         return leader(a) == leader(b);
     }
 
-    bool merge(int s, int t, T w) {
+    bool merge(int s, int t, T w) {// h[t] = h[s] + w 或いは s -> tに重みwの辺　  
         w += weight(s), w -= weight(t);
         s = leader(s), t = leader(t);
         if(s == t) {
@@ -52,12 +52,12 @@ TT struct potential_dsu {
         
     }
 
-    T weight(int v) {
+    T weight(int v) {//根から見た vの値  p[根]は0。
         leader(v);
         return h[v];
     }
 
-    T diff(int s, int t) {
+    T diff(int s, int t) {//sから見た tの値
         return weight(t) - weight(s);
     }
 

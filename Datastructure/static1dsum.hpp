@@ -21,6 +21,7 @@ TT struct static1dsum {
         assert(built);
         assert(0 <= l && r <= n);
         assert(l <= r);
+        if(l == r) return 0;
         T res = dat[r - 1];
         if (l) res -= dat[l - 1];
         return res;
