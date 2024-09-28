@@ -28,10 +28,11 @@ data:
     \n        f = true;\n    }\n\n    T prod(int sy, int ty, int sx, int tx) {\n \
     \       assert(f);\n        assert(0 <= sy && ty <= h);\n        assert(0 <= sx\
     \ && tx <= w);\n        assert(sy <= ty);\n        assert(sx <= tx);\n       \
-    \ tx--, ty--;\n        T res = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx\
-    \ - 1];\n        if (sy > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy\
-    \ > 0) res += dat[sy - 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief\
-    \ 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/\n"
+    \ if(sy == ty || sx == tx) return 0;\n        tx--, ty--;\n        T res = dat[ty][tx];\n\
+    \        if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy > 0) res -= dat[sy\
+    \ - 1][tx];\n        if (sx > 0 && sy > 0) res += dat[sy - 1][sx - 1];\n     \
+    \   return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs\
+    \ doc/static2dsum.md\n*/\n"
   code: "TT struct static2dsum {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f\
     \ = false;\n\n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h,\
     \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
@@ -43,16 +44,16 @@ data:
     \ }\n        }\n\n        f = true;\n    }\n\n    T prod(int sy, int ty, int sx,\
     \ int tx) {\n        assert(f);\n        assert(0 <= sy && ty <= h);\n       \
     \ assert(0 <= sx && tx <= w);\n        assert(sy <= ty);\n        assert(sx <=\
-    \ tx);\n        tx--, ty--;\n        T res = dat[ty][tx];\n        if (sx > 0)\
-    \ res -= dat[ty][sx - 1];\n        if (sy > 0) res -= dat[sy - 1][tx];\n     \
-    \   if (sx > 0 && sy > 0) res += dat[sy - 1][sx - 1];\n        return res;\n \
-    \   }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n\
-    */"
+    \ tx);\n        if(sy == ty || sx == tx) return 0;\n        tx--, ty--;\n    \
+    \    T res = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n     \
+    \   if (sy > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res +=\
+    \ dat[sy - 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\
+    \u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Datastructure/static2dsum.hpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-09-28 22:59:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/static2dsum.test.cpp

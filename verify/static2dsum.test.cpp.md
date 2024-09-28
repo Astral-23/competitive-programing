@@ -37,20 +37,20 @@ data:
     \ }\n        }\n\n        f = true;\n    }\n\n    T prod(int sy, int ty, int sx,\
     \ int tx) {\n        assert(f);\n        assert(0 <= sy && ty <= h);\n       \
     \ assert(0 <= sx && tx <= w);\n        assert(sy <= ty);\n        assert(sx <=\
-    \ tx);\n        tx--, ty--;\n        T res = dat[ty][tx];\n        if (sx > 0)\
-    \ res -= dat[ty][sx - 1];\n        if (sy > 0) res -= dat[sy - 1][tx];\n     \
-    \   if (sx > 0 && sy > 0) res += dat[sy - 1][sx - 1];\n        return res;\n \
-    \   }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n\
-    */\n#line 4 \"verify/static2dsum.test.cpp\"\n\nint main() {\n    int h, w;\n \
-    \   cin >> h >> w;\n    int k;\n    cin >> k;\n    static2dsum<ll> J(h, w);\n\
-    \    static2dsum<ll> O(h, w);\n    static2dsum<ll> I(h, w);\n\n\n    rep(i, 0,\
-    \ h) rep(j, 0, w) {\n        char a;\n        cin >> a;\n        if(a=='J') J.add(i,\
-    \ j, 1);\n        if(a=='O') O.add(i, j, 1);\n        if(a=='I') I.add(i, j, 1);\n\
-    \    }\n\n    J.build();O.build();I.build();\n\n\n    while(k--) {\n        int\
-    \ sy, sx, ty, tx;\n        cin >> sy >> sx >> ty >> tx;\n        sy--, sx--;\n\
-    \        cout << J.prod(sy, ty, sx, tx) << \" \";\n        cout << O.prod(sy,\
-    \ ty, sx, tx) << \" \";\n        cout << I.prod(sy, ty, sx, tx) << endl;\n\n \
-    \   }\n\t\n\n}\n"
+    \ tx);\n        if(sy == ty || sx == tx) return 0;\n        tx--, ty--;\n    \
+    \    T res = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n     \
+    \   if (sy > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res +=\
+    \ dat[sy - 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\
+    \u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/\n#line 4 \"verify/static2dsum.test.cpp\"\
+    \n\nint main() {\n    int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n\
+    \    static2dsum<ll> J(h, w);\n    static2dsum<ll> O(h, w);\n    static2dsum<ll>\
+    \ I(h, w);\n\n\n    rep(i, 0, h) rep(j, 0, w) {\n        char a;\n        cin\
+    \ >> a;\n        if(a=='J') J.add(i, j, 1);\n        if(a=='O') O.add(i, j, 1);\n\
+    \        if(a=='I') I.add(i, j, 1);\n    }\n\n    J.build();O.build();I.build();\n\
+    \n\n    while(k--) {\n        int sy, sx, ty, tx;\n        cin >> sy >> sx >>\
+    \ ty >> tx;\n        sy--, sx--;\n        cout << J.prod(sy, ty, sx, tx) << \"\
+    \ \";\n        cout << O.prod(sy, ty, sx, tx) << \" \";\n        cout << I.prod(sy,\
+    \ ty, sx, tx) << endl;\n\n    }\n\t\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0560\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/static2dsum.hpp\"\
     \n\nint main() {\n    int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n\
@@ -68,7 +68,7 @@ data:
   isVerificationFile: true
   path: verify/static2dsum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-09-28 22:59:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/static2dsum.test.cpp

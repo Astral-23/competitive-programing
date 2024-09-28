@@ -34,23 +34,25 @@ data:
     \ u) {\n            int r = leader(par[u]);\n            h[u] += h[par[u]];\n\
     \            return par[u] = r;\n        }\n        return u;\n    }\n\n    bool\
     \ same(int a, int b) {\n        return leader(a) == leader(b);\n    }\n\n    bool\
-    \ merge(int s, int t, T w) {\n        w += weight(s), w -= weight(t);\n      \
-    \  s = leader(s), t = leader(t);\n        if(s == t) {\n            es[s]++;\n\
+    \ merge(int s, int t, T w) {// h[t] = h[s] + w \u6216\u3044\u306F s -> t\u306B\
+    \u91CD\u307Fw\u306E\u8FBA\u3000  \n        w += weight(s), w -= weight(t);\n \
+    \       s = leader(s), t = leader(t);\n        if(s == t) {\n            es[s]++;\n\
     \            return false;\n        }\n\n        if(sz[s] < sz[t] && s != root)\
     \ {\n            swap(s, t);\n            w *= -1;\n        }\n\n        cc--;\n\
     \        par[t] = s;\n        sz[s] += sz[t];\n        es[s] += es[t] + 1;\n\n\
     \        h[t] = w;\n        return true;\n        \n    }\n\n    T weight(int\
-    \ v) {\n        leader(v);\n        return h[v];\n    }\n\n    T diff(int s, int\
-    \ t) {\n        return weight(t) - weight(s);\n    }\n\n};\n\n/*\n@brief potential\
-    \ dsu\n*/\n\n#line 4 \"verify/potential_dsu.test.cpp\"\n\nint main() {\n    int\
-    \ N, M;\n    while(cin >> N >> M) {\n        if(N==0) break;\n        potential_dsu<ll>\
-    \ uf(N, 1);\n        rep(i, 0, M) {\n            char c;\n            cin >> c;\n\
-    \            int a, b, w;\n            if(c == '!') {\n                cin >>\
-    \ a >> b >> w;\n                --a, --b;\n                uf.merge(a, b, w);\n\
-    \            }\n            else {\n                cin >> a >> b;\n         \
-    \       --a, --b;\n                if(!uf.same(a, b)) cout << \"UNKNOWN\" << endl;\n\
-    \                else cout << uf.diff(a, b) << endl;\n            }\n        }\n\
-    \    }\n    \n}\n"
+    \ v) {//\u6839\u304B\u3089\u898B\u305F v\u306E\u5024  p[\u6839]\u306F0\u3002\n\
+    \        leader(v);\n        return h[v];\n    }\n\n    T diff(int s, int t) {//s\u304B\
+    \u3089\u898B\u305F t\u306E\u5024\n        return weight(t) - weight(s);\n    }\n\
+    \n};\n\n/*\n@brief potential dsu\n*/\n\n#line 4 \"verify/potential_dsu.test.cpp\"\
+    \n\nint main() {\n    int N, M;\n    while(cin >> N >> M) {\n        if(N==0)\
+    \ break;\n        potential_dsu<ll> uf(N, 1);\n        rep(i, 0, M) {\n      \
+    \      char c;\n            cin >> c;\n            int a, b, w;\n            if(c\
+    \ == '!') {\n                cin >> a >> b >> w;\n                --a, --b;\n\
+    \                uf.merge(a, b, w);\n            }\n            else {\n     \
+    \           cin >> a >> b;\n                --a, --b;\n                if(!uf.same(a,\
+    \ b)) cout << \"UNKNOWN\" << endl;\n                else cout << uf.diff(a, b)\
+    \ << endl;\n            }\n        }\n    }\n    \n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/potential_dsu.hpp\"\
     \n\nint main() {\n    int N, M;\n    while(cin >> N >> M) {\n        if(N==0)\
@@ -67,7 +69,7 @@ data:
   isVerificationFile: true
   path: verify/potential_dsu.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-09-28 22:59:21+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/potential_dsu.test.cpp
