@@ -157,10 +157,10 @@ data:
   verifiedWith:
   - verify/hld_lca.test.cpp
   - verify/aux_tree.test.cpp
-  - verify/jumpontree.test.cpp
-  - verify/oneside_range_edge_graph.test.cpp
-  - verify/range_edge_graph.test.cpp
   - verify/hld.test.cpp
+  - verify/range_edge_graph.test.cpp
+  - verify/oneside_range_edge_graph.test.cpp
+  - verify/jumpontree.test.cpp
 documentation_of: Algorithm/hld.hpp
 layout: document
 redirect_from:

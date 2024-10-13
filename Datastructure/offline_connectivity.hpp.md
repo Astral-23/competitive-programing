@@ -108,8 +108,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/offline_connectivity_more.test.cpp
-  - verify/offline_connectivity.test.cpp
   - verify/value_dsu.test.cpp
+  - verify/offline_connectivity.test.cpp
 documentation_of: Datastructure/offline_connectivity.hpp
 layout: document
 redirect_from:

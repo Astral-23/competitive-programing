@@ -92,8 +92,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - "\u7802\u5834/swag.test.cpp"
-  - verify/swag_more.test.cpp
   - verify/swag.test.cpp
+  - verify/swag_more.test.cpp
 documentation_of: Datastructure/swag.hpp
 layout: document
 redirect_from:

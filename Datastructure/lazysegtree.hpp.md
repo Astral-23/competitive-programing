@@ -142,8 +142,8 @@ data:
   timestamp: '2024-09-18 23:27:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lazysegtree.test.cpp
   - verify/lazyseg_bina.test.cpp
+  - verify/lazysegtree.test.cpp
 documentation_of: Datastructure/lazysegtree.hpp
 layout: document
 redirect_from:
