@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/submission/242966"
+#define PROBLEM "https://judge.yosupo.jp/problem/matrix_det"
 #include "../Utility/template.hpp"
 #include "../Utility/modint.hpp"
 #include "../Math/matrix.hpp"
