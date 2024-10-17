@@ -161,7 +161,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Math/floor_sum.hpp
       title: floor_sum
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/matrix.hpp
       title: matrix
     - icon: ':warning:'
@@ -222,10 +222,10 @@ data:
     - icon: ':warning:'
       path: Utility/bigmodint.hpp
       title: big_modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -363,6 +363,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/manacher.test.cpp
       title: verify/manacher.test.cpp
+    - icon: ':x:'
+      path: verify/mat_det.test.cpp
+      title: verify/mat_det.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/matrix.test.cpp
       title: verify/matrix.test.cpp

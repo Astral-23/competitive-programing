@@ -6,12 +6,15 @@ data:
     path: example/matrix.example.cpp
     title: example/matrix.example.cpp
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/mat_det.test.cpp
+    title: verify/mat_det.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: doc/matrix.md
     document_title: matrix
@@ -28,12 +31,23 @@ data:
     \ r;\n    }\n    Matrix pow(ll t) const {\n        assert(h == w);\n        Matrix\
     \ res = Matrix(h, h).unit();\n        Matrix x = (*this);\n        while (t >\
     \ 0) {\n            if (t & 1) res = res * x;\n            x = x * x;\n      \
-    \      t >>= 1;\n        }\n        return res;\n    }\n\n    friend ostream&\
-    \ operator<<(ostream& os, Matrix a) {\n        for(int i = 0; i < a.h; i++) {\n\
-    \            for(int j = 0; j < a.w; j++) {\n                os << a[i][j] <<\
-    \ (j != a.w - 1? \" \" : \"\");\n            }\n            os << (i != a.h -\
-    \ 1 ? \"\\n\" : \"\");\n        }\n        return os;\n    }\n};\n/*\n@brief matrix\n\
-    @docs doc/matrix.md\n*/\n"
+    \      t >>= 1;\n        }\n        return res;\n    }\n\n    pair<Matrix, T>\
+    \ gaussian_elimination() {\n        T k = 1;\n        Matrix A = *this;\n    \
+    \    rep(j, 0, min(h, w)) {\n            rep(i, j, h) {\n                if (A[i][j]\
+    \ != 0) {\n                    swap(A[i], A[j]);\n                    if (i !=\
+    \ j) k = -k;\n                    break;\n                }\n            }\n\n\
+    \            if (A[j][j] == 0) break;\n            T inv = 1 / A[j][j];\n    \
+    \        k *= A[j][j];\n            rep(jj, 0, w) A[j][jj] *= inv;\n\n       \
+    \     rep(i, 0, h) if (A[i][j] != 0 && i != j) {\n                T c = -A[i][j];\n\
+    \                rep(jj, 0, w) { A[i][jj] += A[j][jj] * c; }\n            }\n\
+    \        }\n        return make_pair(A, k);\n    }\n\n    T det() {\n        assert(h\
+    \ == w);\n        auto [A, p] = (*this).gaussian_elimination();\n        rep(i,\
+    \ 0, h) p *= A[i][i];\n        return p;\n    }\n\n    friend ostream &operator<<(ostream\
+    \ &os, Matrix a) {\n        for (int i = 0; i < a.h; i++) {\n            for (int\
+    \ j = 0; j < a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \"\
+    \ \" : \"\");\n            }\n            os << (i != a.h - 1 ? \"\\n\" : \"\"\
+    );\n        }\n        return os;\n    }\n};\n/*\n@brief matrix\n@docs doc/matrix.md\n\
+    */\n"
   code: "template <typename T> struct Matrix {\n    int h, w;\n    vector<vector<T>>\
     \ d;\n    Matrix() {}\n    Matrix(int h, int w, T val = 0) : h(h), w(w), d(h,\
     \ vector<T>(w, val)) {}\n    Matrix &unit() {\n        assert(h == w);\n     \
@@ -46,20 +60,33 @@ data:
     \ {\n        assert(h == w);\n        Matrix res = Matrix(h, h).unit();\n    \
     \    Matrix x = (*this);\n        while (t > 0) {\n            if (t & 1) res\
     \ = res * x;\n            x = x * x;\n            t >>= 1;\n        }\n      \
-    \  return res;\n    }\n\n    friend ostream& operator<<(ostream& os, Matrix a)\
-    \ {\n        for(int i = 0; i < a.h; i++) {\n            for(int j = 0; j < a.w;\
-    \ j++) {\n                os << a[i][j] << (j != a.w - 1? \" \" : \"\");\n   \
-    \         }\n            os << (i != a.h - 1 ? \"\\n\" : \"\");\n        }\n \
-    \       return os;\n    }\n};\n/*\n@brief matrix\n@docs doc/matrix.md\n*/"
+    \  return res;\n    }\n\n    pair<Matrix, T> gaussian_elimination() {\n      \
+    \  T k = 1;\n        Matrix A = *this;\n        rep(j, 0, min(h, w)) {\n     \
+    \       rep(i, j, h) {\n                if (A[i][j] != 0) {\n                \
+    \    swap(A[i], A[j]);\n                    if (i != j) k = -k;\n            \
+    \        break;\n                }\n            }\n\n            if (A[j][j] ==\
+    \ 0) break;\n            T inv = 1 / A[j][j];\n            k *= A[j][j];\n   \
+    \         rep(jj, 0, w) A[j][jj] *= inv;\n\n            rep(i, 0, h) if (A[i][j]\
+    \ != 0 && i != j) {\n                T c = -A[i][j];\n                rep(jj,\
+    \ 0, w) { A[i][jj] += A[j][jj] * c; }\n            }\n        }\n        return\
+    \ make_pair(A, k);\n    }\n\n    T det() {\n        assert(h == w);\n        auto\
+    \ [A, p] = (*this).gaussian_elimination();\n        rep(i, 0, h) p *= A[i][i];\n\
+    \        return p;\n    }\n\n    friend ostream &operator<<(ostream &os, Matrix\
+    \ a) {\n        for (int i = 0; i < a.h; i++) {\n            for (int j = 0; j\
+    \ < a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \" \" : \"\"\
+    );\n            }\n            os << (i != a.h - 1 ? \"\\n\" : \"\");\n      \
+    \  }\n        return os;\n    }\n};\n/*\n@brief matrix\n@docs doc/matrix.md\n\
+    */"
   dependsOn: []
   isVerificationFile: false
   path: Math/matrix.hpp
   requiredBy:
   - example/matrix.example.cpp
-  timestamp: '2024-09-11 16:35:59+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-10-17 19:00:57+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/matrix.test.cpp
+  - verify/mat_det.test.cpp
 documentation_of: Math/matrix.hpp
 layout: document
 redirect_from:
