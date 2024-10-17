@@ -6,15 +6,15 @@ data:
     path: example/matrix.example.cpp
     title: example/matrix.example.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/mat_det.test.cpp
     title: verify/mat_det.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/matrix.md
     document_title: matrix
@@ -83,7 +83,7 @@ data:
   requiredBy:
   - example/matrix.example.cpp
   timestamp: '2024-10-17 19:00:57+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/matrix.test.cpp
   - verify/mat_det.test.cpp

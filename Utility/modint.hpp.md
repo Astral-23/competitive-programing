@@ -30,7 +30,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/mat_det.test.cpp
     title: verify/mat_det.test.cpp
   - icon: ':heavy_check_mark:'
@@ -57,9 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: modint
     links: []
@@ -120,7 +120,7 @@ data:
   - Graph/Chromatic_Number.hpp
   - example/matrix.example.cpp
   timestamp: '2024-10-17 19:00:57+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Chromatic_Number.test.cpp
   - verify/lazysegtree.test.cpp

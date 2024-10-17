@@ -1,26 +1,26 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/matrix.hpp
     title: matrix
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/submission/242966
+    PROBLEM: https://judge.yosupo.jp/problem/matrix_det
     links:
-    - https://judge.yosupo.jp/submission/242966
-  bundledCode: "#line 1 \"verify/mat_det.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/submission/242966\"\
+    - https://judge.yosupo.jp/problem/matrix_det
+  bundledCode: "#line 1 \"verify/mat_det.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
@@ -85,11 +85,11 @@ data:
     \ mat = Matrix<mint>;\nint main() {\n    ll n;\n    cin >> n;\n    mat S(n, n);\n\
     \    rep(i, 0, n) rep(j, 0, n)cin>>S[i][j];\n    cout << S.det() << endl;\n\n\
     \    \n   \n\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/submission/242966\"\n#include \"\
-    ../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include \"../Math/matrix.hpp\"\
-    \n\n\nusing mint = modint998244353;\nusing mat = Matrix<mint>;\nint main() {\n\
-    \    ll n;\n    cin >> n;\n    mat S(n, n);\n    rep(i, 0, n) rep(j, 0, n)cin>>S[i][j];\n\
-    \    cout << S.det() << endl;\n\n    \n   \n\n}"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#include\
+    \ \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include \"\
+    ../Math/matrix.hpp\"\n\n\nusing mint = modint998244353;\nusing mat = Matrix<mint>;\n\
+    int main() {\n    ll n;\n    cin >> n;\n    mat S(n, n);\n    rep(i, 0, n) rep(j,\
+    \ 0, n)cin>>S[i][j];\n    cout << S.det() << endl;\n\n    \n   \n\n}"
   dependsOn:
   - Utility/template.hpp
   - Utility/modint.hpp
@@ -97,8 +97,8 @@ data:
   isVerificationFile: true
   path: verify/mat_det.test.cpp
   requiredBy: []
-  timestamp: '2024-10-17 19:00:57+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-10-17 19:14:49+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/mat_det.test.cpp
 layout: document
