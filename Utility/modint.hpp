@@ -19,6 +19,10 @@ template <uint32_t mod> struct modint {
         return a;
     }
 
+    mm operator-() const {
+        return mod - x;
+    }
+
     //+と-だけで十分な場合、以下は省略して良いです。
 
     friend mm operator*(mm a, mm b) { return (uint64_t)(a.x) * b.x; }
