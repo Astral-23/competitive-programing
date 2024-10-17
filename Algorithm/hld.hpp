@@ -3,26 +3,37 @@ struct HLD {
     using pi = pair<int, int>;
     using pll = pair<long long, long long>;
     vi in, out, par, root, rev, dep, pre_vs;
+    vec<ll> dep_w;
     //          親/成分のtop/inの中身→頂点番号
     int n, r;  // 頂点数、根
 
     static vec<vec<int>> extract_graph(const vec<vec<pll>> &G) {
         vec<vec<int>> g(G.size());
         for (int i = 0; i < int(G.size()); i++) {
-            for (auto [w, to] : G[i]) if(i < to) {
-                g[i].push_back(to);
-                g[to].push_back(i);
-            }
+            for (auto [w, to] : G[i])
+                if (i < to) {
+                    g[i].push_back(to);
+                    g[to].push_back(i);
+                }
         }
         return g;
     }
-    HLD(const vec<vec<pll>> &g, int a) : HLD(extract_graph(g), a) {}
+    HLD(const vec<vec<pll>> &g, int a) : HLD(extract_graph(g), a) {
+        auto dfs = [&](auto f, int v) -> void {
+            for(auto [w, to] : g[v]) if(to != par[v]) {
+                dep_w[to] = dep_w[v] + w;
+                f(f, to);
+            }
+        };
+        dfs(dfs, r);
+    }
 
     HLD(vec<vi> g, int a) : n(g.size()), r(a) {
         vi siz(n, 0);
         in = out = root = rev = vi(n);
         par = vi(n, -1);
         dep = vi(n, 0);
+        dep_w = vec<ll>(n, 0);
         root[r] = r;
 
         auto dfs_siz = [&](auto f, int v) -> void {
@@ -55,6 +66,7 @@ struct HLD {
         };
 
         dfs_hld(dfs_hld, r);
+        for(int i = 0; i < n; i++) dep_w[i] = dep[i];
     }
 
     // 以下、欲しいもののみ書く
@@ -71,7 +83,7 @@ struct HLD {
 
     int dist(int a, int b) {
         int lc = lca(a, b);
-        return dep[a] + dep[b] - 2 * dep[lc];
+        return dep_w[a] + dep_w[b] - 2 * dep_w[lc];
     }
 
     vec<pi> path(int s, int t, bool edge) {
