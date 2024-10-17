@@ -32,6 +32,7 @@
 "verify/lowlink_bridge.test.cpp": "2024-08-16 18:32:51 +0900",
 "verify/lowlink_joint.test.cpp": "2024-08-16 18:32:51 +0900",
 "verify/manacher.test.cpp": "2024-08-16 18:32:51 +0900",
+"verify/mat_det.test.cpp": "2024-10-17 19:14:49 +0900",
 "verify/matrix.test.cpp": "2024-10-17 19:00:57 +0900",
 "verify/maxflow.test.cpp": "2024-08-16 18:32:51 +0900",
 "verify/maxflow_lowerbound.test.cpp": "2024-08-16 18:32:51 +0900",
