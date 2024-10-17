@@ -1,5 +1,5 @@
 # library
-verify用テンプレー トのincludeを前提としている。　
+verify用テンプレー トのinclu deを前提としている。　
 
 mdに{}を紛れ込ませるとエラー吐きそう https://github.com/Astral-23/competitive-programing/actions/runs/10883603606
 
