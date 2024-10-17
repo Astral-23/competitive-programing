@@ -28,43 +28,47 @@ data:
     \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/hld.hpp\"\nstruct\
     \ HLD {\n    using vi = vec<int>;\n    using pi = pair<int, int>;\n    using pll\
     \ = pair<long long, long long>;\n    vi in, out, par, root, rev, dep, pre_vs;\n\
-    \    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\u4E2D\u8EAB\u2192\u9802\
-    \u70B9\u756A\u53F7\n    int n, r;  // \u9802\u70B9\u6570\u3001\u6839\n\n    static\
-    \ vec<vec<int>> extract_graph(const vec<vec<pll>> &G) {\n        vec<vec<int>>\
-    \ g(G.size());\n        for (int i = 0; i < int(G.size()); i++) {\n          \
-    \  for (auto [w, to] : G[i]) if(i < to) {\n                g[i].push_back(to);\n\
-    \                g[to].push_back(i);\n            }\n        }\n        return\
-    \ g;\n    }\n    HLD(const vec<vec<pll>> &g, int a) : HLD(extract_graph(g), a)\
-    \ {}\n\n    HLD(vec<vi> g, int a) : n(g.size()), r(a) {\n        vi siz(n, 0);\n\
-    \        in = out = root = rev = vi(n);\n        par = vi(n, -1);\n        dep\
-    \ = vi(n, 0);\n        root[r] = r;\n\n        auto dfs_siz = [&](auto f, int\
-    \ v) -> void {\n            siz[v]++;\n            for (int &to : g[v])\n    \
-    \            if (to != par[v]) {\n                    dep[to] = dep[v] + 1;\n\
-    \                    par[to] = v;\n                    f(f, to);\n           \
-    \         siz[v] += siz[to];\n                    if (siz[to] > siz[g[v][0]] ||\
-    \ g[v][0] == par[v])\n                        swap(to, g[v][0]);\n           \
-    \     }\n            return;\n        };\n\n        dfs_siz(dfs_siz, r);\n\n \
-    \       int t = 0;\n\n        auto dfs_hld = [&](auto f, int v) -> void {\n  \
-    \          rev[t] = v;\n            in[v] = t++;\n            for (int to : g[v])\n\
-    \                if (to != par[v]) {\n                    root[to] = (to == g[v][0]\
-    \ ? root[v] : to);\n                    f(f, to);\n                }\n       \
-    \     out[v] = t;\n        };\n\n        dfs_hld(dfs_hld, r);\n    }\n\n    //\
-    \ \u4EE5\u4E0B\u3001\u6B32\u3057\u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n\n\
-    \    int operator()(int v) const { return in[v]; }\n\n    int lca(int a, int b)\
-    \ {\n        while (1) {\n            if (in[a] > in[b]) swap(a, b);\n       \
-    \     if (root[a] == root[b]) return a;\n            b = par[root[b]];\n     \
-    \   }\n    }\n\n    int dist(int a, int b) {\n        int lc = lca(a, b);\n  \
-    \      return dep[a] + dep[b] - 2 * dep[lc];\n    }\n\n    vec<pi> path(int s,\
-    \ int t, bool edge) {\n        vec<pi> ls, rs;\n        while (root[s] != root[t])\
-    \ {\n            if (dep[root[s]] > dep[root[t]]) {\n                ls.emplace_back(in[s]\
-    \ + 1, in[root[s]]);  // \u4E0A\u308A\n                s = par[root[s]];\n   \
-    \         } else {\n                rs.emplace_back(in[root[t]], in[t] + 1); \
-    \ // \u4E0B\u308A\n                t = par[root[t]];\n            }\n        }\n\
-    \n        if (dep[s] > dep[t])\n            ls.emplace_back(in[s] + 1, in[t] +\
-    \ edge);  // \u4E0A\u308A\n        else\n            rs.emplace_back(in[s] + edge,\
-    \ in[t] + 1);  // \u4E0B\u308A\n\n        reverse(all(rs));\n        for (auto\
-    \ &p : rs) ls.push_back(p);\n        return ls;\n    }\n\n    pi subtree(int u,\
-    \ bool edge) { return pi(in[u] + edge, out[u]); }\n\n    int kth_ancestor(int\
+    \    vec<ll> dep_w;\n    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\u4E2D\
+    \u8EAB\u2192\u9802\u70B9\u756A\u53F7\n    int n, r;  // \u9802\u70B9\u6570\u3001\
+    \u6839\n\n    static vec<vec<int>> extract_graph(const vec<vec<pll>> &G) {\n \
+    \       vec<vec<int>> g(G.size());\n        for (int i = 0; i < int(G.size());\
+    \ i++) {\n            for (auto [w, to] : G[i])\n                if (i < to) {\n\
+    \                    g[i].push_back(to);\n                    g[to].push_back(i);\n\
+    \                }\n        }\n        return g;\n    }\n    HLD(const vec<vec<pll>>\
+    \ &g, int a) : HLD(extract_graph(g), a) {\n        auto dfs = [&](auto f, int\
+    \ v) -> void {\n            for(auto [w, to] : g[v]) if(to != par[v]) {\n    \
+    \            dep_w[to] = dep_w[v] + w;\n                f(f, to);\n          \
+    \  }\n        };\n        dfs(dfs, r);\n    }\n\n    HLD(vec<vi> g, int a) : n(g.size()),\
+    \ r(a) {\n        vi siz(n, 0);\n        in = out = root = rev = vi(n);\n    \
+    \    par = vi(n, -1);\n        dep = vi(n, 0);\n        dep_w = vec<ll>(n, 0);\n\
+    \        root[r] = r;\n\n        auto dfs_siz = [&](auto f, int v) -> void {\n\
+    \            siz[v]++;\n            for (int &to : g[v])\n                if (to\
+    \ != par[v]) {\n                    dep[to] = dep[v] + 1;\n                  \
+    \  par[to] = v;\n                    f(f, to);\n                    siz[v] +=\
+    \ siz[to];\n                    if (siz[to] > siz[g[v][0]] || g[v][0] == par[v])\n\
+    \                        swap(to, g[v][0]);\n                }\n            return;\n\
+    \        };\n\n        dfs_siz(dfs_siz, r);\n\n        int t = 0;\n\n        auto\
+    \ dfs_hld = [&](auto f, int v) -> void {\n            rev[t] = v;\n          \
+    \  in[v] = t++;\n            for (int to : g[v])\n                if (to != par[v])\
+    \ {\n                    root[to] = (to == g[v][0] ? root[v] : to);\n        \
+    \            f(f, to);\n                }\n            out[v] = t;\n        };\n\
+    \n        dfs_hld(dfs_hld, r);\n        for(int i = 0; i < n; i++) dep_w[i] =\
+    \ dep[i];\n    }\n\n    // \u4EE5\u4E0B\u3001\u6B32\u3057\u3044\u3082\u306E\u306E\
+    \u307F\u66F8\u304F\n\n    int operator()(int v) const { return in[v]; }\n\n  \
+    \  int lca(int a, int b) {\n        while (1) {\n            if (in[a] > in[b])\
+    \ swap(a, b);\n            if (root[a] == root[b]) return a;\n            b =\
+    \ par[root[b]];\n        }\n    }\n\n    int dist(int a, int b) {\n        int\
+    \ lc = lca(a, b);\n        return dep_w[a] + dep_w[b] - 2 * dep_w[lc];\n    }\n\
+    \n    vec<pi> path(int s, int t, bool edge) {\n        vec<pi> ls, rs;\n     \
+    \   while (root[s] != root[t]) {\n            if (dep[root[s]] > dep[root[t]])\
+    \ {\n                ls.emplace_back(in[s] + 1, in[root[s]]);  // \u4E0A\u308A\
+    \n                s = par[root[s]];\n            } else {\n                rs.emplace_back(in[root[t]],\
+    \ in[t] + 1);  // \u4E0B\u308A\n                t = par[root[t]];\n          \
+    \  }\n        }\n\n        if (dep[s] > dep[t])\n            ls.emplace_back(in[s]\
+    \ + 1, in[t] + edge);  // \u4E0A\u308A\n        else\n            rs.emplace_back(in[s]\
+    \ + edge, in[t] + 1);  // \u4E0B\u308A\n\n        reverse(all(rs));\n        for\
+    \ (auto &p : rs) ls.push_back(p);\n        return ls;\n    }\n\n    pi subtree(int\
+    \ u, bool edge) { return pi(in[u] + edge, out[u]); }\n\n    int kth_ancestor(int\
     \ v, int k) {\n        if (k > dep[v]) return -1;\n        while (v >= 0) {\n\
     \            if (k <= dep[v] - dep[root[v]]) {\n                return rev[in[v]\
     \ - k];\n            } else {\n                k -= dep[v] - dep[root[v]] + 1;\n\
@@ -103,7 +107,7 @@ data:
   isVerificationFile: true
   path: verify/hld_lca.test.cpp
   requiredBy: []
-  timestamp: '2024-09-20 01:19:20+09:00'
+  timestamp: '2024-10-18 02:09:11+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/hld_lca.test.cpp
