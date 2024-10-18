@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Algorithm/lowlink.hpp
+    path: Graph/lowlink.hpp
     title: lowlink
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
@@ -25,46 +25,64 @@ data:
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
     \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/lowlink.hpp\"\n\
-    struct lowlink {\n    using vi = vec<int>;\n    using vvi = vec<vi>;\n    using\
-    \ pii = pair<int, int>;\n    \n    int n;\n    vvi tr;\n    vi low, in;\n    vec<pii>\
-    \ bridges;\n    vec<int> joints;\n\n    lowlink(vvi g) : n(g.size()) {\n     \
-    \   low = vi(n, 1001001001);\n        in = vi(n, -1);\n        tr.resize(n);\n\
-    \    \n        \n        int t = 0;\n        int r = 0;\n        auto dfs = [&](auto\
-    \ f, int v, int p) -> void {\n            in[v] = low[v] = t++;\n            bool\
-    \ duplication = false;\n            for(int to: g[v]) {\n                if(in[to]\
-    \ == -1) {\n                    tr[v].push_back(to);\n                    f(f,\
-    \ to, v);\n                }\n                else {\n                    if(to\
-    \ != p) chmin(low[v], in[to]);\n                    else if(duplication == false)\
-    \ duplication = true;\n                    else {\n                        chmin(low[v],\
-    \ in[to]);\n                    }\n                }\n            }\n\n      \
-    \      for(int to : tr[v]) {\n                chmin(low[v], low[to]);\n      \
-    \      }\n            //\u90E8\u5206\u6728\u306B\u3064\u3044\u3066\u3001low/in\u304C\
-    \u6C42\u307E\u3063\u305F\n            bool isjoint = false;\n            for(int\
-    \ to : tr[v]) {\n                if(low[to] > in[v]) bridges.emplace_back(v, to);\n\
-    \                if(low[to] >= in[v]) isjoint = true;\n            }\n\n     \
-    \       if(v != r && isjoint) joints.push_back(v);\n            else if(v == r)\
-    \ {\n                if(tr[v].size() > 1) joints.push_back(v);\n            }\n\
-    \        };\n\n        rep(i, 0, n) if(in[i] == -1) {\n            r = i;\n  \
-    \          dfs(dfs, i, -1);\n        }\n    }\n\n};\n\n/*\n@brief lowlink\n@docs\
-    \ doc/lowlink.md\n*/\n#line 4 \"verify/lowlink_joint.test.cpp\"\n\nint main()\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/lowlink.hpp\"\nstruct\
+    \ lowlink {\n    using vi = vec<int>;\n    using vvi = vec<vi>;\n    using pii\
+    \ = pair<int, int>;\n\n    int n;\n    vvi tr;  // dfs\u6728\u306B\u4F7F\u308F\
+    \u308C\u308B\u8FBA\u306E\u307F \u4E0A\u304B\u3089\u4E0B\n    vvi aux;  // dfs\u6728\
+    \u306B\u4F7F\u308F\u308C\u306A\u3044\u8FBA\u306E\u307F  \u4E0B\u304B\u3089\u4E0A\
+    \ \u81EA\u5DF1\u8FBA\u3082\u30B3\u30B3\n    vi low, in, par;\n    vec<pii> bridges;\n\
+    \    vec<int> joints;\n    vec<bool> inner_is_joint;\n    vec<int> self_edge_cnt;\n\
+    \    \n    lowlink(const vvi &g)\n        : n(g.size()),\n          tr(n),\n \
+    \         aux(n),\n          low(n, 1001001001),\n          in(n, -1),\n     \
+    \     par(n, -1),\n          inner_is_joint(n, false),\n          self_edge_cnt(n,\
+    \ 0) {\n        int t = 0;\n        int r = 0;\n        auto dfs = [&](auto f,\
+    \ int v, int p) -> void {\n            par[v] = p;\n            in[v] = low[v]\
+    \ = t++;\n            bool duplication = false;\n            for (int to : g[v])\
+    \ {\n                if (in[to] == -1) {\n                    tr[v].push_back(to);\n\
+    \                    f(f, to, v);\n                } else {\n                \
+    \    if (to != p) {\n                        if (in[to] < in[v])\n           \
+    \                 aux[v].push_back(to);\n                        else if (to ==\
+    \ v) {\n                            if ((++self_edge_cnt[v]) & 1) aux[v].push_back(to);\n\
+    \                        }\n                        chmin(low[v], in[to]);\n \
+    \                   } else if (duplication == false)\n                       \
+    \ duplication = true;\n                    else {\n                        aux[v].push_back(to);\n\
+    \                        chmin(low[v], in[to]);\n                    }\n     \
+    \           }\n            }\n\n            for (int to : tr[v]) {\n         \
+    \       chmin(low[v], low[to]);\n            }\n            // \u90E8\u5206\u6728\
+    \u306B\u3064\u3044\u3066\u3001low/in\u304C\u6C42\u307E\u3063\u305F\n         \
+    \   bool isjoint = false;\n            for (int to : tr[v]) {\n              \
+    \  if (low[to] > in[v]) bridges.emplace_back(v, to);\n                if (low[to]\
+    \ >= in[v]) isjoint = true;\n            }\n\n            if (v != r && isjoint)\n\
+    \                joints.push_back(v), inner_is_joint[v] = true;\n            else\
+    \ if (v == r) {\n                if (tr[v].size() > 1)\n                    joints.push_back(v),\
+    \ inner_is_joint[v] = true;\n            }\n        };\n\n        rep(i, 0, n)\
+    \ if (in[i] == -1) {\n            r = i;\n            dfs(dfs, i, -1);\n     \
+    \   }\n    }\n\n    bool is_bridge(int u, int v) {\n        if (in[u] > in[v])\
+    \ swap(u, v);\n        if (par[v] != u) return false;\n        if (low[v] > in[u])\n\
+    \            return true;\n        else\n            return false;\n    }\n\n\
+    \    bool is_joint(int v) { return inner_is_joint[v]; }\n};\n\n/*\n@brief lowlink\n\
+    @docs doc/lowlink.md\n*/\n#line 4 \"verify/lowlink_joint.test.cpp\"\n\nint main()\
     \ {\n    int v, e;\n    cin >> v >> e;\n    vec<vec<int>> g(v);\n    rep(i, 0,\
     \ e) {\n        int s, t;\n        cin >> s >> t;\n        g[s].push_back(t);\n\
     \        g[t].push_back(s);\n    }\n\n    lowlink llink(g);\n    auto js = llink.joints;\n\
-    \    sort(all(js));\n    for(auto v : js) cout << v << endl;\n\n}\n"
+    \    sort(all(js));\n    set<int> J;\n    for(int v : js) J.insert(v);\n    rep(i,\
+    \ 0, v) {\n        if(llink.is_joint(i)) assert(J.count(i));\n        else assert(!(J.count(i)));\n\
+    \    }\n    for(auto v : js) cout << v << endl;\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_A\"\
-    \ \n#include \"../Utility/template.hpp\"\n#include \"../Algorithm/lowlink.hpp\"\
-    \n\nint main() {\n    int v, e;\n    cin >> v >> e;\n    vec<vec<int>> g(v);\n\
-    \    rep(i, 0, e) {\n        int s, t;\n        cin >> s >> t;\n        g[s].push_back(t);\n\
+    \ \n#include \"../Utility/template.hpp\"\n#include \"../Graph/lowlink.hpp\"\n\n\
+    int main() {\n    int v, e;\n    cin >> v >> e;\n    vec<vec<int>> g(v);\n   \
+    \ rep(i, 0, e) {\n        int s, t;\n        cin >> s >> t;\n        g[s].push_back(t);\n\
     \        g[t].push_back(s);\n    }\n\n    lowlink llink(g);\n    auto js = llink.joints;\n\
-    \    sort(all(js));\n    for(auto v : js) cout << v << endl;\n\n}"
+    \    sort(all(js));\n    set<int> J;\n    for(int v : js) J.insert(v);\n    rep(i,\
+    \ 0, v) {\n        if(llink.is_joint(i)) assert(J.count(i));\n        else assert(!(J.count(i)));\n\
+    \    }\n    for(auto v : js) cout << v << endl;\n\n}"
   dependsOn:
   - Utility/template.hpp
-  - Algorithm/lowlink.hpp
+  - Graph/lowlink.hpp
   isVerificationFile: true
   path: verify/lowlink_joint.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-10-19 02:53:39+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lowlink_joint.test.cpp

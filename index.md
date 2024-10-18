@@ -16,9 +16,6 @@ data:
       path: Algorithm/limited_knapsack.hpp
       title: Algorithm/limited_knapsack.hpp
     - icon: ':heavy_check_mark:'
-      path: Algorithm/lowlink.hpp
-      title: lowlink
-    - icon: ':heavy_check_mark:'
       path: Algorithm/maxflow.hpp
       title: Maxflow
     - icon: ':heavy_check_mark:'
@@ -142,14 +139,23 @@ data:
       path: Graph/Chromatic_Number_with_restoration.hpp
       title: Graph/Chromatic_Number_with_restoration.hpp
     - icon: ':heavy_check_mark:'
+      path: Graph/bi_connected.hpp
+      title: "\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3\u30FBBCT Tree"
+    - icon: ':heavy_check_mark:'
       path: Graph/cycle_detection.hpp
       title: cycle_detection
+    - icon: ':heavy_check_mark:'
+      path: Graph/lowlink.hpp
+      title: lowlink
     - icon: ':heavy_check_mark:'
       path: Graph/min_distance.hpp
       title: "\u6700\u77ED\u7D4C\u8DEF"
     - icon: ':heavy_check_mark:'
       path: Graph/scc.hpp
       title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
+    - icon: ':heavy_check_mark:'
+      path: Graph/two_edge_connected.hpp
+      title: "\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - name: Math
     pages:
     - icon: ':heavy_check_mark:'
@@ -298,6 +304,9 @@ data:
       path: verify/bellman_ford.test.cpp
       title: verify/bellman_ford.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/bi_connected.test.cpp
+      title: verify/bi_connected.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/binary_trie.test.cpp
       title: verify/binary_trie.test.cpp
     - icon: ':heavy_check_mark:'
@@ -439,15 +448,14 @@ data:
       path: verify/treedp.test.cpp
       title: verify/treedp.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/two_edge_connected.test.cpp
+      title: verify/two_edge_connected.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/undabledsu.test.cpp
       title: verify/undabledsu.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/value_dsu.test.cpp
       title: verify/value_dsu.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
-      title: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3\
-        .test.cpp"
   - name: "\u7802\u5834"
     pages:
     - icon: ':heavy_check_mark:'

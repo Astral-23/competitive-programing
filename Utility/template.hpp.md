@@ -58,6 +58,9 @@ data:
     path: verify/bellman_ford.test.cpp
     title: verify/bellman_ford.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/bi_connected.test.cpp
+    title: verify/bi_connected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/binary_trie.test.cpp
     title: verify/binary_trie.test.cpp
   - icon: ':heavy_check_mark:'
@@ -199,14 +202,14 @@ data:
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/two_edge_connected.test.cpp
+    title: verify/two_edge_connected.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/undabledsu.test.cpp
     title: verify/undabledsu.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/value_dsu.test.cpp
     title: verify/value_dsu.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
-    title: "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
@@ -275,13 +278,13 @@ data:
   - verify/2dbit_imos.test.cpp
   - verify/2dsegtree_max.test.cpp
   - verify/2dbit.test.cpp
-  - "verify/\u4E8C\u91CD\u9802\u70B9\u9023\u7D50\u6210\u5206\u5206\u89E3.test.cpp"
   - verify/extgcd.test.cpp
   - verify/dsu.test.cpp
   - verify/swag.test.cpp
   - verify/oneside_range_edge_graph.test.cpp
   - verify/lowlink_bridge.test.cpp
   - verify/Chromatic_Number_with_restoration.test.cpp
+  - verify/two_edge_connected.test.cpp
   - verify/bisect.test.cpp
   - verify/hld.test.cpp
   - verify/treap.test.cpp
@@ -300,6 +303,7 @@ data:
   - verify/2dsegtree_add.test.cpp
   - verify/swag_more.test.cpp
   - verify/point_add_rec_sum.test.cpp
+  - verify/bi_connected.test.cpp
   - verify/mo.test.cpp
   - verify/floor_sum.test.cpp
   - verify/jumpontree.test.cpp
