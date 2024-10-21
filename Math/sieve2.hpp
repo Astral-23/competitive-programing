@@ -205,6 +205,7 @@ struct sectional_primes {
         long long
             x) {  //[L, R]について、素因数分解の結果を返す {素因数, 指数}の配列
         if (!conducted) conduct();
+        assert(L <= x && x <= R);
         return large_res[x - L];
     }  // 初回いっぱい 以降O(1)
 
