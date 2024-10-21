@@ -17,61 +17,6 @@
 - 部分木の結果のmergeが高速であるdp
 affine変換等
 
-## 解決策
-全てを書き直す(そんな)
-
-```
-...
-
-    S dfs(int v, int p) {
-        S res = e();
-        int d = g[v].size();
-        dp[v].resize(d);
-        rep(i, 0, d) {
-            int to = g[v][i].first;
-            if(to == p) continue;
-            dp[v][i] = dfs(to, v);
-            //res = op(res, mp(g[v][i].second, dp[v][i]));
-            //dfsの段階。部分木の結果をmergeする。
-        }
-        //return addroot(res, v);
-        //vの情報を付加して返す。
-    }
-
-    void bfs(int v, S par, int p) {
-        int d = g[v].size();
-        rep(i, 0, d) if(g[v][i].first == p) dp[v][i] = par;
-
-       // vs L (d + 1, e());逆元を仮定するのでいらない。
-       // vs R (d + 1, e());
-
-        //rep(i, 0, d) L[i+1] = op(L[i], mp(g[v][i].second, dp[v][i]));
-        //rrep(i, 0, d) R[i] = op(mp(g[v][i].second, dp[v][i]), R[i+1]);
-        
-        //このように、子全部の結果をmergeする。必要ならここでデータ構造を作る。
-        S res = e();
-        rep(i, 0, d) res = op(res, mp(g[v][i].second, res));
-       
-        //ここは変化なし。
-        ans[v] = addroot(L[d], v);
-      
-        rep(i, 0, d) {
-            int to = g[v][i].first;
-            //行き先の結果を省く。
-            S to_res = dp[v][i];
-            
-            if(to == p) continue;
-
-            res -= to_res;
-            bfs(to, addroot(res, v), v);
-            res += to_res;
-        }
-
-    }
-
-...
-
-```
 
 ## コンストラクタ
 **TDP<S, op, e, addroot, F, mp> tdp(n)** 
@@ -100,7 +45,7 @@ vの子の結果を(辺の情報を含めて)mergeしたものSと、自分の�
 
 ## 関数
 
-- **add_edge(int s, int t, F f)**...辺の情報をfとして、s→tの有向辺を追加
+- `void add_edge(int s, int t, F f, F h)`...s, t間に辺を張る。 s->tの重みがf, t->sの重みがh。
     - **制約**
     $0 \le s, t < n$
     - **計算量**
