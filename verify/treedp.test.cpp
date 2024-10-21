@@ -49,8 +49,7 @@ int main() {
     rep(i, 0, n-1) {
         int u, v, b, c;
         cin >> u >> v >> b >> c;
-        tdp.add_edge(u, v, F(b, c));
-        tdp.add_edge(v, u, F(b, c));
+        tdp.add_edge(u, v, F(b, c), F(b, c));
     }
 
     auto ans = tdp.exe();
