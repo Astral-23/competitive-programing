@@ -102,13 +102,13 @@ data:
     \ long, long long>> get(\n        long long\n            x) {  //[L, R]\u306B\u3064\
     \u3044\u3066\u3001\u7D20\u56E0\u6570\u5206\u89E3\u306E\u7D50\u679C\u3092\u8FD4\
     \u3059 {\u7D20\u56E0\u6570, \u6307\u6570}\u306E\u914D\u5217\n        if (!conducted)\
-    \ conduct();\n        return large_res[x - L];\n    }  // \u521D\u56DE\u3044\u3063\
-    \u3071\u3044 \u4EE5\u964DO(1)\n\n    vector<ll> divs(ll x) {  // x\u306E\u7D04\
-    \u6570\u3092\u9069\u5F53\u306A\u9806\u3067\u5165\u308C\u305F\u914D\u5217\u3092\
-    \u8FD4\u3059\u3002\n        return divs__(x);\n    }  // O(\u7D04\u6570\u306E\u500B\
-    \u6570)  x <= 10^18\u3067\u5927\u51E1 O(x ^ (1/3))  \u6CE8 : \u521D\u56DEO(NlogN)\n\
-    };\n\n/*\n@brief \u7D20\u6570\u7BE9(\u5DE6\u7AEF\u4EFB\u610F)\n*/\nint main()\
-    \ {}\n// s -> 0, 0 -> 9, 9 -> t, 1\n"
+    \ conduct();\n        assert(L <= x && x <= R);\n        return large_res[x -\
+    \ L];\n    }  // \u521D\u56DE\u3044\u3063\u3071\u3044 \u4EE5\u964DO(1)\n\n   \
+    \ vector<ll> divs(ll x) {  // x\u306E\u7D04\u6570\u3092\u9069\u5F53\u306A\u9806\
+    \u3067\u5165\u308C\u305F\u914D\u5217\u3092\u8FD4\u3059\u3002\n        return divs__(x);\n\
+    \    }  // O(\u7D04\u6570\u306E\u500B\u6570)  x <= 10^18\u3067\u5927\u51E1 O(x\
+    \ ^ (1/3))  \u6CE8 : \u521D\u56DEO(NlogN)\n};\n\n/*\n@brief \u7D20\u6570\u7BE9\
+    (\u5DE6\u7AEF\u4EFB\u610F)\n*/\nint main() {}\n// s -> 0, 0 -> 9, 9 -> t, 1\n"
   code: "#include <bits/stdc++.h>\n#if __has_include(<atcoder/all>)\n#include <atcoder/all>\n\
     std::ostream &operator<<(std::ostream &os, const atcoder::modint998244353 &v)\
     \ {\n    os << v.val();\n    return os;\n}\nstd::istream &operator>>(std::istream\
@@ -202,18 +202,18 @@ data:
     \ long, long long>> get(\n        long long\n            x) {  //[L, R]\u306B\u3064\
     \u3044\u3066\u3001\u7D20\u56E0\u6570\u5206\u89E3\u306E\u7D50\u679C\u3092\u8FD4\
     \u3059 {\u7D20\u56E0\u6570, \u6307\u6570}\u306E\u914D\u5217\n        if (!conducted)\
-    \ conduct();\n        return large_res[x - L];\n    }  // \u521D\u56DE\u3044\u3063\
-    \u3071\u3044 \u4EE5\u964DO(1)\n\n    vector<ll> divs(ll x) {  // x\u306E\u7D04\
-    \u6570\u3092\u9069\u5F53\u306A\u9806\u3067\u5165\u308C\u305F\u914D\u5217\u3092\
-    \u8FD4\u3059\u3002\n        return divs__(x);\n    }  // O(\u7D04\u6570\u306E\u500B\
-    \u6570)  x <= 10^18\u3067\u5927\u51E1 O(x ^ (1/3))  \u6CE8 : \u521D\u56DEO(NlogN)\n\
-    };\n\n/*\n@brief \u7D20\u6570\u7BE9(\u5DE6\u7AEF\u4EFB\u610F)\n*/\nint main()\
-    \ {}\n// s -> 0, 0 -> 9, 9 -> t, 1"
+    \ conduct();\n        assert(L <= x && x <= R);\n        return large_res[x -\
+    \ L];\n    }  // \u521D\u56DE\u3044\u3063\u3071\u3044 \u4EE5\u964DO(1)\n\n   \
+    \ vector<ll> divs(ll x) {  // x\u306E\u7D04\u6570\u3092\u9069\u5F53\u306A\u9806\
+    \u3067\u5165\u308C\u305F\u914D\u5217\u3092\u8FD4\u3059\u3002\n        return divs__(x);\n\
+    \    }  // O(\u7D04\u6570\u306E\u500B\u6570)  x <= 10^18\u3067\u5927\u51E1 O(x\
+    \ ^ (1/3))  \u6CE8 : \u521D\u56DEO(NlogN)\n};\n\n/*\n@brief \u7D20\u6570\u7BE9\
+    (\u5DE6\u7AEF\u4EFB\u610F)\n*/\nint main() {}\n// s -> 0, 0 -> 9, 9 -> t, 1"
   dependsOn: []
   isVerificationFile: false
   path: Math/sieve2.hpp
   requiredBy: []
-  timestamp: '2024-10-21 12:26:54+09:00'
+  timestamp: '2024-10-21 12:45:18+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/sieve2.hpp
