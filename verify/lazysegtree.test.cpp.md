@@ -36,28 +36,28 @@ data:
     \ mod;\n    }\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
     \        if (a.x >= mod) a.x -= mod;\n        return a;\n    }\n    friend mm\
     \ operator-(mm a, mm b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x +=\
-    \ mod;\n        return a;\n    }\n\n    mm operator-() const {\n        return\
-    \ mod - x;\n    }\n\n    //+\u3068-\u3060\u3051\u3067\u5341\u5206\u306A\u5834\u5408\
-    \u3001\u4EE5\u4E0B\u306F\u7701\u7565\u3057\u3066\u826F\u3044\u3067\u3059\u3002\
-    \n\n    friend mm operator*(mm a, mm b) { return (uint64_t)(a.x) * b.x; }\n  \
-    \  friend mm operator/(mm a, mm b) { return a * b.inv(); }\n    friend mm &operator+=(mm\
-    \ &a, mm b) { return a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return\
-    \ a = a - b; }\n    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n\
-    \    friend mm &operator/=(mm &a, mm b) { return a = a * b.inv(); }\n\n    mm\
-    \ inv() const { return pow(mod - 2); }\n    mm pow(ll y) const {\n        mm res\
-    \ = 1;\n        mm v = *this;\n        while (y) {\n            if (y & 1) res\
-    \ *= v;\n            v *= v;\n            y /= 2;\n        }\n        return res;\n\
-    \    }\n\n    friend istream &operator>>(istream &is, mm &a) {\n        ll t;\n\
-    \        cin >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend\
-    \ ostream &operator<<(ostream &os, mm a) { return os << a.x; }\n\n    bool operator==(mm\
-    \ a) { return x == a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n\
-    \    bool operator<(const mm &a) const { return x < a.x; }\n};\nusing modint998244353\
-    \ = modint<998244353>;\nusing modint1000000007 = modint<1'000'000'007>;\n/*\n\
-    @brief modint\n*/\n#line 1 \"Datastructure/lazysegtree.hpp\"\ntemplate <class\
-    \ S,\n          S (*op)(S, S),\n          S (*e)(),\n          class F,\n    \
-    \      S (*mp)(F, S),\n          F (*cm)(F, F),\n          F (*id)()>\nstruct\
-    \ lazysegtree {\n    int n;\n    int sz;\n    int log;\n    vec<S> d;\n    vec<F>\
-    \ lz;\n    lazysegtree(int n) : lazysegtree(vec<S>(n, e())) {}\n    lazysegtree(const\
+    \ mod;\n        return a;\n    }\n\n    mm operator-() const { return mod - x;\
+    \ }\n\n    //+\u3068-\u3060\u3051\u3067\u5341\u5206\u306A\u5834\u5408\u3001\u4EE5\
+    \u4E0B\u306F\u7701\u7565\u3057\u3066\u826F\u3044\u3067\u3059\u3002\n\n    friend\
+    \ mm operator*(mm a, mm b) { return (uint64_t)(a.x) * b.x; }\n    friend mm operator/(mm\
+    \ a, mm b) { return a * b.inv(); }\n    friend mm &operator+=(mm &a, mm b) { return\
+    \ a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return a = a - b; }\n\
+    \    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n    friend mm &operator/=(mm\
+    \ &a, mm b) { return a = a * b.inv(); }\n\n    mm inv() const {\n        assert(x\
+    \ != 0);\n        return pow(mod - 2);\n    }\n    mm pow(ll y) const {\n    \
+    \    mm res = 1;\n        mm v = *this;\n        while (y) {\n            if (y\
+    \ & 1) res *= v;\n            v *= v;\n            y /= 2;\n        }\n      \
+    \  return res;\n    }\n\n    friend istream &operator>>(istream &is, mm &a) {\n\
+    \        ll t;\n        cin >> t;\n        a = mm(t);\n        return is;\n  \
+    \  }\n\n    friend ostream &operator<<(ostream &os, mm a) { return os << a.x;\
+    \ }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
+    \ a) { return x != a.x; }\n\n    bool operator<(const mm &a) const { return x\
+    \ < a.x; }\n};\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
+    \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line 1 \"Datastructure/lazysegtree.hpp\"\
+    \ntemplate <class S,\n          S (*op)(S, S),\n          S (*e)(),\n        \
+    \  class F,\n          S (*mp)(F, S),\n          F (*cm)(F, F),\n          F (*id)()>\n\
+    struct lazysegtree {\n    int n;\n    int sz;\n    int log;\n    vec<S> d;\n \
+    \   vec<F> lz;\n    lazysegtree(int n) : lazysegtree(vec<S>(n, e())) {}\n    lazysegtree(const\
     \ vec<S> &v) : n((int)(v.size())) {\n        log = 1;\n        while ((1 << log)\
     \ < n) log++;\n        sz = 1 << log;\n        d.resize(2 * sz, e());\n      \
     \  lz.resize(2 * sz, id());\n        rep(i, 0, n) d[sz + i] = v[i];\n        rrep(i,\
@@ -151,7 +151,7 @@ data:
   isVerificationFile: true
   path: verify/lazysegtree.test.cpp
   requiredBy: []
-  timestamp: '2024-10-17 19:00:57+09:00'
+  timestamp: '2024-12-03 09:45:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/lazysegtree.test.cpp

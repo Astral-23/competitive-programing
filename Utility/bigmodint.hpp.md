@@ -28,15 +28,16 @@ data:
     \    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n    friend mm &operator/=(mm\
     \ &a, mm b) { return a = a * b.inv(); }\n\n    // \u30ED\u30EA\u30CF\u306A\u3089\
     \u3053\u3053\u307E\u3067(/\u6F14\u7B97\u3068 /= \u6F14\u7B97\u306F\u3044\u3089\
-    \u306A\u3044)\n\n    mm inv() const { return pow(mod - 2); }\n    mm pow(ll y)\
-    \ const {\n        mm res = 1;\n        mm v = *this;\n        while (y) {\n \
-    \           if (y & 1) res *= v;\n            v *= v;\n            y /= 2;\n \
-    \       }\n        return res;\n    }\n\n    friend istream &operator>>(istream\
-    \ &is, mm &a) {\n        ll t;\n        cin >> t;\n        a = mm(t);\n      \
-    \  return is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) { return\
-    \ os << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
-    \ a) { return x != a.x; }\n    // bool operator<(const mm& a) const {return x\
-    \ < a.x;}\n};\n/*\n@brief big_modint\n*/\n"
+    \u306A\u3044)\n\n    mm inv() const {\n        assert(x != 0);\n        return\
+    \ pow(mod - 2);\n    }\n    \n    mm pow(ll y) const {\n        mm res = 1;\n\
+    \        mm v = *this;\n        while (y) {\n            if (y & 1) res *= v;\n\
+    \            v *= v;\n            y /= 2;\n        }\n        return res;\n  \
+    \  }\n\n    friend istream &operator>>(istream &is, mm &a) {\n        ll t;\n\
+    \        cin >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend\
+    \ ostream &operator<<(ostream &os, mm a) { return os << a.x; }\n\n    bool operator==(mm\
+    \ a) { return x == a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n  \
+    \  // bool operator<(const mm& a) const {return x < a.x;}\n};\n/*\n@brief big_modint\n\
+    */\n"
   code: "\n/*\nmodint\u304B\u3089\u306E\u5909\u66F4\u70B9:\n[1] 1\u884C\u76EE(template\u306E\
     \u4E2D\u8EAB)\nuint32_t mod \u2192 uint64_t mod\n\n[2] 4\u884C\u76EE(\u5909\u6570\
     x\u306E\u578B)\nuint32_t x \u2192 uint64_t x\n\n[3]friend mm operator*\u306B\u3064\
@@ -55,21 +56,21 @@ data:
     \ &a, mm b) { return a = a - b; }\n    friend mm &operator*=(mm &a, mm b) { return\
     \ a = a * b; }\n    friend mm &operator/=(mm &a, mm b) { return a = a * b.inv();\
     \ }\n\n    // \u30ED\u30EA\u30CF\u306A\u3089\u3053\u3053\u307E\u3067(/\u6F14\u7B97\
-    \u3068 /= \u6F14\u7B97\u306F\u3044\u3089\u306A\u3044)\n\n    mm inv() const {\
-    \ return pow(mod - 2); }\n    mm pow(ll y) const {\n        mm res = 1;\n    \
-    \    mm v = *this;\n        while (y) {\n            if (y & 1) res *= v;\n  \
-    \          v *= v;\n            y /= 2;\n        }\n        return res;\n    }\n\
-    \n    friend istream &operator>>(istream &is, mm &a) {\n        ll t;\n      \
-    \  cin >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend ostream\
-    \ &operator<<(ostream &os, mm a) { return os << a.x; }\n\n    bool operator==(mm\
-    \ a) { return x == a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n  \
-    \  // bool operator<(const mm& a) const {return x < a.x;}\n};\n/*\n@brief big_modint\n\
-    */"
+    \u3068 /= \u6F14\u7B97\u306F\u3044\u3089\u306A\u3044)\n\n    mm inv() const {\n\
+    \        assert(x != 0);\n        return pow(mod - 2);\n    }\n    \n    mm pow(ll\
+    \ y) const {\n        mm res = 1;\n        mm v = *this;\n        while (y) {\n\
+    \            if (y & 1) res *= v;\n            v *= v;\n            y /= 2;\n\
+    \        }\n        return res;\n    }\n\n    friend istream &operator>>(istream\
+    \ &is, mm &a) {\n        ll t;\n        cin >> t;\n        a = mm(t);\n      \
+    \  return is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) { return\
+    \ os << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
+    \ a) { return x != a.x; }\n    // bool operator<(const mm& a) const {return x\
+    \ < a.x;}\n};\n/*\n@brief big_modint\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Utility/bigmodint.hpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-12-03 09:45:24+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Utility/bigmodint.hpp

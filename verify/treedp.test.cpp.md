@@ -36,78 +36,79 @@ data:
     \ mod;\n    }\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
     \        if (a.x >= mod) a.x -= mod;\n        return a;\n    }\n    friend mm\
     \ operator-(mm a, mm b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x +=\
-    \ mod;\n        return a;\n    }\n\n    mm operator-() const {\n        return\
-    \ mod - x;\n    }\n\n    //+\u3068-\u3060\u3051\u3067\u5341\u5206\u306A\u5834\u5408\
-    \u3001\u4EE5\u4E0B\u306F\u7701\u7565\u3057\u3066\u826F\u3044\u3067\u3059\u3002\
-    \n\n    friend mm operator*(mm a, mm b) { return (uint64_t)(a.x) * b.x; }\n  \
-    \  friend mm operator/(mm a, mm b) { return a * b.inv(); }\n    friend mm &operator+=(mm\
-    \ &a, mm b) { return a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return\
-    \ a = a - b; }\n    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n\
-    \    friend mm &operator/=(mm &a, mm b) { return a = a * b.inv(); }\n\n    mm\
-    \ inv() const { return pow(mod - 2); }\n    mm pow(ll y) const {\n        mm res\
-    \ = 1;\n        mm v = *this;\n        while (y) {\n            if (y & 1) res\
-    \ *= v;\n            v *= v;\n            y /= 2;\n        }\n        return res;\n\
-    \    }\n\n    friend istream &operator>>(istream &is, mm &a) {\n        ll t;\n\
-    \        cin >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend\
-    \ ostream &operator<<(ostream &os, mm a) { return os << a.x; }\n\n    bool operator==(mm\
-    \ a) { return x == a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n\
-    \    bool operator<(const mm &a) const { return x < a.x; }\n};\nusing modint998244353\
-    \ = modint<998244353>;\nusing modint1000000007 = modint<1'000'000'007>;\n/*\n\
-    @brief modint\n*/\n#line 1 \"Algorithm/treedp.hpp\"\ntemplate <class S,\n    \
-    \      S (*op)(S, S),\n          S (*e)(),\n          S (*addroot)(S, int),\n\
-    \          class F,\n          S (*mp)(F, S)>\nstruct TDP {\n    using pif = pair<int,\
-    \ F>;\n    using vs = vec<S>;\n    using vvs = vec<vs>;\n\n    int n;\n    vec<vec<pif>>\
-    \ g;\n    vvs dp;\n    // dp[v][i] :=  (v \u2192 g[v][i])\u306E\u8FBA\u306B\u3064\
-    \u3044\u3066\u3001\n    // g[v][i]\u3092\u6839\u3068\u3059\u308B\u90E8\u5206\u6728\
-    \u306E\u7D50\u679C\n    vs ans;\n\n    TDP(int n) : n(n) {\n        g.resize(n);\n\
-    \        dp = vvs(n);\n        ans = vs(n, e());\n    }\n\n  private:\n    S dfs(int\
-    \ v, int p) {\n        S res = e();\n        int d = g[v].size();\n        dp[v].resize(d);\n\
-    \        rep(i, 0, d) {\n            int to = g[v][i].first;\n            if (to\
-    \ == p) continue;\n            dp[v][i] = dfs(to, v);\n            res = op(res,\
-    \ mp(g[v][i].second, dp[v][i]));\n            // \u90E8\u5206\u6728\u306E\u7D50\
-    \u679C\u3092\u96C6\u7D04\u3002\n            // \u672C\u5B9F\u88C5\u3067\u306F\u8FBA\
-    \u3092\u52A0\u5473 ->\n            // \u90E8\u5206\u6728\u96C6\u7D04\u306E\u9806\
-    \u3092\u5FB9\u5E95\u3057\u3066\u3044\u308B(\u8FBB\u8904\u304C\u5408\u3046\u306A\
-    \u3089\u3044\u3064\u3067\u3082\u826F\u3044)\n        }\n        // \u8FBA\u30FB\
-    \u9802\u70B9\u3092add\u3057\u305F\u5F71\u97FF\u3092\u53CD\u6620\u3057\u305F\u3082\
-    \u306E\u3092\u8FD4\u3059\u3002\n        return addroot(res, v);\n    }\n\n   \
-    \ void bfs(int v, S par, int p) {\n        int d = g[v].size();\n        rep(i,\
-    \ 0, d) if (g[v][i].first == p) dp[v][i] = par;\n        // \u89AA\u306E\u7D50\
-    \u679C\u3092\u6E21\u3057\u3066\u304A\u304F\u3002\n\n        vs L(d + 1, e());\n\
-    \        vs R(d + 1, e());\n\n        rep(i, 0, d) L[i + 1] = op(L[i], mp(g[v][i].second,\
-    \ dp[v][i]));\n        rrep(i, 0, d) R[i] = op(mp(g[v][i].second, dp[v][i]), R[i\
-    \ + 1]);\n        // \u672C\u5B9F\u88C5\u3067\u306F\u8FBA\u3092\u52A0\u5473 ->\n\
-    \        // \u90E8\u5206\u6728\u96C6\u7D04\u306E\u9806\u3092\u5FB9\u5E95\u3057\
-    \u3066\u3044\u308B(\u8FBB\u8904\u304C\u5408\u3046\u306A\u3089\u3044\u3064\u3067\
-    \u3082\u826F\u3044)\n\n        ans[v] = addroot(L[d], v);\n        // \u8FBA\u30FB\
-    \u9802\u70B9\u3092add\u3057\u305F\u5F71\u97FF\u3092\u53CD\u6620\u3057\u305F\u3082\
-    \u306E\u3092\u8FD4\u3059\u3002ans\u306B\u683C\u7D0D\u3059\u308B\u6642\u3060\u3051\
-    \u4F55\u304B\u5F04\u308A\u305F\u3044\u306A\u3089\u3053\u3053\u3092\u5F04\u308B\
-    \u3002\n\n        rep(i, 0, d) {\n            int to = g[v][i].first;\n      \
-    \      if (to == p) continue;\n            S nx = op(L[i], R[i + 1]);\n      \
-    \      // \u672C\u5B9F\u88C5\u3067\u306F\u8FBA\u3092\u52A0\u5473 ->\n        \
-    \    // \u90E8\u5206\u6728\u96C6\u7D04\u306E\u9806\u3092\u5FB9\u5E95\u3057\u3066\
-    \u3044\u308B(\u8FBB\u8904\u304C\u5408\u3046\u306A\u3089\u3044\u3064\u3067\u3082\
-    \u826F\u3044)\n\n            bfs(to, addroot(nx, v), v);\n            // to ->\
-    \ v\u306E\u5411\u304D\u306B\u8FBA\u30FB\u9802\u70B9\u3092add\u3057\u305F\u5F71\
-    \u97FF\u3092\u53CD\u6620\u3057\u305F\u3082\u306E\u3092\u8FD4\u3059\u3002\n   \
-    \     }\n    }\n\n  public:\n    // s -> t \u306B\u91CD\u307Ff\u306E\u8FBA\u3001\
-    \ t -> s\u306B\u91CD\u307Fh\u306E\u8FBA\n    void add_edge(int s, int t, F f,\
-    \ F h) {\n        g[s].emplace_back(t, f);\n        g[t].emplace_back(s, h);\n\
-    \    }\n\n    vec<S> exe() {\n        dfs(0, -1);\n        bfs(0, e(), -1);\n\
-    \        return ans;\n    }\n};\n\n/*\n@brief \u5168\u65B9\u4F4D\u6728DP\n@docs\
-    \ doc/treedp.md\n*/\n#line 5 \"verify/treedp.test.cpp\"\nvec<ll> A;\n\nusing mint\
-    \ = modint998244353;\n\nstruct S {\n    mint val; int siz;\n    S(){}\n    S(mint\
-    \ v, int s) : val(v), siz(s){}\n};\n\nS op(S l, S r) {\n    l.val += r.val;\n\
-    \    l.siz += r.siz;\n    return l;\n}\n\nS e() {\n    return S(0, 0);\n}\n\n\
-    S addroot(S res, int v) {\n    res.val += A[v];\n    res.siz += 1;\n    return\
-    \ res;\n}\n\nstruct F{\n    mint b, c;\n    F(){}\n    F(mint t, mint y) : b(t),\
-    \ c(y) {}\n};\n\nS mp(F f, S s) {\n    s.val = s.val * f.b + f.c * s.siz;\n  \
-    \  return s;\n}\n\nint main() {\n    int n;\n    cin >> n;\n    A = vec<ll>(n,\
-    \ 0);\n    rep(i, 0, n) cin >> A[i];\n\n    TDP<S, op, e, addroot, F, mp> tdp(n);\n\
-    \    rep(i, 0, n-1) {\n        int u, v, b, c;\n        cin >> u >> v >> b >>\
-    \ c;\n        tdp.add_edge(u, v, F(b, c), F(b, c));\n    }\n\n    auto ans = tdp.exe();\n\
-    \    rep(i, 0, n) cout << ans[i].val.x << '\\n';\n\n}\n"
+    \ mod;\n        return a;\n    }\n\n    mm operator-() const { return mod - x;\
+    \ }\n\n    //+\u3068-\u3060\u3051\u3067\u5341\u5206\u306A\u5834\u5408\u3001\u4EE5\
+    \u4E0B\u306F\u7701\u7565\u3057\u3066\u826F\u3044\u3067\u3059\u3002\n\n    friend\
+    \ mm operator*(mm a, mm b) { return (uint64_t)(a.x) * b.x; }\n    friend mm operator/(mm\
+    \ a, mm b) { return a * b.inv(); }\n    friend mm &operator+=(mm &a, mm b) { return\
+    \ a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return a = a - b; }\n\
+    \    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n    friend mm &operator/=(mm\
+    \ &a, mm b) { return a = a * b.inv(); }\n\n    mm inv() const {\n        assert(x\
+    \ != 0);\n        return pow(mod - 2);\n    }\n    mm pow(ll y) const {\n    \
+    \    mm res = 1;\n        mm v = *this;\n        while (y) {\n            if (y\
+    \ & 1) res *= v;\n            v *= v;\n            y /= 2;\n        }\n      \
+    \  return res;\n    }\n\n    friend istream &operator>>(istream &is, mm &a) {\n\
+    \        ll t;\n        cin >> t;\n        a = mm(t);\n        return is;\n  \
+    \  }\n\n    friend ostream &operator<<(ostream &os, mm a) { return os << a.x;\
+    \ }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
+    \ a) { return x != a.x; }\n\n    bool operator<(const mm &a) const { return x\
+    \ < a.x; }\n};\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
+    \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line 1 \"Algorithm/treedp.hpp\"\
+    \ntemplate <class S,\n          S (*op)(S, S),\n          S (*e)(),\n        \
+    \  S (*addroot)(S, int),\n          class F,\n          S (*mp)(F, S)>\nstruct\
+    \ TDP {\n    using pif = pair<int, F>;\n    using vs = vec<S>;\n    using vvs\
+    \ = vec<vs>;\n\n    int n;\n    vec<vec<pif>> g;\n    vvs dp;\n    // dp[v][i]\
+    \ :=  (v \u2192 g[v][i])\u306E\u8FBA\u306B\u3064\u3044\u3066\u3001\n    // g[v][i]\u3092\
+    \u6839\u3068\u3059\u308B\u90E8\u5206\u6728\u306E\u7D50\u679C\n    vs ans;\n\n\
+    \    TDP(int n) : n(n) {\n        g.resize(n);\n        dp = vvs(n);\n       \
+    \ ans = vs(n, e());\n    }\n\n  private:\n    S dfs(int v, int p) {\n        S\
+    \ res = e();\n        int d = g[v].size();\n        dp[v].resize(d);\n       \
+    \ rep(i, 0, d) {\n            int to = g[v][i].first;\n            if (to == p)\
+    \ continue;\n            dp[v][i] = dfs(to, v);\n            res = op(res, mp(g[v][i].second,\
+    \ dp[v][i]));\n            // \u90E8\u5206\u6728\u306E\u7D50\u679C\u3092\u96C6\
+    \u7D04\u3002\n            // \u672C\u5B9F\u88C5\u3067\u306F\u8FBA\u3092\u52A0\u5473\
+    \ ->\n            // \u90E8\u5206\u6728\u96C6\u7D04\u306E\u9806\u3092\u5FB9\u5E95\
+    \u3057\u3066\u3044\u308B(\u8FBB\u8904\u304C\u5408\u3046\u306A\u3089\u3044\u3064\
+    \u3067\u3082\u826F\u3044)\n        }\n        // \u8FBA\u30FB\u9802\u70B9\u3092\
+    add\u3057\u305F\u5F71\u97FF\u3092\u53CD\u6620\u3057\u305F\u3082\u306E\u3092\u8FD4\
+    \u3059\u3002\n        return addroot(res, v);\n    }\n\n    void bfs(int v, S\
+    \ par, int p) {\n        int d = g[v].size();\n        rep(i, 0, d) if (g[v][i].first\
+    \ == p) dp[v][i] = par;\n        // \u89AA\u306E\u7D50\u679C\u3092\u6E21\u3057\
+    \u3066\u304A\u304F\u3002\n\n        vs L(d + 1, e());\n        vs R(d + 1, e());\n\
+    \n        rep(i, 0, d) L[i + 1] = op(L[i], mp(g[v][i].second, dp[v][i]));\n  \
+    \      rrep(i, 0, d) R[i] = op(mp(g[v][i].second, dp[v][i]), R[i + 1]);\n    \
+    \    // \u672C\u5B9F\u88C5\u3067\u306F\u8FBA\u3092\u52A0\u5473 ->\n        //\
+    \ \u90E8\u5206\u6728\u96C6\u7D04\u306E\u9806\u3092\u5FB9\u5E95\u3057\u3066\u3044\
+    \u308B(\u8FBB\u8904\u304C\u5408\u3046\u306A\u3089\u3044\u3064\u3067\u3082\u826F\
+    \u3044)\n\n        ans[v] = addroot(L[d], v);\n        // \u8FBA\u30FB\u9802\u70B9\
+    \u3092add\u3057\u305F\u5F71\u97FF\u3092\u53CD\u6620\u3057\u305F\u3082\u306E\u3092\
+    \u8FD4\u3059\u3002ans\u306B\u683C\u7D0D\u3059\u308B\u6642\u3060\u3051\u4F55\u304B\
+    \u5F04\u308A\u305F\u3044\u306A\u3089\u3053\u3053\u3092\u5F04\u308B\u3002\n\n \
+    \       rep(i, 0, d) {\n            int to = g[v][i].first;\n            if (to\
+    \ == p) continue;\n            S nx = op(L[i], R[i + 1]);\n            // \u672C\
+    \u5B9F\u88C5\u3067\u306F\u8FBA\u3092\u52A0\u5473 ->\n            // \u90E8\u5206\
+    \u6728\u96C6\u7D04\u306E\u9806\u3092\u5FB9\u5E95\u3057\u3066\u3044\u308B(\u8FBB\
+    \u8904\u304C\u5408\u3046\u306A\u3089\u3044\u3064\u3067\u3082\u826F\u3044)\n\n\
+    \            bfs(to, addroot(nx, v), v);\n            // to -> v\u306E\u5411\u304D\
+    \u306B\u8FBA\u30FB\u9802\u70B9\u3092add\u3057\u305F\u5F71\u97FF\u3092\u53CD\u6620\
+    \u3057\u305F\u3082\u306E\u3092\u8FD4\u3059\u3002\n        }\n    }\n\n  public:\n\
+    \    // s -> t \u306B\u91CD\u307Ff\u306E\u8FBA\u3001 t -> s\u306B\u91CD\u307F\
+    h\u306E\u8FBA\n    void add_edge(int s, int t, F f, F h) {\n        g[s].emplace_back(t,\
+    \ f);\n        g[t].emplace_back(s, h);\n    }\n\n    vec<S> exe() {\n       \
+    \ dfs(0, -1);\n        bfs(0, e(), -1);\n        return ans;\n    }\n};\n\n/*\n\
+    @brief \u5168\u65B9\u4F4D\u6728DP\n@docs doc/treedp.md\n*/\n#line 5 \"verify/treedp.test.cpp\"\
+    \nvec<ll> A;\n\nusing mint = modint998244353;\n\nstruct S {\n    mint val; int\
+    \ siz;\n    S(){}\n    S(mint v, int s) : val(v), siz(s){}\n};\n\nS op(S l, S\
+    \ r) {\n    l.val += r.val;\n    l.siz += r.siz;\n    return l;\n}\n\nS e() {\n\
+    \    return S(0, 0);\n}\n\nS addroot(S res, int v) {\n    res.val += A[v];\n \
+    \   res.siz += 1;\n    return res;\n}\n\nstruct F{\n    mint b, c;\n    F(){}\n\
+    \    F(mint t, mint y) : b(t), c(y) {}\n};\n\nS mp(F f, S s) {\n    s.val = s.val\
+    \ * f.b + f.c * s.siz;\n    return s;\n}\n\nint main() {\n    int n;\n    cin\
+    \ >> n;\n    A = vec<ll>(n, 0);\n    rep(i, 0, n) cin >> A[i];\n\n    TDP<S, op,\
+    \ e, addroot, F, mp> tdp(n);\n    rep(i, 0, n-1) {\n        int u, v, b, c;\n\
+    \        cin >> u >> v >> b >> c;\n        tdp.add_edge(u, v, F(b, c), F(b, c));\n\
+    \    }\n\n    auto ans = tdp.exe();\n    rep(i, 0, n) cout << ans[i].val.x <<\
+    \ '\\n';\n\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_path_composite_sum\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include\
     \ \"../Algorithm/treedp.hpp\"\nvec<ll> A;\n\nusing mint = modint998244353;\n\n\
@@ -129,7 +130,7 @@ data:
   isVerificationFile: true
   path: verify/treedp.test.cpp
   requiredBy: []
-  timestamp: '2024-10-22 05:36:02+09:00'
+  timestamp: '2024-12-03 09:45:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/treedp.test.cpp

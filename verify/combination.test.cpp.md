@@ -37,44 +37,45 @@ data:
     \ mod;\n    }\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
     \        if (a.x >= mod) a.x -= mod;\n        return a;\n    }\n    friend mm\
     \ operator-(mm a, mm b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x +=\
-    \ mod;\n        return a;\n    }\n\n    mm operator-() const {\n        return\
-    \ mod - x;\n    }\n\n    //+\u3068-\u3060\u3051\u3067\u5341\u5206\u306A\u5834\u5408\
-    \u3001\u4EE5\u4E0B\u306F\u7701\u7565\u3057\u3066\u826F\u3044\u3067\u3059\u3002\
-    \n\n    friend mm operator*(mm a, mm b) { return (uint64_t)(a.x) * b.x; }\n  \
-    \  friend mm operator/(mm a, mm b) { return a * b.inv(); }\n    friend mm &operator+=(mm\
-    \ &a, mm b) { return a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return\
-    \ a = a - b; }\n    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n\
-    \    friend mm &operator/=(mm &a, mm b) { return a = a * b.inv(); }\n\n    mm\
-    \ inv() const { return pow(mod - 2); }\n    mm pow(ll y) const {\n        mm res\
-    \ = 1;\n        mm v = *this;\n        while (y) {\n            if (y & 1) res\
-    \ *= v;\n            v *= v;\n            y /= 2;\n        }\n        return res;\n\
-    \    }\n\n    friend istream &operator>>(istream &is, mm &a) {\n        ll t;\n\
-    \        cin >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend\
-    \ ostream &operator<<(ostream &os, mm a) { return os << a.x; }\n\n    bool operator==(mm\
-    \ a) { return x == a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n\
-    \    bool operator<(const mm &a) const { return x < a.x; }\n};\nusing modint998244353\
-    \ = modint<998244353>;\nusing modint1000000007 = modint<1'000'000'007>;\n/*\n\
-    @brief modint\n*/\n#line 1 \"Math/combination.hpp\"\nTT struct CMB {  // must\u7D20\
-    \u6570\n    ll mb;\n    vec<ll> fac, ifac, inv;\n\n    CMB(ll MAX_N, ll mod)\n\
-    \        :  mb(mod), fac(MAX_N + 1, 1), ifac(MAX_N + 1, 1), inv(MAX_N + 1, 1)\
-    \ {\n        for (ll i = 2; i <= MAX_N; i++) {\n            fac[i] = fac[i - 1]\
-    \ * i % mb;\n            inv[i] = mb - inv[mb % i] * (mb / i) % mb;\n        \
-    \    ifac[i] = ifac[i - 1] * inv[i] % mb;\n        }\n    }\n\n    T P(int n,\
-    \ int k) {\n        if(n < k) return 0LL;\n        if(n < 0 || k < 0) return 0LL;\n\
-    \        return fac[n] * ifac[n - k] % mb;\n    }\n\n    T C(int n, int k) {\n\
-    \        if (n < k) return 0LL;\n        if (n < 0 || k < 0) return 0LL;\n   \
-    \     return fac[n] * (ifac[k] * ifac[n - k] % mb) % mb;\n    }\n\n    T B(int\
-    \ n) { return (n < 0 ? 0 : fac[n]); }\n\n    T invB(int n) { return (n < 0 ? 0\
-    \ : ifac[n]); }\n\n    T H(int n, int k) { return C(n + k - 1, k); }\n\n    T\
-    \ Cn(int n) { return C(2 * n, n) * inv[n + 1] % mb; }\n};\n/*\n@brief \u30B3\u30F3\
-    \u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs doc/cmb.md\n*/\n#line 5 \"verify/combination.test.cpp\"\
-    \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
-    \ = modint998244353;\nCMB<mint> cmb(1000000, 998244353);\n\nint main() {\n\tll\
-    \ N, M, T;\n\tcin >> N >> M >> T;\n\n\tmint p = 0;\n\n\n\trep(k, 1, N+1) {\n\t\
-    \tmint s = 1;\n\t\tmint ue = M * N - k * M;\n\n\n\t\trep(t, 1, T+1) {\n\t\t\t\
-    mint rev = M*N - (t-1);\n\t\t\ts *= ue * (rev.inv());\n\t\t\tue -= 1;\n\t\t}\n\
-    \n        s *= cmb.C(N, k);\n\t\tif(k%2==1) p += s;\n\t\telse p -= s;\n\n\t}\n\
-    \n\tcout << (1 - p).x << endl;\n\n}\n"
+    \ mod;\n        return a;\n    }\n\n    mm operator-() const { return mod - x;\
+    \ }\n\n    //+\u3068-\u3060\u3051\u3067\u5341\u5206\u306A\u5834\u5408\u3001\u4EE5\
+    \u4E0B\u306F\u7701\u7565\u3057\u3066\u826F\u3044\u3067\u3059\u3002\n\n    friend\
+    \ mm operator*(mm a, mm b) { return (uint64_t)(a.x) * b.x; }\n    friend mm operator/(mm\
+    \ a, mm b) { return a * b.inv(); }\n    friend mm &operator+=(mm &a, mm b) { return\
+    \ a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return a = a - b; }\n\
+    \    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n    friend mm &operator/=(mm\
+    \ &a, mm b) { return a = a * b.inv(); }\n\n    mm inv() const {\n        assert(x\
+    \ != 0);\n        return pow(mod - 2);\n    }\n    mm pow(ll y) const {\n    \
+    \    mm res = 1;\n        mm v = *this;\n        while (y) {\n            if (y\
+    \ & 1) res *= v;\n            v *= v;\n            y /= 2;\n        }\n      \
+    \  return res;\n    }\n\n    friend istream &operator>>(istream &is, mm &a) {\n\
+    \        ll t;\n        cin >> t;\n        a = mm(t);\n        return is;\n  \
+    \  }\n\n    friend ostream &operator<<(ostream &os, mm a) { return os << a.x;\
+    \ }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
+    \ a) { return x != a.x; }\n\n    bool operator<(const mm &a) const { return x\
+    \ < a.x; }\n};\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
+    \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line 1 \"Math/combination.hpp\"\
+    \nTT struct CMB {  // must\u7D20\u6570\n    ll mb;\n    vec<ll> fac, ifac, inv;\n\
+    \n    CMB(ll MAX_N, ll mod)\n        :  mb(mod), fac(MAX_N + 1, 1), ifac(MAX_N\
+    \ + 1, 1), inv(MAX_N + 1, 1) {\n        for (ll i = 2; i <= MAX_N; i++) {\n  \
+    \          fac[i] = fac[i - 1] * i % mb;\n            inv[i] = mb - inv[mb % i]\
+    \ * (mb / i) % mb;\n            ifac[i] = ifac[i - 1] * inv[i] % mb;\n       \
+    \ }\n    }\n\n    T P(int n, int k) {\n        if(n < k) return 0LL;\n       \
+    \ if(n < 0 || k < 0) return 0LL;\n        return fac[n] * ifac[n - k] % mb;\n\
+    \    }\n\n    T C(int n, int k) {\n        if (n < k) return 0LL;\n        if\
+    \ (n < 0 || k < 0) return 0LL;\n        return fac[n] * (ifac[k] * ifac[n - k]\
+    \ % mb) % mb;\n    }\n\n    T B(int n) { return (n < 0 ? 0 : fac[n]); }\n\n  \
+    \  T invB(int n) { return (n < 0 ? 0 : ifac[n]); }\n\n    T H(int n, int k) {\
+    \ return C(n + k - 1, k); }\n\n    T Cn(int n) { return C(2 * n, n) * inv[n +\
+    \ 1] % mb; }\n};\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n\
+    @docs doc/cmb.md\n*/\n#line 5 \"verify/combination.test.cpp\"\n\n\n/*\n@brief\
+    \ \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint = modint998244353;\n\
+    CMB<mint> cmb(1000000, 998244353);\n\nint main() {\n\tll N, M, T;\n\tcin >> N\
+    \ >> M >> T;\n\n\tmint p = 0;\n\n\n\trep(k, 1, N+1) {\n\t\tmint s = 1;\n\t\tmint\
+    \ ue = M * N - k * M;\n\n\n\t\trep(t, 1, T+1) {\n\t\t\tmint rev = M*N - (t-1);\n\
+    \t\t\ts *= ue * (rev.inv());\n\t\t\tue -= 1;\n\t\t}\n\n        s *= cmb.C(N, k);\n\
+    \t\tif(k%2==1) p += s;\n\t\telse p -= s;\n\n\t}\n\n\tcout << (1 - p).x << endl;\n\
+    \n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/4020\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include \"\
     ../Math/combination.hpp\"\n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\
@@ -91,7 +92,7 @@ data:
   isVerificationFile: true
   path: verify/combination.test.cpp
   requiredBy: []
-  timestamp: '2024-10-17 19:00:57+09:00'
+  timestamp: '2024-12-03 09:45:24+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/combination.test.cpp
