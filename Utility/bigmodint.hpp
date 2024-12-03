@@ -43,7 +43,11 @@ template <uint64_t mod> struct modint {
 
     // ロリハならここまで(/演算と /= 演算はいらない)
 
-    mm inv() const { return pow(mod - 2); }
+    mm inv() const {
+        assert(x != 0);
+        return pow(mod - 2);
+    }
+    
     mm pow(ll y) const {
         mm res = 1;
         mm v = *this;

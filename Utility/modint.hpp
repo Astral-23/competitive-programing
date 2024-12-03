@@ -19,9 +19,7 @@ template <uint32_t mod> struct modint {
         return a;
     }
 
-    mm operator-() const {
-        return mod - x;
-    }
+    mm operator-() const { return mod - x; }
 
     //+と-だけで十分な場合、以下は省略して良いです。
 
@@ -32,7 +30,10 @@ template <uint32_t mod> struct modint {
     friend mm &operator*=(mm &a, mm b) { return a = a * b; }
     friend mm &operator/=(mm &a, mm b) { return a = a * b.inv(); }
 
-    mm inv() const { return pow(mod - 2); }
+    mm inv() const {
+        assert(x != 0);
+        return pow(mod - 2);
+    }
     mm pow(ll y) const {
         mm res = 1;
         mm v = *this;
