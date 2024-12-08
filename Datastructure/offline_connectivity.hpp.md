@@ -107,8 +107,8 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/value_dsu.test.cpp
   - verify/offline_connectivity.test.cpp
+  - verify/value_dsu.test.cpp
   - verify/offline_connectivity_more.test.cpp
 documentation_of: Datastructure/offline_connectivity.hpp
 layout: document

@@ -85,8 +85,8 @@ data:
   timestamp: '2024-10-17 19:00:57+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/matrix.test.cpp
   - verify/mat_det.test.cpp
+  - verify/matrix.test.cpp
 documentation_of: Math/matrix.hpp
 layout: document
 redirect_from:

@@ -97,9 +97,9 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/segtree.test.cpp
-  - verify/hld.test.cpp
-  - verify/mo.test.cpp
   - verify/seg_prod.test.cpp
+  - verify/mo.test.cpp
+  - verify/hld.test.cpp
 documentation_of: Datastructure/segtree.hpp
 layout: document
 redirect_from:
