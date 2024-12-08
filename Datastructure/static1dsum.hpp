@@ -17,7 +17,15 @@ TT struct static1dsum {
         built = true;
     }
 
-    T prod(int l, int r) {
+    T get(int p) const {
+        assert(built);
+        assert(0 <= p && p < n);
+        T res = dat[p];
+        if(p) res -= dat[p-1];
+        return res;
+    }
+
+    T prod(int l, int r) const {
         assert(built);
         assert(0 <= l && r <= n);
         assert(l <= r);
@@ -25,6 +33,11 @@ TT struct static1dsum {
         T res = dat[r - 1];
         if (l) res -= dat[l - 1];
         return res;
+    }
+
+    T all_prod() const {
+        assert(built);
+        return dat[n-1];
     }
 };
 /*
