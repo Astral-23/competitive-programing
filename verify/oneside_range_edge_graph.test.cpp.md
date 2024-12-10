@@ -69,88 +69,91 @@ data:
     \    g[i].push_back(to);\n                    g[to].push_back(i);\n          \
     \      }\n        }\n        return g;\n    }\n    HLD(const vec<vec<pll>> &g,\
     \ int a) : HLD(extract_graph(g), a) {\n        auto dfs = [&](auto f, int v) ->\
-    \ void {\n            for(auto [w, to] : g[v]) if(to != par[v]) {\n          \
-    \      dep_w[to] = dep_w[v] + w;\n                f(f, to);\n            }\n \
-    \       };\n        dfs(dfs, r);\n    }\n\n    HLD(vec<vi> g, int a) : n(g.size()),\
-    \ r(a) {\n        vi siz(n, 0);\n        in = out = root = rev = vi(n);\n    \
-    \    par = vi(n, -1);\n        dep = vi(n, 0);\n        dep_w = vec<ll>(n, 0);\n\
-    \        root[r] = r;\n\n        auto dfs_siz = [&](auto f, int v) -> void {\n\
-    \            siz[v]++;\n            for (int &to : g[v])\n                if (to\
-    \ != par[v]) {\n                    dep[to] = dep[v] + 1;\n                  \
-    \  par[to] = v;\n                    f(f, to);\n                    siz[v] +=\
-    \ siz[to];\n                    if (siz[to] > siz[g[v][0]] || g[v][0] == par[v])\n\
-    \                        swap(to, g[v][0]);\n                }\n            return;\n\
-    \        };\n\n        dfs_siz(dfs_siz, r);\n\n        int t = 0;\n\n        auto\
-    \ dfs_hld = [&](auto f, int v) -> void {\n            rev[t] = v;\n          \
-    \  in[v] = t++;\n            for (int to : g[v])\n                if (to != par[v])\
-    \ {\n                    root[to] = (to == g[v][0] ? root[v] : to);\n        \
-    \            f(f, to);\n                }\n            out[v] = t;\n        };\n\
-    \n        dfs_hld(dfs_hld, r);\n        for(int i = 0; i < n; i++) dep_w[i] =\
-    \ dep[i];\n    }\n\n    // \u4EE5\u4E0B\u3001\u6B32\u3057\u3044\u3082\u306E\u306E\
-    \u307F\u66F8\u304F\n\n    int operator()(int v) const { return in[v]; }\n\n  \
-    \  int lca(int a, int b) {\n        while (1) {\n            if (in[a] > in[b])\
-    \ swap(a, b);\n            if (root[a] == root[b]) return a;\n            b =\
-    \ par[root[b]];\n        }\n    }\n\n    int dist(int a, int b) {\n        int\
-    \ lc = lca(a, b);\n        return dep_w[a] + dep_w[b] - 2 * dep_w[lc];\n    }\n\
-    \n    vec<pi> path(int s, int t, bool edge) {\n        vec<pi> ls, rs;\n     \
-    \   while (root[s] != root[t]) {\n            if (dep[root[s]] > dep[root[t]])\
-    \ {\n                ls.emplace_back(in[s] + 1, in[root[s]]);  // \u4E0A\u308A\
-    \n                s = par[root[s]];\n            } else {\n                rs.emplace_back(in[root[t]],\
-    \ in[t] + 1);  // \u4E0B\u308A\n                t = par[root[t]];\n          \
-    \  }\n        }\n\n        if (dep[s] > dep[t])\n            ls.emplace_back(in[s]\
-    \ + 1, in[t] + edge);  // \u4E0A\u308A\n        else\n            rs.emplace_back(in[s]\
-    \ + edge, in[t] + 1);  // \u4E0B\u308A\n\n        reverse(all(rs));\n        for\
-    \ (auto &p : rs) ls.push_back(p);\n        return ls;\n    }\n\n    pi subtree(int\
-    \ u, bool edge) { return pi(in[u] + edge, out[u]); }\n\n    int kth_ancestor(int\
-    \ v, int k) {\n        if (k > dep[v]) return -1;\n        while (v >= 0) {\n\
-    \            if (k <= dep[v] - dep[root[v]]) {\n                return rev[in[v]\
-    \ - k];\n            } else {\n                k -= dep[v] - dep[root[v]] + 1;\n\
-    \                v = par[root[v]];\n            }\n        }\n    }\n\n    int\
-    \ jump(int s, int t, int k) {\n        int m = lca(s, t);\n        int le = dep[s]\
-    \ - dep[m];\n        int ri = dep[t] - dep[m];\n        if (0 <= k && k <= le\
-    \ + ri) {\n            if (k < le)\n                return kth_ancestor(s, k);\n\
-    \            else\n                return kth_ancestor(t, le + ri - k);\n    \
-    \    }\n        return -1;\n    }\n\n    int aux_tree(vi vs, vec<vi> &g) {\n \
-    \       if (vs.empty()) return -1;\n\n        auto cmp = [&](int i, int j) { return\
-    \ in[i] < in[j]; };\n        sort(all(vs), cmp);\n        int m = vs.size();\n\
-    \n        rep(i, 0, m - 1) vs.push_back(lca(vs[i], vs[i + 1]));\n        sort(all(vs),\
-    \ cmp);\n        vs.erase(unique(all(vs)), vs.end());\n\n        vi st;\n    \
-    \    for (auto v : vs) {\n            while (st.size()) {\n                int\
-    \ p = st.back();\n                if (in[p] < in[v] && in[v] < out[p]) break;\n\
-    \                st.pop_back();\n            }\n            if (st.size()) {\n\
-    \                g[st.back()].push_back(v);\n                g[v].push_back(st.back());\n\
-    \            }\n            st.push_back(v);\n        }\n\n        swap(vs, pre_vs);\n\
-    \        return pre_vs[0];\n    }\n\n    void clean(vec<vi> &g) {\n        for\
-    \ (auto v : pre_vs) g[v] = vi();\n        pre_vs = vi();\n        return;\n  \
-    \  }\n};\n/*\n@brief HLD\n@docs doc/hld.md\n*/\n#line 5 \"verify/oneside_range_edge_graph.test.cpp\"\
-    \n\nusing pll = pair<int, ll>;\nint main() {\n\tll N, s, t;\n\tcin >> N >> s >>\
-    \ t;\n\ts--, t--;\n\tvec<vec<pll>> g(N);\n\tvec<vec<int>> ng(N);\n\trep(i, 0,\
-    \ N-1) {\n\t\tll a, b, c;\n\t\tcin >> a >> b >> c;\n\t\ta--, b--;\n\t\tg[a].push_back(pll(b,\
-    \ c));\n\t\tg[b].push_back(pll(a, c));\n\t\tng[a].push_back(b);\n\t\tng[b].push_back(a);\n\
-    \t}\n\n\tvec<int> T(N), D(N);\n\trep(i, 1, N) {\n\t\tcin >> T[i] >> D[i];\n\t\
-    }\n\n\tHLD hld(ng, 0);\n\tng.clear();\n\n\tvec<int> ord(N, -1);\n\tvec<vec<pll>>\
-    \ ds(N);\n\n\n\t{   \n\t\tint id = 0;\n\t\tqueue<int> que;\n\t\tque.push(0);\n\
-    \t\tord[0] = id++;\n\n\t\twhile(!que.empty()) {\n\t\t\tauto now = que.front();\n\
-    \t\t\tque.pop();\n\t\t\tds[hld.dep[now]].push_back(pll(ord[now], now));\n\n\t\t\
-    \tfor(auto [to, c] : g[now]) if(ord[to] == -1) {\n\t\t\t\tord[to] = id++;\n\t\t\
-    \t\tque.push(to);\n\t\t\t}\n\t\t}\n\n\t\trep(i, 0, N) sort(all(ds[i]));\n\t}\n\
-    \n    \n\tvec<int> rev(N);\n\trep(i, 0, N) {\n\t\trep(j, 0, ds[i].size()) {\n\t\
-    \t\trev[ds[i][j].second] = j;\n\t\t}\n\t}\n\n\trange_edge_graph gh(N);\n\n\n\t\
-    rep(i, 1, N) {//\u8FBA\u3092\u8CBC\u308B\u30D5\u30A7\u30FC\u30BA\n\t    ll d =\
-    \ D[i];\n\t\tauto& vs = ds[hld.dep[i]];\n\t\t//\u81EA\u5206\u304Cvs\u306E\u4E2D\
-    \u3067 m \u756A\u76EE\u3068\u3059\u308B\u3002\n\t\tint m = rev[i];\n\t\tint l,\
-    \ r;\n\t\t{\n\t\t\tint li = 0;\n\t\t\tint ri = m;\n\t\t\twhile(li < ri) {//xxxxooo\n\
-    \t\t\t\tint mid = (li + ri) >> 1;\n\t\t\t\tint dis = hld.dist(vs[mid].second,\
-    \ i);\n\t\t\t\tif(dis <= d) ri = mid;\n\t\t\t\telse li = mid + 1;\n\t\t\t}\n\t\
-    \t\tl = li;\n\t\t}\n\n\n\t\t{\n\t\t\tint li = m;\n\t\t\tint ri = vs.size()-1;\n\
-    \t\t\twhile(li < ri) {\n\t\t\t\tint mid = (li + ri + 1) >> 1;\n\t\t\t\tint dis\
-    \ = hld.dist(vs[mid].second, i);\n\t\t\t\tif(dis <= d) li = mid;\n\t\t\t\telse\
-    \ ri = mid - 1;\n\t\t\t}\n\t\t\tr = li;\n\t\t}\n\n\t\t//[l, r]\n\t\tl = vs[l].first;\n\
-    \t\tr = vs[r].first;//ord\u306B\u5909\u63DB\n\t\tint now = ord[i];\n\n\t\tgh.point_range(now,\
-    \ l, r+1, T[i]);\n\t}\n\n\trep(i, 0, N) {\n\t\tint now = ord[i];\n\t\tfor(auto\
-    \ [to, c] : g[i]) {\n\t\t\tto = ord[to];\n\t\t\tgh.add_edge(now, to, c, 0);\n\n\
-    \t\t}\n\t}\n\n\tauto G = gh.graph();\n\tint M = G.size();\n\n\ts = ord[s] + gh.sz;\
-    \ t = ord[t] + gh.sz;\n\tvec<ll> ans(M, LLONG_MAX);\n\tans[s] = 0;\n\n\n\n\tpriority_queue<array<ll,\
+    \ void {\n            for (auto [w, to] : g[v])\n                if (to != par[v])\
+    \ {\n                    dep_w[to] = dep_w[v] + w;\n                    f(f, to);\n\
+    \                }\n        };\n        dfs(dfs, r);\n    }\n\n    HLD(vec<vi>\
+    \ g, int a) : n(g.size()), r(a) {\n        vi siz(n, 0);\n        in = out = root\
+    \ = rev = vi(n);\n        par = vi(n, -1);\n        dep = vi(n, 0);\n        dep_w\
+    \ = vec<ll>(n, 0);\n        root[r] = r;\n\n        auto dfs_siz = [&](auto f,\
+    \ int v) -> void {\n            siz[v]++;\n            for (int &to : g[v])\n\
+    \                if (to != par[v]) {\n                    dep[to] = dep[v] + 1;\n\
+    \                    par[to] = v;\n                    f(f, to);\n           \
+    \         siz[v] += siz[to];\n                    if (siz[to] > siz[g[v][0]] ||\
+    \ g[v][0] == par[v])\n                        swap(to, g[v][0]);\n           \
+    \     }\n            return;\n        };\n\n        dfs_siz(dfs_siz, r);\n\n \
+    \       int t = 0;\n\n        auto dfs_hld = [&](auto f, int v) -> void {\n  \
+    \          rev[t] = v;\n            in[v] = t++;\n            for (int to : g[v])\n\
+    \                if (to != par[v]) {\n                    root[to] = (to == g[v][0]\
+    \ ? root[v] : to);\n                    f(f, to);\n                }\n       \
+    \     out[v] = t;\n        };\n\n        dfs_hld(dfs_hld, r);\n        for (int\
+    \ i = 0; i < n; i++) dep_w[i] = dep[i];\n    }\n\n    // \u4EE5\u4E0B\u3001\u6B32\
+    \u3057\u3044\u3082\u306E\u306E\u307F\u66F8\u304F\n\n    int operator()(int v)\
+    \ const { return in[v]; }\n    int operator()(int u, int v) const {\n        assert(par[u]\
+    \ == v || par[v] == u);\n        if(par[u] == v) return in[u];\n        else return\
+    \ in[v];\n    }\n\n    int lca(int a, int b) {\n        while (1) {\n        \
+    \    if (in[a] > in[b]) swap(a, b);\n            if (root[a] == root[b]) return\
+    \ a;\n            b = par[root[b]];\n        }\n    }\n\n    int dist(int a, int\
+    \ b) {\n        int lc = lca(a, b);\n        return dep_w[a] + dep_w[b] - 2 *\
+    \ dep_w[lc];\n    }\n\n    vec<pi> path(int s, int t, bool edge) {\n        vec<pi>\
+    \ ls, rs;\n        while (root[s] != root[t]) {\n            if (dep[root[s]]\
+    \ > dep[root[t]]) {\n                ls.emplace_back(in[s] + 1, in[root[s]]);\
+    \  // \u4E0A\u308A\n                s = par[root[s]];\n            } else {\n\
+    \                rs.emplace_back(in[root[t]], in[t] + 1);  // \u4E0B\u308A\n \
+    \               t = par[root[t]];\n            }\n        }\n\n        if (dep[s]\
+    \ > dep[t])\n            ls.emplace_back(in[s] + 1, in[t] + edge);  // \u4E0A\u308A\
+    \n        else\n            rs.emplace_back(in[s] + edge, in[t] + 1);  // \u4E0B\
+    \u308A\n\n        reverse(all(rs));\n        for (auto &p : rs) ls.push_back(p);\n\
+    \        return ls;\n    }\n\n    pi subtree(int u, bool edge) { return pi(in[u]\
+    \ + edge, out[u]); }\n\n    int kth_ancestor(int v, int k) {\n        if (k >\
+    \ dep[v]) return -1;\n        while (v >= 0) {\n            if (k <= dep[v] -\
+    \ dep[root[v]]) {\n                return rev[in[v] - k];\n            } else\
+    \ {\n                k -= dep[v] - dep[root[v]] + 1;\n                v = par[root[v]];\n\
+    \            }\n        }\n    }\n\n    int jump(int s, int t, int k) {\n    \
+    \    int m = lca(s, t);\n        int le = dep[s] - dep[m];\n        int ri = dep[t]\
+    \ - dep[m];\n        if (0 <= k && k <= le + ri) {\n            if (k < le)\n\
+    \                return kth_ancestor(s, k);\n            else\n              \
+    \  return kth_ancestor(t, le + ri - k);\n        }\n        return -1;\n    }\n\
+    \n    int aux_tree(vi vs, vec<vi> &g) {\n        if (vs.empty()) return -1;\n\n\
+    \        auto cmp = [&](int i, int j) { return in[i] < in[j]; };\n        sort(all(vs),\
+    \ cmp);\n        int m = vs.size();\n\n        rep(i, 0, m - 1) vs.push_back(lca(vs[i],\
+    \ vs[i + 1]));\n        sort(all(vs), cmp);\n        vs.erase(unique(all(vs)),\
+    \ vs.end());\n\n        vi st;\n        for (auto v : vs) {\n            while\
+    \ (st.size()) {\n                int p = st.back();\n                if (in[p]\
+    \ < in[v] && in[v] < out[p]) break;\n                st.pop_back();\n        \
+    \    }\n            if (st.size()) {\n                g[st.back()].push_back(v);\n\
+    \                g[v].push_back(st.back());\n            }\n            st.push_back(v);\n\
+    \        }\n\n        swap(vs, pre_vs);\n        return pre_vs[0];\n    }\n\n\
+    \    void clean(vec<vi> &g) {\n        for (auto v : pre_vs) g[v] = vi();\n  \
+    \      pre_vs = vi();\n        return;\n    }\n};\n/*\n@brief HLD\n@docs doc/hld.md\n\
+    */\n#line 5 \"verify/oneside_range_edge_graph.test.cpp\"\n\nusing pll = pair<int,\
+    \ ll>;\nint main() {\n\tll N, s, t;\n\tcin >> N >> s >> t;\n\ts--, t--;\n\tvec<vec<pll>>\
+    \ g(N);\n\tvec<vec<int>> ng(N);\n\trep(i, 0, N-1) {\n\t\tll a, b, c;\n\t\tcin\
+    \ >> a >> b >> c;\n\t\ta--, b--;\n\t\tg[a].push_back(pll(b, c));\n\t\tg[b].push_back(pll(a,\
+    \ c));\n\t\tng[a].push_back(b);\n\t\tng[b].push_back(a);\n\t}\n\n\tvec<int> T(N),\
+    \ D(N);\n\trep(i, 1, N) {\n\t\tcin >> T[i] >> D[i];\n\t}\n\n\tHLD hld(ng, 0);\n\
+    \tng.clear();\n\n\tvec<int> ord(N, -1);\n\tvec<vec<pll>> ds(N);\n\n\n\t{   \n\t\
+    \tint id = 0;\n\t\tqueue<int> que;\n\t\tque.push(0);\n\t\tord[0] = id++;\n\n\t\
+    \twhile(!que.empty()) {\n\t\t\tauto now = que.front();\n\t\t\tque.pop();\n\t\t\
+    \tds[hld.dep[now]].push_back(pll(ord[now], now));\n\n\t\t\tfor(auto [to, c] :\
+    \ g[now]) if(ord[to] == -1) {\n\t\t\t\tord[to] = id++;\n\t\t\t\tque.push(to);\n\
+    \t\t\t}\n\t\t}\n\n\t\trep(i, 0, N) sort(all(ds[i]));\n\t}\n\n    \n\tvec<int>\
+    \ rev(N);\n\trep(i, 0, N) {\n\t\trep(j, 0, ds[i].size()) {\n\t\t\trev[ds[i][j].second]\
+    \ = j;\n\t\t}\n\t}\n\n\trange_edge_graph gh(N);\n\n\n\trep(i, 1, N) {//\u8FBA\u3092\
+    \u8CBC\u308B\u30D5\u30A7\u30FC\u30BA\n\t    ll d = D[i];\n\t\tauto& vs = ds[hld.dep[i]];\n\
+    \t\t//\u81EA\u5206\u304Cvs\u306E\u4E2D\u3067 m \u756A\u76EE\u3068\u3059\u308B\u3002\
+    \n\t\tint m = rev[i];\n\t\tint l, r;\n\t\t{\n\t\t\tint li = 0;\n\t\t\tint ri =\
+    \ m;\n\t\t\twhile(li < ri) {//xxxxooo\n\t\t\t\tint mid = (li + ri) >> 1;\n\t\t\
+    \t\tint dis = hld.dist(vs[mid].second, i);\n\t\t\t\tif(dis <= d) ri = mid;\n\t\
+    \t\t\telse li = mid + 1;\n\t\t\t}\n\t\t\tl = li;\n\t\t}\n\n\n\t\t{\n\t\t\tint\
+    \ li = m;\n\t\t\tint ri = vs.size()-1;\n\t\t\twhile(li < ri) {\n\t\t\t\tint mid\
+    \ = (li + ri + 1) >> 1;\n\t\t\t\tint dis = hld.dist(vs[mid].second, i);\n\t\t\t\
+    \tif(dis <= d) li = mid;\n\t\t\t\telse ri = mid - 1;\n\t\t\t}\n\t\t\tr = li;\n\
+    \t\t}\n\n\t\t//[l, r]\n\t\tl = vs[l].first;\n\t\tr = vs[r].first;//ord\u306B\u5909\
+    \u63DB\n\t\tint now = ord[i];\n\n\t\tgh.point_range(now, l, r+1, T[i]);\n\t}\n\
+    \n\trep(i, 0, N) {\n\t\tint now = ord[i];\n\t\tfor(auto [to, c] : g[i]) {\n\t\t\
+    \tto = ord[to];\n\t\t\tgh.add_edge(now, to, c, 0);\n\n\t\t}\n\t}\n\n\tauto G =\
+    \ gh.graph();\n\tint M = G.size();\n\n\ts = ord[s] + gh.sz; t = ord[t] + gh.sz;\n\
+    \tvec<ll> ans(M, LLONG_MAX);\n\tans[s] = 0;\n\n\n\n\tpriority_queue<array<ll,\
     \ 2>, vector<array<ll, 2>>, greater<array<ll, 2>>> que;\n\tque.push({0, s});\n\
     \twhile(!que.empty()) {\n\t\tauto [c, v] = que.top();\n\t\tque.pop();\n\t\tif(ans[v]\
     \ < c) continue;\n\t\tfor(auto e : G[v]) {\n\t\t\tll cost = e.cost + ans[v];\n\
@@ -199,7 +202,7 @@ data:
   isVerificationFile: true
   path: verify/oneside_range_edge_graph.test.cpp
   requiredBy: []
-  timestamp: '2024-10-18 02:09:11+09:00'
+  timestamp: '2024-12-10 17:38:03+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/oneside_range_edge_graph.test.cpp
