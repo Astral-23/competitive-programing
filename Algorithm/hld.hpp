@@ -20,10 +20,11 @@ struct HLD {
     }
     HLD(const vec<vec<pll>> &g, int a) : HLD(extract_graph(g), a) {
         auto dfs = [&](auto f, int v) -> void {
-            for(auto [w, to] : g[v]) if(to != par[v]) {
-                dep_w[to] = dep_w[v] + w;
-                f(f, to);
-            }
+            for (auto [w, to] : g[v])
+                if (to != par[v]) {
+                    dep_w[to] = dep_w[v] + w;
+                    f(f, to);
+                }
         };
         dfs(dfs, r);
     }
@@ -66,12 +67,16 @@ struct HLD {
         };
 
         dfs_hld(dfs_hld, r);
-        for(int i = 0; i < n; i++) dep_w[i] = dep[i];
+        for (int i = 0; i < n; i++) dep_w[i] = dep[i];
     }
 
     // 以下、欲しいもののみ書く
 
     int operator()(int v) const { return in[v]; }
+    int operator()(int u, int v) const {
+        if(par[u] == v) return in[u];
+        else return in[v];
+    }
 
     int lca(int a, int b) {
         while (1) {
