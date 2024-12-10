@@ -74,6 +74,7 @@ struct HLD {
 
     int operator()(int v) const { return in[v]; }
     int operator()(int u, int v) const {
+        assert(par[u] == v || par[v] == u);
         if(par[u] == v) return in[u];
         else return in[v];
     }
