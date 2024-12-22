@@ -1,71 +1,71 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Fps/fps.hpp
     title: Fps/fps.hpp
   - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/convolution.hpp
     title: atcoder/convolution.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/dsu.hpp
     title: atcoder/dsu.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/fenwicktree.hpp
     title: atcoder/fenwicktree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/internal_csr.hpp
     title: atcoder/internal_csr.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/internal_math.hpp
     title: atcoder/internal_math.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/internal_queue.hpp
     title: atcoder/internal_queue.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/internal_scc.hpp
     title: atcoder/internal_scc.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/internal_type_traits.hpp
     title: atcoder/internal_type_traits.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/math.hpp
     title: atcoder/math.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/maxflow.hpp
     title: atcoder/maxflow.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/mincostflow.hpp
     title: atcoder/mincostflow.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/modint.hpp
     title: atcoder/modint.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/scc.hpp
     title: atcoder/scc.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/string.hpp
     title: atcoder/string.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/twosat.hpp
     title: atcoder/twosat.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/inv_of_formal_power_series
@@ -955,7 +955,7 @@ data:
     \            _answer[i] = id[2 * i] < id[2 * i + 1];\n        }\n        return\
     \ true;\n    }\n    std::vector<bool> answer() { return _answer; }\n\n  private:\n\
     \    int _n;\n    std::vector<bool> _answer;\n    internal::scc_graph scc;\n};\n\
-    \n}  // namespace atcoder\n\n\n#line 1 \"Fps/fps.hpp\"\nusing mint = modint998244353;\n\
+    \n}  // namespace atcoder\n\n\n#line 1 \"Fps/fps.hpp\"\nusing mint = atcoder::modint998244353;\n\
     using vm = vector<mint>;\nstruct fps : vm {\n#define d (*this)\n#define s int(vm::size())\n\
     \    template <class... Args> fps(Args... args) : vm(args...) {}\n    fps(initializer_list<mint>\
     \ a) : vm(a.begin(), a.end()) {}\n    void rsz(int n) {\n        if (s < n) resize(n);\n\
@@ -1013,10 +1013,11 @@ data:
     \        if (n == -1) n = s;\n        fps r({1});\n        for (int i = 1; i <\
     \ n; i <<= 1) {\n            r = (r * (-(r.log(i << 1)) + mint(1) + low(i << 1))).low(i\
     \ << 1);\n        }\n        return r.low_(n);\n    }\n\n    fps pow(ll y, int\
-    \ n = -1) const {\n        if (n == -1) n = s;\n        if (!y) return fps{1}.low_(max(n,\
-    \ 1));\n\n        fps r;\n\n        int l = 0;\n        while (l < n && d[l].val()\
-    \ == 0) ++l;\n        if (l > (s - 1) / y || l == n) {\n            r.resize(n);\n\
-    \            return r;\n        }\n\n        mint a = d[l];\n        r = (d >>\
+    \ n = -1) const {\n        if (n == -1) {\n            n = s * y;\n          \
+    \  if(y == 0) n = 1;\n        }\n        if (!y) return fps{1}.low_(n);\n\n  \
+    \      fps r;\n\n        int l = 0;\n        while (l < n && d[l].val() == 0)\
+    \ ++l;\n        if (l > (s - 1) / y || l == n) {\n            r.resize(n);\n \
+    \           return r;\n        }\n\n        mint a = d[l];\n        r = (d >>\
     \ l) / a;\n        r = (r.log(n - l * y) * mint(y)).exp();\n        r *= a.pow(y);\n\
     \        r = r << (l * y);\n        return r.low_(n);\n    }\n#undef s\n#undef\
     \ d\n};\nostream &operator<<(ostream &o, const fps &a) {\n    rep(i, 0, a.size())\
@@ -1054,8 +1055,8 @@ data:
   isVerificationFile: true
   path: verify/fps_inv.test.cpp
   requiredBy: []
-  timestamp: '2024-12-22 14:16:49+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2024-12-22 14:17:01+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps_inv.test.cpp
 layout: document

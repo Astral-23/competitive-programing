@@ -8,26 +8,26 @@ data:
   - icon: ':warning:'
     path: Others/icpc_template.hpp
     title: Others/icpc_template.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/internal_scc.hpp
     title: atcoder/internal_scc.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/mincostflow.hpp
     title: atcoder/mincostflow.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/scc.hpp
     title: atcoder/scc.hpp
-  - icon: ':x:'
+  - icon: ':question:'
     path: atcoder/twosat.hpp
     title: atcoder/twosat.hpp
   _extendedVerifiedWith:
   - icon: ':x:'
     path: verify/fps_exp.test.cpp
     title: verify/fps_exp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_inv.test.cpp
     title: verify/fps_inv.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_log.test.cpp
     title: verify/fps_log.test.cpp
   - icon: ':x:'
@@ -35,7 +35,7 @@ data:
     title: verify/fps_pow.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"atcoder/internal_csr.hpp\"\n\n\n\n#include <algorithm>\n\
@@ -69,7 +69,7 @@ data:
   - atcoder/mincostflow.hpp
   - Math/sieve2.hpp
   timestamp: '2024-12-22 14:16:49+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/fps_pow.test.cpp
   - verify/fps_exp.test.cpp

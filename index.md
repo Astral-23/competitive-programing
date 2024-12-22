@@ -132,7 +132,7 @@ data:
       title: "\u5024\u96C6\u7D04\u30FB\u5909\u66F4\u53EF\u80FD\u306Adsu"
   - name: Fps
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: Fps/fps.hpp
       title: Fps/fps.hpp
   - name: Graph
@@ -244,58 +244,58 @@ data:
       title: Timer
   - name: atcoder
     pages:
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/convolution.hpp
       title: atcoder/convolution.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/dsu.hpp
       title: atcoder/dsu.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/fenwicktree.hpp
       title: atcoder/fenwicktree.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/internal_bit.hpp
       title: atcoder/internal_bit.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/internal_csr.hpp
       title: atcoder/internal_csr.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/internal_math.hpp
       title: atcoder/internal_math.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/internal_queue.hpp
       title: atcoder/internal_queue.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/internal_scc.hpp
       title: atcoder/internal_scc.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/internal_type_traits.hpp
       title: atcoder/internal_type_traits.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/lazysegtree.hpp
       title: atcoder/lazysegtree.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/math.hpp
       title: atcoder/math.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/maxflow.hpp
       title: atcoder/maxflow.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/mincostflow.hpp
       title: atcoder/mincostflow.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/modint.hpp
       title: atcoder/modint.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/scc.hpp
       title: atcoder/scc.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/segtree.hpp
       title: atcoder/segtree.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/string.hpp
       title: atcoder/string.hpp
-    - icon: ':x:'
+    - icon: ':question:'
       path: atcoder/twosat.hpp
       title: atcoder/twosat.hpp
   - name: example
@@ -409,10 +409,10 @@ data:
     - icon: ':x:'
       path: verify/fps_exp.test.cpp
       title: verify/fps_exp.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps_inv.test.cpp
       title: verify/fps_inv.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/fps_log.test.cpp
       title: verify/fps_log.test.cpp
     - icon: ':x:'

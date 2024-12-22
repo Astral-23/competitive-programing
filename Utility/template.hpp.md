@@ -102,10 +102,10 @@ data:
   - icon: ':x:'
     path: verify/fps_exp.test.cpp
     title: verify/fps_exp.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_inv.test.cpp
     title: verify/fps_inv.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_log.test.cpp
     title: verify/fps_log.test.cpp
   - icon: ':x:'
