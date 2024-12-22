@@ -3,7 +3,7 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_exp.test.cpp
     title: verify/fps_exp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps_log.test.cpp
     title: verify/fps_log.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_pow.test.cpp
     title: verify/fps_pow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Fps/fps.hpp\"\nusing mint = atcoder::modint998244353;\n\
@@ -55,7 +55,7 @@ data:
     \ /= a; }\n    fps inv(int n = -1) const {\n        if (n == -1) n = s;\n    \
     \    assert(d[0] != mint(0));\n        if (s < 30) {\n            mint p = d[0];\n\
     \            fps b = d / p;\n            fps r({1});\n            for (int i =\
-    \ 0; i < s; i++) {\n                for (int j = 1; j < b.size(); j++) {\n   \
+    \ 0; i < n; i++) {\n                for (int j = 1; j < b.size(); j++) {\n   \
     \                 if (i - j >= 0) r[i] += (-b[j]) * r[i - j];\n              \
     \  }\n            }\n            r /= p;\n            return r.low_(n);\n    \
     \    } else {\n            fps r({d[0].inv()});\n            for (int i = 1; i\
@@ -63,7 +63,7 @@ data:
     \ << 1);\n            return r.low_(n);\n        }\n    }\n    fps &operator/=(const\
     \ fps &a) {\n        assert(a[0] != mint(0));\n        int w = s + a.size();\n\
     \        if (a.size() < 30) {\n            mint p = a[0];\n            fps b =\
-    \ a / p;\n            for (int i = 0; i < s; i++) {\n                for (int\
+    \ a / p;\n            for (int i = 0; i < w; i++) {\n                for (int\
     \ j = 1; j < b.size(); j++)\n                    if (i - j >= 0) d[i] += (-b[j])\
     \ * d[i - j];\n            }\n            d /= p;\n            return d.low_(w);\n\
     \        } else {\n            d *= a.inv(w);\n            return d;\n       \
@@ -122,7 +122,7 @@ data:
     \ /= a; }\n    fps inv(int n = -1) const {\n        if (n == -1) n = s;\n    \
     \    assert(d[0] != mint(0));\n        if (s < 30) {\n            mint p = d[0];\n\
     \            fps b = d / p;\n            fps r({1});\n            for (int i =\
-    \ 0; i < s; i++) {\n                for (int j = 1; j < b.size(); j++) {\n   \
+    \ 0; i < n; i++) {\n                for (int j = 1; j < b.size(); j++) {\n   \
     \                 if (i - j >= 0) r[i] += (-b[j]) * r[i - j];\n              \
     \  }\n            }\n            r /= p;\n            return r.low_(n);\n    \
     \    } else {\n            fps r({d[0].inv()});\n            for (int i = 1; i\
@@ -130,7 +130,7 @@ data:
     \ << 1);\n            return r.low_(n);\n        }\n    }\n    fps &operator/=(const\
     \ fps &a) {\n        assert(a[0] != mint(0));\n        int w = s + a.size();\n\
     \        if (a.size() < 30) {\n            mint p = a[0];\n            fps b =\
-    \ a / p;\n            for (int i = 0; i < s; i++) {\n                for (int\
+    \ a / p;\n            for (int i = 0; i < w; i++) {\n                for (int\
     \ j = 1; j < b.size(); j++)\n                    if (i - j >= 0) d[i] += (-b[j])\
     \ * d[i - j];\n            }\n            d /= p;\n            return d.low_(w);\n\
     \        } else {\n            d *= a.inv(w);\n            return d;\n       \
@@ -158,8 +158,8 @@ data:
   isVerificationFile: false
   path: Fps/fps.hpp
   requiredBy: []
-  timestamp: '2024-12-22 14:17:01+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2024-12-22 14:27:56+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps_pow.test.cpp
   - verify/fps_exp.test.cpp

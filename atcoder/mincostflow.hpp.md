@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_csr.hpp
     title: atcoder/internal_csr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_queue.hpp
     title: atcoder/internal_queue.hpp
   _extendedRequiredBy:
@@ -15,7 +15,7 @@ data:
     path: Others/icpc_template.hpp
     title: Others/icpc_template.hpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_exp.test.cpp
     title: verify/fps_exp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -24,12 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps_log.test.cpp
     title: verify/fps_log.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_pow.test.cpp
     title: verify/fps_pow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"atcoder/mincostflow.hpp\"\n\n\n\n#include <algorithm>\n\
@@ -248,7 +248,7 @@ data:
   - Others/icpc_template.hpp
   - Math/sieve2.hpp
   timestamp: '2024-12-22 14:16:49+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps_pow.test.cpp
   - verify/fps_exp.test.cpp

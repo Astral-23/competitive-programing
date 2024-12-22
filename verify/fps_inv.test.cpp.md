@@ -1,64 +1,64 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Fps/fps.hpp
     title: Fps/fps.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/convolution.hpp
     title: atcoder/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/dsu.hpp
     title: atcoder/dsu.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/fenwicktree.hpp
     title: atcoder/fenwicktree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_csr.hpp
     title: atcoder/internal_csr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_math.hpp
     title: atcoder/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_queue.hpp
     title: atcoder/internal_queue.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_scc.hpp
     title: atcoder/internal_scc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_type_traits.hpp
     title: atcoder/internal_type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/math.hpp
     title: atcoder/math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/maxflow.hpp
     title: atcoder/maxflow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/mincostflow.hpp
     title: atcoder/mincostflow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/modint.hpp
     title: atcoder/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/scc.hpp
     title: atcoder/scc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/string.hpp
     title: atcoder/string.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/twosat.hpp
     title: atcoder/twosat.hpp
   _extendedRequiredBy: []
@@ -990,7 +990,7 @@ data:
     \ /= a; }\n    fps inv(int n = -1) const {\n        if (n == -1) n = s;\n    \
     \    assert(d[0] != mint(0));\n        if (s < 30) {\n            mint p = d[0];\n\
     \            fps b = d / p;\n            fps r({1});\n            for (int i =\
-    \ 0; i < s; i++) {\n                for (int j = 1; j < b.size(); j++) {\n   \
+    \ 0; i < n; i++) {\n                for (int j = 1; j < b.size(); j++) {\n   \
     \                 if (i - j >= 0) r[i] += (-b[j]) * r[i - j];\n              \
     \  }\n            }\n            r /= p;\n            return r.low_(n);\n    \
     \    } else {\n            fps r({d[0].inv()});\n            for (int i = 1; i\
@@ -998,7 +998,7 @@ data:
     \ << 1);\n            return r.low_(n);\n        }\n    }\n    fps &operator/=(const\
     \ fps &a) {\n        assert(a[0] != mint(0));\n        int w = s + a.size();\n\
     \        if (a.size() < 30) {\n            mint p = a[0];\n            fps b =\
-    \ a / p;\n            for (int i = 0; i < s; i++) {\n                for (int\
+    \ a / p;\n            for (int i = 0; i < w; i++) {\n                for (int\
     \ j = 1; j < b.size(); j++)\n                    if (i - j >= 0) d[i] += (-b[j])\
     \ * d[i - j];\n            }\n            d /= p;\n            return d.low_(w);\n\
     \        } else {\n            d *= a.inv(w);\n            return d;\n       \
@@ -1055,7 +1055,7 @@ data:
   isVerificationFile: true
   path: verify/fps_inv.test.cpp
   requiredBy: []
-  timestamp: '2024-12-22 14:17:01+09:00'
+  timestamp: '2024-12-22 14:27:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/fps_inv.test.cpp
