@@ -1,4 +1,4 @@
-using mint = atcoder::modint998244353;
+using mint = modint998244353;
 using vm = vector<mint>;
 struct fps : vm {
 #define d (*this)
