@@ -82,29 +82,39 @@ struct fps : vm {
     fps inv(int n = -1) const {
         if (n == -1) n = s;
         assert(d[0] != mint(0));
-        fps r({d[0].inv()});
-        for (int i = 1; i < n; i <<= 1)
-            r = r * mint(2) - (r * r * low(i << 1)).low_(i << 1);
-        return r.low_(n);
+        if (s < 30) {
+            mint p = d[0];
+            fps b = d / p;
+            fps r({1});
+            for (int i = 0; i < s; i++) {
+                for (int j = 1; j < b.size(); j++) {
+                    if (i - j >= 0) r[i] += (-b[j]) * r[i - j];
+                }
+            }
+            r /= p;
+            return r.low_(n);
+        } else {
+            fps r({d[0].inv()});
+            for (int i = 1; i < n; i <<= 1)
+                r = r * mint(2) - (r * r * low(i << 1)).low_(i << 1);
+            return r.low_(n);
+        }
     }
     fps &operator/=(const fps &a) {
         assert(a[0] != mint(0));
-        int w = s;
-        if (a.size() < 40) {
+        int w = s + a.size();
+        if (a.size() < 30) {
             mint p = a[0];
             fps b = a / p;
-            vector<int> bis;
-            for (int i = 1; i < int(b.size()); i++)
-                if (b[i] != mint(0)) bis.push_back(i);
             for (int i = 0; i < s; i++) {
-                for (int j : bis)
+                for (int j = 1; j < b.size(); j++)
                     if (i - j >= 0) d[i] += (-b[j]) * d[i - j];
             }
             d /= p;
             return d.low_(w);
         } else {
-            d *= a.inv();
-            return d.low_(w);
+            d *= a.inv(w);
+            return d;
         }
     }
     fps operator/(const fps &a) const { return fps(d) /= a; }
@@ -138,8 +148,8 @@ struct fps : vm {
     }
 
     fps pow(ll y, int n = -1) const {
-        if (!y) return {1};
         if (n == -1) n = s;
+        if (!y) return fps{1}.low_(max(n, 1));
 
         fps r;
 

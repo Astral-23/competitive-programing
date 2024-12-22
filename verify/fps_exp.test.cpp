@@ -1,12 +1,13 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/inv_of_formal_power_series"
+#define PROBLEM "https://judge.yosupo.jp/problem/exp_of_formal_power_series"
 #include "../Utility/template.hpp"
 #include <atcoder/all>
 #include "../Fps/fps.hpp"
 
 
 int main() {
-    int n;
+    ll n;
     cin >> n;
+
     vec<mint> A(n);
     rep(i, 0, n) {
         ll a;
@@ -15,7 +16,6 @@ int main() {
     }
 
     fps f(A);
-    fps f_inv = f.inv();
-    cout << f_inv << endl;
-
+    fps f_exp = f.exp(n);
+    cout << f_exp << endl;
 }
