@@ -351,8 +351,17 @@ data:
       path: verify/floor_sum.test.cpp
       title: verify/floor_sum.test.cpp
     - icon: ':x:'
+      path: verify/fps_exp.test.cpp
+      title: verify/fps_exp.test.cpp
+    - icon: ':x:'
       path: verify/fps_inv.test.cpp
       title: verify/fps_inv.test.cpp
+    - icon: ':x:'
+      path: verify/fps_log.test.cpp
+      title: verify/fps_log.test.cpp
+    - icon: ':x:'
+      path: verify/fps_pow.test.cpp
+      title: verify/fps_pow.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/hld.test.cpp
       title: verify/hld.test.cpp

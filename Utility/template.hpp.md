@@ -100,8 +100,17 @@ data:
     path: verify/floor_sum.test.cpp
     title: verify/floor_sum.test.cpp
   - icon: ':x:'
+    path: verify/fps_exp.test.cpp
+    title: verify/fps_exp.test.cpp
+  - icon: ':x:'
     path: verify/fps_inv.test.cpp
     title: verify/fps_inv.test.cpp
+  - icon: ':x:'
+    path: verify/fps_log.test.cpp
+    title: verify/fps_log.test.cpp
+  - icon: ':x:'
+    path: verify/fps_pow.test.cpp
+    title: verify/fps_pow.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/hld.test.cpp
     title: verify/hld.test.cpp
@@ -259,10 +268,12 @@ data:
   - verify/binary_trie_xor.test.cpp
   - verify/swag.test.cpp
   - verify/treap.test.cpp
+  - verify/fps_pow.test.cpp
   - verify/undabledsu.test.cpp
   - verify/floor_sum.test.cpp
   - verify/static1dsum.test.cpp
   - verify/lazyseg_bina.test.cpp
+  - verify/fps_exp.test.cpp
   - verify/swag_more.test.cpp
   - verify/lazysegtree.test.cpp
   - verify/maximum_independent_set.test.cpp
@@ -311,6 +322,7 @@ data:
   - verify/oneside_range_edge_graph.test.cpp
   - verify/matrix.test.cpp
   - verify/Rhash_more.test.cpp
+  - verify/fps_log.test.cpp
   - verify/Rhash.test.cpp
   - verify/superset_transform.test.cpp
   - verify/binary_trie.test.cpp

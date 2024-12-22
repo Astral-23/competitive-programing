@@ -13,7 +13,7 @@ data:
   _pathExtension: cpp
   _verificationStatusIcon: ':x:'
   attributes: {}
-  bundledCode: "#line 1 \"verify/fps_inv.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+  bundledCode: "#line 1 \"verify/fps_pow.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
@@ -21,7 +21,7 @@ data:
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
     \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 3 \"verify/fps_inv.test.cpp\"\n\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 3 \"verify/fps_pow.test.cpp\"\n\
     #include <atcoder/all>\n#line 1 \"Fps/fps.hpp\"\nusing mint = atcoder::modint998244353;\n\
     using vm = vector<mint>;\nstruct fps : vm {\n#define d (*this)\n#define s int(vm::size())\n\
     \    template <class... Args> fps(Args... args) : vm(args...) {}\n    fps(initializer_list<mint>\
@@ -87,28 +87,28 @@ data:
     \ l) / a;\n        r = (r.log(n - l * y) * mint(y)).exp();\n        r *= a.pow(y);\n\
     \        r = r << (l * y);\n        return r.low_(n);\n    }\n#undef s\n#undef\
     \ d\n};\nostream &operator<<(ostream &o, const fps &a) {\n    rep(i, 0, a.size())\
-    \ o << (i ? \" \" : \"\") << a[i].val();\n    return o;\n}\n#line 5 \"verify/fps_inv.test.cpp\"\
-    \n\n\nint main() {\n    int n;\n    cin >> n;\n    vec<mint> A(n);\n    rep(i,\
-    \ 0, n) {\n        ll a;\n        cin >> a;\n        A[i] = a;\n    }\n\n    fps\
-    \ f(A);\n    fps f_inv = f.inv();\n    cout << f_inv << endl;\n\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/inv_of_formal_power_series\"\
+    \ o << (i ? \" \" : \"\") << a[i].val();\n    return o;\n}\n#line 5 \"verify/fps_pow.test.cpp\"\
+    \n\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    vec<mint> A(n);\n  \
+    \  rep(i, 0, n) {\n        ll a;\n        cin >> a;\n        A[i] = a;\n    }\n\
+    \    fps f(A);\n    f = f.pow(m, n);\n    cout << f << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
     \n#include \"../Utility/template.hpp\"\n#include <atcoder/all>\n#include \"../Fps/fps.hpp\"\
-    \n\n\nint main() {\n    int n;\n    cin >> n;\n    vec<mint> A(n);\n    rep(i,\
-    \ 0, n) {\n        ll a;\n        cin >> a;\n        A[i] = a;\n    }\n\n    fps\
-    \ f(A);\n    fps f_inv = f.inv();\n    cout << f_inv << endl;\n\n}"
+    \n\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    vec<mint> A(n);\n  \
+    \  rep(i, 0, n) {\n        ll a;\n        cin >> a;\n        A[i] = a;\n    }\n\
+    \    fps f(A);\n    f = f.pow(m, n);\n    cout << f << endl;\n}"
   dependsOn:
   - Utility/template.hpp
   - Fps/fps.hpp
   isVerificationFile: true
-  path: verify/fps_inv.test.cpp
+  path: verify/fps_pow.test.cpp
   requiredBy: []
   timestamp: '2024-12-22 14:07:03+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/fps_inv.test.cpp
+documentation_of: verify/fps_pow.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/fps_inv.test.cpp
-- /verify/verify/fps_inv.test.cpp.html
-title: verify/fps_inv.test.cpp
+- /verify/verify/fps_pow.test.cpp
+- /verify/verify/fps_pow.test.cpp.html
+title: verify/fps_pow.test.cpp
 ---
