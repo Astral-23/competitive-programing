@@ -86,7 +86,7 @@ struct fps : vm {
             mint p = d[0];
             fps b = d / p;
             fps r({1});
-            for (int i = 0; i < s; i++) {
+            for (int i = 0; i < n; i++) {
                 for (int j = 1; j < b.size(); j++) {
                     if (i - j >= 0) r[i] += (-b[j]) * r[i - j];
                 }
@@ -106,7 +106,7 @@ struct fps : vm {
         if (a.size() < 30) {
             mint p = a[0];
             fps b = a / p;
-            for (int i = 0; i < s; i++) {
+            for (int i = 0; i < w; i++) {
                 for (int j = 1; j < b.size(); j++)
                     if (i - j >= 0) d[i] += (-b[j]) * d[i - j];
             }
