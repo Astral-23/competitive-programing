@@ -1,4 +1,4 @@
-using mint = modint998244353;
+using mint = atcoder::modint998244353;
 using vm = vector<mint>;
 struct fps : vm {
 #define d (*this)
@@ -148,8 +148,11 @@ struct fps : vm {
     }
 
     fps pow(ll y, int n = -1) const {
-        if (n == -1) n = s;
-        if (!y) return fps{1}.low_(max(n, 1));
+        if (n == -1) {
+            n = s * y;
+            if(y == 0) n = 1;
+        }
+        if (!y) return fps{1}.low_(n);
 
         fps r;
 
