@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/exp_of_formal_power_series"
 #include "../Utility/template.hpp"
-#include "../Utility/modint.hpp"
+#include "../atcoder/all"
 #include "../Fps/fps.hpp"
 
 
@@ -17,5 +17,6 @@ int main() {
 
     fps f(A);
     fps f_exp = f.exp(n);
+
     cout << f_exp << endl;
 }

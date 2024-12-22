@@ -1,6 +1,6 @@
 #define PROBLEM "https://judge.yosupo.jp/problem/inv_of_formal_power_series"
 #include "../Utility/template.hpp"
-#include "../Utility/modint.hpp"
+#include "../atcoder/all"
 #include "../Fps/fps.hpp"
 
 
