@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/log_of_formal_power_series"
+#define PROBLEM "https://judge.yosupo.jp/problem/pow_of_formal_power_series"
 #include "../Utility/template.hpp"
 #include "../atcoder/all"
 #include "../Fps/fps.hpp"
