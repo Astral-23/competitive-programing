@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/dynamicseg.hpp
     title: "\u52D5\u7684\u30BB\u30B0\u6728"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':question:'

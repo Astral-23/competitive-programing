@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Algorithm/treedp.hpp
     title: "\u5168\u65B9\u4F4D\u6728DP"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':question:'

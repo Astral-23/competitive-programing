@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Algorithm/superset_transform.hpp
     title: Algorithm/superset_transform.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':question:'

@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/min_distance.hpp
     title: "\u6700\u77ED\u7D4C\u8DEF"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
   - icon: ':question:'

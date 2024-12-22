@@ -1,6 +1,60 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':x:'
+    path: atcoder/convolution.hpp
+    title: atcoder/convolution.hpp
+  - icon: ':x:'
+    path: atcoder/dsu.hpp
+    title: atcoder/dsu.hpp
+  - icon: ':x:'
+    path: atcoder/fenwicktree.hpp
+    title: atcoder/fenwicktree.hpp
+  - icon: ':x:'
+    path: atcoder/internal_bit.hpp
+    title: atcoder/internal_bit.hpp
+  - icon: ':x:'
+    path: atcoder/internal_csr.hpp
+    title: atcoder/internal_csr.hpp
+  - icon: ':x:'
+    path: atcoder/internal_math.hpp
+    title: atcoder/internal_math.hpp
+  - icon: ':x:'
+    path: atcoder/internal_queue.hpp
+    title: atcoder/internal_queue.hpp
+  - icon: ':x:'
+    path: atcoder/internal_scc.hpp
+    title: atcoder/internal_scc.hpp
+  - icon: ':x:'
+    path: atcoder/internal_type_traits.hpp
+    title: atcoder/internal_type_traits.hpp
+  - icon: ':x:'
+    path: atcoder/lazysegtree.hpp
+    title: atcoder/lazysegtree.hpp
+  - icon: ':x:'
+    path: atcoder/math.hpp
+    title: atcoder/math.hpp
+  - icon: ':x:'
+    path: atcoder/maxflow.hpp
+    title: atcoder/maxflow.hpp
+  - icon: ':x:'
+    path: atcoder/mincostflow.hpp
+    title: atcoder/mincostflow.hpp
+  - icon: ':x:'
+    path: atcoder/modint.hpp
+    title: atcoder/modint.hpp
+  - icon: ':x:'
+    path: atcoder/scc.hpp
+    title: atcoder/scc.hpp
+  - icon: ':x:'
+    path: atcoder/segtree.hpp
+    title: atcoder/segtree.hpp
+  - icon: ':x:'
+    path: atcoder/string.hpp
+    title: atcoder/string.hpp
+  - icon: ':x:'
+    path: atcoder/twosat.hpp
+    title: atcoder/twosat.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -47,11 +101,29 @@ data:
     1024\u6841\u306E\u6D6E\u52D5\u5C0F\u6570\u70B9\u6570\u578B(TLE\u3057\u305F\u3089\
     \u5C0F\u3055\u304F\u3059\u308B)\nusing Real = boost::multiprecision::number<boost::multiprecision::cpp_dec_float<1024>>;\n\
     using Rat = boost::rational<Bint>;\n\n\n\n\n"
-  dependsOn: []
+  dependsOn:
+  - atcoder/convolution.hpp
+  - atcoder/internal_bit.hpp
+  - atcoder/modint.hpp
+  - atcoder/internal_math.hpp
+  - atcoder/internal_type_traits.hpp
+  - atcoder/dsu.hpp
+  - atcoder/fenwicktree.hpp
+  - atcoder/lazysegtree.hpp
+  - atcoder/math.hpp
+  - atcoder/maxflow.hpp
+  - atcoder/internal_queue.hpp
+  - atcoder/mincostflow.hpp
+  - atcoder/internal_csr.hpp
+  - atcoder/scc.hpp
+  - atcoder/internal_scc.hpp
+  - atcoder/segtree.hpp
+  - atcoder/string.hpp
+  - atcoder/twosat.hpp
   isVerificationFile: false
   path: Others/icpc_template.hpp
   requiredBy: []
-  timestamp: '2024-08-22 21:20:23+09:00'
+  timestamp: '2024-12-22 14:16:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Others/icpc_template.hpp

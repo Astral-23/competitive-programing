@@ -1,6 +1,60 @@
 ---
 data:
-  _extendedDependsOn: []
+  _extendedDependsOn:
+  - icon: ':x:'
+    path: atcoder/convolution.hpp
+    title: atcoder/convolution.hpp
+  - icon: ':x:'
+    path: atcoder/dsu.hpp
+    title: atcoder/dsu.hpp
+  - icon: ':x:'
+    path: atcoder/fenwicktree.hpp
+    title: atcoder/fenwicktree.hpp
+  - icon: ':x:'
+    path: atcoder/internal_bit.hpp
+    title: atcoder/internal_bit.hpp
+  - icon: ':x:'
+    path: atcoder/internal_csr.hpp
+    title: atcoder/internal_csr.hpp
+  - icon: ':x:'
+    path: atcoder/internal_math.hpp
+    title: atcoder/internal_math.hpp
+  - icon: ':x:'
+    path: atcoder/internal_queue.hpp
+    title: atcoder/internal_queue.hpp
+  - icon: ':x:'
+    path: atcoder/internal_scc.hpp
+    title: atcoder/internal_scc.hpp
+  - icon: ':x:'
+    path: atcoder/internal_type_traits.hpp
+    title: atcoder/internal_type_traits.hpp
+  - icon: ':x:'
+    path: atcoder/lazysegtree.hpp
+    title: atcoder/lazysegtree.hpp
+  - icon: ':x:'
+    path: atcoder/math.hpp
+    title: atcoder/math.hpp
+  - icon: ':x:'
+    path: atcoder/maxflow.hpp
+    title: atcoder/maxflow.hpp
+  - icon: ':x:'
+    path: atcoder/mincostflow.hpp
+    title: atcoder/mincostflow.hpp
+  - icon: ':x:'
+    path: atcoder/modint.hpp
+    title: atcoder/modint.hpp
+  - icon: ':x:'
+    path: atcoder/scc.hpp
+    title: atcoder/scc.hpp
+  - icon: ':x:'
+    path: atcoder/segtree.hpp
+    title: atcoder/segtree.hpp
+  - icon: ':x:'
+    path: atcoder/string.hpp
+    title: atcoder/string.hpp
+  - icon: ':x:'
+    path: atcoder/twosat.hpp
+    title: atcoder/twosat.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
   _isVerificationFailed: false
@@ -209,11 +263,29 @@ data:
     \    }  // O(\u7D04\u6570\u306E\u500B\u6570)  x <= 10^18\u3067\u5927\u51E1 O(x\
     \ ^ (1/3))  \u6CE8 : \u521D\u56DEO(NlogN)\n};\n\n/*\n@brief \u7D20\u6570\u7BE9\
     (\u5DE6\u7AEF\u4EFB\u610F)\n*/\nint main() {}\n// s -> 0, 0 -> 9, 9 -> t, 1"
-  dependsOn: []
+  dependsOn:
+  - atcoder/convolution.hpp
+  - atcoder/internal_bit.hpp
+  - atcoder/modint.hpp
+  - atcoder/internal_math.hpp
+  - atcoder/internal_type_traits.hpp
+  - atcoder/dsu.hpp
+  - atcoder/fenwicktree.hpp
+  - atcoder/lazysegtree.hpp
+  - atcoder/math.hpp
+  - atcoder/maxflow.hpp
+  - atcoder/internal_queue.hpp
+  - atcoder/mincostflow.hpp
+  - atcoder/internal_csr.hpp
+  - atcoder/scc.hpp
+  - atcoder/internal_scc.hpp
+  - atcoder/segtree.hpp
+  - atcoder/string.hpp
+  - atcoder/twosat.hpp
   isVerificationFile: false
   path: Math/sieve2.hpp
   requiredBy: []
-  timestamp: '2024-10-21 12:45:18+09:00'
+  timestamp: '2024-12-22 14:16:49+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/sieve2.hpp

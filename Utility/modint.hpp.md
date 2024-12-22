@@ -27,18 +27,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/dynamicseg.test.cpp
     title: verify/dynamicseg.test.cpp
-  - icon: ':x:'
-    path: verify/fps_exp.test.cpp
-    title: verify/fps_exp.test.cpp
-  - icon: ':x:'
-    path: verify/fps_inv.test.cpp
-    title: verify/fps_inv.test.cpp
-  - icon: ':x:'
-    path: verify/fps_log.test.cpp
-    title: verify/fps_log.test.cpp
-  - icon: ':x:'
-    path: verify/fps_pow.test.cpp
-    title: verify/fps_pow.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
@@ -69,9 +57,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: modint
     links: []
@@ -132,16 +120,13 @@ data:
   - Graph/Chromatic_Number.hpp
   - example/matrix.example.cpp
   timestamp: '2024-12-03 09:45:24+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/bellman_ford.test.cpp
   - verify/swag.test.cpp
   - verify/treap.test.cpp
-  - verify/fps_pow.test.cpp
-  - verify/fps_exp.test.cpp
   - verify/swag_more.test.cpp
   - verify/lazysegtree.test.cpp
-  - verify/fps_inv.test.cpp
   - verify/dijkstra.test.cpp
   - verify/seg_prod.test.cpp
   - verify/combination.test.cpp
@@ -150,7 +135,6 @@ data:
   - verify/bitwise_and_convolution.test.cpp
   - verify/mat_det.test.cpp
   - verify/matrix.test.cpp
-  - verify/fps_log.test.cpp
   - verify/superset_transform.test.cpp
   - verify/dynamicseg.test.cpp
   - "\u7802\u5834/swag.test.cpp"

@@ -1,0 +1,84 @@
+---
+data:
+  _extendedDependsOn: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: Math/sieve2.hpp
+    title: "\u7D20\u6570\u7BE9(\u5DE6\u7AEF\u4EFB\u610F)"
+  - icon: ':warning:'
+    path: Others/icpc_template.hpp
+    title: Others/icpc_template.hpp
+  - icon: ':x:'
+    path: atcoder/internal_scc.hpp
+    title: atcoder/internal_scc.hpp
+  - icon: ':x:'
+    path: atcoder/mincostflow.hpp
+    title: atcoder/mincostflow.hpp
+  - icon: ':x:'
+    path: atcoder/scc.hpp
+    title: atcoder/scc.hpp
+  - icon: ':x:'
+    path: atcoder/twosat.hpp
+    title: atcoder/twosat.hpp
+  _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/fps_exp.test.cpp
+    title: verify/fps_exp.test.cpp
+  - icon: ':x:'
+    path: verify/fps_inv.test.cpp
+    title: verify/fps_inv.test.cpp
+  - icon: ':x:'
+    path: verify/fps_log.test.cpp
+    title: verify/fps_log.test.cpp
+  - icon: ':x:'
+    path: verify/fps_pow.test.cpp
+    title: verify/fps_pow.test.cpp
+  _isVerificationFailed: true
+  _pathExtension: hpp
+  _verificationStatusIcon: ':x:'
+  attributes:
+    links: []
+  bundledCode: "#line 1 \"atcoder/internal_csr.hpp\"\n\n\n\n#include <algorithm>\n\
+    #include <utility>\n#include <vector>\n\nnamespace atcoder {\nnamespace internal\
+    \ {\n\ntemplate <class E> struct csr {\n    std::vector<int> start;\n    std::vector<E>\
+    \ elist;\n    explicit csr(int n, const std::vector<std::pair<int, E>>& edges)\n\
+    \        : start(n + 1), elist(edges.size()) {\n        for (auto e : edges) {\n\
+    \            start[e.first + 1]++;\n        }\n        for (int i = 1; i <= n;\
+    \ i++) {\n            start[i] += start[i - 1];\n        }\n        auto counter\
+    \ = start;\n        for (auto e : edges) {\n            elist[counter[e.first]++]\
+    \ = e.second;\n        }\n    }\n};\n\n}  // namespace internal\n\n}  // namespace\
+    \ atcoder\n\n\n"
+  code: "#ifndef ATCODER_INTERNAL_CSR_HPP\n#define ATCODER_INTERNAL_CSR_HPP 1\n\n\
+    #include <algorithm>\n#include <utility>\n#include <vector>\n\nnamespace atcoder\
+    \ {\nnamespace internal {\n\ntemplate <class E> struct csr {\n    std::vector<int>\
+    \ start;\n    std::vector<E> elist;\n    explicit csr(int n, const std::vector<std::pair<int,\
+    \ E>>& edges)\n        : start(n + 1), elist(edges.size()) {\n        for (auto\
+    \ e : edges) {\n            start[e.first + 1]++;\n        }\n        for (int\
+    \ i = 1; i <= n; i++) {\n            start[i] += start[i - 1];\n        }\n  \
+    \      auto counter = start;\n        for (auto e : edges) {\n            elist[counter[e.first]++]\
+    \ = e.second;\n        }\n    }\n};\n\n}  // namespace internal\n\n}  // namespace\
+    \ atcoder\n\n#endif  // ATCODER_INTERNAL_CSR_HPP\n"
+  dependsOn: []
+  isVerificationFile: false
+  path: atcoder/internal_csr.hpp
+  requiredBy:
+  - Others/icpc_template.hpp
+  - atcoder/twosat.hpp
+  - atcoder/internal_scc.hpp
+  - atcoder/scc.hpp
+  - atcoder/mincostflow.hpp
+  - Math/sieve2.hpp
+  timestamp: '2024-12-22 14:16:49+09:00'
+  verificationStatus: LIBRARY_ALL_WA
+  verifiedWith:
+  - verify/fps_pow.test.cpp
+  - verify/fps_exp.test.cpp
+  - verify/fps_inv.test.cpp
+  - verify/fps_log.test.cpp
+documentation_of: atcoder/internal_csr.hpp
+layout: document
+redirect_from:
+- /library/atcoder/internal_csr.hpp
+- /library/atcoder/internal_csr.hpp.html
+title: atcoder/internal_csr.hpp
+---
