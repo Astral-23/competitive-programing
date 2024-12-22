@@ -130,6 +130,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/value_dsu.hpp
       title: "\u5024\u96C6\u7D04\u30FB\u5909\u66F4\u53EF\u80FD\u306Adsu"
+  - name: Fps
+    pages:
+    - icon: ':x:'
+      path: Fps/fps.hpp
+      title: Fps/fps.hpp
   - name: Graph
     pages:
     - icon: ':heavy_check_mark:'
@@ -231,7 +236,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -345,6 +350,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/floor_sum.test.cpp
       title: verify/floor_sum.test.cpp
+    - icon: ':x:'
+      path: verify/fps_inv.test.cpp
+      title: verify/fps_inv.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/hld.test.cpp
       title: verify/hld.test.cpp

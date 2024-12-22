@@ -99,6 +99,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/floor_sum.test.cpp
     title: verify/floor_sum.test.cpp
+  - icon: ':x:'
+    path: verify/fps_inv.test.cpp
+    title: verify/fps_inv.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/hld.test.cpp
     title: verify/hld.test.cpp
@@ -213,9 +216,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -247,7 +250,7 @@ data:
   - example/range_edge_graph.example.cpp
   - example/matrix.example.cpp
   timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/range_edge_graph.test.cpp
   - verify/bellman_ford.test.cpp
@@ -269,6 +272,7 @@ data:
   - verify/value_dsu.test.cpp
   - verify/segtree.test.cpp
   - verify/aux_tree.test.cpp
+  - verify/fps_inv.test.cpp
   - verify/fastset.test.cpp
   - verify/extgcd.test.cpp
   - verify/dijkstra.test.cpp
