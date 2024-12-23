@@ -22,6 +22,9 @@ data:
     title: atcoder/twosat.hpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/fps_count_subset_sum.test.cpp
+    title: verify/fps_count_subset_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/fps_exp.test.cpp
     title: verify/fps_exp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -74,6 +77,7 @@ data:
   - verify/fps_pow.test.cpp
   - verify/fps_exp.test.cpp
   - verify/fps_inv.test.cpp
+  - verify/fps_count_subset_sum.test.cpp
   - verify/fps_log.test.cpp
 documentation_of: atcoder/internal_csr.hpp
 layout: document

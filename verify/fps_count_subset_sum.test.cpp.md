@@ -2,6 +2,9 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
+    path: Fps/count_subset_sum.hpp
+    title: Fps/count_subset_sum.hpp
+  - icon: ':heavy_check_mark:'
     path: Fps/fps.hpp
     title: Fps/fps.hpp
   - icon: ':heavy_check_mark:'
@@ -68,22 +71,22 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/pow_of_formal_power_series
+    PROBLEM: https://judge.yosupo.jp/problem/sharp_p_subset_sum
     links:
-    - https://judge.yosupo.jp/problem/pow_of_formal_power_series
-  bundledCode: "#line 1 \"verify/fps_pow.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"atcoder/convolution.hpp\"\n\
-    \n\n\n#line 7 \"atcoder/convolution.hpp\"\n#include <type_traits>\n#line 9 \"\
-    atcoder/convolution.hpp\"\n\n#line 1 \"atcoder/internal_bit.hpp\"\n\n\n\n#ifdef\
-    \ _MSC_VER\n#include <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n#include\
-    \ <bit>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus\
+    - https://judge.yosupo.jp/problem/sharp_p_subset_sum
+  bundledCode: "#line 1 \"verify/fps_count_subset_sum.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/sharp_p_subset_sum\"\n#line 1 \"Utility/template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
+    \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
+    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
+    \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
+    \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
+    template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
+    \ = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\
+    \u30C8\n*/\n#line 1 \"atcoder/convolution.hpp\"\n\n\n\n#line 7 \"atcoder/convolution.hpp\"\
+    \n#include <type_traits>\n#line 9 \"atcoder/convolution.hpp\"\n\n#line 1 \"atcoder/internal_bit.hpp\"\
+    \n\n\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n\
+    #include <bit>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus\
     \ >= 202002L\n\nusing std::bit_ceil;\n\n#else\n\n// @return same with std::bit::bit_ceil\n\
     unsigned int bit_ceil(unsigned int n) {\n    unsigned int x = 1;\n    while (x\
     \ < (unsigned int)(n)) x *= 2;\n    return x;\n}\n\n#endif\n\n// @param n `1 <=\
@@ -1022,16 +1025,31 @@ data:
     \        r = (r.log(n - l * y) * mint(y)).exp();\n        r *= a.pow(y);\n   \
     \     r = r << (l * y);\n        return r.low_(n);\n    }\n#undef s\n#undef d\n\
     };\nostream &operator<<(ostream &o, const fps &a) {\n    rep(i, 0, a.size()) o\
-    \ << (i ? \" \" : \"\") << a[i].val();\n    return o;\n}\n#line 5 \"verify/fps_pow.test.cpp\"\
-    \n\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n    vec<mint> A(n);\n  \
-    \  rep(i, 0, n) {\n        ll a;\n        cin >> a;\n        A[i] = a;\n    }\n\
-    \    fps f(A);\n    f = f.pow(m, n);\n    cout << f << endl;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_formal_power_series\"\
-    \n#include \"../Utility/template.hpp\"\n#include \"../atcoder/all\"\n#include\
-    \ \"../Fps/fps.hpp\"\n\n\nint main() {\n    ll n, m;\n    cin >> n >> m;\n   \
-    \ vec<mint> A(n);\n    rep(i, 0, n) {\n        ll a;\n        cin >> a;\n    \
-    \    A[i] = a;\n    }\n    fps f(A);\n    f = f.pow(m, n);\n    cout << f << endl;\n\
-    }"
+    \ << (i ? \" \" : \"\") << a[i].val();\n    return o;\n}\n#line 1 \"Fps/count_subset_sum.hpp\"\
+    \nvector<mint> count_subset_sum(vector<ll> items, ll t) {\n    mint ret = 1;\n\
+    \    vector<ll> cnt(t + 1, 0);\n    vector<mint> inv(t + 1, 1);\n    for (int\
+    \ i = 1; i <= t; i++) {\n        inv[i] = inv[i - 1] * i;\n    }\n    inv[t] =\
+    \ inv[t].inv();\n    for (int i = t - 1; i >= 0; i--) {\n        mint tmp = inv[i];\n\
+    \        inv[i] = inv[i + 1] * (i + 1);\n        inv[i + 1] = tmp * inv[i + 1];\n\
+    \    }\n\n    for (auto w : items) {\n        if (w > t) continue;\n        if\
+    \ (w == 0) {\n            ret *= 2;\n        } else {\n            cnt[w]++;\n\
+    \        }\n    }\n\n    fps f;\n    for (int i = 1; i <= t; i++)\n        if\
+    \ (cnt[i] != 0) {\n            for (int k = 1; k * i <= t; k++) {\n          \
+    \      if (k & 1) {\n                    f[k*i] += inv[k] * cnt[i];\n        \
+    \        } else {\n                    f[k*i] -= inv[k] * cnt[i];\n          \
+    \      }\n            }\n        }\n\n    f = f.exp(t + 1);\n    vector<mint>\
+    \ ans(t + 1, 1);\n    for (int i = 0; i <= t; i++) {\n        ans[i] = f[i] *\
+    \ ret;\n    }\n    return ans;\n}\n#line 6 \"verify/fps_count_subset_sum.test.cpp\"\
+    \n\n\nint main() {\n    ll n, t;\n    cin >> n >> t;\n    vec<ll> items(n);\n\
+    \    rep(i, 0, n) cin >> items[i];\n    auto ret = count_subset_sum(items, t);\n\
+    \    rep(i, 1, t + 1) {\n        cout << ret[i].val() << \" \";\n    }\n    cout\
+    \ << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/sharp_p_subset_sum\"\n\
+    #include \"../Utility/template.hpp\"\n#include \"../atcoder/all\"\n#include \"\
+    ../Fps/fps.hpp\"\n#include \"../Fps/count_subset_sum.hpp\"\n\n\nint main() {\n\
+    \    ll n, t;\n    cin >> n >> t;\n    vec<ll> items(n);\n    rep(i, 0, n) cin\
+    \ >> items[i];\n    auto ret = count_subset_sum(items, t);\n    rep(i, 1, t +\
+    \ 1) {\n        cout << ret[i].val() << \" \";\n    }\n    cout << endl;\n}"
   dependsOn:
   - Utility/template.hpp
   - atcoder/convolution.hpp
@@ -1053,16 +1071,17 @@ data:
   - atcoder/string.hpp
   - atcoder/twosat.hpp
   - Fps/fps.hpp
+  - Fps/count_subset_sum.hpp
   isVerificationFile: true
-  path: verify/fps_pow.test.cpp
+  path: verify/fps_count_subset_sum.test.cpp
   requiredBy: []
   timestamp: '2024-12-24 08:43:42+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/fps_pow.test.cpp
+documentation_of: verify/fps_count_subset_sum.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/fps_pow.test.cpp
-- /verify/verify/fps_pow.test.cpp.html
-title: verify/fps_pow.test.cpp
+- /verify/verify/fps_count_subset_sum.test.cpp
+- /verify/verify/fps_count_subset_sum.test.cpp.html
+title: verify/fps_count_subset_sum.test.cpp
 ---

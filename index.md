@@ -133,6 +133,9 @@ data:
   - name: Fps
     pages:
     - icon: ':heavy_check_mark:'
+      path: Fps/count_subset_sum.hpp
+      title: Fps/count_subset_sum.hpp
+    - icon: ':heavy_check_mark:'
       path: Fps/fps.hpp
       title: Fps/fps.hpp
   - name: Graph
@@ -406,6 +409,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/floor_sum.test.cpp
       title: verify/floor_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/fps_count_subset_sum.test.cpp
+      title: verify/fps_count_subset_sum.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/fps_exp.test.cpp
       title: verify/fps_exp.test.cpp

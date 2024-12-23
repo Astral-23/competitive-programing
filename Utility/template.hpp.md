@@ -100,6 +100,9 @@ data:
     path: verify/floor_sum.test.cpp
     title: verify/floor_sum.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/fps_count_subset_sum.test.cpp
+    title: verify/fps_count_subset_sum.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/fps_exp.test.cpp
     title: verify/fps_exp.test.cpp
   - icon: ':heavy_check_mark:'
@@ -310,6 +313,7 @@ data:
   - verify/hld.test.cpp
   - verify/simpletreap.test.cpp
   - verify/treedp.test.cpp
+  - verify/fps_count_subset_sum.test.cpp
   - verify/maxflow_lowerbound.test.cpp
   - verify/2dsegtree_max.test.cpp
   - verify/bisect.test.cpp
