@@ -3,8 +3,8 @@ using vm = vector<mint>;
 struct fps : vm {
 #define d (*this)
 #define s int(vm::size())
-    template <class... Args> fps(Args... args) : vm(args...) {}
-    fps(initializer_list<mint> a) : vm(a.begin(), a.end()) {}
+    fps(){}
+    fps(vector<mint> a) : vm(a.begin(), a.end()) {}
     void rsz(int n) {
         if (s < n) resize(n);
     }
@@ -149,10 +149,15 @@ struct fps : vm {
 
     fps pow(ll y, int n = -1) const {
         if (n == -1) {
-            n = s * y;
+            if(s == 0) {
+                n = 0;
+            }
+            else {
+                n = (s - 1) * y + 1;
+            }
             if(y == 0) n = 1;
         }
-        if (!y) return fps{1}.low_(n);
+        if (!y) return fps({1}).low_(n);
 
         fps r;
 
