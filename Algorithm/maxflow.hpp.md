@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/maxflow.test.cpp
     title: verify/maxflow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/maxflow_lowerbound.test.cpp
     title: verify/maxflow_lowerbound.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/maxflow.md
     document_title: Maxflow
@@ -107,7 +107,7 @@ data:
   path: Algorithm/maxflow.hpp
   requiredBy: []
   timestamp: '2024-07-19 19:51:39+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/maxflow.test.cpp
   - verify/maxflow_lowerbound.test.cpp

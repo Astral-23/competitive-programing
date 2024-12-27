@@ -30,13 +30,13 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/dynamicseg.test.cpp
     title: verify/dynamicseg.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/mat_det.test.cpp
     title: verify/mat_det.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
   - icon: ':x:'

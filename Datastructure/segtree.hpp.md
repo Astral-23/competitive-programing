@@ -3,10 +3,10 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/hld.test.cpp
     title: verify/hld.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/mo.test.cpp
     title: verify/mo.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: verify/segtree.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: doc/segtree.md
     document_title: segtree
@@ -94,7 +94,7 @@ data:
   path: Datastructure/segtree.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/segtree.test.cpp
   - verify/seg_prod.test.cpp

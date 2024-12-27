@@ -15,12 +15,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps_log.test.cpp
     title: verify/fps_log.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_pow.test.cpp
     title: verify/fps_pow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Fps/fps.hpp\"\nusing mint = atcoder::modint998244353;\n\
@@ -164,7 +164,7 @@ data:
   path: Fps/fps.hpp
   requiredBy: []
   timestamp: '2024-12-24 08:43:42+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps_pow.test.cpp
   - verify/fps_exp.test.cpp

@@ -6,10 +6,10 @@ data:
     path: example/offline_connectivity.example.cpp
     title: example/offline_connectivity.example.cpp
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/offline_connectivity.test.cpp
     title: verify/offline_connectivity.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/offline_connectivity_more.test.cpp
     title: verify/offline_connectivity_more.test.cpp
   - icon: ':x:'
@@ -17,7 +17,7 @@ data:
     title: verify/value_dsu.test.cpp
   _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: doc/offline_connectivity.md
     document_title: offline_connectivity
@@ -105,7 +105,7 @@ data:
   requiredBy:
   - example/offline_connectivity.example.cpp
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/offline_connectivity.test.cpp
   - verify/value_dsu.test.cpp

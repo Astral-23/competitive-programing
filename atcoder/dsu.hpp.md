@@ -24,12 +24,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps_log.test.cpp
     title: verify/fps_log.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_pow.test.cpp
     title: verify/fps_pow.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"atcoder/dsu.hpp\"\n\n\n\n#include <algorithm>\n#include\
@@ -92,7 +92,7 @@ data:
   - verify/Convolution_gcd_convolution_test.cpp
   - Math/sieve2.hpp
   timestamp: '2024-12-22 14:16:49+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/fps_pow.test.cpp
   - verify/fps_exp.test.cpp

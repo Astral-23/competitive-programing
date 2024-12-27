@@ -1,7 +1,7 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':question:'
     path: Datastructure/segtree.hpp
     title: segtree
   - icon: ':question:'

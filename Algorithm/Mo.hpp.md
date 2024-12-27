@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/mo.test.cpp
     title: verify/mo.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: "Mo\u30A2\u30EB\u30B4\u30EA\u30BA\u30E0"
     links: []
@@ -50,7 +50,7 @@ data:
   path: Algorithm/Mo.hpp
   requiredBy: []
   timestamp: '2024-08-17 22:36:46+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/mo.test.cpp
 documentation_of: Algorithm/Mo.hpp

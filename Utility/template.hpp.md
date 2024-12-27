@@ -117,64 +117,64 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps_log.test.cpp
     title: verify/fps_log.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/fps_pow.test.cpp
     title: verify/fps_pow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/hld.test.cpp
     title: verify/hld.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/hld_lca.test.cpp
     title: verify/hld_lca.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/imos2d.test.cpp
     title: verify/imos2d.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/jumpontree.test.cpp
     title: verify/jumpontree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lazyseg_bina.test.cpp
     title: verify/lazyseg_bina.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lowlink_bridge.test.cpp
     title: verify/lowlink_bridge.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/lowlink_joint.test.cpp
     title: verify/lowlink_joint.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/manacher.test.cpp
     title: verify/manacher.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/mat_det.test.cpp
     title: verify/mat_det.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/maxflow.test.cpp
     title: verify/maxflow.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/maxflow_lowerbound.test.cpp
     title: verify/maxflow_lowerbound.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/maximum_independent_set.test.cpp
     title: verify/maximum_independent_set.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/mo.test.cpp
     title: verify/mo.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/offline_connectivity.test.cpp
     title: verify/offline_connectivity.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/offline_connectivity_more.test.cpp
     title: verify/offline_connectivity_more.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/oneside_range_edge_graph.test.cpp
     title: verify/oneside_range_edge_graph.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/pbds_set.test.cpp
     title: verify/pbds_set.test.cpp
   - icon: ':x:'
