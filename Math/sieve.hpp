@@ -1,108 +1,84 @@
 struct notlinear_sieve {
-    int N;
+    int n;
+    vector<int> sm;
+    vector<vector<pair<int, int>>> fs;
 
-    notlinear_sieve(int _N) : N(_N) {
-        assert(1 <= N);
-        large.resize(N + 1);
-        iota(large.begin(), large.end(), 0);
-        large_res.resize(N + 1);
-    
-        for(int i = 2; i * i <= N; i++) {
-            if(large[i] != i) continue;
-            for(int j = i * 2; j <= N; j += i) {
-                if(large[j] == j) large[j] = i;
+    notlinear_sieve(int max_n) : n(max_n) {
+        assert(1 <= n);
+        sm.resize(n + 1);
+        fs.resize(n + 1);
+        iota(sm.begin(), sm.end(), 0);
+
+        sm[2] = 2;
+        for(int j = 4; j <= n; j += 2) sm[j] = 2;
+        for(int i = 3; i * i <= n; i += 2) {
+            if(sm[i] != i) continue;
+            for(int j = i * 2; j <= n; j += i) {
+                if(sm[j] == j) sm[j] = i;
             }
         }
-        //O(NloglogN)
     }
 
 
-    private:
-        vector<int> large;//割り切る最小の素因数
-        vector<vector<pair<int, int>>> large_res;//素因数分解の結果（conductして初めて埋まる）
-        vector<int> div_cnt;
-        bool conducted = false;
-        bool divcntinited = false;
+    bool isprime(int v) const {
+        assert(v <= n);
+        if(v <= 1) return false;
+        return sm[v] == v;
+    }
+
+
+    vector<int> primes(int max_n) const {
+        assert(1 <= max_n && max_n <= n);
+        vector<int> ret;
+        for(int i = 2; i <= max_n; i++) if(isprime(i)) ret.push_back(i);
+        return ret;
+    }
+
+    //sorted
+    vector<pair<int, int>> factorize(int v) {
+        assert(1 <= v && v <= n);
+        if(fs[v].empty() == false) return fs[v];
+        int val =  v;
+        vector<pair<int, int>> ret;
+        while(sm[v]!= v) {
+            int tmp = v;
+            int c = 0;
+            while(tmp % sm[v] == 0) c++, tmp /= sm[v];
+            fs[val].emplace_back(sm[v], c);
+            v = tmp;
+        }
+        if(v != 1) fs[val].emplace_back(v, 1);
+        return fs[val];
+    }
+
+    int divcnt(int v) {
+        assert(1 <= v && v <= n);
+        auto ps = factorize(v);
+        int ret = 1;
+        for(auto [p, c] : ps) ret *= (c + 1);
+        return ret;
+    }
     
-        void conduct() {
-            conducted = true;
-            for(long long i = 2; i <= N; i++) {
-                long long num = i;
-                while(large[num] != num) {
-                    long long tmp = num;
-                    long long cnt = 0;
-                    while(tmp % large[num] == 0) cnt++, tmp /= large[num];
-                    large_res[i].emplace_back(large[num], cnt);
-                    num = tmp;
+    // not sorted
+    vector<int> divs(int v)  {
+        assert(1 <= v && v <= n);
+        auto ps = factorize(v);
+
+        int sz = 1;
+        for(auto [p, c] : ps) sz *= (c + 1);
+        vector<int> ret(sz);
+        ret[0] = 1;
+        int r = 1;
+        for(auto [p, c] : ps) {
+            int nr = r;
+            for(int j = 0; j < c; j++) {
+                for(int k = 0; k < r; k++) {
+                    ret[nr] = p * ret[nr - r];
+                    nr++;
                 }
-                if(num != 1) large_res[i].emplace_back(num, 1LL);
             }
-            //この処理にO(NlogN)
+            r = nr;
         }
-        
-        int divcnt__(int x) {
-            if(!conducted) conduct();
-            auto ps = get(x);
-            int res = 1;
-            for(auto [p, c] : ps) res *= (c+1);
-            return res;
-        }
-
-        vector<int> divs__(int x) {
-            if(!conducted) conduct();
-            vector<int> res;
-            auto ps = get(x);
-
-            auto dfs = [&](auto dfs, long long id, long long val) -> void {
-                if(id == ps.size()) {
-                    res.push_back(val);
-                    return;
-                }
-
-                auto [p, c] = ps[id];
-                for(int i = 0; i <= c; i++) {
-                    dfs(dfs, id+1, val);
-                    val *= p;
-                }
-            };
-
-            dfs(dfs, 0, 1);
-            return res;
-        }
-    
-
-    public:
-
-        vector<int> primes(int r) {//[2, r]に収まる素数が昇順で入った配列を返す。
-            vector<int> res;
-            for(long long i = 2; i <= r; i++) if(isprime(i)) res.push_back(i);  
-            return res;
-        }//O(r)
-
-
-        bool isprime(int x) {//xは素数か 
-            if(x <= 1) return false;
-            return large[x] == x;
-        }//O(1)
-
-
-        int divcnt(int x) {//xの約数の個数を返す。
-            return divcnt__(x);
-        }//O(logN) 注：初回O(NlogN)
-
-        vector<int> divs(int x) {//xの約数を適当な順で入れた配列を返す。
-            return divs__(x);
-        }//O(約数の個数)  x <= 10^18で大凡 O(x ^ (1/3))  注 : 初回O(NlogN)
-      
-
-        vector<pair<int, int>> get(int x) {//xを素因数分解した結果 {素因数, 次数}のペアが入った配列
-            if(!conducted) conduct();
-            return large_res[x];
-        }//O(1) 注： 初回O(NlogN)
-  
-
-    //@brief 素数篩
-    //豆知識:Xの約数の個数は精々X^(1/3)程度。(X>=10^18以降は様相が変わるが)
-    //素因数分解について、特定の数字xについてのみlog(x)で実行することもできる。
-
-};notlinear_sieve sieve();
+        return ret;
+    }
+};
