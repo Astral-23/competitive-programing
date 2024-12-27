@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/2dsegtree.hpp
     title: "2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -24,8 +24,10 @@ data:
     \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/2dsegtree.hpp\"\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/2dsegtree.hpp\"\
     \ntemplate <class S, S (*op)(S, S), S (*e)()> struct segtree2d {\n    int id(int\
     \ y, int x) {return y * 2 * W + x;} //= y\u756A\u76EE\u306E\u30BB\u30B0\u6728\u306E\
     \u3001\u30CE\u30FC\u30C9x\u306B\u5BFE\u5FDC\u3059\u308B\u6DFB\u5B57\n    int H,\
@@ -80,7 +82,7 @@ data:
   isVerificationFile: true
   path: verify/2dsegtree_add.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-12-28 00:04:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/2dsegtree_add.test.cpp

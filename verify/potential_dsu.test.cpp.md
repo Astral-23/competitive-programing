@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/potential_dsu.hpp
     title: potential dsu
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330
@@ -24,8 +24,10 @@ data:
     \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/potential_dsu.hpp\"\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/potential_dsu.hpp\"\
     \nTT struct potential_dsu {\n    using vi = vec<int>;\n    using vvi = vec<vi>;\n\
     \    vi par, sz, es;\n    vec<T> h;\n    int cc;\n    int root;\n\n    potential_dsu(int\
     \ n, int ROOT) : root(ROOT) {\n        par = vi(n);\n        sz = vi(n, 1);\n\
@@ -69,8 +71,8 @@ data:
   isVerificationFile: true
   path: verify/potential_dsu.test.cpp
   requiredBy: []
-  timestamp: '2024-09-28 22:59:21+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/potential_dsu.test.cpp
 layout: document

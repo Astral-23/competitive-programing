@@ -1,13 +1,13 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/offline_connectivity.hpp
     title: offline_connectivity
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/undabledsu.hpp
     title: undable dsu
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -24,23 +24,25 @@ data:
     TT using vec = vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2\
     \ y) {\n    return x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class\
     \ T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n\
-    /*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/undabledsu.hpp\"\
-    \nstruct dsu {\n    using vi = vector<int>;   \n    using vvi = vec<vi>;\n   \
-    \ struct dat {\n        int u, v;\n        ll x;\n        dat(){}\n        dat(int\
-    \ a, int b, ll c) : u(a), v(b), x(c) {}\n    };\n   \n    vi par, sz, es;\n  \
-    \  vec<ll> val;\n    stack<dat> his;\n    int cc;\n   \n    ll op(ll l, ll r)\
-    \ {return l + r;}\n    ll inv(ll x) {return -x;}\n\n    dsu(int n) {\n       \
-    \ par = vi(n);\n        sz = vi(n, 1);\n        es = vi(n, 0);\n        val =\
-    \ vec<ll>(n, 0);\n        cc = n;\n        iota(all(par), 0);\n    }\n  \n   \
-    \ int leader(int u) {\n        while(par[u] != u) {\n            u = par[u];\n\
-    \        }\n        return u;\n    }\n    \n    bool same(int a, int b) {\n  \
-    \      return leader(a) == leader(b);\n    }\n    \n    bool merge(int a, int\
-    \ b) {\n        a = leader(a), b = leader(b);\n        if(sz[a] < sz[b]) swap(a,\
-    \ b);\n        his.push(dat(a, b, val[a]));\n\n        if(a == b) {\n        \
-    \    es[a]++;\n            return false;\n        }\n        else {\n        \
-    \    cc--;\n            par[b] = a;\n            sz[a] += sz[b];\n           \
-    \ es[a] += es[b] + 1;\n            val[a] = op(val[a] , val[b]);\n           \
-    \ return true;\n        }\n    }\n\n    bool undo() {\n        if(his.empty())\
+    struct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n  \
+    \      std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n  \
+    \  }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Datastructure/undabledsu.hpp\"\nstruct dsu {\n    using vi = vector<int>;\
+    \   \n    using vvi = vec<vi>;\n    struct dat {\n        int u, v;\n        ll\
+    \ x;\n        dat(){}\n        dat(int a, int b, ll c) : u(a), v(b), x(c) {}\n\
+    \    };\n   \n    vi par, sz, es;\n    vec<ll> val;\n    stack<dat> his;\n   \
+    \ int cc;\n   \n    ll op(ll l, ll r) {return l + r;}\n    ll inv(ll x) {return\
+    \ -x;}\n\n    dsu(int n) {\n        par = vi(n);\n        sz = vi(n, 1);\n   \
+    \     es = vi(n, 0);\n        val = vec<ll>(n, 0);\n        cc = n;\n        iota(all(par),\
+    \ 0);\n    }\n  \n    int leader(int u) {\n        while(par[u] != u) {\n    \
+    \        u = par[u];\n        }\n        return u;\n    }\n    \n    bool same(int\
+    \ a, int b) {\n        return leader(a) == leader(b);\n    }\n    \n    bool merge(int\
+    \ a, int b) {\n        a = leader(a), b = leader(b);\n        if(sz[a] < sz[b])\
+    \ swap(a, b);\n        his.push(dat(a, b, val[a]));\n\n        if(a == b) {\n\
+    \            es[a]++;\n            return false;\n        }\n        else {\n\
+    \            cc--;\n            par[b] = a;\n            sz[a] += sz[b];\n   \
+    \         es[a] += es[b] + 1;\n            val[a] = op(val[a] , val[b]);\n   \
+    \         return true;\n        }\n    }\n\n    bool undo() {\n        if(his.empty())\
     \ return false;\n        dat p = his.top();\n        auto [u, v, x] = p; \n  \
     \      his.pop();\n        par[v] = v;\n        es[u]--;\n        if(u != v) {\n\
     \            cc++;\n            sz[u] -= sz[v];\n            es[u] -= es[v];\n\
@@ -143,7 +145,7 @@ data:
   isVerificationFile: false
   path: example/offline_connectivity.example.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-12-28 00:04:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: example/offline_connectivity.example.cpp

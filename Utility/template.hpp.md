@@ -18,6 +18,9 @@ data:
     path: example/simple_treap.example.cpp
     title: example/simple_treap.example.cpp
   - icon: ':warning:'
+    path: verify/Convolution_gcd_convolution_test.cpp
+    title: verify/Convolution_gcd_convolution_test.cpp
+  - icon: ':warning:'
     path: "\u7802\u5834/binarytrie.example.cpp"
     title: "\u7802\u5834/binarytrie.example.cpp"
   - icon: ':warning:'
@@ -45,6 +48,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number_with_restoration.test.cpp
     title: verify/Chromatic_Number_with_restoration.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Convolution_lcm_convolution.test.cpp
+    title: verify/Convolution_lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Rhash.test.cpp
     title: verify/Rhash.test.cpp
@@ -111,126 +117,126 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/fps_log.test.cpp
     title: verify/fps_log.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/fps_pow.test.cpp
     title: verify/fps_pow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/hld.test.cpp
     title: verify/hld.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/hld_lca.test.cpp
     title: verify/hld_lca.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/imos2d.test.cpp
     title: verify/imos2d.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/jumpontree.test.cpp
     title: verify/jumpontree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lazyseg_bina.test.cpp
     title: verify/lazyseg_bina.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lowlink_bridge.test.cpp
     title: verify/lowlink_bridge.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lowlink_joint.test.cpp
     title: verify/lowlink_joint.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/manacher.test.cpp
     title: verify/manacher.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/mat_det.test.cpp
     title: verify/mat_det.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/maxflow.test.cpp
     title: verify/maxflow.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/maxflow_lowerbound.test.cpp
     title: verify/maxflow_lowerbound.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/maximum_independent_set.test.cpp
     title: verify/maximum_independent_set.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/mo.test.cpp
     title: verify/mo.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/offline_connectivity.test.cpp
     title: verify/offline_connectivity.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/offline_connectivity_more.test.cpp
     title: verify/offline_connectivity_more.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/oneside_range_edge_graph.test.cpp
     title: verify/oneside_range_edge_graph.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/pbds_set.test.cpp
     title: verify/pbds_set.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/point_add_rec_sum.test.cpp
     title: verify/point_add_rec_sum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/potential_dsu.test.cpp
     title: verify/potential_dsu.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/range_edge_graph.test.cpp
     title: verify/range_edge_graph.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/scc.test.cpp
     title: verify/scc.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/seg_prod.test.cpp
     title: verify/seg_prod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/segtree.test.cpp
     title: verify/segtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/simpletreap.test.cpp
     title: verify/simpletreap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/sprase_table.test.cpp
     title: verify/sprase_table.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/static1dsum.test.cpp
     title: verify/static1dsum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/static2dsum.test.cpp
     title: verify/static2dsum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/swag.test.cpp
     title: verify/swag.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/swag_more.test.cpp
     title: verify/swag_more.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/treap.test.cpp
     title: verify/treap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/two_edge_connected.test.cpp
     title: verify/two_edge_connected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/undabledsu.test.cpp
     title: verify/undabledsu.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/value_dsu.test.cpp
     title: verify/value_dsu.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -241,19 +247,25 @@ data:
     TT using vec = vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2\
     \ y) {\n    return x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class\
     \ T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n\
-    /*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n"
+    struct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n  \
+    \      std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n  \
+    \  }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n"
   code: "#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
     \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
     \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
     \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
     \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
     template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
-    \ = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\
-    \u30C8\n*/"
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/"
   dependsOn: []
   isVerificationFile: false
   path: Utility/template.hpp
   requiredBy:
+  - verify/Convolution_gcd_convolution_test.cpp
   - "\u7802\u5834/binarytrie.example.cpp"
   - "\u7802\u5834/simple_treap.henkou.cpp"
   - example/rhash.example.cpp
@@ -261,8 +273,8 @@ data:
   - example/offline_connectivity.example.cpp
   - example/range_edge_graph.example.cpp
   - example/matrix.example.cpp
-  timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/range_edge_graph.test.cpp
   - verify/bellman_ford.test.cpp
@@ -303,6 +315,7 @@ data:
   - verify/Chromatic_Number_with_restoration.test.cpp
   - verify/two_edge_connected.test.cpp
   - verify/imos2d.test.cpp
+  - verify/Convolution_lcm_convolution.test.cpp
   - verify/jumpontree.test.cpp
   - verify/mo.test.cpp
   - verify/lowlink_joint.test.cpp

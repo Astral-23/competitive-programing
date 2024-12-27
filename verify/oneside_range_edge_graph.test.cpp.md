@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Algorithm/hld.hpp
     title: HLD
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/oneside_range_edge_graph.hpp
     title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF(\u7279\u6B8A\u7248\
       )"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/4022
@@ -29,16 +29,18 @@ data:
     \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
     \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
     template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
-    \ = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\
-    \u30C8\n*/\n#line 1 \"Datastructure/oneside_range_edge_graph.hpp\"\n/*\n\u6CE8\
-    \u610F: \u3053\u308C\u306B\u3088\u308A\u5F97\u3089\u308C\u305F\u30B0\u30E9\u30D5\
-    \u3067\u6700\u77ED\u8DDD\u96E2\u3092\u6C42\u3081\u308B\u5834\u5408\u3001\u9802\
-    \u70B9\u756A\u53F7\u3092\u305A\u3089\u3057\u3066\u5229\u7528\u3059\u308B\u5FC5\
-    \u8981\u304C\u3042\u308B\u3002\n\u7406\u7531: \u30BB\u30B0\u6728\u306E\u6700\u4E0B\
-    \u6BB5\u3092\u751F\u306E\u9802\u70B9\u3068\u3057\u3066\u6271\u3063\u3066\u3044\
-    \u308B\u3002\n*/\nstruct range_edge_graph {\n    #define pb push_back\n    struct\
-    \ edge {\n        int to;\n        ll cost;\n        //ll cap; \u30D5\u30ED\u30FC\
-    \u306A\u3089\u3053\u308C\u3082\u4F7F\u3046\u3002\n        edge(){}\n        edge(int\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Datastructure/oneside_range_edge_graph.hpp\"\n/*\n\u6CE8\u610F\
+    : \u3053\u308C\u306B\u3088\u308A\u5F97\u3089\u308C\u305F\u30B0\u30E9\u30D5\u3067\
+    \u6700\u77ED\u8DDD\u96E2\u3092\u6C42\u3081\u308B\u5834\u5408\u3001\u9802\u70B9\
+    \u756A\u53F7\u3092\u305A\u3089\u3057\u3066\u5229\u7528\u3059\u308B\u5FC5\u8981\
+    \u304C\u3042\u308B\u3002\n\u7406\u7531: \u30BB\u30B0\u6728\u306E\u6700\u4E0B\u6BB5\
+    \u3092\u751F\u306E\u9802\u70B9\u3068\u3057\u3066\u6271\u3063\u3066\u3044\u308B\
+    \u3002\n*/\nstruct range_edge_graph {\n    #define pb push_back\n    struct edge\
+    \ {\n        int to;\n        ll cost;\n        //ll cap; \u30D5\u30ED\u30FC\u306A\
+    \u3089\u3053\u308C\u3082\u4F7F\u3046\u3002\n        edge(){}\n        edge(int\
     \ a, ll b, ll c) : to(a), cost(b) {}\n        //edge(int a, ll b, ll c) : to(a),\
     \ cost(b), cap(c) {}\n        //\u30D5\u30ED\u30FC\u306E\u6642\u306E\u30B3\u30F3\
     \u30B9\u30C8\u30E9\u30AF\u30BF\n    };\n\n    edge e(int to) {\n        return\
@@ -202,8 +204,8 @@ data:
   isVerificationFile: true
   path: verify/oneside_range_edge_graph.test.cpp
   requiredBy: []
-  timestamp: '2024-12-10 17:38:03+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/oneside_range_edge_graph.test.cpp
 layout: document

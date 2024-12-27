@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Algorithm/maxflow.hpp
     title: Maxflow
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Algorithm/maxflow_lowerbound.hpp
     title: Algorithm/maxflow_lowerbound.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1615
@@ -28,19 +28,21 @@ data:
     \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
     \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
     template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
-    \ = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\
-    \u30C8\n*/\n#line 1 \"Algorithm/maxflow.hpp\"\ntemplate <class T> struct mf_graph\
-    \ {\n    struct edge {\n        int st, to;\n        T cap, flow;\n    };\n\n\
-    \    struct nedge {\n        int to, rev;\n        T cap;\n    };\n\n    int n;\n\
-    \    vec<unordered_map<int, int>> rev;\n    vec<pair<int, int>> pos;\n    vec<vec<nedge>>\
-    \ g;\n\n    mf_graph(int _n) : n(_n), g(n), rev(n) {}\n\n    int add_edge(int\
-    \ s, int t, T cap) {\n        int m = pos.size();\n        pos.push_back({s, g[s].size()});\n\
-    \        int fi = g[s].size();\n        int ti = g[t].size();\n        if (s ==\
-    \ t) ti++;\n        g[s].push_back(nedge{t, ti, cap});\n        g[t].push_back(nedge{s,\
-    \ fi, 0});\n        rev[s][t] = m;\n        return m;\n    }\n\n    T flow(int\
-    \ s, int t, T flow_limit = numeric_limits<T>::max()) {\n        vec<int> lv(n),\
-    \ it(n, 0);\n\n        auto bfs = [&]() {\n            queue<int> que;\n     \
-    \       fill(lv.begin(), lv.end(), -1);\n            lv[s] = 0;\n            que.push(s);\n\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Algorithm/maxflow.hpp\"\ntemplate <class T> struct mf_graph {\n\
+    \    struct edge {\n        int st, to;\n        T cap, flow;\n    };\n\n    struct\
+    \ nedge {\n        int to, rev;\n        T cap;\n    };\n\n    int n;\n    vec<unordered_map<int,\
+    \ int>> rev;\n    vec<pair<int, int>> pos;\n    vec<vec<nedge>> g;\n\n    mf_graph(int\
+    \ _n) : n(_n), g(n), rev(n) {}\n\n    int add_edge(int s, int t, T cap) {\n  \
+    \      int m = pos.size();\n        pos.push_back({s, g[s].size()});\n       \
+    \ int fi = g[s].size();\n        int ti = g[t].size();\n        if (s == t) ti++;\n\
+    \        g[s].push_back(nedge{t, ti, cap});\n        g[t].push_back(nedge{s, fi,\
+    \ 0});\n        rev[s][t] = m;\n        return m;\n    }\n\n    T flow(int s,\
+    \ int t, T flow_limit = numeric_limits<T>::max()) {\n        vec<int> lv(n), it(n,\
+    \ 0);\n\n        auto bfs = [&]() {\n            queue<int> que;\n           \
+    \ fill(lv.begin(), lv.end(), -1);\n            lv[s] = 0;\n            que.push(s);\n\
     \            while (!que.empty()) {\n                int v = que.front();\n  \
     \              que.pop();\n\n                for (auto e : g[v]) {\n         \
     \           if (e.cap == 0 || lv[e.to] >= 0) continue;\n                    lv[e.to]\
@@ -138,8 +140,8 @@ data:
   isVerificationFile: true
   path: verify/maxflow_lowerbound.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/maxflow_lowerbound.test.cpp
 layout: document

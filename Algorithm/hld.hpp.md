@@ -6,24 +6,24 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/aux_tree.test.cpp
     title: verify/aux_tree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/hld.test.cpp
     title: verify/hld.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/hld_lca.test.cpp
     title: verify/hld_lca.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/jumpontree.test.cpp
     title: verify/jumpontree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/oneside_range_edge_graph.test.cpp
     title: verify/oneside_range_edge_graph.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/range_edge_graph.test.cpp
     title: verify/range_edge_graph.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: doc/hld.md
     document_title: HLD
@@ -167,7 +167,7 @@ data:
   path: Algorithm/hld.hpp
   requiredBy: []
   timestamp: '2024-12-10 17:38:03+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/range_edge_graph.test.cpp
   - verify/aux_tree.test.cpp

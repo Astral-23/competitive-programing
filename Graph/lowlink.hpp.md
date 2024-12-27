@@ -6,18 +6,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/bi_connected.test.cpp
     title: verify/bi_connected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lowlink_bridge.test.cpp
     title: verify/lowlink_bridge.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lowlink_joint.test.cpp
     title: verify/lowlink_joint.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/two_edge_connected.test.cpp
     title: verify/two_edge_connected.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     _deprecated_at_docs: doc/lowlink.md
     document_title: lowlink
@@ -99,7 +99,7 @@ data:
   path: Graph/lowlink.hpp
   requiredBy: []
   timestamp: '2024-10-19 02:53:39+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/two_edge_connected.test.cpp
   - verify/lowlink_joint.test.cpp

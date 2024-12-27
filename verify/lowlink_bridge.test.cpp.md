@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Graph/lowlink.hpp
     title: lowlink
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_3_B
@@ -25,21 +25,23 @@ data:
     \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
     template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
     \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
-    \ {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\
-    \u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/lowlink.hpp\"\nstruct lowlink\
-    \ {\n    using vi = vec<int>;\n    using vvi = vec<vi>;\n    using pii = pair<int,\
-    \ int>;\n\n    int n;\n    vvi tr;  // dfs\u6728\u306B\u4F7F\u308F\u308C\u308B\
-    \u8FBA\u306E\u307F \u4E0A\u304B\u3089\u4E0B\n    vvi aux;  // dfs\u6728\u306B\u4F7F\
-    \u308F\u308C\u306A\u3044\u8FBA\u306E\u307F  \u4E0B\u304B\u3089\u4E0A \u81EA\u5DF1\
-    \u8FBA\u3082\u30B3\u30B3\n    vi low, in, par;\n    vec<pii> bridges;\n    vec<int>\
-    \ joints;\n    vec<bool> inner_is_joint;\n    vec<int> self_edge_cnt;\n    \n\
-    \    lowlink(const vvi &g)\n        : n(g.size()),\n          tr(n),\n       \
-    \   aux(n),\n          low(n, 1001001001),\n          in(n, -1),\n          par(n,\
-    \ -1),\n          inner_is_joint(n, false),\n          self_edge_cnt(n, 0) {\n\
-    \        int t = 0;\n        int r = 0;\n        auto dfs = [&](auto f, int v,\
-    \ int p) -> void {\n            par[v] = p;\n            in[v] = low[v] = t++;\n\
-    \            bool duplication = false;\n            for (int to : g[v]) {\n  \
-    \              if (in[to] == -1) {\n                    tr[v].push_back(to);\n\
+    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
+    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
+    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/lowlink.hpp\"\nstruct\
+    \ lowlink {\n    using vi = vec<int>;\n    using vvi = vec<vi>;\n    using pii\
+    \ = pair<int, int>;\n\n    int n;\n    vvi tr;  // dfs\u6728\u306B\u4F7F\u308F\
+    \u308C\u308B\u8FBA\u306E\u307F \u4E0A\u304B\u3089\u4E0B\n    vvi aux;  // dfs\u6728\
+    \u306B\u4F7F\u308F\u308C\u306A\u3044\u8FBA\u306E\u307F  \u4E0B\u304B\u3089\u4E0A\
+    \ \u81EA\u5DF1\u8FBA\u3082\u30B3\u30B3\n    vi low, in, par;\n    vec<pii> bridges;\n\
+    \    vec<int> joints;\n    vec<bool> inner_is_joint;\n    vec<int> self_edge_cnt;\n\
+    \    \n    lowlink(const vvi &g)\n        : n(g.size()),\n          tr(n),\n \
+    \         aux(n),\n          low(n, 1001001001),\n          in(n, -1),\n     \
+    \     par(n, -1),\n          inner_is_joint(n, false),\n          self_edge_cnt(n,\
+    \ 0) {\n        int t = 0;\n        int r = 0;\n        auto dfs = [&](auto f,\
+    \ int v, int p) -> void {\n            par[v] = p;\n            in[v] = low[v]\
+    \ = t++;\n            bool duplication = false;\n            for (int to : g[v])\
+    \ {\n                if (in[to] == -1) {\n                    tr[v].push_back(to);\n\
     \                    f(f, to, v);\n                } else {\n                \
     \    if (to != p) {\n                        if (in[to] < in[v])\n           \
     \                 aux[v].push_back(to);\n                        else if (to ==\
@@ -91,8 +93,8 @@ data:
   isVerificationFile: true
   path: verify/lowlink_bridge.test.cpp
   requiredBy: []
-  timestamp: '2024-10-19 02:53:39+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/lowlink_bridge.test.cpp
 layout: document

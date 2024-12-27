@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Algorithm/hld.hpp
     title: HLD
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -24,14 +24,16 @@ data:
     \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/hld.hpp\"\nstruct\
-    \ HLD {\n    using vi = vec<int>;\n    using pi = pair<int, int>;\n    using pll\
-    \ = pair<long long, long long>;\n    vi in, out, par, root, rev, dep, pre_vs;\n\
-    \    vec<ll> dep_w;\n    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\u4E2D\
-    \u8EAB\u2192\u9802\u70B9\u756A\u53F7\n    int n, r;  // \u9802\u70B9\u6570\u3001\
-    \u6839\n\n    static vec<vec<int>> extract_graph(const vec<vec<pll>> &G) {\n \
-    \       vec<vec<int>> g(G.size());\n        for (int i = 0; i < int(G.size());\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/hld.hpp\"\
+    \nstruct HLD {\n    using vi = vec<int>;\n    using pi = pair<int, int>;\n   \
+    \ using pll = pair<long long, long long>;\n    vi in, out, par, root, rev, dep,\
+    \ pre_vs;\n    vec<ll> dep_w;\n    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\
+    \u4E2D\u8EAB\u2192\u9802\u70B9\u756A\u53F7\n    int n, r;  // \u9802\u70B9\u6570\
+    \u3001\u6839\n\n    static vec<vec<int>> extract_graph(const vec<vec<pll>> &G)\
+    \ {\n        vec<vec<int>> g(G.size());\n        for (int i = 0; i < int(G.size());\
     \ i++) {\n            for (auto [w, to] : G[i])\n                if (i < to) {\n\
     \                    g[i].push_back(to);\n                    g[to].push_back(i);\n\
     \                }\n        }\n        return g;\n    }\n    HLD(const vec<vec<pll>>\
@@ -155,7 +157,7 @@ data:
   isVerificationFile: true
   path: verify/aux_tree.test.cpp
   requiredBy: []
-  timestamp: '2024-12-10 17:38:03+09:00'
+  timestamp: '2024-12-28 00:04:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/aux_tree.test.cpp

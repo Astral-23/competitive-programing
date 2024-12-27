@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/swag.hpp
     title: SWAG
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
@@ -27,11 +27,13 @@ data:
     \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\n\
-    \ntemplate<class S, S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack {\n\
-    \        stack<S> data;\n        stack<S> res;\n        foldable_stack(){}\n\n\
-    \        void push(S a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\
+    \n\ntemplate<class S, S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack\
+    \ {\n        stack<S> data;\n        stack<S> res;\n        foldable_stack(){}\n\
+    \n        void push(S a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\
     \u8FFD\u52A0\u3001\u3064\u307E\u308AR  type == 0 : \u914D\u5217\u306E\u5DE6\u306B\
     \u8FFD\u52A0\u3001\u3064\u307E\u308AL \n            data.push(a);\n          \
     \  if(!res.empty()) {\n               if(type == 0) res.push(op(a, res.top()));//res\u304C\
@@ -116,8 +118,8 @@ data:
   isVerificationFile: true
   path: "\u7802\u5834/swag.test.cpp"
   requiredBy: []
-  timestamp: '2024-12-03 09:45:24+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: "\u7802\u5834/swag.test.cpp"
 layout: document

@@ -1,10 +1,10 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/simple_treap.hpp
     title: "\u5024\u306E\u96C6\u7D04\u3092\u3057\u306A\u3044treap"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -21,9 +21,11 @@ data:
     TT using vec = vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2\
     \ y) {\n    return x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class\
     \ T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n\
-    /*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/simple_treap.hpp\"\
-    \n\nclass xorshift {\n    uint64_t x;\n    public:\n        xorshift() {\n   \
-    \         mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());\n\
+    struct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n  \
+    \      std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n  \
+    \  }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Datastructure/simple_treap.hpp\"\n\nclass xorshift {\n    uint64_t\
+    \ x;\n    public:\n        xorshift() {\n            mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());\n\
     \            x = rnd();\n            for (int i = 0; i < 100; i++) {\n       \
     \         random();\n            }\n        }\n        uint64_t random() {\n \
     \           x = x ^ (x << 7);\n            return x = x ^ (x >> 9);\n    }\n};\n\
@@ -106,7 +108,7 @@ data:
   isVerificationFile: false
   path: example/simple_treap.example.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-12-28 00:04:13+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: example/simple_treap.example.cpp

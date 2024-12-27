@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/2dbit.hpp
     title: 2dbit
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -24,9 +24,11 @@ data:
     \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/2dbit.hpp\"\n\
-    TT struct bit2d {\n    int h, w;\n    vec<vec<T>> dat;\n\n    bit2d(int H, int\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/2dbit.hpp\"\
+    \nTT struct bit2d {\n    int h, w;\n    vec<vec<T>> dat;\n\n    bit2d(int H, int\
     \ W) : h(H), w(W) {\n        dat = vec<vec<T>>(h, vec<T>(w, 0));\n    }\n\n  \
     \  void add(int y, int x, T v) {\n        assert(0 <= y && y < h);\n        assert(0\
     \ <= x && x < w);\n        for( ; y < h; y |= y + 1) {\n            for(int b\
@@ -64,7 +66,7 @@ data:
   isVerificationFile: true
   path: verify/2dbit_imos.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-12-28 00:04:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/2dbit_imos.test.cpp

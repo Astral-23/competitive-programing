@@ -1,11 +1,23 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
-  _extendedVerifiedWith: []
+  _extendedRequiredBy:
+  - icon: ':warning:'
+    path: Convolution/gcd_convolution.hpp
+    title: Convolution/gcd_convolution.hpp
+  - icon: ':heavy_check_mark:'
+    path: Convolution/lcm_convolution.hpp
+    title: Convolution/lcm_convolution.hpp
+  - icon: ':warning:'
+    path: verify/Convolution_gcd_convolution_test.cpp
+    title: verify/Convolution_gcd_convolution_test.cpp
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/Convolution_lcm_convolution.test.cpp
+    title: verify/Convolution_lcm_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/sieve.hpp\"\nstruct notlinear_sieve {\n    int n;\n\
@@ -35,31 +47,31 @@ data:
     \ (int j = 0; j < c; j++) {\n                for (int k = 0; k < r; k++) {\n \
     \                   ret[nr] = p * ret[nr - r];\n                    nr++;\n  \
     \              }\n            }\n            r = nr;\n        }\n        return\
-    \ ret;\n    }\n\n\n    //\u5076\u6570...+1 \u5947\u6570...-1 p^2...0\n    template\
+    \ ret;\n    }\n\n    // \u5076\u6570...+1 \u5947\u6570...-1 p^2...0\n    template\
     \ <typename T> vector<T> mobius(int N) const {\n        assert(N <= n);\n    \
     \    vector<T> ret(N + 1, 1);\n        for (int p = 2; p <= N; p++)\n        \
     \    if (is_prime(p)) {\n                for (int q = p; q <= N; q += p) {\n \
     \                   if ((q / p) % p == 0)\n                        ret[q] = 0;\n\
     \                    else\n                        ret[q] = -ret[q];\n       \
-    \         }\n            }\n        return ret;\n    }\n     \n    //\u4EE5\u4E0B\
+    \         }\n            }\n        return ret;\n    }\n\n    // \u4EE5\u4E0B\
     4\u3064\u306F\u7D20\u56E0\u6570\u3054\u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\
-    \u3046\u3068\u826F\u3044\n\n    //f -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092\
+    \u3046\u3068\u826F\u3044\n\n    // f -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092\
     add\n    template <typename T> vector<T> divisor_zeta_transform(vector<T> A) const\
     \ {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n        for\
     \ (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n               \
     \ for (int k = 1; k * p <= N; k++) {\n                    A[k * p] += A[k];\n\
     \                }\n            }\n        }\n        return A;\n    }\n\n   \
-    \ //F -> f\n    template <typename T>\n    vector<T> divisor_mobius_transform(vector<T>\
+    \ // F -> f\n    template <typename T>\n    vector<T> divisor_mobius_transform(vector<T>\
     \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
     \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
     \          for (int k = N / p; k >= 1; k--) {\n                    A[k * p] -=\
     \ A[k];\n                }\n            }\n        }\n        return A;\n    }\n\
-    \n    //f -> F \u500D\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename\
+    \n    // f -> F \u500D\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename\
     \ T> vector<T> multiple_zeta_transform(vector<T> A) const {\n        int N = int(A.size())\
     \ - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n    \
     \        if (is_prime(p)) {\n                for (int k = N / p; k >= 1; k--)\
     \ {\n                    A[k] += A[k * p];\n                }\n            }\n\
-    \        }\n        return A;\n    }\n\n\n    //F -> f \n    template <typename\
+    \        }\n        return A;\n    }\n\n    // F -> f\n    template <typename\
     \ T>\n    vector<T> multiple_mobius_transform(vector<T> A) const {\n        int\
     \ N = int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <=\
     \ N; p++) {\n            if (is_prime(p)) {\n                for (int k = 1; k\
@@ -91,32 +103,32 @@ data:
     \ : ps) {\n            int nr = r;\n            for (int j = 0; j < c; j++) {\n\
     \                for (int k = 0; k < r; k++) {\n                    ret[nr] =\
     \ p * ret[nr - r];\n                    nr++;\n                }\n           \
-    \ }\n            r = nr;\n        }\n        return ret;\n    }\n\n\n    //\u5076\
+    \ }\n            r = nr;\n        }\n        return ret;\n    }\n\n    // \u5076\
     \u6570...+1 \u5947\u6570...-1 p^2...0\n    template <typename T> vector<T> mobius(int\
     \ N) const {\n        assert(N <= n);\n        vector<T> ret(N + 1, 1);\n    \
     \    for (int p = 2; p <= N; p++)\n            if (is_prime(p)) {\n          \
     \      for (int q = p; q <= N; q += p) {\n                    if ((q / p) % p\
     \ == 0)\n                        ret[q] = 0;\n                    else\n     \
     \                   ret[q] = -ret[q];\n                }\n            }\n    \
-    \    return ret;\n    }\n     \n    //\u4EE5\u4E0B4\u3064\u306F\u7D20\u56E0\u6570\
-    \u3054\u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\u3046\u3068\u826F\u3044\n\n \
-    \   //f -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename\
-    \ T> vector<T> divisor_zeta_transform(vector<T> A) const {\n        int N = int(A.size())\
-    \ - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n    \
-    \        if (is_prime(p)) {\n                for (int k = 1; k * p <= N; k++)\
-    \ {\n                    A[k * p] += A[k];\n                }\n            }\n\
-    \        }\n        return A;\n    }\n\n    //F -> f\n    template <typename T>\n\
+    \    return ret;\n    }\n\n    // \u4EE5\u4E0B4\u3064\u306F\u7D20\u56E0\u6570\u3054\
+    \u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\u3046\u3068\u826F\u3044\n\n    // f\
+    \ -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T>\
+    \ divisor_zeta_transform(vector<T> A) const {\n        int N = int(A.size()) -\
+    \ 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n      \
+    \      if (is_prime(p)) {\n                for (int k = 1; k * p <= N; k++) {\n\
+    \                    A[k * p] += A[k];\n                }\n            }\n   \
+    \     }\n        return A;\n    }\n\n    // F -> f\n    template <typename T>\n\
     \    vector<T> divisor_mobius_transform(vector<T> A) const {\n        int N =\
     \ int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N;\
     \ p++) {\n            if (is_prime(p)) {\n                for (int k = N / p;\
     \ k >= 1; k--) {\n                    A[k * p] -= A[k];\n                }\n \
-    \           }\n        }\n        return A;\n    }\n\n    //f -> F \u500D\u6570\
+    \           }\n        }\n        return A;\n    }\n\n    // f -> F \u500D\u6570\
     \u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T> multiple_zeta_transform(vector<T>\
     \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
     \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
     \          for (int k = N / p; k >= 1; k--) {\n                    A[k] += A[k\
     \ * p];\n                }\n            }\n        }\n        return A;\n    }\n\
-    \n\n    //F -> f \n    template <typename T>\n    vector<T> multiple_mobius_transform(vector<T>\
+    \n    // F -> f\n    template <typename T>\n    vector<T> multiple_mobius_transform(vector<T>\
     \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
     \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
     \          for (int k = 1; k <= N / p; k++) {\n                    A[k] -= A[k\
@@ -125,10 +137,14 @@ data:
   dependsOn: []
   isVerificationFile: false
   path: Math/sieve.hpp
-  requiredBy: []
-  timestamp: '2024-12-27 20:42:21+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  requiredBy:
+  - Convolution/lcm_convolution.hpp
+  - Convolution/gcd_convolution.hpp
+  - verify/Convolution_gcd_convolution_test.cpp
+  timestamp: '2024-12-27 23:47:58+09:00'
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/Convolution_lcm_convolution.test.cpp
 documentation_of: Math/sieve.hpp
 layout: document
 redirect_from:

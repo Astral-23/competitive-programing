@@ -1,20 +1,20 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Graph/lowlink.hpp
     title: lowlink
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Graph/two_edge_connected.hpp
     title: "\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/two_edge_connected_components
@@ -28,8 +28,10 @@ data:
     \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
     \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
     template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
-    \ = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\
-    \u30C8\n*/\n#line 1 \"Graph/lowlink.hpp\"\nstruct lowlink {\n    using vi = vec<int>;\n\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Graph/lowlink.hpp\"\nstruct lowlink {\n    using vi = vec<int>;\n\
     \    using vvi = vec<vi>;\n    using pii = pair<int, int>;\n\n    int n;\n   \
     \ vvi tr;  // dfs\u6728\u306B\u4F7F\u308F\u308C\u308B\u8FBA\u306E\u307F \u4E0A\
     \u304B\u3089\u4E0B\n    vvi aux;  // dfs\u6728\u306B\u4F7F\u308F\u308C\u306A\u3044\
@@ -104,8 +106,8 @@ data:
   isVerificationFile: true
   path: verify/two_edge_connected.test.cpp
   requiredBy: []
-  timestamp: '2024-10-19 03:07:01+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/two_edge_connected.test.cpp
 layout: document

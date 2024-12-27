@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/sprase_table.test.cpp
     title: verify/sprase_table.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     document_title: sparse_table
     links: []
@@ -53,7 +53,7 @@ data:
   path: Datastructure/sparse_table.hpp
   requiredBy: []
   timestamp: '2024-08-26 00:04:03+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_ALL_WA
   verifiedWith:
   - verify/sprase_table.test.cpp
 documentation_of: Datastructure/sparse_table.hpp

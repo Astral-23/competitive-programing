@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/Rhash.hpp
     title: rolling_hash
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -24,53 +24,56 @@ data:
     \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
     \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
     \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"String/Rhash.hpp\"\n\nnamespace\
-    \ rolling_hash {\nstruct rhash {\n    static const uint64_t mod = (1LL << 61)\
-    \ - 1;\n    using mm = rhash;\n    uint64_t x;\n\n    rhash() : x(0) {}\n    TT\
-    \ rhash(T a = 0) : x((__int128_t(a) % mod + mod)) {\n        if (x >= mod) x -=\
-    \ mod;\n    }\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
-    \        if (a.x >= mod) a.x -= mod;\n        return a;\n    }\n    friend mm\
-    \ operator-(mm a, mm b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x +=\
-    \ mod;\n        return a;\n    }\n\n    friend mm operator*(mm a, mm b) {\n  \
-    \      __uint128_t t = (__uint128_t)(a.x) * b.x;\n        t = (t >> 61) + (t &\
-    \ mod);\n        return (t >= mod) ? t - mod : t;\n    }\n    friend mm &operator+=(mm\
-    \ &a, mm b) { return a = a + b; }\n    friend mm &operator-=(mm &a, mm b) { return\
-    \ a = a - b; }\n    friend mm &operator*=(mm &a, mm b) { return a = a * b; }\n\
-    \n    mm pow(ll y) const {\n        mm res = 1;\n        mm v = *this;\n     \
-    \   while (y) {\n            if (y & 1) res *= v;\n            v *= v;\n     \
-    \       y /= 2;\n        }\n        return res;\n    }\n\n    friend istream &operator>>(istream\
-    \ &is, mm &a) {\n        ll t;\n\n        cin >> t;\n        a = mm(t);\n    \
-    \    return is;\n    }\n\n    friend ostream &operator<<(ostream &os, mm a) {\
-    \ return os << a.x; }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool\
-    \ operator!=(mm a) { return x != a.x; }\n    bool operator<(const mm &a) const\
-    \ { return x < a.x; }\n};\n\nconst rhash brh = 200224;\nconst int MAX_SIZE = 50'000'000;\n\
-    array<rhash, MAX_SIZE + 1> pw;\n\nstruct Initializer {\n    Initializer() {\n\
-    \        pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1) { pw[i] = pw[i - 1] * brh;\
-    \ }\n    }\n};\nInitializer initializer;\n\nstruct Rhash {\n    int n;\n    vec<rhash>\
-    \ H;\n\n    Rhash() {}\n\n    Rhash(string S) : n(S.size()) {\n        H = vec<rhash>(n,\
-    \ 0);\n\n        rep(i, 0, n) {\n            H[i] += S[i];\n            if (i)\
-    \ {\n                H[i] += H[i - 1] * brh;\n            }\n        }\n    }\n\
-    \n    rhash prod(ll l, ll r) {\n        assert(0 <= l && r <= n);\n        if\
-    \ (l >= r) return 0;\n        rhash res = H[r - 1];\n        if (l) res -= H[l\
-    \ - 1] * pw[r - l];\n        return res;\n    }\n\n    rhash get(int p) { return\
-    \ prod(p, p + 1); }\n\n    pair<ll, ll> conv(ll l, ll r) { return make_pair(n\
-    \ - r, n - l); }\n};\n\nrhash cal_rhash(string S) { return Rhash(S).prod(0, S.size());\
-    \ }\n\nrhash connect(rhash mae, rhash usiro, ll len_of_usiro) {\n    if (len_of_usiro\
-    \ <= MAX_SIZE) {\n        return mae * pw[len_of_usiro] + usiro;\n    } else {\n\
-    \        return mae * brh.pow(len_of_usiro) + usiro;\n    }\n}\n\nrhash rhash_pow(rhash\
-    \ x, ll y, ll len) {\n    rhash res = 0;\n    rhash len_pw;\n    if (len <= MAX_SIZE)\n\
-    \        len_pw = pw[len];\n    else\n        len_pw = brh.pow(len);\n\n    while\
-    \ (y) {\n        if (y & 1) {\n            res = res * len_pw + x;\n        }\n\
-    \        x = x * len_pw + x;\n        y /= 2;\n        len_pw *= len_pw;\n   \
-    \ }\n    return res;\n}\n}  // namespace rolling_hash\n/*\n@brief rolling_hash\n\
-    @docs doc/Rhash.md\n*/\n#line 4 \"verify/Rhash.test.cpp\"\nusing namespace rolling_hash;\n\
-    int main() {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n\n    rep(i, 0,\
-    \ S.size()) {\n        int li = 0;\n        int ri = int(S.size()) - i;\n\n  \
-    \      while(li < ri) {//ooxxxx   \n            int mid = (li + ri + 1) >> 1;\n\
-    \            if(rs.prod(i, i + mid) == rs.prod(0, mid)) {\n                li\
-    \ = mid;\n            }\n            else {\n                ri = mid - 1;\n \
-    \           }\n        }\n\n        cout << li << \" \";\n    }\n    \n}\n"
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"String/Rhash.hpp\"\
+    \n\nnamespace rolling_hash {\nstruct rhash {\n    static const uint64_t mod =\
+    \ (1LL << 61) - 1;\n    using mm = rhash;\n    uint64_t x;\n\n    rhash() : x(0)\
+    \ {}\n    TT rhash(T a = 0) : x((__int128_t(a) % mod + mod)) {\n        if (x\
+    \ >= mod) x -= mod;\n    }\n\n    friend mm operator+(mm a, mm b) {\n        a.x\
+    \ += b.x;\n        if (a.x >= mod) a.x -= mod;\n        return a;\n    }\n   \
+    \ friend mm operator-(mm a, mm b) {\n        a.x -= b.x;\n        if (a.x >= mod)\
+    \ a.x += mod;\n        return a;\n    }\n\n    friend mm operator*(mm a, mm b)\
+    \ {\n        __uint128_t t = (__uint128_t)(a.x) * b.x;\n        t = (t >> 61)\
+    \ + (t & mod);\n        return (t >= mod) ? t - mod : t;\n    }\n    friend mm\
+    \ &operator+=(mm &a, mm b) { return a = a + b; }\n    friend mm &operator-=(mm\
+    \ &a, mm b) { return a = a - b; }\n    friend mm &operator*=(mm &a, mm b) { return\
+    \ a = a * b; }\n\n    mm pow(ll y) const {\n        mm res = 1;\n        mm v\
+    \ = *this;\n        while (y) {\n            if (y & 1) res *= v;\n          \
+    \  v *= v;\n            y /= 2;\n        }\n        return res;\n    }\n\n   \
+    \ friend istream &operator>>(istream &is, mm &a) {\n        ll t;\n\n        cin\
+    \ >> t;\n        a = mm(t);\n        return is;\n    }\n\n    friend ostream &operator<<(ostream\
+    \ &os, mm a) { return os << a.x; }\n\n    bool operator==(mm a) { return x ==\
+    \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n    bool operator<(const\
+    \ mm &a) const { return x < a.x; }\n};\n\nconst rhash brh = 200224;\nconst int\
+    \ MAX_SIZE = 50'000'000;\narray<rhash, MAX_SIZE + 1> pw;\n\nstruct Initializer\
+    \ {\n    Initializer() {\n        pw[0] = 1;\n        rep(i, 1, MAX_SIZE + 1)\
+    \ { pw[i] = pw[i - 1] * brh; }\n    }\n};\nInitializer initializer;\n\nstruct\
+    \ Rhash {\n    int n;\n    vec<rhash> H;\n\n    Rhash() {}\n\n    Rhash(string\
+    \ S) : n(S.size()) {\n        H = vec<rhash>(n, 0);\n\n        rep(i, 0, n) {\n\
+    \            H[i] += S[i];\n            if (i) {\n                H[i] += H[i\
+    \ - 1] * brh;\n            }\n        }\n    }\n\n    rhash prod(ll l, ll r) {\n\
+    \        assert(0 <= l && r <= n);\n        if (l >= r) return 0;\n        rhash\
+    \ res = H[r - 1];\n        if (l) res -= H[l - 1] * pw[r - l];\n        return\
+    \ res;\n    }\n\n    rhash get(int p) { return prod(p, p + 1); }\n\n    pair<ll,\
+    \ ll> conv(ll l, ll r) { return make_pair(n - r, n - l); }\n};\n\nrhash cal_rhash(string\
+    \ S) { return Rhash(S).prod(0, S.size()); }\n\nrhash connect(rhash mae, rhash\
+    \ usiro, ll len_of_usiro) {\n    if (len_of_usiro <= MAX_SIZE) {\n        return\
+    \ mae * pw[len_of_usiro] + usiro;\n    } else {\n        return mae * brh.pow(len_of_usiro)\
+    \ + usiro;\n    }\n}\n\nrhash rhash_pow(rhash x, ll y, ll len) {\n    rhash res\
+    \ = 0;\n    rhash len_pw;\n    if (len <= MAX_SIZE)\n        len_pw = pw[len];\n\
+    \    else\n        len_pw = brh.pow(len);\n\n    while (y) {\n        if (y &\
+    \ 1) {\n            res = res * len_pw + x;\n        }\n        x = x * len_pw\
+    \ + x;\n        y /= 2;\n        len_pw *= len_pw;\n    }\n    return res;\n}\n\
+    }  // namespace rolling_hash\n/*\n@brief rolling_hash\n@docs doc/Rhash.md\n*/\n\
+    #line 4 \"verify/Rhash.test.cpp\"\nusing namespace rolling_hash;\nint main() {\n\
+    \    string S;\n    cin >> S;\n\n    Rhash rs(S);\n\n    rep(i, 0, S.size()) {\n\
+    \        int li = 0;\n        int ri = int(S.size()) - i;\n\n        while(li\
+    \ < ri) {//ooxxxx   \n            int mid = (li + ri + 1) >> 1;\n            if(rs.prod(i,\
+    \ i + mid) == rs.prod(0, mid)) {\n                li = mid;\n            }\n \
+    \           else {\n                ri = mid - 1;\n            }\n        }\n\n\
+    \        cout << li << \" \";\n    }\n    \n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/zalgorithm\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../String/Rhash.hpp\"\nusing namespace\
     \ rolling_hash;\nint main() {\n    string S;\n    cin >> S;\n\n    Rhash rs(S);\n\
@@ -86,7 +89,7 @@ data:
   isVerificationFile: true
   path: verify/Rhash.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
+  timestamp: '2024-12-28 00:04:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Rhash.test.cpp

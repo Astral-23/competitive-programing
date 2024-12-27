@@ -1,9 +1,12 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
-    path: Fps/fps.hpp
-    title: Fps/fps.hpp
+  - icon: ':warning:'
+    path: Convolution/gcd_convolution.hpp
+    title: Convolution/gcd_convolution.hpp
+  - icon: ':heavy_check_mark:'
+    path: Math/sieve.hpp
+    title: Math/sieve.hpp
   - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -65,27 +68,88 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':warning:'
   attributes:
-    '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/log_of_formal_power_series
     links:
-    - https://judge.yosupo.jp/problem/log_of_formal_power_series
-  bundledCode: "#line 1 \"verify/fps_log.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"atcoder/convolution.hpp\"\
-    \n\n\n\n#line 7 \"atcoder/convolution.hpp\"\n#include <type_traits>\n#line 9 \"\
-    atcoder/convolution.hpp\"\n\n#line 1 \"atcoder/internal_bit.hpp\"\n\n\n\n#ifdef\
-    \ _MSC_VER\n#include <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n#include\
-    \ <bit>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus\
+    - https://judge.yosupo.jp/problem/gcd_convolution
+  bundledCode: "#line 1 \"verify/Convolution_gcd_convolution_test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/gcd_convolution\"\n#line 1 \"Utility/template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
+    \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
+    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
+    \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
+    \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
+    template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Math/sieve.hpp\"\nstruct notlinear_sieve {\n    int n;\n    vector<int>\
+    \ sm;\n\n    notlinear_sieve(int max_n) : n(max_n), sm(max_n + 1) {\n        assert(1\
+    \ <= n);\n        iota(sm.begin(), sm.end(), 0);\n        if (n >= 2) sm[2] =\
+    \ 2;\n        for (int j = 4; j <= n; j += 2) sm[j] = 2;\n        for (int i =\
+    \ 3; i * i <= n; i += 2) {\n            if (sm[i] != i) continue;\n          \
+    \  for (int j = i * 2; j <= n; j += i) {\n                if (sm[j] == j) sm[j]\
+    \ = i;\n            }\n        }\n    }\n\n    bool is_prime(int v) const noexcept\
+    \ {\n        assert(v <= n);\n        if (v <= 1) return false;\n        return\
+    \ sm[v] == v;\n    }\n\n    vector<int> primes(int max_n) const noexcept {\n \
+    \       assert(1 <= max_n && max_n <= n);\n        vector<int> ret;\n        for\
+    \ (int i = 2; i <= max_n; i++)\n            if (is_prime(i)) ret.push_back(i);\n\
+    \        return ret;\n    }\n\n    // sorted\n    vector<pair<int, int>> factorize(int\
+    \ v) const noexcept {\n        assert(1 <= v && v <= n);\n        vector<pair<int,\
+    \ int>> ret;\n        while (sm[v] != v) {\n            int tmp = v;\n       \
+    \     int c = 0;\n            while (tmp % sm[v] == 0) c++, tmp /= sm[v];\n  \
+    \          ret.emplace_back(sm[v], c);\n            v = tmp;\n        }\n    \
+    \    if (v != 1) ret.emplace_back(v, 1);\n        return ret;\n    }\n\n    int\
+    \ divcnt(int v) const noexcept {\n        assert(1 <= v && v <= n);\n        auto\
+    \ ps = factorize(v);\n        int ret = 1;\n        for (auto [p, c] : ps) ret\
+    \ *= (c + 1);\n        return ret;\n    }\n\n    // not sorted\n    vector<int>\
+    \ divs(int v) const noexcept {\n        assert(1 <= v && v <= n);\n        auto\
+    \ ps = factorize(v);\n        int sz = 1;\n        for (auto [p, c] : ps) sz *=\
+    \ (c + 1);\n        vector<int> ret(sz);\n        ret[0] = 1;\n        int r =\
+    \ 1;\n        for (auto [p, c] : ps) {\n            int nr = r;\n            for\
+    \ (int j = 0; j < c; j++) {\n                for (int k = 0; k < r; k++) {\n \
+    \                   ret[nr] = p * ret[nr - r];\n                    nr++;\n  \
+    \              }\n            }\n            r = nr;\n        }\n        return\
+    \ ret;\n    }\n\n    // \u5076\u6570...+1 \u5947\u6570...-1 p^2...0\n    template\
+    \ <typename T> vector<T> mobius(int N) const {\n        assert(N <= n);\n    \
+    \    vector<T> ret(N + 1, 1);\n        for (int p = 2; p <= N; p++)\n        \
+    \    if (is_prime(p)) {\n                for (int q = p; q <= N; q += p) {\n \
+    \                   if ((q / p) % p == 0)\n                        ret[q] = 0;\n\
+    \                    else\n                        ret[q] = -ret[q];\n       \
+    \         }\n            }\n        return ret;\n    }\n\n    // \u4EE5\u4E0B\
+    4\u3064\u306F\u7D20\u56E0\u6570\u3054\u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\
+    \u3046\u3068\u826F\u3044\n\n    // f -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092\
+    add\n    template <typename T> vector<T> divisor_zeta_transform(vector<T> A) const\
+    \ {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n        for\
+    \ (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n               \
+    \ for (int k = 1; k * p <= N; k++) {\n                    A[k * p] += A[k];\n\
+    \                }\n            }\n        }\n        return A;\n    }\n\n   \
+    \ // F -> f\n    template <typename T>\n    vector<T> divisor_mobius_transform(vector<T>\
+    \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
+    \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
+    \          for (int k = N / p; k >= 1; k--) {\n                    A[k * p] -=\
+    \ A[k];\n                }\n            }\n        }\n        return A;\n    }\n\
+    \n    // f -> F \u500D\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename\
+    \ T> vector<T> multiple_zeta_transform(vector<T> A) const {\n        int N = int(A.size())\
+    \ - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n    \
+    \        if (is_prime(p)) {\n                for (int k = N / p; k >= 1; k--)\
+    \ {\n                    A[k] += A[k * p];\n                }\n            }\n\
+    \        }\n        return A;\n    }\n\n    // F -> f\n    template <typename\
+    \ T>\n    vector<T> multiple_mobius_transform(vector<T> A) const {\n        int\
+    \ N = int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <=\
+    \ N; p++) {\n            if (is_prime(p)) {\n                for (int k = 1; k\
+    \ <= N / p; k++) {\n                    A[k] -= A[k * p];\n                }\n\
+    \            }\n        }\n        return A;\n    }\n};\n#line 2 \"Convolution/gcd_convolution.hpp\"\
+    \ntemplate <typename T>\nvector<T> gcd_convolution(vector<T> A, vector<T> B) {\n\
+    \    if (A.empty() || B.empty()) return {};\n    int n = min<int>(A.size(), B.size())\
+    \ - 1;\n    A.resize(n + 1, 0);\n    B.resize(n + 1, 0);\n    notlinear_sieve\
+    \ sieve(n);\n\n    vector<T> mul_A = sieve.multiple_zeta_transform<T>(A);\n  \
+    \  vector<T> mul_B = sieve.multiple_zeta_transform<T>(B);\n    for (int i = 1;\
+    \ i <= n; i += 1) mul_A[i] *= mul_B[i];\n    return sieve.multiple_mobius_transform<T>(mul_A);\n\
+    }\n#line 1 \"atcoder/convolution.hpp\"\n\n\n\n#line 7 \"atcoder/convolution.hpp\"\
+    \n#include <type_traits>\n#line 9 \"atcoder/convolution.hpp\"\n\n#line 1 \"atcoder/internal_bit.hpp\"\
+    \n\n\n\n#ifdef _MSC_VER\n#include <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n\
+    #include <bit>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus\
     \ >= 202002L\n\nusing std::bit_ceil;\n\n#else\n\n// @return same with std::bit::bit_ceil\n\
     unsigned int bit_ceil(unsigned int n) {\n    unsigned int x = 1;\n    while (x\
     \ < (unsigned int)(n)) x *= 2;\n    return x;\n}\n\n#endif\n\n// @param n `1 <=\
@@ -957,85 +1021,25 @@ data:
     \            _answer[i] = id[2 * i] < id[2 * i + 1];\n        }\n        return\
     \ true;\n    }\n    std::vector<bool> answer() { return _answer; }\n\n  private:\n\
     \    int _n;\n    std::vector<bool> _answer;\n    internal::scc_graph scc;\n};\n\
-    \n}  // namespace atcoder\n\n\n#line 1 \"Fps/fps.hpp\"\nusing mint = atcoder::modint998244353;\n\
-    using vm = vector<mint>;\nstruct fps : vm {\n#define d (*this)\n#define s int(vm::size())\n\
-    \    fps(){}\n    fps(vector<mint> a) : vm(a.begin(), a.end()) {}\n    void rsz(int\
-    \ n) {\n        if (s < n) resize(n);\n    }\n    fps &low_(int n) {\n       \
-    \ resize(n);\n        return d;\n    }\n    fps low(int n) const { return fps(d).low_(n);\
-    \ }\n    fps &shrink_(int n) {\n        if (s > n) resize(n);\n        return\
-    \ d;\n    }\n    fps shrink(int n) const { return fps(d).shrink_(n); }\n    mint\
-    \ &operator[](int i) {\n        rsz(i + 1);\n        return vm::operator[](i);\n\
-    \    }\n    mint operator[](int i) const { return i < s ? vm::operator[](i) :\
-    \ 0; }\n    mint operator()(mint x) const {\n        mint r;\n        for (int\
-    \ i = s - 1; i >= 0; --i) r = r * x + d[i];\n        return r;\n    }\n    fps\
-    \ operator>>(int sz) const {\n        if (s <= sz) return {};\n        fps r =\
-    \ d;\n        r.erase(r.begin(), r.begin() + sz);\n        return r;\n    }\n\
-    \    fps operator<<(int sz) const {\n        fps r = d;\n        r.insert(r.begin(),\
-    \ sz, mint(0));\n        return r;\n    }\n    fps operator-() const {\n     \
-    \   fps r(d);\n        for (int i = 0; i < s; i++) r[i] = -r[i];\n        return\
-    \ r;\n    }\n    fps &operator+=(const fps &a) {\n        rsz(a.size());\n   \
-    \     for (int i = 0; i < a.size(); i++) d[i] += a[i];\n        return d;\n  \
-    \  }\n    fps &operator+=(const mint &a) {\n        d[0] += a;\n        return\
-    \ d;\n    }\n    fps &operator-=(const fps &a) {\n        rsz(a.size());\n   \
-    \     for (int i = 0; i < a.size(); i++) d[i] -= a[i];\n        return d;\n  \
-    \  }\n    fps &operator-=(const mint &a) {\n        d[0] -= a;\n        return\
-    \ d;\n    }\n    fps &operator*=(const fps &a) { return d = atcoder::convolution(d,\
-    \ a); }\n    fps &operator*=(mint a) {\n        for (int i = 0; i < s; i++) d[i]\
-    \ *= a;\n        return d;\n    }\n    fps &operator/=(mint a) {\n        mint\
-    \ a_inv = 1 / a;\n        for (int i = 0; i < s; i++) d[i] *= a_inv;\n       \
-    \ return d;\n    }\n    fps operator+(const fps &a) const { return fps(d) += a;\
-    \ }\n    fps operator-(const fps &a) const { return fps(d) -= a; }\n    fps operator+(const\
-    \ mint &a) const { return fps(d) += a; }\n    fps operator-(const mint &a) const\
-    \ { return fps(d) -= a; }\n    fps operator*(const fps &a) const { return fps(d)\
-    \ *= a; }\n    fps operator*(mint a) const { return fps(d) *= a; }\n    fps operator/(mint\
-    \ a) const { return fps(d) /= a; }\n    fps inv(int n = -1) const {\n        if\
-    \ (n == -1) n = s;\n        assert(d[0] != mint(0));\n        if (s < 30) {\n\
-    \            mint p = d[0];\n            fps b = d / p;\n            fps r({1});\n\
-    \            for (int i = 0; i < n; i++) {\n                for (int j = 1; j\
-    \ < b.size(); j++) {\n                    if (i - j >= 0) r[i] += (-b[j]) * r[i\
-    \ - j];\n                }\n            }\n            r /= p;\n            return\
-    \ r.low_(n);\n        } else {\n            fps r({d[0].inv()});\n           \
-    \ for (int i = 1; i < n; i <<= 1)\n                r = r * mint(2) - (r * r *\
-    \ low(i << 1)).low_(i << 1);\n            return r.low_(n);\n        }\n    }\n\
-    \    fps &operator/=(const fps &a) {\n        assert(a[0] != mint(0));\n     \
-    \   int w = s + a.size();\n        if (a.size() < 30) {\n            mint p =\
-    \ a[0];\n            fps b = a / p;\n            for (int i = 0; i < w; i++) {\n\
-    \                for (int j = 1; j < b.size(); j++)\n                    if (i\
-    \ - j >= 0) d[i] += (-b[j]) * d[i - j];\n            }\n            d /= p;\n\
-    \            return d.low_(w);\n        } else {\n            d *= a.inv(w);\n\
-    \            return d;\n        }\n    }\n    fps operator/(const fps &a) const\
-    \ { return fps(d) /= a; }\n    fps integral(int n = -1) const {\n        fps r;\n\
-    \        if (n == -1) n = s;\n        rep(i, 0, n - 1) r[i + 1] = d[i] / (i +\
-    \ 1);\n        return r;\n    }\n    fps diff(int n = -1) const {\n        fps\
-    \ r;\n        if (n == -1) n = s;\n        rep(i, 0, n - 1) r[i] = d[i + 1] *\
-    \ (i + 1);\n        return r;\n    }\n\n    fps log(int n = -1) const {\n    \
-    \    assert(d[0] == mint(1));\n        if (n == -1) n = s;\n        return (diff(n)\
-    \ * inv(n)).low_(n).integral(n).low_(n);\n    }\n\n    fps exp(int n = -1) const\
-    \ {\n        assert(d[0] == mint(0));\n        if (n == -1) n = s;\n        fps\
-    \ r({1});\n        for (int i = 1; i < n; i <<= 1) {\n            r = (r * (-(r.log(i\
-    \ << 1)) + mint(1) + low(i << 1))).low(i << 1);\n        }\n        return r.low_(n);\n\
-    \    }\n\n    fps pow(ll y, int n = -1) const {\n        if (n == -1) {\n    \
-    \        if(s == 0) {\n                n = 0;\n            }\n            else\
-    \ {\n                n = (s - 1) * y + 1;\n            }\n            if(y ==\
-    \ 0) n = 1;\n        }\n        if (!y) return fps({1}).low_(n);\n\n        fps\
-    \ r;\n\n        int l = 0;\n        while (l < n && d[l].val() == 0) ++l;\n  \
-    \      if (l > (s - 1) / y || l == n) {\n            r.resize(n);\n          \
-    \  return r;\n        }\n\n        mint a = d[l];\n        r = (d >> l) / a;\n\
-    \        r = (r.log(n - l * y) * mint(y)).exp();\n        r *= a.pow(y);\n   \
-    \     r = r << (l * y);\n        return r.low_(n);\n    }\n#undef s\n#undef d\n\
-    };\nostream &operator<<(ostream &o, const fps &a) {\n    rep(i, 0, a.size()) o\
-    \ << (i ? \" \" : \"\") << a[i].val();\n    return o;\n}\n#line 5 \"verify/fps_log.test.cpp\"\
-    \n\nint main() {\n    ll n;\n    cin >> n;\n\n    vec<mint> A(n);\n    rep(i,\
-    \ 0, n) {\n        ll a;\n        cin >> a;\n        A[i] = a;\n    }\n    fps\
-    \ f(A);\n    fps f_log = f.log(n);\n    cout << f_log << endl;\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/log_of_formal_power_series\"\
-    \n#include \"../Utility/template.hpp\"\n#include \"../atcoder/all\"\n#include\
-    \ \"../Fps/fps.hpp\"\n\nint main() {\n    ll n;\n    cin >> n;\n\n    vec<mint>\
-    \ A(n);\n    rep(i, 0, n) {\n        ll a;\n        cin >> a;\n        A[i] =\
-    \ a;\n    }\n    fps f(A);\n    fps f_log = f.log(n);\n    cout << f_log << endl;\n\
-    }"
+    \n}  // namespace atcoder\n\n\n#line 5 \"verify/Convolution_gcd_convolution_test.cpp\"\
+    \nusing mint = atcoder::modint998244353;\nint main() {\n    int n;\n    cin >>\
+    \ n;\n    vector<mint> A(n + 1), B(n + 1);\n    rep(i, 1, n + 1) {\n        ll\
+    \ a;\n        cin >> a;\n        A[i] = a;\n    }\n    rep(i, 1, n + 1) {\n  \
+    \      ll a;\n        cin >> a;\n        B[i] = a;\n    }\n    auto ret = gcd_convolution(A,\
+    \ B);\n    for (int i = 1; i <= n; i++) cout << ret[i].val() << \" \";\n    cout\
+    \ << endl;\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/gcd_convolution\"\n#include\
+    \ \"../Utility/template.hpp\"\n#include \"../Convolution/gcd_convolution.hpp\"\
+    \n#include \"../atcoder/all\"\nusing mint = atcoder::modint998244353;\nint main()\
+    \ {\n    int n;\n    cin >> n;\n    vector<mint> A(n + 1), B(n + 1);\n    rep(i,\
+    \ 1, n + 1) {\n        ll a;\n        cin >> a;\n        A[i] = a;\n    }\n  \
+    \  rep(i, 1, n + 1) {\n        ll a;\n        cin >> a;\n        B[i] = a;\n \
+    \   }\n    auto ret = gcd_convolution(A, B);\n    for (int i = 1; i <= n; i++)\
+    \ cout << ret[i].val() << \" \";\n    cout << endl;\n}"
   dependsOn:
   - Utility/template.hpp
+  - Convolution/gcd_convolution.hpp
+  - Math/sieve.hpp
   - atcoder/convolution.hpp
   - atcoder/internal_bit.hpp
   - atcoder/modint.hpp
@@ -1054,17 +1058,16 @@ data:
   - atcoder/segtree.hpp
   - atcoder/string.hpp
   - atcoder/twosat.hpp
-  - Fps/fps.hpp
-  isVerificationFile: true
-  path: verify/fps_log.test.cpp
+  isVerificationFile: false
+  path: verify/Convolution_gcd_convolution_test.cpp
   requiredBy: []
   timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: TEST_ACCEPTED
+  verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
-documentation_of: verify/fps_log.test.cpp
+documentation_of: verify/Convolution_gcd_convolution_test.cpp
 layout: document
 redirect_from:
-- /verify/verify/fps_log.test.cpp
-- /verify/verify/fps_log.test.cpp.html
-title: verify/fps_log.test.cpp
+- /library/verify/Convolution_gcd_convolution_test.cpp
+- /library/verify/Convolution_gcd_convolution_test.cpp.html
+title: verify/Convolution_gcd_convolution_test.cpp
 ---

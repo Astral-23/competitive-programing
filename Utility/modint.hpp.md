@@ -13,6 +13,9 @@ data:
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Convolution_lcm_convolution.test.cpp
+    title: verify/Convolution_lcm_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/bellman_ford.test.cpp
     title: verify/bellman_ford.test.cpp
   - icon: ':heavy_check_mark:'
@@ -27,39 +30,39 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/dynamicseg.test.cpp
     title: verify/dynamicseg.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/lazysegtree.test.cpp
     title: verify/lazysegtree.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/mat_det.test.cpp
     title: verify/mat_det.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/seg_prod.test.cpp
     title: verify/seg_prod.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/swag.test.cpp
     title: verify/swag.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/swag_more.test.cpp
     title: verify/swag_more.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/treap.test.cpp
     title: verify/treap.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: modint
     links: []
@@ -120,7 +123,7 @@ data:
   - Graph/Chromatic_Number.hpp
   - example/matrix.example.cpp
   timestamp: '2024-12-03 09:45:24+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/bellman_ford.test.cpp
   - verify/swag.test.cpp
@@ -131,6 +134,7 @@ data:
   - verify/seg_prod.test.cpp
   - verify/combination.test.cpp
   - verify/Chromatic_Number.test.cpp
+  - verify/Convolution_lcm_convolution.test.cpp
   - verify/treedp.test.cpp
   - verify/bitwise_and_convolution.test.cpp
   - verify/mat_det.test.cpp

@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Algorithm/maximum_independent_set.hpp
     title: "\u6700\u5927\u72EC\u7ACB\u96C6\u5408"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/maximum_independent_set
@@ -25,8 +25,10 @@ data:
     \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
     \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
     template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
-    \ = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\
-    \u30C8\n*/\n#line 1 \"Algorithm/maximum_independent_set.hpp\"\nvec<int> maximum_independent_set(vec<vec<int>>\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Algorithm/maximum_independent_set.hpp\"\nvec<int> maximum_independent_set(vec<vec<int>>\
     \ &ngs) {\n\tint n = ngs.size();\n\n\tint sl = n/2;\n\tint sr = n - sl;\n\n\t\
     vec<ll> ng(n, 0);\n\trep(i, 0, n) rep(j, 0, n) if(ngs[i][j]) {\n\t\tng[i] |= 1LL\
     \ << j;\n\t}\n\n\tvec<int> dp,pre,self,dp2,pre2,self2;\n\tdp = pre = self = vec<int>(1LL\
@@ -66,8 +68,8 @@ data:
   isVerificationFile: true
   path: verify/maximum_independent_set.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/maximum_independent_set.test.cpp
 layout: document

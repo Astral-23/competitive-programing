@@ -1,21 +1,21 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Datastructure/dynamicseg.hpp
     title: "\u52D5\u7684\u30BB\u30B0\u6728"
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: Datastructure/online2dseg.hpp
     title: "\u5DE8\u5927\u306A\u30B0\u30EA\u30C3\u30C9\u3078\u306E1\u70B9\u52A0\u7B97\
       \u30FB\u77E9\u5F62\u548C"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/point_add_rectangle_sum
@@ -29,8 +29,10 @@ data:
     \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
     \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
     template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
-    \ = y, true) : false;\n}\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\
-    \u30C8\n*/\n#line 1 \"Datastructure/dynamicseg.hpp\"\ntemplate <class S, S (*op)(S,\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Datastructure/dynamicseg.hpp\"\ntemplate <class S, S (*op)(S,\
     \ S), S (*e)(), class W> struct dynamicsegtree {\n    W  min_pos;\n    W  max_pos;\n\
     \    dynamicsegtree(){} \n    dynamicsegtree(W l, W r) :  min_pos(l), max_pos(r)\
     \ {};\n\n    private:\n        struct Node {\n            W p;\n            S\
@@ -110,8 +112,8 @@ data:
   isVerificationFile: true
   path: verify/point_add_rec_sum.test.cpp
   requiredBy: []
-  timestamp: '2024-08-16 18:32:51+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2024-12-28 00:04:13+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/point_add_rec_sum.test.cpp
 layout: document

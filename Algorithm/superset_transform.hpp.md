@@ -9,12 +9,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/bitwise_and_convolution.test.cpp
     title: verify/bitwise_and_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Algorithm/superset_transform.hpp\"\ntemplate<class S, S\
@@ -42,7 +42,7 @@ data:
   requiredBy:
   - Convolution/bitwise_and_convolution.hpp
   timestamp: '2024-07-31 11:08:52+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/bitwise_and_convolution.test.cpp
   - verify/superset_transform.test.cpp
