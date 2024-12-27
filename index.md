@@ -41,7 +41,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Convolution/bitwise_or_convolution.hpp
       title: Convolution/bitwise_or_convolution.hpp
-    - icon: ':warning:'
+    - icon: ':heavy_check_mark:'
       path: Convolution/gcd_convolution.hpp
       title: Convolution/gcd_convolution.hpp
     - icon: ':heavy_check_mark:'
@@ -366,6 +366,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number_with_restoration.test.cpp
       title: verify/Chromatic_Number_with_restoration.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Convolution_gcd_convolution.test.cpp
+      title: verify/Convolution_gcd_convolution.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Convolution_lcm_convolution.test.cpp
       title: verify/Convolution_lcm_convolution.test.cpp

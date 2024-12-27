@@ -68,11 +68,13 @@ data:
   _extendedVerifiedWith: []
   _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/gcd_convolution
     links:
     - https://judge.yosupo.jp/problem/gcd_convolution
-  bundledCode: "#line 1 \"verify/Convolution_gcd_convolution_test.cpp\"\n#define PROBLEM\
+  bundledCode: "#line 1 \"verify/Convolution_gcd_convolution.test.cpp\"\n#define PROBLEM\
     \ \"https://judge.yosupo.jp/problem/gcd_convolution\"\n#line 1 \"Utility/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
     \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
@@ -1021,7 +1023,7 @@ data:
     \            _answer[i] = id[2 * i] < id[2 * i + 1];\n        }\n        return\
     \ true;\n    }\n    std::vector<bool> answer() { return _answer; }\n\n  private:\n\
     \    int _n;\n    std::vector<bool> _answer;\n    internal::scc_graph scc;\n};\n\
-    \n}  // namespace atcoder\n\n\n#line 5 \"verify/Convolution_gcd_convolution_test.cpp\"\
+    \n}  // namespace atcoder\n\n\n#line 5 \"verify/Convolution_gcd_convolution.test.cpp\"\
     \nusing mint = atcoder::modint998244353;\nint main() {\n    int n;\n    cin >>\
     \ n;\n    vector<mint> A(n + 1), B(n + 1);\n    rep(i, 1, n + 1) {\n        ll\
     \ a;\n        cin >> a;\n        A[i] = a;\n    }\n    rep(i, 1, n + 1) {\n  \
@@ -1058,16 +1060,16 @@ data:
   - atcoder/segtree.hpp
   - atcoder/string.hpp
   - atcoder/twosat.hpp
-  isVerificationFile: false
-  path: verify/Convolution_gcd_convolution_test.cpp
+  isVerificationFile: true
+  path: verify/Convolution_gcd_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
+  timestamp: '2024-12-28 00:51:35+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/Convolution_gcd_convolution_test.cpp
+documentation_of: verify/Convolution_gcd_convolution.test.cpp
 layout: document
 redirect_from:
-- /library/verify/Convolution_gcd_convolution_test.cpp
-- /library/verify/Convolution_gcd_convolution_test.cpp.html
-title: verify/Convolution_gcd_convolution_test.cpp
+- /verify/verify/Convolution_gcd_convolution.test.cpp
+- /verify/verify/Convolution_gcd_convolution.test.cpp.html
+title: verify/Convolution_gcd_convolution.test.cpp
 ---

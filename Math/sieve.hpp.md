@@ -2,7 +2,7 @@
 data:
   _extendedDependsOn: []
   _extendedRequiredBy:
-  - icon: ':warning:'
+  - icon: ':heavy_check_mark:'
     path: Convolution/gcd_convolution.hpp
     title: Convolution/gcd_convolution.hpp
   - icon: ':heavy_check_mark:'
@@ -12,6 +12,9 @@ data:
     path: verify/Convolution_gcd_convolution_test.cpp
     title: verify/Convolution_gcd_convolution_test.cpp
   _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/Convolution_gcd_convolution.test.cpp
+    title: verify/Convolution_gcd_convolution.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Convolution_lcm_convolution.test.cpp
     title: verify/Convolution_lcm_convolution.test.cpp
@@ -145,6 +148,7 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Convolution_lcm_convolution.test.cpp
+  - verify/Convolution_gcd_convolution.test.cpp
 documentation_of: Math/sieve.hpp
 layout: document
 redirect_from:

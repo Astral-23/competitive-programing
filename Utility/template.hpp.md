@@ -49,6 +49,9 @@ data:
     path: verify/Chromatic_Number_with_restoration.test.cpp
     title: verify/Chromatic_Number_with_restoration.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Convolution_gcd_convolution.test.cpp
+    title: verify/Convolution_gcd_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Convolution_lcm_convolution.test.cpp
     title: verify/Convolution_lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
@@ -340,6 +343,7 @@ data:
   - verify/matrix.test.cpp
   - verify/Rhash_more.test.cpp
   - verify/fps_log.test.cpp
+  - verify/Convolution_gcd_convolution.test.cpp
   - verify/Rhash.test.cpp
   - verify/superset_transform.test.cpp
   - verify/binary_trie.test.cpp

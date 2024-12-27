@@ -16,6 +16,9 @@ data:
     title: verify/Convolution_gcd_convolution_test.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/Convolution_gcd_convolution.test.cpp
+    title: verify/Convolution_gcd_convolution.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/fps_count_subset_sum.test.cpp
     title: verify/fps_count_subset_sum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -121,6 +124,7 @@ data:
   - verify/fps_inv.test.cpp
   - verify/fps_count_subset_sum.test.cpp
   - verify/fps_log.test.cpp
+  - verify/Convolution_gcd_convolution.test.cpp
 documentation_of: atcoder/fenwicktree.hpp
 layout: document
 redirect_from:

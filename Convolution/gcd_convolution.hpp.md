@@ -8,10 +8,13 @@ data:
   - icon: ':warning:'
     path: verify/Convolution_gcd_convolution_test.cpp
     title: verify/Convolution_gcd_convolution_test.cpp
-  _extendedVerifiedWith: []
+  _extendedVerifiedWith:
+  - icon: ':heavy_check_mark:'
+    path: verify/Convolution_gcd_convolution.test.cpp
+    title: verify/Convolution_gcd_convolution.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':warning:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Math/sieve.hpp\"\nstruct notlinear_sieve {\n    int n;\n\
@@ -92,8 +95,9 @@ data:
   requiredBy:
   - verify/Convolution_gcd_convolution_test.cpp
   timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: LIBRARY_NO_TESTS
-  verifiedWith: []
+  verificationStatus: LIBRARY_ALL_AC
+  verifiedWith:
+  - verify/Convolution_gcd_convolution.test.cpp
 documentation_of: Convolution/gcd_convolution.hpp
 layout: document
 redirect_from:
