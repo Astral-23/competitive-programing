@@ -1,12 +1,8 @@
-struct notlinear_sieve {
-    int n;
-    vector<int> sm;
-    vector<vector<pair<int, int>>> fs;
+template<int n> struct notlinear_sieve {
+    array<int, n+1> sm;
 
-    notlinear_sieve(int max_n) : n(max_n) {
+    notlinear_sieve() {
         assert(1 <= n);
-        sm.resize(n + 1);
-        fs.resize(n + 1);
         iota(sm.begin(), sm.end(), 0);
 
         sm[2] = 2;
@@ -20,14 +16,13 @@ struct notlinear_sieve {
     }
 
 
-    bool isprime(int v) const {
+    bool isprime(int v) const noexcept {
         assert(v <= n);
         if(v <= 1) return false;
         return sm[v] == v;
     }
 
-
-    vector<int> primes(int max_n) const {
+    vector<int> primes(int max_n) const noexcept {
         assert(1 <= max_n && max_n <= n);
         vector<int> ret;
         for(int i = 2; i <= max_n; i++) if(isprime(i)) ret.push_back(i);
@@ -35,23 +30,21 @@ struct notlinear_sieve {
     }
 
     //sorted
-    vector<pair<int, int>> factorize(int v) {
+    vector<pair<int, int>> factorize(int v) const noexcept {
         assert(1 <= v && v <= n);
-        if(fs[v].empty() == false) return fs[v];
-        int val =  v;
         vector<pair<int, int>> ret;
         while(sm[v]!= v) {
             int tmp = v;
             int c = 0;
             while(tmp % sm[v] == 0) c++, tmp /= sm[v];
-            fs[val].emplace_back(sm[v], c);
+            ret.emplace_back(sm[v], c);
             v = tmp;
         }
-        if(v != 1) fs[val].emplace_back(v, 1);
-        return fs[val];
+        if(v != 1) ret.emplace_back(v, 1);
+        return ret;
     }
 
-    int divcnt(int v) {
+    int divcnt(int v) const noexcept {
         assert(1 <= v && v <= n);
         auto ps = factorize(v);
         int ret = 1;
@@ -60,10 +53,9 @@ struct notlinear_sieve {
     }
     
     // not sorted
-    vector<int> divs(int v)  {
+    vector<int> divs(int v) const noexcept {
         assert(1 <= v && v <= n);
         auto ps = factorize(v);
-
         int sz = 1;
         for(auto [p, c] : ps) sz *= (c + 1);
         vector<int> ret(sz);
