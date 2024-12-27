@@ -35,33 +35,36 @@ data:
     \ (int j = 0; j < c; j++) {\n                for (int k = 0; k < r; k++) {\n \
     \                   ret[nr] = p * ret[nr - r];\n                    nr++;\n  \
     \              }\n            }\n            r = nr;\n        }\n        return\
-    \ ret;\n    }\n\n    template <typename T> vector<T> mobius(int N) const {\n \
-    \       assert(N <= n);\n        vector<T> ret(N + 1, 1);\n        for (int p\
-    \ = 2; p <= N; p++)\n            if (is_prime(p)) {\n                for (int\
-    \ q = p; q <= N; q += p) {\n                    if ((q / p) % p == 0)\n      \
-    \                  ret[q] = 0;\n                    else\n                   \
-    \     ret[q] = -ret[q];\n                }\n            }\n        return ret;\n\
-    \    }\n\n    template <typename T> vector<T> divisor_zeta_transform(vector<T>\
-    \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
-    \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
-    \          for (int k = 1; k * p <= N; k++) {\n                    A[k * p] +=\
-    \ A[k];\n                }\n            }\n        }\n        return A;\n    }\n\
-    \n    template <typename T>\n    vector<T> divisor_mobius_transform(vector<T>\
+    \ ret;\n    }\n\n\n    //\u5076\u6570...+1 \u5947\u6570...-1 p^2...0\n    template\
+    \ <typename T> vector<T> mobius(int N) const {\n        assert(N <= n);\n    \
+    \    vector<T> ret(N + 1, 1);\n        for (int p = 2; p <= N; p++)\n        \
+    \    if (is_prime(p)) {\n                for (int q = p; q <= N; q += p) {\n \
+    \                   if ((q / p) % p == 0)\n                        ret[q] = 0;\n\
+    \                    else\n                        ret[q] = -ret[q];\n       \
+    \         }\n            }\n        return ret;\n    }\n     \n    //\u4EE5\u4E0B\
+    4\u3064\u306F\u7D20\u56E0\u6570\u3054\u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\
+    \u3046\u3068\u826F\u3044\n\n    //f -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092\
+    add\n    template <typename T> vector<T> divisor_zeta_transform(vector<T> A) const\
+    \ {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n        for\
+    \ (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n               \
+    \ for (int k = 1; k * p <= N; k++) {\n                    A[k * p] += A[k];\n\
+    \                }\n            }\n        }\n        return A;\n    }\n\n   \
+    \ //F -> f\n    template <typename T>\n    vector<T> divisor_mobius_transform(vector<T>\
     \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
     \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
     \          for (int k = N / p; k >= 1; k--) {\n                    A[k * p] -=\
     \ A[k];\n                }\n            }\n        }\n        return A;\n    }\n\
-    \n    template <typename T> vector<T> multiple_zeta_transform(vector<T> A) const\
-    \ {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n        for\
-    \ (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n               \
-    \ for (int k = N / p; k >= 1; k--) {\n                    A[k] += A[k * p];\n\
-    \                }\n            }\n        }\n        return A;\n    }\n\n   \
-    \ template <typename T>\n    vector<T> multiple_mobius_transform(vector<T> A)\
-    \ const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n     \
-    \   for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n         \
-    \       for (int k = 1; k <= N / p; k++) {\n                    A[k] -= A[k *\
-    \ p];\n                }\n            }\n        }\n        return A;\n    }\n\
-    };\n"
+    \n    //f -> F \u500D\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename\
+    \ T> vector<T> multiple_zeta_transform(vector<T> A) const {\n        int N = int(A.size())\
+    \ - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n    \
+    \        if (is_prime(p)) {\n                for (int k = N / p; k >= 1; k--)\
+    \ {\n                    A[k] += A[k * p];\n                }\n            }\n\
+    \        }\n        return A;\n    }\n\n\n    //F -> f \n    template <typename\
+    \ T>\n    vector<T> multiple_mobius_transform(vector<T> A) const {\n        int\
+    \ N = int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <=\
+    \ N; p++) {\n            if (is_prime(p)) {\n                for (int k = 1; k\
+    \ <= N / p; k++) {\n                    A[k] -= A[k * p];\n                }\n\
+    \            }\n        }\n        return A;\n    }\n};\n"
   code: "struct notlinear_sieve {\n    int n;\n    vector<int> sm;\n\n    notlinear_sieve(int\
     \ max_n) : n(max_n), sm(max_n + 1) {\n        assert(1 <= n);\n        iota(sm.begin(),\
     \ sm.end(), 0);\n        if (n >= 2) sm[2] = 2;\n        for (int j = 4; j <=\
@@ -88,28 +91,32 @@ data:
     \ : ps) {\n            int nr = r;\n            for (int j = 0; j < c; j++) {\n\
     \                for (int k = 0; k < r; k++) {\n                    ret[nr] =\
     \ p * ret[nr - r];\n                    nr++;\n                }\n           \
-    \ }\n            r = nr;\n        }\n        return ret;\n    }\n\n    template\
-    \ <typename T> vector<T> mobius(int N) const {\n        assert(N <= n);\n    \
-    \    vector<T> ret(N + 1, 1);\n        for (int p = 2; p <= N; p++)\n        \
-    \    if (is_prime(p)) {\n                for (int q = p; q <= N; q += p) {\n \
-    \                   if ((q / p) % p == 0)\n                        ret[q] = 0;\n\
-    \                    else\n                        ret[q] = -ret[q];\n       \
-    \         }\n            }\n        return ret;\n    }\n\n    template <typename\
+    \ }\n            r = nr;\n        }\n        return ret;\n    }\n\n\n    //\u5076\
+    \u6570...+1 \u5947\u6570...-1 p^2...0\n    template <typename T> vector<T> mobius(int\
+    \ N) const {\n        assert(N <= n);\n        vector<T> ret(N + 1, 1);\n    \
+    \    for (int p = 2; p <= N; p++)\n            if (is_prime(p)) {\n          \
+    \      for (int q = p; q <= N; q += p) {\n                    if ((q / p) % p\
+    \ == 0)\n                        ret[q] = 0;\n                    else\n     \
+    \                   ret[q] = -ret[q];\n                }\n            }\n    \
+    \    return ret;\n    }\n     \n    //\u4EE5\u4E0B4\u3064\u306F\u7D20\u56E0\u6570\
+    \u3054\u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\u3046\u3068\u826F\u3044\n\n \
+    \   //f -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename\
     \ T> vector<T> divisor_zeta_transform(vector<T> A) const {\n        int N = int(A.size())\
     \ - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n    \
     \        if (is_prime(p)) {\n                for (int k = 1; k * p <= N; k++)\
     \ {\n                    A[k * p] += A[k];\n                }\n            }\n\
-    \        }\n        return A;\n    }\n\n    template <typename T>\n    vector<T>\
-    \ divisor_mobius_transform(vector<T> A) const {\n        int N = int(A.size())\
-    \ - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n    \
-    \        if (is_prime(p)) {\n                for (int k = N / p; k >= 1; k--)\
-    \ {\n                    A[k * p] -= A[k];\n                }\n            }\n\
-    \        }\n        return A;\n    }\n\n    template <typename T> vector<T> multiple_zeta_transform(vector<T>\
+    \        }\n        return A;\n    }\n\n    //F -> f\n    template <typename T>\n\
+    \    vector<T> divisor_mobius_transform(vector<T> A) const {\n        int N =\
+    \ int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N;\
+    \ p++) {\n            if (is_prime(p)) {\n                for (int k = N / p;\
+    \ k >= 1; k--) {\n                    A[k * p] -= A[k];\n                }\n \
+    \           }\n        }\n        return A;\n    }\n\n    //f -> F \u500D\u6570\
+    \u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T> multiple_zeta_transform(vector<T>\
     \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
     \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
     \          for (int k = N / p; k >= 1; k--) {\n                    A[k] += A[k\
     \ * p];\n                }\n            }\n        }\n        return A;\n    }\n\
-    \n    template <typename T>\n    vector<T> multiple_mobius_transform(vector<T>\
+    \n\n    //F -> f \n    template <typename T>\n    vector<T> multiple_mobius_transform(vector<T>\
     \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
     \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
     \          for (int k = 1; k <= N / p; k++) {\n                    A[k] -= A[k\
@@ -119,7 +126,7 @@ data:
   isVerificationFile: false
   path: Math/sieve.hpp
   requiredBy: []
-  timestamp: '2024-12-27 20:40:46+09:00'
+  timestamp: '2024-12-27 20:42:21+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: Math/sieve.hpp
