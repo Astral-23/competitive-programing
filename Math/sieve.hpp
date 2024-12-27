@@ -74,6 +74,8 @@ struct notlinear_sieve {
         return ret;
     }
 
+
+    //偶数...+1 奇数...-1 p^2...0
     template <typename T> vector<T> mobius(int N) const {
         assert(N <= n);
         vector<T> ret(N + 1, 1);
@@ -88,7 +90,10 @@ struct notlinear_sieve {
             }
         return ret;
     }
+     
+    //以下4つは素因数ごとの累積和と思うと良い
 
+    //f -> F    約数の添字をadd
     template <typename T> vector<T> divisor_zeta_transform(vector<T> A) const {
         int N = int(A.size()) - 1;
         assert(N <= n);
@@ -102,6 +107,7 @@ struct notlinear_sieve {
         return A;
     }
 
+    //F -> f
     template <typename T>
     vector<T> divisor_mobius_transform(vector<T> A) const {
         int N = int(A.size()) - 1;
@@ -116,6 +122,7 @@ struct notlinear_sieve {
         return A;
     }
 
+    //f -> F 倍数の添字をadd
     template <typename T> vector<T> multiple_zeta_transform(vector<T> A) const {
         int N = int(A.size()) - 1;
         assert(N <= n);
@@ -129,6 +136,8 @@ struct notlinear_sieve {
         return A;
     }
 
+
+    //F -> f 
     template <typename T>
     vector<T> multiple_mobius_transform(vector<T> A) const {
         int N = int(A.size()) - 1;
