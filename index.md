@@ -180,7 +180,7 @@ data:
       title: matrix
     - icon: ':warning:'
       path: Math/sieve.hpp
-      title: "\u7D20\u6570\u7BE9"
+      title: Math/sieve.hpp
     - icon: ':warning:'
       path: Math/sieve2.hpp
       title: "\u7D20\u6570\u7BE9(\u5DE6\u7AEF\u4EFB\u610F)"
