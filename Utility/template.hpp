@@ -13,6 +13,14 @@ template <class T1, class T2> bool chmin(T1 &x, T2 y) {
 template <class T1, class T2> bool chmax(T1 &x, T2 y) {
     return x < y ? (x = y, true) : false;
 }
+struct io_setup {
+    io_setup() {
+        ios::sync_with_stdio(false);
+        std::cin.tie(nullptr);
+        cout << fixed << setprecision(15);
+    }
+} io_setup;
+
 /*
 @brief verify用テンプレート
 */
