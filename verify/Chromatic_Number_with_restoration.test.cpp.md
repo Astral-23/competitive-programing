@@ -10,7 +10,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/Chromatic_Number_with_restoration.hpp
     title: Graph/Chromatic_Number_with_restoration.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

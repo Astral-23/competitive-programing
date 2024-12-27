@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/imos2d.hpp
     title: "2\u6B21\u5143imos\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

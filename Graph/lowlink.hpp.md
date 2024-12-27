@@ -12,12 +12,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/lowlink_joint.test.cpp
     title: verify/lowlink_joint.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/two_edge_connected.test.cpp
     title: verify/two_edge_connected.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/lowlink.md
     document_title: lowlink
@@ -99,7 +99,7 @@ data:
   path: Graph/lowlink.hpp
   requiredBy: []
   timestamp: '2024-10-19 02:53:39+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/two_edge_connected.test.cpp
   - verify/lowlink_joint.test.cpp

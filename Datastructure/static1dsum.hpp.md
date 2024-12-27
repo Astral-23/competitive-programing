@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/static1dsum.test.cpp
     title: verify/static1dsum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/static1dsum.md
     document_title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
@@ -45,7 +45,7 @@ data:
   path: Datastructure/static1dsum.hpp
   requiredBy: []
   timestamp: '2024-12-09 02:13:43+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/static1dsum.test.cpp
 documentation_of: Datastructure/static1dsum.hpp

@@ -6,12 +6,12 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/dynamicseg.test.cpp
     title: verify/dynamicseg.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/point_add_rec_sum.test.cpp
     title: verify/point_add_rec_sum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/dynamicseg.md
     document_title: "\u52D5\u7684\u30BB\u30B0\u6728"
@@ -78,7 +78,7 @@ data:
   path: Datastructure/dynamicseg.hpp
   requiredBy: []
   timestamp: '2024-07-06 20:37:29+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/point_add_rec_sum.test.cpp
   - verify/dynamicseg.test.cpp

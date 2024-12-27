@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/treedp.md
     document_title: "\u5168\u65B9\u4F4D\u6728DP"
@@ -105,7 +105,7 @@ data:
   path: Algorithm/treedp.hpp
   requiredBy: []
   timestamp: '2024-10-22 05:36:02+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/treedp.test.cpp
 documentation_of: Algorithm/treedp.hpp
