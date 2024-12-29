@@ -93,7 +93,7 @@ template <typename T> struct Matrix {
 
         auto [dat, p, rnk] = slv.gaussian_elimination();
         auto ret = Matrix::unit(h);
-        if (rnk != h - 1) return make_pair(ret, false);
+        if (rnk != h) return make_pair(ret, false);
         for (int i = 0; i < h; i++) {
             for (int j = 0; j < w; j++) {
                 ret[i][j] = dat[i][j + w];
