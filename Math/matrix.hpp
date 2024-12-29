@@ -33,11 +33,12 @@ template <typename T> struct Matrix {
         return res;
     }
 
-    tuple<Matrix, T, ll> gaussian_elimination() const {
+    tuple<Matrix, T, ll> gaussian_elimination(int w_limit = -1) const {
+        if(w_limit == -1) w_limit = w;
         T k = 1;
         Matrix A = *this;
         int i1 = 0;
-        for (int j = 0; j < w; j++) {
+        for (int j = 0; j < w_limit; j++) {
             if (i1 >= h) break;
             for (int i2 = i1; i2 < h; i2++) {
                 if (A[i2][j] != 0) {
@@ -74,7 +75,7 @@ template <typename T> struct Matrix {
     pair<vector<T>, bool> linear_equations() const {
         assert(h == w - 1);
         vector<T> ret(w - 1);
-        auto [dat, p, rnk] = (*this).gaussian_elimination();
+        auto [dat, p, rnk] = (*this).gaussian_elimination(w-1);
         if (rnk != w - 1) return make_pair(ret, false);
         rep(i, 0, h) { ret[i] = dat[i][w - 1]; }
         return make_pair(ret, true);
@@ -91,7 +92,7 @@ template <typename T> struct Matrix {
             slv[i][i + w] = 1;
         }
 
-        auto [dat, p, rnk] = slv.gaussian_elimination();
+        auto [dat, p, rnk] = slv.gaussian_elimination(w);
         auto ret = Matrix::unit(h);
         if (rnk != h) return make_pair(ret, false);
         for (int i = 0; i < h; i++) {
