@@ -17,10 +17,10 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/pow_of_matrix
+    PROBLEM: https://judge.yosupo.jp/problem/matrix_det
     links:
-    - https://judge.yosupo.jp/problem/pow_of_matrix
-  bundledCode: "#line 1 \"verify/matrix.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\
+    - https://judge.yosupo.jp/problem/matrix_det
+  bundledCode: "#line 1 \"verify/Math_matrix_det.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
@@ -103,32 +103,29 @@ data:
     \ {\n        for (int i = 0; i < a.h; i++) {\n            for (int j = 0; j <\
     \ a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \" \" : \"\");\n\
     \            }\n            os << (i != a.h - 1 ? \"\\n\" : \"\");\n        }\n\
-    \        return os;\n    }\n};\n#line 5 \"verify/matrix.test.cpp\"\nusing mint\
-    \ = modint998244353;\nint main() {\n    ll N, K;\n    cin >> N >> K;\n    Matrix<mint>\
-    \ A(N, N, 0);\n    rep(i, 0, N) rep(j, 0, N) {\n        cin >> A[i][j];\n    }\n\
-    \    A = A.pow(K);\n    rep(i, 0, N) {\n        rep(j, 0, N) {\n            cout\
-    \ << A[i][j].x << \" \";\n        }\n        cout << '\\n';\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/pow_of_matrix\"\n#include\
+    \        return os;\n    }\n};\n#line 5 \"verify/Math_matrix_det.test.cpp\"\n\n\
+    \nusing mint = modint998244353;\nusing mat = Matrix<mint>;\nint main() {\n   \
+    \ ll n;\n    cin >> n;\n    mat S(n, n);\n    rep(i, 0, n) rep(j, 0, n)cin>>S[i][j];\n\
+    \    cout << S.det() << endl;\n\n    \n   \n\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/matrix_det\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include \"\
-    ../Math/matrix.hpp\"\nusing mint = modint998244353;\nint main() {\n    ll N, K;\n\
-    \    cin >> N >> K;\n    Matrix<mint> A(N, N, 0);\n    rep(i, 0, N) rep(j, 0,\
-    \ N) {\n        cin >> A[i][j];\n    }\n    A = A.pow(K);\n    rep(i, 0, N) {\n\
-    \        rep(j, 0, N) {\n            cout << A[i][j].x << \" \";\n        }\n\
-    \        cout << '\\n';\n    }\n}"
+    ../Math/matrix.hpp\"\n\n\nusing mint = modint998244353;\nusing mat = Matrix<mint>;\n\
+    int main() {\n    ll n;\n    cin >> n;\n    mat S(n, n);\n    rep(i, 0, n) rep(j,\
+    \ 0, n)cin>>S[i][j];\n    cout << S.det() << endl;\n\n    \n   \n\n}"
   dependsOn:
   - Utility/template.hpp
   - Utility/modint.hpp
   - Math/matrix.hpp
   isVerificationFile: true
-  path: verify/matrix.test.cpp
+  path: verify/Math_matrix_det.test.cpp
   requiredBy: []
   timestamp: '2024-12-29 12:27:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/matrix.test.cpp
+documentation_of: verify/Math_matrix_det.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/matrix.test.cpp
-- /verify/verify/matrix.test.cpp.html
-title: verify/matrix.test.cpp
+- /verify/verify/Math_matrix_det.test.cpp
+- /verify/verify/Math_matrix_det.test.cpp.html
+title: verify/Math_matrix_det.test.cpp
 ---

@@ -183,7 +183,7 @@ data:
       title: floor_sum
     - icon: ':heavy_check_mark:'
       path: Math/matrix.hpp
-      title: matrix
+      title: Math/matrix.hpp
     - icon: ':heavy_check_mark:'
       path: Math/sieve.hpp
       title: Math/sieve.hpp
@@ -372,6 +372,18 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Convolution_lcm_convolution.test.cpp
       title: verify/Convolution_lcm_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Math_matrix_det.test.cpp
+      title: verify/Math_matrix_det.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Math_matrix_inv.test.cpp
+      title: verify/Math_matrix_inv.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Math_matrix_pow.test.cpp
+      title: verify/Math_matrix_pow.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Math_matrix_rank.test.cpp
+      title: verify/Math_matrix_rank.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Rhash.test.cpp
       title: verify/Rhash.test.cpp

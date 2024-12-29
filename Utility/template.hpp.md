@@ -55,6 +55,18 @@ data:
     path: verify/Convolution_lcm_convolution.test.cpp
     title: verify/Convolution_lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Math_matrix_det.test.cpp
+    title: verify/Math_matrix_det.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Math_matrix_inv.test.cpp
+    title: verify/Math_matrix_inv.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Math_matrix_pow.test.cpp
+    title: verify/Math_matrix_pow.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Math_matrix_rank.test.cpp
+    title: verify/Math_matrix_rank.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Rhash.test.cpp
     title: verify/Rhash.test.cpp
   - icon: ':heavy_check_mark:'
@@ -282,6 +294,7 @@ data:
   - verify/range_edge_graph.test.cpp
   - verify/bellman_ford.test.cpp
   - verify/cycle_detection_1.test.cpp
+  - verify/Math_matrix_pow.test.cpp
   - verify/2dsegtree_add.test.cpp
   - verify/binary_trie_xor.test.cpp
   - verify/swag.test.cpp
@@ -295,6 +308,7 @@ data:
   - verify/swag_more.test.cpp
   - verify/lazysegtree.test.cpp
   - verify/maximum_independent_set.test.cpp
+  - verify/Math_matrix_inv.test.cpp
   - verify/dsu.test.cpp
   - verify/pbds_set.test.cpp
   - verify/offline_connectivity.test.cpp
@@ -321,6 +335,7 @@ data:
   - verify/Convolution_lcm_convolution.test.cpp
   - verify/jumpontree.test.cpp
   - verify/mo.test.cpp
+  - verify/Math_matrix_det.test.cpp
   - verify/lowlink_joint.test.cpp
   - verify/static2dsum.test.cpp
   - verify/bi_connected.test.cpp
@@ -340,6 +355,7 @@ data:
   - verify/scc.test.cpp
   - verify/mat_det.test.cpp
   - verify/oneside_range_edge_graph.test.cpp
+  - verify/Math_matrix_rank.test.cpp
   - verify/matrix.test.cpp
   - verify/Rhash_more.test.cpp
   - verify/fps_log.test.cpp

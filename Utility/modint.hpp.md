@@ -16,6 +16,18 @@ data:
     path: verify/Convolution_lcm_convolution.test.cpp
     title: verify/Convolution_lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Math_matrix_det.test.cpp
+    title: verify/Math_matrix_det.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Math_matrix_inv.test.cpp
+    title: verify/Math_matrix_inv.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Math_matrix_pow.test.cpp
+    title: verify/Math_matrix_pow.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Math_matrix_rank.test.cpp
+    title: verify/Math_matrix_rank.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/bellman_ford.test.cpp
     title: verify/bellman_ford.test.cpp
   - icon: ':heavy_check_mark:'
@@ -126,18 +138,22 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/bellman_ford.test.cpp
+  - verify/Math_matrix_pow.test.cpp
   - verify/swag.test.cpp
   - verify/treap.test.cpp
   - verify/swag_more.test.cpp
   - verify/lazysegtree.test.cpp
+  - verify/Math_matrix_inv.test.cpp
   - verify/dijkstra.test.cpp
   - verify/seg_prod.test.cpp
   - verify/combination.test.cpp
   - verify/Chromatic_Number.test.cpp
   - verify/Convolution_lcm_convolution.test.cpp
+  - verify/Math_matrix_det.test.cpp
   - verify/treedp.test.cpp
   - verify/bitwise_and_convolution.test.cpp
   - verify/mat_det.test.cpp
+  - verify/Math_matrix_rank.test.cpp
   - verify/matrix.test.cpp
   - verify/superset_transform.test.cpp
   - verify/dynamicseg.test.cpp
