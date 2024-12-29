@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/problem/pow_of_matrix"
+#define PROBLEM "https://judge.yosupo.jp/problem/matrix_rank"
 #include "../Utility/template.hpp"
 #include "../Utility/modint.hpp"
 #include "../Math/matrix.hpp"
