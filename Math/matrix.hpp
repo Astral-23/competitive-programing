@@ -38,6 +38,7 @@ template <typename T> struct Matrix {
         Matrix A = *this;
         int i1 = 0;
         for (int j = 0; j < w; j++) {
+            if (i1 >= h) break;
             for (int i2 = i1; i2 < h; i2++) {
                 if (A[i2][j] != 0) {
                     swap(A[i1], A[i2]);
@@ -61,7 +62,6 @@ template <typename T> struct Matrix {
                     }
                 }
             i1++;
-            if(i1 >= h) break;
         }
         return make_tuple(A, k, i1);
     }
