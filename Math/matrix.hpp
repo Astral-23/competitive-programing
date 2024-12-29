@@ -3,13 +3,14 @@ template <typename T> struct Matrix {
     vector<vector<T>> d;
     Matrix() {}
     Matrix(int h, int w, T val = 0) : h(h), w(w), d(h, vector<T>(w, val)) {}
-    Matrix &unit() {
-        assert(h == w);
-        rep(i, 0, h) { d[i][i] = 1; }
-        return *this;
+    static Matrix unit(int n) {
+        Matrix uni(n, n, 0);
+        rep(i, 0, n) { uni[i][i] = 1; }
+        return uni;
     }
     const vector<T> &operator[](int i) const { return d[i]; }
     vector<T> &operator[](int i) { return d[i]; }
+    Matrix &operator*=(const Matrix &a) { return *this = (*this) * a; }
     Matrix operator*(const Matrix &a) const {
         assert(w == a.h);
         Matrix r(h, a.w);
@@ -22,7 +23,7 @@ template <typename T> struct Matrix {
     }
     Matrix pow(ll t) const {
         assert(h == w);
-        Matrix res = Matrix(h, h).unit();
+        Matrix res = Matrix::unit(h);
         Matrix x = (*this);
         while (t > 0) {
             if (t & 1) res = res * x;
@@ -32,34 +33,78 @@ template <typename T> struct Matrix {
         return res;
     }
 
-    pair<Matrix, T> gaussian_elimination() {
+    tuple<Matrix, T, ll> gaussian_elimination() const {
         T k = 1;
         Matrix A = *this;
-        rep(j, 0, min(h, w)) {
-            rep(i, j, h) {
-                if (A[i][j] != 0) {
-                    swap(A[i], A[j]);
-                    if (i != j) k = -k;
+        int i1 = 0;
+        for (int j = 0; j < w; j++) {
+            for (int i2 = i1; i2 < h; i2++) {
+                if (A[i2][j] != 0) {
+                    swap(A[i1], A[i2]);
+                    if (i1 != i2) k = -k;
                     break;
                 }
             }
-
-            if (A[j][j] == 0) break;
-            T inv = 1 / A[j][j];
-            k *= A[j][j];
-            rep(jj, 0, w) A[j][jj] *= inv;
-
-            rep(i, 0, h) if (A[i][j] != 0 && i != j) {
-                T c = -A[i][j];
-                rep(jj, 0, w) { A[i][jj] += A[j][jj] * c; }
+            if (A[i1][j] == 0) {
+                continue;
             }
+            T inv = 1 / A[i1][j];
+            k *= A[i1][j];
+            for (int jj = 0; jj < w; jj++) {
+                A[i1][jj] *= inv;
+            }
+            for (int i = 0; i < h; i++)
+                if (A[i][j] != 0 && i != i1) {
+                    T c = -A[i][j];
+                    for (int jj = 0; jj < w; jj++) {
+                        A[i][jj] += A[i1][jj] * c;
+                    }
+                }
+            i1++;
+            if(i1 >= h) break;
         }
-        return make_pair(A, k);
+        return make_tuple(A, k, i1);
     }
 
-    T det() {
+    ll rank() const {
+        auto [dat, k, rnk] = (*this).gaussian_elimination();
+        return rnk;
+    }
+
+    pair<vector<T>, bool> linear_equations() const {
+        assert(h == w - 1);
+        vector<T> ret(w - 1);
+        auto [dat, p, rnk] = (*this).gaussian_elimination();
+        if (rnk != w - 1) return make_pair(ret, false);
+        rep(i, 0, h) { ret[i] = dat[i][w - 1]; }
+        return make_pair(ret, true);
+    }
+
+    pair<Matrix, bool> inv() const {
         assert(h == w);
-        auto [A, p] = (*this).gaussian_elimination();
+        Matrix slv(h, w * 2);
+        for (int i = 0; i < h; i++)
+            for (int j = 0; j < w; j++) {
+                slv[i][j] = (*this)[i][j];
+            }
+        for (int i = 0; i < h; i++) {
+            slv[i][i + w] = 1;
+        }
+
+        auto [dat, p, rnk] = slv.gaussian_elimination();
+        auto ret = Matrix::unit(h);
+        if (rnk != h - 1) return make_pair(ret, false);
+        for (int i = 0; i < h; i++) {
+            for (int j = 0; j < w; j++) {
+                ret[i][j] = dat[i][j + w];
+            }
+        }
+        return make_pair(ret, true);
+    }
+
+    T det() const {
+        assert(h == w);
+        auto [A, p, rnk] = (*this).gaussian_elimination();
         rep(i, 0, h) p *= A[i][i];
         return p;
     }
@@ -74,7 +119,3 @@ template <typename T> struct Matrix {
         return os;
     }
 };
-/*
-@brief matrix
-@docs doc/matrix.md
-*/
