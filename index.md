@@ -307,6 +307,11 @@ data:
     - icon: ':heavy_check_mark:'
       path: atcoder/twosat.hpp
       title: atcoder/twosat.hpp
+  - name: .
+    pages:
+    - icon: ':warning:'
+      path: debug.hpp
+      title: debug.hpp
   - name: example
     pages:
     - icon: ':warning:'
