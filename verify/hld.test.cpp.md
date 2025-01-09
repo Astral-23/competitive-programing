@@ -64,7 +64,7 @@ data:
     \ == v || par[v] == u);\n        if(par[u] == v) return in[u];\n        else return\
     \ in[v];\n    }\n\n    int lca(int a, int b) {\n        while (1) {\n        \
     \    if (in[a] > in[b]) swap(a, b);\n            if (root[a] == root[b]) return\
-    \ a;\n            b = par[root[b]];\n        }\n    }\n\n    int dist(int a, int\
+    \ a;\n            b = par[root[b]];\n        }\n    }\n\n    ll dist(int a, int\
     \ b) {\n        int lc = lca(a, b);\n        return dep_w[a] + dep_w[b] - 2 *\
     \ dep_w[lc];\n    }\n\n    vec<pi> path(int s, int t, bool edge) {\n        vec<pi>\
     \ ls, rs;\n        while (root[s] != root[t]) {\n            if (dep[root[s]]\
@@ -166,7 +166,7 @@ data:
   isVerificationFile: true
   path: verify/hld.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:18:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/hld.test.cpp
