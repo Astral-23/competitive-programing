@@ -7,14 +7,14 @@ data:
     title: example/offline_connectivity.example.cpp
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/offline_connectivity.test.cpp
-    title: verify/offline_connectivity.test.cpp
+    path: verify/Datastructure_offline_connectivity.test.cpp
+    title: verify/Datastructure_offline_connectivity.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/offline_connectivity_more.test.cpp
-    title: verify/offline_connectivity_more.test.cpp
+    path: verify/Datastructure_offline_connectivity_more.test.cpp
+    title: verify/Datastructure_offline_connectivity_more.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/undabledsu.test.cpp
-    title: verify/undabledsu.test.cpp
+    path: verify/Datastructure_undabledsu.test.cpp
+    title: verify/Datastructure_undabledsu.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -97,9 +97,9 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/undabledsu.test.cpp
-  - verify/offline_connectivity.test.cpp
-  - verify/offline_connectivity_more.test.cpp
+  - verify/Datastructure_offline_connectivity.test.cpp
+  - verify/Datastructure_offline_connectivity_more.test.cpp
+  - verify/Datastructure_undabledsu.test.cpp
 documentation_of: Datastructure/undabledsu.hpp
 layout: document
 redirect_from:

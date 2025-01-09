@@ -17,17 +17,18 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=4021
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=4021
-  bundledCode: "#line 1 \"verify/lazyseg_bina.test.cpp\"\n\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=4021\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/lazysegtree.hpp\"\
+  bundledCode: "#line 1 \"verify/Datastructure_lazyseg_bina.test.cpp\"\n\n#define\
+    \ PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=4021\"\n\
+    #line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
+    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
+    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
+    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
+    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
+    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
+    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
+    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/lazysegtree.hpp\"\
     \ntemplate <class S,\n          S (*op)(S, S),\n          S (*e)(),\n        \
     \  class F,\n          S (*mp)(F, S),\n          F (*cm)(F, F),\n          F (*id)()>\n\
     struct lazysegtree {\n    int n;\n    int sz;\n    int log;\n    vec<S> d;\n \
@@ -86,14 +87,14 @@ data:
     \ && p < n);\n        p += sz;\n        for (int i = log; i >= 1; i--) push(p\
     \ >> i);\n        d[p] = mapping(f, d[p]);\n        for (int i = 1; i <= log;\
     \ i++) update(p >> i);\n    }\n};\n\n/*\n@brief lazysegtree\n@docs doc/lazysegtree.md\n\
-    */\n#line 5 \"verify/lazyseg_bina.test.cpp\"\n\n\nstruct S{\n\tll idx;\n\tll x;\n\
-    };\nS op(S a,S b){\n    if(a.x==b.x){\n        if(a.idx>b.idx) return a;\n   \
-    \     return b;\n    }\n\tif(a.x>b.x) return a;\n\treturn b;\n}\nS e(){\n\treturn\
-    \ {-1,(ll)(-1e18)};\n}\nusing F = ll;\nS mapping(F f,S a){\n    a.x+=f;\n    return\
-    \ a;\n}\nF comb(F f,F g){\n    return f+g;\n}\nF id(){\n    return 0;\n}\n\nusing\
-    \ segtree = lazysegtree<S,op,e,F,mapping,comb,id>;\n\nint main(){\n\tint h,w;\n\
-    \tcin>>h>>w;\n\tvector<string> s(h);\n\trep(i,0, h) cin>>s.at(i);\n\tvector<vector<ll>>\
-    \ dp(h+1,vector<ll>(w+1,0));\n\t{\n\t\tvector<vector<ll>> dp1(h+1,vector<ll>(w+1,0));\n\
+    */\n#line 5 \"verify/Datastructure_lazyseg_bina.test.cpp\"\n\n\nstruct S{\n\t\
+    ll idx;\n\tll x;\n};\nS op(S a,S b){\n    if(a.x==b.x){\n        if(a.idx>b.idx)\
+    \ return a;\n        return b;\n    }\n\tif(a.x>b.x) return a;\n\treturn b;\n\
+    }\nS e(){\n\treturn {-1,(ll)(-1e18)};\n}\nusing F = ll;\nS mapping(F f,S a){\n\
+    \    a.x+=f;\n    return a;\n}\nF comb(F f,F g){\n    return f+g;\n}\nF id(){\n\
+    \    return 0;\n}\n\nusing segtree = lazysegtree<S,op,e,F,mapping,comb,id>;\n\n\
+    int main(){\n\tint h,w;\n\tcin>>h>>w;\n\tvector<string> s(h);\n\trep(i,0, h) cin>>s.at(i);\n\
+    \tvector<vector<ll>> dp(h+1,vector<ll>(w+1,0));\n\t{\n\t\tvector<vector<ll>> dp1(h+1,vector<ll>(w+1,0));\n\
     \t\tvector<vector<ll>> dp2(h+1,vector<ll>(w+1,0));\n\t\tfor(int i=h-1;i>=0;i--){\n\
     \t\t\tfor(int j=w-1;j>=0;j--){\n\t\t\t\tif(s.at(i).at(j)=='0') continue;\n\t\t\
     \t\tdp1.at(i).at(j)=dp1.at(i+1).at(j)+1;\n\t\t\t\tdp2.at(i).at(j)=dp2.at(i).at(j+1)+1;\n\
@@ -151,15 +152,15 @@ data:
   - Utility/template.hpp
   - Datastructure/lazysegtree.hpp
   isVerificationFile: true
-  path: verify/lazyseg_bina.test.cpp
+  path: verify/Datastructure_lazyseg_bina.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/lazyseg_bina.test.cpp
+documentation_of: verify/Datastructure_lazyseg_bina.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/lazyseg_bina.test.cpp
-- /verify/verify/lazyseg_bina.test.cpp.html
-title: verify/lazyseg_bina.test.cpp
+- /verify/verify/Datastructure_lazyseg_bina.test.cpp
+- /verify/verify/Datastructure_lazyseg_bina.test.cpp.html
+title: verify/Datastructure_lazyseg_bina.test.cpp
 ---

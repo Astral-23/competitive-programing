@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/sprase_table.test.cpp
-    title: verify/sprase_table.test.cpp
+    path: verify/Datastructure_sprase_table.test.cpp
+    title: verify/Datastructure_sprase_table.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -55,7 +55,7 @@ data:
   timestamp: '2024-08-26 00:04:03+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/sprase_table.test.cpp
+  - verify/Datastructure_sprase_table.test.cpp
 documentation_of: Datastructure/sparse_table.hpp
 layout: document
 redirect_from:

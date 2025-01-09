@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/2dbit.test.cpp
-    title: verify/2dbit.test.cpp
+    path: verify/Datastructure_2dbit.test.cpp
+    title: verify/Datastructure_2dbit.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/2dbit_imos.test.cpp
-    title: verify/2dbit_imos.test.cpp
+    path: verify/Datastructure_2dbit_imos.test.cpp
+    title: verify/Datastructure_2dbit_imos.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -63,8 +63,8 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/2dbit_imos.test.cpp
-  - verify/2dbit.test.cpp
+  - verify/Datastructure_2dbit_imos.test.cpp
+  - verify/Datastructure_2dbit.test.cpp
 documentation_of: Datastructure/2dbit.hpp
 layout: document
 redirect_from:

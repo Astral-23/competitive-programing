@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/pbds_set.test.cpp
-    title: verify/pbds_set.test.cpp
+    path: verify/Datastructure_pbds_set.test.cpp
+    title: verify/Datastructure_pbds_set.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -43,7 +43,7 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/pbds_set.test.cpp
+  - verify/Datastructure_pbds_set.test.cpp
 documentation_of: Datastructure/pbds_set.hpp
 layout: document
 redirect_from:

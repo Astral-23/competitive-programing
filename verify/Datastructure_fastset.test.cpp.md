@@ -17,36 +17,37 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/predecessor_problem
     links:
     - https://judge.yosupo.jp/problem/predecessor_problem
-  bundledCode: "#line 1 \"verify/fastset.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/predecessor_problem\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/fastset.hpp\"\
-    \ntemplate<int W>\nstruct fastset {\n    using ll = long long;\n    using ull\
-    \ = unsigned long long;\n\n    ll siz;\n    vector<int> B = {0, 6, 12, 18, 24,\
-    \ 30, 36, 42};\n    vector<ull> mask;\n    vector<ull> mask_rev;\n    vector<vector<ull>>\
-    \ tr;\n\n    fastset() {\n        tr.resize(W);\n        mask.resize(65, 0);\n\
-    \        mask_rev.resize(65, 18446744073709551615ULL);\n        siz = 0;\n   \
-    \     for (int i = 0; i < W; i++) {\n            tr[i].resize(1ULL << B[W - i\
-    \ - 1], 0);\n        }\n        for (int i = 1; i <= 64; i++) {\n            mask[i]\
-    \ = mask[i - 1] << 1 | 1;\n        }\n        for (int i = 63; i >= 0; i--) {\n\
-    \            mask_rev[i] = mask_rev[i + 1] << 1;\n        }\n    }\n\n  private:\n\
-    \    ull Q(ull x, int w) {  // x \u3092 2^w \u3067\u5272\u3063\u305F\u5546\n \
-    \       return x >> w;\n    }\n\n    ull lower_bound__(ull x, int i, ull res)\
-    \ {\n        if (i < 0) return res;\n        if (res == Q(x, B[i + 1])) {\n  \
-    \          if (tr[i][res] >> (Q(x, B[i]) & 63) & 1) {\n                if ((tr[i][res]\
-    \ & mask_rev[63 - (Q(x, B[i]) & 63)]) == 0)\n                    return lower_bound__(\n\
-    \                        x, i - 1,\n                        res << 6 |\n     \
-    \                       __builtin_ctzll(tr[i][res] &\n                       \
-    \                     mask_rev[64 - (Q(x, B[i]) & 63)]));\n                return\
-    \ min(\n                    lower_bound__(\n                        x, i - 1,\n\
-    \                        res << 6 |\n                            __builtin_ctzll(tr[i][res]\
+  bundledCode: "#line 1 \"verify/Datastructure_fastset.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/predecessor_problem\"\n#line 1 \"Utility/template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
+    \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
+    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
+    \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
+    \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
+    template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Datastructure/fastset.hpp\"\ntemplate<int W>\nstruct fastset {\n\
+    \    using ll = long long;\n    using ull = unsigned long long;\n\n    ll siz;\n\
+    \    vector<int> B = {0, 6, 12, 18, 24, 30, 36, 42};\n    vector<ull> mask;\n\
+    \    vector<ull> mask_rev;\n    vector<vector<ull>> tr;\n\n    fastset() {\n \
+    \       tr.resize(W);\n        mask.resize(65, 0);\n        mask_rev.resize(65,\
+    \ 18446744073709551615ULL);\n        siz = 0;\n        for (int i = 0; i < W;\
+    \ i++) {\n            tr[i].resize(1ULL << B[W - i - 1], 0);\n        }\n    \
+    \    for (int i = 1; i <= 64; i++) {\n            mask[i] = mask[i - 1] << 1 |\
+    \ 1;\n        }\n        for (int i = 63; i >= 0; i--) {\n            mask_rev[i]\
+    \ = mask_rev[i + 1] << 1;\n        }\n    }\n\n  private:\n    ull Q(ull x, int\
+    \ w) {  // x \u3092 2^w \u3067\u5272\u3063\u305F\u5546\n        return x >> w;\n\
+    \    }\n\n    ull lower_bound__(ull x, int i, ull res) {\n        if (i < 0) return\
+    \ res;\n        if (res == Q(x, B[i + 1])) {\n            if (tr[i][res] >> (Q(x,\
+    \ B[i]) & 63) & 1) {\n                if ((tr[i][res] & mask_rev[63 - (Q(x, B[i])\
+    \ & 63)]) == 0)\n                    return lower_bound__(\n                 \
+    \       x, i - 1,\n                        res << 6 |\n                      \
+    \      __builtin_ctzll(tr[i][res] &\n                                        \
+    \    mask_rev[64 - (Q(x, B[i]) & 63)]));\n                return min(\n      \
+    \              lower_bound__(\n                        x, i - 1,\n           \
+    \             res << 6 |\n                            __builtin_ctzll(tr[i][res]\
     \ &\n                                            mask_rev[64 - (Q(x, B[i]) & 63)])),\n\
     \                    lower_bound__(\n                        x, i - 1,\n     \
     \                   res << 6 |\n                            __builtin_ctzll(tr[i][res]\
@@ -115,7 +116,7 @@ data:
     assert\u3002 O(W)\n            lower_bound(x) x\u4EE5\u4E0A\u6700\u5C0F\u3002\u5B58\
     \u5728\u3057\u306A\u3044\u306A\u3089-1 O(W)\n            lower_left_bound(x) x\u4EE5\
     \u4E0B\u6700\u5927\u3002\u5B58\u5728\u3057\u306A\u3044\u306A\u3089-1. O(W)\n \
-    \           size(), empty() ... O(1)\n\n    */\n};\n#line 4 \"verify/fastset.test.cpp\"\
+    \           size(), empty() ... O(1)\n\n    */\n};\n#line 4 \"verify/Datastructure_fastset.test.cpp\"\
     \n\nint main() {\n    fastset<4> cnt;\n    int n, q;\n    cin >> n >> q;\n   \
     \ rep(i, 0, n) {\n        char a;\n        cin >> a;\n        if(a == '1') cnt.insert(i);\n\
     \    }\n\n    while(q--) {\n        int t, k;\n        cin >> t >> k;\n\n    \
@@ -140,15 +141,15 @@ data:
   - Utility/template.hpp
   - Datastructure/fastset.hpp
   isVerificationFile: true
-  path: verify/fastset.test.cpp
+  path: verify/Datastructure_fastset.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/fastset.test.cpp
+documentation_of: verify/Datastructure_fastset.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/fastset.test.cpp
-- /verify/verify/fastset.test.cpp.html
-title: verify/fastset.test.cpp
+- /verify/verify/Datastructure_fastset.test.cpp
+- /verify/verify/Datastructure_fastset.test.cpp.html
+title: verify/Datastructure_fastset.test.cpp
 ---

@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/point_add_rec_sum.test.cpp
-    title: verify/point_add_rec_sum.test.cpp
+    path: verify/Datastructure_point_add_rec_sum.test.cpp
+    title: verify/Datastructure_point_add_rec_sum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -68,7 +68,7 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/point_add_rec_sum.test.cpp
+  - verify/Datastructure_point_add_rec_sum.test.cpp
 documentation_of: Datastructure/online2dseg.hpp
 layout: document
 redirect_from:

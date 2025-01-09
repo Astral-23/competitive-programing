@@ -4,17 +4,17 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_seg_prod.test.cpp
+    title: verify/Datastructure_seg_prod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_segtree.test.cpp
+    title: verify/Datastructure_segtree.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/hld.test.cpp
     title: verify/hld.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/mo.test.cpp
     title: verify/mo.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/seg_prod.test.cpp
-    title: verify/seg_prod.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/segtree.test.cpp
-    title: verify/segtree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -96,9 +96,9 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/segtree.test.cpp
-  - verify/seg_prod.test.cpp
+  - verify/Datastructure_seg_prod.test.cpp
   - verify/mo.test.cpp
+  - verify/Datastructure_segtree.test.cpp
   - verify/hld.test.cpp
 documentation_of: Datastructure/segtree.hpp
 layout: document

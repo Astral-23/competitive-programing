@@ -20,18 +20,18 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2235&lang=jp
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2235&lang=jp
-  bundledCode: "#line 1 \"verify/offline_connectivity_more.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2235&lang=jp\"\n\
-    #line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
-    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
-    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
-    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
-    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
-    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
-    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
-    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/undabledsu.hpp\"\
+  bundledCode: "#line 1 \"verify/Datastructure_offline_connectivity_more.test.cpp\"\
+    \n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=2235&lang=jp\"\
+    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/undabledsu.hpp\"\
     \nstruct dsu {\n    using vi = vector<int>;   \n    using vvi = vec<vi>;\n   \
     \ struct dat {\n        int u, v;\n        ll x;\n        dat(){}\n        dat(int\
     \ a, int b, ll c) : u(a), v(b), x(c) {}\n    };\n   \n    vi par, sz, es;\n  \
@@ -102,7 +102,7 @@ data:
     };\n/*\nS f(dsu &uf, qif q) {\n    return \u7B54\u3048\n}\n\u3092run\u306B\u6E21\
     \u3059\n&\u3092\u4ED8\u3051\u308B\u4E8B\u3092\u5FD8\u308C\u305A\u306B\uFF08\u8A08\
     \u7B97\u91CF\u3053\u308F\u308C\u308B\uFF09\n\n@brief offline_connectivity\n@docs\
-    \ doc/offline_connectivity.md\n*/\n#line 5 \"verify/offline_connectivity_more.test.cpp\"\
+    \ doc/offline_connectivity.md\n*/\n#line 5 \"verify/Datastructure_offline_connectivity_more.test.cpp\"\
     \n\n\nbool f(dsu &uf, pair<int,int> p) {\n    return uf.same(p.first, p.second);\n\
     }\nint main() {\n    int n, k;\n    cin >> n >> k;\n    offline_connectivity<dsu,\
     \ bool, pair<int, int>, false> uf(n);\n    while(k--) {\n        int t, u, v;\n\
@@ -127,15 +127,15 @@ data:
   - Datastructure/undabledsu.hpp
   - Datastructure/offline_connectivity.hpp
   isVerificationFile: true
-  path: verify/offline_connectivity_more.test.cpp
+  path: verify/Datastructure_offline_connectivity_more.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/offline_connectivity_more.test.cpp
+documentation_of: verify/Datastructure_offline_connectivity_more.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/offline_connectivity_more.test.cpp
-- /verify/verify/offline_connectivity_more.test.cpp.html
-title: verify/offline_connectivity_more.test.cpp
+- /verify/verify/Datastructure_offline_connectivity_more.test.cpp
+- /verify/verify/Datastructure_offline_connectivity_more.test.cpp.html
+title: verify/Datastructure_offline_connectivity_more.test.cpp
 ---

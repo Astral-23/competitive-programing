@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/swag.test.cpp
-    title: verify/swag.test.cpp
+    path: verify/Datastructure_swag.test.cpp
+    title: verify/Datastructure_swag.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/swag_more.test.cpp
-    title: verify/swag_more.test.cpp
+    path: verify/Datastructure_swag_more.test.cpp
+    title: verify/Datastructure_swag_more.test.cpp
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
@@ -91,8 +91,8 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/swag.test.cpp
-  - verify/swag_more.test.cpp
+  - verify/Datastructure_swag_more.test.cpp
+  - verify/Datastructure_swag.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Datastructure/swag.hpp
 layout: document

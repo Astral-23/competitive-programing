@@ -17,17 +17,18 @@ data:
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/4/ITP2_4_A
     links:
     - https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/4/ITP2_4_A
-  bundledCode: "#line 1 \"verify/simpletreap.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/4/ITP2_4_A\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/simple_treap.hpp\"\
+  bundledCode: "#line 1 \"verify/Datastructure_simpletreap.test.cpp\"\n#define PROBLEM\
+    \ \"https://onlinejudge.u-aizu.ac.jp/courses/lesson/8/ITP2/4/ITP2_4_A\"\n#line\
+    \ 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
+    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
+    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
+    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
+    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
+    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
+    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
+    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/simple_treap.hpp\"\
     \n\nclass xorshift {\n    uint64_t x;\n    public:\n        xorshift() {\n   \
     \         mt19937 rnd(chrono::steady_clock::now().time_since_epoch().count());\n\
     \            x = rnd();\n            for (int i = 0; i < 100; i++) {\n       \
@@ -90,7 +91,7 @@ data:
     \ size() {\n            return sz;\n        }\n\n        void resize(int n, S\
     \ val = S()) {\n            while(n > sz) push_back(val);\n            while(n\
     \ < sz) pop_back();\n        }\n \n};\n/*\n@brief \u5024\u306E\u96C6\u7D04\u3092\
-    \u3057\u306A\u3044treap\n@docs doc/simpletreap.md\n*/\n#line 4 \"verify/simpletreap.test.cpp\"\
+    \u3057\u306A\u3044treap\n@docs doc/simpletreap.md\n*/\n#line 4 \"verify/Datastructure_simpletreap.test.cpp\"\
     \n\n\nint main() {\n    int N;\n    cin >> N;\n    treap<int> tr;\n    rep(i,\
     \ 0, N) {\n        int a;\n        cin >> a;\n        tr.push_back(a);\n    }\n\
     \n    int Q;\n    cin >> Q;\n    while(Q--) {\n        int b, e;\n        cin\
@@ -109,15 +110,15 @@ data:
   - Utility/template.hpp
   - Datastructure/simple_treap.hpp
   isVerificationFile: true
-  path: verify/simpletreap.test.cpp
+  path: verify/Datastructure_simpletreap.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/simpletreap.test.cpp
+documentation_of: verify/Datastructure_simpletreap.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/simpletreap.test.cpp
-- /verify/verify/simpletreap.test.cpp.html
-title: verify/simpletreap.test.cpp
+- /verify/verify/Datastructure_simpletreap.test.cpp
+- /verify/verify/Datastructure_simpletreap.test.cpp.html
+title: verify/Datastructure_simpletreap.test.cpp
 ---

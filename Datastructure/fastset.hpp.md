@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/fastset.test.cpp
-    title: verify/fastset.test.cpp
+    path: verify/Datastructure_fastset.test.cpp
+    title: verify/Datastructure_fastset.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -197,7 +197,7 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/fastset.test.cpp
+  - verify/Datastructure_fastset.test.cpp
 documentation_of: Datastructure/fastset.hpp
 layout: document
 redirect_from:

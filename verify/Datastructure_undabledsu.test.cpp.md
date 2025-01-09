@@ -17,33 +17,33 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/persistent_unionfind
     links:
     - https://judge.yosupo.jp/problem/persistent_unionfind
-  bundledCode: "#line 1 \"verify/undabledsu.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/persistent_unionfind\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/undabledsu.hpp\"\
-    \nstruct dsu {\n    using vi = vector<int>;   \n    using vvi = vec<vi>;\n   \
-    \ struct dat {\n        int u, v;\n        ll x;\n        dat(){}\n        dat(int\
-    \ a, int b, ll c) : u(a), v(b), x(c) {}\n    };\n   \n    vi par, sz, es;\n  \
-    \  vec<ll> val;\n    stack<dat> his;\n    int cc;\n   \n    ll op(ll l, ll r)\
-    \ {return l + r;}\n    ll inv(ll x) {return -x;}\n\n    dsu(int n) {\n       \
-    \ par = vi(n);\n        sz = vi(n, 1);\n        es = vi(n, 0);\n        val =\
-    \ vec<ll>(n, 0);\n        cc = n;\n        iota(all(par), 0);\n    }\n  \n   \
-    \ int leader(int u) {\n        while(par[u] != u) {\n            u = par[u];\n\
-    \        }\n        return u;\n    }\n    \n    bool same(int a, int b) {\n  \
-    \      return leader(a) == leader(b);\n    }\n    \n    bool merge(int a, int\
-    \ b) {\n        a = leader(a), b = leader(b);\n        if(sz[a] < sz[b]) swap(a,\
-    \ b);\n        his.push(dat(a, b, val[a]));\n\n        if(a == b) {\n        \
-    \    es[a]++;\n            return false;\n        }\n        else {\n        \
-    \    cc--;\n            par[b] = a;\n            sz[a] += sz[b];\n           \
-    \ es[a] += es[b] + 1;\n            val[a] = op(val[a] , val[b]);\n           \
-    \ return true;\n        }\n    }\n\n    bool undo() {\n        if(his.empty())\
+  bundledCode: "#line 1 \"verify/Datastructure_undabledsu.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/persistent_unionfind\"\n#line 1 \"Utility/template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
+    \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
+    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
+    \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
+    \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
+    template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Datastructure/undabledsu.hpp\"\nstruct dsu {\n    using vi = vector<int>;\
+    \   \n    using vvi = vec<vi>;\n    struct dat {\n        int u, v;\n        ll\
+    \ x;\n        dat(){}\n        dat(int a, int b, ll c) : u(a), v(b), x(c) {}\n\
+    \    };\n   \n    vi par, sz, es;\n    vec<ll> val;\n    stack<dat> his;\n   \
+    \ int cc;\n   \n    ll op(ll l, ll r) {return l + r;}\n    ll inv(ll x) {return\
+    \ -x;}\n\n    dsu(int n) {\n        par = vi(n);\n        sz = vi(n, 1);\n   \
+    \     es = vi(n, 0);\n        val = vec<ll>(n, 0);\n        cc = n;\n        iota(all(par),\
+    \ 0);\n    }\n  \n    int leader(int u) {\n        while(par[u] != u) {\n    \
+    \        u = par[u];\n        }\n        return u;\n    }\n    \n    bool same(int\
+    \ a, int b) {\n        return leader(a) == leader(b);\n    }\n    \n    bool merge(int\
+    \ a, int b) {\n        a = leader(a), b = leader(b);\n        if(sz[a] < sz[b])\
+    \ swap(a, b);\n        his.push(dat(a, b, val[a]));\n\n        if(a == b) {\n\
+    \            es[a]++;\n            return false;\n        }\n        else {\n\
+    \            cc--;\n            par[b] = a;\n            sz[a] += sz[b];\n   \
+    \         es[a] += es[b] + 1;\n            val[a] = op(val[a] , val[b]);\n   \
+    \         return true;\n        }\n    }\n\n    bool undo() {\n        if(his.empty())\
     \ return false;\n        dat p = his.top();\n        auto [u, v, x] = p; \n  \
     \      his.pop();\n        par[v] = v;\n        es[u]--;\n        if(u != v) {\n\
     \            cc++;\n            sz[u] -= sz[v];\n            es[u] -= es[v];\n\
@@ -60,7 +60,7 @@ data:
     \   vvi ms(n);\n        rep(v, 0, n) {\n            ms[leader(v)].push_back(v);\n\
     \        }\n\n        vvi res;\n        rep(i, 0, n) if(ms[i].size() > 0) {\n\
     \            res.push_back(ms[i]);\n        }\n        return res;\n    }\n\n\
-    };\n\n/*\n@brief undable dsu\n@docs doc/undodsu.md\n*/\n#line 4 \"verify/undabledsu.test.cpp\"\
+    };\n\n/*\n@brief undable dsu\n@docs doc/undodsu.md\n*/\n#line 4 \"verify/Datastructure_undabledsu.test.cpp\"\
     \n\n\n\nint main() {\n    int N, Q;\n    cin >> N >> Q;\n    dsu o(N);\n    vector<vector<vector<int>>>\
     \ ivs(Q+1);\n\n    rep(qi, 0, Q) {\n        int t, k, u, v;\n        cin >> t\
     \ >> k >> u >> v;\n        k++;\n        ivs[k].push_back({t, int(qi)+1, u, v});\n\
@@ -87,15 +87,15 @@ data:
   - Utility/template.hpp
   - Datastructure/undabledsu.hpp
   isVerificationFile: true
-  path: verify/undabledsu.test.cpp
+  path: verify/Datastructure_undabledsu.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/undabledsu.test.cpp
+documentation_of: verify/Datastructure_undabledsu.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/undabledsu.test.cpp
-- /verify/verify/undabledsu.test.cpp.html
-title: verify/undabledsu.test.cpp
+- /verify/verify/Datastructure_undabledsu.test.cpp
+- /verify/verify/Datastructure_undabledsu.test.cpp.html
+title: verify/Datastructure_undabledsu.test.cpp
 ---

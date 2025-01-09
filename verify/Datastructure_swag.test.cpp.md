@@ -20,30 +20,31 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/queue_operate_all_composite
     links:
     - https://judge.yosupo.jp/problem/queue_operate_all_composite
-  bundledCode: "#line 1 \"verify/swag.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\
-    \n\ntemplate<class S, S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack\
-    \ {\n        stack<S> data;\n        stack<S> res;\n        foldable_stack(){}\n\
-    \n        void push(S a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\
-    \u8FFD\u52A0\u3001\u3064\u307E\u308AR  type == 0 : \u914D\u5217\u306E\u5DE6\u306B\
-    \u8FFD\u52A0\u3001\u3064\u307E\u308AL \n            data.push(a);\n          \
-    \  if(!res.empty()) {\n               if(type == 0) res.push(op(a, res.top()));//res\u304C\
-    \u7A7A\u306A\u3089\u305D\u308C\u3092\u5165\u308C\u308B\n               else res.push(op(res.top(),\
-    \ a));\n            }\n            else res.push(a);\n            return;\n  \
-    \      }\n\n        void pop() {\n            assert(!data.empty());\n       \
-    \     data.pop();\n            res.pop();\n            return;\n        }\n\n\
-    \        S top() const {\n            assert(!data.empty());\n            return\
-    \ data.top(); \n        }\n\n        S get() const { \n            assert(!data.empty());\n\
-    \            return res.top(); \n        }\n\n        bool empty() {return data.empty();}\n\
+  bundledCode: "#line 1 \"verify/Datastructure_swag.test.cpp\"\n#define PROBLEM \"\
+    https://judge.yosupo.jp/problem/queue_operate_all_composite\"\n#line 1 \"Utility/template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
+    \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
+    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
+    \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
+    \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
+    template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Datastructure/swag.hpp\"\n\ntemplate<class S, S (*op)(S, S)> \
+    \ struct SWAG {\n    struct foldable_stack {\n        stack<S> data;\n       \
+    \ stack<S> res;\n        foldable_stack(){}\n\n        void push(S a, int type)\
+    \ {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\u8FFD\u52A0\u3001\u3064\u307E\u308A\
+    R  type == 0 : \u914D\u5217\u306E\u5DE6\u306B\u8FFD\u52A0\u3001\u3064\u307E\u308A\
+    L \n            data.push(a);\n            if(!res.empty()) {\n              \
+    \ if(type == 0) res.push(op(a, res.top()));//res\u304C\u7A7A\u306A\u3089\u305D\
+    \u308C\u3092\u5165\u308C\u308B\n               else res.push(op(res.top(), a));\n\
+    \            }\n            else res.push(a);\n            return;\n        }\n\
+    \n        void pop() {\n            assert(!data.empty());\n            data.pop();\n\
+    \            res.pop();\n            return;\n        }\n\n        S top() const\
+    \ {\n            assert(!data.empty());\n            return data.top(); \n   \
+    \     }\n\n        S get() const { \n            assert(!data.empty());\n    \
+    \        return res.top(); \n        }\n\n        bool empty() {return data.empty();}\n\
     \        int size() {return data.size();}\n    };\n\n    \n    SWAG() {}\n   \
     \ foldable_stack L, R;\n    private:\n\n      void move(foldable_stack& s, foldable_stack&\
     \ t, int type) {//s\u306E\u8981\u7D20\u3092\u534A\u5206t\u306E\u8981\u7D20\u306B\
@@ -87,17 +88,17 @@ data:
     \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n    bool operator<(const\
     \ mm &a) const { return x < a.x; }\n};\nusing modint998244353 = modint<998244353>;\n\
     using modint1000000007 = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line\
-    \ 5 \"verify/swag.test.cpp\"\n\nusing mint = modint998244353;\n\nstruct S {\n\
-    \    mint a, b;\n    S() {}\n    S(mint c, mint d) : a(c), b(d) {}\n};\n\nS op(S\
-    \ l, S r) {\n    l.a *= r.a;\n    l.b *= r.a;\n    l.b += r.b;\n    return l;\n\
-    }\n\n\nint main() {\n    SWAG<S, op> swag;\n    int q;\n    cin >> q;\n    while(q--)\
-    \ {\n        int t;\n        cin >> t;\n        if(t == 0) {\n            mint\
-    \ a, b;\n            cin >> a >> b;\n            swag.push_back(S(a, b));\n  \
-    \      }\n        else if(t == 1) {\n            swag.pop_front();\n        }\n\
-    \        else {\n            mint x;\n            cin >> x;\n            if(!swag.empty())\
-    \ {\n              auto [a, b] = swag.get();\n              cout << a * x + b\
-    \ << '\\n';\n            }\n            else {\n                cout << x << '\\\
-    n';\n            }\n        } \n    }\n}\n"
+    \ 5 \"verify/Datastructure_swag.test.cpp\"\n\nusing mint = modint998244353;\n\n\
+    struct S {\n    mint a, b;\n    S() {}\n    S(mint c, mint d) : a(c), b(d) {}\n\
+    };\n\nS op(S l, S r) {\n    l.a *= r.a;\n    l.b *= r.a;\n    l.b += r.b;\n  \
+    \  return l;\n}\n\n\nint main() {\n    SWAG<S, op> swag;\n    int q;\n    cin\
+    \ >> q;\n    while(q--) {\n        int t;\n        cin >> t;\n        if(t ==\
+    \ 0) {\n            mint a, b;\n            cin >> a >> b;\n            swag.push_back(S(a,\
+    \ b));\n        }\n        else if(t == 1) {\n            swag.pop_front();\n\
+    \        }\n        else {\n            mint x;\n            cin >> x;\n     \
+    \       if(!swag.empty()) {\n              auto [a, b] = swag.get();\n       \
+    \       cout << a * x + b << '\\n';\n            }\n            else {\n     \
+    \           cout << x << '\\n';\n            }\n        } \n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/queue_operate_all_composite\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/swag.hpp\"\
     \n#include \"../Utility/modint.hpp\"\n\nusing mint = modint998244353;\n\nstruct\
@@ -116,15 +117,15 @@ data:
   - Datastructure/swag.hpp
   - Utility/modint.hpp
   isVerificationFile: true
-  path: verify/swag.test.cpp
+  path: verify/Datastructure_swag.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/swag.test.cpp
+documentation_of: verify/Datastructure_swag.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/swag.test.cpp
-- /verify/verify/swag.test.cpp.html
-title: verify/swag.test.cpp
+- /verify/verify/Datastructure_swag.test.cpp
+- /verify/verify/Datastructure_swag.test.cpp.html
+title: verify/Datastructure_swag.test.cpp
 ---

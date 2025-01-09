@@ -20,19 +20,20 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
     links:
     - https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum
-  bundledCode: "#line 1 \"verify/treap.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Utility/modint.hpp\"\
-    \n\n// \u52D5\u7684mod : template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\
-    \u306E\u65B9\u3067\u5909\u6570mod\u3092\u5BA3\u8A00\ntemplate <uint32_t mod> struct\
+  bundledCode: "#line 1 \"verify/Datastructure_treap.test.cpp\"\n#define PROBLEM \"\
+    https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\n#line\
+    \ 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
+    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
+    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
+    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
+    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
+    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
+    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
+    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Utility/modint.hpp\"\n\n//\
+    \ \u52D5\u7684mod : template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\u306E\
+    \u65B9\u3067\u5909\u6570mod\u3092\u5BA3\u8A00\ntemplate <uint32_t mod> struct\
     \ modint {\n    using mm = modint;\n    uint32_t x;\n    modint() : x(0) {}\n\
     \    TT modint(T a = 0) : x((ll(a) % mod + mod)) {\n        if (x >= mod) x -=\
     \ mod;\n    }\n\n    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n\
@@ -137,27 +138,28 @@ data:
     \    }\n      \n        vector<S> dump() {\n            vector<S> res;\n     \
     \       dump__(root, res);\n            return res;\n        }\n\n        int\
     \ size() {\n            return sz;\n        }\n \n};\n/*\n@brief treap\n@docs\
-    \ doc/treap.md\n*/\n#line 5 \"verify/treap.test.cpp\"\nusing mint = modint<998244353>;\n\
-    \nstruct S {\n     mint s; int sz;\n};\n\nS op(S l, S r) {\n    return S{l.s +\
-    \ r.s, l.sz + r.sz};\n}\n\nS e() {\n    return S{mint(0), 0};\n}\n\nstruct F {\n\
-    \    mint a, b;\n};\n\nS mapping(F f, S s) {\n    S res;\n    res.s = f.a * s.s\
-    \ + f.b * s.sz;\n    res.sz = s.sz;\n    return res;\n}\n\nF composition(F l,\
-    \ F r) {\n    return F{l.a * r.a,  l.a * r.b + l.b};\n}\n\nF id() {\n    return\
-    \ F{1, 0};\n}\n\n\nint main() {\n    treap<S, op, e, F, mapping, composition,\
-    \ id> tr;\n    ll N, Q;\n    cin >> N >> Q;\n    for(int i = 0; i <= N-1; i++)\
-    \ {\n        ll t;\n        cin >> t;\n        mint a = t;\n        tr.push_back(S{a,1});\n\
-    \    }\n\n    while(Q--) {\n        assert(tr.size() == N);\n        int type;\n\
-    \        cin >> type;\n        if(type == 0) {\n            ll i, x;\n       \
-    \     cin >> i >> x;\n            tr.insert(i, S{x, 1});\n            N++;\n \
-    \       }\n        else if(type==1) {\n            int i;\n            cin >>\
-    \ i;\n            tr.erase(i);\n            N--;\n        }\n        else if(type==2)\
-    \ {\n            ll l, r;\n            cin >> l >> r;\n            tr.reverse(l,r);\n\
-    \        }\n        else if(type==3) {\n            ll l, r;\n            mint\
-    \ b, c;\n            cin >> l >> r >> b >> c;\n            tr.apply(l, r, F{b,\
-    \ c});\n        }\n        else {\n            ll l, r;\n            cin >> l\
-    \ >> r;\n            if(l==0 && r == tr.size()) {\n                cout << tr.all_prod().s.x\
-    \ << \" \";\n                continue;\n            }\n            cout << tr.prod(l,\
-    \ r).s.x << \" \";\n        }\n    }\n}\n"
+    \ doc/treap.md\n*/\n#line 5 \"verify/Datastructure_treap.test.cpp\"\nusing mint\
+    \ = modint<998244353>;\n\nstruct S {\n     mint s; int sz;\n};\n\nS op(S l, S\
+    \ r) {\n    return S{l.s + r.s, l.sz + r.sz};\n}\n\nS e() {\n    return S{mint(0),\
+    \ 0};\n}\n\nstruct F {\n    mint a, b;\n};\n\nS mapping(F f, S s) {\n    S res;\n\
+    \    res.s = f.a * s.s + f.b * s.sz;\n    res.sz = s.sz;\n    return res;\n}\n\
+    \nF composition(F l, F r) {\n    return F{l.a * r.a,  l.a * r.b + l.b};\n}\n\n\
+    F id() {\n    return F{1, 0};\n}\n\n\nint main() {\n    treap<S, op, e, F, mapping,\
+    \ composition, id> tr;\n    ll N, Q;\n    cin >> N >> Q;\n    for(int i = 0; i\
+    \ <= N-1; i++) {\n        ll t;\n        cin >> t;\n        mint a = t;\n    \
+    \    tr.push_back(S{a,1});\n    }\n\n    while(Q--) {\n        assert(tr.size()\
+    \ == N);\n        int type;\n        cin >> type;\n        if(type == 0) {\n \
+    \           ll i, x;\n            cin >> i >> x;\n            tr.insert(i, S{x,\
+    \ 1});\n            N++;\n        }\n        else if(type==1) {\n            int\
+    \ i;\n            cin >> i;\n            tr.erase(i);\n            N--;\n    \
+    \    }\n        else if(type==2) {\n            ll l, r;\n            cin >> l\
+    \ >> r;\n            tr.reverse(l,r);\n        }\n        else if(type==3) {\n\
+    \            ll l, r;\n            mint b, c;\n            cin >> l >> r >> b\
+    \ >> c;\n            tr.apply(l, r, F{b, c});\n        }\n        else {\n   \
+    \         ll l, r;\n            cin >> l >> r;\n            if(l==0 && r == tr.size())\
+    \ {\n                cout << tr.all_prod().s.x << \" \";\n                continue;\n\
+    \            }\n            cout << tr.prod(l, r).s.x << \" \";\n        }\n \
+    \   }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/dynamic_sequence_range_affine_range_sum\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\n#include\
     \ \"../Datastructure/treap.hpp\"\nusing mint = modint<998244353>;\n\nstruct S\
@@ -186,15 +188,15 @@ data:
   - Utility/modint.hpp
   - Datastructure/treap.hpp
   isVerificationFile: true
-  path: verify/treap.test.cpp
+  path: verify/Datastructure_treap.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/treap.test.cpp
+documentation_of: verify/Datastructure_treap.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/treap.test.cpp
-- /verify/verify/treap.test.cpp.html
-title: verify/treap.test.cpp
+- /verify/verify/Datastructure_treap.test.cpp
+- /verify/verify/Datastructure_treap.test.cpp.html
+title: verify/Datastructure_treap.test.cpp
 ---

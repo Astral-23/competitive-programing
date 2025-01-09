@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/potential_dsu.test.cpp
-    title: verify/potential_dsu.test.cpp
+    path: verify/Datastructure_potential_dsu.test.cpp
+    title: verify/Datastructure_potential_dsu.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -58,7 +58,7 @@ data:
   timestamp: '2024-09-28 22:59:21+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/potential_dsu.test.cpp
+  - verify/Datastructure_potential_dsu.test.cpp
 documentation_of: Datastructure/potential_dsu.hpp
 layout: document
 redirect_from:

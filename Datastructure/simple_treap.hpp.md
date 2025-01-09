@@ -10,8 +10,8 @@ data:
     title: "\u7802\u5834/simple_treap.henkou.cpp"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/simpletreap.test.cpp
-    title: verify/simpletreap.test.cpp
+    path: verify/Datastructure_simpletreap.test.cpp
+    title: verify/Datastructure_simpletreap.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -154,7 +154,7 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/simpletreap.test.cpp
+  - verify/Datastructure_simpletreap.test.cpp
 documentation_of: Datastructure/simple_treap.hpp
 layout: document
 redirect_from:

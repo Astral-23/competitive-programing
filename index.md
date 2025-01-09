@@ -351,21 +351,6 @@ data:
   - name: verify
     pages:
     - icon: ':heavy_check_mark:'
-      path: verify/1dimos.test.cpp
-      title: verify/1dimos.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/2dbit.test.cpp
-      title: verify/2dbit.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/2dbit_imos.test.cpp
-      title: verify/2dbit_imos.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/2dsegtree_add.test.cpp
-      title: verify/2dsegtree_add.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/2dsegtree_max.test.cpp
-      title: verify/2dsegtree_max.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number.test.cpp
       title: verify/Chromatic_Number.test.cpp
     - icon: ':heavy_check_mark:'
@@ -377,6 +362,93 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Convolution_lcm_convolution.test.cpp
       title: verify/Convolution_lcm_convolution.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_1dimos.test.cpp
+      title: verify/Datastructure_1dimos.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_2dbit.test.cpp
+      title: verify/Datastructure_2dbit.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_2dbit_imos.test.cpp
+      title: verify/Datastructure_2dbit_imos.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_2dsegtree_add.test.cpp
+      title: verify/Datastructure_2dsegtree_add.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_2dsegtree_max.test.cpp
+      title: verify/Datastructure_2dsegtree_max.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_binary_trie.test.cpp
+      title: verify/Datastructure_binary_trie.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_binary_trie_xor.test.cpp
+      title: verify/Datastructure_binary_trie_xor.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_dsu.test.cpp
+      title: verify/Datastructure_dsu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_dynamicseg.test.cpp
+      title: verify/Datastructure_dynamicseg.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_fastset.test.cpp
+      title: verify/Datastructure_fastset.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_imos2d.test.cpp
+      title: verify/Datastructure_imos2d.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_lazyseg_bina.test.cpp
+      title: verify/Datastructure_lazyseg_bina.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_lazysegtree.test.cpp
+      title: verify/Datastructure_lazysegtree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_offline_connectivity.test.cpp
+      title: verify/Datastructure_offline_connectivity.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_offline_connectivity_more.test.cpp
+      title: verify/Datastructure_offline_connectivity_more.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_pbds_set.test.cpp
+      title: verify/Datastructure_pbds_set.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_point_add_rec_sum.test.cpp
+      title: verify/Datastructure_point_add_rec_sum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_potential_dsu.test.cpp
+      title: verify/Datastructure_potential_dsu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_seg_prod.test.cpp
+      title: verify/Datastructure_seg_prod.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_segtree.test.cpp
+      title: verify/Datastructure_segtree.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_simpletreap.test.cpp
+      title: verify/Datastructure_simpletreap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_sprase_table.test.cpp
+      title: verify/Datastructure_sprase_table.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_static1dsum.test.cpp
+      title: verify/Datastructure_static1dsum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_static2dsum.test.cpp
+      title: verify/Datastructure_static2dsum.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_swag.test.cpp
+      title: verify/Datastructure_swag.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_swag_more.test.cpp
+      title: verify/Datastructure_swag_more.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_treap.test.cpp
+      title: verify/Datastructure_treap.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_undabledsu.test.cpp
+      title: verify/Datastructure_undabledsu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_value_dsu.test.cpp
+      title: verify/Datastructure_value_dsu.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Math_matrix_det.test.cpp
       title: verify/Math_matrix_det.test.cpp
@@ -405,12 +477,6 @@ data:
       path: verify/bi_connected.test.cpp
       title: verify/bi_connected.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/binary_trie.test.cpp
-      title: verify/binary_trie.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/binary_trie_xor.test.cpp
-      title: verify/binary_trie_xor.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/bisect.test.cpp
       title: verify/bisect.test.cpp
     - icon: ':heavy_check_mark:'
@@ -429,17 +495,8 @@ data:
       path: verify/dijkstra.test.cpp
       title: verify/dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/dsu.test.cpp
-      title: verify/dsu.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/dynamicseg.test.cpp
-      title: verify/dynamicseg.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/extgcd.test.cpp
       title: verify/extgcd.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/fastset.test.cpp
-      title: verify/fastset.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/floor_sum.test.cpp
       title: verify/floor_sum.test.cpp
@@ -465,17 +522,8 @@ data:
       path: verify/hld_lca.test.cpp
       title: verify/hld_lca.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/imos2d.test.cpp
-      title: verify/imos2d.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/jumpontree.test.cpp
       title: verify/jumpontree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/lazyseg_bina.test.cpp
-      title: verify/lazyseg_bina.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/lazysegtree.test.cpp
-      title: verify/lazysegtree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/lowlink_bridge.test.cpp
       title: verify/lowlink_bridge.test.cpp
@@ -504,23 +552,8 @@ data:
       path: verify/mo.test.cpp
       title: verify/mo.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/offline_connectivity.test.cpp
-      title: verify/offline_connectivity.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/offline_connectivity_more.test.cpp
-      title: verify/offline_connectivity_more.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/oneside_range_edge_graph.test.cpp
       title: verify/oneside_range_edge_graph.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/pbds_set.test.cpp
-      title: verify/pbds_set.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/point_add_rec_sum.test.cpp
-      title: verify/point_add_rec_sum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/potential_dsu.test.cpp
-      title: verify/potential_dsu.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/range_edge_graph.test.cpp
       title: verify/range_edge_graph.test.cpp
@@ -528,47 +561,14 @@ data:
       path: verify/scc.test.cpp
       title: verify/scc.test.cpp
     - icon: ':heavy_check_mark:'
-      path: verify/seg_prod.test.cpp
-      title: verify/seg_prod.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/segtree.test.cpp
-      title: verify/segtree.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/simpletreap.test.cpp
-      title: verify/simpletreap.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/sprase_table.test.cpp
-      title: verify/sprase_table.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/static1dsum.test.cpp
-      title: verify/static1dsum.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/static2dsum.test.cpp
-      title: verify/static2dsum.test.cpp
-    - icon: ':heavy_check_mark:'
       path: verify/superset_transform.test.cpp
       title: verify/superset_transform.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/swag.test.cpp
-      title: verify/swag.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/swag_more.test.cpp
-      title: verify/swag_more.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/treap.test.cpp
-      title: verify/treap.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/treedp.test.cpp
       title: verify/treedp.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/two_edge_connected.test.cpp
       title: verify/two_edge_connected.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/undabledsu.test.cpp
-      title: verify/undabledsu.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/value_dsu.test.cpp
-      title: verify/value_dsu.test.cpp
   - name: "\u7802\u5834"
     pages:
     - icon: ':heavy_check_mark:'

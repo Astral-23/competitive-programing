@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/lazyseg_bina.test.cpp
-    title: verify/lazyseg_bina.test.cpp
+    path: verify/Datastructure_lazyseg_bina.test.cpp
+    title: verify/Datastructure_lazyseg_bina.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/lazysegtree.test.cpp
-    title: verify/lazysegtree.test.cpp
+    path: verify/Datastructure_lazysegtree.test.cpp
+    title: verify/Datastructure_lazysegtree.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -142,8 +142,8 @@ data:
   timestamp: '2024-09-18 23:27:00+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/lazyseg_bina.test.cpp
-  - verify/lazysegtree.test.cpp
+  - verify/Datastructure_lazysegtree.test.cpp
+  - verify/Datastructure_lazyseg_bina.test.cpp
 documentation_of: Datastructure/lazysegtree.hpp
 layout: document
 redirect_from:

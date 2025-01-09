@@ -17,7 +17,8 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja
-  bundledCode: "#line 1 \"verify/2dsegtree_add.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
+  bundledCode: "#line 1 \"verify/Datastructure_2dsegtree_add.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
@@ -56,15 +57,16 @@ data:
     \ >>= 1;\n        }\n        return op(sml, smr);\n    }\n\n    S get(int y, int\
     \ x) {\n        return dat[id(y + H, x + W)];\n    }\n};\n/*\n@brief 2\u6B21\u5143\
     \u30BB\u30B0\u30E1\u30F3\u30C8\u6728\n@docs doc/2dseg_small.md\n*/\n#line 4 \"\
-    verify/2dsegtree_add.test.cpp\"\n\n\n\nusing S = ll;\nS op(ll l, ll r) {\n   \
-    \ return l + r;\n}\n\nS e() {\n    return 0LL;\n}\n\nint main() {\n    int N;\n\
-    \    cin >> N;\n    int H = 1000, W = 1000;\n    segtree2d<S, op, e> seg(H+2,\
-    \ W+2);\n\n    rep(i, 0, N) {\n        int sx, sy, tx, ty;\n        cin >> sx\
-    \ >> sy >> tx >> ty;\n        tx--, ty--;\n        seg.set(ty + 1, tx + 1, seg.get(ty\
-    \ + 1, tx + 1) + 1);\n        seg.set(sy, sx, seg.get(sy, sx) + 1);\n        seg.set(ty\
-    \ + 1, sx, seg.get(ty + 1, sx) - 1);\n        seg.set(sy, tx + 1, seg.get(sy,\
-    \ tx + 1) - 1);\n    }\n\n    ll ans = 0;\n    rep(i, 0, H) rep(j, 0, W) chmax(ans,\
-    \ seg.prod(0, i+1, 0, j+1));\n   \n    cout << ans << endl;\n\n}\n"
+    verify/Datastructure_2dsegtree_add.test.cpp\"\n\n\n\nusing S = ll;\nS op(ll l,\
+    \ ll r) {\n    return l + r;\n}\n\nS e() {\n    return 0LL;\n}\n\nint main() {\n\
+    \    int N;\n    cin >> N;\n    int H = 1000, W = 1000;\n    segtree2d<S, op,\
+    \ e> seg(H+2, W+2);\n\n    rep(i, 0, N) {\n        int sx, sy, tx, ty;\n     \
+    \   cin >> sx >> sy >> tx >> ty;\n        tx--, ty--;\n        seg.set(ty + 1,\
+    \ tx + 1, seg.get(ty + 1, tx + 1) + 1);\n        seg.set(sy, sx, seg.get(sy, sx)\
+    \ + 1);\n        seg.set(ty + 1, sx, seg.get(ty + 1, sx) - 1);\n        seg.set(sy,\
+    \ tx + 1, seg.get(sy, tx + 1) - 1);\n    }\n\n    ll ans = 0;\n    rep(i, 0, H)\
+    \ rep(j, 0, W) chmax(ans, seg.prod(0, i+1, 0, j+1));\n   \n    cout << ans <<\
+    \ endl;\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/2dsegtree.hpp\"\
     \n\n\n\nusing S = ll;\nS op(ll l, ll r) {\n    return l + r;\n}\n\nS e() {\n \
@@ -80,15 +82,15 @@ data:
   - Utility/template.hpp
   - Datastructure/2dsegtree.hpp
   isVerificationFile: true
-  path: verify/2dsegtree_add.test.cpp
+  path: verify/Datastructure_2dsegtree_add.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/2dsegtree_add.test.cpp
+documentation_of: verify/Datastructure_2dsegtree_add.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/2dsegtree_add.test.cpp
-- /verify/verify/2dsegtree_add.test.cpp.html
-title: verify/2dsegtree_add.test.cpp
+- /verify/verify/Datastructure_2dsegtree_add.test.cpp
+- /verify/verify/Datastructure_2dsegtree_add.test.cpp.html
+title: verify/Datastructure_2dsegtree_add.test.cpp
 ---

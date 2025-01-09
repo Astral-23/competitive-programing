@@ -17,7 +17,8 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja
-  bundledCode: "#line 1 \"verify/2dbit_imos.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
+  bundledCode: "#line 1 \"verify/Datastructure_2dbit_imos.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
@@ -47,11 +48,11 @@ data:
     \ prod(ty, tx);\n        res -= prod(sy, tx);\n        res -= prod(ty, sx);\n\
     \        res += prod(sy, sx);\n        return res;\n    }\n\n    T imos_get(int\
     \ y, int x) {\n        return prod(0, y+1, 0, x+1);\n    }\n};\n/*\n@brief 2dbit\n\
-    @docs doc/2dbit.md\n*/\n#line 4 \"verify/2dbit_imos.test.cpp\"\n\nint main() {\
-    \ \n    int n;\n    cin >> n;\n    bit2d<ll> sum(1001, 1001);\n\n    rep(i, 0,\
-    \ n) {\n        int sx, sy, tx, ty;\n        cin >> sx >> sy >> tx >> ty;\n  \
-    \      sum.imos_add(sy, ty, sx, tx, 1);\n    }\n\n\n    int ans = 0;\n    rep(i,\
-    \ 0, 1001) {\n        rep(j, 0, 1001){ \n            chmax(ans, sum.imos_get(i,\
+    @docs doc/2dbit.md\n*/\n#line 4 \"verify/Datastructure_2dbit_imos.test.cpp\"\n\
+    \nint main() { \n    int n;\n    cin >> n;\n    bit2d<ll> sum(1001, 1001);\n\n\
+    \    rep(i, 0, n) {\n        int sx, sy, tx, ty;\n        cin >> sx >> sy >> tx\
+    \ >> ty;\n        sum.imos_add(sy, ty, sx, tx, 1);\n    }\n\n\n    int ans = 0;\n\
+    \    rep(i, 0, 1001) {\n        rep(j, 0, 1001){ \n            chmax(ans, sum.imos_get(i,\
     \ j));\n        }\n    }\n\n    cout << ans << endl;\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/2dbit.hpp\"\
@@ -64,15 +65,15 @@ data:
   - Utility/template.hpp
   - Datastructure/2dbit.hpp
   isVerificationFile: true
-  path: verify/2dbit_imos.test.cpp
+  path: verify/Datastructure_2dbit_imos.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/2dbit_imos.test.cpp
+documentation_of: verify/Datastructure_2dbit_imos.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/2dbit_imos.test.cpp
-- /verify/verify/2dbit_imos.test.cpp.html
-title: verify/2dbit_imos.test.cpp
+- /verify/verify/Datastructure_2dbit_imos.test.cpp
+- /verify/verify/Datastructure_2dbit_imos.test.cpp.html
+title: verify/Datastructure_2dbit_imos.test.cpp
 ---

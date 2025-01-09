@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/imos2d.test.cpp
-    title: verify/imos2d.test.cpp
+    path: verify/Datastructure_imos2d.test.cpp
+    title: verify/Datastructure_imos2d.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -44,7 +44,7 @@ data:
   timestamp: '2024-08-03 19:09:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/imos2d.test.cpp
+  - verify/Datastructure_imos2d.test.cpp
 documentation_of: Datastructure/imos2d.hpp
 layout: document
 redirect_from:

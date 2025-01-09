@@ -17,17 +17,18 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330
-  bundledCode: "#line 1 \"verify/potential_dsu.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/potential_dsu.hpp\"\
+  bundledCode: "#line 1 \"verify/Datastructure_potential_dsu.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1330\"\n#line 1\
+    \ \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
+    \ ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define\
+    \ rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x),\
+    \ end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\ntemplate\
+    \ <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true)\
+    \ : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return\
+    \ x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n   \
+    \     ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n        cout\
+    \ << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/potential_dsu.hpp\"\
     \nTT struct potential_dsu {\n    using vi = vec<int>;\n    using vvi = vec<vi>;\n\
     \    vi par, sz, es;\n    vec<T> h;\n    int cc;\n    int root;\n\n    potential_dsu(int\
     \ n, int ROOT) : root(ROOT) {\n        par = vi(n);\n        sz = vi(n, 1);\n\
@@ -46,7 +47,7 @@ data:
     \ v) {//\u6839\u304B\u3089\u898B\u305F v\u306E\u5024  p[\u6839]\u306F0\u3002\n\
     \        leader(v);\n        return h[v];\n    }\n\n    T diff(int s, int t) {//s\u304B\
     \u3089\u898B\u305F t\u306E\u5024\n        return weight(t) - weight(s);\n    }\n\
-    \n};\n\n/*\n@brief potential dsu\n*/\n\n#line 4 \"verify/potential_dsu.test.cpp\"\
+    \n};\n\n/*\n@brief potential dsu\n*/\n\n#line 4 \"verify/Datastructure_potential_dsu.test.cpp\"\
     \n\nint main() {\n    int N, M;\n    while(cin >> N >> M) {\n        if(N==0)\
     \ break;\n        potential_dsu<ll> uf(N, 1);\n        rep(i, 0, M) {\n      \
     \      char c;\n            cin >> c;\n            int a, b, w;\n            if(c\
@@ -69,15 +70,15 @@ data:
   - Utility/template.hpp
   - Datastructure/potential_dsu.hpp
   isVerificationFile: true
-  path: verify/potential_dsu.test.cpp
+  path: verify/Datastructure_potential_dsu.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/potential_dsu.test.cpp
+documentation_of: verify/Datastructure_potential_dsu.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/potential_dsu.test.cpp
-- /verify/verify/potential_dsu.test.cpp.html
-title: verify/potential_dsu.test.cpp
+- /verify/verify/Datastructure_potential_dsu.test.cpp
+- /verify/verify/Datastructure_potential_dsu.test.cpp.html
+title: verify/Datastructure_potential_dsu.test.cpp
 ---

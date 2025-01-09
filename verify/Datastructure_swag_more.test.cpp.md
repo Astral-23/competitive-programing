@@ -20,20 +20,21 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/deque_operate_all_composite
     links:
     - https://judge.yosupo.jp/problem/deque_operate_all_composite
-  bundledCode: "#line 1 \"verify/swag_more.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/deque_operate_all_composite\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\
-    \n\ntemplate<class S, S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack\
-    \ {\n        stack<S> data;\n        stack<S> res;\n        foldable_stack(){}\n\
-    \n        void push(S a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\
+  bundledCode: "#line 1 \"verify/Datastructure_swag_more.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/deque_operate_all_composite\"\n#line 1 \"\
+    Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
+    \ ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define\
+    \ rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x),\
+    \ end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\ntemplate\
+    \ <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true)\
+    \ : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return\
+    \ x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n   \
+    \     ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n        cout\
+    \ << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/swag.hpp\"\n\
+    \ntemplate<class S, S (*op)(S, S)>  struct SWAG {\n    struct foldable_stack {\n\
+    \        stack<S> data;\n        stack<S> res;\n        foldable_stack(){}\n\n\
+    \        void push(S a, int type) {//type == 1 : \u914D\u5217\u306E\u53F3\u306B\
     \u8FFD\u52A0\u3001\u3064\u307E\u308AR  type == 0 : \u914D\u5217\u306E\u5DE6\u306B\
     \u8FFD\u52A0\u3001\u3064\u307E\u308AL \n            data.push(a);\n          \
     \  if(!res.empty()) {\n               if(type == 0) res.push(op(a, res.top()));//res\u304C\
@@ -87,12 +88,12 @@ data:
     \ a.x; }\n    bool operator!=(mm a) { return x != a.x; }\n\n    bool operator<(const\
     \ mm &a) const { return x < a.x; }\n};\nusing modint998244353 = modint<998244353>;\n\
     using modint1000000007 = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line\
-    \ 5 \"verify/swag_more.test.cpp\"\n\nusing mint = modint998244353;\n\nstruct S\
-    \ {\n    mint a, b;\n    S() {}\n    S(mint c, mint d) : a(c), b(d) {}\n};\n\n\
-    S op(S l, S r) {\n    l.a *= r.a;\n    l.b *= r.a;\n    l.b += r.b;\n    return\
-    \ l;\n}\n\n\nint main() {\n    SWAG<S, op> swag;\n    int q;\n    cin >> q;\n\
-    \    while(q--) {\n        int t;\n        cin >> t;\n        if(t == 0) {\n \
-    \           mint a, b;\n            cin >> a >> b;\n            swag.push_front(S(a,\
+    \ 5 \"verify/Datastructure_swag_more.test.cpp\"\n\nusing mint = modint998244353;\n\
+    \nstruct S {\n    mint a, b;\n    S() {}\n    S(mint c, mint d) : a(c), b(d) {}\n\
+    };\n\nS op(S l, S r) {\n    l.a *= r.a;\n    l.b *= r.a;\n    l.b += r.b;\n  \
+    \  return l;\n}\n\n\nint main() {\n    SWAG<S, op> swag;\n    int q;\n    cin\
+    \ >> q;\n    while(q--) {\n        int t;\n        cin >> t;\n        if(t ==\
+    \ 0) {\n            mint a, b;\n            cin >> a >> b;\n            swag.push_front(S(a,\
     \ b));\n        }\n        else if(t == 1) {\n            mint a, b;\n       \
     \     cin >> a >> b;\n            swag.push_back(S(a, b));\n        }\n      \
     \  else if(t == 2) {\n            swag.pop_front();\n        }\n        else if(t\
@@ -122,15 +123,15 @@ data:
   - Datastructure/swag.hpp
   - Utility/modint.hpp
   isVerificationFile: true
-  path: verify/swag_more.test.cpp
+  path: verify/Datastructure_swag_more.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/swag_more.test.cpp
+documentation_of: verify/Datastructure_swag_more.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/swag_more.test.cpp
-- /verify/verify/swag_more.test.cpp.html
-title: verify/swag_more.test.cpp
+- /verify/verify/Datastructure_swag_more.test.cpp
+- /verify/verify/Datastructure_swag_more.test.cpp.html
+title: verify/Datastructure_swag_more.test.cpp
 ---

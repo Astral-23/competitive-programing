@@ -17,17 +17,18 @@ data:
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0560
     links:
     - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0560
-  bundledCode: "#line 1 \"verify/static2dsum.test.cpp\"\n#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0560\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\
+  bundledCode: "#line 1 \"verify/Datastructure_static2dsum.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0560\"\n#line 1\
+    \ \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
+    \ ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define\
+    \ rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x),\
+    \ end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\ntemplate\
+    \ <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true)\
+    \ : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return\
+    \ x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n   \
+    \     ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n        cout\
+    \ << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\
     \nTT struct static2dsum {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\
     \n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h,\
     \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
@@ -43,7 +44,7 @@ data:
     \    T res = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx - 1];\n     \
     \   if (sy > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy > 0) res +=\
     \ dat[sy - 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief 2\u6B21\u5143\
-    \u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/\n#line 4 \"verify/static2dsum.test.cpp\"\
+    \u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/\n#line 4 \"verify/Datastructure_static2dsum.test.cpp\"\
     \n\nint main() {\n    int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n\
     \    static2dsum<ll> J(h, w);\n    static2dsum<ll> O(h, w);\n    static2dsum<ll>\
     \ I(h, w);\n\n\n    rep(i, 0, h) rep(j, 0, w) {\n        char a;\n        cin\
@@ -68,15 +69,15 @@ data:
   - Utility/template.hpp
   - Datastructure/static2dsum.hpp
   isVerificationFile: true
-  path: verify/static2dsum.test.cpp
+  path: verify/Datastructure_static2dsum.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/static2dsum.test.cpp
+documentation_of: verify/Datastructure_static2dsum.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/static2dsum.test.cpp
-- /verify/verify/static2dsum.test.cpp.html
-title: verify/static2dsum.test.cpp
+- /verify/verify/Datastructure_static2dsum.test.cpp
+- /verify/verify/Datastructure_static2dsum.test.cpp.html
+title: verify/Datastructure_static2dsum.test.cpp
 ---

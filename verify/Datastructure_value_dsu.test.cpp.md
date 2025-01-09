@@ -20,17 +20,18 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum
     links:
     - https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum
-  bundledCode: "#line 1 \"verify/value_dsu.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/value_dsu.hpp\"\
+  bundledCode: "#line 1 \"verify/Datastructure_value_dsu.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/dynamic_graph_vertex_add_component_sum\"\n\
+    #line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
+    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
+    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
+    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
+    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
+    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
+    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
+    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
+    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/value_dsu.hpp\"\
     \ntemplate<class S, S (*op)(S, S), S (*e) ()> struct dsu {\n    using vi = vec<int>;\n\
     \    using vvi = vec<vi>;   \n\n    struct dat {\n        int r, u, v, p;\n  \
     \      dat(){}\n        dat(int a, int b, int c, int d) : r(a), u(b), v(c), p(d)\
@@ -112,15 +113,15 @@ data:
     };\n/*\nS f(dsu &uf, qif q) {\n    return \u7B54\u3048\n}\n\u3092run\u306B\u6E21\
     \u3059\n&\u3092\u4ED8\u3051\u308B\u4E8B\u3092\u5FD8\u308C\u305A\u306B\uFF08\u8A08\
     \u7B97\u91CF\u3053\u308F\u308C\u308B\uFF09\n\n@brief offline_connectivity\n@docs\
-    \ doc/offline_connectivity.md\n*/\n#line 5 \"verify/value_dsu.test.cpp\"\n\nusing\
-    \ S = ll;\nS op(S l, S r) {\n    return l + r;\n}\n\nS e() {\n    return 0LL;\n\
-    }\n\n\nS f(dsu<S, op, e> &uf, int v) {\n    return uf.get(v);\n}\n\nint main()\
-    \ {\n    int n, q;\n    cin >> n >> q;\n    vec<ll> A(n);\n    rep(i, 0, n) cin\
-    \ >> A[i];\n    offline_connectivity<dsu<S, op, e>, S, int, false> uf(n);\n  \
-    \  rep(i, 0, n) uf.set(i, A[i]);\n\n    while(q--) {\n        int t;\n       \
-    \ cin >> t;\n        if(t == 0) {\n            int u, v;\n            cin >> u\
-    \ >> v;\n            uf.link(u, v);\n        }\n        else if(t == 1) {\n  \
-    \          int u, v;\n            cin >> u >> v;\n            uf.cut(u, v);\n\
+    \ doc/offline_connectivity.md\n*/\n#line 5 \"verify/Datastructure_value_dsu.test.cpp\"\
+    \n\nusing S = ll;\nS op(S l, S r) {\n    return l + r;\n}\n\nS e() {\n    return\
+    \ 0LL;\n}\n\n\nS f(dsu<S, op, e> &uf, int v) {\n    return uf.get(v);\n}\n\nint\
+    \ main() {\n    int n, q;\n    cin >> n >> q;\n    vec<ll> A(n);\n    rep(i, 0,\
+    \ n) cin >> A[i];\n    offline_connectivity<dsu<S, op, e>, S, int, false> uf(n);\n\
+    \    rep(i, 0, n) uf.set(i, A[i]);\n\n    while(q--) {\n        int t;\n     \
+    \   cin >> t;\n        if(t == 0) {\n            int u, v;\n            cin >>\
+    \ u >> v;\n            uf.link(u, v);\n        }\n        else if(t == 1) {\n\
+    \            int u, v;\n            cin >> u >> v;\n            uf.cut(u, v);\n\
     \        }\n        else if(t == 2) {\n            int v; ll x;\n            cin\
     \ >> v >> x;\n            A[v] += x;\n            uf.set(v, A[v]);\n        }\n\
     \        else {\n            int v;\n            cin >> v;\n            uf.query(v);\n\
@@ -146,15 +147,15 @@ data:
   - Datastructure/value_dsu.hpp
   - Datastructure/offline_connectivity.hpp
   isVerificationFile: true
-  path: verify/value_dsu.test.cpp
+  path: verify/Datastructure_value_dsu.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-10 00:00:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/value_dsu.test.cpp
+documentation_of: verify/Datastructure_value_dsu.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/value_dsu.test.cpp
-- /verify/verify/value_dsu.test.cpp.html
-title: verify/value_dsu.test.cpp
+- /verify/verify/Datastructure_value_dsu.test.cpp
+- /verify/verify/Datastructure_value_dsu.test.cpp.html
+title: verify/Datastructure_value_dsu.test.cpp
 ---

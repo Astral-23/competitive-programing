@@ -16,6 +16,24 @@ data:
     path: verify/Convolution_lcm_convolution.test.cpp
     title: verify/Convolution_lcm_convolution.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_dynamicseg.test.cpp
+    title: verify/Datastructure_dynamicseg.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_lazysegtree.test.cpp
+    title: verify/Datastructure_lazysegtree.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_seg_prod.test.cpp
+    title: verify/Datastructure_seg_prod.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_swag.test.cpp
+    title: verify/Datastructure_swag.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_swag_more.test.cpp
+    title: verify/Datastructure_swag_more.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_treap.test.cpp
+    title: verify/Datastructure_treap.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Math_matrix_det.test.cpp
     title: verify/Math_matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
@@ -40,32 +58,14 @@ data:
     path: verify/dijkstra.test.cpp
     title: verify/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/dynamicseg.test.cpp
-    title: verify/dynamicseg.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/lazysegtree.test.cpp
-    title: verify/lazysegtree.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/mat_det.test.cpp
     title: verify/mat_det.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/matrix.test.cpp
     title: verify/matrix.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/seg_prod.test.cpp
-    title: verify/seg_prod.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/swag.test.cpp
-    title: verify/swag.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/swag_more.test.cpp
-    title: verify/swag_more.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/treap.test.cpp
-    title: verify/treap.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/treedp.test.cpp
     title: verify/treedp.test.cpp
@@ -139,24 +139,24 @@ data:
   verifiedWith:
   - verify/bellman_ford.test.cpp
   - verify/Math_matrix_pow.test.cpp
-  - verify/swag.test.cpp
-  - verify/treap.test.cpp
-  - verify/swag_more.test.cpp
-  - verify/lazysegtree.test.cpp
+  - verify/Datastructure_swag_more.test.cpp
+  - verify/Datastructure_swag.test.cpp
   - verify/Math_matrix_inv.test.cpp
+  - verify/Datastructure_seg_prod.test.cpp
+  - verify/Datastructure_dynamicseg.test.cpp
   - verify/dijkstra.test.cpp
-  - verify/seg_prod.test.cpp
   - verify/combination.test.cpp
   - verify/Chromatic_Number.test.cpp
   - verify/Convolution_lcm_convolution.test.cpp
   - verify/Math_matrix_det.test.cpp
+  - verify/Datastructure_treap.test.cpp
   - verify/treedp.test.cpp
+  - verify/Datastructure_lazysegtree.test.cpp
   - verify/bitwise_and_convolution.test.cpp
   - verify/mat_det.test.cpp
   - verify/Math_matrix_rank.test.cpp
   - verify/matrix.test.cpp
   - verify/superset_transform.test.cpp
-  - verify/dynamicseg.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Utility/modint.hpp
 layout: document

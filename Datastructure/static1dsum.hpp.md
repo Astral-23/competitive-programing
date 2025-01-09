@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/static1dsum.test.cpp
-    title: verify/static1dsum.test.cpp
+    path: verify/Datastructure_static1dsum.test.cpp
+    title: verify/Datastructure_static1dsum.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -47,7 +47,7 @@ data:
   timestamp: '2024-12-09 02:13:43+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/static1dsum.test.cpp
+  - verify/Datastructure_static1dsum.test.cpp
 documentation_of: Datastructure/static1dsum.hpp
 layout: document
 redirect_from:
