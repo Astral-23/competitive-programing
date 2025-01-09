@@ -87,7 +87,7 @@ struct HLD {
         }
     }
 
-    int dist(int a, int b) {
+    ll dist(int a, int b) {
         int lc = lca(a, b);
         return dep_w[a] + dep_w[b] - 2 * dep_w[lc];
     }
