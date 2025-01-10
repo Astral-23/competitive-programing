@@ -1,4 +1,5 @@
 #include "../Math/sieve.hpp"
+// lcm(a, b) = l  <-> lcm(a, b) が lの約数 (⇔ a, bともにlの約数(素因数毎にmaxをとっている事より自明))
 template <typename T>
 vector<T> lcm_convolution(vector<T> A, vector<T> B) {
     if (A.empty() || B.empty()) return {};

@@ -1,4 +1,6 @@
 #include "../Math/sieve.hpp"
+
+// gcd(a, b) = g  <-> gcd(a, b) が gの倍数 (⇔ a, bともにgの倍数)
 template <typename T>
 vector<T> gcd_convolution(vector<T> A, vector<T> B) {
     if (A.empty() || B.empty()) return {};
