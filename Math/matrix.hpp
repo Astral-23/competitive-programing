@@ -3,9 +3,15 @@ template <typename T> struct Matrix {
     vector<vector<T>> d;
     Matrix() {}
     Matrix(int h, int w, T val = 0) : h(h), w(w), d(h, vector<T>(w, val)) {}
+    Matrix(vector<vector<T>> const &dat) : h(dat.size()), w(0), d(dat) {
+        if (h > 0) w = d[0].size();
+    }
+
     static Matrix unit(int n) {
         Matrix uni(n, n, 0);
-        rep(i, 0, n) { uni[i][i] = 1; }
+        for (int i = 0; i < n; i++) {
+            uni[i][i] = 1;
+        }
         return uni;
     }
     const vector<T> &operator[](int i) const { return d[i]; }
@@ -14,13 +20,15 @@ template <typename T> struct Matrix {
     Matrix operator*(const Matrix &a) const {
         assert(w == a.h);
         Matrix r(h, a.w);
-        rep(i, 0, h) {
-            rep(k, 0, w) {
-                rep(j, 0, a.w) { r[i][j] += d[i][k] * a[k][j]; }
-            }
-        }
+        for (int i = 0; i < h; i++)
+            for (int k = 0; k < w; k++)
+                for (int j = 0; j < a.w; j++) {
+                    r[i][j] += d[i][k] * a[k][j];
+                }
+
         return r;
     }
+
     Matrix pow(ll t) const {
         assert(h == w);
         Matrix res = Matrix::unit(h);
@@ -34,7 +42,7 @@ template <typename T> struct Matrix {
     }
 
     tuple<Matrix, T, ll> gaussian_elimination(int w_limit = -1) const {
-        if(w_limit == -1) w_limit = w;
+        if (w_limit == -1) w_limit = w;
         T k = 1;
         Matrix A = *this;
         int i1 = 0;
@@ -75,9 +83,11 @@ template <typename T> struct Matrix {
     pair<vector<T>, bool> linear_equations() const {
         assert(h == w - 1);
         vector<T> ret(w - 1);
-        auto [dat, p, rnk] = (*this).gaussian_elimination(w-1);
+        auto [dat, p, rnk] = (*this).gaussian_elimination(w - 1);
         if (rnk != w - 1) return make_pair(ret, false);
-        rep(i, 0, h) { ret[i] = dat[i][w - 1]; }
+        for (int i = 0; i < h; i++) {
+            ret[i] = dat[i][w - 1];
+        }
         return make_pair(ret, true);
     }
 
@@ -106,7 +116,7 @@ template <typename T> struct Matrix {
     T det() const {
         assert(h == w);
         auto [A, p, rnk] = (*this).gaussian_elimination();
-        rep(i, 0, h) p *= A[i][i];
+        for (int i = 0; i < h; i++) p *= A[i][i];
         return p;
     }
 
