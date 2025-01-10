@@ -1,5 +1,6 @@
 #include "../Algorithm/subset_transform.hpp"
 
+// i or j = k <-> i or j が k の subset (⇔ i, jがともにkのsubset)
 template<class S, S (*op)(S, S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_or_convolution(vec<S> A, vec<S> B) {
     ll lg = 1;
     while(A.size() > (1LL << lg)) lg++;

@@ -1,5 +1,5 @@
 #include "../Algorithm/superset_transform.hpp"
-
+// i and j = k <-> i and j が k の superset (⇔ i, jがともにkのsuperset)
 template<class S, S (*op)(S, S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_and_convolution(vec<S> A, vec<S> B) {
     ll lg = 1;
     while(A.size() > (1LL << lg)) lg++;

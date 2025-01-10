@@ -91,8 +91,8 @@ struct notlinear_sieve {
     }
 
     // 以下4つは素因数ごとの累積和と思うと良い。計算量はO(nloglogn)
-    // zeta_transform... 半群(結合則)ならなんでも乗る
-    // mobius_transform ... 群(半群 + 逆元　+ 単位元) ならなんでも乗る
+    // zeta_transform... 結合則 + 交換則 ならなんでも乗る
+    // mobius_transform ... 結合 + 交換 + 逆元の存在 ならなんでも乗る
     // f -> F   約数の添字をadd
     template <typename T> vector<T> divisor_zeta_transform(vector<T> A) const {
         int N = int(A.size()) - 1;
