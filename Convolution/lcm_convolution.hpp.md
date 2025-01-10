@@ -49,37 +49,43 @@ data:
     \                    else\n                        ret[q] = -ret[q];\n       \
     \         }\n            }\n        return ret;\n    }\n\n    // \u4EE5\u4E0B\
     4\u3064\u306F\u7D20\u56E0\u6570\u3054\u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\
-    \u3046\u3068\u826F\u3044\n\n    // f -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092\
-    add\n    template <typename T> vector<T> divisor_zeta_transform(vector<T> A) const\
-    \ {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n        for\
-    \ (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n               \
-    \ for (int k = 1; k * p <= N; k++) {\n                    A[k * p] += A[k];\n\
-    \                }\n            }\n        }\n        return A;\n    }\n\n   \
-    \ // F -> f\n    template <typename T>\n    vector<T> divisor_mobius_transform(vector<T>\
+    \u3046\u3068\u826F\u3044\u3002\u8A08\u7B97\u91CF\u306FO(nloglogn)\n    // f ->\
+    \ F   \u7D04\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T>\
+    \ divisor_zeta_transform(vector<T> A) const {\n        int N = int(A.size()) -\
+    \ 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n      \
+    \      if (is_prime(p)) {\n                for (int k = 1; k * p <= N; k++) {\n\
+    \                    A[k * p] += A[k];\n                }\n            }\n   \
+    \     }\n        return A;\n    }\n\n    // F -> f\n    template <typename T>\n\
+    \    vector<T> divisor_mobius_transform(vector<T> A) const {\n        int N =\
+    \ int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N;\
+    \ p++) {\n            if (is_prime(p)) {\n                for (int k = N / p;\
+    \ k >= 1; k--) {\n                    A[k * p] -= A[k];\n                }\n \
+    \           }\n        }\n        return A;\n    }\n\n    // f -> F \u500D\u6570\
+    \u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T> multiple_zeta_transform(vector<T>\
     \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
     \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
-    \          for (int k = N / p; k >= 1; k--) {\n                    A[k * p] -=\
-    \ A[k];\n                }\n            }\n        }\n        return A;\n    }\n\
-    \n    // f -> F \u500D\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename\
-    \ T> vector<T> multiple_zeta_transform(vector<T> A) const {\n        int N = int(A.size())\
-    \ - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n    \
-    \        if (is_prime(p)) {\n                for (int k = N / p; k >= 1; k--)\
-    \ {\n                    A[k] += A[k * p];\n                }\n            }\n\
-    \        }\n        return A;\n    }\n\n    // F -> f\n    template <typename\
-    \ T>\n    vector<T> multiple_mobius_transform(vector<T> A) const {\n        int\
-    \ N = int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <=\
-    \ N; p++) {\n            if (is_prime(p)) {\n                for (int k = 1; k\
-    \ <= N / p; k++) {\n                    A[k] -= A[k * p];\n                }\n\
-    \            }\n        }\n        return A;\n    }\n};\n#line 2 \"Convolution/lcm_convolution.hpp\"\
-    \ntemplate <typename T>\nvector<T> lcm_convolution(vector<T> A, vector<T> B) {\n\
-    \    if (A.empty() || B.empty()) return {};\n    int n = max<int>(A.size(), B.size())\
-    \ - 1;\n    notlinear_sieve sieve(n);\n    A.resize(n + 1, 0);\n    B.resize(n\
-    \ + 1, 0);\n    vector<T> div_A = sieve.divisor_zeta_transform<T>(A);\n    vector<T>\
-    \ div_B = sieve.divisor_zeta_transform<T>(B);\n    for(int i = 1; i <= n; i +=\
-    \ 1) {\n        div_A[i] *= div_B[i];\n    }\n    return sieve.divisor_mobius_transform<T>(div_A);\n\
-    }\n"
-  code: "#include \"../Math/sieve.hpp\"\ntemplate <typename T>\nvector<T> lcm_convolution(vector<T>\
+    \          for (int k = N / p; k >= 1; k--) {\n                    A[k] += A[k\
+    \ * p];\n                }\n            }\n        }\n        return A;\n    }\n\
+    \n    // F -> f\n    template <typename T>\n    vector<T> multiple_mobius_transform(vector<T>\
+    \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
+    \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
+    \          for (int k = 1; k <= N / p; k++) {\n                    A[k] -= A[k\
+    \ * p];\n                }\n            }\n        }\n        return A;\n    }\n\
+    };\n#line 2 \"Convolution/lcm_convolution.hpp\"\n// lcm(a, b) = l  <-> lcm(a,\
+    \ b) \u304C l\u306E\u7D04\u6570 (\u21D4 a, b\u3068\u3082\u306Bl\u306E\u7D04\u6570\
+    (\u7D20\u56E0\u6570\u6BCE\u306Bmax\u3092\u3068\u3063\u3066\u3044\u308B\u4E8B\u3088\
+    \u308A\u81EA\u660E))\ntemplate <typename T>\nvector<T> lcm_convolution(vector<T>\
     \ A, vector<T> B) {\n    if (A.empty() || B.empty()) return {};\n    int n = max<int>(A.size(),\
+    \ B.size()) - 1;\n    notlinear_sieve sieve(n);\n    A.resize(n + 1, 0);\n   \
+    \ B.resize(n + 1, 0);\n    vector<T> div_A = sieve.divisor_zeta_transform<T>(A);\n\
+    \    vector<T> div_B = sieve.divisor_zeta_transform<T>(B);\n    for(int i = 1;\
+    \ i <= n; i += 1) {\n        div_A[i] *= div_B[i];\n    }\n    return sieve.divisor_mobius_transform<T>(div_A);\n\
+    }\n"
+  code: "#include \"../Math/sieve.hpp\"\n// lcm(a, b) = l  <-> lcm(a, b) \u304C l\u306E\
+    \u7D04\u6570 (\u21D4 a, b\u3068\u3082\u306Bl\u306E\u7D04\u6570(\u7D20\u56E0\u6570\
+    \u6BCE\u306Bmax\u3092\u3068\u3063\u3066\u3044\u308B\u4E8B\u3088\u308A\u81EA\u660E\
+    ))\ntemplate <typename T>\nvector<T> lcm_convolution(vector<T> A, vector<T> B)\
+    \ {\n    if (A.empty() || B.empty()) return {};\n    int n = max<int>(A.size(),\
     \ B.size()) - 1;\n    notlinear_sieve sieve(n);\n    A.resize(n + 1, 0);\n   \
     \ B.resize(n + 1, 0);\n    vector<T> div_A = sieve.divisor_zeta_transform<T>(A);\n\
     \    vector<T> div_B = sieve.divisor_zeta_transform<T>(B);\n    for(int i = 1;\
@@ -90,7 +96,7 @@ data:
   isVerificationFile: false
   path: Convolution/lcm_convolution.hpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-11 02:41:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Convolution_lcm_convolution.test.cpp

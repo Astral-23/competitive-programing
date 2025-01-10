@@ -120,31 +120,33 @@ data:
     \                    else\n                        ret[q] = -ret[q];\n       \
     \         }\n            }\n        return ret;\n    }\n\n    // \u4EE5\u4E0B\
     4\u3064\u306F\u7D20\u56E0\u6570\u3054\u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\
-    \u3046\u3068\u826F\u3044\n\n    // f -> F    \u7D04\u6570\u306E\u6DFB\u5B57\u3092\
-    add\n    template <typename T> vector<T> divisor_zeta_transform(vector<T> A) const\
-    \ {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n        for\
-    \ (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n               \
-    \ for (int k = 1; k * p <= N; k++) {\n                    A[k * p] += A[k];\n\
-    \                }\n            }\n        }\n        return A;\n    }\n\n   \
-    \ // F -> f\n    template <typename T>\n    vector<T> divisor_mobius_transform(vector<T>\
+    \u3046\u3068\u826F\u3044\u3002\u8A08\u7B97\u91CF\u306FO(nloglogn)\n    // f ->\
+    \ F   \u7D04\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T>\
+    \ divisor_zeta_transform(vector<T> A) const {\n        int N = int(A.size()) -\
+    \ 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n      \
+    \      if (is_prime(p)) {\n                for (int k = 1; k * p <= N; k++) {\n\
+    \                    A[k * p] += A[k];\n                }\n            }\n   \
+    \     }\n        return A;\n    }\n\n    // F -> f\n    template <typename T>\n\
+    \    vector<T> divisor_mobius_transform(vector<T> A) const {\n        int N =\
+    \ int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N;\
+    \ p++) {\n            if (is_prime(p)) {\n                for (int k = N / p;\
+    \ k >= 1; k--) {\n                    A[k * p] -= A[k];\n                }\n \
+    \           }\n        }\n        return A;\n    }\n\n    // f -> F \u500D\u6570\
+    \u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T> multiple_zeta_transform(vector<T>\
     \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
     \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
-    \          for (int k = N / p; k >= 1; k--) {\n                    A[k * p] -=\
-    \ A[k];\n                }\n            }\n        }\n        return A;\n    }\n\
-    \n    // f -> F \u500D\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename\
-    \ T> vector<T> multiple_zeta_transform(vector<T> A) const {\n        int N = int(A.size())\
-    \ - 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n    \
-    \        if (is_prime(p)) {\n                for (int k = N / p; k >= 1; k--)\
-    \ {\n                    A[k] += A[k * p];\n                }\n            }\n\
-    \        }\n        return A;\n    }\n\n    // F -> f\n    template <typename\
-    \ T>\n    vector<T> multiple_mobius_transform(vector<T> A) const {\n        int\
-    \ N = int(A.size()) - 1;\n        assert(N <= n);\n        for (int p = 2; p <=\
-    \ N; p++) {\n            if (is_prime(p)) {\n                for (int k = 1; k\
-    \ <= N / p; k++) {\n                    A[k] -= A[k * p];\n                }\n\
-    \            }\n        }\n        return A;\n    }\n};\n#line 2 \"Convolution/gcd_convolution.hpp\"\
-    \ntemplate <typename T>\nvector<T> gcd_convolution(vector<T> A, vector<T> B) {\n\
-    \    if (A.empty() || B.empty()) return {};\n    int n = min<int>(A.size(), B.size())\
-    \ - 1;\n    A.resize(n + 1, 0);\n    B.resize(n + 1, 0);\n    notlinear_sieve\
+    \          for (int k = N / p; k >= 1; k--) {\n                    A[k] += A[k\
+    \ * p];\n                }\n            }\n        }\n        return A;\n    }\n\
+    \n    // F -> f\n    template <typename T>\n    vector<T> multiple_mobius_transform(vector<T>\
+    \ A) const {\n        int N = int(A.size()) - 1;\n        assert(N <= n);\n  \
+    \      for (int p = 2; p <= N; p++) {\n            if (is_prime(p)) {\n      \
+    \          for (int k = 1; k <= N / p; k++) {\n                    A[k] -= A[k\
+    \ * p];\n                }\n            }\n        }\n        return A;\n    }\n\
+    };\n#line 2 \"Convolution/gcd_convolution.hpp\"\n\n// gcd(a, b) = g  <-> gcd(a,\
+    \ b) \u304C g\u306E\u500D\u6570 (\u21D4 a, b\u3068\u3082\u306Bg\u306E\u500D\u6570\
+    )\ntemplate <typename T>\nvector<T> gcd_convolution(vector<T> A, vector<T> B)\
+    \ {\n    if (A.empty() || B.empty()) return {};\n    int n = min<int>(A.size(),\
+    \ B.size()) - 1;\n    A.resize(n + 1, 0);\n    B.resize(n + 1, 0);\n    notlinear_sieve\
     \ sieve(n);\n\n    vector<T> mul_A = sieve.multiple_zeta_transform<T>(A);\n  \
     \  vector<T> mul_B = sieve.multiple_zeta_transform<T>(B);\n    for (int i = 1;\
     \ i <= n; i += 1) mul_A[i] *= mul_B[i];\n    return sieve.multiple_mobius_transform<T>(mul_A);\n\
@@ -1063,7 +1065,7 @@ data:
   isVerificationFile: true
   path: verify/Convolution_gcd_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:51:35+09:00'
+  timestamp: '2025-01-11 02:41:52+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Convolution_gcd_convolution.test.cpp
