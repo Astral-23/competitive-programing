@@ -347,6 +347,12 @@ data:
     - icon: ':warning:'
       path: "\u7802\u5834/simple_treap.henkou.cpp"
       title: "\u7802\u5834/simple_treap.henkou.cpp"
+    - icon: ':warning:'
+      path: "\u7802\u5834/\u5F69\u8272\u6570_fast.cpp"
+      title: "\u5F69\u8272\u6570(\u5FA9\u5143\u4ED8\u304D)"
+    - icon: ':warning:'
+      path: "\u7802\u5834/\u5F69\u8272\u6570_slow.cpp"
+      title: "\u7802\u5834/\u5F69\u8272\u6570_slow.cpp"
   verificationCategories:
   - name: verify
     pages:
