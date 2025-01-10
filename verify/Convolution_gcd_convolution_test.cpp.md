@@ -118,8 +118,11 @@ data:
     \                    else\n                        ret[q] = -ret[q];\n       \
     \         }\n            }\n        return ret;\n    }\n\n    // \u4EE5\u4E0B\
     4\u3064\u306F\u7D20\u56E0\u6570\u3054\u3068\u306E\u7D2F\u7A4D\u548C\u3068\u601D\
-    \u3046\u3068\u826F\u3044\u3002\u8A08\u7B97\u91CF\u306FO(nloglogn)\n    // f ->\
-    \ F   \u7D04\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T>\
+    \u3046\u3068\u826F\u3044\u3002\u8A08\u7B97\u91CF\u306FO(nloglogn)\n    // zeta_transform...\
+    \ \u534A\u7FA4(\u7D50\u5408\u5247)\u306A\u3089\u306A\u3093\u3067\u3082\u4E57\u308B\
+    \n    // mobius_transform ... \u7FA4(\u534A\u7FA4 + \u9006\u5143\u3000+ \u5358\
+    \u4F4D\u5143) \u306A\u3089\u306A\u3093\u3067\u3082\u4E57\u308B\n    // f -> F\
+    \   \u7D04\u6570\u306E\u6DFB\u5B57\u3092add\n    template <typename T> vector<T>\
     \ divisor_zeta_transform(vector<T> A) const {\n        int N = int(A.size()) -\
     \ 1;\n        assert(N <= n);\n        for (int p = 2; p <= N; p++) {\n      \
     \      if (is_prime(p)) {\n                for (int k = 1; k * p <= N; k++) {\n\
@@ -1063,7 +1066,7 @@ data:
   isVerificationFile: false
   path: verify/Convolution_gcd_convolution_test.cpp
   requiredBy: []
-  timestamp: '2025-01-11 02:41:52+09:00'
+  timestamp: '2025-01-11 02:43:47+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: verify/Convolution_gcd_convolution_test.cpp
