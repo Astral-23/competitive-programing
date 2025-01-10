@@ -54,20 +54,23 @@ data:
     using modint1000000007 = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line\
     \ 1 \"Math/matrix.hpp\"\ntemplate <typename T> struct Matrix {\n    int h, w;\n\
     \    vector<vector<T>> d;\n    Matrix() {}\n    Matrix(int h, int w, T val = 0)\
-    \ : h(h), w(w), d(h, vector<T>(w, val)) {}\n    static Matrix unit(int n) {\n\
-    \        Matrix uni(n, n, 0);\n        rep(i, 0, n) { uni[i][i] = 1; }\n     \
-    \   return uni;\n    }\n    const vector<T> &operator[](int i) const { return\
+    \ : h(h), w(w), d(h, vector<T>(w, val)) {}\n    Matrix(vector<vector<T>> const\
+    \ &dat) : h(dat.size()), w(0), d(dat) {\n        if (h > 0) w = d[0].size();\n\
+    \    }\n\n    static Matrix unit(int n) {\n        Matrix uni(n, n, 0);\n    \
+    \    for (int i = 0; i < n; i++) {\n            uni[i][i] = 1;\n        }\n  \
+    \      return uni;\n    }\n    const vector<T> &operator[](int i) const { return\
     \ d[i]; }\n    vector<T> &operator[](int i) { return d[i]; }\n    Matrix &operator*=(const\
     \ Matrix &a) { return *this = (*this) * a; }\n    Matrix operator*(const Matrix\
-    \ &a) const {\n        assert(w == a.h);\n        Matrix r(h, a.w);\n        rep(i,\
-    \ 0, h) {\n            rep(k, 0, w) {\n                rep(j, 0, a.w) { r[i][j]\
-    \ += d[i][k] * a[k][j]; }\n            }\n        }\n        return r;\n    }\n\
-    \    Matrix pow(ll t) const {\n        assert(h == w);\n        Matrix res = Matrix::unit(h);\n\
+    \ &a) const {\n        assert(w == a.h);\n        Matrix r(h, a.w);\n        for\
+    \ (int i = 0; i < h; i++)\n            for (int k = 0; k < w; k++)\n         \
+    \       for (int j = 0; j < a.w; j++) {\n                    r[i][j] += d[i][k]\
+    \ * a[k][j];\n                }\n\n        return r;\n    }\n\n    Matrix pow(ll\
+    \ t) const {\n        assert(h == w);\n        Matrix res = Matrix::unit(h);\n\
     \        Matrix x = (*this);\n        while (t > 0) {\n            if (t & 1)\
     \ res = res * x;\n            x = x * x;\n            t >>= 1;\n        }\n  \
     \      return res;\n    }\n\n    tuple<Matrix, T, ll> gaussian_elimination(int\
-    \ w_limit = -1) const {\n        if(w_limit == -1) w_limit = w;\n        T k =\
-    \ 1;\n        Matrix A = *this;\n        int i1 = 0;\n        for (int j = 0;\
+    \ w_limit = -1) const {\n        if (w_limit == -1) w_limit = w;\n        T k\
+    \ = 1;\n        Matrix A = *this;\n        int i1 = 0;\n        for (int j = 0;\
     \ j < w_limit; j++) {\n            if (i1 >= h) break;\n            for (int i2\
     \ = i1; i2 < h; i2++) {\n                if (A[i2][j] != 0) {\n              \
     \      swap(A[i1], A[i2]);\n                    if (i1 != i2) k = -k;\n      \
@@ -82,42 +85,42 @@ data:
     \ i1);\n    }\n\n    ll rank() const {\n        auto [dat, k, rnk] = (*this).gaussian_elimination();\n\
     \        return rnk;\n    }\n\n    pair<vector<T>, bool> linear_equations() const\
     \ {\n        assert(h == w - 1);\n        vector<T> ret(w - 1);\n        auto\
-    \ [dat, p, rnk] = (*this).gaussian_elimination(w-1);\n        if (rnk != w - 1)\
-    \ return make_pair(ret, false);\n        rep(i, 0, h) { ret[i] = dat[i][w - 1];\
-    \ }\n        return make_pair(ret, true);\n    }\n\n    pair<Matrix, bool> inv()\
-    \ const {\n        assert(h == w);\n        Matrix slv(h, w * 2);\n        for\
-    \ (int i = 0; i < h; i++)\n            for (int j = 0; j < w; j++) {\n       \
-    \         slv[i][j] = (*this)[i][j];\n            }\n        for (int i = 0; i\
-    \ < h; i++) {\n            slv[i][i + w] = 1;\n        }\n\n        auto [dat,\
-    \ p, rnk] = slv.gaussian_elimination(w);\n        auto ret = Matrix::unit(h);\n\
-    \        if (rnk != h) return make_pair(ret, false);\n        for (int i = 0;\
-    \ i < h; i++) {\n            for (int j = 0; j < w; j++) {\n                ret[i][j]\
-    \ = dat[i][j + w];\n            }\n        }\n        return make_pair(ret, true);\n\
-    \    }\n\n    T det() const {\n        assert(h == w);\n        auto [A, p, rnk]\
-    \ = (*this).gaussian_elimination();\n        rep(i, 0, h) p *= A[i][i];\n    \
-    \    return p;\n    }\n\n    friend ostream &operator<<(ostream &os, Matrix a)\
-    \ {\n        for (int i = 0; i < a.h; i++) {\n            for (int j = 0; j <\
-    \ a.w; j++) {\n                os << a[i][j] << (j != a.w - 1 ? \" \" : \"\");\n\
-    \            }\n            os << (i != a.h - 1 ? \"\\n\" : \"\");\n        }\n\
-    \        return os;\n    }\n};\n#line 5 \"example/matrix.example.cpp\"\nusing\
-    \ mint = modint998244353;\n\nint main() {\n    int n = 3; \n    Matrix<mint> \
-    \ mat(n, n, 3); // n * n\u3067\u521D\u671F\u5024\u304C mint(0) \u306E\u884C\u5217\
-    \u3092\u751F\u6210\n\n    mat[0][0] = 1; // (0, 0)\u6210\u5206\u3092 1 \u306B\u5909\
-    \u66F4\n    mat[0][1] += 10; //(0, 1)\u6210\u5206\u306B 10\u3000\u52A0\u7B97\n\
-    \    //mat[3][3] = 100; //\u914D\u5217\u5916\u53C2\u7167 assert \u7121\u3057\n\
-    \n    auto pow_mat = mat.pow(5); // mat\u306E 100 \u4E57\u3092\u53D7\u3051\u53D6\
-    \u308B\u3002 mat\u306F\u7834\u58CA\u3055\u308C\u306A\u3044\u3002\n\n    auto print_vec\
-    \ = [](vec<vec<mint>> v) {\n        rep(i, 0, v.size()) {\n            rep(j,\
-    \ 0, v[i].size()) cout << v[i][j] << \" \";\n            cout << endl;\n     \
-    \   }\n    };\n\n    print_vec(mat.dump());// dump\u3067\u8FD4\u3055\u308C\u305F\
-    \u4E8C\u6B21\u5143\u914D\u5217\u3092\u51FA\u529B\n    print_vec(pow_mat.dump());//\
-    \ 5\u4E57\u3055\u308C\u3066\u3044\u308B\u3002\n\n    Matrix<mint> v(n, 1, 1);\
-    \ //n * 1\u306E\u884C\u5217\u3002\u64EC\u4F3C\u7684\u306A\u30D9\u30AF\u30C8\u30EB\
-    \u3068\u3057\u3066\u6271\u3048\u308B\u3002\n\n    Matrix<mint> res = mat * v;//\u884C\
-    \u5217\u540C\u58EB\u306E\u639B\u3051\u7B97\u3002\u884C\u5217\u7D2F\u4E57\u306E\
-    \u969B\u3001\u3053\u306E\u3088\u3046\u306A\u51E6\u7406\u3092\u66F8\u304F\u304B\
-    \u3082\u3057\u308C\u306A\u3044\u3002\n    print_vec(res.dump());\n    cout <<\
-    \ res[0][0] << endl;\n\n}\n"
+    \ [dat, p, rnk] = (*this).gaussian_elimination(w - 1);\n        if (rnk != w -\
+    \ 1) return make_pair(ret, false);\n        for (int i = 0; i < h; i++) {\n  \
+    \          ret[i] = dat[i][w - 1];\n        }\n        return make_pair(ret, true);\n\
+    \    }\n\n    pair<Matrix, bool> inv() const {\n        assert(h == w);\n    \
+    \    Matrix slv(h, w * 2);\n        for (int i = 0; i < h; i++)\n            for\
+    \ (int j = 0; j < w; j++) {\n                slv[i][j] = (*this)[i][j];\n    \
+    \        }\n        for (int i = 0; i < h; i++) {\n            slv[i][i + w] =\
+    \ 1;\n        }\n\n        auto [dat, p, rnk] = slv.gaussian_elimination(w);\n\
+    \        auto ret = Matrix::unit(h);\n        if (rnk != h) return make_pair(ret,\
+    \ false);\n        for (int i = 0; i < h; i++) {\n            for (int j = 0;\
+    \ j < w; j++) {\n                ret[i][j] = dat[i][j + w];\n            }\n \
+    \       }\n        return make_pair(ret, true);\n    }\n\n    T det() const {\n\
+    \        assert(h == w);\n        auto [A, p, rnk] = (*this).gaussian_elimination();\n\
+    \        for (int i = 0; i < h; i++) p *= A[i][i];\n        return p;\n    }\n\
+    \n    friend ostream &operator<<(ostream &os, Matrix a) {\n        for (int i\
+    \ = 0; i < a.h; i++) {\n            for (int j = 0; j < a.w; j++) {\n        \
+    \        os << a[i][j] << (j != a.w - 1 ? \" \" : \"\");\n            }\n    \
+    \        os << (i != a.h - 1 ? \"\\n\" : \"\");\n        }\n        return os;\n\
+    \    }\n};\n#line 5 \"example/matrix.example.cpp\"\nusing mint = modint998244353;\n\
+    \nint main() {\n    int n = 3; \n    Matrix<mint>  mat(n, n, 3); // n * n\u3067\
+    \u521D\u671F\u5024\u304C mint(0) \u306E\u884C\u5217\u3092\u751F\u6210\n\n    mat[0][0]\
+    \ = 1; // (0, 0)\u6210\u5206\u3092 1 \u306B\u5909\u66F4\n    mat[0][1] += 10;\
+    \ //(0, 1)\u6210\u5206\u306B 10\u3000\u52A0\u7B97\n    //mat[3][3] = 100; //\u914D\
+    \u5217\u5916\u53C2\u7167 assert \u7121\u3057\n\n    auto pow_mat = mat.pow(5);\
+    \ // mat\u306E 100 \u4E57\u3092\u53D7\u3051\u53D6\u308B\u3002 mat\u306F\u7834\u58CA\
+    \u3055\u308C\u306A\u3044\u3002\n\n    auto print_vec = [](vec<vec<mint>> v) {\n\
+    \        rep(i, 0, v.size()) {\n            rep(j, 0, v[i].size()) cout << v[i][j]\
+    \ << \" \";\n            cout << endl;\n        }\n    };\n\n    print_vec(mat.dump());//\
+    \ dump\u3067\u8FD4\u3055\u308C\u305F\u4E8C\u6B21\u5143\u914D\u5217\u3092\u51FA\
+    \u529B\n    print_vec(pow_mat.dump());// 5\u4E57\u3055\u308C\u3066\u3044\u308B\
+    \u3002\n\n    Matrix<mint> v(n, 1, 1); //n * 1\u306E\u884C\u5217\u3002\u64EC\u4F3C\
+    \u7684\u306A\u30D9\u30AF\u30C8\u30EB\u3068\u3057\u3066\u6271\u3048\u308B\u3002\
+    \n\n    Matrix<mint> res = mat * v;//\u884C\u5217\u540C\u58EB\u306E\u639B\u3051\
+    \u7B97\u3002\u884C\u5217\u7D2F\u4E57\u306E\u969B\u3001\u3053\u306E\u3088\u3046\
+    \u306A\u51E6\u7406\u3092\u66F8\u304F\u304B\u3082\u3057\u308C\u306A\u3044\u3002\
+    \n    print_vec(res.dump());\n    cout << res[0][0] << endl;\n\n}\n"
   code: "\n#include \"../Utility/template.hpp\"\n#include \"../Utility/modint.hpp\"\
     \n#include \"../Math/matrix.hpp\"\nusing mint = modint998244353;\n\nint main()\
     \ {\n    int n = 3; \n    Matrix<mint>  mat(n, n, 3); // n * n\u3067\u521D\u671F\
@@ -144,7 +147,7 @@ data:
   isVerificationFile: false
   path: example/matrix.example.cpp
   requiredBy: []
-  timestamp: '2024-12-29 12:27:23+09:00'
+  timestamp: '2025-01-10 23:29:41+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: example/matrix.example.cpp
