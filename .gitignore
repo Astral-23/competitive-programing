@@ -1,0 +1,5 @@
+*.out
+.DS_Store
+info.plist
+*.yml
+settings.json
