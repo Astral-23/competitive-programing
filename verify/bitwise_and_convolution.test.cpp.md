@@ -68,8 +68,9 @@ data:
     \    rep(s, 0, 1LL << n) {\n            if((s & (1 << i)) == 0) { // if i in s\n\
     \                f[s] = op(f[s], inv(f[s ^ (1 << i)]));\n                //f[s]\
     \ = f[s] -  f[s ^ (1 << i)];\n            }\n        }\n    }\n    return f;\n\
-    }\n#line 2 \"Convolution/bitwise_and_convolution.hpp\"\n\ntemplate<class S, S\
-    \ (*op)(S, S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_and_convolution(vec<S>\
+    }\n#line 2 \"Convolution/bitwise_and_convolution.hpp\"\n// i and j = k <-> i and\
+    \ j \u304C k \u306E superset (\u21D4 i, j\u304C\u3068\u3082\u306Bk\u306Esuperset)\n\
+    template<class S, S (*op)(S, S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_and_convolution(vec<S>\
     \ A, vec<S> B) {\n    ll lg = 1;\n    while(A.size() > (1LL << lg)) lg++;\n  \
     \  while(B.size() > (1LL << lg)) lg++;\n    A.resize(1LL << lg, zero());\n   \
     \ B.resize(1LL << lg, zero());\n\n    vec<S> FA = superset_zeta_transform<S, op>(A,\
@@ -100,7 +101,7 @@ data:
   isVerificationFile: true
   path: verify/bitwise_and_convolution.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-11 07:38:14+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/bitwise_and_convolution.test.cpp

@@ -26,12 +26,13 @@ data:
     \ {\n        rep(s, 0, 1LL << n) {\n            if((s & (1 << i)) != 0) { // if\
     \ i in s\n                f[s] = op(f[s], inv(f[s ^ (1 << i)]));\n           \
     \ }\n        }\n    }\n    return f;\n}\n#line 2 \"Convolution/bitwise_or_convolution.hpp\"\
-    \n\ntemplate<class S, S (*op)(S, S), S (*inv)(S),  S(*zero)()> vec<S> bitwise_or_convolution(vec<S>\
-    \ A, vec<S> B) {\n    ll lg = 1;\n    while(A.size() > (1LL << lg)) lg++;\n  \
-    \  while(B.size() > (1LL << lg)) lg++;\n    A.resize(1LL << lg, zero());\n   \
-    \ B.resize(1LL << lg, zero());\n\n    vec<S> FA = subset_zeta_transform<S, op>(A,\
-    \ lg);\n    vec<S> FB = subset_zeta_transform<S, op>(B, lg);\n    rep(i, 0, 1\
-    \ << lg) FA[i] *= FB[i];\n    vec<S> f = subset_mobius_transform<S, op, inv>(FA,\
+    \n\n// i or j = k <-> i or j \u304C k \u306E subset (\u21D4 i, j\u304C\u3068\u3082\
+    \u306Bk\u306Esubset)\ntemplate<class S, S (*op)(S, S), S (*inv)(S),  S(*zero)()>\
+    \ vec<S> bitwise_or_convolution(vec<S> A, vec<S> B) {\n    ll lg = 1;\n    while(A.size()\
+    \ > (1LL << lg)) lg++;\n    while(B.size() > (1LL << lg)) lg++;\n    A.resize(1LL\
+    \ << lg, zero());\n    B.resize(1LL << lg, zero());\n\n    vec<S> FA = subset_zeta_transform<S,\
+    \ op>(A, lg);\n    vec<S> FB = subset_zeta_transform<S, op>(B, lg);\n    rep(i,\
+    \ 0, 1 << lg) FA[i] *= FB[i];\n    vec<S> f = subset_mobius_transform<S, op, inv>(FA,\
     \ lg);\n    return f;\n}\n//\u4EE5\u964D\u306E\u9805\u306B\u3064\u3044\u3066\u3001\
     0\u3067\u3042\u308B\u3002\n#line 2 \"Graph/Chromatic_Number_with_restoration.hpp\"\
     \n\nusing S = ll;\nS op(S a, S b) {\n    return a + b;\n}\nS inv(S x) {\n    return\
@@ -87,7 +88,7 @@ data:
   isVerificationFile: false
   path: Graph/Chromatic_Number_with_restoration.hpp
   requiredBy: []
-  timestamp: '2024-08-20 17:56:43+09:00'
+  timestamp: '2025-01-11 07:38:14+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Chromatic_Number_with_restoration.test.cpp
