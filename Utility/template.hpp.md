@@ -154,6 +154,9 @@ data:
     path: verify/Graph_scc_old.test.cpp
     title: verify/Graph_scc_old.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Math_combination.test.cpp
+    title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+  - icon: ':heavy_check_mark:'
     path: verify/Math_matrix_det.test.cpp
     title: verify/Math_matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
@@ -186,9 +189,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/bitwise_and_convolution.test.cpp
     title: verify/bitwise_and_convolution.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/combination.test.cpp
-    title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
   - icon: ':heavy_check_mark:'
     path: verify/dijkstra.test.cpp
     title: verify/dijkstra.test.cpp
@@ -323,6 +323,7 @@ data:
   - verify/Datastructure_sprase_table.test.cpp
   - verify/Datastructure_point_add_rec_sum.test.cpp
   - verify/fps_exp.test.cpp
+  - verify/Math_combination.test.cpp
   - verify/Graph_cycle_detection_2.test.cpp
   - verify/maximum_independent_set.test.cpp
   - verify/Math_matrix_inv.test.cpp
@@ -343,7 +344,6 @@ data:
   - verify/manacher.test.cpp
   - verify/Datastructure_value_dsu.test.cpp
   - verify/hld_lca.test.cpp
-  - verify/combination.test.cpp
   - verify/Chromatic_Number.test.cpp
   - verify/Chromatic_Number_with_restoration.test.cpp
   - verify/two_edge_connected.test.cpp

@@ -52,9 +52,6 @@ data:
     path: verify/bitwise_and_convolution.test.cpp
     title: verify/bitwise_and_convolution.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/combination.test.cpp
-    title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
-  - icon: ':heavy_check_mark:'
     path: verify/dijkstra.test.cpp
     title: verify/dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
@@ -145,7 +142,6 @@ data:
   - verify/Datastructure_seg_prod.test.cpp
   - verify/Datastructure_dynamicseg.test.cpp
   - verify/dijkstra.test.cpp
-  - verify/combination.test.cpp
   - verify/Chromatic_Number.test.cpp
   - verify/Convolution_lcm_convolution.test.cpp
   - verify/Math_matrix_det.test.cpp
