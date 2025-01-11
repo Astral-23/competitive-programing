@@ -34,10 +34,10 @@ data:
     \ = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate <typename\
     \ T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n    using vector<vector<Edge<T>>>::vector;\n\
     \n  private:\n    bool chmin(T &x, T y) const { return x > y ? (x = y, true) :\
-    \ false; }\n\n  public:\n    void add(int s, int t, T w) { add_edge(s, t, w);\
-    \ }\n    void add_edge(int s, int t, T w) {\n        (*this)[s].emplace_back(t,\
-    \ w);\n        if constexpr (directed == false) {\n            (this)[t].emplace_back(s,\
-    \ w);\n        }\n    }\n\n    vector<T> dfs(int s) const {\n        assert(0\
+    \ false; }\n\n  public:\n    void add(int s, int t, T w, int id = -1) { add_edge(s,\
+    \ t, w, id); }\n    void add_edge(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
+    \ w, id);\n        if constexpr (directed == false) {\n            (this)[t].emplace_back(s,\
+    \ w, id);\n        }\n    }\n\n    vector<T> dfs(int s) const {\n        assert(0\
     \ <= s && s < this->size());\n        vector<T> d(this->size());\n        d[s]\
     \ = 0;\n        queue<int> que;\n        que.push(s);\n        while (que.empty()\
     \ == false) {\n            int v = que.front();\n            que.pop();\n    \
@@ -67,8 +67,8 @@ data:
     \  vector<vector<T>> d(this->size(),\n                            vector<T>(this->size(),\
     \ Edge<T>::inf));\n        for (int i = 0; i < int(this->size()); i++) {\n   \
     \         d[i][i] = 0;\n            for (auto e : (*this)[i]) {\n            \
-    \    chmin(d[i][e.to], e.cost);\n            }\n        }\n\n        for (int\
-    \ k = 0; k < int(this->size()); k++) {\n            for (int i = 0; i < int(this->size());\
+    \    chmin(d[i][e.to], e.cost);\n            }\n        }\n        for (int k\
+    \ = 0; k < int(this->size()); k++) {\n            for (int i = 0; i < int(this->size());\
     \ i++) {\n                if (d[i][k] == Edge<T>::inf) continue;\n           \
     \     for (int j = 0; j < int(this->size()); j++) {\n                    if (d[k][j]\
     \ == Edge<T>::inf) continue;\n                    d[i][j] = min(d[i][j], d[i][k]\
@@ -94,7 +94,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2025-01-11 18:56:01+09:00'
+  timestamp: '2025-01-11 19:00:25+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_dijkstra.test.cpp
