@@ -14,20 +14,20 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
+    PROBLEM: https://judge.yosupo.jp/problem/cycle_detection
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"verify/Graph_graph_dijkstra.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\n#line\
-    \ 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
-    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
-    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
-    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
-    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
-    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
-    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
-    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    - https://judge.yosupo.jp/problem/cycle_detection
+  bundledCode: "#line 1 \"verify/Graph_graph_cycle_detection_directed.test.cpp\"\n\
+    #define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n#line 1 \"\
+    Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
+    \ ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define\
+    \ rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x),\
+    \ end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\ntemplate\
+    \ <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true)\
+    \ : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return\
+    \ x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n   \
+    \     ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n        cout\
+    \ << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
     \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\n\ntemplate\
     \ <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n    static\
     \ constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to = 0, T cost\
@@ -98,34 +98,34 @@ data:
     \ if (vs.empty() == false) {\n                    reverse(vs.begin(), vs.end());\n\
     \                    reverse(es.begin(), es.end());\n                    return\
     \ make_pair(vs, es);\n                }\n            }\n        }\n        return\
-    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n#line 4 \"verify/Graph_graph_dijkstra.test.cpp\"\
-    \nint main() {\n    ll n, m, r;\n    cin >> n >> m >> r;\n    Graph<ll, true>\
-    \ g(n);\n    rep(i, 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n\
-    \        g.add(s, t, w);\n    }\n\n    auto d = g.dijkstra(r);\n    for(int i\
-    \ = 0; i < n; i++) {\n        if(d[i] == Edge<ll>::INF) {\n            cout <<\
-    \ \"INF\" << endl;\n        }\n        else {\n            cout << d[i] << endl;\n\
-    \        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \n#include \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\nint main()\
-    \ {\n    ll n, m, r;\n    cin >> n >> m >> r;\n    Graph<ll, true> g(n);\n   \
-    \ rep(i, 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n        g.add(s,\
-    \ t, w);\n    }\n\n    auto d = g.dijkstra(r);\n    for(int i = 0; i < n; i++)\
-    \ {\n        if(d[i] == Edge<ll>::INF) {\n            cout << \"INF\" << endl;\n\
-    \        }\n        else {\n            cout << d[i] << endl;\n        }\n   \
-    \ }\n}"
+    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n#line 4 \"verify/Graph_graph_cycle_detection_directed.test.cpp\"\
+    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n\
+    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add_edge(u,\
+    \ v, 0, i);\n    }\n    auto [vs, es] = cyc.cycle_detection();\n    if (vs.empty())\
+    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
+    \        // cout << vs << endl;\n        for (int id : es) {\n            cout\
+    \ << id << endl;\n        }\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n#include\
+    \ \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\n\nint main() {\n\
+    \    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n    rep(i, 0,\
+    \ m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add_edge(u, v,\
+    \ 0, i);\n    }\n    auto [vs, es] = cyc.cycle_detection();\n    if (vs.empty())\
+    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
+    \        // cout << vs << endl;\n        for (int id : es) {\n            cout\
+    \ << id << endl;\n        }\n    }\n}"
   dependsOn:
   - Utility/template.hpp
   - Graph/graph.hpp
   isVerificationFile: true
-  path: verify/Graph_graph_dijkstra.test.cpp
+  path: verify/Graph_graph_cycle_detection_directed.test.cpp
   requiredBy: []
   timestamp: '2025-01-11 19:27:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/Graph_graph_dijkstra.test.cpp
+documentation_of: verify/Graph_graph_cycle_detection_directed.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/Graph_graph_dijkstra.test.cpp
-- /verify/verify/Graph_graph_dijkstra.test.cpp.html
-title: verify/Graph_graph_dijkstra.test.cpp
+- /verify/verify/Graph_graph_cycle_detection_directed.test.cpp
+- /verify/verify/Graph_graph_cycle_detection_directed.test.cpp.html
+title: verify/Graph_graph_cycle_detection_directed.test.cpp
 ---

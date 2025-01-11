@@ -4,11 +4,11 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/cycle_detection_1.test.cpp
-    title: verify/cycle_detection_1.test.cpp
+    path: verify/Graph_cycle_detection_1.test.cpp
+    title: verify/Graph_cycle_detection_1.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/cycle_detection_2.test.cpp
-    title: verify/cycle_detection_2.test.cpp
+    path: verify/Graph_cycle_detection_2.test.cpp
+    title: verify/Graph_cycle_detection_2.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -88,8 +88,8 @@ data:
   timestamp: '2024-09-24 03:56:55+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/cycle_detection_1.test.cpp
-  - verify/cycle_detection_2.test.cpp
+  - verify/Graph_cycle_detection_2.test.cpp
+  - verify/Graph_cycle_detection_1.test.cpp
 documentation_of: Graph/cycle_detection.hpp
 layout: document
 redirect_from:

@@ -459,11 +459,23 @@ data:
       path: verify/Datastructure_value_dsu.test.cpp
       title: verify/Datastructure_value_dsu.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/Graph_cycle_detection_1.test.cpp
+      title: verify/Graph_cycle_detection_1.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Graph_cycle_detection_2.test.cpp
+      title: verify/Graph_cycle_detection_2.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/Graph_graph_bellman.test.cpp
       title: verify/Graph_graph_bellman.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Graph_graph_bellman_and_warshall.test.cpp
       title: verify/Graph_graph_bellman_and_warshall.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Graph_graph_cycle_detection_directed.test.cpp
+      title: verify/Graph_graph_cycle_detection_directed.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Graph_graph_cycle_detection_undirected.test.cpp
+      title: verify/Graph_graph_cycle_detection_undirected.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Graph_graph_dijkstra.test.cpp
       title: verify/Graph_graph_dijkstra.test.cpp
@@ -503,12 +515,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/combination.test.cpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
-    - icon: ':heavy_check_mark:'
-      path: verify/cycle_detection_1.test.cpp
-      title: verify/cycle_detection_1.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/cycle_detection_2.test.cpp
-      title: verify/cycle_detection_2.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/dijkstra.test.cpp
       title: verify/dijkstra.test.cpp

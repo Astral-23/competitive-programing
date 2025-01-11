@@ -17,8 +17,8 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/cycle_detection
     links:
     - https://judge.yosupo.jp/problem/cycle_detection
-  bundledCode: "#line 1 \"verify/cycle_detection_1.test.cpp\"\n#define PROBLEM \"\
-    https://judge.yosupo.jp/problem/cycle_detection\"\n#line 1 \"Utility/template.hpp\"\
+  bundledCode: "#line 1 \"verify/Graph_cycle_detection_1.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/cycle_detection\"\n#line 1 \"Utility/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
     \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
     \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
@@ -60,7 +60,7 @@ data:
     \                 reverse(vs.begin(), vs.end());\n                    reverse(es.begin(),\
     \ es.end());\n                    return make_pair(vs, es);\n                }\n\
     \            }\n        }\n        return make_pair(vs, es);\n    }\n};\n/*\n\
-    @brief cycle_detection\n@docs doc/cycle_detection.md\n*/\n#line 4 \"verify/cycle_detection_1.test.cpp\"\
+    @brief cycle_detection\n@docs doc/cycle_detection.md\n*/\n#line 4 \"verify/Graph_cycle_detection_1.test.cpp\"\
     \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    cycle_detection<true>\
     \ cyc(n);\n    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n   \
     \     cyc.add_edge(u, v);\n    }\n    auto [vs, es] = cyc.run();\n    if (vs.empty())\
@@ -79,15 +79,15 @@ data:
   - Utility/template.hpp
   - Graph/cycle_detection.hpp
   isVerificationFile: true
-  path: verify/cycle_detection_1.test.cpp
+  path: verify/Graph_cycle_detection_1.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-11 19:27:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/cycle_detection_1.test.cpp
+documentation_of: verify/Graph_cycle_detection_1.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/cycle_detection_1.test.cpp
-- /verify/verify/cycle_detection_1.test.cpp.html
-title: verify/cycle_detection_1.test.cpp
+- /verify/verify/Graph_cycle_detection_1.test.cpp
+- /verify/verify/Graph_cycle_detection_1.test.cpp.html
+title: verify/Graph_cycle_detection_1.test.cpp
 ---

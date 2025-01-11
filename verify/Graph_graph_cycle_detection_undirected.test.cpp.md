@@ -14,29 +14,29 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
+    PROBLEM: https://judge.yosupo.jp/problem/cycle_detection_undirected
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
-  bundledCode: "#line 1 \"verify/Graph_graph_dijkstra.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\n#line\
-    \ 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
-    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
-    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
-    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
-    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
-    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
-    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
-    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\n\ntemplate\
-    \ <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n    static\
-    \ constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to = 0, T cost\
-    \ = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate <typename\
-    \ T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define n int(this->size())\n\
-    #define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\n  private:\n\
-    \    bool chmin(T &x, T y) const { return x > y ? (x = y, true) : false; }\n\n\
-    \  public:\n    void add(int s, int t, T w, int id = -1) { add_edge(s, t, w, id);\
-    \ }\n    void add_edge(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
+    - https://judge.yosupo.jp/problem/cycle_detection_undirected
+  bundledCode: "#line 1 \"verify/Graph_graph_cycle_detection_undirected.test.cpp\"\
+    \n#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection_undirected\"\
+    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\
+    \n\ntemplate <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n\
+    \    static constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to =\
+    \ 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate\
+    \ <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define\
+    \ n int(this->size())\n#define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\
+    \n  private:\n    bool chmin(T &x, T y) const { return x > y ? (x = y, true) :\
+    \ false; }\n\n  public:\n    void add(int s, int t, T w, int id = -1) { add_edge(s,\
+    \ t, w, id); }\n    void add_edge(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
     \ w, id);\n        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
     \ w, id);\n        }\n    }\n\n    vector<T> DFS(int s) const {\n        assert(0\
     \ <= s && s < n);\n        vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int>\
@@ -98,34 +98,34 @@ data:
     \ if (vs.empty() == false) {\n                    reverse(vs.begin(), vs.end());\n\
     \                    reverse(es.begin(), es.end());\n                    return\
     \ make_pair(vs, es);\n                }\n            }\n        }\n        return\
-    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n#line 4 \"verify/Graph_graph_dijkstra.test.cpp\"\
-    \nint main() {\n    ll n, m, r;\n    cin >> n >> m >> r;\n    Graph<ll, true>\
-    \ g(n);\n    rep(i, 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n\
-    \        g.add(s, t, w);\n    }\n\n    auto d = g.dijkstra(r);\n    for(int i\
-    \ = 0; i < n; i++) {\n        if(d[i] == Edge<ll>::INF) {\n            cout <<\
-    \ \"INF\" << endl;\n        }\n        else {\n            cout << d[i] << endl;\n\
-    \        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A\"\
-    \n#include \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\nint main()\
-    \ {\n    ll n, m, r;\n    cin >> n >> m >> r;\n    Graph<ll, true> g(n);\n   \
-    \ rep(i, 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n        g.add(s,\
-    \ t, w);\n    }\n\n    auto d = g.dijkstra(r);\n    for(int i = 0; i < n; i++)\
-    \ {\n        if(d[i] == Edge<ll>::INF) {\n            cout << \"INF\" << endl;\n\
-    \        }\n        else {\n            cout << d[i] << endl;\n        }\n   \
-    \ }\n}"
+    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n#line 4 \"verify/Graph_graph_cycle_detection_undirected.test.cpp\"\
+    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, false> cyc(n);\n\
+    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add_edge(u,\
+    \ v, 0, i);\n    }\n    auto [vs, es] = cyc.cycle_detection();\n    if (vs.empty())\
+    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
+    \        for(int v : vs) cout << v << \" \";\n        cout << endl;\n        for(int\
+    \ e : es) cout << e << \" \";\n        cout << endl;\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection_undirected\"\
+    \n#include \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\n\nint\
+    \ main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, false> cyc(n);\n\
+    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add_edge(u,\
+    \ v, 0, i);\n    }\n    auto [vs, es] = cyc.cycle_detection();\n    if (vs.empty())\
+    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
+    \        for(int v : vs) cout << v << \" \";\n        cout << endl;\n        for(int\
+    \ e : es) cout << e << \" \";\n        cout << endl;\n    }\n}"
   dependsOn:
   - Utility/template.hpp
   - Graph/graph.hpp
   isVerificationFile: true
-  path: verify/Graph_graph_dijkstra.test.cpp
+  path: verify/Graph_graph_cycle_detection_undirected.test.cpp
   requiredBy: []
   timestamp: '2025-01-11 19:27:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/Graph_graph_dijkstra.test.cpp
+documentation_of: verify/Graph_graph_cycle_detection_undirected.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/Graph_graph_dijkstra.test.cpp
-- /verify/verify/Graph_graph_dijkstra.test.cpp.html
-title: verify/Graph_graph_dijkstra.test.cpp
+- /verify/verify/Graph_graph_cycle_detection_undirected.test.cpp
+- /verify/verify/Graph_graph_cycle_detection_undirected.test.cpp.html
+title: verify/Graph_graph_cycle_detection_undirected.test.cpp
 ---

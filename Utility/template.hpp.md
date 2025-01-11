@@ -127,11 +127,23 @@ data:
     path: verify/Datastructure_value_dsu.test.cpp
     title: verify/Datastructure_value_dsu.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Graph_cycle_detection_1.test.cpp
+    title: verify/Graph_cycle_detection_1.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Graph_cycle_detection_2.test.cpp
+    title: verify/Graph_cycle_detection_2.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_bellman.test.cpp
     title: verify/Graph_graph_bellman.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_bellman_and_warshall.test.cpp
     title: verify/Graph_graph_bellman_and_warshall.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Graph_graph_cycle_detection_directed.test.cpp
+    title: verify/Graph_graph_cycle_detection_directed.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Graph_graph_cycle_detection_undirected.test.cpp
+    title: verify/Graph_graph_cycle_detection_undirected.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_dijkstra.test.cpp
     title: verify/Graph_graph_dijkstra.test.cpp
@@ -171,12 +183,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
-  - icon: ':heavy_check_mark:'
-    path: verify/cycle_detection_1.test.cpp
-    title: verify/cycle_detection_1.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/cycle_detection_2.test.cpp
-    title: verify/cycle_detection_2.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/dijkstra.test.cpp
     title: verify/dijkstra.test.cpp
@@ -302,7 +308,6 @@ data:
   verifiedWith:
   - verify/range_edge_graph.test.cpp
   - verify/bellman_ford.test.cpp
-  - verify/cycle_detection_1.test.cpp
   - verify/Math_matrix_pow.test.cpp
   - verify/fps_pow.test.cpp
   - verify/Graph_graph_bellman_and_warshall.test.cpp
@@ -315,6 +320,7 @@ data:
   - verify/Datastructure_sprase_table.test.cpp
   - verify/Datastructure_point_add_rec_sum.test.cpp
   - verify/fps_exp.test.cpp
+  - verify/Graph_cycle_detection_2.test.cpp
   - verify/maximum_independent_set.test.cpp
   - verify/Math_matrix_inv.test.cpp
   - verify/Datastructure_offline_connectivity.test.cpp
@@ -325,10 +331,10 @@ data:
   - verify/Datastructure_dsu.test.cpp
   - verify/Datastructure_binary_trie_xor.test.cpp
   - verify/Datastructure_dynamicseg.test.cpp
+  - verify/Graph_graph_cycle_detection_undirected.test.cpp
   - verify/extgcd.test.cpp
   - verify/dijkstra.test.cpp
   - verify/Graph_graph_bellman.test.cpp
-  - verify/cycle_detection_2.test.cpp
   - verify/Datastructure_imos2d.test.cpp
   - verify/manacher.test.cpp
   - verify/Datastructure_value_dsu.test.cpp
@@ -365,9 +371,11 @@ data:
   - verify/mat_det.test.cpp
   - verify/oneside_range_edge_graph.test.cpp
   - verify/Math_matrix_rank.test.cpp
+  - verify/Graph_cycle_detection_1.test.cpp
   - verify/Datastructure_2dsegtree_max.test.cpp
   - verify/matrix.test.cpp
   - verify/Rhash_more.test.cpp
+  - verify/Graph_graph_cycle_detection_directed.test.cpp
   - verify/fps_log.test.cpp
   - verify/Convolution_gcd_convolution.test.cpp
   - verify/Datastructure_undabledsu.test.cpp
