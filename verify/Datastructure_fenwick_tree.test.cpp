@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.yosupo.jp/submission/200585"
+#define PROBLEM "https://judge.yosupo.jp/problem/point_add_range_sum"
 #include "../Utility/template.hpp"
 #include "../Datastructure/fenwick_tree.hpp"
 
