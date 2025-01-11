@@ -13,11 +13,11 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
     bool chmin(T &x, T y) const { return x > y ? (x = y, true) : false; }
 
   public:
-    void add(int s, int t, T w) { add_edge(s, t, w); }
-    void add_edge(int s, int t, T w) {
-        (*this)[s].emplace_back(t, w);
+    void add(int s, int t, T w, int id = -1) { add_edge(s, t, w, id); }
+    void add_edge(int s, int t, T w, int id = -1) {
+        (*this)[s].emplace_back(t, w, id);
         if constexpr (directed == false) {
-            (this)[t].emplace_back(s, w);
+            (this)[t].emplace_back(s, w, id);
         }
     }
 
@@ -98,7 +98,6 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
                 chmin(d[i][e.to], e.cost);
             }
         }
-
         for (int k = 0; k < int(this->size()); k++) {
             for (int i = 0; i < int(this->size()); i++) {
                 if (d[i][k] == Edge<T>::inf) continue;
