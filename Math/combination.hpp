@@ -37,7 +37,10 @@ template <typename T, long long mod> struct combination {
 
     T H(int n, int k) {
         if (n < 0 || k < 0) return 0;
-        if (k == 0) return 1;
+        if(n == 0) {
+            if(k == 0) return 1;
+            else return 0;
+        }
         return C(n + k - 1, k);
     }
 
