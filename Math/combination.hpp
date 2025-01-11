@@ -35,7 +35,11 @@ template <typename T, long long mod> struct combination {
         return (n < 0 ? 0 : ifac[n]);
     }
 
-    T H(int n, int k) { return C(n + k - 1, k); }
+    T H(int n, int k) {
+        if (n < 0 || k < 0) return 0;
+        if (k == 0) return 1;
+        return C(n + k - 1, k);
+    }
 
     T Cn(int n) { return C(2 * n, n) * inv[n + 1] % mod; }
 
