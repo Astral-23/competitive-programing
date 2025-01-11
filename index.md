@@ -159,6 +159,9 @@ data:
       path: Graph/cycle_detection.hpp
       title: cycle_detection
     - icon: ':heavy_check_mark:'
+      path: Graph/graph.hpp
+      title: Graph/graph.hpp
+    - icon: ':heavy_check_mark:'
       path: Graph/lowlink.hpp
       title: lowlink
     - icon: ':heavy_check_mark:'
@@ -455,6 +458,15 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_value_dsu.test.cpp
       title: verify/Datastructure_value_dsu.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Graph_graph_bellman.test.cpp
+      title: verify/Graph_graph_bellman.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Graph_graph_bellman_and_warshall.test.cpp
+      title: verify/Graph_graph_bellman_and_warshall.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Graph_graph_dijkstra.test.cpp
+      title: verify/Graph_graph_dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Math_matrix_det.test.cpp
       title: verify/Math_matrix_det.test.cpp

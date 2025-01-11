@@ -127,6 +127,15 @@ data:
     path: verify/Datastructure_value_dsu.test.cpp
     title: verify/Datastructure_value_dsu.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Graph_graph_bellman.test.cpp
+    title: verify/Graph_graph_bellman.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Graph_graph_bellman_and_warshall.test.cpp
+    title: verify/Graph_graph_bellman_and_warshall.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Graph_graph_dijkstra.test.cpp
+    title: verify/Graph_graph_dijkstra.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Math_matrix_det.test.cpp
     title: verify/Math_matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
@@ -296,6 +305,7 @@ data:
   - verify/cycle_detection_1.test.cpp
   - verify/Math_matrix_pow.test.cpp
   - verify/fps_pow.test.cpp
+  - verify/Graph_graph_bellman_and_warshall.test.cpp
   - verify/floor_sum.test.cpp
   - verify/Datastructure_swag_more.test.cpp
   - verify/Datastructure_2dbit_imos.test.cpp
@@ -317,6 +327,7 @@ data:
   - verify/Datastructure_dynamicseg.test.cpp
   - verify/extgcd.test.cpp
   - verify/dijkstra.test.cpp
+  - verify/Graph_graph_bellman.test.cpp
   - verify/cycle_detection_2.test.cpp
   - verify/Datastructure_imos2d.test.cpp
   - verify/manacher.test.cpp
@@ -347,6 +358,7 @@ data:
   - verify/Datastructure_fastset.test.cpp
   - verify/lowlink_bridge.test.cpp
   - verify/Datastructure_lazysegtree.test.cpp
+  - verify/Graph_graph_dijkstra.test.cpp
   - verify/Datastructure_2dsegtree_add.test.cpp
   - verify/bitwise_and_convolution.test.cpp
   - verify/scc.test.cpp
