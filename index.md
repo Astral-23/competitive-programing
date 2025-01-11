@@ -67,6 +67,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/fastset.hpp
       title: "\u975E\u8CA0\u6574\u6570\u3092\u7BA1\u7406\u3059\u308B64\u5206\u6728"
+    - icon: ':x:'
+      path: Datastructure/fenwick_tree.hpp
+      title: Datastructure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
       path: Datastructure/imos1d.hpp
       title: "1\u6B21\u5143imos\u6CD5"
@@ -251,7 +254,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -410,6 +413,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_fastset.test.cpp
       title: verify/Datastructure_fastset.test.cpp
+    - icon: ':x:'
+      path: verify/Datastructure_fenwick_tree.test.cpp
+      title: verify/Datastructure_fenwick_tree.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_imos2d.test.cpp
       title: verify/Datastructure_imos2d.test.cpp

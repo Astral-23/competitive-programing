@@ -75,6 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Datastructure_fastset.test.cpp
     title: verify/Datastructure_fastset.test.cpp
+  - icon: ':x:'
+    path: verify/Datastructure_fenwick_tree.test.cpp
+    title: verify/Datastructure_fenwick_tree.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Datastructure_imos2d.test.cpp
     title: verify/Datastructure_imos2d.test.cpp
@@ -270,9 +273,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -310,7 +313,7 @@ data:
   - example/range_edge_graph.example.cpp
   - example/matrix.example.cpp
   timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/range_edge_graph.test.cpp
   - verify/bellman_ford.test.cpp
@@ -343,6 +346,7 @@ data:
   - verify/extgcd.test.cpp
   - verify/dijkstra.test.cpp
   - verify/Graph_graph_bellman.test.cpp
+  - verify/Datastructure_fenwick_tree.test.cpp
   - verify/Datastructure_imos2d.test.cpp
   - verify/manacher.test.cpp
   - verify/Algorithm_bisect_min_left.test.cpp
