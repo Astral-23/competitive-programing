@@ -363,6 +363,9 @@ data:
   - name: verify
     pages:
     - icon: ':heavy_check_mark:'
+      path: verify/Algorithm_bisect_max_right.test.cpp
+      title: verify/Algorithm_bisect_max_right.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number.test.cpp
       title: verify/Chromatic_Number.test.cpp
     - icon: ':heavy_check_mark:'
@@ -518,9 +521,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/bi_connected.test.cpp
       title: verify/bi_connected.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/bisect.test.cpp
-      title: verify/bisect.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/bitwise_and_convolution.test.cpp
       title: verify/bitwise_and_convolution.test.cpp

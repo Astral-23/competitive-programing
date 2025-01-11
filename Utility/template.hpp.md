@@ -28,6 +28,9 @@ data:
     title: "\u7802\u5834/simple_treap.henkou.cpp"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
+    path: verify/Algorithm_bisect_max_right.test.cpp
+    title: verify/Algorithm_bisect_max_right.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
   - icon: ':heavy_check_mark:'
@@ -183,9 +186,6 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/bi_connected.test.cpp
     title: verify/bi_connected.test.cpp
-  - icon: ':heavy_check_mark:'
-    path: verify/bisect.test.cpp
-    title: verify/bisect.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/bitwise_and_convolution.test.cpp
     title: verify/bitwise_and_convolution.test.cpp
@@ -359,13 +359,13 @@ data:
   - verify/Graph_scc_old.test.cpp
   - verify/Datastructure_binary_trie.test.cpp
   - verify/hld.test.cpp
+  - verify/Algorithm_bisect_max_right.test.cpp
   - verify/Datastructure_offline_connectivity_more.test.cpp
   - verify/Datastructure_static1dsum.test.cpp
   - verify/Datastructure_potential_dsu.test.cpp
   - verify/treedp.test.cpp
   - verify/fps_count_subset_sum.test.cpp
   - verify/maxflow_lowerbound.test.cpp
-  - verify/bisect.test.cpp
   - verify/Datastructure_fastset.test.cpp
   - verify/lowlink_bridge.test.cpp
   - verify/Datastructure_lazysegtree.test.cpp

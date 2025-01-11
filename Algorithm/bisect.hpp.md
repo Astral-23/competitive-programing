@@ -4,8 +4,8 @@ data:
   _extendedRequiredBy: []
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/bisect.test.cpp
-    title: verify/bisect.test.cpp
+    path: verify/Algorithm_bisect_max_right.test.cpp
+    title: verify/Algorithm_bisect_max_right.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -13,29 +13,34 @@ data:
     _deprecated_at_docs: doc/bisect.md
     document_title: "\u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22"
     links: []
-  bundledCode: "#line 1 \"Algorithm/bisect.hpp\"\ntemplate <typename T, typename F>\
-    \ T bisect(T ok, T ng, F pred) {\n    if (ok <= ng)\n        ng++;\n    else\n\
-    \        ng--;\n\n    if (!pred(ok)) {\n        if(ok <= ng) {\n            return\
-    \ ok - 1;\n        }\n        else {\n            return ok + 1;\n        }\n\
-    \    }\n\n    while (ng > ok + 1 || ok > ng + 1) {\n        T mid = ((ok ^ ng)\
-    \ >> 1) + (ok & ng);\n        (pred(mid) ? ok : ng) = mid;\n    }\n    return\
-    \ ok;\n}\n/*\n@brief \u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22\n@docs doc/bisect.md\n\
-    */\n"
-  code: "template <typename T, typename F> T bisect(T ok, T ng, F pred) {\n    if\
-    \ (ok <= ng)\n        ng++;\n    else\n        ng--;\n\n    if (!pred(ok)) {\n\
-    \        if(ok <= ng) {\n            return ok - 1;\n        }\n        else {\n\
-    \            return ok + 1;\n        }\n    }\n\n    while (ng > ok + 1 || ok\
-    \ > ng + 1) {\n        T mid = ((ok ^ ng) >> 1) + (ok & ng);\n        (pred(mid)\
-    \ ? ok : ng) = mid;\n    }\n    return ok;\n}\n/*\n@brief \u62BD\u8C61\u5316\u4E8C\
-    \u5206\u63A2\u7D22\n@docs doc/bisect.md\n*/"
+  bundledCode: "#line 1 \"Algorithm/bisect.hpp\"\n\ntemplate <typename T, typename\
+    \ F> T max_right(T l, T max_r_plus_one, F pred) {\n    assert(l < max_r_plus_one);\n\
+    \n    if (!pred(l)) return l;\n\n    while (max_r_plus_one > l + 1) {\n      \
+    \  T mid = ((l ^ max_r_plus_one) >> 1) + (l & max_r_plus_one);\n        (pred(mid)\
+    \ ? l : max_r_plus_one) = mid;\n    }\n    return max_r_plus_one;\n};\n\ntemplate\
+    \ <typename T, typename F> T min_left(T min_l, T r, F pred) {\n    assert(min_l\
+    \ < r);\n\n    if (pred(min_l)) return min_l;\n\n    while (r > min_l + 1) {\n\
+    \        T mid = ((min_l ^ r) >> 1) + (min_l & r);\n        (pred(mid) ? r : min_l)\
+    \ = mid;\n    }\n    return r;\n}\n/*\n@brief \u62BD\u8C61\u5316\u4E8C\u5206\u63A2\
+    \u7D22\n@docs doc/bisect.md\n*/\n"
+  code: "\ntemplate <typename T, typename F> T max_right(T l, T max_r_plus_one, F\
+    \ pred) {\n    assert(l < max_r_plus_one);\n\n    if (!pred(l)) return l;\n\n\
+    \    while (max_r_plus_one > l + 1) {\n        T mid = ((l ^ max_r_plus_one) >>\
+    \ 1) + (l & max_r_plus_one);\n        (pred(mid) ? l : max_r_plus_one) = mid;\n\
+    \    }\n    return max_r_plus_one;\n};\n\ntemplate <typename T, typename F> T\
+    \ min_left(T min_l, T r, F pred) {\n    assert(min_l < r);\n\n    if (pred(min_l))\
+    \ return min_l;\n\n    while (r > min_l + 1) {\n        T mid = ((min_l ^ r) >>\
+    \ 1) + (min_l & r);\n        (pred(mid) ? r : min_l) = mid;\n    }\n    return\
+    \ r;\n}\n/*\n@brief \u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22\n@docs doc/bisect.md\n\
+    */"
   dependsOn: []
   isVerificationFile: false
   path: Algorithm/bisect.hpp
   requiredBy: []
-  timestamp: '2024-09-20 18:51:02+09:00'
+  timestamp: '2025-01-11 20:14:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/bisect.test.cpp
+  - verify/Algorithm_bisect_max_right.test.cpp
 documentation_of: Algorithm/bisect.hpp
 layout: document
 redirect_from:
