@@ -1,23 +1,26 @@
-template <typename T, typename F> T bisect(T ok, T ng, F pred) {
-    if (ok <= ng)
-        ng++;
-    else
-        ng--;
 
-    if (!pred(ok)) {
-        if(ok <= ng) {
-            return ok - 1;
-        }
-        else {
-            return ok + 1;
-        }
-    }
+template <typename T, typename F> T max_right(T l, T max_r_plus_one, F pred) {
+    assert(l < max_r_plus_one);
 
-    while (ng > ok + 1 || ok > ng + 1) {
-        T mid = ((ok ^ ng) >> 1) + (ok & ng);
-        (pred(mid) ? ok : ng) = mid;
+    if (!pred(l)) return l;
+
+    while (max_r_plus_one > l + 1) {
+        T mid = ((l ^ max_r_plus_one) >> 1) + (l & max_r_plus_one);
+        (pred(mid) ? l : max_r_plus_one) = mid;
     }
-    return ok;
+    return max_r_plus_one;
+};
+
+template <typename T, typename F> T min_left(T min_l, T r, F pred) {
+    assert(min_l < r);
+
+    if (pred(min_l)) return min_l;
+
+    while (r > min_l + 1) {
+        T mid = ((min_l ^ r) >> 1) + (min_l & r);
+        (pred(mid) ? r : min_l) = mid;
+    }
+    return r;
 }
 /*
 @brief 抽象化二分探索
