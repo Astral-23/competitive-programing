@@ -1,5 +1,6 @@
 {
 "verify/Algorithm_bisect_max_right.test.cpp": "2025-01-11 20:14:38 +0900",
+"verify/Algorithm_bisect_min_left.test.cpp": "2025-01-11 20:21:43 +0900",
 "verify/Chromatic_Number.test.cpp": "2024-12-28 00:04:13 +0900",
 "verify/Chromatic_Number_with_restoration.test.cpp": "2025-01-11 07:38:14 +0900",
 "verify/Convolution_gcd_convolution.test.cpp": "2025-01-11 07:38:14 +0900",
