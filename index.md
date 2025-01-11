@@ -67,7 +67,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/fastset.hpp
       title: "\u975E\u8CA0\u6574\u6570\u3092\u7BA1\u7406\u3059\u308B64\u5206\u6728"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Datastructure/fenwick_tree.hpp
       title: Datastructure/fenwick_tree.hpp
     - icon: ':heavy_check_mark:'
@@ -254,7 +254,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -413,7 +413,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_fastset.test.cpp
       title: verify/Datastructure_fastset.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/Datastructure_fenwick_tree.test.cpp
       title: verify/Datastructure_fenwick_tree.test.cpp
     - icon: ':heavy_check_mark:'

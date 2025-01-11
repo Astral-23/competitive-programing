@@ -1,24 +1,24 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/fenwick_tree.hpp
     title: Datastructure/fenwick_tree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/submission/200585
+    PROBLEM: https://judge.yosupo.jp/problem/point_add_range_sum
     links:
-    - https://judge.yosupo.jp/submission/200585
+    - https://judge.yosupo.jp/problem/point_add_range_sum
   bundledCode: "#line 1 \"verify/Datastructure_fenwick_tree.test.cpp\"\n#define PROBLEM\
-    \ \"https://judge.yosupo.jp/submission/200585\"\n#line 1 \"Utility/template.hpp\"\
+    \ \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n#line 1 \"Utility/template.hpp\"\
     \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
     \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
     \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
@@ -52,10 +52,10 @@ data:
     \ p, x;\n\t\t\tcin >> p >> x;\n            fw.add(p, x);\n\t\t}\n\t\telse {\n\t\
     \t\tll l, r;\n\t\t\tcin >> l >> r;\n\t\t\tcout << fw.prod(l, r) << '\\n';\n\t\t\
     }\n\t}\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/submission/200585\"\n#include \"\
-    ../Utility/template.hpp\"\n#include \"../Datastructure/fenwick_tree.hpp\"\n\n\
-    int main() {\n    ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n \
-    \   cout << fixed << setprecision(15);\n    int N;\n    cin >> N;\n    int Q;\n\
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/point_add_range_sum\"\n\
+    #include \"../Utility/template.hpp\"\n#include \"../Datastructure/fenwick_tree.hpp\"\
+    \n\nint main() {\n    ios::sync_with_stdio(false);\n    std::cin.tie(nullptr);\n\
+    \    cout << fixed << setprecision(15);\n    int N;\n    cin >> N;\n    int Q;\n\
     \    cin >> Q;\n    fenwick_tree<ll> fw(N);\n    for(int i = 0; i < N; i++) {\n\
     \        int a;\n        cin >> a;\n        fw.add(i, a);\n    }\n\n\twhile(Q--)\
     \ {\n\t\tint t;\n\t\tcin >> t;\n\t\tif(t==0) {\n\t\t\tll p, x;\n\t\t\tcin >> p\
@@ -67,8 +67,8 @@ data:
   isVerificationFile: true
   path: verify/Datastructure_fenwick_tree.test.cpp
   requiredBy: []
-  timestamp: '2025-01-11 20:26:14+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-01-11 20:28:34+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_fenwick_tree.test.cpp
 layout: document
