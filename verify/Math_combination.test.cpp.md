@@ -971,27 +971,28 @@ data:
     \   if (N < n) expand(n);\n        return (n < 0 ? 0 : fac[n]);\n    }\n    T\
     \ invB(int n) {\n        if (N < n) expand(n);\n        return (n < 0 ? 0 : ifac[n]);\n\
     \    }\n\n    T H(int n, int k) {\n        if (n < 0 || k < 0) return 0;\n   \
-    \     if (k == 0) return 1;\n        return C(n + k - 1, k);\n    }\n\n    T Cn(int\
-    \ n) { return C(2 * n, n) * inv[n + 1] % mod; }\n\n  private:\n    constexpr static\
-    \ bool is_prime_constexpr(long long x) {\n        if (x <= 1) return false;\n\
-    \        for (long long i = 2; i * i <= x; i++) {\n            if (x % i == 0)\
-    \ return false;\n        }\n        return true;\n    }\n\n    static_assert(is_prime_constexpr(mod),\
-    \ \"mod must be prime\");\n\n    long long extgcd(long long a, long long b, long\
-    \ long &x, long long &y) {\n        if (b == 0) {\n            x = 1;\n      \
-    \      y = 0;\n            return a;\n        }\n        auto d = extgcd(b, a\
-    \ % b, y, x);\n        y -= a / b * x;\n        return d;\n    }\n\n    long long\
-    \ modinv(long long a) {\n        long long x, y;\n        extgcd(a, mod, x, y);\n\
-    \        x %= mod;\n        if (x < 0) x += mod;\n        return x;\n    }\n\n\
-    \    void expand(long long new_max_n) {\n        if (new_max_n <= N) return;\n\
-    \        long long nx = N;\n\n        // 2\u51AA\u3067\u5927\u304D\u304F\u3057\
-    \u3066\u3044\u304F\u3002\n        while (nx < new_max_n) nx <<= 1;\n        new_max_n\
-    \ = nx;\n\n        long long pre = N;\n        N = new_max_n;\n        fac.resize(N\
-    \ + 1);\n        ifac.resize(N + 1);\n        inv.resize(N + 1);\n        for\
-    \ (long long i = pre + 1; i <= N; i++) {\n            fac[i] = fac[i - 1] * i\
-    \ % mod;\n        }\n        ifac[N] = modinv(fac[N]);\n        inv[N] = ifac[N]\
-    \ * fac[N - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n\
-    \            ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i]\
-    \ * fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n\nusing combination998244353\
+    \     if(n == 0) {\n            if(k == 0) return 1;\n            else return\
+    \ 0;\n        }\n        return C(n + k - 1, k);\n    }\n\n    T Cn(int n) { return\
+    \ C(2 * n, n) * inv[n + 1] % mod; }\n\n  private:\n    constexpr static bool is_prime_constexpr(long\
+    \ long x) {\n        if (x <= 1) return false;\n        for (long long i = 2;\
+    \ i * i <= x; i++) {\n            if (x % i == 0) return false;\n        }\n \
+    \       return true;\n    }\n\n    static_assert(is_prime_constexpr(mod), \"mod\
+    \ must be prime\");\n\n    long long extgcd(long long a, long long b, long long\
+    \ &x, long long &y) {\n        if (b == 0) {\n            x = 1;\n           \
+    \ y = 0;\n            return a;\n        }\n        auto d = extgcd(b, a % b,\
+    \ y, x);\n        y -= a / b * x;\n        return d;\n    }\n\n    long long modinv(long\
+    \ long a) {\n        long long x, y;\n        extgcd(a, mod, x, y);\n        x\
+    \ %= mod;\n        if (x < 0) x += mod;\n        return x;\n    }\n\n    void\
+    \ expand(long long new_max_n) {\n        if (new_max_n <= N) return;\n       \
+    \ long long nx = N;\n\n        // 2\u51AA\u3067\u5927\u304D\u304F\u3057\u3066\u3044\
+    \u304F\u3002\n        while (nx < new_max_n) nx <<= 1;\n        new_max_n = nx;\n\
+    \n        long long pre = N;\n        N = new_max_n;\n        fac.resize(N + 1);\n\
+    \        ifac.resize(N + 1);\n        inv.resize(N + 1);\n        for (long long\
+    \ i = pre + 1; i <= N; i++) {\n            fac[i] = fac[i - 1] * i % mod;\n  \
+    \      }\n        ifac[N] = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N\
+    \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
+    \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
+    \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n\nusing combination998244353\
     \ = combination<atcoder::modint998244353, 998244353>;\n/*\n@brief \u30B3\u30F3\
     \u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs doc/cmb.md\n*/\n#line 5 \"verify/Math_combination.test.cpp\"\
     \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
@@ -1036,7 +1037,7 @@ data:
   isVerificationFile: true
   path: verify/Math_combination.test.cpp
   requiredBy: []
-  timestamp: '2025-01-11 20:40:12+09:00'
+  timestamp: '2025-01-11 20:43:28+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Math_combination.test.cpp
