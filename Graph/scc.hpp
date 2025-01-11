@@ -8,7 +8,6 @@ template <typename T> vector<int> ids(const Graph<T, true> &g) {
     Graph<T, true> rg(n);
 
     rep(i, 0, n) for (auto e : g[i]) rg.add(e.to, i, e.cost, e.id);
-
     auto dfs = [&](auto f, int v) -> void {
         seen[v] = true;
         for (auto e : g[v])
@@ -47,7 +46,7 @@ template <typename T> Graph<T, true> graph(const Graph<T, true> &g) {
     vector<int> id = ids<T>(g);
     int n = 0;
     rep(i, 0, g.size()) chmax(n, id[i] + 1);
-    
+
     Graph<T, true> ng(n);
     rep(i, 0, g.size()) for (auto e : g[i]) {
         if (id[i] == id[e.to]) continue;

@@ -9,7 +9,7 @@ int main() {
     rep(i, 0, m) {
         int u, v;
         cin >> u >> v;
-        cyc.add_edge(u, v, 0, i);
+        cyc.add(u, v, 0, i);
     }
     auto [vs, es] = cyc.cycle_detection();
     if (vs.empty()) {

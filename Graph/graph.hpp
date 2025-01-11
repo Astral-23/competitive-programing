@@ -15,13 +15,15 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
     bool chmin(T &x, T y) const { return x > y ? (x = y, true) : false; }
 
   public:
-    void add(int s, int t, T w, int id = -1) { add_edge(s, t, w, id); }
-    void add_edge(int s, int t, T w, int id = -1) {
+
+
+    void add(int s, int t, T w, int id = -1) {
         (*this)[s].emplace_back(t, w, id);
         if constexpr (directed == false) {
             (*this)[t].emplace_back(s, w, id);
         }
     }
+
 
     vector<T> DFS(int s) const {
         assert(0 <= s && s < n);
