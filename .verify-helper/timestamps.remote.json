@@ -15,6 +15,7 @@
 "verify/Datastructure_dsu.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_dynamicseg.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_fastset.test.cpp": "2025-01-10 00:00:54 +0900",
+"verify/Datastructure_fenwick_tree.test.cpp": "2025-01-11 20:28:34 +0900",
 "verify/Datastructure_imos2d.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_lazyseg_bina.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_lazysegtree.test.cpp": "2025-01-10 00:00:54 +0900",
