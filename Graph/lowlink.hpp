@@ -11,7 +11,7 @@ struct lowlink {
     vec<int> joints;
     vec<bool> inner_is_joint;
     vec<int> self_edge_cnt;
-    
+
     lowlink(const vvi &g)
         : n(g.size()),
           tr(n),

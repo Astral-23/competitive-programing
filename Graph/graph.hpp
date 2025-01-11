@@ -1,4 +1,3 @@
-
 template <typename T> struct Edge {
     int to;
     T cost;

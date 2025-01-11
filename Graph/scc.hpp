@@ -1,19 +1,18 @@
+#include "../Graph/graph.hpp"
+
 namespace SCC {
-vec<int> ids(const vec<vec<int>> &g) {
-    using vi = vec<int>;
-    using vvi = vec<vi>;
-
+template <typename T> vector<int> ids(const Graph<T, true> &g) {
     int n = g.size();
-    vvi rg(n);
-    vi vs, cmp(n, -1);
+    vector<int> vs, cmp(n, -1);
     vec<bool> seen(n, false), nees(n, false);
+    Graph<T, true> rg(n);
 
-    rep(i, 0, n) for (int to : g[i]) rg[to].push_back(i);
+    rep(i, 0, n) for (auto e : g[i]) rg.add(e.to, i, e.cost, e.id);
 
     auto dfs = [&](auto f, int v) -> void {
         seen[v] = true;
-        for (auto to : g[v])
-            if (!seen[to]) f(f, to);
+        for (auto e : g[v])
+            if (!seen[e.to]) f(f, e.to);
         vs.push_back(v);
         return;
     };
@@ -23,8 +22,8 @@ vec<int> ids(const vec<vec<int>> &g) {
     auto sfd = [&](auto f, int v) -> void {
         nees[v] = true;
         cmp[v] = k;
-        for (int to : rg[v])
-            if (!nees[to]) f(f, to);
+        for (auto e : rg[v])
+            if (!nees[e.to]) f(f, e.to);
         return;
     };
 
@@ -33,11 +32,10 @@ vec<int> ids(const vec<vec<int>> &g) {
     return cmp;
 }
 
-vec<vec<int>> groups(const vec<vec<int>> &g) {
+template <typename T> vector<vector<int>> groups(const Graph<T, true> &g) {
     int n = g.size();
-    vec<int> id = ids(g);
-
-    vec<vec<int>> gs(n);
+    vector<int> id = ids<T>(g);
+    vector<vector<int>> gs(n);
     rep(i, 0, n) gs[id[i]].push_back(i);
     while (gs.empty() == false && gs.back().empty() == true) {
         gs.pop_back();
@@ -45,26 +43,24 @@ vec<vec<int>> groups(const vec<vec<int>> &g) {
     return gs;
 }
 
-vec<vec<int>> graph(const vec<vec<int>> &g) {
-    vec<int> id = ids(g);
+template <typename T> Graph<T, true> graph(const Graph<T, true> &g) {
+    vector<int> id = ids<T>(g);
     int n = 0;
     rep(i, 0, g.size()) chmax(n, id[i] + 1);
-
-    vec<vec<int>> ng(n);
-    rep(i, 0, g.size()) for (int to : g[i]) {
-        if (id[i] == id[to]) continue;
-        ng[id[i]].push_back(id[to]);
+    
+    Graph<T, true> ng(n);
+    rep(i, 0, g.size()) for (auto e : g[i]) {
+        if (id[i] == id[e.to]) continue;
+        ng.add(id[i], id[e.to], e.cost, e.id);
     }
     return ng;
 }
 
-vec<vec<int>> graph_rev(const vec<vec<int>> &g) {
-    auto ser = graph(g);
+template <typename T> Graph<T, true> graph_rev(const Graph<T, true> &g) {
+    auto ser = graph<T>(g);
     int n = ser.size();
-    vec<vec<int>> res(n);
-    rep(i, 0, n) for(int to : ser[i]) {
-        res[to].push_back(i);
-    }
+    Graph<T, true> res(n);
+    rep(i, 0, n) for (auto e : ser[i]) { res.add(e.to, i, e.w, e.id); }
     return res;
 }
 
