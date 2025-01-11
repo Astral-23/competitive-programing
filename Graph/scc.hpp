@@ -59,7 +59,7 @@ template <typename T> Graph<T, true> graph_rev(const Graph<T, true> &g) {
     auto ser = graph<T>(g);
     int n = ser.size();
     Graph<T, true> res(n);
-    rep(i, 0, n) for (auto e : ser[i]) { res.add(e.to, i, e.w, e.id); }
+    rep(i, 0, n) for (auto e : ser[i]) { res.add(e.to, i, e.cost, e.id); }
     return res;
 }
 
