@@ -1,7 +1,10 @@
 ---
 data:
   _extendedDependsOn: []
-  _extendedRequiredBy: []
+  _extendedRequiredBy:
+  - icon: ':heavy_check_mark:'
+    path: Graph/scc.hpp
+    title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
   _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_bellman.test.cpp
@@ -18,12 +21,15 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_dijkstra.test.cpp
     title: verify/Graph_graph_dijkstra.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Graph_scc.test.cpp
+    title: verify/Graph_scc.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
-  bundledCode: "#line 1 \"Graph/graph.hpp\"\n\ntemplate <typename T> struct Edge {\n\
+  bundledCode: "#line 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n\
     \    int to;\n    T cost;\n    int id;\n    static constexpr T INF = numeric_limits<T>::max()\
     \ / 2;\n    Edge(int to = 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id)\
     \ {}\n};\n\ntemplate <typename T, bool directed> struct Graph : vector<vector<Edge<T>>>\
@@ -93,9 +99,9 @@ data:
     \                    reverse(es.begin(), es.end());\n                    return\
     \ make_pair(vs, es);\n                }\n            }\n        }\n        return\
     \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n"
-  code: "\ntemplate <typename T> struct Edge {\n    int to;\n    T cost;\n    int\
-    \ id;\n    static constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int\
-    \ to = 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate\
+  code: "template <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n\
+    \    static constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to =\
+    \ 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate\
     \ <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define\
     \ n int(this->size())\n#define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\
     \n  private:\n    bool chmin(T &x, T y) const { return x > y ? (x = y, true) :\
@@ -162,15 +168,17 @@ data:
     \ if (vs.empty() == false) {\n                    reverse(vs.begin(), vs.end());\n\
     \                    reverse(es.begin(), es.end());\n                    return\
     \ make_pair(vs, es);\n                }\n            }\n        }\n        return\
-    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n"
+    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};"
   dependsOn: []
   isVerificationFile: false
   path: Graph/graph.hpp
-  requiredBy: []
-  timestamp: '2025-01-11 19:27:04+09:00'
+  requiredBy:
+  - Graph/scc.hpp
+  timestamp: '2025-01-11 19:51:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Graph_graph_bellman_and_warshall.test.cpp
+  - verify/Graph_scc.test.cpp
   - verify/Graph_graph_cycle_detection_undirected.test.cpp
   - verify/Graph_graph_bellman.test.cpp
   - verify/Graph_graph_dijkstra.test.cpp

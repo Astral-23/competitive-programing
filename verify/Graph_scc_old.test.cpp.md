@@ -2,8 +2,8 @@
 data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
-    path: Graph/scc.hpp
-    title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
+    path: Graph/scc_old.hpp
+    title: scc_old
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -17,7 +17,7 @@ data:
     PROBLEM: https://judge.yosupo.jp/problem/scc
     links:
     - https://judge.yosupo.jp/problem/scc
-  bundledCode: "#line 1 \"verify/scc.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\
+  bundledCode: "#line 1 \"verify/Graph_scc_old.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\
     \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
     \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
     \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
@@ -27,7 +27,7 @@ data:
     \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
     \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
     \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/scc.hpp\"\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/scc_old.hpp\"\
     \nnamespace SCC {\nvec<int> ids(const vec<vec<int>> &g) {\n    using vi = vec<int>;\n\
     \    using vvi = vec<vi>;\n\n    int n = g.size();\n    vvi rg(n);\n    vi vs,\
     \ cmp(n, -1);\n    vec<bool> seen(n, false), nees(n, false);\n\n    rep(i, 0,\
@@ -49,33 +49,33 @@ data:
     }\n\nvec<vec<int>> graph_rev(const vec<vec<int>> &g) {\n    auto ser = graph(g);\n\
     \    int n = ser.size();\n    vec<vec<int>> res(n);\n    rep(i, 0, n) for(int\
     \ to : ser[i]) {\n        res[to].push_back(i);\n    }\n    return res;\n}\n\n\
-    }  // namespace SCC\n\n/*\n@brief scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3\
-    )\n@docs doc/scc.md\n*/\n#line 4 \"verify/scc.test.cpp\"\n\nint main() {\n   \
-    \ int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n    rep(i, 0, m) {\n\
-    \        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n    }\n\
-    \n    auto res = SCC::groups(g);\n    \n    cout << res.size() << endl;\n\n  \
-    \  rep(i, 0, res.size()) {\n        cout << res[i].size() << \" \";\n        for(auto\
-    \ v : res[i]) cout << v << \" \";\n        cout << endl;\n    }\n}\n\n"
+    }  // namespace SCC\n\n/*\n@brief scc_old\n@docs doc/scc.md\n*/\n#line 4 \"verify/Graph_scc_old.test.cpp\"\
+    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    vec<vec<int>> g(n);\n\
+    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g[u].push_back(v);\n\
+    \    }\n\n    auto res = SCC::groups(g);\n    \n    cout << res.size() << endl;\n\
+    \n    rep(i, 0, res.size()) {\n        cout << res[i].size() << \" \";\n     \
+    \   for(auto v : res[i]) cout << v << \" \";\n        cout << endl;\n    }\n}\n\
+    \n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n#include \"../Utility/template.hpp\"\
-    \n#include \"../Graph/scc.hpp\"\n\nint main() {\n    int n, m;\n    cin >> n >>\
-    \ m;\n    vec<vec<int>> g(n);\n    rep(i, 0, m) {\n        int u, v;\n       \
-    \ cin >> u >> v;\n        g[u].push_back(v);\n    }\n\n    auto res = SCC::groups(g);\n\
+    \n#include \"../Graph/scc_old.hpp\"\n\nint main() {\n    int n, m;\n    cin >>\
+    \ n >> m;\n    vec<vec<int>> g(n);\n    rep(i, 0, m) {\n        int u, v;\n  \
+    \      cin >> u >> v;\n        g[u].push_back(v);\n    }\n\n    auto res = SCC::groups(g);\n\
     \    \n    cout << res.size() << endl;\n\n    rep(i, 0, res.size()) {\n      \
     \  cout << res[i].size() << \" \";\n        for(auto v : res[i]) cout << v <<\
     \ \" \";\n        cout << endl;\n    }\n}\n\n"
   dependsOn:
   - Utility/template.hpp
-  - Graph/scc.hpp
+  - Graph/scc_old.hpp
   isVerificationFile: true
-  path: verify/scc.test.cpp
+  path: verify/Graph_scc_old.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-11 19:51:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/scc.test.cpp
+documentation_of: verify/Graph_scc_old.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/scc.test.cpp
-- /verify/verify/scc.test.cpp.html
-title: verify/scc.test.cpp
+- /verify/verify/Graph_scc_old.test.cpp
+- /verify/verify/Graph_scc_old.test.cpp.html
+title: verify/Graph_scc_old.test.cpp
 ---

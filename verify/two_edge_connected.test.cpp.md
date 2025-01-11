@@ -37,7 +37,7 @@ data:
     \u304B\u3089\u4E0B\n    vvi aux;  // dfs\u6728\u306B\u4F7F\u308F\u308C\u306A\u3044\
     \u8FBA\u306E\u307F  \u4E0B\u304B\u3089\u4E0A \u81EA\u5DF1\u8FBA\u3082\u30B3\u30B3\
     \n    vi low, in, par;\n    vec<pii> bridges;\n    vec<int> joints;\n    vec<bool>\
-    \ inner_is_joint;\n    vec<int> self_edge_cnt;\n    \n    lowlink(const vvi &g)\n\
+    \ inner_is_joint;\n    vec<int> self_edge_cnt;\n\n    lowlink(const vvi &g)\n\
     \        : n(g.size()),\n          tr(n),\n          aux(n),\n          low(n,\
     \ 1001001001),\n          in(n, -1),\n          par(n, -1),\n          inner_is_joint(n,\
     \ false),\n          self_edge_cnt(n, 0) {\n        int t = 0;\n        int r\
@@ -106,7 +106,7 @@ data:
   isVerificationFile: true
   path: verify/two_edge_connected.test.cpp
   requiredBy: []
-  timestamp: '2024-12-28 00:04:13+09:00'
+  timestamp: '2025-01-11 19:51:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/two_edge_connected.test.cpp

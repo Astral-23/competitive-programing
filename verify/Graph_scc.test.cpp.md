@@ -4,23 +4,38 @@ data:
   - icon: ':heavy_check_mark:'
     path: Graph/graph.hpp
     title: Graph/graph.hpp
-  _extendedRequiredBy: []
-  _extendedVerifiedWith:
   - icon: ':heavy_check_mark:'
-    path: verify/Graph_scc.test.cpp
-    title: verify/Graph_scc.test.cpp
+    path: Graph/scc.hpp
+    title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
+  - icon: ':heavy_check_mark:'
+    path: Utility/template.hpp
+    title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
+  _extendedRequiredBy: []
+  _extendedVerifiedWith: []
   _isVerificationFailed: false
-  _pathExtension: hpp
+  _pathExtension: cpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: doc/scc.md
-    document_title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
-    links: []
-  bundledCode: "#line 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n\
-    \    int to;\n    T cost;\n    int id;\n    static constexpr T INF = numeric_limits<T>::max()\
-    \ / 2;\n    Edge(int to = 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id)\
-    \ {}\n};\n\ntemplate <typename T, bool directed> struct Graph : vector<vector<Edge<T>>>\
-    \ {\n#define n int(this->size())\n#define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\
+    '*NOT_SPECIAL_COMMENTS*': ''
+    PROBLEM: https://judge.yosupo.jp/problem/scc
+    links:
+    - https://judge.yosupo.jp/problem/scc
+  bundledCode: "#line 1 \"verify/Graph_scc.test.cpp\"\n#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\
+    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
+    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
+    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
+    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
+    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
+    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
+    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
+    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
+    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
+    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\
+    \ntemplate <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n\
+    \    static constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to =\
+    \ 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate\
+    \ <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define\
+    \ n int(this->size())\n#define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\
     \n  private:\n    bool chmin(T &x, T y) const { return x > y ? (x = y, true) :\
     \ false; }\n\n  public:\n    void add(int s, int t, T w, int id = -1) { add_edge(s,\
     \ t, w, id); }\n    void add_edge(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
@@ -109,54 +124,34 @@ data:
     \  auto ser = graph<T>(g);\n    int n = ser.size();\n    Graph<T, true> res(n);\n\
     \    rep(i, 0, n) for (auto e : ser[i]) { res.add(e.to, i, e.w, e.id); }\n   \
     \ return res;\n}\n\n}  // namespace SCC\n\n/*\n@brief scc(\u5F37\u9023\u7D50\u6210\
-    \u5206\u5206\u89E3)\n@docs doc/scc.md\n*/\n"
-  code: "#include \"../Graph/graph.hpp\"\n\nnamespace SCC {\ntemplate <typename T>\
-    \ vector<int> ids(const Graph<T, true> &g) {\n    int n = g.size();\n    vector<int>\
-    \ vs, cmp(n, -1);\n    vec<bool> seen(n, false), nees(n, false);\n    Graph<T,\
-    \ true> rg(n);\n\n    rep(i, 0, n) for (auto e : g[i]) rg.add(e.to, i, e.cost,\
-    \ e.id);\n\n    auto dfs = [&](auto f, int v) -> void {\n        seen[v] = true;\n\
-    \        for (auto e : g[v])\n            if (!seen[e.to]) f(f, e.to);\n     \
-    \   vs.push_back(v);\n        return;\n    };\n\n    int k = 0;\n\n    auto sfd\
-    \ = [&](auto f, int v) -> void {\n        nees[v] = true;\n        cmp[v] = k;\n\
-    \        for (auto e : rg[v])\n            if (!nees[e.to]) f(f, e.to);\n    \
-    \    return;\n    };\n\n    rep(i, 0, n) if (!seen[i]) dfs(dfs, i);\n    rrep(i,\
-    \ 0, vs.size()) if (!nees[vs[i]]) sfd(sfd, vs[i]), k++;\n    return cmp;\n}\n\n\
-    template <typename T> vector<vector<int>> groups(const Graph<T, true> &g) {\n\
-    \    int n = g.size();\n    vector<int> id = ids<T>(g);\n    vector<vector<int>>\
-    \ gs(n);\n    rep(i, 0, n) gs[id[i]].push_back(i);\n    while (gs.empty() == false\
-    \ && gs.back().empty() == true) {\n        gs.pop_back();\n    }\n    return gs;\n\
-    }\n\ntemplate <typename T> Graph<T, true> graph(const Graph<T, true> &g) {\n \
-    \   vector<int> id = ids<T>(g);\n    int n = 0;\n    rep(i, 0, g.size()) chmax(n,\
-    \ id[i] + 1);\n    \n    Graph<T, true> ng(n);\n    rep(i, 0, g.size()) for (auto\
-    \ e : g[i]) {\n        if (id[i] == id[e.to]) continue;\n        ng.add(id[i],\
-    \ id[e.to], e.cost, e.id);\n    }\n    return ng;\n}\n\ntemplate <typename T>\
-    \ Graph<T, true> graph_rev(const Graph<T, true> &g) {\n    auto ser = graph<T>(g);\n\
-    \    int n = ser.size();\n    Graph<T, true> res(n);\n    rep(i, 0, n) for (auto\
-    \ e : ser[i]) { res.add(e.to, i, e.w, e.id); }\n    return res;\n}\n\n}  // namespace\
-    \ SCC\n\n/*\n@brief scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)\n@docs doc/scc.md\n\
-    */\n"
+    \u5206\u5206\u89E3)\n@docs doc/scc.md\n*/\n#line 4 \"verify/Graph_scc.test.cpp\"\
+    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, true> g(n);\n\
+    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g.add(u,\
+    \ v, 0);\n    }\n\n    auto res = SCC::groups(g);\n    \n    cout << res.size()\
+    \ << endl;\n\n    rep(i, 0, res.size()) {\n        cout << res[i].size() << \"\
+    \ \";\n        for(auto v : res[i]) cout << v << \" \";\n        cout << endl;\n\
+    \    }\n}\n\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n#include \"../Utility/template.hpp\"\
+    \n#include \"../Graph/scc.hpp\"\n\nint main() {\n    int n, m;\n    cin >> n >>\
+    \ m;\n    Graph<int, true> g(n);\n    rep(i, 0, m) {\n        int u, v;\n    \
+    \    cin >> u >> v;\n        g.add(u, v, 0);\n    }\n\n    auto res = SCC::groups(g);\n\
+    \    \n    cout << res.size() << endl;\n\n    rep(i, 0, res.size()) {\n      \
+    \  cout << res[i].size() << \" \";\n        for(auto v : res[i]) cout << v <<\
+    \ \" \";\n        cout << endl;\n    }\n}\n\n"
   dependsOn:
+  - Utility/template.hpp
+  - Graph/scc.hpp
   - Graph/graph.hpp
-  isVerificationFile: false
-  path: Graph/scc.hpp
+  isVerificationFile: true
+  path: verify/Graph_scc.test.cpp
   requiredBy: []
   timestamp: '2025-01-11 19:51:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
-  verifiedWith:
-  - verify/Graph_scc.test.cpp
-documentation_of: Graph/scc.hpp
+  verificationStatus: TEST_ACCEPTED
+  verifiedWith: []
+documentation_of: verify/Graph_scc.test.cpp
 layout: document
 redirect_from:
-- /library/Graph/scc.hpp
-- /library/Graph/scc.hpp.html
-title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
+- /verify/verify/Graph_scc.test.cpp
+- /verify/verify/Graph_scc.test.cpp.html
+title: verify/Graph_scc.test.cpp
 ---
-## 概要
-強連結成分分解をする
-
-## 関数
-頂点数を $n$ 、辺の本数を $m$ と置く。
-- **vec\<int\> SCC(vec\<vec\<int\>\> g)** ... 強連結成分分解をし、サイズ $n$ の配列 $a$ を返す。この時、a[i] := グラフを強連結成分分解し、トポロジカルソートした場合、頂点番号iはトポロジカル順で何番目か(0-origin)
-    - **計算量** $O(n + m)$
-
-    

@@ -148,6 +148,12 @@ data:
     path: verify/Graph_graph_dijkstra.test.cpp
     title: verify/Graph_graph_dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Graph_scc.test.cpp
+    title: verify/Graph_scc.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Graph_scc_old.test.cpp
+    title: verify/Graph_scc_old.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Math_matrix_det.test.cpp
     title: verify/Math_matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
@@ -250,9 +256,6 @@ data:
     path: verify/range_edge_graph.test.cpp
     title: verify/range_edge_graph.test.cpp
   - icon: ':heavy_check_mark:'
-    path: verify/scc.test.cpp
-    title: verify/scc.test.cpp
-  - icon: ':heavy_check_mark:'
     path: verify/superset_transform.test.cpp
     title: verify/superset_transform.test.cpp
   - icon: ':heavy_check_mark:'
@@ -327,6 +330,7 @@ data:
   - verify/Datastructure_seg_prod.test.cpp
   - verify/Datastructure_static2dsum.test.cpp
   - verify/aux_tree.test.cpp
+  - verify/Graph_scc.test.cpp
   - verify/fps_inv.test.cpp
   - verify/Datastructure_dsu.test.cpp
   - verify/Datastructure_binary_trie_xor.test.cpp
@@ -352,6 +356,7 @@ data:
   - verify/Datastructure_segtree.test.cpp
   - verify/maxflow.test.cpp
   - verify/Datastructure_treap.test.cpp
+  - verify/Graph_scc_old.test.cpp
   - verify/Datastructure_binary_trie.test.cpp
   - verify/hld.test.cpp
   - verify/Datastructure_offline_connectivity_more.test.cpp
@@ -367,7 +372,6 @@ data:
   - verify/Graph_graph_dijkstra.test.cpp
   - verify/Datastructure_2dsegtree_add.test.cpp
   - verify/bitwise_and_convolution.test.cpp
-  - verify/scc.test.cpp
   - verify/mat_det.test.cpp
   - verify/oneside_range_edge_graph.test.cpp
   - verify/Math_matrix_rank.test.cpp

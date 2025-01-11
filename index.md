@@ -171,6 +171,9 @@ data:
       path: Graph/scc.hpp
       title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
     - icon: ':heavy_check_mark:'
+      path: Graph/scc_old.hpp
+      title: scc_old
+    - icon: ':heavy_check_mark:'
       path: Graph/two_edge_connected.hpp
       title: "\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - name: Math
@@ -480,6 +483,12 @@ data:
       path: verify/Graph_graph_dijkstra.test.cpp
       title: verify/Graph_graph_dijkstra.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/Graph_scc.test.cpp
+      title: verify/Graph_scc.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Graph_scc_old.test.cpp
+      title: verify/Graph_scc_old.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/Math_matrix_det.test.cpp
       title: verify/Math_matrix_det.test.cpp
     - icon: ':heavy_check_mark:'
@@ -581,9 +590,6 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/range_edge_graph.test.cpp
       title: verify/range_edge_graph.test.cpp
-    - icon: ':heavy_check_mark:'
-      path: verify/scc.test.cpp
-      title: verify/scc.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/superset_transform.test.cpp
       title: verify/superset_transform.test.cpp

@@ -28,7 +28,7 @@ data:
     \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
     \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
     \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\n\ntemplate\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\ntemplate\
     \ <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n    static\
     \ constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to = 0, T cost\
     \ = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate <typename\
@@ -119,7 +119,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2025-01-11 19:27:04+09:00'
+  timestamp: '2025-01-11 19:51:13+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_dijkstra.test.cpp
