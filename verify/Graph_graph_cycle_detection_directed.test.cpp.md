@@ -35,10 +35,9 @@ data:
     \ T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define n int(this->size())\n\
     #define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\n  private:\n\
     \    bool chmin(T &x, T y) const { return x > y ? (x = y, true) : false; }\n\n\
-    \  public:\n    void add(int s, int t, T w, int id = -1) { add_edge(s, t, w, id);\
-    \ }\n    void add_edge(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
+    \  public:\n\n\n    void add(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
     \ w, id);\n        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
-    \ w, id);\n        }\n    }\n\n    vector<T> DFS(int s) const {\n        assert(0\
+    \ w, id);\n        }\n    }\n\n\n    vector<T> DFS(int s) const {\n        assert(0\
     \ <= s && s < n);\n        vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int>\
     \ que;\n        que.push(s);\n        while (que.empty() == false) {\n       \
     \     int v = que.front();\n            que.pop();\n            for (auto e :\
@@ -100,7 +99,7 @@ data:
     \ make_pair(vs, es);\n                }\n            }\n        }\n        return\
     \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n#line 4 \"verify/Graph_graph_cycle_detection_directed.test.cpp\"\
     \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n\
-    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add_edge(u,\
+    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add(u,\
     \ v, 0, i);\n    }\n    auto [vs, es] = cyc.cycle_detection();\n    if (vs.empty())\
     \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
     \        // cout << vs << endl;\n        for (int id : es) {\n            cout\
@@ -108,9 +107,9 @@ data:
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\n\nint main() {\n\
     \    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n    rep(i, 0,\
-    \ m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add_edge(u, v,\
-    \ 0, i);\n    }\n    auto [vs, es] = cyc.cycle_detection();\n    if (vs.empty())\
-    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
+    \ m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add(u, v, 0, i);\n\
+    \    }\n    auto [vs, es] = cyc.cycle_detection();\n    if (vs.empty()) {\n  \
+    \      cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
     \        // cout << vs << endl;\n        for (int id : es) {\n            cout\
     \ << id << endl;\n        }\n    }\n}"
   dependsOn:
@@ -119,7 +118,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_cycle_detection_directed.test.cpp
   requiredBy: []
-  timestamp: '2025-01-11 19:51:13+09:00'
+  timestamp: '2025-01-11 19:55:32+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_cycle_detection_directed.test.cpp

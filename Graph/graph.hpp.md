@@ -35,17 +35,17 @@ data:
     \ {}\n};\n\ntemplate <typename T, bool directed> struct Graph : vector<vector<Edge<T>>>\
     \ {\n#define n int(this->size())\n#define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\
     \n  private:\n    bool chmin(T &x, T y) const { return x > y ? (x = y, true) :\
-    \ false; }\n\n  public:\n    void add(int s, int t, T w, int id = -1) { add_edge(s,\
-    \ t, w, id); }\n    void add_edge(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
-    \ w, id);\n        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
-    \ w, id);\n        }\n    }\n\n    vector<T> DFS(int s) const {\n        assert(0\
-    \ <= s && s < n);\n        vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int>\
-    \ que;\n        que.push(s);\n        while (que.empty() == false) {\n       \
-    \     int v = que.front();\n            que.pop();\n            for (auto e :\
-    \ (*this)[v]) {\n                assert(e.cost == 1);\n                if (chmin(d[e.to],\
-    \ d[v] + e.cost)) {\n                    que.push(e.to);\n                }\n\
-    \            }\n        }\n        return d;\n    }\n\n    vector<T> dijkstra(int\
-    \ s) const {\n        vector<T> d(n, inf);\n        d[s] = 0;\n        priority_queue<pair<T,\
+    \ false; }\n\n  public:\n\n\n    void add(int s, int t, T w, int id = -1) {\n\
+    \        (*this)[s].emplace_back(t, w, id);\n        if constexpr (directed ==\
+    \ false) {\n            (*this)[t].emplace_back(s, w, id);\n        }\n    }\n\
+    \n\n    vector<T> DFS(int s) const {\n        assert(0 <= s && s < n);\n     \
+    \   vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int> que;\n       \
+    \ que.push(s);\n        while (que.empty() == false) {\n            int v = que.front();\n\
+    \            que.pop();\n            for (auto e : (*this)[v]) {\n           \
+    \     assert(e.cost == 1);\n                if (chmin(d[e.to], d[v] + e.cost))\
+    \ {\n                    que.push(e.to);\n                }\n            }\n \
+    \       }\n        return d;\n    }\n\n    vector<T> dijkstra(int s) const {\n\
+    \        vector<T> d(n, inf);\n        d[s] = 0;\n        priority_queue<pair<T,\
     \ int>, vector<pair<T, int>>,\n                       greater<pair<T, int>>>\n\
     \            que;\n        que.push({d[s], s});\n        while (que.empty() ==\
     \ false) {\n            auto [c, v] = que.top();\n            que.pop();\n   \
@@ -105,17 +105,17 @@ data:
     \ <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define\
     \ n int(this->size())\n#define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\
     \n  private:\n    bool chmin(T &x, T y) const { return x > y ? (x = y, true) :\
-    \ false; }\n\n  public:\n    void add(int s, int t, T w, int id = -1) { add_edge(s,\
-    \ t, w, id); }\n    void add_edge(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
-    \ w, id);\n        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
-    \ w, id);\n        }\n    }\n\n    vector<T> DFS(int s) const {\n        assert(0\
-    \ <= s && s < n);\n        vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int>\
-    \ que;\n        que.push(s);\n        while (que.empty() == false) {\n       \
-    \     int v = que.front();\n            que.pop();\n            for (auto e :\
-    \ (*this)[v]) {\n                assert(e.cost == 1);\n                if (chmin(d[e.to],\
-    \ d[v] + e.cost)) {\n                    que.push(e.to);\n                }\n\
-    \            }\n        }\n        return d;\n    }\n\n    vector<T> dijkstra(int\
-    \ s) const {\n        vector<T> d(n, inf);\n        d[s] = 0;\n        priority_queue<pair<T,\
+    \ false; }\n\n  public:\n\n\n    void add(int s, int t, T w, int id = -1) {\n\
+    \        (*this)[s].emplace_back(t, w, id);\n        if constexpr (directed ==\
+    \ false) {\n            (*this)[t].emplace_back(s, w, id);\n        }\n    }\n\
+    \n\n    vector<T> DFS(int s) const {\n        assert(0 <= s && s < n);\n     \
+    \   vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int> que;\n       \
+    \ que.push(s);\n        while (que.empty() == false) {\n            int v = que.front();\n\
+    \            que.pop();\n            for (auto e : (*this)[v]) {\n           \
+    \     assert(e.cost == 1);\n                if (chmin(d[e.to], d[v] + e.cost))\
+    \ {\n                    que.push(e.to);\n                }\n            }\n \
+    \       }\n        return d;\n    }\n\n    vector<T> dijkstra(int s) const {\n\
+    \        vector<T> d(n, inf);\n        d[s] = 0;\n        priority_queue<pair<T,\
     \ int>, vector<pair<T, int>>,\n                       greater<pair<T, int>>>\n\
     \            que;\n        que.push({d[s], s});\n        while (que.empty() ==\
     \ false) {\n            auto [c, v] = que.top();\n            que.pop();\n   \
@@ -174,7 +174,7 @@ data:
   path: Graph/graph.hpp
   requiredBy:
   - Graph/scc.hpp
-  timestamp: '2025-01-11 19:51:13+09:00'
+  timestamp: '2025-01-11 19:55:32+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Graph_graph_bellman_and_warshall.test.cpp
