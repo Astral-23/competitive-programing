@@ -17,7 +17,7 @@ int main() {
         return 0;
     }
     for(int i = 0; i < n; i++) {
-        if(d[i] == Edge<ll>::inf) {
+        if(d[i] == Edge<ll>::INF) {
             cout << "INF" << endl;
         }
         else {

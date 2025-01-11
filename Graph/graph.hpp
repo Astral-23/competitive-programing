@@ -1,12 +1,15 @@
+
 template <typename T> struct Edge {
     int to;
     T cost;
     int id;
-    static constexpr T inf = numeric_limits<T>::max() / 2;
+    static constexpr T INF = numeric_limits<T>::max() / 2;
     Edge(int to = 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id) {}
 };
 
 template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
+#define n int(this->size())
+#define inf Edge<T>::INF
     using vector<vector<Edge<T>>>::vector;
 
   private:
@@ -17,13 +20,13 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
     void add_edge(int s, int t, T w, int id = -1) {
         (*this)[s].emplace_back(t, w, id);
         if constexpr (directed == false) {
-            (this)[t].emplace_back(s, w, id);
+            (*this)[t].emplace_back(s, w, id);
         }
     }
 
-    vector<T> dfs(int s) const {
-        assert(0 <= s && s < this->size());
-        vector<T> d(this->size());
+    vector<T> DFS(int s) const {
+        assert(0 <= s && s < n);
+        vector<T> d(n, inf);
         d[s] = 0;
         queue<int> que;
         que.push(s);
@@ -37,10 +40,11 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
                 }
             }
         }
+        return d;
     }
 
     vector<T> dijkstra(int s) const {
-        vector<T> d(this->size(), Edge<T>::inf);
+        vector<T> d(n, inf);
         d[s] = 0;
         priority_queue<pair<T, int>, vector<pair<T, int>>,
                        greater<pair<T, int>>>
@@ -61,13 +65,13 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
     }
 
     pair<bool, vector<T>> bellman_ford(int s) const {
-        vector<T> d(this->size(), Edge<T>::inf);
+        vector<T> d(n, inf);
         d[s] = 0;
         int last = -1;
-        for (int i = 0; i <= int(this->size()); i++) {
+        for (int i = 0; i <= n; i++) {
             bool f = false;
-            for (int v = 0; v < int(this->size()); v++)
-                if (d[v] != Edge<T>::inf) {
+            for (int v = 0; v < n; v++)
+                if (d[v] != inf) {
                     for (auto e : (*this)[v]) {
                         if (chmin(d[e.to], d[v] + e.cost)) {
                             f = true;
@@ -77,7 +81,7 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
             if (f) last = i;
         }
 
-        if (last == int(this->size()))
+        if (last == n)
             return {true, d};
         else
             return {false, d};
@@ -90,23 +94,88 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
     }
 
     vector<vector<T>> warshall() const {
-        vector<vector<T>> d(this->size(),
-                            vector<T>(this->size(), Edge<T>::inf));
-        for (int i = 0; i < int(this->size()); i++) {
+        vector<vector<T>> d(n, vector<T>(n, inf));
+        for (int i = 0; i < n; i++) {
             d[i][i] = 0;
             for (auto e : (*this)[i]) {
                 chmin(d[i][e.to], e.cost);
             }
         }
-        for (int k = 0; k < int(this->size()); k++) {
-            for (int i = 0; i < int(this->size()); i++) {
-                if (d[i][k] == Edge<T>::inf) continue;
-                for (int j = 0; j < int(this->size()); j++) {
-                    if (d[k][j] == Edge<T>::inf) continue;
+
+        for (int k = 0; k < n; k++) {
+            for (int i = 0; i < n; i++) {
+                if (d[i][k] == inf) continue;
+                for (int j = 0; j < n; j++) {
+                    if (d[k][j] == inf) continue;
                     d[i][j] = min(d[i][j], d[i][k] + d[k][j]);
                 }
             }
         }
         return d;
     }
+
+    pair<vector<int>, vector<int>> cycle_detection(int v = -1) const {
+        vector<bool> in(n, false), out(n, false);
+        vector<int> vs, es;
+        const int fin = INT_MAX;
+        auto dfs = [&](auto f, int v, int p) -> int {
+            bool prev_edge = false;
+            in[v] = true;
+            for (auto e : (*this)[v]) {
+                if constexpr (directed == false) {
+                    if (e.to == p) {
+                        if (prev_edge == false) {
+                            prev_edge = true;
+                            continue;
+                        } else {
+                            vs.push_back(v);
+                            es.push_back(e.id);
+                            out[v] = true;
+                            return e.to;
+                        }
+                    }
+                }
+
+                if (in[e.to] && out[e.to] == false) {
+                    vs.push_back(v);
+                    es.push_back(e.id);
+                    out[v] = true;
+                    return v == e.to ? fin : e.to;
+                }
+
+                if (in[e.to] == false) {
+                    int root = f(f, e.to, v);
+                    if (root != -1 && root != fin) {
+                        vs.push_back(v);
+                        es.push_back(e.id);
+                        out[v] = true;
+                        return (v == root ? fin : root);
+                    } else if (root == fin) {
+                        out[v] = true;
+                        return fin;
+                    }
+                }
+            }
+            out[v] = true;
+            return -1;
+        };
+
+        int s = 0, t = n;
+        if (v != -1) s = v, t = v + 1;
+
+        for (int i = s; i < t; i++) {
+            if (in[i] == false) {
+                dfs(dfs, i, -1);
+                if (vs.empty() == false) {
+                    reverse(vs.begin(), vs.end());
+                    reverse(es.begin(), es.end());
+                    return make_pair(vs, es);
+                }
+            }
+        }
+        return make_pair(vs, es);
+    }
+
+#undef n
+#undef inf
 };

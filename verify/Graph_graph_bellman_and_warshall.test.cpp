@@ -19,7 +19,7 @@ int main() {
     auto d = g.warshall();
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
-            if (d[i][j] == Edge<ll>::inf) {
+            if (d[i][j] == Edge<ll>::INF) {
                 cout << "INF";
             } else {
                 cout << d[i][j];

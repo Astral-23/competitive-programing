@@ -13,7 +13,7 @@ int main() {
 
     auto d = g.dijkstra(r);
     for(int i = 0; i < n; i++) {
-        if(d[i] == Edge<ll>::inf) {
+        if(d[i] == Edge<ll>::INF) {
             cout << "INF" << endl;
         }
         else {
