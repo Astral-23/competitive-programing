@@ -366,6 +366,9 @@ data:
       path: verify/Algorithm_bisect_max_right.test.cpp
       title: verify/Algorithm_bisect_max_right.test.cpp
     - icon: ':heavy_check_mark:'
+      path: verify/Algorithm_bisect_min_left.test.cpp
+      title: verify/Algorithm_bisect_min_left.test.cpp
+    - icon: ':heavy_check_mark:'
       path: verify/Chromatic_Number.test.cpp
       title: verify/Chromatic_Number.test.cpp
     - icon: ':heavy_check_mark:'

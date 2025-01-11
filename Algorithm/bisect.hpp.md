@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Algorithm_bisect_max_right.test.cpp
     title: verify/Algorithm_bisect_max_right.test.cpp
+  - icon: ':heavy_check_mark:'
+    path: verify/Algorithm_bisect_min_left.test.cpp
+    title: verify/Algorithm_bisect_min_left.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -40,6 +43,7 @@ data:
   timestamp: '2025-01-11 20:14:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/Algorithm_bisect_min_left.test.cpp
   - verify/Algorithm_bisect_max_right.test.cpp
 documentation_of: Algorithm/bisect.hpp
 layout: document
@@ -50,38 +54,19 @@ title: "\u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22"
 ---
 ## 概要
 抽象化二分探索。  
-[ok, ng] 或いは [ng, ok] の **閉区間** に対して行う。
+[l, r)の **半開区間** に対して行う
 
-## 関数
-- `template <typename T, typename F> T bisect(T ok, T ng, F pred) 
-`
-    - **計算量**
-        - $O(\log \|ok - ng\|)$
+## max_right
+`[l, max_r_plus_one)` について、[oooxxx)を想定して二分探索
+okになる右端 + 1を返す
+(全部okならmax_r_plus_oneが帰る)
+[使用例](https://judge.yosupo.jp/submission/258880)
+## min_left 
+`[min_l, r)`について、[xxxoooo)を想定して二分探索
+okになる左端を返す
+(全部ngならrを返す)
+[使用例](https://atcoder.jp/contests/abc312/submissions/61216108)
 
-    - **渡す関数**
-        - `pred(T x)` ... xが条件を満たすならばtrue,でなければfalseを返す関数
 
-    - **説明**
-
-    - ok < ngの時 : [ok, ng] で [oooxxxx]
-        - 一番右のoを返す。ただし、
-            - (1-1)[xxxx]の時
-                - ok-1を返す。
-            - (1-2)[oooo]の時
-                - ngを返す。
-    - ok > ngの時 : [ng, ok] で [xxxooo]
-        - 一番左のoを返す。ただし、
-            - (2-1)[xxxx]の時
-                - ok+1を返す。
-            - (2-2)[oooo]の時
-                - ngを返す。
-    - ok = ngの時: [ok, ok]で [x] or [o]
-            - (3-1)[x]の時
-                - ok - 1 または ok + 1を返す
-                    - 範囲から外れる事は保証されるが、どちらに外れるかは未定義
-            - (3-2)[o]の時
-                - okを返す
-    - 総じて、[xxxx]の場合、返り値 x は [ok, ng] or [ng, ok]から外れる
-        - 返り値が区間に入っているか確認すると良い
-            - 逆に、[xxxx]でなければ、戻り値 x は [ok, ng] or [ng, ok]に入る。
-        - 区間に入らない場合も「都合が良い」値が戻ってくることが多いが、区間長が1の時どちらに補正されるかわからないので、丁寧に書く
+イメージ: l,rがoとxの境目になっている。ただし、半開区間を加味しても、探索範囲内が全てo/xになっていた場合、ifで分岐している
+両者とも、半開区間に含まれないところにはクエリが来ない
