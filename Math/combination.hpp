@@ -13,15 +13,17 @@ template <typename T, long long mod> struct combination {
     T operator()(int n, int k) { return C(n, k); }
 
     T C(int n, int k) {
+        if (k < 0) return 0;
+        if (k == 0) return 1;
         if (n < k) return 0;
-        if (n < 0 || k < 0) return 0;
         if (N < n) expand(n);
         return fac[n] * ifac[n - k] % mod * ifac[k] % mod;
     }
 
     T P(int n, int k) {
+        if (k < 0) return 0;
+        if (k == 0) return 1;
         if (n < k) return 0;
-        if (n < 0 || k < 0) return 0;
         if (N < n) expand(n);
         return fac[n] * ifac[n - k] % mod;
     }
@@ -36,11 +38,6 @@ template <typename T, long long mod> struct combination {
     }
 
     T H(int n, int k) {
-        if (n < 0 || k < 0) return 0;
-        if(n == 0) {
-            if(k == 0) return 1;
-            else return 0;
-        }
         return C(n + k - 1, k);
     }
 
