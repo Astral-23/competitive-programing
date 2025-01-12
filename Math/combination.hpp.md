@@ -122,7 +122,10 @@ $O(n)$ 構築・自動拡張 combinationと付随する関数。
 - 以下の全ての関数について、計算されているテーブル長が足りなかった場合自動で拡張される
     - 計算量  
         - 最終的なテーブルのサイズを $n$ として $\Theta(n)$
-- ```T C(int n, int k)```... $\binom{n}{r}$
+
+- ``` T operator()(int n, int k) ``` ... $\binom{n}{r}$
+
+- ``` T C(int n, int k) ```... $\binom{n}{r}$
 
 - `T B(int n)`... $n!$
 
@@ -146,14 +149,14 @@ $$ \binom{-a}{b} = \begin{cases} 0 &\text {if }  b \neq 0 \\ 1 &\text{otherwise}
 とした。  
 
 ### 成立するもの  
-  
+- 自然数の範囲で成立したものは、自然数の範囲で全て成立。
 
-$$ \binom{n}{r} = \binom{n-1}{r} +  \binom{n-1}{r-1},  \quad \forall n \in  \mathbb{Z} $$  
+$$ \binom{z}{r} = \binom{z-1}{r} +  \binom{z-1}{r-1},  \quad \forall z \in  \mathbb{Z} $$  
+- 小さい $n$ に帰着させる時負の扱いを気にしなくて良くなって便利
 
-$$ \binom{n}{r} = \binom{n}{n-r} , \quad n, r \in \mathbb{N}$$  
 
 $$ H(0, 0) = 1 $$  
-
+- こうであって欲しい
 
 
 ### 成立しないもの  
