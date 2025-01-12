@@ -58,8 +58,9 @@ title: "\u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22"
 
 ## max_right
 `[l, max_r_plus_one)` について、[oooxxx)を想定して二分探索
-okになる右端 + 1を返す
-(全部okならmax_r_plus_oneが帰る)
+okになる右端 **+ 1**を返す(全部okならmax_r_plus_oneが帰る)  
+- なので、「条件を満たす最大値」が欲しい場合、戻り値から-1する必要がある  
+
 [使用例](https://judge.yosupo.jp/submission/258880)
 ## min_left 
 `[min_l, r)`について、[xxxoooo)を想定して二分探索
