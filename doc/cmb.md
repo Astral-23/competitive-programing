@@ -49,14 +49,13 @@ $$ \binom{-a}{b} = \begin{cases} 0 &\text {if }  b \neq 0 \\ 1 &\text{otherwise}
 ### 成立するもの  
 - 自然数の範囲で成立したものは、自然数の範囲で全て成立。  
 
-$$ \binom{z}{r} = \binom{z-1}{r} +  \binom{z-1}{r-1},  \quad \forall z \in  \mathbb{Z} $$  
+$$ \binom{z}{r} = \binom{z-1}{r} +  \binom{z-1}{r-1},  \quad \forall z , r\in  \mathbb{Z} $$  
 
 - 小さい $n$ に帰着させる時負の扱いを気にしなくて良くなって便利  
 
 $$ H(0, 0) = 1 $$  
 
 - こうであって欲しい
-
 
 ### 成立しないもの  
 
