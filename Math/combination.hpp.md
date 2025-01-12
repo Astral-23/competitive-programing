@@ -101,11 +101,11 @@ redirect_from:
 title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
 ---
 ## 概要
-O(N)構築 combinationと付随する関数。
+$O(n)$ 構築・自動拡張 combinationと付随する関数。  
+
 参考 : https://drken1215.hatenablog.com/entry/2018/06/08/210000
 
-## 省略できるもの
-コンストラクタとC(int n, int k)以外の関数はそれぞれ独立なので省略できます。及び、C(int n, int k)以外の関数のverifyはしていません。
+
 
 ## コンストラクタ
 `template<typename T, long long mod> cmb` ... modと戻り値の型を指定
@@ -133,7 +133,7 @@ O(N)構築 combinationと付随する関数。
         - 重複あり組み合わせ
 
 
-- `ll Cn(int u)`... $\frac{\binom{2n}{n}}{(n+1)}$ 
+- `T Cn(int u)`... $\frac{\binom{2n}{n}}{(n+1)}$ 
     - 補遺
         - カタラン数
 
