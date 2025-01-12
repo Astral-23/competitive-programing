@@ -6,29 +6,45 @@ O(N)構築 combinationと付随する関数。
 コンストラクタとC(int n, int k)以外の関数はそれぞれ独立なので省略できます。及び、C(int n, int k)以外の関数のverifyはしていません。
 
 ## コンストラクタ
-**CMB cmb(int r, int mod)** ... modを指定した上で、[0, r]の階乗や整数の逆元を求める  
-- **計算量**
-    $O(n)$
+`template<typename T, long long mod> cmb` ... modと戻り値の型を指定
+- 制約
+    - `mod` は素数(assertで落ちる)
+    - `(mod-1) * (mod-1)` が `long long` に収まる(assertで落ちない)
+- 計算量
+    - $O(1)$
+
+- 補遺
+    - `using combination998244353 = cmb<atcoder::modint998244353, 998244353>` がエイリアスとして登録されている
 
 ## 関数
+- 以下の全ての関数について、計算されているテーブル長が足りなかった場合自動で拡張される
+    - 計算量  
+        - 最終的なテーブルのサイズを $n$ として $\Theta(n)$
+- `T C(int n, int k)`... $\binom{n}{r}$
 
-- **ll C(int n, int k)**... $\binom{n}{r}$
-    - **制約**
-    $n, k \le r$
+- `T B(int n)`... $n!$
 
-- **ll B(int n)**... $n!$
-    - **制約**
-    $0 \le n \le r$
+- `T invB(int n)`... $\frac{1}{n!}$
 
-- **ll invB(int n)**... $n!$ の逆元
-    - **制約**
-    $0 \le n \le r$
+- `T H(int n, int k)`... $\binom{n+k-1}{k}$ 
+    - 補遺
+        - 重複あり組み合わせ
 
-- **ll H(int n, int k)**... $\binom{n+k-1}{k}$ 重複あり組み合わせ
-    - **制約**
-    $n+k-1 \le r$
 
-- **ll Cn(int u)**... $\binom{2n}{n} /(n+1)$ カタラン数
-    - **制約**
-    $2n \le r$
-  
+- `ll Cn(int u)`... $\frac{\binom{2n}{n}}{(n+1)}$ 
+    - 補遺
+        - カタラン数
+
+
+## 負の二項係数の扱い
+$$ \binom{-a \in \mathbb{N}}{0} = 1, \quad \binom{-a \in \mathbb{N}}{b \neq 0} = 0$$
+とした。  
+
+### 成立するもの
+$$ \binom{n}{r} = \binom{n-1}{r} + \binom{n-1}{r-1},  \quad \forall n \in  \mathbb{Z}$$
+$$ \binom{n}{r} = \binom{n}{n-r} , \quad n, r \in \mathbb{N},  r \le n$$
+$$ H(0, 0) = 1 $$
+
+
+### 成立しないもの
+$$ \binom{n}{r} = \binom{n}{n-r} , \quad n, r \in \mathbb{Z_{<0}} $$
