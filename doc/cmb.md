@@ -9,7 +9,7 @@ $O(n)$ 構築・自動拡張 combinationと付随する関数。
 `template<typename T, long long mod> cmb` ... modと戻り値の型を指定
 - 制約
     - `mod` は素数(assertで落ちる)
-    - `(mod-1) * (mod-1)` が `long long` に収まる(assertで落ちない)
+    - `(mod-1) * (mod-1)` が `long long` に収まる(assertで落ちる)
 - 計算量
     - $O(1)$
 

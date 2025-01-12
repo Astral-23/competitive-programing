@@ -53,6 +53,7 @@ template <typename T, long long mod> struct combination {
     }
 
     static_assert(is_prime_constexpr(mod), "mod must be prime");
+    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX), "(mod - 1) * (mod - 1) <= LLONG_MAX must be satisfied");
 
     long long extgcd(long long a, long long b, long long &x, long long &y) {
         if (b == 0) {
