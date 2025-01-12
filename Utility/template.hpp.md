@@ -166,6 +166,9 @@ data:
     path: verify/Math_combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
   - icon: ':heavy_check_mark:'
+    path: verify/Math_combination_more.test.cpp
+    title: verify/Math_combination_more.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Math_matrix_det.test.cpp
     title: verify/Math_matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
@@ -347,6 +350,7 @@ data:
   - verify/dijkstra.test.cpp
   - verify/Graph_graph_bellman.test.cpp
   - verify/Datastructure_fenwick_tree.test.cpp
+  - verify/Math_combination_more.test.cpp
   - verify/Datastructure_imos2d.test.cpp
   - verify/manacher.test.cpp
   - verify/Algorithm_bisect_min_left.test.cpp

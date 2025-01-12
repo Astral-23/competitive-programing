@@ -5,6 +5,9 @@ data:
     path: Math/combination.hpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
   - icon: ':heavy_check_mark:'
+    path: Utility/modint.hpp
+    title: modint
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   - icon: ':heavy_check_mark:'
@@ -68,22 +71,22 @@ data:
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/4020
-    document_title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1501
     links:
-    - https://onlinejudge.u-aizu.ac.jp/problems/4020
-  bundledCode: "#line 1 \"verify/Math_combination.test.cpp\"\n#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/4020\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"atcoder/convolution.hpp\"\
-    \n\n\n\n#line 7 \"atcoder/convolution.hpp\"\n#include <type_traits>\n#line 9 \"\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1501
+  bundledCode: "#line 1 \"verify/Math_combination_more.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1501\"\n#line 1\
+    \ \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
+    \ ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define\
+    \ rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x),\
+    \ end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\ntemplate\
+    \ <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true)\
+    \ : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return\
+    \ x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n   \
+    \     ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n        cout\
+    \ << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"atcoder/convolution.hpp\"\n\
+    \n\n\n#line 7 \"atcoder/convolution.hpp\"\n#include <type_traits>\n#line 9 \"\
     atcoder/convolution.hpp\"\n\n#line 1 \"atcoder/internal_bit.hpp\"\n\n\n\n#ifdef\
     \ _MSC_VER\n#include <intrin.h>\n#endif\n\n#if __cplusplus >= 202002L\n#include\
     \ <bit>\n#endif\n\nnamespace atcoder {\n\nnamespace internal {\n\n#if __cplusplus\
@@ -958,25 +961,51 @@ data:
     \            _answer[i] = id[2 * i] < id[2 * i + 1];\n        }\n        return\
     \ true;\n    }\n    std::vector<bool> answer() { return _answer; }\n\n  private:\n\
     \    int _n;\n    std::vector<bool> _answer;\n    internal::scc_graph scc;\n};\n\
-    \n}  // namespace atcoder\n\n\n#line 1 \"Math/combination.hpp\"\ntemplate <typename\
-    \ T, long long mod> struct combination {\n    vector<long long> fac, ifac, inv;\n\
-    \    long long N;\n    combination() {\n        fac.resize(2, 1);\n        ifac.resize(2,\
-    \ 1);\n        inv.resize(2, 1);\n        N = 1;\n    }\n\n    void reserve(long\
-    \ long n) { expand(n); }\n\n    T operator()(int n, int k) { return C(n, k); }\n\
-    \n    T C(int n, int k) {\n        if (k < 0) return 0;\n        if (k == 0) return\
-    \ 1;\n        if (n < k) return 0;\n        if (N < n) expand(n);\n        return\
-    \ fac[n] * ifac[n - k] % mod * ifac[k] % mod;\n    }\n\n    T P(int n, int k)\
-    \ {\n        if (k < 0) return 0;\n        if (k == 0) return 1;\n        if (n\
-    \ < k) return 0;\n        if (N < n) expand(n);\n        return fac[n] * ifac[n\
-    \ - k] % mod;\n    }\n\n    T B(int n) {\n        if (N < n) expand(n);\n    \
-    \    return (n < 0 ? 0 : fac[n]);\n    }\n    T invB(int n) {\n        if (N <\
-    \ n) expand(n);\n        return (n < 0 ? 0 : ifac[n]);\n    }\n\n    T H(int n,\
-    \ int k) {\n        return C(n + k - 1, k);\n    }\n\n    T Cn(int n) { return\
-    \ C(2 * n, n) * inv[n + 1] % mod; }\n\n  private:\n    constexpr static bool is_prime_constexpr(long\
-    \ long x) {\n        if (x <= 1) return false;\n        for (long long i = 2;\
-    \ i * i <= x; i++) {\n            if (x % i == 0) return false;\n        }\n \
-    \       return true;\n    }\n\n    static_assert(is_prime_constexpr(mod), \"mod\
-    \ must be prime\");\n    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX),\
+    \n}  // namespace atcoder\n\n\n#line 1 \"Utility/modint.hpp\"\n\n// \u52D5\u7684\
+    mod : template<int mod> \u3092\u6D88\u3057\u3066\u3001\u4E0A\u306E\u65B9\u3067\
+    \u5909\u6570mod\u3092\u5BA3\u8A00\ntemplate <uint32_t mod> struct modint {\n \
+    \   using mm = modint;\n    uint32_t x;\n    modint() : x(0) {}\n    TT modint(T\
+    \ a = 0) : x((ll(a) % mod + mod)) {\n        if (x >= mod) x -= mod;\n    }\n\n\
+    \    friend mm operator+(mm a, mm b) {\n        a.x += b.x;\n        if (a.x >=\
+    \ mod) a.x -= mod;\n        return a;\n    }\n    friend mm operator-(mm a, mm\
+    \ b) {\n        a.x -= b.x;\n        if (a.x >= mod) a.x += mod;\n        return\
+    \ a;\n    }\n\n    mm operator-() const { return mod - x; }\n\n    //+\u3068-\u3060\
+    \u3051\u3067\u5341\u5206\u306A\u5834\u5408\u3001\u4EE5\u4E0B\u306F\u7701\u7565\
+    \u3057\u3066\u826F\u3044\u3067\u3059\u3002\n\n    friend mm operator*(mm a, mm\
+    \ b) { return (uint64_t)(a.x) * b.x; }\n    friend mm operator/(mm a, mm b) {\
+    \ return a * b.inv(); }\n    friend mm &operator+=(mm &a, mm b) { return a = a\
+    \ + b; }\n    friend mm &operator-=(mm &a, mm b) { return a = a - b; }\n    friend\
+    \ mm &operator*=(mm &a, mm b) { return a = a * b; }\n    friend mm &operator/=(mm\
+    \ &a, mm b) { return a = a * b.inv(); }\n\n    mm inv() const {\n        assert(x\
+    \ != 0);\n        return pow(mod - 2);\n    }\n    mm pow(ll y) const {\n    \
+    \    mm res = 1;\n        mm v = *this;\n        while (y) {\n            if (y\
+    \ & 1) res *= v;\n            v *= v;\n            y /= 2;\n        }\n      \
+    \  return res;\n    }\n\n    friend istream &operator>>(istream &is, mm &a) {\n\
+    \        ll t;\n        cin >> t;\n        a = mm(t);\n        return is;\n  \
+    \  }\n\n    friend ostream &operator<<(ostream &os, mm a) { return os << a.x;\
+    \ }\n\n    bool operator==(mm a) { return x == a.x; }\n    bool operator!=(mm\
+    \ a) { return x != a.x; }\n\n    bool operator<(const mm &a) const { return x\
+    \ < a.x; }\n};\nusing modint998244353 = modint<998244353>;\nusing modint1000000007\
+    \ = modint<1'000'000'007>;\n/*\n@brief modint\n*/\n#line 1 \"Math/combination.hpp\"\
+    \ntemplate <typename T, long long mod> struct combination {\n    vector<long long>\
+    \ fac, ifac, inv;\n    long long N;\n    combination() {\n        fac.resize(2,\
+    \ 1);\n        ifac.resize(2, 1);\n        inv.resize(2, 1);\n        N = 1;\n\
+    \    }\n\n    void reserve(long long n) { expand(n); }\n\n    T operator()(int\
+    \ n, int k) { return C(n, k); }\n\n    T C(int n, int k) {\n        if (k < 0)\
+    \ return 0;\n        if (k == 0) return 1;\n        if (n < k) return 0;\n   \
+    \     if (N < n) expand(n);\n        return fac[n] * ifac[n - k] % mod * ifac[k]\
+    \ % mod;\n    }\n\n    T P(int n, int k) {\n        if (k < 0) return 0;\n   \
+    \     if (k == 0) return 1;\n        if (n < k) return 0;\n        if (N < n)\
+    \ expand(n);\n        return fac[n] * ifac[n - k] % mod;\n    }\n\n    T B(int\
+    \ n) {\n        if (N < n) expand(n);\n        return (n < 0 ? 0 : fac[n]);\n\
+    \    }\n    T invB(int n) {\n        if (N < n) expand(n);\n        return (n\
+    \ < 0 ? 0 : ifac[n]);\n    }\n\n    T H(int n, int k) {\n        return C(n +\
+    \ k - 1, k);\n    }\n\n    T Cn(int n) { return C(2 * n, n) * inv[n + 1] % mod;\
+    \ }\n\n  private:\n    constexpr static bool is_prime_constexpr(long long x) {\n\
+    \        if (x <= 1) return false;\n        for (long long i = 2; i * i <= x;\
+    \ i++) {\n            if (x % i == 0) return false;\n        }\n        return\
+    \ true;\n    }\n\n    static_assert(is_prime_constexpr(mod), \"mod must be prime\"\
+    );\n    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX),\
     \ \"(mod - 1) * (mod - 1) <= LLONG_MAX must be satisfied\");\n\n    long long\
     \ extgcd(long long a, long long b, long long &x, long long &y) {\n        if (b\
     \ == 0) {\n            x = 1;\n            y = 0;\n            return a;\n   \
@@ -995,25 +1024,32 @@ data:
     \ * (i + 1) % mod;\n            inv[i] = ifac[i] * fac[i - 1] % mod;\n       \
     \ }\n        return;\n    }\n};\n\nusing combination998244353 = combination<atcoder::modint998244353,\
     \ 998244353>;\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs\
-    \ doc/cmb.md\n*/\n#line 5 \"verify/Math_combination.test.cpp\"\n\n\n/*\n@brief\
-    \ \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint = atcoder::modint998244353;\n\
-    combination998244353 cmb;\n\nint main() {\n    ll N, M, T;\n    cin >> N >> M\
-    \ >> T;\n\n    mint p = 0;\n\n    rep(k, 1, N + 1) {\n        mint s = 1;\n  \
-    \      mint ue = M * N - k * M;\n\n        rep(t, 1, T + 1) {\n            mint\
-    \ rev = M * N - (t - 1);\n            s *= ue * (rev.inv());\n            ue -=\
-    \ 1;\n        }\n\n        s *= cmb.C(N, k);\n        if (k % 2 == 1)\n      \
-    \      p += s;\n        else\n            p -= s;\n    }\n\n    cout << (1 - p).val()\
-    \ << endl;\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/4020\"\n#include\
-    \ \"../Utility/template.hpp\"\n#include \"../atcoder/all\"\n#include \"../Math/combination.hpp\"\
-    \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
-    \ = atcoder::modint998244353;\ncombination998244353 cmb;\n\nint main() {\n   \
-    \ ll N, M, T;\n    cin >> N >> M >> T;\n\n    mint p = 0;\n\n    rep(k, 1, N +\
-    \ 1) {\n        mint s = 1;\n        mint ue = M * N - k * M;\n\n        rep(t,\
-    \ 1, T + 1) {\n            mint rev = M * N - (t - 1);\n            s *= ue *\
-    \ (rev.inv());\n            ue -= 1;\n        }\n\n        s *= cmb.C(N, k);\n\
-    \        if (k % 2 == 1)\n            p += s;\n        else\n            p -=\
-    \ s;\n    }\n\n    cout << (1 - p).val() << endl;\n}"
+    \ doc/cmb.md\n*/\n#line 6 \"verify/Math_combination_more.test.cpp\"\n\n\n\nusing\
+    \ pll = pair<long long, long long>;\nusing mint = modint<1'00'000'007>;\n//\u30B0\
+    \u30EA\u30C3\u30C9\u3067 \u2192 \u304B\u3089\u534A\u6642\u8A08 \u6CE8 : \u5EA7\
+    \u6A19\u3060\u3068\u2192\u304B\u3089\u6642\u8A08\u56DE\u308A\nvector<int> dx =\
+    \ {1, 1, 0, -1, -1, -1, 0, 1, 0};\nvector<int> dy = {0, -1, -1, -1, 0, 1, 1, 1,\
+    \ 0};\n\nint main() {\n    combination<mint, 1'00'000'007> cmb;\n    ll h, w,\
+    \ sy, sx, ty, tx;\n    cin >> h >> w >> sy >> sx >> ty >> tx;\n    map<ll, vec<pll>>\
+    \ tar;\n    rep(k, 0, 9) {\n        ll ny = ty + dy[k] * h;\n        ll nx = tx\
+    \ + dx[k] * w;\n        tar[abs(sx - nx) + abs(ny - sy)].emplace_back(nx, ny);\n\
+    \    }\n\n    mint ret = 0;\n\n    auto v = *tar.begin();\n    for(auto [x, y]\
+    \ : v.second) {\n         ret += cmb(abs(sx - x) + abs(sy - y), abs(sx - x));\n\
+    \n    }\n   \n    cout << ret << endl;\n\n\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1501\"\
+    \n#include \"../Utility/template.hpp\"\n#include \"../atcoder/all\"\n#include\
+    \ \"../Utility/modint.hpp\"\n#include \"../Math/combination.hpp\"\n\n\n\nusing\
+    \ pll = pair<long long, long long>;\nusing mint = modint<1'00'000'007>;\n//\u30B0\
+    \u30EA\u30C3\u30C9\u3067 \u2192 \u304B\u3089\u534A\u6642\u8A08 \u6CE8 : \u5EA7\
+    \u6A19\u3060\u3068\u2192\u304B\u3089\u6642\u8A08\u56DE\u308A\nvector<int> dx =\
+    \ {1, 1, 0, -1, -1, -1, 0, 1, 0};\nvector<int> dy = {0, -1, -1, -1, 0, 1, 1, 1,\
+    \ 0};\n\nint main() {\n    combination<mint, 1'00'000'007> cmb;\n    ll h, w,\
+    \ sy, sx, ty, tx;\n    cin >> h >> w >> sy >> sx >> ty >> tx;\n    map<ll, vec<pll>>\
+    \ tar;\n    rep(k, 0, 9) {\n        ll ny = ty + dy[k] * h;\n        ll nx = tx\
+    \ + dx[k] * w;\n        tar[abs(sx - nx) + abs(ny - sy)].emplace_back(nx, ny);\n\
+    \    }\n\n    mint ret = 0;\n\n    auto v = *tar.begin();\n    for(auto [x, y]\
+    \ : v.second) {\n         ret += cmb(abs(sx - x) + abs(sy - y), abs(sx - x));\n\
+    \n    }\n   \n    cout << ret << endl;\n\n\n}"
   dependsOn:
   - Utility/template.hpp
   - atcoder/convolution.hpp
@@ -1034,17 +1070,18 @@ data:
   - atcoder/segtree.hpp
   - atcoder/string.hpp
   - atcoder/twosat.hpp
+  - Utility/modint.hpp
   - Math/combination.hpp
   isVerificationFile: true
-  path: verify/Math_combination.test.cpp
+  path: verify/Math_combination_more.test.cpp
   requiredBy: []
   timestamp: '2025-01-13 05:44:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
-documentation_of: verify/Math_combination.test.cpp
+documentation_of: verify/Math_combination_more.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/Math_combination.test.cpp
-- /verify/verify/Math_combination.test.cpp.html
-title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+- /verify/verify/Math_combination_more.test.cpp
+- /verify/verify/Math_combination_more.test.cpp.html
+title: verify/Math_combination_more.test.cpp
 ---

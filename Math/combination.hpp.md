@@ -6,6 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Math_combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+  - icon: ':heavy_check_mark:'
+    path: verify/Math_combination_more.test.cpp
+    title: verify/Math_combination_more.test.cpp
   _isVerificationFailed: false
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
@@ -31,24 +34,26 @@ data:
     \ long x) {\n        if (x <= 1) return false;\n        for (long long i = 2;\
     \ i * i <= x; i++) {\n            if (x % i == 0) return false;\n        }\n \
     \       return true;\n    }\n\n    static_assert(is_prime_constexpr(mod), \"mod\
-    \ must be prime\");\n\n    long long extgcd(long long a, long long b, long long\
-    \ &x, long long &y) {\n        if (b == 0) {\n            x = 1;\n           \
-    \ y = 0;\n            return a;\n        }\n        auto d = extgcd(b, a % b,\
-    \ y, x);\n        y -= a / b * x;\n        return d;\n    }\n\n    long long modinv(long\
-    \ long a) {\n        long long x, y;\n        extgcd(a, mod, x, y);\n        x\
-    \ %= mod;\n        if (x < 0) x += mod;\n        return x;\n    }\n\n    void\
-    \ expand(long long new_max_n) {\n        if (new_max_n <= N) return;\n       \
-    \ long long nx = N;\n\n        // 2\u51AA\u3067\u5927\u304D\u304F\u3057\u3066\u3044\
-    \u304F\u3002\n        while (nx < new_max_n) nx <<= 1;\n        new_max_n = nx;\n\
-    \n        long long pre = N;\n        N = new_max_n;\n        fac.resize(N + 1);\n\
-    \        ifac.resize(N + 1);\n        inv.resize(N + 1);\n        for (long long\
-    \ i = pre + 1; i <= N; i++) {\n            fac[i] = fac[i - 1] * i % mod;\n  \
-    \      }\n        ifac[N] = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N\
-    \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
-    \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
-    \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n\nusing combination998244353\
-    \ = combination<atcoder::modint998244353, 998244353>;\n/*\n@brief \u30B3\u30F3\
-    \u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs doc/cmb.md\n*/\n"
+    \ must be prime\");\n    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX),\
+    \ \"(mod - 1) * (mod - 1) <= LLONG_MAX must be satisfied\");\n\n    long long\
+    \ extgcd(long long a, long long b, long long &x, long long &y) {\n        if (b\
+    \ == 0) {\n            x = 1;\n            y = 0;\n            return a;\n   \
+    \     }\n        auto d = extgcd(b, a % b, y, x);\n        y -= a / b * x;\n \
+    \       return d;\n    }\n\n    long long modinv(long long a) {\n        long\
+    \ long x, y;\n        extgcd(a, mod, x, y);\n        x %= mod;\n        if (x\
+    \ < 0) x += mod;\n        return x;\n    }\n\n    void expand(long long new_max_n)\
+    \ {\n        if (new_max_n <= N) return;\n        long long nx = N;\n\n      \
+    \  // 2\u51AA\u3067\u5927\u304D\u304F\u3057\u3066\u3044\u304F\u3002\n        while\
+    \ (nx < new_max_n) nx <<= 1;\n        new_max_n = nx;\n\n        long long pre\
+    \ = N;\n        N = new_max_n;\n        fac.resize(N + 1);\n        ifac.resize(N\
+    \ + 1);\n        inv.resize(N + 1);\n        for (long long i = pre + 1; i <=\
+    \ N; i++) {\n            fac[i] = fac[i - 1] * i % mod;\n        }\n        ifac[N]\
+    \ = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N - 1] % mod;\n        for\
+    \ (long long i = N - 1; i >= pre + 1; i--) {\n            ifac[i] = ifac[i + 1]\
+    \ * (i + 1) % mod;\n            inv[i] = ifac[i] * fac[i - 1] % mod;\n       \
+    \ }\n        return;\n    }\n};\n\nusing combination998244353 = combination<atcoder::modint998244353,\
+    \ 998244353>;\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs\
+    \ doc/cmb.md\n*/\n"
   code: "template <typename T, long long mod> struct combination {\n    vector<long\
     \ long> fac, ifac, inv;\n    long long N;\n    combination() {\n        fac.resize(2,\
     \ 1);\n        ifac.resize(2, 1);\n        inv.resize(2, 1);\n        N = 1;\n\
@@ -67,32 +72,35 @@ data:
     \        if (x <= 1) return false;\n        for (long long i = 2; i * i <= x;\
     \ i++) {\n            if (x % i == 0) return false;\n        }\n        return\
     \ true;\n    }\n\n    static_assert(is_prime_constexpr(mod), \"mod must be prime\"\
-    );\n\n    long long extgcd(long long a, long long b, long long &x, long long &y)\
-    \ {\n        if (b == 0) {\n            x = 1;\n            y = 0;\n         \
-    \   return a;\n        }\n        auto d = extgcd(b, a % b, y, x);\n        y\
-    \ -= a / b * x;\n        return d;\n    }\n\n    long long modinv(long long a)\
-    \ {\n        long long x, y;\n        extgcd(a, mod, x, y);\n        x %= mod;\n\
-    \        if (x < 0) x += mod;\n        return x;\n    }\n\n    void expand(long\
-    \ long new_max_n) {\n        if (new_max_n <= N) return;\n        long long nx\
-    \ = N;\n\n        // 2\u51AA\u3067\u5927\u304D\u304F\u3057\u3066\u3044\u304F\u3002\
-    \n        while (nx < new_max_n) nx <<= 1;\n        new_max_n = nx;\n\n      \
-    \  long long pre = N;\n        N = new_max_n;\n        fac.resize(N + 1);\n  \
-    \      ifac.resize(N + 1);\n        inv.resize(N + 1);\n        for (long long\
-    \ i = pre + 1; i <= N; i++) {\n            fac[i] = fac[i - 1] * i % mod;\n  \
-    \      }\n        ifac[N] = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N\
-    \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
-    \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
-    \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n\nusing combination998244353\
-    \ = combination<atcoder::modint998244353, 998244353>;\n/*\n@brief \u30B3\u30F3\
-    \u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs doc/cmb.md\n*/"
+    );\n    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX),\
+    \ \"(mod - 1) * (mod - 1) <= LLONG_MAX must be satisfied\");\n\n    long long\
+    \ extgcd(long long a, long long b, long long &x, long long &y) {\n        if (b\
+    \ == 0) {\n            x = 1;\n            y = 0;\n            return a;\n   \
+    \     }\n        auto d = extgcd(b, a % b, y, x);\n        y -= a / b * x;\n \
+    \       return d;\n    }\n\n    long long modinv(long long a) {\n        long\
+    \ long x, y;\n        extgcd(a, mod, x, y);\n        x %= mod;\n        if (x\
+    \ < 0) x += mod;\n        return x;\n    }\n\n    void expand(long long new_max_n)\
+    \ {\n        if (new_max_n <= N) return;\n        long long nx = N;\n\n      \
+    \  // 2\u51AA\u3067\u5927\u304D\u304F\u3057\u3066\u3044\u304F\u3002\n        while\
+    \ (nx < new_max_n) nx <<= 1;\n        new_max_n = nx;\n\n        long long pre\
+    \ = N;\n        N = new_max_n;\n        fac.resize(N + 1);\n        ifac.resize(N\
+    \ + 1);\n        inv.resize(N + 1);\n        for (long long i = pre + 1; i <=\
+    \ N; i++) {\n            fac[i] = fac[i - 1] * i % mod;\n        }\n        ifac[N]\
+    \ = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N - 1] % mod;\n        for\
+    \ (long long i = N - 1; i >= pre + 1; i--) {\n            ifac[i] = ifac[i + 1]\
+    \ * (i + 1) % mod;\n            inv[i] = ifac[i] * fac[i - 1] % mod;\n       \
+    \ }\n        return;\n    }\n};\n\nusing combination998244353 = combination<atcoder::modint998244353,\
+    \ 998244353>;\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs\
+    \ doc/cmb.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Math/combination.hpp
   requiredBy: []
-  timestamp: '2025-01-13 01:51:56+09:00'
+  timestamp: '2025-01-13 05:44:44+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Math_combination.test.cpp
+  - verify/Math_combination_more.test.cpp
 documentation_of: Math/combination.hpp
 layout: document
 redirect_from:
@@ -111,7 +119,7 @@ $O(n)$ 構築・自動拡張 combinationと付随する関数。
 `template<typename T, long long mod> cmb` ... modと戻り値の型を指定
 - 制約
     - `mod` は素数(assertで落ちる)
-    - `(mod-1) * (mod-1)` が `long long` に収まる(assertで落ちない)
+    - `(mod-1) * (mod-1)` が `long long` に収まる(assertで落ちる)
 - 計算量
     - $O(1)$
 

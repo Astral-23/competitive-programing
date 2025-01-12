@@ -34,6 +34,9 @@ data:
     path: verify/Datastructure_treap.test.cpp
     title: verify/Datastructure_treap.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Math_combination_more.test.cpp
+    title: verify/Math_combination_more.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Math_matrix_det.test.cpp
     title: verify/Math_matrix_det.test.cpp
   - icon: ':heavy_check_mark:'
@@ -142,6 +145,7 @@ data:
   - verify/Datastructure_seg_prod.test.cpp
   - verify/Datastructure_dynamicseg.test.cpp
   - verify/dijkstra.test.cpp
+  - verify/Math_combination_more.test.cpp
   - verify/Chromatic_Number.test.cpp
   - verify/Convolution_lcm_convolution.test.cpp
   - verify/Math_matrix_det.test.cpp
