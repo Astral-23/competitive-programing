@@ -139,11 +139,14 @@ $O(n)$ 構築・自動拡張 combinationと付随する関数。
 
 
 ## 負の二項係数の扱い
-$$ \binom{-a \in \mathbb{N}}{0} = 1, \quad \binom{-a \in \mathbb{N}}{b \neq 0} = 0$$
+$a> 0, \quad b \in \mathbb{Z}$ とする.
+
+$$ \binom{-a}{b} = \begin{cases} 0 &\text {if }  b \neq 0 \\ 1 &\text{otherwise} \end{cases}$$
+
 とした。  
 
 ### 成立するもの
-$$ \binom{n}{r} = \binom{n-1}{r} + \binom{n-1}{r-1},  \quad \forall n \in  \mathbb{Z}$$
+$$ \binom{n}{r} = \binom{n-1}{r} +  \binom{n-1}{r-1},  \quad \forall n \in  \mathbb{Z}$$
 $$ \binom{n}{r} = \binom{n}{n-r} , \quad n, r \in \mathbb{N},  r \le n$$
 $$ H(0, 0) = 1 $$
 
