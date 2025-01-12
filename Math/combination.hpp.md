@@ -145,11 +145,17 @@ $$ \binom{-a}{b} = \begin{cases} 0 &\text {if }  b \neq 0 \\ 1 &\text{otherwise}
 
 とした。  
 
-### 成立するもの
-$$ \binom{n}{r} = \binom{n-1}{r} +  \binom{n-1}{r-1},  \quad \forall n \in  \mathbb{Z}$$
-$$ \binom{n}{r} = \binom{n}{n-r} , \quad n, r \in \mathbb{N}$$
-$$ H(0, 0) = 1 $$
+### 成立するもの  
+  
+
+$$ \binom{n}{r} = \binom{n-1}{r} +  \binom{n-1}{r-1},  \quad \forall n \in  \mathbb{Z} $$  
+
+$$ \binom{n}{r} = \binom{n}{n-r} , \quad n, r \in \mathbb{N}$$  
+
+$$ H(0, 0) = 1 $$  
 
 
-### 成立しないもの
+
+### 成立しないもの  
+
 $$ \binom{n}{r} = \binom{n}{n-r} , \quad n, r \in \mathbb{Z_{<0}} $$
