@@ -963,16 +963,15 @@ data:
     \    long long N;\n    combination() {\n        fac.resize(2, 1);\n        ifac.resize(2,\
     \ 1);\n        inv.resize(2, 1);\n        N = 1;\n    }\n\n    void reserve(long\
     \ long n) { expand(n); }\n\n    T operator()(int n, int k) { return C(n, k); }\n\
-    \n    T C(int n, int k) {\n        if (n < k) return 0;\n        if (n < 0 ||\
-    \ k < 0) return 0;\n        if (N < n) expand(n);\n        return fac[n] * ifac[n\
-    \ - k] % mod * ifac[k] % mod;\n    }\n\n    T P(int n, int k) {\n        if (n\
-    \ < k) return 0;\n        if (n < 0 || k < 0) return 0;\n        if (N < n) expand(n);\n\
-    \        return fac[n] * ifac[n - k] % mod;\n    }\n\n    T B(int n) {\n     \
-    \   if (N < n) expand(n);\n        return (n < 0 ? 0 : fac[n]);\n    }\n    T\
-    \ invB(int n) {\n        if (N < n) expand(n);\n        return (n < 0 ? 0 : ifac[n]);\n\
-    \    }\n\n    T H(int n, int k) {\n        if (n < 0 || k < 0) return 0;\n   \
-    \     if(n == 0) {\n            if(k == 0) return 1;\n            else return\
-    \ 0;\n        }\n        return C(n + k - 1, k);\n    }\n\n    T Cn(int n) { return\
+    \n    T C(int n, int k) {\n        if (k < 0) return 0;\n        if (k == 0) return\
+    \ 1;\n        if (n < k) return 0;\n        if (N < n) expand(n);\n        return\
+    \ fac[n] * ifac[n - k] % mod * ifac[k] % mod;\n    }\n\n    T P(int n, int k)\
+    \ {\n        if (k < 0) return 0;\n        if (k == 0) return 1;\n        if (n\
+    \ < k) return 0;\n        if (N < n) expand(n);\n        return fac[n] * ifac[n\
+    \ - k] % mod;\n    }\n\n    T B(int n) {\n        if (N < n) expand(n);\n    \
+    \    return (n < 0 ? 0 : fac[n]);\n    }\n    T invB(int n) {\n        if (N <\
+    \ n) expand(n);\n        return (n < 0 ? 0 : ifac[n]);\n    }\n\n    T H(int n,\
+    \ int k) {\n        return C(n + k - 1, k);\n    }\n\n    T Cn(int n) { return\
     \ C(2 * n, n) * inv[n + 1] % mod; }\n\n  private:\n    constexpr static bool is_prime_constexpr(long\
     \ long x) {\n        if (x <= 1) return false;\n        for (long long i = 2;\
     \ i * i <= x; i++) {\n            if (x % i == 0) return false;\n        }\n \
@@ -1037,7 +1036,7 @@ data:
   isVerificationFile: true
   path: verify/Math_combination.test.cpp
   requiredBy: []
-  timestamp: '2025-01-11 20:43:28+09:00'
+  timestamp: '2025-01-13 01:51:56+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Math_combination.test.cpp
