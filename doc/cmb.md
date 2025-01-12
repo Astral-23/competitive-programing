@@ -31,7 +31,7 @@ $O(n)$ 構築・自動拡張 combinationと付随する関数。
         - 重複あり組み合わせ
 
 
-- `ll Cn(int u)`... $\frac{\binom{2n}{n}}{(n+1)}$ 
+- `T Cn(int u)`... $\frac{\binom{2n}{n}}{(n+1)}$ 
     - 補遺
         - カタラン数
 
