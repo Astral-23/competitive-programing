@@ -1,9 +1,9 @@
 ## 概要
-O(N)構築 combinationと付随する関数。
+$O(n)$ 構築・自動拡張 combinationと付随する関数。  
+
 参考 : https://drken1215.hatenablog.com/entry/2018/06/08/210000
 
-## 省略できるもの
-コンストラクタとC(int n, int k)以外の関数はそれぞれ独立なので省略できます。及び、C(int n, int k)以外の関数のverifyはしていません。
+
 
 ## コンストラクタ
 `template<typename T, long long mod> cmb` ... modと戻り値の型を指定
