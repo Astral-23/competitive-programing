@@ -3,10 +3,10 @@ using vm = vector<mint>;
 struct fps : vm {
 #define d (*this)
 #define s int(vm::size())
-    fps(){}
+    fps() {}
     fps(vector<mint> a) : vm(a.begin(), a.end()) {}
-    void rsz(int n) {
-        if (s < n) resize(n);
+    void rsz(int n, mint val = 0) {
+        if (s < n) resize(n, val);
     }
     fps &low_(int n) {
         resize(n);
@@ -46,7 +46,7 @@ struct fps : vm {
     }
     fps &operator+=(const fps &a) {
         rsz(a.size());
-        for (int i = 0; i < a.size(); i++) d[i] += a[i];
+        for (int i = 0; i < int(a.size()); i++) d[i] += a[i];
         return d;
     }
     fps &operator+=(const mint &a) {
@@ -55,7 +55,7 @@ struct fps : vm {
     }
     fps &operator-=(const fps &a) {
         rsz(a.size());
-        for (int i = 0; i < a.size(); i++) d[i] -= a[i];
+        for (int i = 0; i < int(a.size()); i++) d[i] -= a[i];
         return d;
     }
     fps &operator-=(const mint &a) {
@@ -82,46 +82,31 @@ struct fps : vm {
     fps inv(int n = -1) const {
         if (n == -1) n = s;
         assert(d[0] != mint(0));
-        if (s < 30) {
-            mint p = d[0];
-            fps b = d / p;
-            fps r({1});
-            for (int i = 0; i < n; i++) {
-                for (int j = 1; j < b.size(); j++) {
-                    if (i - j >= 0) r[i] += (-b[j]) * r[i - j];
-                }
-            }
-            r /= p;
-            return r.low_(n);
-        } else {
-            fps r({d[0].inv()});
-            for (int i = 1; i < n; i <<= 1)
-                r = r * mint(2) - (r * r * low(i << 1)).low_(i << 1);
-            return r.low_(n);
-        }
+
+        fps r({d[0].inv()});
+        for (int i = 1; i < n; i <<= 1)
+            r = r * mint(2) - (r * r * low(i << 1)).low_(i << 1);
+        return r.low_(n);
     }
     fps &operator/=(const fps &a) {
         assert(a[0] != mint(0));
         int w = s + a.size();
-        if (a.size() < 30) {
-            mint p = a[0];
-            fps b = a / p;
-            for (int i = 0; i < w; i++) {
-                for (int j = 1; j < b.size(); j++)
-                    if (i - j >= 0) d[i] += (-b[j]) * d[i - j];
-            }
-            d /= p;
-            return d.low_(w);
-        } else {
-            d *= a.inv(w);
-            return d;
-        }
+
+        d *= a.inv(w);
+        return d;
     }
     fps operator/(const fps &a) const { return fps(d) /= a; }
     fps integral(int n = -1) const {
         fps r;
         if (n == -1) n = s;
-        rep(i, 0, n - 1) r[i + 1] = d[i] / (i + 1);
+        r.rsz(n, 1);
+        rep(i, 2, n) r[i] = r[i - 1] * i;
+        mint v = mint(1) / r.back();
+        rrep(i, 0, n - 1) {
+            r[i + 1] = d[i] * r[i] * v;
+            v *= (i + 1);
+        }
+        r[0] = 0;
         return r;
     }
     fps diff(int n = -1) const {
@@ -149,13 +134,12 @@ struct fps : vm {
 
     fps pow(ll y, int n = -1) const {
         if (n == -1) {
-            if(s == 0) {
+            if (s == 0) {
                 n = 0;
-            }
-            else {
+            } else {
                 n = (s - 1) * y + 1;
             }
-            if(y == 0) n = 1;
+            if (y == 0) n = 1;
         }
         if (!y) return fps({1}).low_(n);
 
