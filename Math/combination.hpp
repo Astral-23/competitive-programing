@@ -12,6 +12,24 @@ template <typename T, long long mod> struct combination {
 
     T operator()(int n, int k) { return C(n, k); }
 
+    T raw(long long n, long long k) const {
+        if (k < 0) return 0;
+        if (k == 0) return 1;
+        if (n < k) return 0;
+
+        if (n - k < k) {
+            k = n - k;
+        }
+        long long p = 1, q = 1;
+        for (long long i = 0; i < k; i++) {
+            p *= (n - i) % mod;
+            p %= mod;
+            q *= (k - i) % mod;
+            q %= mod;
+        }
+        return p * modinv(q) % mod;
+    }
+
     T C(int n, int k) {
         if (k < 0) return 0;
         if (k == 0) return 1;
@@ -37,9 +55,7 @@ template <typename T, long long mod> struct combination {
         return (n < 0 ? 0 : ifac[n]);
     }
 
-    T H(int n, int k) {
-        return C(n + k - 1, k);
-    }
+    T H(int n, int k) { return C(n + k - 1, k); }
 
     T Cn(int n) { return C(2 * n, n) * inv[n + 1] % mod; }
 
@@ -53,9 +69,13 @@ template <typename T, long long mod> struct combination {
     }
 
     static_assert(is_prime_constexpr(mod), "mod must be prime");
-    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX), "(mod - 1) * (mod - 1) <= LLONG_MAX must be satisfied");
+    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX),
+                  "(mod - 1) * (mod - 1) <= LLONG_MAX must be satisfied");
 
-    long long extgcd(long long a, long long b, long long &x, long long &y) {
+    long long extgcd(long long a,
+                     long long b,
+                     long long &x,
+                     long long &y) const {
         if (b == 0) {
             x = 1;
             y = 0;
@@ -66,7 +86,7 @@ template <typename T, long long mod> struct combination {
         return d;
     }
 
-    long long modinv(long long a) {
+    long long modinv(long long a) const {
         long long x, y;
         extgcd(a, mod, x, y);
         x %= mod;
@@ -99,9 +119,3 @@ template <typename T, long long mod> struct combination {
         return;
     }
 };
-
-using combination998244353 = combination<atcoder::modint998244353, 998244353>;
-/*
-@brief コンビネーション
-@docs doc/cmb.md
-*/
