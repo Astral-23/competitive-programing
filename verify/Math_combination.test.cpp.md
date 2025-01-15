@@ -1,71 +1,71 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Math/combination.hpp
-    title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
-  - icon: ':heavy_check_mark:'
+    title: Math/combination.hpp
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/convolution.hpp
     title: atcoder/convolution.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/dsu.hpp
     title: atcoder/dsu.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/fenwicktree.hpp
     title: atcoder/fenwicktree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_csr.hpp
     title: atcoder/internal_csr.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_math.hpp
     title: atcoder/internal_math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_queue.hpp
     title: atcoder/internal_queue.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_scc.hpp
     title: atcoder/internal_scc.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/internal_type_traits.hpp
     title: atcoder/internal_type_traits.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/math.hpp
     title: atcoder/math.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/maxflow.hpp
     title: atcoder/maxflow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/mincostflow.hpp
     title: atcoder/mincostflow.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/modint.hpp
     title: atcoder/modint.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/scc.hpp
     title: atcoder/scc.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/string.hpp
     title: atcoder/string.hpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: atcoder/twosat.hpp
     title: atcoder/twosat.hpp
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/4020
@@ -963,47 +963,52 @@ data:
     \    long long N;\n    combination() {\n        fac.resize(2, 1);\n        ifac.resize(2,\
     \ 1);\n        inv.resize(2, 1);\n        N = 1;\n    }\n\n    void reserve(long\
     \ long n) { expand(n); }\n\n    T operator()(int n, int k) { return C(n, k); }\n\
-    \n    T C(int n, int k) {\n        if (k < 0) return 0;\n        if (k == 0) return\
-    \ 1;\n        if (n < k) return 0;\n        if (N < n) expand(n);\n        return\
-    \ fac[n] * ifac[n - k] % mod * ifac[k] % mod;\n    }\n\n    T P(int n, int k)\
-    \ {\n        if (k < 0) return 0;\n        if (k == 0) return 1;\n        if (n\
-    \ < k) return 0;\n        if (N < n) expand(n);\n        return fac[n] * ifac[n\
-    \ - k] % mod;\n    }\n\n    T B(int n) {\n        if (N < n) expand(n);\n    \
-    \    return (n < 0 ? 0 : fac[n]);\n    }\n    T invB(int n) {\n        if (N <\
-    \ n) expand(n);\n        return (n < 0 ? 0 : ifac[n]);\n    }\n\n    T H(int n,\
-    \ int k) {\n        return C(n + k - 1, k);\n    }\n\n    T Cn(int n) { return\
-    \ C(2 * n, n) * inv[n + 1] % mod; }\n\n  private:\n    constexpr static bool is_prime_constexpr(long\
-    \ long x) {\n        if (x <= 1) return false;\n        for (long long i = 2;\
-    \ i * i <= x; i++) {\n            if (x % i == 0) return false;\n        }\n \
-    \       return true;\n    }\n\n    static_assert(is_prime_constexpr(mod), \"mod\
-    \ must be prime\");\n    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX),\
-    \ \"(mod - 1) * (mod - 1) <= LLONG_MAX must be satisfied\");\n\n    long long\
-    \ extgcd(long long a, long long b, long long &x, long long &y) {\n        if (b\
-    \ == 0) {\n            x = 1;\n            y = 0;\n            return a;\n   \
-    \     }\n        auto d = extgcd(b, a % b, y, x);\n        y -= a / b * x;\n \
-    \       return d;\n    }\n\n    long long modinv(long long a) {\n        long\
-    \ long x, y;\n        extgcd(a, mod, x, y);\n        x %= mod;\n        if (x\
-    \ < 0) x += mod;\n        return x;\n    }\n\n    void expand(long long new_max_n)\
-    \ {\n        if (new_max_n <= N) return;\n        long long nx = N;\n\n      \
-    \  // 2\u51AA\u3067\u5927\u304D\u304F\u3057\u3066\u3044\u304F\u3002\n        while\
-    \ (nx < new_max_n) nx <<= 1;\n        new_max_n = nx;\n\n        long long pre\
-    \ = N;\n        N = new_max_n;\n        fac.resize(N + 1);\n        ifac.resize(N\
-    \ + 1);\n        inv.resize(N + 1);\n        for (long long i = pre + 1; i <=\
-    \ N; i++) {\n            fac[i] = fac[i - 1] * i % mod;\n        }\n        ifac[N]\
-    \ = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N - 1] % mod;\n        for\
-    \ (long long i = N - 1; i >= pre + 1; i--) {\n            ifac[i] = ifac[i + 1]\
-    \ * (i + 1) % mod;\n            inv[i] = ifac[i] * fac[i - 1] % mod;\n       \
-    \ }\n        return;\n    }\n};\n\nusing combination998244353 = combination<atcoder::modint998244353,\
-    \ 998244353>;\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n@docs\
-    \ doc/cmb.md\n*/\n#line 5 \"verify/Math_combination.test.cpp\"\n\n\n/*\n@brief\
-    \ \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint = atcoder::modint998244353;\n\
-    combination998244353 cmb;\n\nint main() {\n    ll N, M, T;\n    cin >> N >> M\
-    \ >> T;\n\n    mint p = 0;\n\n    rep(k, 1, N + 1) {\n        mint s = 1;\n  \
-    \      mint ue = M * N - k * M;\n\n        rep(t, 1, T + 1) {\n            mint\
-    \ rev = M * N - (t - 1);\n            s *= ue * (rev.inv());\n            ue -=\
-    \ 1;\n        }\n\n        s *= cmb.C(N, k);\n        if (k % 2 == 1)\n      \
-    \      p += s;\n        else\n            p -= s;\n    }\n\n    cout << (1 - p).val()\
-    \ << endl;\n}\n"
+    \n    T raw(long long n, long long k) const {\n        if (k < 0) return 0;\n\
+    \        if (k == 0) return 1;\n        if (n < k) return 0;\n\n        if (n\
+    \ - k < k) {\n            k = n - k;\n        }\n        long long p = 1, q =\
+    \ 1;\n        for (long long i = 0; i < k; i++) {\n            p *= (n - i) %\
+    \ mod;\n            p %= mod;\n            q *= (k - i) % mod;\n            q\
+    \ %= mod;\n        }\n        return p * modinv(q) % mod;\n    }\n\n    T C(int\
+    \ n, int k) {\n        if (k < 0) return 0;\n        if (k == 0) return 1;\n \
+    \       if (n < k) return 0;\n        if (N < n) expand(n);\n        return fac[n]\
+    \ * ifac[n - k] % mod * ifac[k] % mod;\n    }\n\n    T P(int n, int k) {\n   \
+    \     if (k < 0) return 0;\n        if (k == 0) return 1;\n        if (n < k)\
+    \ return 0;\n        if (N < n) expand(n);\n        return fac[n] * ifac[n - k]\
+    \ % mod;\n    }\n\n    T B(int n) {\n        if (N < n) expand(n);\n        return\
+    \ (n < 0 ? 0 : fac[n]);\n    }\n    T invB(int n) {\n        if (N < n) expand(n);\n\
+    \        return (n < 0 ? 0 : ifac[n]);\n    }\n\n    T H(int n, int k) { return\
+    \ C(n + k - 1, k); }\n\n    T Cn(int n) { return C(2 * n, n) * inv[n + 1] % mod;\
+    \ }\n\n  private:\n    constexpr static bool is_prime_constexpr(long long x) {\n\
+    \        if (x <= 1) return false;\n        for (long long i = 2; i * i <= x;\
+    \ i++) {\n            if (x % i == 0) return false;\n        }\n        return\
+    \ true;\n    }\n\n    static_assert(is_prime_constexpr(mod), \"mod must be prime\"\
+    );\n    static_assert(__int128_t(mod - 1) * (mod - 1) <= __int128_t(LLONG_MAX),\n\
+    \                  \"(mod - 1) * (mod - 1) <= LLONG_MAX must be satisfied\");\n\
+    \n    long long extgcd(long long a,\n                     long long b,\n     \
+    \                long long &x,\n                     long long &y) const {\n \
+    \       if (b == 0) {\n            x = 1;\n            y = 0;\n            return\
+    \ a;\n        }\n        auto d = extgcd(b, a % b, y, x);\n        y -= a / b\
+    \ * x;\n        return d;\n    }\n\n    long long modinv(long long a) const {\n\
+    \        long long x, y;\n        extgcd(a, mod, x, y);\n        x %= mod;\n \
+    \       if (x < 0) x += mod;\n        return x;\n    }\n\n    void expand(long\
+    \ long new_max_n) {\n        if (new_max_n <= N) return;\n        long long nx\
+    \ = N;\n\n        // 2\u51AA\u3067\u5927\u304D\u304F\u3057\u3066\u3044\u304F\u3002\
+    \n        while (nx < new_max_n) nx <<= 1;\n        new_max_n = nx;\n\n      \
+    \  long long pre = N;\n        N = new_max_n;\n        fac.resize(N + 1);\n  \
+    \      ifac.resize(N + 1);\n        inv.resize(N + 1);\n        for (long long\
+    \ i = pre + 1; i <= N; i++) {\n            fac[i] = fac[i - 1] * i % mod;\n  \
+    \      }\n        ifac[N] = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N\
+    \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
+    \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
+    \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n#line 5 \"verify/Math_combination.test.cpp\"\
+    \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
+    \ = atcoder::modint998244353;\ncombination998244353 cmb;\n\nint main() {\n   \
+    \ ll N, M, T;\n    cin >> N >> M >> T;\n\n    mint p = 0;\n\n    rep(k, 1, N +\
+    \ 1) {\n        mint s = 1;\n        mint ue = M * N - k * M;\n\n        rep(t,\
+    \ 1, T + 1) {\n            mint rev = M * N - (t - 1);\n            s *= ue *\
+    \ (rev.inv());\n            ue -= 1;\n        }\n\n        s *= cmb.C(N, k);\n\
+    \        if (k % 2 == 1)\n            p += s;\n        else\n            p -=\
+    \ s;\n    }\n\n    cout << (1 - p).val() << endl;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/4020\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../atcoder/all\"\n#include \"../Math/combination.hpp\"\
     \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
@@ -1038,8 +1043,8 @@ data:
   isVerificationFile: true
   path: verify/Math_combination.test.cpp
   requiredBy: []
-  timestamp: '2025-01-13 05:44:44+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-01-16 07:36:07+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/Math_combination.test.cpp
 layout: document

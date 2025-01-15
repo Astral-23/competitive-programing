@@ -181,9 +181,9 @@ data:
       title: "\u4E8C\u91CD\u8FBA\u9023\u7D50\u6210\u5206\u5206\u89E3"
   - name: Math
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Math/combination.hpp
-      title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
+      title: Math/combination.hpp
     - icon: ':heavy_check_mark:'
       path: Math/ext_gcd.hpp
       title: ext_ecd
@@ -254,7 +254,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -262,58 +262,58 @@ data:
       title: Timer
   - name: atcoder
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/convolution.hpp
       title: atcoder/convolution.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/dsu.hpp
       title: atcoder/dsu.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/fenwicktree.hpp
       title: atcoder/fenwicktree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/internal_bit.hpp
       title: atcoder/internal_bit.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/internal_csr.hpp
       title: atcoder/internal_csr.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/internal_math.hpp
       title: atcoder/internal_math.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/internal_queue.hpp
       title: atcoder/internal_queue.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/internal_scc.hpp
       title: atcoder/internal_scc.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/internal_type_traits.hpp
       title: atcoder/internal_type_traits.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/lazysegtree.hpp
       title: atcoder/lazysegtree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/math.hpp
       title: atcoder/math.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/maxflow.hpp
       title: atcoder/maxflow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/mincostflow.hpp
       title: atcoder/mincostflow.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/modint.hpp
       title: atcoder/modint.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/scc.hpp
       title: atcoder/scc.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/segtree.hpp
       title: atcoder/segtree.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/string.hpp
       title: atcoder/string.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: atcoder/twosat.hpp
       title: atcoder/twosat.hpp
   - name: .
@@ -500,7 +500,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Graph_scc_old.test.cpp
       title: verify/Graph_scc_old.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/Math_combination.test.cpp
       title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
     - icon: ':heavy_check_mark:'
