@@ -10,6 +10,7 @@
 "verify/Datastructure_2dbit_imos.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_2dsegtree_add.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_2dsegtree_max.test.cpp": "2025-01-10 00:00:54 +0900",
+"verify/Datastructure_DST.test.cpp": "2025-01-18 06:13:30 +0900",
 "verify/Datastructure_binary_trie.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_binary_trie_xor.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_dsu.test.cpp": "2025-01-10 00:00:54 +0900",
