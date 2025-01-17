@@ -105,6 +105,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/range_edge_graph.hpp
       title: "\u533A\u9593\u306B\u8FBA\u3092\u8CBC\u308B\u30C6\u30AF"
+    - icon: ':x:'
+      path: Datastructure/rangeset.hpp
+      title: Datastructure/rangeset.hpp
     - icon: ':heavy_check_mark:'
       path: Datastructure/segtree.hpp
       title: segtree
@@ -254,7 +257,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -440,6 +443,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_potential_dsu.test.cpp
       title: verify/Datastructure_potential_dsu.test.cpp
+    - icon: ':x:'
+      path: verify/Datastructure_rangeset.test.cpp
+      title: verify/Datastructure_rangeset.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_seg_prod.test.cpp
       title: verify/Datastructure_seg_prod.test.cpp
