@@ -24,6 +24,7 @@
 "verify/Datastructure_pbds_set.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_point_add_rec_sum.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_potential_dsu.test.cpp": "2025-01-10 00:00:54 +0900",
+"verify/Datastructure_rangeset.test.cpp": "2025-01-18 00:15:39 +0900",
 "verify/Datastructure_seg_prod.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_segtree.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_simpletreap.test.cpp": "2025-01-10 00:00:54 +0900",
