@@ -38,7 +38,9 @@ $O(n)$ 構築・自動拡張 combinationと付随する関数。
     - 補遺
         - カタラン数
 
-
+- `T raw(long long n, long long r)`... $\binom{n}{r}$
+    - 計算量
+        - $O(\min (r, n - r))$
 ## 負の二項係数の扱い
 $a> 0, \quad b \in \mathbb{Z}$ とする.
 

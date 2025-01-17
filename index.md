@@ -183,7 +183,7 @@ data:
     pages:
     - icon: ':question:'
       path: Math/combination.hpp
-      title: Math/combination.hpp
+      title: combination
     - icon: ':heavy_check_mark:'
       path: Math/ext_gcd.hpp
       title: ext_ecd

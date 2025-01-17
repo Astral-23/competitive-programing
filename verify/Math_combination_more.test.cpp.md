@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':question:'
     path: Math/combination.hpp
-    title: Math/combination.hpp
+    title: combination
   - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
@@ -1028,8 +1028,9 @@ data:
     \      }\n        ifac[N] = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N\
     \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
     \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
-    \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n#line 6 \"verify/Math_combination_more.test.cpp\"\
-    \n\n\n\nusing pll = pair<long long, long long>;\nusing mint = modint<1'00'000'007>;\n\
+    \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n/*\n@brief combination\n\
+    @docs doc/cmb.md\n*/\n#line 6 \"verify/Math_combination_more.test.cpp\"\n\n\n\n\
+    using pll = pair<long long, long long>;\nusing mint = modint<1'00'000'007>;\n\
     //\u30B0\u30EA\u30C3\u30C9\u3067 \u2192 \u304B\u3089\u534A\u6642\u8A08 \u6CE8\
     \ : \u5EA7\u6A19\u3060\u3068\u2192\u304B\u3089\u6642\u8A08\u56DE\u308A\nvector<int>\
     \ dx = {1, 1, 0, -1, -1, -1, 0, 1, 0};\nvector<int> dy = {0, -1, -1, -1, 0, 1,\
@@ -1079,7 +1080,7 @@ data:
   isVerificationFile: true
   path: verify/Math_combination_more.test.cpp
   requiredBy: []
-  timestamp: '2025-01-16 07:36:07+09:00'
+  timestamp: '2025-01-17 23:56:54+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Math_combination_more.test.cpp

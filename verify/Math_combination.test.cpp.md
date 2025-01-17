@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':question:'
     path: Math/combination.hpp
-    title: Math/combination.hpp
+    title: combination
   - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -1000,15 +1000,16 @@ data:
     \      }\n        ifac[N] = modinv(fac[N]);\n        inv[N] = ifac[N] * fac[N\
     \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
     \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
-    \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n#line 5 \"verify/Math_combination.test.cpp\"\
-    \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
-    \ = atcoder::modint998244353;\ncombination998244353 cmb;\n\nint main() {\n   \
-    \ ll N, M, T;\n    cin >> N >> M >> T;\n\n    mint p = 0;\n\n    rep(k, 1, N +\
-    \ 1) {\n        mint s = 1;\n        mint ue = M * N - k * M;\n\n        rep(t,\
-    \ 1, T + 1) {\n            mint rev = M * N - (t - 1);\n            s *= ue *\
-    \ (rev.inv());\n            ue -= 1;\n        }\n\n        s *= cmb.C(N, k);\n\
-    \        if (k % 2 == 1)\n            p += s;\n        else\n            p -=\
-    \ s;\n    }\n\n    cout << (1 - p).val() << endl;\n}\n"
+    \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n/*\n@brief combination\n\
+    @docs doc/cmb.md\n*/\n#line 5 \"verify/Math_combination.test.cpp\"\n\n\n/*\n@brief\
+    \ \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint = atcoder::modint998244353;\n\
+    combination998244353 cmb;\n\nint main() {\n    ll N, M, T;\n    cin >> N >> M\
+    \ >> T;\n\n    mint p = 0;\n\n    rep(k, 1, N + 1) {\n        mint s = 1;\n  \
+    \      mint ue = M * N - k * M;\n\n        rep(t, 1, T + 1) {\n            mint\
+    \ rev = M * N - (t - 1);\n            s *= ue * (rev.inv());\n            ue -=\
+    \ 1;\n        }\n\n        s *= cmb.C(N, k);\n        if (k % 2 == 1)\n      \
+    \      p += s;\n        else\n            p -= s;\n    }\n\n    cout << (1 - p).val()\
+    \ << endl;\n}\n"
   code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/4020\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../atcoder/all\"\n#include \"../Math/combination.hpp\"\
     \n\n\n/*\n@brief \u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3\n*/\nusing mint\
@@ -1043,7 +1044,7 @@ data:
   isVerificationFile: true
   path: verify/Math_combination.test.cpp
   requiredBy: []
-  timestamp: '2025-01-16 07:36:07+09:00'
+  timestamp: '2025-01-17 23:56:54+09:00'
   verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/Math_combination.test.cpp
