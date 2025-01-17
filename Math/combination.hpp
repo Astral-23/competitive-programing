@@ -123,3 +123,4 @@ template <typename T, long long mod> struct combination {
 @brief combination
 @docs doc/cmb.md
 */
+using combination998244353 = combination<atcoder::modint998244353, 998244353>;
