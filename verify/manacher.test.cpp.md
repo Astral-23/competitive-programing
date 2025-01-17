@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: String/manacher.hpp
     title: String/manacher.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

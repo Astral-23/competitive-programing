@@ -1,40 +1,40 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/rangeset.hpp
     title: Datastructure/rangeset.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://onlinejudge.u-aizu.ac.jp/beta/room.html#RitsCamp18Day1/problems/G
+    PROBLEM: https://onlinejudge.u-aizu.ac.jp/problems/2880
     links:
-    - https://onlinejudge.u-aizu.ac.jp/beta/room.html#RitsCamp18Day1/problems/G
+    - https://onlinejudge.u-aizu.ac.jp/problems/2880
   bundledCode: "#line 1 \"verify/Datastructure_rangeset.test.cpp\"\n#define PROBLEM\
-    \ \"https://onlinejudge.u-aizu.ac.jp/beta/room.html#RitsCamp18Day1/problems/G\"\
-    \n#line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace\
-    \ std;\nusing ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t);\
-    \ i++)\n#define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define\
-    \ all(x) begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec =\
-    \ vector<T>;\ntemplate <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return\
-    \ x > y ? (x = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1\
-    \ &x, T2 y) {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n\
-    \    io_setup() {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n\
-    \        cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief\
-    \ verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/rangeset.hpp\"\
-    \ntemplate <typename T, bool merge_adju> struct rangeset : public std::map<T,\
-    \ T> {\n    rangeset() {}\n    auto get(T p) const {\n        auto it = (*this).upper_bound(p);\n\
-    \        if (it == (*this).begin() || (--it)->second <= p) return (*this).end();\n\
-    \        return it;\n    }\n\n    //[l, r)\n    void insert(T l, T r) {\n    \
-    \    if (l == r) return;\n        assert(l <= r);\n        auto itl = (*this).upper_bound(l),\n\
-    \             itr = (*this).lower_bound(r + merge_adju);\n        if (itl != (*this).begin()\
+    \ \"https://onlinejudge.u-aizu.ac.jp/problems/2880\"\n#line 1 \"Utility/template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
+    \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
+    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
+    \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
+    \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
+    template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Datastructure/rangeset.hpp\"\ntemplate <typename T, bool merge_adju>\
+    \ struct rangeset : public std::map<T, T> {\n    rangeset() {}\n    auto get(T\
+    \ p) const {\n        auto it = (*this).upper_bound(p);\n        if (it == (*this).begin()\
+    \ || (--it)->second <= p) return (*this).end();\n        return it;\n    }\n\n\
+    \    //[l, r)\n    void insert(T l, T r) {\n        if (l == r) return;\n    \
+    \    assert(l <= r);\n        auto itl = (*this).upper_bound(l),\n           \
+    \  itr = (*this).lower_bound(r + merge_adju);\n        if (itl != (*this).begin()\
     \ && (--itl)->second + merge_adju <= l) {\n            ++itl;\n        }\n\n \
     \       if (itl != itr) {\n            if (itl->first < l) l = itl->first;\n \
     \           if (prev(itr)->second > r) r = prev(itr)->second;\n            map<T,\
@@ -71,9 +71,9 @@ data:
     \ rs.insert(a, b);\n        }\n    }\n\n    rep(i, 0, q) {\n        if (ans[i])\
     \ {\n            cout << \"Yes\" << endl;\n        } else {\n            cout\
     \ << \"No\" << endl;\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/beta/room.html#RitsCamp18Day1/problems/G\"\
-    \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/rangeset.hpp\"\
-    \n\nint main() {\n    ll n, m, q;\n    cin >> n >> m >> q;\n    using P = array<ll,\
+  code: "#define PROBLEM \"https://onlinejudge.u-aizu.ac.jp/problems/2880\"\n#include\
+    \ \"../Utility/template.hpp\"\n#include \"../Datastructure/rangeset.hpp\"\n\n\
+    int main() {\n    ll n, m, q;\n    cin >> n >> m >> q;\n    using P = array<ll,\
     \ 4>;\n\n    rangeset<ll, false> rs;\n    vec<P> es;\n    rep(i, 0, m) {\n   \
     \     ll d, a, b;\n        cin >> d >> a >> b;\n        a--;\n        es.push_back(P{d,\
     \ 1, a, b});\n    }\n\n    rep(i, 0, q) {\n        ll e, s, t;\n        cin >>\
@@ -90,8 +90,8 @@ data:
   isVerificationFile: true
   path: verify/Datastructure_rangeset.test.cpp
   requiredBy: []
-  timestamp: '2025-01-18 00:12:50+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-01-18 00:15:39+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_rangeset.test.cpp
 layout: document

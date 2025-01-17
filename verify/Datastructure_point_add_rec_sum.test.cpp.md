@@ -8,7 +8,7 @@ data:
     path: Datastructure/online2dseg.hpp
     title: "\u5DE8\u5927\u306A\u30B0\u30EA\u30C3\u30C9\u3078\u306E1\u70B9\u52A0\u7B97\
       \u30FB\u77E9\u5F62\u548C"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
