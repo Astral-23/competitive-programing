@@ -1,67 +1,67 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Math/combination.hpp
     title: combination
   - icon: ':heavy_check_mark:'
     path: Utility/modint.hpp
     title: modint
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/convolution.hpp
     title: atcoder/convolution.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/dsu.hpp
     title: atcoder/dsu.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/fenwicktree.hpp
     title: atcoder/fenwicktree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_bit.hpp
     title: atcoder/internal_bit.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_csr.hpp
     title: atcoder/internal_csr.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_math.hpp
     title: atcoder/internal_math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_queue.hpp
     title: atcoder/internal_queue.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_scc.hpp
     title: atcoder/internal_scc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/internal_type_traits.hpp
     title: atcoder/internal_type_traits.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/lazysegtree.hpp
     title: atcoder/lazysegtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/math.hpp
     title: atcoder/math.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/maxflow.hpp
     title: atcoder/maxflow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/mincostflow.hpp
     title: atcoder/mincostflow.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/modint.hpp
     title: atcoder/modint.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/scc.hpp
     title: atcoder/scc.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/segtree.hpp
     title: atcoder/segtree.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/string.hpp
     title: atcoder/string.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: atcoder/twosat.hpp
     title: atcoder/twosat.hpp
   _extendedRequiredBy: []
@@ -1029,18 +1029,19 @@ data:
     \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
     \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
     \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n/*\n@brief combination\n\
-    @docs doc/cmb.md\n*/\n#line 6 \"verify/Math_combination_more.test.cpp\"\n\n\n\n\
-    using pll = pair<long long, long long>;\nusing mint = modint<1'00'000'007>;\n\
-    //\u30B0\u30EA\u30C3\u30C9\u3067 \u2192 \u304B\u3089\u534A\u6642\u8A08 \u6CE8\
-    \ : \u5EA7\u6A19\u3060\u3068\u2192\u304B\u3089\u6642\u8A08\u56DE\u308A\nvector<int>\
-    \ dx = {1, 1, 0, -1, -1, -1, 0, 1, 0};\nvector<int> dy = {0, -1, -1, -1, 0, 1,\
-    \ 1, 1, 0};\n\nint main() {\n    combination<mint, 1'00'000'007> cmb;\n    ll\
-    \ h, w, sy, sx, ty, tx;\n    cin >> h >> w >> sy >> sx >> ty >> tx;\n    map<ll,\
-    \ vec<pll>> tar;\n    rep(k, 0, 9) {\n        ll ny = ty + dy[k] * h;\n      \
-    \  ll nx = tx + dx[k] * w;\n        tar[abs(sx - nx) + abs(ny - sy)].emplace_back(nx,\
-    \ ny);\n    }\n\n    mint ret = 0;\n\n    auto v = *tar.begin();\n    for(auto\
-    \ [x, y] : v.second) {\n         ret += cmb(abs(sx - x) + abs(sy - y), abs(sx\
-    \ - x));\n\n    }\n   \n    cout << ret << endl;\n\n\n}\n"
+    @docs doc/cmb.md\n*/\nusing combination998244353 = combination<atcoder::modint998244353,\
+    \ 998244353>;\n#line 6 \"verify/Math_combination_more.test.cpp\"\n\n\n\nusing\
+    \ pll = pair<long long, long long>;\nusing mint = modint<1'00'000'007>;\n//\u30B0\
+    \u30EA\u30C3\u30C9\u3067 \u2192 \u304B\u3089\u534A\u6642\u8A08 \u6CE8 : \u5EA7\
+    \u6A19\u3060\u3068\u2192\u304B\u3089\u6642\u8A08\u56DE\u308A\nvector<int> dx =\
+    \ {1, 1, 0, -1, -1, -1, 0, 1, 0};\nvector<int> dy = {0, -1, -1, -1, 0, 1, 1, 1,\
+    \ 0};\n\nint main() {\n    combination<mint, 1'00'000'007> cmb;\n    ll h, w,\
+    \ sy, sx, ty, tx;\n    cin >> h >> w >> sy >> sx >> ty >> tx;\n    map<ll, vec<pll>>\
+    \ tar;\n    rep(k, 0, 9) {\n        ll ny = ty + dy[k] * h;\n        ll nx = tx\
+    \ + dx[k] * w;\n        tar[abs(sx - nx) + abs(ny - sy)].emplace_back(nx, ny);\n\
+    \    }\n\n    mint ret = 0;\n\n    auto v = *tar.begin();\n    for(auto [x, y]\
+    \ : v.second) {\n         ret += cmb(abs(sx - x) + abs(sy - y), abs(sx - x));\n\
+    \n    }\n   \n    cout << ret << endl;\n\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=1501\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../atcoder/all\"\n#include\
     \ \"../Utility/modint.hpp\"\n#include \"../Math/combination.hpp\"\n\n\n\nusing\
@@ -1080,7 +1081,7 @@ data:
   isVerificationFile: true
   path: verify/Math_combination_more.test.cpp
   requiredBy: []
-  timestamp: '2025-01-17 23:56:54+09:00'
+  timestamp: '2025-01-17 23:58:33+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Math_combination_more.test.cpp

@@ -3,15 +3,15 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Math_combination.test.cpp
     title: "\u30B3\u30F3\u30D3\u30CD\u30FC\u30B7\u30E7\u30F3"
   - icon: ':heavy_check_mark:'
     path: verify/Math_combination_more.test.cpp
     title: verify/Math_combination_more.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     _deprecated_at_docs: doc/cmb.md
     document_title: combination
@@ -59,7 +59,8 @@ data:
     \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
     \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
     \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n/*\n@brief combination\n\
-    @docs doc/cmb.md\n*/\n"
+    @docs doc/cmb.md\n*/\nusing combination998244353 = combination<atcoder::modint998244353,\
+    \ 998244353>;\n"
   code: "template <typename T, long long mod> struct combination {\n    vector<long\
     \ long> fac, ifac, inv;\n    long long N;\n    combination() {\n        fac.resize(2,\
     \ 1);\n        ifac.resize(2, 1);\n        inv.resize(2, 1);\n        N = 1;\n\
@@ -102,13 +103,14 @@ data:
     \ - 1] % mod;\n        for (long long i = N - 1; i >= pre + 1; i--) {\n      \
     \      ifac[i] = ifac[i + 1] * (i + 1) % mod;\n            inv[i] = ifac[i] *\
     \ fac[i - 1] % mod;\n        }\n        return;\n    }\n};\n/*\n@brief combination\n\
-    @docs doc/cmb.md\n*/"
+    @docs doc/cmb.md\n*/\nusing combination998244353 = combination<atcoder::modint998244353,\
+    \ 998244353>;"
   dependsOn: []
   isVerificationFile: false
   path: Math/combination.hpp
   requiredBy: []
-  timestamp: '2025-01-17 23:56:54+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  timestamp: '2025-01-17 23:58:33+09:00'
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Math_combination.test.cpp
   - verify/Math_combination_more.test.cpp
