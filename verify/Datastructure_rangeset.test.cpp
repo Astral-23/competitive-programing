@@ -1,4 +1,4 @@
-#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/beta/room.html#RitsCamp18Day1/problems/G"
+#define PROBLEM "https://onlinejudge.u-aizu.ac.jp/problems/2880"
 #include "../Utility/template.hpp"
 #include "../Datastructure/rangeset.hpp"
 
