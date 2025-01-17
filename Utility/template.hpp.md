@@ -61,6 +61,9 @@ data:
     path: verify/Datastructure_2dsegtree_max.test.cpp
     title: verify/Datastructure_2dsegtree_max.test.cpp
   - icon: ':heavy_check_mark:'
+    path: verify/Datastructure_DST.test.cpp
+    title: verify/Datastructure_DST.test.cpp
+  - icon: ':heavy_check_mark:'
     path: verify/Datastructure_binary_trie.test.cpp
     title: verify/Datastructure_binary_trie.test.cpp
   - icon: ':heavy_check_mark:'
@@ -356,6 +359,7 @@ data:
   - verify/Math_combination_more.test.cpp
   - verify/Datastructure_imos2d.test.cpp
   - verify/manacher.test.cpp
+  - verify/Datastructure_DST.test.cpp
   - verify/Algorithm_bisect_min_left.test.cpp
   - verify/Datastructure_value_dsu.test.cpp
   - verify/hld_lca.test.cpp

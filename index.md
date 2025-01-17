@@ -59,6 +59,9 @@ data:
       path: Datastructure/binarytrie.hpp
       title: binary_trie
     - icon: ':heavy_check_mark:'
+      path: Datastructure/disjoint_sparse_table.hpp
+      title: disjoint_sparse_table
+    - icon: ':heavy_check_mark:'
       path: Datastructure/dsu.hpp
       title: dsu
     - icon: ':heavy_check_mark:'
@@ -401,6 +404,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_2dsegtree_max.test.cpp
       title: verify/Datastructure_2dsegtree_max.test.cpp
+    - icon: ':heavy_check_mark:'
+      path: verify/Datastructure_DST.test.cpp
+      title: verify/Datastructure_DST.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_binary_trie.test.cpp
       title: verify/Datastructure_binary_trie.test.cpp
