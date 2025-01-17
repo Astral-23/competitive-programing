@@ -119,3 +119,7 @@ template <typename T, long long mod> struct combination {
         return;
     }
 };
+/*
+@brief combination
+@docs doc/cmb.md
+*/
