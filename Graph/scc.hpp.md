@@ -22,17 +22,17 @@ data:
     \ {}\n};\n\ntemplate <typename T, bool directed> struct Graph : vector<vector<Edge<T>>>\
     \ {\n#define n int(this->size())\n#define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\
     \n  private:\n    bool chmin(T &x, T y) const { return x > y ? (x = y, true) :\
-    \ false; }\n\n  public:\n\n\n    void add(int s, int t, T w, int id = -1) {\n\
-    \        (*this)[s].emplace_back(t, w, id);\n        if constexpr (directed ==\
-    \ false) {\n            (*this)[t].emplace_back(s, w, id);\n        }\n    }\n\
-    \n\n    vector<T> DFS(int s) const {\n        assert(0 <= s && s < n);\n     \
-    \   vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int> que;\n       \
-    \ que.push(s);\n        while (que.empty() == false) {\n            int v = que.front();\n\
-    \            que.pop();\n            for (auto e : (*this)[v]) {\n           \
-    \     assert(e.cost == 1);\n                if (chmin(d[e.to], d[v] + e.cost))\
-    \ {\n                    que.push(e.to);\n                }\n            }\n \
-    \       }\n        return d;\n    }\n\n    vector<T> dijkstra(int s) const {\n\
-    \        vector<T> d(n, inf);\n        d[s] = 0;\n        priority_queue<pair<T,\
+    \ false; }\n    bool chmax(T &x, T y) const { return x < y ? (x = y, true) : false;\
+    \ }\n\n  public:\n    void add(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
+    \ w, id);\n        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
+    \ w, id);\n        }\n    }\n\n    vector<T> DFS(int s) const {\n        assert(0\
+    \ <= s && s < n);\n        vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int>\
+    \ que;\n        que.push(s);\n        while (que.empty() == false) {\n       \
+    \     int v = que.front();\n            que.pop();\n            for (auto e :\
+    \ (*this)[v]) {\n                assert(e.cost == 1);\n                if (chmin(d[e.to],\
+    \ d[v] + e.cost)) {\n                    que.push(e.to);\n                }\n\
+    \            }\n        }\n        return d;\n    }\n\n    vector<T> dijkstra(int\
+    \ s) const {\n        vector<T> d(n, inf);\n        d[s] = 0;\n        priority_queue<pair<T,\
     \ int>, vector<pair<T, int>>,\n                       greater<pair<T, int>>>\n\
     \            que;\n        que.push({d[s], s});\n        while (que.empty() ==\
     \ false) {\n            auto [c, v] = que.top();\n            que.pop();\n   \
@@ -85,31 +85,54 @@ data:
     \ if (vs.empty() == false) {\n                    reverse(vs.begin(), vs.end());\n\
     \                    reverse(es.begin(), es.end());\n                    return\
     \ make_pair(vs, es);\n                }\n            }\n        }\n        return\
-    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n#line 2 \"Graph/scc.hpp\"\
-    \n\nnamespace SCC {\ntemplate <typename T> vector<int> ids(const Graph<T, true>\
-    \ &g) {\n    int n = g.size();\n    vector<int> vs, cmp(n, -1);\n    vec<bool>\
-    \ seen(n, false), nees(n, false);\n    Graph<T, true> rg(n);\n\n    rep(i, 0,\
-    \ n) for (auto e : g[i]) rg.add(e.to, i, e.cost, e.id);\n    auto dfs = [&](auto\
-    \ f, int v) -> void {\n        seen[v] = true;\n        for (auto e : g[v])\n\
-    \            if (!seen[e.to]) f(f, e.to);\n        vs.push_back(v);\n        return;\n\
-    \    };\n\n    int k = 0;\n\n    auto sfd = [&](auto f, int v) -> void {\n   \
-    \     nees[v] = true;\n        cmp[v] = k;\n        for (auto e : rg[v])\n   \
-    \         if (!nees[e.to]) f(f, e.to);\n        return;\n    };\n\n    rep(i,\
-    \ 0, n) if (!seen[i]) dfs(dfs, i);\n    rrep(i, 0, vs.size()) if (!nees[vs[i]])\
-    \ sfd(sfd, vs[i]), k++;\n    return cmp;\n}\n\ntemplate <typename T> vector<vector<int>>\
-    \ groups(const Graph<T, true> &g) {\n    int n = g.size();\n    vector<int> id\
-    \ = ids<T>(g);\n    vector<vector<int>> gs(n);\n    rep(i, 0, n) gs[id[i]].push_back(i);\n\
-    \    while (gs.empty() == false && gs.back().empty() == true) {\n        gs.pop_back();\n\
-    \    }\n    return gs;\n}\n\ntemplate <typename T> Graph<T, true> graph(const\
-    \ Graph<T, true> &g) {\n    vector<int> id = ids<T>(g);\n    int n = 0;\n    rep(i,\
-    \ 0, g.size()) chmax(n, id[i] + 1);\n\n    Graph<T, true> ng(n);\n    rep(i, 0,\
-    \ g.size()) for (auto e : g[i]) {\n        if (id[i] == id[e.to]) continue;\n\
-    \        ng.add(id[i], id[e.to], e.cost, e.id);\n    }\n    return ng;\n}\n\n\
-    template <typename T> Graph<T, true> graph_rev(const Graph<T, true> &g) {\n  \
-    \  auto ser = graph<T>(g);\n    int n = ser.size();\n    Graph<T, true> res(n);\n\
-    \    rep(i, 0, n) for (auto e : ser[i]) { res.add(e.to, i, e.cost, e.id); }\n\
-    \    return res;\n}\n\n}  // namespace SCC\n\n/*\n@brief scc(\u5F37\u9023\u7D50\
-    \u6210\u5206\u5206\u89E3)\n@docs doc/scc.md\n*/\n"
+    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n\ntemplate <typename\
+    \ T> struct Tree : Graph<T, false> {\n#define n int(this->size())\n#define inf\
+    \ Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\n    vector<T> dist(int\
+    \ s) const {\n        vector<T> res(n, inf);\n        res[s] = 0;\n        queue<int>\
+    \ que;\n        que.push(s);\n        while (!que.empty()) {\n            int\
+    \ v = que.front();\n            que.pop();\n            for (auto &e : (*this)[v])\n\
+    \                if (chmin(res[e.to], res[v] + e.cost)) {\n                  \
+    \  que.push(e.to);\n                }\n        }\n        return res;\n    }\n\
+    \n    vector<Edge<T>> path(int s, int t) const {\n        vector<Edge<T>> res;\n\
+    \        auto dfs = [&](auto f, int v, int p = -1) -> bool {\n            if (v\
+    \ == t) {\n                res.push_back(v);\n                return true;\n \
+    \           }\n\n            for (auto &e : (*this)[v])\n                if (e.to\
+    \ != p) {\n                    if (f(f, e.to, v)) {\n                        res.push_back(e);\n\
+    \                        return true;\n                    }\n               \
+    \ }\n            return false;\n        };\n\n        dfs(dfs, s);\n        return\
+    \ res;\n    }\n\n    // diam() ... (\u76F4\u5F84, (\u76F4\u5F84\u306E\u7AEFu,\
+    \ \u76F4\u5F84\u306E\u7AEFv))\n    pair<T, pair<int, int>> diam() const {\n  \
+    \      int u, v;\n        T d, tmp;\n        vector<T> ds = dist(0);\n       \
+    \ tmp = ds[0], u = 0;\n        for (int i = 1; i < n; i++) {\n            if (chmax(tmp,\
+    \ ds[i])) u = i;\n        }\n\n        vector<T> ds2 = dist(u);\n        d = ds2[0],\
+    \ v = 0;\n        for (int i = 1; i < n; i++) {\n            if (chmax(d, ds2[i]))\
+    \ v = i;\n        }\n        pair<T, pair<int, int>> res;\n        res.first =\
+    \ d;\n        res.second.first = u;\n        res.second.second = v;\n        return\
+    \ res;\n    }\n\n#undef n\n#undef inf\n};\n#line 2 \"Graph/scc.hpp\"\n\nnamespace\
+    \ SCC {\ntemplate <typename T> vector<int> ids(const Graph<T, true> &g) {\n  \
+    \  int n = g.size();\n    vector<int> vs, cmp(n, -1);\n    vec<bool> seen(n, false),\
+    \ nees(n, false);\n    Graph<T, true> rg(n);\n\n    rep(i, 0, n) for (auto e :\
+    \ g[i]) rg.add(e.to, i, e.cost, e.id);\n    auto dfs = [&](auto f, int v) -> void\
+    \ {\n        seen[v] = true;\n        for (auto e : g[v])\n            if (!seen[e.to])\
+    \ f(f, e.to);\n        vs.push_back(v);\n        return;\n    };\n\n    int k\
+    \ = 0;\n\n    auto sfd = [&](auto f, int v) -> void {\n        nees[v] = true;\n\
+    \        cmp[v] = k;\n        for (auto e : rg[v])\n            if (!nees[e.to])\
+    \ f(f, e.to);\n        return;\n    };\n\n    rep(i, 0, n) if (!seen[i]) dfs(dfs,\
+    \ i);\n    rrep(i, 0, vs.size()) if (!nees[vs[i]]) sfd(sfd, vs[i]), k++;\n   \
+    \ return cmp;\n}\n\ntemplate <typename T> vector<vector<int>> groups(const Graph<T,\
+    \ true> &g) {\n    int n = g.size();\n    vector<int> id = ids<T>(g);\n    vector<vector<int>>\
+    \ gs(n);\n    rep(i, 0, n) gs[id[i]].push_back(i);\n    while (gs.empty() == false\
+    \ && gs.back().empty() == true) {\n        gs.pop_back();\n    }\n    return gs;\n\
+    }\n\ntemplate <typename T> Graph<T, true> graph(const Graph<T, true> &g) {\n \
+    \   vector<int> id = ids<T>(g);\n    int n = 0;\n    rep(i, 0, g.size()) chmax(n,\
+    \ id[i] + 1);\n\n    Graph<T, true> ng(n);\n    rep(i, 0, g.size()) for (auto\
+    \ e : g[i]) {\n        if (id[i] == id[e.to]) continue;\n        ng.add(id[i],\
+    \ id[e.to], e.cost, e.id);\n    }\n    return ng;\n}\n\ntemplate <typename T>\
+    \ Graph<T, true> graph_rev(const Graph<T, true> &g) {\n    auto ser = graph<T>(g);\n\
+    \    int n = ser.size();\n    Graph<T, true> res(n);\n    rep(i, 0, n) for (auto\
+    \ e : ser[i]) { res.add(e.to, i, e.cost, e.id); }\n    return res;\n}\n\n}  //\
+    \ namespace SCC\n\n/*\n@brief scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)\n\
+    @docs doc/scc.md\n*/\n"
   code: "#include \"../Graph/graph.hpp\"\n\nnamespace SCC {\ntemplate <typename T>\
     \ vector<int> ids(const Graph<T, true> &g) {\n    int n = g.size();\n    vector<int>\
     \ vs, cmp(n, -1);\n    vec<bool> seen(n, false), nees(n, false);\n    Graph<T,\
@@ -140,7 +163,7 @@ data:
   isVerificationFile: false
   path: Graph/scc.hpp
   requiredBy: []
-  timestamp: '2025-01-11 19:57:43+09:00'
+  timestamp: '2025-01-20 10:32:40+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Graph_scc.test.cpp

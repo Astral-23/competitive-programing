@@ -35,17 +35,17 @@ data:
     \ <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define\
     \ n int(this->size())\n#define inf Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\
     \n  private:\n    bool chmin(T &x, T y) const { return x > y ? (x = y, true) :\
-    \ false; }\n\n  public:\n\n\n    void add(int s, int t, T w, int id = -1) {\n\
-    \        (*this)[s].emplace_back(t, w, id);\n        if constexpr (directed ==\
-    \ false) {\n            (*this)[t].emplace_back(s, w, id);\n        }\n    }\n\
-    \n\n    vector<T> DFS(int s) const {\n        assert(0 <= s && s < n);\n     \
-    \   vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int> que;\n       \
-    \ que.push(s);\n        while (que.empty() == false) {\n            int v = que.front();\n\
-    \            que.pop();\n            for (auto e : (*this)[v]) {\n           \
-    \     assert(e.cost == 1);\n                if (chmin(d[e.to], d[v] + e.cost))\
-    \ {\n                    que.push(e.to);\n                }\n            }\n \
-    \       }\n        return d;\n    }\n\n    vector<T> dijkstra(int s) const {\n\
-    \        vector<T> d(n, inf);\n        d[s] = 0;\n        priority_queue<pair<T,\
+    \ false; }\n    bool chmax(T &x, T y) const { return x < y ? (x = y, true) : false;\
+    \ }\n\n  public:\n    void add(int s, int t, T w, int id = -1) {\n        (*this)[s].emplace_back(t,\
+    \ w, id);\n        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
+    \ w, id);\n        }\n    }\n\n    vector<T> DFS(int s) const {\n        assert(0\
+    \ <= s && s < n);\n        vector<T> d(n, inf);\n        d[s] = 0;\n        queue<int>\
+    \ que;\n        que.push(s);\n        while (que.empty() == false) {\n       \
+    \     int v = que.front();\n            que.pop();\n            for (auto e :\
+    \ (*this)[v]) {\n                assert(e.cost == 1);\n                if (chmin(d[e.to],\
+    \ d[v] + e.cost)) {\n                    que.push(e.to);\n                }\n\
+    \            }\n        }\n        return d;\n    }\n\n    vector<T> dijkstra(int\
+    \ s) const {\n        vector<T> d(n, inf);\n        d[s] = 0;\n        priority_queue<pair<T,\
     \ int>, vector<pair<T, int>>,\n                       greater<pair<T, int>>>\n\
     \            que;\n        que.push({d[s], s});\n        while (que.empty() ==\
     \ false) {\n            auto [c, v] = que.top();\n            que.pop();\n   \
@@ -98,7 +98,30 @@ data:
     \ if (vs.empty() == false) {\n                    reverse(vs.begin(), vs.end());\n\
     \                    reverse(es.begin(), es.end());\n                    return\
     \ make_pair(vs, es);\n                }\n            }\n        }\n        return\
-    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n#line 4 \"verify/Graph_graph_cycle_detection_undirected.test.cpp\"\
+    \ make_pair(vs, es);\n    }\n\n#undef n\n#undef inf\n};\n\ntemplate <typename\
+    \ T> struct Tree : Graph<T, false> {\n#define n int(this->size())\n#define inf\
+    \ Edge<T>::INF\n    using vector<vector<Edge<T>>>::vector;\n\n    vector<T> dist(int\
+    \ s) const {\n        vector<T> res(n, inf);\n        res[s] = 0;\n        queue<int>\
+    \ que;\n        que.push(s);\n        while (!que.empty()) {\n            int\
+    \ v = que.front();\n            que.pop();\n            for (auto &e : (*this)[v])\n\
+    \                if (chmin(res[e.to], res[v] + e.cost)) {\n                  \
+    \  que.push(e.to);\n                }\n        }\n        return res;\n    }\n\
+    \n    vector<Edge<T>> path(int s, int t) const {\n        vector<Edge<T>> res;\n\
+    \        auto dfs = [&](auto f, int v, int p = -1) -> bool {\n            if (v\
+    \ == t) {\n                res.push_back(v);\n                return true;\n \
+    \           }\n\n            for (auto &e : (*this)[v])\n                if (e.to\
+    \ != p) {\n                    if (f(f, e.to, v)) {\n                        res.push_back(e);\n\
+    \                        return true;\n                    }\n               \
+    \ }\n            return false;\n        };\n\n        dfs(dfs, s);\n        return\
+    \ res;\n    }\n\n    // diam() ... (\u76F4\u5F84, (\u76F4\u5F84\u306E\u7AEFu,\
+    \ \u76F4\u5F84\u306E\u7AEFv))\n    pair<T, pair<int, int>> diam() const {\n  \
+    \      int u, v;\n        T d, tmp;\n        vector<T> ds = dist(0);\n       \
+    \ tmp = ds[0], u = 0;\n        for (int i = 1; i < n; i++) {\n            if (chmax(tmp,\
+    \ ds[i])) u = i;\n        }\n\n        vector<T> ds2 = dist(u);\n        d = ds2[0],\
+    \ v = 0;\n        for (int i = 1; i < n; i++) {\n            if (chmax(d, ds2[i]))\
+    \ v = i;\n        }\n        pair<T, pair<int, int>> res;\n        res.first =\
+    \ d;\n        res.second.first = u;\n        res.second.second = v;\n        return\
+    \ res;\n    }\n\n#undef n\n#undef inf\n};\n#line 4 \"verify/Graph_graph_cycle_detection_undirected.test.cpp\"\
     \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, false> cyc(n);\n\
     \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add(u,\
     \ v, 0, i);\n    }\n    auto [vs, es] = cyc.cycle_detection();\n    if (vs.empty())\
@@ -119,7 +142,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_cycle_detection_undirected.test.cpp
   requiredBy: []
-  timestamp: '2025-01-11 19:55:32+09:00'
+  timestamp: '2025-01-20 10:32:40+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_cycle_detection_undirected.test.cpp
