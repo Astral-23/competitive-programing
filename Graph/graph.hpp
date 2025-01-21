@@ -195,6 +195,7 @@ pair<vector<int>, vector<int>> cycle_detection(Graph<T, directed> const &g,
 namespace Tree_lib {
 #define inf Edge<T>::INF
 template <typename T> vector<T> dist(Tree<T> const &tr, int s) {
+    int n = tr.size();
     vector<T> res(n, inf);
     res[s] = 0;
     queue<int> que;
@@ -211,6 +212,7 @@ template <typename T> vector<T> dist(Tree<T> const &tr, int s) {
 }
 
 template <typename T> vector<Edge<T>> path(Tree<T> const &tr, int s, int t) {
+    int n = tr.size();
     vector<Edge<T>> res;
     auto dfs = [&](auto f, int v, int p = -1) -> bool {
         if (v == t) {
@@ -234,6 +236,7 @@ template <typename T> vector<Edge<T>> path(Tree<T> const &tr, int s, int t) {
 
 // diam() ... (直径, (直径の端u, 直径の端v))
 template <typename T> pair<T, pair<int, int>> diam(Tree<T> const &tr) {
+    int n = tr.size();
     int u, v;
     T d, tmp;
     vector<T> ds = dist(tr, 0);
