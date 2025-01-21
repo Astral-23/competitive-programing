@@ -11,7 +11,7 @@ int main() {
         cin >> u >> v;
         cyc.add(u, v, 0, i);
     }
-    auto [vs, es] = cyc.cycle_detection();
+    auto [vs, es] = Graph_lib::cycle_detection(cyc);
     if (vs.empty()) {
         cout << -1 << endl;
     } else {

@@ -7,8 +7,8 @@ template <typename T, bool merge_adju> struct rangeset : public std::map<T, T> {
     }
 
     //[l, r)
-    void insert(T l, T r) {
-        if (l == r) return;
+    pair<T, T> insert(T l, T r) {
+        if (l == r) return make_pair(l, r);
         assert(l <= r);
         auto itl = (*this).upper_bound(l),
              itr = (*this).lower_bound(r + merge_adju);
@@ -22,7 +22,10 @@ template <typename T, bool merge_adju> struct rangeset : public std::map<T, T> {
             map<T, T>::erase(itl, itr);
         }
         (*this)[l] = r;
+        return make_pair(l, r);
     }
+
+    pair<T, T> insert(T p) { insert(p, p + 1); }
 
     //[l, r)
     void erase(T l, T r) {
@@ -41,18 +44,24 @@ template <typename T, bool merge_adju> struct rangeset : public std::map<T, T> {
         if (tr > r) (*this)[r] = tr;
     }
 
+    void erase(T p) { erase(p, p + 1); }
+
+    // pを含む区間があるか
     bool contains(T p) const { return get(p) != (*this).end(); }
 
     //[l, r)のうち1要素でも含まれているか
     bool contains(T l, T r) const {
         auto itl = (*this).upper_bound(l), itr = (*this).lower_bound(r);
-        if(itl != (*this).begin() && (--itl) -> second <= l) {
+        if (itl != (*this).begin() && (--itl)->second <= l) {
             ++itl;
         }
-        if(itl == itr) return false;
-        else return true;
+        if (itl == itr)
+            return false;
+        else
+            return true;
     }
 
+    // aとbを共に含む区間があるか
     bool same(T a, T b) const {
         if (a > b) swap(a, b);
 

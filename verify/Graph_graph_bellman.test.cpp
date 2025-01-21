@@ -11,7 +11,7 @@ int main() {
         g.add(s, t, w);
     }
 
-    auto [f, d] = g.bellman_ford(r);
+    auto [f, d] = Graph_lib::bellman_ford(g, r);
     if(f) {
         cout << "NEGATIVE CYCLE" << endl;
         return 0;

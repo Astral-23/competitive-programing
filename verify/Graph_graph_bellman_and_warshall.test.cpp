@@ -11,12 +11,12 @@ int main() {
         g.add(s, t, w);
     }
 
-    if (g.has_negative_cycle()) {
+    if (Graph_lib::has_negative_cycle(g)) {
         cout << "NEGATIVE CYCLE" << endl;
         return 0;
     }
 
-    auto d = g.warshall();
+    auto d = Graph_lib::warshall(g);
     for (int i = 0; i < n; i++) {
         for (int j = 0; j < n; j++) {
             if (d[i][j] == Edge<ll>::INF) {
