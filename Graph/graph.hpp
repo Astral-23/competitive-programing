@@ -8,93 +8,20 @@ template <typename T> struct Edge {
 
 template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
 #define n int(this->size())
-#define inf Edge<T>::INF
     using vector<vector<Edge<T>>>::vector;
-
-  private:
-    bool chmin(T &x, T y) const { return x > y ? (x = y, true) : false; }
-    bool chmax(T &x, T y) const { return x < y ? (x = y, true) : false; }
-
-  public:
     void add(int s, int t, T w = 0, int id = -1) {
         (*this)[s].emplace_back(t, w, id);
         if constexpr (directed == false) {
             (*this)[t].emplace_back(s, w, id);
         }
     }
-
-    
 #undef n
-#undef inf
 };
 
 template <typename T> struct Tree : Graph<T, false> {
 #define n int(this->size())
-#define inf Edge<T>::INF
     using vector<vector<Edge<T>>>::vector;
-
-    vector<T> dist(int s) const {
-        vector<T> res(n, inf);
-        res[s] = 0;
-        queue<int> que;
-        que.push(s);
-        while (!que.empty()) {
-            int v = que.front();
-            que.pop();
-            for (auto &e : (*this)[v])
-                if (chmin(res[e.to], res[v] + e.cost)) {
-                    que.push(e.to);
-                }
-        }
-        return res;
-    }
-
-    vector<Edge<T>> path(int s, int t) const {
-        vector<Edge<T>> res;
-        auto dfs = [&](auto f, int v, int p = -1) -> bool {
-            if (v == t) {
-                res.push_back(v);
-                return true;
-            }
-
-            for (auto &e : (*this)[v])
-                if (e.to != p) {
-                    if (f(f, e.to, v)) {
-                        res.push_back(e);
-                        return true;
-                    }
-                }
-            return false;
-        };
-
-        dfs(dfs, s);
-        return res;
-    }
-
-    // diam() ... (直径, (直径の端u, 直径の端v))
-    pair<T, pair<int, int>> diam() const {
-        int u, v;
-        T d, tmp;
-        vector<T> ds = dist(0);
-        tmp = ds[0], u = 0;
-        for (int i = 1; i < n; i++) {
-            if (chmax(tmp, ds[i])) u = i;
-        }
-
-        vector<T> ds2 = dist(u);
-        d = ds2[0], v = 0;
-        for (int i = 1; i < n; i++) {
-            if (chmax(d, ds2[i])) v = i;
-        }
-        pair<T, pair<int, int>> res;
-        res.first = d;
-        res.second.first = u;
-        res.second.second = v;
-        return res;
-    }
-
 #undef n
-#undef inf
 };
 
 namespace Graph_lib {
@@ -181,7 +108,7 @@ vector<vector<T>> warshall(Graph<T, directed> const &g) {
     vector<vector<T>> d(n, vector<T>(n, inf));
     for (int i = 0; i < n; i++) {
         d[i][i] = 0;
-        for (auto& e : g[i]) {
+        for (auto &e : g[i]) {
             chmin(d[i][e.to], e.cost);
         }
     }
@@ -199,7 +126,8 @@ vector<vector<T>> warshall(Graph<T, directed> const &g) {
 }
 
 template <typename T, bool directed>
-pair<vector<int>, vector<int>> cycle_detection(Graph<T, directed> const &g, int v = -1) {
+pair<vector<int>, vector<int>> cycle_detection(Graph<T, directed> const &g,
+                                               int v = -1) {
     int n = g.size();
     vector<bool> in(n, false), out(n, false);
     vector<int> vs, es;
@@ -262,6 +190,68 @@ pair<vector<int>, vector<int>> cycle_detection(Graph<T, directed> const &g, int 
     return make_pair(vs, es);
 }
 #undef inf
-}; 
+};  // namespace Graph_lib
 
+namespace Tree_lib {
+#define inf Edge<T>::INF
+template <typename T> vector<T> dist(Tree<T> const &tr, int s) {
+    vector<T> res(n, inf);
+    res[s] = 0;
+    queue<int> que;
+    que.push(s);
+    while (!que.empty()) {
+        int v = que.front();
+        que.pop();
+        for (auto &e : tr[v])
+            if (chmin(res[e.to], res[v] + e.cost)) {
+                que.push(e.to);
+            }
+    }
+    return res;
+}
 
+template <typename T> vector<Edge<T>> path(Tree<T> const &tr, int s, int t) {
+    vector<Edge<T>> res;
+    auto dfs = [&](auto f, int v, int p = -1) -> bool {
+        if (v == t) {
+            res.push_back(v);
+            return true;
+        }
+
+        for (auto &e : tr[v])
+            if (e.to != p) {
+                if (f(f, e.to, v)) {
+                    res.push_back(e);
+                    return true;
+                }
+            }
+        return false;
+    };
+
+    dfs(dfs, s);
+    return res;
+}
+
+// diam() ... (直径, (直径の端u, 直径の端v))
+template <typename T> pair<T, pair<int, int>> diam(Tree<T> const &tr) {
+    int u, v;
+    T d, tmp;
+    vector<T> ds = dist(tr, 0);
+    tmp = ds[0], u = 0;
+    for (int i = 1; i < n; i++) {
+        if (chmax(tmp, ds[i])) u = i;
+    }
+
+    vector<T> ds2 = dist(tr, u);
+    d = ds2[0], v = 0;
+    for (int i = 1; i < n; i++) {
+        if (chmax(d, ds2[i])) v = i;
+    }
+    pair<T, pair<int, int>> res;
+    res.first = d;
+    res.second.first = u;
+    res.second.second = v;
+    return res;
+}
+#undef inf
+};  // namespace Tree_lib
