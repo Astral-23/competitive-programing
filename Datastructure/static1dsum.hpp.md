@@ -16,35 +16,35 @@ data:
   bundledCode: "#line 1 \"Datastructure/static1dsum.hpp\"\nTT struct static1dsum {\n\
     \    int n;\n    vec<T> dat;\n    bool built = false;\n\n    static1dsum(int n\
     \ = 0) : static1dsum(vec<T>(n, T())) {}\n\n    static1dsum(vec<T> dat) : n(dat.size()),\
-    \ dat(dat) {}\n\n    void add(int i, T x) {\n        assert(!built);\n       \
-    \ dat[i] += x;\n    }\n\n    void build() {\n        rep(i, 0, n - 1) dat[i +\
-    \ 1] += dat[i];\n        built = true;\n    }\n\n    T get(int p) const {\n  \
-    \      assert(built);\n        assert(0 <= p && p < n);\n        T res = dat[p];\n\
-    \        if(p) res -= dat[p-1];\n        return res;\n    }\n\n    T prod(int\
-    \ l, int r) const {\n        assert(built);\n        assert(0 <= l && r <= n);\n\
-    \        assert(l <= r);\n        if(l == r) return 0;\n        T res = dat[r\
-    \ - 1];\n        if (l) res -= dat[l - 1];\n        return res;\n    }\n\n   \
-    \ T all_prod() const {\n        assert(built);\n        return dat[n-1];\n   \
-    \ }\n};\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static1dsum.md\n\
-    */\n"
+    \ dat(dat) {}\n\n    void add(int i, T x) {\n        assert(built == false);\n\
+    \        dat[i] += x;\n    }\n\n    void build() {\n        assert(built == false);\n\
+    \        rep(i, 0, n - 1) dat[i + 1] += dat[i];\n        built = true;\n    }\n\
+    \n    T get(int p) const {\n        assert(built);\n        assert(0 <= p && p\
+    \ < n);\n        T res = dat[p];\n        if(p) res -= dat[p-1];\n        return\
+    \ res;\n    }\n\n    T prod(int l, int r) const {\n        assert(built);\n  \
+    \      assert(0 <= l && r <= n);\n        assert(l <= r);\n        if(l == r)\
+    \ return 0;\n        T res = dat[r - 1];\n        if (l) res -= dat[l - 1];\n\
+    \        return res;\n    }\n\n    T all_prod() const {\n        assert(built);\n\
+    \        return dat[n-1];\n    }\n};\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\
+    \n@docs doc/static1dsum.md\n*/\n"
   code: "TT struct static1dsum {\n    int n;\n    vec<T> dat;\n    bool built = false;\n\
     \n    static1dsum(int n = 0) : static1dsum(vec<T>(n, T())) {}\n\n    static1dsum(vec<T>\
-    \ dat) : n(dat.size()), dat(dat) {}\n\n    void add(int i, T x) {\n        assert(!built);\n\
-    \        dat[i] += x;\n    }\n\n    void build() {\n        rep(i, 0, n - 1) dat[i\
-    \ + 1] += dat[i];\n        built = true;\n    }\n\n    T get(int p) const {\n\
-    \        assert(built);\n        assert(0 <= p && p < n);\n        T res = dat[p];\n\
-    \        if(p) res -= dat[p-1];\n        return res;\n    }\n\n    T prod(int\
-    \ l, int r) const {\n        assert(built);\n        assert(0 <= l && r <= n);\n\
-    \        assert(l <= r);\n        if(l == r) return 0;\n        T res = dat[r\
-    \ - 1];\n        if (l) res -= dat[l - 1];\n        return res;\n    }\n\n   \
-    \ T all_prod() const {\n        assert(built);\n        return dat[n-1];\n   \
-    \ }\n};\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static1dsum.md\n\
-    */"
+    \ dat) : n(dat.size()), dat(dat) {}\n\n    void add(int i, T x) {\n        assert(built\
+    \ == false);\n        dat[i] += x;\n    }\n\n    void build() {\n        assert(built\
+    \ == false);\n        rep(i, 0, n - 1) dat[i + 1] += dat[i];\n        built =\
+    \ true;\n    }\n\n    T get(int p) const {\n        assert(built);\n        assert(0\
+    \ <= p && p < n);\n        T res = dat[p];\n        if(p) res -= dat[p-1];\n \
+    \       return res;\n    }\n\n    T prod(int l, int r) const {\n        assert(built);\n\
+    \        assert(0 <= l && r <= n);\n        assert(l <= r);\n        if(l == r)\
+    \ return 0;\n        T res = dat[r - 1];\n        if (l) res -= dat[l - 1];\n\
+    \        return res;\n    }\n\n    T all_prod() const {\n        assert(built);\n\
+    \        return dat[n-1];\n    }\n};\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\
+    \n@docs doc/static1dsum.md\n*/"
   dependsOn: []
   isVerificationFile: false
   path: Datastructure/static1dsum.hpp
   requiredBy: []
-  timestamp: '2024-12-09 02:13:43+09:00'
+  timestamp: '2025-01-21 17:35:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Datastructure_static1dsum.test.cpp

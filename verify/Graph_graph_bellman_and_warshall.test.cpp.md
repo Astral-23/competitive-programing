@@ -104,31 +104,30 @@ data:
     \ v = que.front();\n        que.pop();\n        for (auto &e : tr[v])\n      \
     \      if (chmin(res[e.to], res[v] + e.cost)) {\n                que.push(e.to);\n\
     \            }\n    }\n    return res;\n}\n\ntemplate <typename T> vector<Edge<T>>\
-    \ path(Tree<T> const &tr, int s, int t) {\n    int n = tr.size();\n    vector<Edge<T>>\
-    \ res;\n    auto dfs = [&](auto f, int v, int p = -1) -> bool {\n        if (v\
-    \ == t) {\n            res.push_back(v);\n            return true;\n        }\n\
-    \n        for (auto &e : tr[v])\n            if (e.to != p) {\n              \
-    \  if (f(f, e.to, v)) {\n                    res.push_back(e);\n             \
-    \       return true;\n                }\n            }\n        return false;\n\
-    \    };\n\n    dfs(dfs, s);\n    return res;\n}\n\n// diam() ... (\u76F4\u5F84\
-    , (\u76F4\u5F84\u306E\u7AEFu, \u76F4\u5F84\u306E\u7AEFv))\ntemplate <typename\
-    \ T> pair<T, pair<int, int>> diam(Tree<T> const &tr) {\n    int n = tr.size();\n\
-    \    int u, v;\n    T d, tmp;\n    vector<T> ds = dist(tr, 0);\n    tmp = ds[0],\
-    \ u = 0;\n    for (int i = 1; i < n; i++) {\n        if (chmax(tmp, ds[i])) u\
-    \ = i;\n    }\n\n    vector<T> ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n  \
-    \  for (int i = 1; i < n; i++) {\n        if (chmax(d, ds2[i])) v = i;\n    }\n\
-    \    pair<T, pair<int, int>> res;\n    res.first = d;\n    res.second.first =\
-    \ u;\n    res.second.second = v;\n    return res;\n}\n#undef inf\n};  // namespace\
-    \ Tree_lib\n#line 4 \"verify/Graph_graph_bellman_and_warshall.test.cpp\"\nint\
-    \ main() {\n    ll n, m;\n    cin >> n >> m;\n    Graph<ll, true> g(n);\n    rep(i,\
-    \ 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n        g.add(s,\
-    \ t, w);\n    }\n\n    if (Graph_lib::has_negative_cycle(g)) {\n        cout <<\
-    \ \"NEGATIVE CYCLE\" << endl;\n        return 0;\n    }\n\n    auto d = Graph_lib::warshall(g);\n\
-    \    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n  \
-    \          if (d[i][j] == Edge<ll>::INF) {\n                cout << \"INF\";\n\
-    \            } else {\n                cout << d[i][j];\n            }\n     \
-    \       if (j != n - 1) cout << \" \";\n        }\n        cout << endl;\n   \
-    \ }\n}\n"
+    \ path(Tree<T> const &tr, int s, int t) {\n    vector<Edge<T>> res;\n    auto\
+    \ dfs = [&](auto f, int v, int p = -1) -> bool {\n        if (v == t) {\n    \
+    \        res.push_back(v);\n            return true;\n        }\n\n        for\
+    \ (auto &e : tr[v])\n            if (e.to != p) {\n                if (f(f, e.to,\
+    \ v)) {\n                    res.push_back(e);\n                    return true;\n\
+    \                }\n            }\n        return false;\n    };\n\n    dfs(dfs,\
+    \ s);\n    return res;\n}\n\n// diam() ... (\u76F4\u5F84, (\u76F4\u5F84\u306E\u7AEF\
+    u, \u76F4\u5F84\u306E\u7AEFv))\ntemplate <typename T> pair<T, pair<int, int>>\
+    \ diam(Tree<T> const &tr) {\n    int n = tr.size();\n    int u, v;\n    T d, tmp;\n\
+    \    vector<T> ds = dist(tr, 0);\n    tmp = ds[0], u = 0;\n    for (int i = 1;\
+    \ i < n; i++) {\n        if (chmax(tmp, ds[i])) u = i;\n    }\n\n    vector<T>\
+    \ ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n    for (int i = 1; i < n; i++)\
+    \ {\n        if (chmax(d, ds2[i])) v = i;\n    }\n    pair<T, pair<int, int>>\
+    \ res;\n    res.first = d;\n    res.second.first = u;\n    res.second.second =\
+    \ v;\n    return res;\n}\n#undef inf\n};  // namespace Tree_lib\n#line 4 \"verify/Graph_graph_bellman_and_warshall.test.cpp\"\
+    \nint main() {\n    ll n, m;\n    cin >> n >> m;\n    Graph<ll, true> g(n);\n\
+    \    rep(i, 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n      \
+    \  g.add(s, t, w);\n    }\n\n    if (Graph_lib::has_negative_cycle(g)) {\n   \
+    \     cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n    }\n\n    auto\
+    \ d = Graph_lib::warshall(g);\n    for (int i = 0; i < n; i++) {\n        for\
+    \ (int j = 0; j < n; j++) {\n            if (d[i][j] == Edge<ll>::INF) {\n   \
+    \             cout << \"INF\";\n            } else {\n                cout <<\
+    \ d[i][j];\n            }\n            if (j != n - 1) cout << \" \";\n      \
+    \  }\n        cout << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\nint main()\
     \ {\n    ll n, m;\n    cin >> n >> m;\n    Graph<ll, true> g(n);\n    rep(i, 0,\
@@ -146,7 +145,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_bellman_and_warshall.test.cpp
   requiredBy: []
-  timestamp: '2025-01-21 09:28:15+09:00'
+  timestamp: '2025-01-21 17:35:19+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_bellman_and_warshall.test.cpp
