@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Graph/graph.hpp
     title: Graph/graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_A
@@ -99,25 +99,26 @@ data:
     \ return make_pair(vs, es);\n            }\n        }\n    }\n    return make_pair(vs,\
     \ es);\n}\n#undef inf\n};  // namespace Graph_lib\n\nnamespace Tree_lib {\n#define\
     \ inf Edge<T>::INF\ntemplate <typename T> vector<T> dist(Tree<T> const &tr, int\
-    \ s) {\n    vector<T> res(n, inf);\n    res[s] = 0;\n    queue<int> que;\n   \
-    \ que.push(s);\n    while (!que.empty()) {\n        int v = que.front();\n   \
-    \     que.pop();\n        for (auto &e : tr[v])\n            if (chmin(res[e.to],\
-    \ res[v] + e.cost)) {\n                que.push(e.to);\n            }\n    }\n\
-    \    return res;\n}\n\ntemplate <typename T> vector<Edge<T>> path(Tree<T> const\
-    \ &tr, int s, int t) {\n    vector<Edge<T>> res;\n    auto dfs = [&](auto f, int\
-    \ v, int p = -1) -> bool {\n        if (v == t) {\n            res.push_back(v);\n\
-    \            return true;\n        }\n\n        for (auto &e : tr[v])\n      \
-    \      if (e.to != p) {\n                if (f(f, e.to, v)) {\n              \
-    \      res.push_back(e);\n                    return true;\n                }\n\
-    \            }\n        return false;\n    };\n\n    dfs(dfs, s);\n    return\
-    \ res;\n}\n\n// diam() ... (\u76F4\u5F84, (\u76F4\u5F84\u306E\u7AEFu, \u76F4\u5F84\
-    \u306E\u7AEFv))\ntemplate <typename T> pair<T, pair<int, int>> diam(Tree<T> const\
-    \ &tr) {\n    int u, v;\n    T d, tmp;\n    vector<T> ds = dist(tr, 0);\n    tmp\
-    \ = ds[0], u = 0;\n    for (int i = 1; i < n; i++) {\n        if (chmax(tmp, ds[i]))\
-    \ u = i;\n    }\n\n    vector<T> ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n\
-    \    for (int i = 1; i < n; i++) {\n        if (chmax(d, ds2[i])) v = i;\n   \
-    \ }\n    pair<T, pair<int, int>> res;\n    res.first = d;\n    res.second.first\
-    \ = u;\n    res.second.second = v;\n    return res;\n}\n#undef inf\n};  // namespace\
+    \ s) {\n    int n = tr.size();\n    vector<T> res(n, inf);\n    res[s] = 0;\n\
+    \    queue<int> que;\n    que.push(s);\n    while (!que.empty()) {\n        int\
+    \ v = que.front();\n        que.pop();\n        for (auto &e : tr[v])\n      \
+    \      if (chmin(res[e.to], res[v] + e.cost)) {\n                que.push(e.to);\n\
+    \            }\n    }\n    return res;\n}\n\ntemplate <typename T> vector<Edge<T>>\
+    \ path(Tree<T> const &tr, int s, int t) {\n    int n = tr.size();\n    vector<Edge<T>>\
+    \ res;\n    auto dfs = [&](auto f, int v, int p = -1) -> bool {\n        if (v\
+    \ == t) {\n            res.push_back(v);\n            return true;\n        }\n\
+    \n        for (auto &e : tr[v])\n            if (e.to != p) {\n              \
+    \  if (f(f, e.to, v)) {\n                    res.push_back(e);\n             \
+    \       return true;\n                }\n            }\n        return false;\n\
+    \    };\n\n    dfs(dfs, s);\n    return res;\n}\n\n// diam() ... (\u76F4\u5F84\
+    , (\u76F4\u5F84\u306E\u7AEFu, \u76F4\u5F84\u306E\u7AEFv))\ntemplate <typename\
+    \ T> pair<T, pair<int, int>> diam(Tree<T> const &tr) {\n    int n = tr.size();\n\
+    \    int u, v;\n    T d, tmp;\n    vector<T> ds = dist(tr, 0);\n    tmp = ds[0],\
+    \ u = 0;\n    for (int i = 1; i < n; i++) {\n        if (chmax(tmp, ds[i])) u\
+    \ = i;\n    }\n\n    vector<T> ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n  \
+    \  for (int i = 1; i < n; i++) {\n        if (chmax(d, ds2[i])) v = i;\n    }\n\
+    \    pair<T, pair<int, int>> res;\n    res.first = d;\n    res.second.first =\
+    \ u;\n    res.second.second = v;\n    return res;\n}\n#undef inf\n};  // namespace\
     \ Tree_lib\n#line 4 \"verify/Graph_graph_dijkstra.test.cpp\"\nint main() {\n \
     \   ll n, m, r;\n    cin >> n >> m >> r;\n    Graph<ll, true> g(n);\n    rep(i,\
     \ 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n        g.add(s,\
@@ -139,8 +140,8 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_dijkstra.test.cpp
   requiredBy: []
-  timestamp: '2025-01-21 09:25:32+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-01-21 09:28:15+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_dijkstra.test.cpp
 layout: document
