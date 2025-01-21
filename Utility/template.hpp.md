@@ -147,22 +147,22 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Graph_cycle_detection_2.test.cpp
     title: verify/Graph_cycle_detection_2.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Graph_graph_bellman.test.cpp
     title: verify/Graph_graph_bellman.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Graph_graph_bellman_and_warshall.test.cpp
     title: verify/Graph_graph_bellman_and_warshall.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Graph_graph_cycle_detection_directed.test.cpp
     title: verify/Graph_graph_cycle_detection_directed.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Graph_graph_cycle_detection_undirected.test.cpp
     title: verify/Graph_graph_cycle_detection_undirected.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Graph_graph_dijkstra.test.cpp
     title: verify/Graph_graph_dijkstra.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Graph_scc.test.cpp
     title: verify/Graph_scc.test.cpp
   - icon: ':heavy_check_mark:'
@@ -282,9 +282,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -322,7 +322,7 @@ data:
   - example/range_edge_graph.example.cpp
   - example/matrix.example.cpp
   timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/range_edge_graph.test.cpp
   - verify/bellman_ford.test.cpp
