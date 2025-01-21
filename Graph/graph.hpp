@@ -212,7 +212,6 @@ template <typename T> vector<T> dist(Tree<T> const &tr, int s) {
 }
 
 template <typename T> vector<Edge<T>> path(Tree<T> const &tr, int s, int t) {
-    int n = tr.size();
     vector<Edge<T>> res;
     auto dfs = [&](auto f, int v, int p = -1) -> bool {
         if (v == t) {

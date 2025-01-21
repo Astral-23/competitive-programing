@@ -15,11 +15,12 @@ TT struct static2dsum {
     }
 
     void add(int i, int j, T x) {
-        assert(!f);
+        assert(f == false);
         dat[i][j] += x;
     }
 
     void build() {
+        assert(f == false);
         rep(i, 0, h) {
             rep(j, 0, w - 1) { dat[i][j + 1] += dat[i][j]; }
         }
@@ -31,7 +32,13 @@ TT struct static2dsum {
         f = true;
     }
 
-    T prod(int sy, int ty, int sx, int tx) {
+    T get(int y, int x) const {
+        assert(0 <= y && y < h);
+        assert(0 <= x && x < w);
+        return prod(y, y + 1, x, x + 1);
+    }
+    
+    T prod(int sy, int ty, int sx, int tx) const {
         assert(f);
         assert(0 <= sy && ty <= h);
         assert(0 <= sx && tx <= w);

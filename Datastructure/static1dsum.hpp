@@ -8,11 +8,12 @@ TT struct static1dsum {
     static1dsum(vec<T> dat) : n(dat.size()), dat(dat) {}
 
     void add(int i, T x) {
-        assert(!built);
+        assert(built == false);
         dat[i] += x;
     }
 
     void build() {
+        assert(built == false);
         rep(i, 0, n - 1) dat[i + 1] += dat[i];
         built = true;
     }
