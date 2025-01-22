@@ -37,7 +37,7 @@ data:
     \ 0, int id = -1) {\n        (*this)[s].emplace_back(t, w, id);\n        if constexpr\
     \ (directed == false) {\n            (*this)[t].emplace_back(s, w, id);\n    \
     \    }\n    }\n#undef n\n};\n\ntemplate <typename T> struct Tree : Graph<T, false>\
-    \ {\n#define n int(this->size())\n    using Graph<T,false>::Graph;\n#undef n\n\
+    \ {\n#define n int(this->size())\n    using Graph<T, false>::Graph;\n#undef n\n\
     };\n\nnamespace Graph_lib {\n\n#define inf Edge<T>::INF\ntemplate <typename T,\
     \ bool directed>\nvector<T> DFS(Graph<T, directed> const &g, int s) {\n    int\
     \ n = g.size();\n    assert(0 <= s && s < n);\n    vector<T> d(n, inf);\n    d[s]\
@@ -97,12 +97,24 @@ data:
     \  dfs(dfs, i, -1);\n            if (vs.empty() == false) {\n                reverse(vs.begin(),\
     \ vs.end());\n                reverse(es.begin(), es.end());\n               \
     \ return make_pair(vs, es);\n            }\n        }\n    }\n    return make_pair(vs,\
-    \ es);\n}\n#undef inf\n};  // namespace Graph_lib\n\nnamespace Tree_lib {\n#define\
-    \ inf Edge<T>::INF\ntemplate <typename T> vector<T> dist(Tree<T> const &tr, int\
-    \ s) {\n    int n = tr.size();\n    vector<T> res(n, inf);\n    res[s] = 0;\n\
-    \    queue<int> que;\n    que.push(s);\n    while (!que.empty()) {\n        int\
-    \ v = que.front();\n        que.pop();\n        for (auto &e : tr[v])\n      \
-    \      if (chmin(res[e.to], res[v] + e.cost)) {\n                que.push(e.to);\n\
+    \ es);\n}\n\ntemplate <typename T, bool directed>\nvector<int> is_bipartiie(Graph<T,\
+    \ directed> const &g) {\n    int n = g.size();\n    vector<int> col(n, -1);\n\
+    \    vector<vector<int>> gs;\n\n    auto dfs = [&](auto f, int v, int c, vector<int>\
+    \ &vs) -> void {\n        col[v] = c;\n        vs.push_back(v);\n        for (auto\
+    \ &e : g[v])\n            if (col[e.to] == -1) {\n                f(f, e.to, c\
+    \ ^ 1, vs);\n            }\n    };\n\n    for (int i = 0; i < n; i++) {\n    \
+    \    if (col[i] == -1) {\n            vector<int> vs;\n            dfs(dfs, i,\
+    \ 0, vs);\n            gs.push_back(vs);\n        }\n    }\n\n    for (auto &vs\
+    \ : gs) {\n        bool ng = false;\n        for (auto v : vs) {\n           \
+    \ for (auto &e : g[v]) {\n                if (col[v] == col[e.to]) {\n       \
+    \             ng = true;\n                }\n            }\n        }\n      \
+    \  if (ng) {\n            for (auto v : vs) col[v] = -1;\n        }\n    }\n\n\
+    \    return col;\n}\n\n#undef inf\n};  // namespace Graph_lib\n\nnamespace Tree_lib\
+    \ {\n#define inf Edge<T>::INF\ntemplate <typename T> vector<T> dist(Tree<T> const\
+    \ &tr, int s) {\n    int n = tr.size();\n    vector<T> res(n, inf);\n    res[s]\
+    \ = 0;\n    queue<int> que;\n    que.push(s);\n    while (!que.empty()) {\n  \
+    \      int v = que.front();\n        que.pop();\n        for (auto &e : tr[v])\n\
+    \            if (chmin(res[e.to], res[v] + e.cost)) {\n                que.push(e.to);\n\
     \            }\n    }\n    return res;\n}\n\ntemplate <typename T> vector<Edge<T>>\
     \ path(Tree<T> const &tr, int s, int t) {\n    vector<Edge<T>> res;\n    auto\
     \ dfs = [&](auto f, int v, int p = -1) -> bool {\n        if (v == t) {\n    \
@@ -141,7 +153,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_bellman.test.cpp
   requiredBy: []
-  timestamp: '2025-01-22 14:18:04+09:00'
+  timestamp: '2025-01-22 16:38:18+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_bellman.test.cpp
