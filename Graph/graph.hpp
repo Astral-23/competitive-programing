@@ -190,8 +190,11 @@ pair<vector<int>, vector<int>> cycle_detection(Graph<T, directed> const &g,
     return make_pair(vs, es);
 }
 
+//ret[v] := vを含む連結成分が
+// -1 : 二部グラフでない  0 : 色塗ったら0  1 : 色塗ったら1
+//　色塗りは0から始める
 template <typename T, bool directed>
-vector<int> is_bipartiie(Graph<T, directed> const &g) {
+vector<int> bipartite_check(Graph<T, directed> const &g) {
     int n = g.size();
     vector<int> col(n, -1);
     vector<vector<int>> gs;
