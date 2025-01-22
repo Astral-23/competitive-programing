@@ -20,7 +20,7 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
 
 template <typename T> struct Tree : Graph<T, false> {
 #define n int(this->size())
-    using vector<vector<Edge<T>>>::vector;
+    using Graph<T,false>::Graph;
 #undef n
 };
 
