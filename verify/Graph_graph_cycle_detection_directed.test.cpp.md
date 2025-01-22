@@ -97,41 +97,45 @@ data:
     \  dfs(dfs, i, -1);\n            if (vs.empty() == false) {\n                reverse(vs.begin(),\
     \ vs.end());\n                reverse(es.begin(), es.end());\n               \
     \ return make_pair(vs, es);\n            }\n        }\n    }\n    return make_pair(vs,\
-    \ es);\n}\n\ntemplate <typename T, bool directed>\nvector<int> is_bipartiie(Graph<T,\
-    \ directed> const &g) {\n    int n = g.size();\n    vector<int> col(n, -1);\n\
-    \    vector<vector<int>> gs;\n\n    auto dfs = [&](auto f, int v, int c, vector<int>\
-    \ &vs) -> void {\n        col[v] = c;\n        vs.push_back(v);\n        for (auto\
-    \ &e : g[v])\n            if (col[e.to] == -1) {\n                f(f, e.to, c\
-    \ ^ 1, vs);\n            }\n    };\n\n    for (int i = 0; i < n; i++) {\n    \
-    \    if (col[i] == -1) {\n            vector<int> vs;\n            dfs(dfs, i,\
-    \ 0, vs);\n            gs.push_back(vs);\n        }\n    }\n\n    for (auto &vs\
-    \ : gs) {\n        bool ng = false;\n        for (auto v : vs) {\n           \
-    \ for (auto &e : g[v]) {\n                if (col[v] == col[e.to]) {\n       \
-    \             ng = true;\n                }\n            }\n        }\n      \
-    \  if (ng) {\n            for (auto v : vs) col[v] = -1;\n        }\n    }\n\n\
-    \    return col;\n}\n\n#undef inf\n};  // namespace Graph_lib\n\nnamespace Tree_lib\
-    \ {\n#define inf Edge<T>::INF\ntemplate <typename T> vector<T> dist(Tree<T> const\
-    \ &tr, int s) {\n    int n = tr.size();\n    vector<T> res(n, inf);\n    res[s]\
-    \ = 0;\n    queue<int> que;\n    que.push(s);\n    while (!que.empty()) {\n  \
-    \      int v = que.front();\n        que.pop();\n        for (auto &e : tr[v])\n\
-    \            if (chmin(res[e.to], res[v] + e.cost)) {\n                que.push(e.to);\n\
-    \            }\n    }\n    return res;\n}\n\ntemplate <typename T> vector<Edge<T>>\
-    \ path(Tree<T> const &tr, int s, int t) {\n    vector<Edge<T>> res;\n    auto\
-    \ dfs = [&](auto f, int v, int p = -1) -> bool {\n        if (v == t) {\n    \
-    \        res.push_back(v);\n            return true;\n        }\n\n        for\
-    \ (auto &e : tr[v])\n            if (e.to != p) {\n                if (f(f, e.to,\
-    \ v)) {\n                    res.push_back(e);\n                    return true;\n\
-    \                }\n            }\n        return false;\n    };\n\n    dfs(dfs,\
-    \ s);\n    return res;\n}\n\n// diam() ... (\u76F4\u5F84, (\u76F4\u5F84\u306E\u7AEF\
-    u, \u76F4\u5F84\u306E\u7AEFv))\ntemplate <typename T> pair<T, pair<int, int>>\
-    \ diam(Tree<T> const &tr) {\n    int n = tr.size();\n    int u, v;\n    T d, tmp;\n\
-    \    vector<T> ds = dist(tr, 0);\n    tmp = ds[0], u = 0;\n    for (int i = 1;\
-    \ i < n; i++) {\n        if (chmax(tmp, ds[i])) u = i;\n    }\n\n    vector<T>\
-    \ ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n    for (int i = 1; i < n; i++)\
-    \ {\n        if (chmax(d, ds2[i])) v = i;\n    }\n    pair<T, pair<int, int>>\
-    \ res;\n    res.first = d;\n    res.second.first = u;\n    res.second.second =\
-    \ v;\n    return res;\n}\n#undef inf\n};  // namespace Tree_lib\n#line 4 \"verify/Graph_graph_cycle_detection_directed.test.cpp\"\
-    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n\
+    \ es);\n}\n\n//ret[v] := v\u3092\u542B\u3080\u9023\u7D50\u6210\u5206\u304C\n//\
+    \ -1 : \u4E8C\u90E8\u30B0\u30E9\u30D5\u3067\u306A\u3044  0 : \u8272\u5857\u3063\
+    \u305F\u30890  1 : \u8272\u5857\u3063\u305F\u30891\n//\u3000\u8272\u5857\u308A\
+    \u306F0\u304B\u3089\u59CB\u3081\u308B\ntemplate <typename T, bool directed>\n\
+    vector<int> bipartite_check(Graph<T, directed> const &g) {\n    int n = g.size();\n\
+    \    vector<int> col(n, -1);\n    vector<vector<int>> gs;\n\n    auto dfs = [&](auto\
+    \ f, int v, int c, vector<int> &vs) -> void {\n        col[v] = c;\n        vs.push_back(v);\n\
+    \        for (auto &e : g[v])\n            if (col[e.to] == -1) {\n          \
+    \      f(f, e.to, c ^ 1, vs);\n            }\n    };\n\n    for (int i = 0; i\
+    \ < n; i++) {\n        if (col[i] == -1) {\n            vector<int> vs;\n    \
+    \        dfs(dfs, i, 0, vs);\n            gs.push_back(vs);\n        }\n    }\n\
+    \n    for (auto &vs : gs) {\n        bool ng = false;\n        for (auto v : vs)\
+    \ {\n            for (auto &e : g[v]) {\n                if (col[v] == col[e.to])\
+    \ {\n                    ng = true;\n                }\n            }\n      \
+    \  }\n        if (ng) {\n            for (auto v : vs) col[v] = -1;\n        }\n\
+    \    }\n\n    return col;\n}\n\n#undef inf\n};  // namespace Graph_lib\n\nnamespace\
+    \ Tree_lib {\n#define inf Edge<T>::INF\ntemplate <typename T> vector<T> dist(Tree<T>\
+    \ const &tr, int s) {\n    int n = tr.size();\n    vector<T> res(n, inf);\n  \
+    \  res[s] = 0;\n    queue<int> que;\n    que.push(s);\n    while (!que.empty())\
+    \ {\n        int v = que.front();\n        que.pop();\n        for (auto &e :\
+    \ tr[v])\n            if (chmin(res[e.to], res[v] + e.cost)) {\n             \
+    \   que.push(e.to);\n            }\n    }\n    return res;\n}\n\ntemplate <typename\
+    \ T> vector<Edge<T>> path(Tree<T> const &tr, int s, int t) {\n    vector<Edge<T>>\
+    \ res;\n    auto dfs = [&](auto f, int v, int p = -1) -> bool {\n        if (v\
+    \ == t) {\n            res.push_back(v);\n            return true;\n        }\n\
+    \n        for (auto &e : tr[v])\n            if (e.to != p) {\n              \
+    \  if (f(f, e.to, v)) {\n                    res.push_back(e);\n             \
+    \       return true;\n                }\n            }\n        return false;\n\
+    \    };\n\n    dfs(dfs, s);\n    return res;\n}\n\n// diam() ... (\u76F4\u5F84\
+    , (\u76F4\u5F84\u306E\u7AEFu, \u76F4\u5F84\u306E\u7AEFv))\ntemplate <typename\
+    \ T> pair<T, pair<int, int>> diam(Tree<T> const &tr) {\n    int n = tr.size();\n\
+    \    int u, v;\n    T d, tmp;\n    vector<T> ds = dist(tr, 0);\n    tmp = ds[0],\
+    \ u = 0;\n    for (int i = 1; i < n; i++) {\n        if (chmax(tmp, ds[i])) u\
+    \ = i;\n    }\n\n    vector<T> ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n  \
+    \  for (int i = 1; i < n; i++) {\n        if (chmax(d, ds2[i])) v = i;\n    }\n\
+    \    pair<T, pair<int, int>> res;\n    res.first = d;\n    res.second.first =\
+    \ u;\n    res.second.second = v;\n    return res;\n}\n#undef inf\n};  // namespace\
+    \ Tree_lib\n#line 4 \"verify/Graph_graph_cycle_detection_directed.test.cpp\"\n\
+    \nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n\
     \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add(u,\
     \ v, 0, i);\n    }\n    auto [vs, es] = Graph_lib::cycle_detection(cyc);\n   \
     \ if (vs.empty()) {\n        cout << -1 << endl;\n    } else {\n        cout <<\
@@ -151,7 +155,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_cycle_detection_directed.test.cpp
   requiredBy: []
-  timestamp: '2025-01-22 16:38:18+09:00'
+  timestamp: '2025-01-22 19:13:44+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_cycle_detection_directed.test.cpp
