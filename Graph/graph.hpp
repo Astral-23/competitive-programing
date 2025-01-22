@@ -20,7 +20,7 @@ template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
 
 template <typename T> struct Tree : Graph<T, false> {
 #define n int(this->size())
-    using Graph<T,false>::Graph;
+    using Graph<T, false>::Graph;
 #undef n
 };
 
@@ -189,6 +189,47 @@ pair<vector<int>, vector<int>> cycle_detection(Graph<T, directed> const &g,
     }
     return make_pair(vs, es);
 }
+
+template <typename T, bool directed>
+vector<int> is_bipartiie(Graph<T, directed> const &g) {
+    int n = g.size();
+    vector<int> col(n, -1);
+    vector<vector<int>> gs;
+
+    auto dfs = [&](auto f, int v, int c, vector<int> &vs) -> void {
+        col[v] = c;
+        vs.push_back(v);
+        for (auto &e : g[v])
+            if (col[e.to] == -1) {
+                f(f, e.to, c ^ 1, vs);
+            }
+    };
+
+    for (int i = 0; i < n; i++) {
+        if (col[i] == -1) {
+            vector<int> vs;
+            dfs(dfs, i, 0, vs);
+            gs.push_back(vs);
+        }
+    }
+
+    for (auto &vs : gs) {
+        bool ng = false;
+        for (auto v : vs) {
+            for (auto &e : g[v]) {
+                if (col[v] == col[e.to]) {
+                    ng = true;
+                }
+            }
+        }
+        if (ng) {
+            for (auto v : vs) col[v] = -1;
+        }
+    }
+
+    return col;
+}
+
 #undef inf
 };  // namespace Graph_lib
 
