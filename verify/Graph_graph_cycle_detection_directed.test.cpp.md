@@ -37,15 +37,15 @@ data:
     \ 0, int id = -1) {\n        (*this)[s].emplace_back(t, w, id);\n        if constexpr\
     \ (directed == false) {\n            (*this)[t].emplace_back(s, w, id);\n    \
     \    }\n    }\n#undef n\n};\n\ntemplate <typename T> struct Tree : Graph<T, false>\
-    \ {\n#define n int(this->size())\n    using vector<vector<Edge<T>>>::vector;\n\
-    #undef n\n};\n\nnamespace Graph_lib {\n\n#define inf Edge<T>::INF\ntemplate <typename\
-    \ T, bool directed>\nvector<T> DFS(Graph<T, directed> const &g, int s) {\n   \
-    \ int n = g.size();\n    assert(0 <= s && s < n);\n    vector<T> d(n, inf);\n\
-    \    d[s] = 0;\n    queue<int> que;\n    que.push(s);\n    while (que.empty()\
-    \ == false) {\n        int v = que.front();\n        que.pop();\n        for (auto\
-    \ &e : g[v]) {\n            assert(e.cost == 1);\n            if (chmin(d[e.to],\
-    \ d[v] + e.cost)) {\n                que.push(e.to);\n            }\n        }\n\
-    \    }\n    return d;\n}\n\ntemplate <typename T, bool directed>\nvector<T> dijkstra(Graph<T,\
+    \ {\n#define n int(this->size())\n    using Graph<T,false>::Graph;\n#undef n\n\
+    };\n\nnamespace Graph_lib {\n\n#define inf Edge<T>::INF\ntemplate <typename T,\
+    \ bool directed>\nvector<T> DFS(Graph<T, directed> const &g, int s) {\n    int\
+    \ n = g.size();\n    assert(0 <= s && s < n);\n    vector<T> d(n, inf);\n    d[s]\
+    \ = 0;\n    queue<int> que;\n    que.push(s);\n    while (que.empty() == false)\
+    \ {\n        int v = que.front();\n        que.pop();\n        for (auto &e :\
+    \ g[v]) {\n            assert(e.cost == 1);\n            if (chmin(d[e.to], d[v]\
+    \ + e.cost)) {\n                que.push(e.to);\n            }\n        }\n  \
+    \  }\n    return d;\n}\n\ntemplate <typename T, bool directed>\nvector<T> dijkstra(Graph<T,\
     \ directed> const &g, int s) {\n    int n = g.size();\n    vector<T> d(n, inf);\n\
     \    d[s] = 0;\n    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T,\
     \ int>>>\n        que;\n    que.push({d[s], s});\n    while (que.empty() == false)\
@@ -139,7 +139,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_cycle_detection_directed.test.cpp
   requiredBy: []
-  timestamp: '2025-01-21 17:35:19+09:00'
+  timestamp: '2025-01-22 14:18:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_cycle_detection_directed.test.cpp

@@ -39,7 +39,7 @@ data:
     \ s, int t, T w = 0, int id = -1) {\n        (*this)[s].emplace_back(t, w, id);\n\
     \        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
     \ w, id);\n        }\n    }\n#undef n\n};\n\ntemplate <typename T> struct Tree\
-    \ : Graph<T, false> {\n#define n int(this->size())\n    using vector<vector<Edge<T>>>::vector;\n\
+    \ : Graph<T, false> {\n#define n int(this->size())\n    using Graph<T,false>::Graph;\n\
     #undef n\n};\n\nnamespace Graph_lib {\n\n#define inf Edge<T>::INF\ntemplate <typename\
     \ T, bool directed>\nvector<T> DFS(Graph<T, directed> const &g, int s) {\n   \
     \ int n = g.size();\n    assert(0 <= s && s < n);\n    vector<T> d(n, inf);\n\
@@ -165,7 +165,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_scc.test.cpp
   requiredBy: []
-  timestamp: '2025-01-21 17:35:19+09:00'
+  timestamp: '2025-01-22 14:18:04+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_scc.test.cpp
