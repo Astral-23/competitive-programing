@@ -99,8 +99,8 @@ data:
   timestamp: '2024-08-31 23:47:48+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/bellman_ford.test.cpp
   - verify/dijkstra.test.cpp
+  - verify/bellman_ford.test.cpp
 documentation_of: Graph/min_distance.hpp
 layout: document
 redirect_from:

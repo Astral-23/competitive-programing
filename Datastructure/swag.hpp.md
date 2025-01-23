@@ -91,8 +91,8 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Datastructure_swag_more.test.cpp
   - verify/Datastructure_swag.test.cpp
+  - verify/Datastructure_swag_more.test.cpp
   - "\u7802\u5834/swag.test.cpp"
 documentation_of: Datastructure/swag.hpp
 layout: document

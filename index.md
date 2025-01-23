@@ -30,6 +30,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/superset_transform.hpp
       title: Algorithm/superset_transform.hpp
+    - icon: ':warning:'
+      path: Algorithm/ternary_search.hpp
+      title: Algorithm/ternary_search.hpp
     - icon: ':heavy_check_mark:'
       path: Algorithm/treedp.hpp
       title: "\u5168\u65B9\u4F4D\u6728DP"
