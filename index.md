@@ -128,8 +128,7 @@ data:
       title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':warning:'
       path: Datastructure/static2Drectanglesum.hpp
-      title: "\u9759\u7684\u3067\u5DE8\u5927\u306A\u30B0\u30EA\u30C3\u30C9\u306E\u77E9\
-        \u5F62\u548C"
+      title: Datastructure/static2Drectanglesum.hpp
     - icon: ':heavy_check_mark:'
       path: Datastructure/static2dsum.hpp
       title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
