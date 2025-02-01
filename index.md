@@ -9,7 +9,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Algorithm/bisect.hpp
       title: "\u62BD\u8C61\u5316\u4E8C\u5206\u63A2\u7D22"
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: Algorithm/doubling.hpp
       title: Algorithm/doubling.hpp
     - icon: ':heavy_check_mark:'
@@ -172,7 +172,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/cycle_detection.hpp
       title: cycle_detection
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Graph/graph.hpp
       title: Graph/graph.hpp
     - icon: ':heavy_check_mark:'
@@ -265,7 +265,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -382,7 +382,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Algorithm_bisect_min_left.test.cpp
       title: verify/Algorithm_bisect_min_left.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/Algorithm_doubling.test.cpp
       title: verify/Algorithm_doubling.test.cpp
     - icon: ':heavy_check_mark:'

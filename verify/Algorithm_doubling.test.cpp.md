@@ -1,56 +1,56 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Algorithm/doubling.hpp
     title: Algorithm/doubling.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Graph/graph.hpp
     title: Graph/graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja
+    PROBLEM: https://judge.yosupo.jp/problem/lca
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja
+    - https://judge.yosupo.jp/problem/lca
   bundledCode: "#line 1 \"verify/Algorithm_doubling.test.cpp\"\n#define PROBLEM \"\
-    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja\"\n\
-    #line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
-    using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
-    #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
-    \ begin(x), end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\n\
-    template <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x\
-    \ = y, true) : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y)\
-    \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
-    \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
-    \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/doubling.hpp\"\n\
-    struct doubling {\n    int lg_t;\n    static const int null = -1;\n    vector<vector<int>>\
-    \ table;\n\n    template <typename T> doubling(vector<T> nx, ll lim_t) {\n   \
-    \     static_assert(std::is_arithmetic<T>::value,\n                      \"Error:\
-    \ T must be a numeric type\");\n        int n = nx.size();\n        lg_t = 0;\n\
-    \        while (1LL << lg_t <= lim_t) lg_t++;\n        table.resize(lg_t, vector<int>(n,\
-    \ -1));\n        for (int i = 0; i < n; i++) {\n            table[0][i] = nx[i];\n\
-    \        }\n\n        for (int k = 1; k < lg_t; k++) {\n            for (int i\
-    \ = 0; i < n; i++) {\n                if (table[k - 1][i] == null)\n         \
-    \           table[k][i] = null;\n                else\n                    table[k][i]\
-    \ = table[k - 1][table[k - 1][i]];\n            }\n        }\n    }\n\n    int\
-    \ jump(int k, ll t) const {\n        for (int i = lg_t - 1; i >= 0; i--) {\n \
-    \           if ((t >> i) & 1 && k != null) k = table[i][k];\n        }\n     \
-    \   return k;\n    }\n\n    template <class F> pair<int, ll> max_right(int k,\
-    \ F pred) const {\n        ll sum_t = 0;\n        for (int i = lg_t - 1; i >=\
-    \ 0; i--) {\n            int to = table[i][k];\n            if (to == null) continue;\n\
-    \            if (pred(to) == true) {\n                k = to;\n              \
-    \  sum_t += 1LL << i;\n            }\n        }\n        return make_pair(k, sum_t);\n\
-    \    }\n};\n#line 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n\
-    \    int to;\n    T cost;\n    int id;\n    static constexpr T INF = numeric_limits<T>::max()\
+    https://judge.yosupo.jp/problem/lca\"\n#line 1 \"Utility/template.hpp\"\n#include\
+    \ <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define rep(i,\
+    \ s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll i = (ll)(t)\
+    \ - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define TT template\
+    \ <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class T2> bool\
+    \ chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\ntemplate\
+    \ <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x = y, true)\
+    \ : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Algorithm/doubling.hpp\"\nstruct doubling {\n    int lg_t;\n \
+    \   static const int null = -1;\n    vector<vector<int>> table;\n\n    template\
+    \ <typename T> doubling(vector<T> nx, ll lim_t) {\n        static_assert(std::is_arithmetic<T>::value,\n\
+    \                      \"Error: T must be a numeric type\");\n        int n =\
+    \ nx.size();\n        lg_t = 0;\n        while (1LL << lg_t <= lim_t) lg_t++;\n\
+    \        table.resize(lg_t, vector<int>(n, -1));\n        for (int i = 0; i <\
+    \ n; i++) {\n            table[0][i] = nx[i];\n        }\n\n        for (int k\
+    \ = 1; k < lg_t; k++) {\n            for (int i = 0; i < n; i++) {\n         \
+    \       if (table[k - 1][i] == null)\n                    table[k][i] = null;\n\
+    \                else\n                    table[k][i] = table[k - 1][table[k\
+    \ - 1][i]];\n            }\n        }\n    }\n\n    int jump(int k, ll t) const\
+    \ {\n        for (int i = lg_t - 1; i >= 0; i--) {\n            if ((t >> i) &\
+    \ 1 && k != null) k = table[i][k];\n        }\n        return k;\n    }\n\n  \
+    \  template <class F> pair<int, ll> max_right(int k, F pred) const {\n       \
+    \ ll sum_t = 0;\n        for (int i = lg_t - 1; i >= 0; i--) {\n            int\
+    \ to = table[i][k];\n            if (to == null) continue;\n            if (pred(to)\
+    \ == true) {\n                k = to;\n                sum_t += 1LL << i;\n  \
+    \          }\n        }\n        return make_pair(k, sum_t);\n    }\n};\n#line\
+    \ 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n    int to;\n  \
+    \  T cost;\n    int id;\n    static constexpr T INF = numeric_limits<T>::max()\
     \ / 2;\n    Edge(int to = 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id)\
     \ {}\n};\n\ntemplate <typename T, bool directed> struct Graph : vector<vector<Edge<T>>>\
     \ {\n#define n int(this->size())\n    using vector<vector<Edge<T>>>::vector;\n\
@@ -169,23 +169,22 @@ data:
     \ }\n        if(u != v) {\n            u = v = db.table[0][u];\n        }\n  \
     \      return u;\n    };\n    while(q--) {\n        ll u, v;\n        cin >> u\
     \ >> v;\n        cout << lca(u, v) << endl;\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja\"\
-    \n#include \"../Utility/template.hpp\"\n#include \"../Algorithm/doubling.hpp\"\
-    \n#include \"../Graph/graph.hpp\"\n\nint main() {\n    ll n, q;\n    cin >> n\
-    \ >> q;\n    Tree<int> tr(n);\n    vector<int> to(n,-1);\n    rep(i, 1, n) {\n\
-    \        cin >> to[i];\n        tr.add(i, to[i]);\n    }\n    vector<int> dep(n,\
-    \ 0);\n    auto dfs = [&](auto f, int v, int p) -> void {\n        for(auto e\
-    \ : tr[v]) if(e.to != p) {\n            dep[e.to] = dep[v] + 1;\n            f(f,\
-    \ e.to, v);\n        }\n    };\n    dfs(dfs, 0, -1);\n    doubling db(to, n +\
-    \ 10);\n\n    auto lca = [&](int u, int v) -> ll {\n        if(dep[u] > dep[v])\
-    \ swap(u, v);\n        if(dep[u] < dep[v]) {\n            ll d = dep[v] - dep[u];\n\
-    \            v = db.jump(v, d);\n        }\n\n        rrep(i, 0, db.lg_t) {\n\
-    \            ll nu = db.table[i][v];\n            ll nv = db.table[i][u];\n  \
-    \          if(nu != -1 && nv != -1 && nu != nv) {\n                u = nu;\n \
-    \               v = nv;\n            }\n        }\n        if(u != v) {\n    \
-    \        u = v = db.table[0][u];\n        }\n        return u;\n    };\n    while(q--)\
-    \ {\n        ll u, v;\n        cin >> u >> v;\n        cout << lca(u, v) << endl;\n\
-    \    }\n}"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/lca\"\n#include \"../Utility/template.hpp\"\
+    \n#include \"../Algorithm/doubling.hpp\"\n#include \"../Graph/graph.hpp\"\n\n\
+    int main() {\n    ll n, q;\n    cin >> n >> q;\n    Tree<int> tr(n);\n    vector<int>\
+    \ to(n,-1);\n    rep(i, 1, n) {\n        cin >> to[i];\n        tr.add(i, to[i]);\n\
+    \    }\n    vector<int> dep(n, 0);\n    auto dfs = [&](auto f, int v, int p) ->\
+    \ void {\n        for(auto e : tr[v]) if(e.to != p) {\n            dep[e.to] =\
+    \ dep[v] + 1;\n            f(f, e.to, v);\n        }\n    };\n    dfs(dfs, 0,\
+    \ -1);\n    doubling db(to, n + 10);\n\n    auto lca = [&](int u, int v) -> ll\
+    \ {\n        if(dep[u] > dep[v]) swap(u, v);\n        if(dep[u] < dep[v]) {\n\
+    \            ll d = dep[v] - dep[u];\n            v = db.jump(v, d);\n       \
+    \ }\n\n        rrep(i, 0, db.lg_t) {\n            ll nu = db.table[i][v];\n  \
+    \          ll nv = db.table[i][u];\n            if(nu != -1 && nv != -1 && nu\
+    \ != nv) {\n                u = nu;\n                v = nv;\n            }\n\
+    \        }\n        if(u != v) {\n            u = v = db.table[0][u];\n      \
+    \  }\n        return u;\n    };\n    while(q--) {\n        ll u, v;\n        cin\
+    \ >> u >> v;\n        cout << lca(u, v) << endl;\n    }\n}"
   dependsOn:
   - Utility/template.hpp
   - Algorithm/doubling.hpp
@@ -193,8 +192,8 @@ data:
   isVerificationFile: true
   path: verify/Algorithm_doubling.test.cpp
   requiredBy: []
-  timestamp: '2025-02-02 06:02:56+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-02-02 06:04:21+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Algorithm_doubling.test.cpp
 layout: document

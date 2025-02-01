@@ -3,12 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Algorithm_doubling.test.cpp
     title: verify/Algorithm_doubling.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Algorithm/doubling.hpp\"\nstruct doubling {\n    int lg_t;\n\
@@ -52,7 +52,7 @@ data:
   path: Algorithm/doubling.hpp
   requiredBy: []
   timestamp: '2025-02-02 06:02:56+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Algorithm_doubling.test.cpp
 documentation_of: Algorithm/doubling.hpp
