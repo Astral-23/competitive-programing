@@ -1,4 +1,4 @@
-#define PROBLEM "https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja"
+#define PROBLEM "https://judge.yosupo.jp/problem/lca"
 #include "../Utility/template.hpp"
 #include "../Algorithm/doubling.hpp"
 #include "../Graph/graph.hpp"
