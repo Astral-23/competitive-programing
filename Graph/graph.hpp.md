@@ -6,6 +6,9 @@ data:
     path: Graph/scc.hpp
     title: "scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)"
   _extendedVerifiedWith:
+  - icon: ':x:'
+    path: verify/Algorithm_doubling.test.cpp
+    title: verify/Algorithm_doubling.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_bellman.test.cpp
     title: verify/Graph_graph_bellman.test.cpp
@@ -24,9 +27,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Graph_scc.test.cpp
     title: verify/Graph_scc.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n\
@@ -247,11 +250,12 @@ data:
   requiredBy:
   - Graph/scc.hpp
   timestamp: '2025-01-22 19:13:44+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/Graph_graph_bellman_and_warshall.test.cpp
   - verify/Graph_graph_cycle_detection_directed.test.cpp
   - verify/Graph_graph_dijkstra.test.cpp
+  - verify/Algorithm_doubling.test.cpp
   - verify/Graph_graph_bellman.test.cpp
   - verify/Graph_scc.test.cpp
   - verify/Graph_graph_cycle_detection_undirected.test.cpp

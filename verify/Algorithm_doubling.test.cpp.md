@@ -1,6 +1,9 @@
 ---
 data:
   _extendedDependsOn:
+  - icon: ':x:'
+    path: Algorithm/doubling.hpp
+    title: Algorithm/doubling.hpp
   - icon: ':question:'
     path: Graph/graph.hpp
     title: Graph/graph.hpp
@@ -9,16 +12,16 @@ data:
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=ja
+    PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja
     links:
-    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=ja
-  bundledCode: "#line 1 \"verify/Graph_graph_bellman.test.cpp\"\n#define PROBLEM \"\
-    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=ja\"\n\
+    - https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja
+  bundledCode: "#line 1 \"verify/Algorithm_doubling.test.cpp\"\n#define PROBLEM \"\
+    https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja\"\n\
     #line 1 \"Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\n\
     using ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n\
     #define rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x)\
@@ -28,24 +31,41 @@ data:
     \ {\n    return x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup()\
     \ {\n        ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n  \
     \      cout << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\ntemplate\
-    \ <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n    static\
-    \ constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to = 0, T cost\
-    \ = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate <typename\
-    \ T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define n int(this->size())\n\
-    \    using vector<vector<Edge<T>>>::vector;\n    void add(int s, int t, T w =\
-    \ 0, int id = -1) {\n        (*this)[s].emplace_back(t, w, id);\n        if constexpr\
-    \ (directed == false) {\n            (*this)[t].emplace_back(s, w, id);\n    \
-    \    }\n    }\n#undef n\n};\n\ntemplate <typename T> struct Tree : Graph<T, false>\
-    \ {\n#define n int(this->size())\n    using Graph<T, false>::Graph;\n#undef n\n\
-    };\n\nnamespace Graph_lib {\n\n#define inf Edge<T>::INF\ntemplate <typename T,\
-    \ bool directed>\nvector<T> DFS(Graph<T, directed> const &g, int s) {\n    int\
-    \ n = g.size();\n    assert(0 <= s && s < n);\n    vector<T> d(n, inf);\n    d[s]\
-    \ = 0;\n    queue<int> que;\n    que.push(s);\n    while (que.empty() == false)\
-    \ {\n        int v = que.front();\n        que.pop();\n        for (auto &e :\
-    \ g[v]) {\n            assert(e.cost == 1);\n            if (chmin(d[e.to], d[v]\
-    \ + e.cost)) {\n                que.push(e.to);\n            }\n        }\n  \
-    \  }\n    return d;\n}\n\ntemplate <typename T, bool directed>\nvector<T> dijkstra(Graph<T,\
+    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Algorithm/doubling.hpp\"\n\
+    struct doubling {\n    int lg_t;\n    static const int null = -1;\n    vector<vector<int>>\
+    \ table;\n\n    template <typename T> doubling(vector<T> nx, ll lim_t) {\n   \
+    \     static_assert(std::is_arithmetic<T>::value,\n                      \"Error:\
+    \ T must be a numeric type\");\n        int n = nx.size();\n        lg_t = 0;\n\
+    \        while (1LL << lg_t <= lim_t) lg_t++;\n        table.resize(lg_t, vector<int>(n,\
+    \ -1));\n        for (int i = 0; i < n; i++) {\n            table[0][i] = nx[i];\n\
+    \        }\n\n        for (int k = 1; k < lg_t; k++) {\n            for (int i\
+    \ = 0; i < n; i++) {\n                if (table[k - 1][i] == null)\n         \
+    \           table[k][i] = null;\n                else\n                    table[k][i]\
+    \ = table[k - 1][table[k - 1][i]];\n            }\n        }\n    }\n\n    int\
+    \ jump(int k, ll t) const {\n        for (int i = lg_t - 1; i >= 0; i--) {\n \
+    \           if ((t >> i) & 1 && k != null) k = table[i][k];\n        }\n     \
+    \   return k;\n    }\n\n    template <class F> pair<int, ll> max_right(int k,\
+    \ F pred) const {\n        ll sum_t = 0;\n        for (int i = lg_t - 1; i >=\
+    \ 0; i--) {\n            int to = table[i][k];\n            if (to == null) continue;\n\
+    \            if (pred(to) == true) {\n                k = to;\n              \
+    \  sum_t += 1LL << i;\n            }\n        }\n        return make_pair(k, sum_t);\n\
+    \    }\n};\n#line 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n\
+    \    int to;\n    T cost;\n    int id;\n    static constexpr T INF = numeric_limits<T>::max()\
+    \ / 2;\n    Edge(int to = 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id)\
+    \ {}\n};\n\ntemplate <typename T, bool directed> struct Graph : vector<vector<Edge<T>>>\
+    \ {\n#define n int(this->size())\n    using vector<vector<Edge<T>>>::vector;\n\
+    \    void add(int s, int t, T w = 0, int id = -1) {\n        (*this)[s].emplace_back(t,\
+    \ w, id);\n        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
+    \ w, id);\n        }\n    }\n#undef n\n};\n\ntemplate <typename T> struct Tree\
+    \ : Graph<T, false> {\n#define n int(this->size())\n    using Graph<T, false>::Graph;\n\
+    #undef n\n};\n\nnamespace Graph_lib {\n\n#define inf Edge<T>::INF\ntemplate <typename\
+    \ T, bool directed>\nvector<T> DFS(Graph<T, directed> const &g, int s) {\n   \
+    \ int n = g.size();\n    assert(0 <= s && s < n);\n    vector<T> d(n, inf);\n\
+    \    d[s] = 0;\n    queue<int> que;\n    que.push(s);\n    while (que.empty()\
+    \ == false) {\n        int v = que.front();\n        que.pop();\n        for (auto\
+    \ &e : g[v]) {\n            assert(e.cost == 1);\n            if (chmin(d[e.to],\
+    \ d[v] + e.cost)) {\n                que.push(e.to);\n            }\n        }\n\
+    \    }\n    return d;\n}\n\ntemplate <typename T, bool directed>\nvector<T> dijkstra(Graph<T,\
     \ directed> const &g, int s) {\n    int n = g.size();\n    vector<T> d(n, inf);\n\
     \    d[s] = 0;\n    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T,\
     \ int>>>\n        que;\n    que.push({d[s], s});\n    while (que.empty() == false)\
@@ -134,36 +154,52 @@ data:
     \  for (int i = 1; i < n; i++) {\n        if (chmax(d, ds2[i])) v = i;\n    }\n\
     \    pair<T, pair<int, int>> res;\n    res.first = d;\n    res.second.first =\
     \ u;\n    res.second.second = v;\n    return res;\n}\n#undef inf\n};  // namespace\
-    \ Tree_lib\n#line 4 \"verify/Graph_graph_bellman.test.cpp\"\nint main() {\n  \
-    \  ll n, m, r;\n    cin >> n >> m >> r;\n    Graph<ll, true> g(n);\n    rep(i,\
-    \ 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n        g.add(s,\
-    \ t, w);\n    }\n\n    auto [f, d] = Graph_lib::bellman_ford(g, r);\n    if(f)\
-    \ {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n    }\n \
-    \   for(int i = 0; i < n; i++) {\n        if(d[i] == Edge<ll>::INF) {\n      \
-    \      cout << \"INF\" << endl;\n        }\n        else {\n            cout <<\
-    \ d[i] << endl;\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_B&lang=ja\"\
-    \n#include \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\nint main()\
-    \ {\n    ll n, m, r;\n    cin >> n >> m >> r;\n    Graph<ll, true> g(n);\n   \
-    \ rep(i, 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n        g.add(s,\
-    \ t, w);\n    }\n\n    auto [f, d] = Graph_lib::bellman_ford(g, r);\n    if(f)\
-    \ {\n        cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n    }\n \
-    \   for(int i = 0; i < n; i++) {\n        if(d[i] == Edge<ll>::INF) {\n      \
-    \      cout << \"INF\" << endl;\n        }\n        else {\n            cout <<\
-    \ d[i] << endl;\n        }\n    }\n}"
+    \ Tree_lib\n#line 5 \"verify/Algorithm_doubling.test.cpp\"\n\nint main() {\n \
+    \   ll n, q;\n    cin >> n >> q;\n    Tree<int> tr(n);\n    vector<int> to(n,-1);\n\
+    \    rep(i, 1, n) {\n        cin >> to[i];\n        tr.add(i, to[i]);\n    }\n\
+    \    vector<int> dep(n, 0);\n    auto dfs = [&](auto f, int v, int p) -> void\
+    \ {\n        for(auto e : tr[v]) if(e.to != p) {\n            dep[e.to] = dep[v]\
+    \ + 1;\n            f(f, e.to, v);\n        }\n    };\n    dfs(dfs, 0, -1);\n\
+    \    doubling db(to, n + 10);\n\n    auto lca = [&](int u, int v) -> ll {\n  \
+    \      if(dep[u] > dep[v]) swap(u, v);\n        if(dep[u] < dep[v]) {\n      \
+    \      ll d = dep[v] - dep[u];\n            v = db.jump(v, d);\n        }\n\n\
+    \        rrep(i, 0, db.lg_t) {\n            ll nu = db.table[i][v];\n        \
+    \    ll nv = db.table[i][u];\n            if(nu != -1 && nv != -1 && nu != nv)\
+    \ {\n                u = nu;\n                v = nv;\n            }\n       \
+    \ }\n        if(u != v) {\n            u = v = db.table[0][u];\n        }\n  \
+    \      return u;\n    };\n    while(q--) {\n        ll u, v;\n        cin >> u\
+    \ >> v;\n        cout << lca(u, v) << endl;\n    }\n}\n"
+  code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=ALDS1_4_B&lang=ja\"\
+    \n#include \"../Utility/template.hpp\"\n#include \"../Algorithm/doubling.hpp\"\
+    \n#include \"../Graph/graph.hpp\"\n\nint main() {\n    ll n, q;\n    cin >> n\
+    \ >> q;\n    Tree<int> tr(n);\n    vector<int> to(n,-1);\n    rep(i, 1, n) {\n\
+    \        cin >> to[i];\n        tr.add(i, to[i]);\n    }\n    vector<int> dep(n,\
+    \ 0);\n    auto dfs = [&](auto f, int v, int p) -> void {\n        for(auto e\
+    \ : tr[v]) if(e.to != p) {\n            dep[e.to] = dep[v] + 1;\n            f(f,\
+    \ e.to, v);\n        }\n    };\n    dfs(dfs, 0, -1);\n    doubling db(to, n +\
+    \ 10);\n\n    auto lca = [&](int u, int v) -> ll {\n        if(dep[u] > dep[v])\
+    \ swap(u, v);\n        if(dep[u] < dep[v]) {\n            ll d = dep[v] - dep[u];\n\
+    \            v = db.jump(v, d);\n        }\n\n        rrep(i, 0, db.lg_t) {\n\
+    \            ll nu = db.table[i][v];\n            ll nv = db.table[i][u];\n  \
+    \          if(nu != -1 && nv != -1 && nu != nv) {\n                u = nu;\n \
+    \               v = nv;\n            }\n        }\n        if(u != v) {\n    \
+    \        u = v = db.table[0][u];\n        }\n        return u;\n    };\n    while(q--)\
+    \ {\n        ll u, v;\n        cin >> u >> v;\n        cout << lca(u, v) << endl;\n\
+    \    }\n}"
   dependsOn:
   - Utility/template.hpp
+  - Algorithm/doubling.hpp
   - Graph/graph.hpp
   isVerificationFile: true
-  path: verify/Graph_graph_bellman.test.cpp
+  path: verify/Algorithm_doubling.test.cpp
   requiredBy: []
-  timestamp: '2025-01-22 19:13:44+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-02-02 06:02:56+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/Graph_graph_bellman.test.cpp
+documentation_of: verify/Algorithm_doubling.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/Graph_graph_bellman.test.cpp
-- /verify/verify/Graph_graph_bellman.test.cpp.html
-title: verify/Graph_graph_bellman.test.cpp
+- /verify/verify/Algorithm_doubling.test.cpp
+- /verify/verify/Algorithm_doubling.test.cpp.html
+title: verify/Algorithm_doubling.test.cpp
 ---

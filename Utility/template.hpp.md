@@ -33,6 +33,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Algorithm_bisect_min_left.test.cpp
     title: verify/Algorithm_bisect_min_left.test.cpp
+  - icon: ':x:'
+    path: verify/Algorithm_doubling.test.cpp
+    title: verify/Algorithm_doubling.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Chromatic_Number.test.cpp
     title: verify/Chromatic_Number.test.cpp
@@ -282,9 +285,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -322,7 +325,7 @@ data:
   - example/rhash.example.cpp
   - example/simple_treap.example.cpp
   timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/fps_count_subset_sum.test.cpp
   - verify/Math_matrix_inv.test.cpp
@@ -356,6 +359,7 @@ data:
   - verify/lowlink_joint.test.cpp
   - verify/Graph_graph_dijkstra.test.cpp
   - verify/Math_matrix_pow.test.cpp
+  - verify/Algorithm_doubling.test.cpp
   - verify/Convolution_lcm_convolution.test.cpp
   - verify/mo.test.cpp
   - verify/Datastructure_lazysegtree.test.cpp
