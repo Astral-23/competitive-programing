@@ -61,5 +61,23 @@ template <bool simple> vector<pair<int, int>> rndgraph_connected(int n) {
     }
     return res;
 }
+
+template <typename T> vector<vector<T>> vector_all(int n, T l, T r) {
+    vector<vector<T>> ret;
+    auto dfs = [&](auto f, int i, vector<T> &v) {
+        if (i == n) {
+            ret.push_back(v);
+            return;
+        }
+        for (T c = l; c < r; ++c) {
+            v.push_back(c);
+            f(f, i + 1, v);
+            v.pop_back();
+        }
+    };
+    vector<T> t;
+    dfs(dfs, 0, t);
+    return ret;
+}
 }  // namespace RNG
 using namespace RNG;
