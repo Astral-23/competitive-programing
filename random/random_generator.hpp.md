@@ -31,8 +31,13 @@ data:
     \ int u = rnd(0, n);\n        int v = rnd(0, n);\n        if (u == v && simple)\
     \ continue;\n        if (u > v) swap(u, v);\n        if (simple && cnt.count(make_pair(u,\
     \ v))) continue;\n        res.emplace_back(u, v);\n        uf.merge(u, v);\n \
-    \       if (simple) cnt.insert(make_pair(u, v));\n    }\n    return res;\n}\n\
-    }  // namespace RNG\nusing namespace RNG;\n"
+    \       if (simple) cnt.insert(make_pair(u, v));\n    }\n    return res;\n}\n\n\
+    template <typename T> vector<vector<T>> vector_all(int n, T l, T r) {\n    vector<vector<T>>\
+    \ ret;\n    auto dfs = [&](auto f, int i, vector<T> &v) {\n        if (i == n)\
+    \ {\n            ret.push_back(v);\n            return;\n        }\n        for\
+    \ (T c = l; c < r; ++c) {\n            v.push_back(c);\n            f(f, i + 1,\
+    \ v);\n            v.pop_back();\n        }\n    };\n    vector<T> t;\n    dfs(dfs,\
+    \ 0, t);\n    return ret;\n}\n}  // namespace RNG\nusing namespace RNG;\n"
   code: "namespace RNG {\nstatic mt19937_64 engine(clock());\ntemplate <typename T\
     \ = long long> T rnd(T l, T r) {\n    return engine() % (r - l) + l;\n}\nstring\
     \ rndstr(ll len, char l, char r) {\n    string res;\n    for (int i = 0; i < len;\
@@ -56,13 +61,18 @@ data:
     \ int u = rnd(0, n);\n        int v = rnd(0, n);\n        if (u == v && simple)\
     \ continue;\n        if (u > v) swap(u, v);\n        if (simple && cnt.count(make_pair(u,\
     \ v))) continue;\n        res.emplace_back(u, v);\n        uf.merge(u, v);\n \
-    \       if (simple) cnt.insert(make_pair(u, v));\n    }\n    return res;\n}\n\
-    }  // namespace RNG\nusing namespace RNG;"
+    \       if (simple) cnt.insert(make_pair(u, v));\n    }\n    return res;\n}\n\n\
+    template <typename T> vector<vector<T>> vector_all(int n, T l, T r) {\n    vector<vector<T>>\
+    \ ret;\n    auto dfs = [&](auto f, int i, vector<T> &v) {\n        if (i == n)\
+    \ {\n            ret.push_back(v);\n            return;\n        }\n        for\
+    \ (T c = l; c < r; ++c) {\n            v.push_back(c);\n            f(f, i + 1,\
+    \ v);\n            v.pop_back();\n        }\n    };\n    vector<T> t;\n    dfs(dfs,\
+    \ 0, t);\n    return ret;\n}\n}  // namespace RNG\nusing namespace RNG;"
   dependsOn: []
   isVerificationFile: false
   path: random/random_generator.hpp
   requiredBy: []
-  timestamp: '2024-09-24 04:11:58+09:00'
+  timestamp: '2025-02-10 07:44:08+09:00'
   verificationStatus: LIBRARY_NO_TESTS
   verifiedWith: []
 documentation_of: random/random_generator.hpp
