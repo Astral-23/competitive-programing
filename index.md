@@ -64,6 +64,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/binarytrie.hpp
       title: binary_trie
+    - icon: ':x:'
+      path: Datastructure/compress.hpp
+      title: Datastructure/compress.hpp
     - icon: ':heavy_check_mark:'
       path: Datastructure/disjoint_sparse_table.hpp
       title: disjoint_sparse_table
@@ -117,7 +120,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/rangeset.hpp
       title: Datastructure/rangeset.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Datastructure/segtree.hpp
       title: segtree
     - icon: ':heavy_check_mark:'
@@ -262,10 +265,10 @@ data:
     - icon: ':warning:'
       path: Utility/bigmodint.hpp
       title: big_modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -421,6 +424,9 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_binary_trie_xor.test.cpp
       title: verify/Datastructure_binary_trie_xor.test.cpp
+    - icon: ':x:'
+      path: verify/Datastructure_compress.test.cpp
+      title: verify/Datastructure_compress.test.cpp
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_dsu.test.cpp
       title: verify/Datastructure_dsu.test.cpp

@@ -15,6 +15,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Convolution_lcm_convolution.test.cpp
     title: verify/Convolution_lcm_convolution.test.cpp
+  - icon: ':x:'
+    path: verify/Datastructure_compress.test.cpp
+    title: verify/Datastructure_compress.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Datastructure_dynamicseg.test.cpp
     title: verify/Datastructure_dynamicseg.test.cpp
@@ -72,9 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: modint
     links: []
@@ -132,32 +135,33 @@ data:
   isVerificationFile: false
   path: Utility/modint.hpp
   requiredBy:
-  - Graph/Chromatic_Number.hpp
   - example/matrix.example.cpp
+  - Graph/Chromatic_Number.hpp
   timestamp: '2024-12-03 09:45:24+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/Math_matrix_inv.test.cpp
-  - verify/Chromatic_Number.test.cpp
-  - verify/Datastructure_dynamicseg.test.cpp
-  - verify/superset_transform.test.cpp
-  - verify/Datastructure_swag.test.cpp
-  - verify/dijkstra.test.cpp
-  - verify/Math_matrix_pow.test.cpp
-  - verify/Convolution_lcm_convolution.test.cpp
-  - verify/Datastructure_lazysegtree.test.cpp
-  - verify/bellman_ford.test.cpp
-  - verify/Math_matrix_det.test.cpp
-  - verify/Math_combination_more.test.cpp
-  - verify/mat_det.test.cpp
-  - verify/bitwise_and_convolution.test.cpp
-  - verify/matrix.test.cpp
-  - verify/Datastructure_seg_prod.test.cpp
-  - verify/treedp.test.cpp
-  - verify/Math_matrix_rank.test.cpp
-  - verify/Datastructure_swag_more.test.cpp
-  - verify/Datastructure_treap.test.cpp
   - "\u7802\u5834/swag.test.cpp"
+  - verify/bitwise_and_convolution.test.cpp
+  - verify/bellman_ford.test.cpp
+  - verify/Datastructure_swag_more.test.cpp
+  - verify/dijkstra.test.cpp
+  - verify/Datastructure_swag.test.cpp
+  - verify/superset_transform.test.cpp
+  - verify/Datastructure_lazysegtree.test.cpp
+  - verify/Chromatic_Number.test.cpp
+  - verify/Math_matrix_inv.test.cpp
+  - verify/treedp.test.cpp
+  - verify/Datastructure_seg_prod.test.cpp
+  - verify/Convolution_lcm_convolution.test.cpp
+  - verify/Datastructure_compress.test.cpp
+  - verify/Math_matrix_pow.test.cpp
+  - verify/Datastructure_dynamicseg.test.cpp
+  - verify/mat_det.test.cpp
+  - verify/Math_matrix_rank.test.cpp
+  - verify/matrix.test.cpp
+  - verify/Math_matrix_det.test.cpp
+  - verify/Datastructure_treap.test.cpp
+  - verify/Math_combination_more.test.cpp
 documentation_of: Utility/modint.hpp
 layout: document
 redirect_from:

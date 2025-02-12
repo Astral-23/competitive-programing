@@ -44,8 +44,8 @@ data:
   timestamp: '2024-07-31 11:08:52+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/superset_transform.test.cpp
   - verify/bitwise_and_convolution.test.cpp
+  - verify/superset_transform.test.cpp
 documentation_of: Algorithm/superset_transform.hpp
 layout: document
 redirect_from:

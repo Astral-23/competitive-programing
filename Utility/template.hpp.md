@@ -72,6 +72,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Datastructure_binary_trie_xor.test.cpp
     title: verify/Datastructure_binary_trie_xor.test.cpp
+  - icon: ':x:'
+    path: verify/Datastructure_compress.test.cpp
+    title: verify/Datastructure_compress.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Datastructure_dsu.test.cpp
     title: verify/Datastructure_dsu.test.cpp
@@ -285,9 +288,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -316,103 +319,104 @@ data:
   isVerificationFile: false
   path: Utility/template.hpp
   requiredBy:
-  - verify/Convolution_gcd_convolution_test.cpp
   - "\u7802\u5834/binarytrie.example.cpp"
   - "\u7802\u5834/simple_treap.henkou.cpp"
-  - example/matrix.example.cpp
-  - example/range_edge_graph.example.cpp
-  - example/offline_connectivity.example.cpp
   - example/rhash.example.cpp
   - example/simple_treap.example.cpp
+  - example/offline_connectivity.example.cpp
+  - example/matrix.example.cpp
+  - example/range_edge_graph.example.cpp
+  - verify/Convolution_gcd_convolution_test.cpp
   timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
-  - verify/fps_count_subset_sum.test.cpp
-  - verify/Math_matrix_inv.test.cpp
-  - verify/Algorithm_bisect_max_right.test.cpp
-  - verify/Datastructure_binary_trie_xor.test.cpp
-  - verify/aux_tree.test.cpp
-  - verify/range_edge_graph.test.cpp
-  - verify/Chromatic_Number.test.cpp
-  - verify/Datastructure_static2dsum.test.cpp
-  - verify/Graph_graph_bellman_and_warshall.test.cpp
-  - verify/Datastructure_2dbit_imos.test.cpp
-  - verify/Datastructure_dynamicseg.test.cpp
-  - verify/superset_transform.test.cpp
-  - verify/maxflow_lowerbound.test.cpp
-  - verify/Datastructure_fenwick_tree.test.cpp
-  - verify/two_edge_connected.test.cpp
-  - verify/Datastructure_offline_connectivity.test.cpp
-  - verify/Datastructure_point_add_rec_sum.test.cpp
-  - verify/Datastructure_offline_connectivity_more.test.cpp
-  - verify/Rhash.test.cpp
-  - verify/Graph_graph_cycle_detection_directed.test.cpp
-  - verify/hld.test.cpp
-  - verify/Datastructure_swag.test.cpp
-  - verify/Datastructure_2dsegtree_max.test.cpp
-  - verify/maximum_independent_set.test.cpp
-  - verify/floor_sum.test.cpp
-  - verify/fps_pow.test.cpp
-  - verify/dijkstra.test.cpp
-  - verify/hld_lca.test.cpp
-  - verify/Datastructure_value_dsu.test.cpp
-  - verify/lowlink_joint.test.cpp
-  - verify/Graph_graph_dijkstra.test.cpp
-  - verify/Math_matrix_pow.test.cpp
-  - verify/Algorithm_doubling.test.cpp
-  - verify/Convolution_lcm_convolution.test.cpp
-  - verify/mo.test.cpp
-  - verify/Datastructure_lazysegtree.test.cpp
-  - verify/jumpontree.test.cpp
-  - verify/Datastructure_1dimos.test.cpp
-  - verify/bellman_ford.test.cpp
-  - verify/fps_inv.test.cpp
-  - verify/Math_matrix_det.test.cpp
-  - verify/fps_exp.test.cpp
-  - verify/manacher.test.cpp
-  - verify/Rhash_more.test.cpp
-  - verify/Datastructure_lazyseg_bina.test.cpp
-  - verify/Datastructure_2dbit.test.cpp
-  - verify/Graph_graph_bellman.test.cpp
-  - verify/Math_combination.test.cpp
-  - verify/Graph_scc.test.cpp
-  - verify/Math_combination_more.test.cpp
-  - verify/Graph_graph_cycle_detection_undirected.test.cpp
-  - verify/Graph_cycle_detection_2.test.cpp
-  - verify/Datastructure_static1dsum.test.cpp
-  - verify/Chromatic_Number_with_restoration.test.cpp
-  - verify/Datastructure_binary_trie.test.cpp
-  - verify/Datastructure_2dsegtree_add.test.cpp
-  - verify/Algorithm_bisect_min_left.test.cpp
-  - verify/Graph_scc_old.test.cpp
-  - verify/Datastructure_dsu.test.cpp
-  - verify/mat_det.test.cpp
-  - verify/Datastructure_DST.test.cpp
-  - verify/Graph_cycle_detection_1.test.cpp
-  - verify/Datastructure_potential_dsu.test.cpp
-  - verify/Datastructure_rangeset.test.cpp
-  - verify/Datastructure_segtree.test.cpp
-  - verify/bitwise_and_convolution.test.cpp
-  - verify/Datastructure_fastset.test.cpp
-  - verify/fps_log.test.cpp
-  - verify/matrix.test.cpp
-  - verify/Datastructure_sprase_table.test.cpp
-  - verify/Convolution_gcd_convolution.test.cpp
-  - verify/oneside_range_edge_graph.test.cpp
-  - verify/Datastructure_seg_prod.test.cpp
-  - verify/bi_connected.test.cpp
-  - verify/treedp.test.cpp
-  - verify/Math_matrix_rank.test.cpp
-  - verify/Datastructure_pbds_set.test.cpp
-  - verify/maxflow.test.cpp
-  - verify/Datastructure_swag_more.test.cpp
-  - verify/Datastructure_treap.test.cpp
-  - verify/Datastructure_simpletreap.test.cpp
-  - verify/extgcd.test.cpp
-  - verify/Datastructure_imos2d.test.cpp
-  - verify/Datastructure_undabledsu.test.cpp
-  - verify/lowlink_bridge.test.cpp
   - "\u7802\u5834/swag.test.cpp"
+  - verify/Graph_graph_bellman.test.cpp
+  - verify/bitwise_and_convolution.test.cpp
+  - verify/Datastructure_undabledsu.test.cpp
+  - verify/Datastructure_rangeset.test.cpp
+  - verify/Datastructure_imos2d.test.cpp
+  - verify/Datastructure_DST.test.cpp
+  - verify/range_edge_graph.test.cpp
+  - verify/jumpontree.test.cpp
+  - verify/maximum_independent_set.test.cpp
+  - verify/bi_connected.test.cpp
+  - verify/bellman_ford.test.cpp
+  - verify/fps_log.test.cpp
+  - verify/Datastructure_binary_trie.test.cpp
+  - verify/Datastructure_lazyseg_bina.test.cpp
+  - verify/Datastructure_swag_more.test.cpp
+  - verify/Datastructure_potential_dsu.test.cpp
+  - verify/Graph_graph_cycle_detection_undirected.test.cpp
+  - verify/dijkstra.test.cpp
+  - verify/fps_exp.test.cpp
+  - verify/maxflow_lowerbound.test.cpp
+  - verify/Datastructure_offline_connectivity_more.test.cpp
+  - verify/Graph_cycle_detection_2.test.cpp
+  - verify/Datastructure_swag.test.cpp
+  - verify/fps_count_subset_sum.test.cpp
+  - verify/oneside_range_edge_graph.test.cpp
+  - verify/superset_transform.test.cpp
+  - verify/Datastructure_lazysegtree.test.cpp
+  - verify/Algorithm_bisect_max_right.test.cpp
+  - verify/Chromatic_Number.test.cpp
+  - verify/Datastructure_offline_connectivity.test.cpp
+  - verify/Graph_scc_old.test.cpp
+  - verify/Math_matrix_inv.test.cpp
+  - verify/Datastructure_dsu.test.cpp
+  - verify/treedp.test.cpp
+  - verify/Algorithm_doubling.test.cpp
+  - verify/Datastructure_seg_prod.test.cpp
+  - verify/Graph_graph_cycle_detection_directed.test.cpp
+  - verify/Convolution_lcm_convolution.test.cpp
+  - verify/Datastructure_static1dsum.test.cpp
+  - verify/Datastructure_point_add_rec_sum.test.cpp
+  - verify/Graph_cycle_detection_1.test.cpp
+  - verify/aux_tree.test.cpp
+  - verify/Datastructure_compress.test.cpp
+  - verify/Datastructure_2dbit.test.cpp
+  - verify/Datastructure_simpletreap.test.cpp
+  - verify/fps_pow.test.cpp
+  - verify/Chromatic_Number_with_restoration.test.cpp
+  - verify/manacher.test.cpp
+  - verify/Graph_graph_dijkstra.test.cpp
+  - verify/Graph_scc.test.cpp
+  - verify/Datastructure_value_dsu.test.cpp
+  - verify/Datastructure_1dimos.test.cpp
+  - verify/Math_matrix_pow.test.cpp
+  - verify/Datastructure_sprase_table.test.cpp
+  - verify/Datastructure_dynamicseg.test.cpp
+  - verify/Datastructure_2dbit_imos.test.cpp
+  - verify/mat_det.test.cpp
+  - verify/Rhash.test.cpp
+  - verify/Datastructure_fenwick_tree.test.cpp
+  - verify/fps_inv.test.cpp
+  - verify/floor_sum.test.cpp
+  - verify/Math_matrix_rank.test.cpp
+  - verify/Math_combination.test.cpp
+  - verify/Datastructure_binary_trie_xor.test.cpp
+  - verify/matrix.test.cpp
+  - verify/Datastructure_2dsegtree_add.test.cpp
+  - verify/lowlink_bridge.test.cpp
+  - verify/lowlink_joint.test.cpp
+  - verify/Rhash_more.test.cpp
+  - verify/Datastructure_static2dsum.test.cpp
+  - verify/hld_lca.test.cpp
+  - verify/two_edge_connected.test.cpp
+  - verify/Graph_graph_bellman_and_warshall.test.cpp
+  - verify/mo.test.cpp
+  - verify/Math_matrix_det.test.cpp
+  - verify/Convolution_gcd_convolution.test.cpp
+  - verify/Datastructure_2dsegtree_max.test.cpp
+  - verify/Datastructure_treap.test.cpp
+  - verify/Datastructure_pbds_set.test.cpp
+  - verify/hld.test.cpp
+  - verify/maxflow.test.cpp
+  - verify/extgcd.test.cpp
+  - verify/Datastructure_fastset.test.cpp
+  - verify/Math_combination_more.test.cpp
+  - verify/Datastructure_segtree.test.cpp
+  - verify/Algorithm_bisect_min_left.test.cpp
 documentation_of: Utility/template.hpp
 layout: document
 redirect_from:

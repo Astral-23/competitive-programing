@@ -80,8 +80,8 @@ data:
   timestamp: '2024-07-06 20:37:29+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Datastructure_2dsegtree_max.test.cpp
   - verify/Datastructure_2dsegtree_add.test.cpp
+  - verify/Datastructure_2dsegtree_max.test.cpp
 documentation_of: Datastructure/2dsegtree.hpp
 layout: document
 redirect_from:

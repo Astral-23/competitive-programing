@@ -169,12 +169,12 @@ data:
   timestamp: '2025-01-10 00:18:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/aux_tree.test.cpp
   - verify/range_edge_graph.test.cpp
-  - verify/hld.test.cpp
-  - verify/hld_lca.test.cpp
   - verify/jumpontree.test.cpp
   - verify/oneside_range_edge_graph.test.cpp
+  - verify/aux_tree.test.cpp
+  - verify/hld_lca.test.cpp
+  - verify/hld.test.cpp
 documentation_of: Algorithm/hld.hpp
 layout: document
 redirect_from:

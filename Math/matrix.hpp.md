@@ -143,10 +143,10 @@ data:
   verifiedWith:
   - verify/Math_matrix_inv.test.cpp
   - verify/Math_matrix_pow.test.cpp
-  - verify/Math_matrix_det.test.cpp
   - verify/mat_det.test.cpp
-  - verify/matrix.test.cpp
   - verify/Math_matrix_rank.test.cpp
+  - verify/matrix.test.cpp
+  - verify/Math_matrix_det.test.cpp
 documentation_of: Math/matrix.hpp
 layout: document
 redirect_from:

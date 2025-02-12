@@ -61,8 +61,8 @@ data:
   timestamp: '2025-01-21 17:35:19+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Datastructure_static2dsum.test.cpp
   - verify/Datastructure_static1dsum.test.cpp
+  - verify/Datastructure_static2dsum.test.cpp
 documentation_of: Datastructure/static2dsum.hpp
 layout: document
 redirect_from:
