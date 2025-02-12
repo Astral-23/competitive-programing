@@ -15,7 +15,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Convolution_lcm_convolution.test.cpp
     title: verify/Convolution_lcm_convolution.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Datastructure_compress.test.cpp
     title: verify/Datastructure_compress.test.cpp
   - icon: ':heavy_check_mark:'
@@ -75,9 +75,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     document_title: modint
     links: []
@@ -138,7 +138,7 @@ data:
   - example/matrix.example.cpp
   - Graph/Chromatic_Number.hpp
   timestamp: '2024-12-03 09:45:24+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - "\u7802\u5834/swag.test.cpp"
   - verify/bitwise_and_convolution.test.cpp
