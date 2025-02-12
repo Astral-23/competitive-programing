@@ -14,6 +14,7 @@
 "verify/Datastructure_DST.test.cpp": "2025-01-18 06:13:30 +0900",
 "verify/Datastructure_binary_trie.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_binary_trie_xor.test.cpp": "2025-01-10 00:00:54 +0900",
+"verify/Datastructure_compress.test.cpp": "2025-02-13 05:27:56 +0900",
 "verify/Datastructure_dsu.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_dynamicseg.test.cpp": "2025-01-10 00:00:54 +0900",
 "verify/Datastructure_fastset.test.cpp": "2025-01-10 00:00:54 +0900",
