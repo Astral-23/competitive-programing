@@ -13,52 +13,55 @@ data:
   _pathExtension: hpp
   _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
-    _deprecated_at_docs: doc/static2dsum.md
-    document_title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
     links: []
-  bundledCode: "#line 1 \"Datastructure/static2dsum.hpp\"\nTT struct static2dsum {\n\
-    \    int h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\n    static2dsum(int\
-    \ h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h, vec<T>(w, T()))) {}\n\
-    \n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n        h = dat.size();\n   \
-    \     if (h)\n            w = dat[0].size();\n        else\n            w = 0;\n\
-    \    }\n\n    void add(int i, int j, T x) {\n        assert(f == false);\n   \
-    \     dat[i][j] += x;\n    }\n\n    void build() {\n        assert(f == false);\n\
-    \        rep(i, 0, h) {\n            rep(j, 0, w - 1) { dat[i][j + 1] += dat[i][j];\
-    \ }\n        }\n\n        rep(j, 0, w) {\n            rep(i, 0, h - 1) { dat[i\
-    \ + 1][j] += dat[i][j]; }\n        }\n\n        f = true;\n    }\n\n    T get(int\
-    \ y, int x) const {\n        assert(0 <= y && y < h);\n        assert(0 <= x &&\
-    \ x < w);\n        return prod(y, y + 1, x, x + 1);\n    }\n    \n    T prod(int\
-    \ sy, int ty, int sx, int tx) const {\n        assert(f);\n        assert(0 <=\
-    \ sy && ty <= h);\n        assert(0 <= sx && tx <= w);\n        assert(sy <= ty);\n\
-    \        assert(sx <= tx);\n        if(sy == ty || sx == tx) return 0;\n     \
-    \   tx--, ty--;\n        T res = dat[ty][tx];\n        if (sx > 0) res -= dat[ty][sx\
-    \ - 1];\n        if (sy > 0) res -= dat[sy - 1][tx];\n        if (sx > 0 && sy\
-    \ > 0) res += dat[sy - 1][sx - 1];\n        return res;\n    }\n};\n/*\n@brief\
-    \ 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n*/\n"
-  code: "TT struct static2dsum {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f\
-    \ = false;\n\n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h,\
-    \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
-    \   h = dat.size();\n        if (h)\n            w = dat[0].size();\n        else\n\
-    \            w = 0;\n    }\n\n    void add(int i, int j, T x) {\n        assert(f\
-    \ == false);\n        dat[i][j] += x;\n    }\n\n    void build() {\n        assert(f\
-    \ == false);\n        rep(i, 0, h) {\n            rep(j, 0, w - 1) { dat[i][j\
-    \ + 1] += dat[i][j]; }\n        }\n\n        rep(j, 0, w) {\n            rep(i,\
-    \ 0, h - 1) { dat[i + 1][j] += dat[i][j]; }\n        }\n\n        f = true;\n\
-    \    }\n\n    T get(int y, int x) const {\n        assert(0 <= y && y < h);\n\
-    \        assert(0 <= x && x < w);\n        return prod(y, y + 1, x, x + 1);\n\
-    \    }\n    \n    T prod(int sy, int ty, int sx, int tx) const {\n        assert(f);\n\
-    \        assert(0 <= sy && ty <= h);\n        assert(0 <= sx && tx <= w);\n  \
-    \      assert(sy <= ty);\n        assert(sx <= tx);\n        if(sy == ty || sx\
-    \ == tx) return 0;\n        tx--, ty--;\n        T res = dat[ty][tx];\n      \
-    \  if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy > 0) res -= dat[sy - 1][tx];\n\
-    \        if (sx > 0 && sy > 0) res += dat[sy - 1][sx - 1];\n        return res;\n\
-    \    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n\
-    */"
+  bundledCode: "#line 1 \"Datastructure/static2dsum.hpp\"\n\nTT struct static2dsum\
+    \ {\n    int id(int i, int j) const { return i * (w + 1) + j; }\n    int h, w;\n\
+    \    vector<T> d;\n    bool built = false;\n\n    static2dsum(int h = 0, int w\
+    \ = 0)\n        : static2dsum(vector<vector<T>>(h, vector<T>(w, T()))) {}\n\n\
+    \    static2dsum(vec<vec<T>> const &dat) {\n        h = dat.size();\n        if\
+    \ (h)\n            w = dat[0].size();\n        else\n            w = 0;\n    \
+    \    d.resize((h + 1) * (w + 1), 0);\n        for (int i = 0; i < h; ++i) {\n\
+    \            for (int j = 0; j < w; ++j) {\n                d[id(i + 1, j + 1)]\
+    \ = dat[i][j];\n            }\n        }\n    }\n    void add(int i, int j, T\
+    \ x) {\n        assert(built == false);\n        d[id(i + 1, j + 1)] += x;\n \
+    \   }\n\n    void build() {\n        assert(built == false);\n        for (int\
+    \ i = 0; i <= h; ++i) {\n            for (int j = 0; j < w; ++j) {\n         \
+    \       d[id(i, j + 1)] += d[id(i, j)];\n            }\n        }\n\n        for\
+    \ (int j = 0; j <= w; ++j) {\n            for (int i = 0; i < h; ++i) {\n    \
+    \            d[id(i + 1, j)] += d[id(i, j)];\n            }\n        }\n\n   \
+    \     built = true;\n    }\n\n    T get(int y, int x) const {\n        assert(built);\n\
+    \        assert(0 <= y && y < h);\n        assert(0 <= x && x < w);\n        return\
+    \ prod(y, y + 1, x, x + 1);\n    }\n\n    T prod(int sx, int tx, int sy, int ty)\
+    \ const {\n        assert(built);\n        assert(0 <= sx && sx <= tx && tx <=\
+    \ h);\n        assert(0 <= sy && sy <= ty && ty <= w);\n        T res = d[id(tx,\
+    \ ty)];\n        res -= d[id(tx, sy)];\n        res -= d[id(sx, ty)];\n      \
+    \  res += d[id(sx, sy)];\n        return res;\n    }\n};\n"
+  code: "\nTT struct static2dsum {\n    int id(int i, int j) const { return i * (w\
+    \ + 1) + j; }\n    int h, w;\n    vector<T> d;\n    bool built = false;\n\n  \
+    \  static2dsum(int h = 0, int w = 0)\n        : static2dsum(vector<vector<T>>(h,\
+    \ vector<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> const &dat) {\n      \
+    \  h = dat.size();\n        if (h)\n            w = dat[0].size();\n        else\n\
+    \            w = 0;\n        d.resize((h + 1) * (w + 1), 0);\n        for (int\
+    \ i = 0; i < h; ++i) {\n            for (int j = 0; j < w; ++j) {\n          \
+    \      d[id(i + 1, j + 1)] = dat[i][j];\n            }\n        }\n    }\n   \
+    \ void add(int i, int j, T x) {\n        assert(built == false);\n        d[id(i\
+    \ + 1, j + 1)] += x;\n    }\n\n    void build() {\n        assert(built == false);\n\
+    \        for (int i = 0; i <= h; ++i) {\n            for (int j = 0; j < w; ++j)\
+    \ {\n                d[id(i, j + 1)] += d[id(i, j)];\n            }\n        }\n\
+    \n        for (int j = 0; j <= w; ++j) {\n            for (int i = 0; i < h; ++i)\
+    \ {\n                d[id(i + 1, j)] += d[id(i, j)];\n            }\n        }\n\
+    \n        built = true;\n    }\n\n    T get(int y, int x) const {\n        assert(built);\n\
+    \        assert(0 <= y && y < h);\n        assert(0 <= x && x < w);\n        return\
+    \ prod(y, y + 1, x, x + 1);\n    }\n\n    T prod(int sx, int tx, int sy, int ty)\
+    \ const {\n        assert(built);\n        assert(0 <= sx && sx <= tx && tx <=\
+    \ h);\n        assert(0 <= sy && sy <= ty && ty <= w);\n        T res = d[id(tx,\
+    \ ty)];\n        res -= d[id(tx, sy)];\n        res -= d[id(sx, ty)];\n      \
+    \  res += d[id(sx, sy)];\n        return res;\n    }\n};"
   dependsOn: []
   isVerificationFile: false
   path: Datastructure/static2dsum.hpp
   requiredBy: []
-  timestamp: '2025-01-21 17:35:19+09:00'
+  timestamp: '2025-02-13 07:41:09+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Datastructure_static1dsum.test.cpp
@@ -68,30 +71,5 @@ layout: document
 redirect_from:
 - /library/Datastructure/static2dsum.hpp
 - /library/Datastructure/static2dsum.hpp.html
-title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
+title: Datastructure/static2dsum.hpp
 ---
-## 概要
-2次元累積和
-
-## +演算を他の演算に変えたくなった時
-逆元があれば良い。
-add, prod(y, x), prod(sy, sx, ty, tx) の + , - , += , -= を全て変更する。
-
-## コンストラクタ
-`template<typename T> static2dsum(int h, int w)` ... T : 値の型。 [0, h) * [0, w)の配列を作る. 初期値は0。 
-- 計算量 $O(HW)$
-
-`templatetypename T> static2dsum(static2dsum(vec<vec<T>> dat)`... ２次元配列datをコピーする
-- 計算量 $O(HW)$
-## 関数
-基本、計算量は $O(1)$  
-
-・1点加算/区間取得
-- `void add(int y, int x, T v)` ... A[y][x] += v
-
-- `void build()` ... 累積和を計算する。以降add不可能。また、buildを呼ぶ前はget.prod不可。(どちらも、assertが反応する) 
-    - 計算量 $O(HW)$
-
-
-- `T prod(int sy, int ty, int sx, int tx)` ... [sy, ty) * [sx, tx)の矩形領域の和を返す。**半開区間**
-

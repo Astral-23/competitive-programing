@@ -3,7 +3,7 @@ data:
   _extendedDependsOn:
   - icon: ':heavy_check_mark:'
     path: Datastructure/static2dsum.hpp
-    title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
+    title: Datastructure/static2dsum.hpp
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -29,34 +29,36 @@ data:
     \     ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n        cout\
     \ << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
     \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\
-    \nTT struct static2dsum {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\
-    \n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h,\
-    \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
-    \   h = dat.size();\n        if (h)\n            w = dat[0].size();\n        else\n\
-    \            w = 0;\n    }\n\n    void add(int i, int j, T x) {\n        assert(f\
-    \ == false);\n        dat[i][j] += x;\n    }\n\n    void build() {\n        assert(f\
-    \ == false);\n        rep(i, 0, h) {\n            rep(j, 0, w - 1) { dat[i][j\
-    \ + 1] += dat[i][j]; }\n        }\n\n        rep(j, 0, w) {\n            rep(i,\
-    \ 0, h - 1) { dat[i + 1][j] += dat[i][j]; }\n        }\n\n        f = true;\n\
-    \    }\n\n    T get(int y, int x) const {\n        assert(0 <= y && y < h);\n\
-    \        assert(0 <= x && x < w);\n        return prod(y, y + 1, x, x + 1);\n\
-    \    }\n    \n    T prod(int sy, int ty, int sx, int tx) const {\n        assert(f);\n\
-    \        assert(0 <= sy && ty <= h);\n        assert(0 <= sx && tx <= w);\n  \
-    \      assert(sy <= ty);\n        assert(sx <= tx);\n        if(sy == ty || sx\
-    \ == tx) return 0;\n        tx--, ty--;\n        T res = dat[ty][tx];\n      \
-    \  if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy > 0) res -= dat[sy - 1][tx];\n\
-    \        if (sx > 0 && sy > 0) res += dat[sy - 1][sx - 1];\n        return res;\n\
-    \    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n\
-    */\n#line 4 \"verify/Datastructure_static2dsum.test.cpp\"\n\nint main() {\n  \
-    \  int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n    static2dsum<ll>\
-    \ J(h, w);\n    static2dsum<ll> O(h, w);\n    static2dsum<ll> I(h, w);\n\n\n \
-    \   rep(i, 0, h) rep(j, 0, w) {\n        char a;\n        cin >> a;\n        if(a=='J')\
-    \ J.add(i, j, 1);\n        if(a=='O') O.add(i, j, 1);\n        if(a=='I') I.add(i,\
-    \ j, 1);\n    }\n\n    J.build();O.build();I.build();\n\n\n    while(k--) {\n\
-    \        int sy, sx, ty, tx;\n        cin >> sy >> sx >> ty >> tx;\n        sy--,\
-    \ sx--;\n        cout << J.prod(sy, ty, sx, tx) << \" \";\n        cout << O.prod(sy,\
-    \ ty, sx, tx) << \" \";\n        cout << I.prod(sy, ty, sx, tx) << endl;\n\n \
-    \   }\n\t\n\n}\n"
+    \n\nTT struct static2dsum {\n    int id(int i, int j) const { return i * (w +\
+    \ 1) + j; }\n    int h, w;\n    vector<T> d;\n    bool built = false;\n\n    static2dsum(int\
+    \ h = 0, int w = 0)\n        : static2dsum(vector<vector<T>>(h, vector<T>(w, T())))\
+    \ {}\n\n    static2dsum(vec<vec<T>> const &dat) {\n        h = dat.size();\n \
+    \       if (h)\n            w = dat[0].size();\n        else\n            w =\
+    \ 0;\n        d.resize((h + 1) * (w + 1), 0);\n        for (int i = 0; i < h;\
+    \ ++i) {\n            for (int j = 0; j < w; ++j) {\n                d[id(i +\
+    \ 1, j + 1)] = dat[i][j];\n            }\n        }\n    }\n    void add(int i,\
+    \ int j, T x) {\n        assert(built == false);\n        d[id(i + 1, j + 1)]\
+    \ += x;\n    }\n\n    void build() {\n        assert(built == false);\n      \
+    \  for (int i = 0; i <= h; ++i) {\n            for (int j = 0; j < w; ++j) {\n\
+    \                d[id(i, j + 1)] += d[id(i, j)];\n            }\n        }\n\n\
+    \        for (int j = 0; j <= w; ++j) {\n            for (int i = 0; i < h; ++i)\
+    \ {\n                d[id(i + 1, j)] += d[id(i, j)];\n            }\n        }\n\
+    \n        built = true;\n    }\n\n    T get(int y, int x) const {\n        assert(built);\n\
+    \        assert(0 <= y && y < h);\n        assert(0 <= x && x < w);\n        return\
+    \ prod(y, y + 1, x, x + 1);\n    }\n\n    T prod(int sx, int tx, int sy, int ty)\
+    \ const {\n        assert(built);\n        assert(0 <= sx && sx <= tx && tx <=\
+    \ h);\n        assert(0 <= sy && sy <= ty && ty <= w);\n        T res = d[id(tx,\
+    \ ty)];\n        res -= d[id(tx, sy)];\n        res -= d[id(sx, ty)];\n      \
+    \  res += d[id(sx, sy)];\n        return res;\n    }\n};\n#line 4 \"verify/Datastructure_static2dsum.test.cpp\"\
+    \n\nint main() {\n    int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n\
+    \    static2dsum<ll> J(h, w);\n    static2dsum<ll> O(h, w);\n    static2dsum<ll>\
+    \ I(h, w);\n\n\n    rep(i, 0, h) rep(j, 0, w) {\n        char a;\n        cin\
+    \ >> a;\n        if(a=='J') J.add(i, j, 1);\n        if(a=='O') O.add(i, j, 1);\n\
+    \        if(a=='I') I.add(i, j, 1);\n    }\n\n    J.build();O.build();I.build();\n\
+    \n\n    while(k--) {\n        int sy, sx, ty, tx;\n        cin >> sy >> sx >>\
+    \ ty >> tx;\n        sy--, sx--;\n        cout << J.prod(sy, ty, sx, tx) << \"\
+    \ \";\n        cout << O.prod(sy, ty, sx, tx) << \" \";\n        cout << I.prod(sy,\
+    \ ty, sx, tx) << endl;\n\n    }\n\t\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0560\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/static2dsum.hpp\"\
     \n\nint main() {\n    int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n\
@@ -74,7 +76,7 @@ data:
   isVerificationFile: true
   path: verify/Datastructure_static2dsum.test.cpp
   requiredBy: []
-  timestamp: '2025-01-21 17:35:19+09:00'
+  timestamp: '2025-02-13 07:41:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_static2dsum.test.cpp

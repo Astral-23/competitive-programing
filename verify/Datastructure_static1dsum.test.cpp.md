@@ -6,7 +6,7 @@ data:
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
   - icon: ':heavy_check_mark:'
     path: Datastructure/static2dsum.hpp
-    title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
+    title: Datastructure/static2dsum.hpp
   - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
@@ -44,32 +44,34 @@ data:
     \ return 0;\n        T res = dat[r - 1];\n        if (l) res -= dat[l - 1];\n\
     \        return res;\n    }\n\n    T all_prod() const {\n        assert(built);\n\
     \        return dat[n-1];\n    }\n};\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\
-    \n@docs doc/static1dsum.md\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\nTT\
-    \ struct static2dsum {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\
-    \n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vec<vec<T>>(h,\
-    \ vec<T>(w, T()))) {}\n\n    static2dsum(vec<vec<T>> dat) : dat(dat) {\n     \
-    \   h = dat.size();\n        if (h)\n            w = dat[0].size();\n        else\n\
-    \            w = 0;\n    }\n\n    void add(int i, int j, T x) {\n        assert(f\
-    \ == false);\n        dat[i][j] += x;\n    }\n\n    void build() {\n        assert(f\
-    \ == false);\n        rep(i, 0, h) {\n            rep(j, 0, w - 1) { dat[i][j\
-    \ + 1] += dat[i][j]; }\n        }\n\n        rep(j, 0, w) {\n            rep(i,\
-    \ 0, h - 1) { dat[i + 1][j] += dat[i][j]; }\n        }\n\n        f = true;\n\
-    \    }\n\n    T get(int y, int x) const {\n        assert(0 <= y && y < h);\n\
-    \        assert(0 <= x && x < w);\n        return prod(y, y + 1, x, x + 1);\n\
-    \    }\n    \n    T prod(int sy, int ty, int sx, int tx) const {\n        assert(f);\n\
-    \        assert(0 <= sy && ty <= h);\n        assert(0 <= sx && tx <= w);\n  \
-    \      assert(sy <= ty);\n        assert(sx <= tx);\n        if(sy == ty || sx\
-    \ == tx) return 0;\n        tx--, ty--;\n        T res = dat[ty][tx];\n      \
-    \  if (sx > 0) res -= dat[ty][sx - 1];\n        if (sy > 0) res -= dat[sy - 1][tx];\n\
-    \        if (sx > 0 && sy > 0) res += dat[sy - 1][sx - 1];\n        return res;\n\
-    \    }\n};\n/*\n@brief 2\u6B21\u5143\u7D2F\u7A4D\u548C\n@docs doc/static2dsum.md\n\
-    */\n#line 5 \"verify/Datastructure_static1dsum.test.cpp\"\n\n\nint main() {\n\
-    \    int n, q;\n    cin >> n >> q;\n    static1dsum<ll> sum1(n);\n    static2dsum<ll>\
-    \ sum2(1, n);\n\n    rep(i, 0, n) {\n        ll a;\n        cin >> a;\n      \
-    \  sum1.add(i, a);\n        sum2.add(0, i, a);\n    }\n\n    sum1.build();\n \
-    \   sum2.build();\n\n    while(q--) {\n        int l, r;\n        cin >> l >>\
-    \ r;\n        cout << sum1.prod(l, r) << endl;\n        assert(sum1.prod(l, r)\
-    \ == sum2.prod(0, 1, l, r));\n    }\n    \n}\n"
+    \n@docs doc/static1dsum.md\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\n\n\
+    TT struct static2dsum {\n    int id(int i, int j) const { return i * (w + 1) +\
+    \ j; }\n    int h, w;\n    vector<T> d;\n    bool built = false;\n\n    static2dsum(int\
+    \ h = 0, int w = 0)\n        : static2dsum(vector<vector<T>>(h, vector<T>(w, T())))\
+    \ {}\n\n    static2dsum(vec<vec<T>> const &dat) {\n        h = dat.size();\n \
+    \       if (h)\n            w = dat[0].size();\n        else\n            w =\
+    \ 0;\n        d.resize((h + 1) * (w + 1), 0);\n        for (int i = 0; i < h;\
+    \ ++i) {\n            for (int j = 0; j < w; ++j) {\n                d[id(i +\
+    \ 1, j + 1)] = dat[i][j];\n            }\n        }\n    }\n    void add(int i,\
+    \ int j, T x) {\n        assert(built == false);\n        d[id(i + 1, j + 1)]\
+    \ += x;\n    }\n\n    void build() {\n        assert(built == false);\n      \
+    \  for (int i = 0; i <= h; ++i) {\n            for (int j = 0; j < w; ++j) {\n\
+    \                d[id(i, j + 1)] += d[id(i, j)];\n            }\n        }\n\n\
+    \        for (int j = 0; j <= w; ++j) {\n            for (int i = 0; i < h; ++i)\
+    \ {\n                d[id(i + 1, j)] += d[id(i, j)];\n            }\n        }\n\
+    \n        built = true;\n    }\n\n    T get(int y, int x) const {\n        assert(built);\n\
+    \        assert(0 <= y && y < h);\n        assert(0 <= x && x < w);\n        return\
+    \ prod(y, y + 1, x, x + 1);\n    }\n\n    T prod(int sx, int tx, int sy, int ty)\
+    \ const {\n        assert(built);\n        assert(0 <= sx && sx <= tx && tx <=\
+    \ h);\n        assert(0 <= sy && sy <= ty && ty <= w);\n        T res = d[id(tx,\
+    \ ty)];\n        res -= d[id(tx, sy)];\n        res -= d[id(sx, ty)];\n      \
+    \  res += d[id(sx, sy)];\n        return res;\n    }\n};\n#line 5 \"verify/Datastructure_static1dsum.test.cpp\"\
+    \n\n\nint main() {\n    int n, q;\n    cin >> n >> q;\n    static1dsum<ll> sum1(n);\n\
+    \    static2dsum<ll> sum2(1, n);\n\n    rep(i, 0, n) {\n        ll a;\n      \
+    \  cin >> a;\n        sum1.add(i, a);\n        sum2.add(0, i, a);\n    }\n\n \
+    \   sum1.build();\n    sum2.build();\n\n    while(q--) {\n        int l, r;\n\
+    \        cin >> l >> r;\n        cout << sum1.prod(l, r) << endl;\n        assert(sum1.prod(l,\
+    \ r) == sum2.prod(0, 1, l, r));\n    }\n    \n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Datastructure/static1dsum.hpp\"\n\
     #include \"../Datastructure/static2dsum.hpp\"\n\n\nint main() {\n    int n, q;\n\
@@ -86,7 +88,7 @@ data:
   isVerificationFile: true
   path: verify/Datastructure_static1dsum.test.cpp
   requiredBy: []
-  timestamp: '2025-01-21 17:35:19+09:00'
+  timestamp: '2025-02-13 07:41:09+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_static1dsum.test.cpp

@@ -137,7 +137,7 @@ data:
       title: Datastructure/static2Drectanglesum.hpp
     - icon: ':heavy_check_mark:'
       path: Datastructure/static2dsum.hpp
-      title: "2\u6B21\u5143\u7D2F\u7A4D\u548C"
+      title: Datastructure/static2dsum.hpp
     - icon: ':heavy_check_mark:'
       path: Datastructure/swag.hpp
       title: SWAG
