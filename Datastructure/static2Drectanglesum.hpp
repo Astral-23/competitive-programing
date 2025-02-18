@@ -1,7 +1,7 @@
 template <typename T> struct static2Drectunglesum {
     using node_t = pair<long long, T>;
 
-    vector<long long> xs, ys, nxs;  // 点の情報(indexベースで扱うと便利)
+    vector<long long> xs, ys, nxs; // 点の情報(indexベースで扱うと便利)
     vector<T> ws;
     vector<vector<T>> sum;
 
@@ -42,15 +42,18 @@ template <typename T> struct static2Drectunglesum {
         }
 
         for (int i = 0; i < int(dat.size()); i++) {
-            if (dat[i].size() == 0) continue;
+            if (dat[i].size() == 0)
+                continue;
             sum[i].resize(dat[i].size() + 1, 0);
             for (int j = 1; j <= int(dat[i].size()); j++) {
-                sum[i][j] = sum[i][j - 1] + dat[i][j-1].second;
+                sum[i][j] = sum[i][j - 1] + dat[i][j - 1].second;
             }
         }
     }
-      T prod(long long r, long long sy, long long ty) const {
+    T prod(long long r, long long sy, long long ty) const {
         assert(built);
+        if (sy >= ty)
+            return T();
         T res = T();
         while (r > 0) {
             int li = lower_bound(dat[r - 1].begin(), dat[r - 1].end(),
@@ -74,11 +77,15 @@ template <typename T> struct static2Drectunglesum {
 
     T prod(long long sx, long long tx, long long sy, long long ty) const {
         assert(built);
+        if (sx >= tx)
+            return T();
+
         int l = get(sx);
         int r = get(tx);
         return prod(r, sy, ty) - prod(l, sy, ty);
     }
 
+    //(x, y) に += w。 同じ(x, y)を2回以上呼んでもok
     void add(long long x, long long y, T w) {
         assert(built == false);
         xs.push_back(x);
