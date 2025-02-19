@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Datastructure/2dbit.hpp
-    title: 2dbit
-  - icon: ':heavy_check_mark:'
+    title: Datastructure/2dbit.hpp
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja
@@ -34,26 +34,19 @@ data:
     \  void add(int y, int x, T v) {\n        assert(0 <= y && y < h);\n        assert(0\
     \ <= x && x < w);\n        for( ; y < h; y |= y + 1) {\n            for(int b\
     \ = x; b < w; b |= b + 1) {\n                dat[y][b] += v;\n            }\n\
-    \        }\n    }\n\n    void imos_add(int y, int x, T v) {\n        add(y, x,\
-    \ v);\n    }\n\n    void imos_add(int sy, int ty, int sx, int tx, T v) {\n   \
-    \     chmax(sy, 0);\n        chmax(sx, 0); chmax(sy, 0);\n        chmin(tx, w);\
-    \ chmin(ty, h);\n        if(sx >= tx || sy >= ty) return;\n        add(sy, sx,\
-    \ v);\n        if(ty < h && tx < w) add(ty, tx, v);\n        if(ty < h) add(ty,\
-    \ sx, -v);\n        if(tx < w) add(sy, tx, -v);\n    }\n\n    T prod(int y, int\
-    \ x) {\n        T res = 0;\n        y--, x--;\n        for( ; y >= 0; y = (y &\
-    \ (y + 1)) - 1) {\n            for(int b = x; b >= 0; b = (b & (b + 1)) - 1) {\n\
-    \                res += dat[y][b];\n            }\n        }\n        return res;\n\
-    \    }\n\n    T prod(int sy, int ty, int sx, int tx) {\n        assert(sy >= 0);\
-    \ assert(sx >= 0);\n        assert(ty <= h); assert(tx <= w);\n        T res =\
-    \ prod(ty, tx);\n        res -= prod(sy, tx);\n        res -= prod(ty, sx);\n\
-    \        res += prod(sy, sx);\n        return res;\n    }\n\n    T imos_get(int\
-    \ y, int x) {\n        return prod(0, y+1, 0, x+1);\n    }\n};\n/*\n@brief 2dbit\n\
-    @docs doc/2dbit.md\n*/\n#line 4 \"verify/Datastructure_2dbit_imos.test.cpp\"\n\
-    \nint main() { \n    int n;\n    cin >> n;\n    bit2d<ll> sum(1001, 1001);\n\n\
-    \    rep(i, 0, n) {\n        int sx, sy, tx, ty;\n        cin >> sx >> sy >> tx\
-    \ >> ty;\n        sum.imos_add(sy, ty, sx, tx, 1);\n    }\n\n\n    int ans = 0;\n\
-    \    rep(i, 0, 1001) {\n        rep(j, 0, 1001){ \n            chmax(ans, sum.imos_get(i,\
-    \ j));\n        }\n    }\n\n    cout << ans << endl;\n\n}\n"
+    \        }\n    }\n\n    T prod(int y, int x) const {\n        T res = 0;\n  \
+    \      y--, x--;\n        for( ; y >= 0; y = (y & (y + 1)) - 1) {\n          \
+    \  for(int b = x; b >= 0; b = (b & (b + 1)) - 1) {\n                res += dat[y][b];\n\
+    \            }\n        }\n        return res;\n    }\n\n    T prod(int sy, int\
+    \ ty, int sx, int tx) const {\n        assert(0 <= sy && sy <= ty && ty <= h);\n\
+    \        assert(0 <= sx && sx <= tx && tx <= w);\n\n        T res = prod(ty, tx);\n\
+    \        res -= prod(sy, tx);\n        res -= prod(ty, sx);\n        res += prod(sy,\
+    \ sx);\n        return res;\n    }\n};\n#line 4 \"verify/Datastructure_2dbit_imos.test.cpp\"\
+    \n\nint main() { \n    int n;\n    cin >> n;\n    bit2d<ll> sum(1001, 1001);\n\
+    \n    rep(i, 0, n) {\n        int sx, sy, tx, ty;\n        cin >> sx >> sy >>\
+    \ tx >> ty;\n        sum.imos_add(sy, ty, sx, tx, 1);\n    }\n\n\n    int ans\
+    \ = 0;\n    rep(i, 0, 1001) {\n        rep(j, 0, 1001){ \n            chmax(ans,\
+    \ sum.imos_get(i, j));\n        }\n    }\n\n    cout << ans << endl;\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/2dbit.hpp\"\
     \n\nint main() { \n    int n;\n    cin >> n;\n    bit2d<ll> sum(1001, 1001);\n\
@@ -67,8 +60,8 @@ data:
   isVerificationFile: true
   path: verify/Datastructure_2dbit_imos.test.cpp
   requiredBy: []
-  timestamp: '2025-01-10 00:00:54+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-02-19 12:40:07+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
 documentation_of: verify/Datastructure_2dbit_imos.test.cpp
 layout: document

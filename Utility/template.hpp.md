@@ -54,7 +54,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Datastructure_2dbit.test.cpp
     title: verify/Datastructure_2dbit.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Datastructure_2dbit_imos.test.cpp
     title: verify/Datastructure_2dbit_imos.test.cpp
   - icon: ':heavy_check_mark:'
@@ -126,10 +126,10 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Datastructure_sprase_table.test.cpp
     title: verify/Datastructure_sprase_table.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Datastructure_static1dsum.test.cpp
     title: verify/Datastructure_static1dsum.test.cpp
-  - icon: ':heavy_check_mark:'
+  - icon: ':x:'
     path: verify/Datastructure_static2dsum.test.cpp
     title: verify/Datastructure_static2dsum.test.cpp
   - icon: ':heavy_check_mark:'
@@ -288,9 +288,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -328,7 +328,7 @@ data:
   - example/range_edge_graph.example.cpp
   - verify/Convolution_gcd_convolution_test.cpp
   timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - "\u7802\u5834/swag.test.cpp"
   - verify/Graph_graph_bellman.test.cpp

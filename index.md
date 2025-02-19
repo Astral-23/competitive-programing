@@ -55,9 +55,9 @@ data:
       title: Convolution/lcm_convolution.hpp
   - name: Datastructure
     pages:
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Datastructure/2dbit.hpp
-      title: 2dbit
+      title: Datastructure/2dbit.hpp
     - icon: ':heavy_check_mark:'
       path: Datastructure/2dsegtree.hpp
       title: "2\u6B21\u5143\u30BB\u30B0\u30E1\u30F3\u30C8\u6728"
@@ -129,13 +129,13 @@ data:
     - icon: ':heavy_check_mark:'
       path: Datastructure/sparse_table.hpp
       title: sparse_table
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Datastructure/static1dsum.hpp
       title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
     - icon: ':warning:'
       path: Datastructure/static2Drectanglesum.hpp
       title: Datastructure/static2Drectanglesum.hpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: Datastructure/static2dsum.hpp
       title: Datastructure/static2dsum.hpp
     - icon: ':heavy_check_mark:'
@@ -268,7 +268,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':heavy_check_mark:'
+    - icon: ':question:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -406,7 +406,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_2dbit.test.cpp
       title: verify/Datastructure_2dbit.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/Datastructure_2dbit_imos.test.cpp
       title: verify/Datastructure_2dbit_imos.test.cpp
     - icon: ':heavy_check_mark:'
@@ -478,10 +478,10 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Datastructure_sprase_table.test.cpp
       title: verify/Datastructure_sprase_table.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/Datastructure_static1dsum.test.cpp
       title: verify/Datastructure_static1dsum.test.cpp
-    - icon: ':heavy_check_mark:'
+    - icon: ':x:'
       path: verify/Datastructure_static2dsum.test.cpp
       title: verify/Datastructure_static2dsum.test.cpp
     - icon: ':heavy_check_mark:'
