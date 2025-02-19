@@ -27,9 +27,9 @@ int main() {
         int sy, sx, ty, tx;
         cin >> sy >> sx >> ty >> tx;
         sy--, sx--;
-        cout << J.prod(sy, ty, sx, tx) << " ";
-        cout << O.prod(sy, ty, sx, tx) << " ";
-        cout << I.prod(sy, ty, sx, tx) << endl;
+        cout << J.prod(sx, tx, sy, ty) << " ";
+        cout << O.prod(sx, tx, sy, ty) << " ";
+        cout << I.prod(sx, tx, sy, ty) << endl;
 
     }
 	
