@@ -1,12 +1,14 @@
-
 TT struct static2dsum {
-    int id(int i, int j) const { return i * (w + 1) + j; }
+    int id(int i, int j) const {
+        return i * (w + 1) + j;
+    }
     int h, w;
     vector<T> d;
     bool built = false;
 
     static2dsum(int h = 0, int w = 0)
-        : static2dsum(vector<vector<T>>(h, vector<T>(w, T()))) {}
+        : static2dsum(vector<vector<T>>(h, vector<T>(w, T()))) {
+    }
 
     static2dsum(vec<vec<T>> const &dat) {
         h = dat.size();
@@ -47,17 +49,18 @@ TT struct static2dsum {
         assert(built);
         assert(0 <= y && y < h);
         assert(0 <= x && x < w);
-        return prod(y, y + 1, x, x + 1);
+        return prod(x, x + 1, y, y + 1);
     }
 
     T prod(int sx, int tx, int sy, int ty) const {
         assert(built);
-        assert(0 <= sx && sx <= tx && tx <= h);
-        assert(0 <= sy && sy <= ty && ty <= w);
-        T res = d[id(tx, ty)];
-        res -= d[id(tx, sy)];
-        res -= d[id(sx, ty)];
-        res += d[id(sx, sy)];
+        assert(0 <= sy && sy <= ty && ty <= h);
+        assert(0 <= sx && sx <= tx && tx <= w);
+
+        T res = d[id(ty, tx)];
+        res -= d[id(sy, tx)];
+        res -= d[id(ty, sx)];
+        res += d[id(sy, sx)];
         return res;
     }
 };

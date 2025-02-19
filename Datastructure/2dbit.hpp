@@ -16,22 +16,7 @@ TT struct bit2d {
         }
     }
 
-    void imos_add(int y, int x, T v) {
-        add(y, x, v);
-    }
-
-    void imos_add(int sy, int ty, int sx, int tx, T v) {
-        chmax(sy, 0);
-        chmax(sx, 0); chmax(sy, 0);
-        chmin(tx, w); chmin(ty, h);
-        if(sx >= tx || sy >= ty) return;
-        add(sy, sx, v);
-        if(ty < h && tx < w) add(ty, tx, v);
-        if(ty < h) add(ty, sx, -v);
-        if(tx < w) add(sy, tx, -v);
-    }
-
-    T prod(int y, int x) {
+    T prod(int y, int x) const {
         T res = 0;
         y--, x--;
         for( ; y >= 0; y = (y & (y + 1)) - 1) {
@@ -42,21 +27,14 @@ TT struct bit2d {
         return res;
     }
 
-    T prod(int sy, int ty, int sx, int tx) {
-        assert(sy >= 0); assert(sx >= 0);
-        assert(ty <= h); assert(tx <= w);
+    T prod(int sy, int ty, int sx, int tx) const {
+        assert(0 <= sy && sy <= ty && ty <= h);
+        assert(0 <= sx && sx <= tx && tx <= w);
+
         T res = prod(ty, tx);
         res -= prod(sy, tx);
         res -= prod(ty, sx);
         res += prod(sy, sx);
         return res;
     }
-
-    T imos_get(int y, int x) {
-        return prod(0, y+1, 0, x+1);
-    }
 };
-/*
-@brief 2dbit
-@docs doc/2dbit.md
-*/
