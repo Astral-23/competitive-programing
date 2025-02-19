@@ -9,7 +9,7 @@ TT struct imos2d {
 
     void imos_add(int i, int j, T x) {
         assert(f == false);
-        dat[i][j] += x;
+        imos_add(i, i + 1, j, j + 1, x);
     }
 
     void imos_add(int sy, int ty, int sx, int tx, T x) {
