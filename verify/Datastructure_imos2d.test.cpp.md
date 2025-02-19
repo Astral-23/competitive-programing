@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/imos2d.hpp
     title: "2\u6B21\u5143imos\u6CD5"
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
@@ -32,21 +32,21 @@ data:
     \nTT struct imos2d {\n    int h, w;\n    vec<vec<T>> dat;\n    bool f = false;\n\
     \n    imos2d(int h = 0, int w = 0) : h(h), w(w) {\n        dat = vec<vec<T>>(h,\
     \ vec<T>(w, T()));\n    }\n\n    void imos_add(int i, int j, T x) {\n        assert(f\
-    \ == false);\n        dat[i][j] += x;\n    }\n\n    void imos_add(int sy, int\
-    \ ty, int sx, int tx, T x) {\n        assert(f == false);\n        if (sx >= tx\
-    \ || sy >= ty) return;\n        dat[sy][sx] += x;\n        if (ty < h) dat[ty][sx]\
-    \ -= x;\n        if (tx < w) dat[sy][tx] -= x;\n        if (tx < w && ty < h)\
-    \ dat[ty][tx] += x;\n    }\n\n    void build() {\n        rep(i, 0, h) {\n   \
-    \         rep(j, 0, w - 1) { dat[i][j + 1] += dat[i][j]; }\n        }\n      \
-    \  rep(j, 0, w) {\n            rep(i, 0, h - 1) { dat[i + 1][j] += dat[i][j];\
-    \ }\n        }\n        f = true;\n    }\n\n    T imos_get(int i, int j) { return\
-    \ dat[i][j]; }\n};\n/*\n@brief 2\u6B21\u5143imos\u6CD5\n\n*/\n#line 4 \"verify/Datastructure_imos2d.test.cpp\"\
-    \n\nint main() { \n    int n;\n    cin >> n;\n    imos2d<ll> sum(1001, 1001);\n\
-    \n    rep(i, 0, n) {\n        int sx, sy, tx, ty;\n        cin >> sx >> sy >>\
-    \ tx >> ty;\n        sum.imos_add(sy, ty, sx, tx, 1);\n    }\n\n    sum.build();\n\
-    \    int ans = 0;\n    rep(i, 0, 1001) {\n        rep(j, 0, 1001){ \n        \
-    \    chmax(ans, sum.imos_get(i, j));\n        }\n    }\n\n    cout << ans << endl;\n\
-    \n}\n"
+    \ == false);\n        imos_add(i, i + 1, j, j + 1, x);\n    }\n\n    void imos_add(int\
+    \ sy, int ty, int sx, int tx, T x) {\n        assert(f == false);\n        if\
+    \ (sx >= tx || sy >= ty) return;\n        dat[sy][sx] += x;\n        if (ty <\
+    \ h) dat[ty][sx] -= x;\n        if (tx < w) dat[sy][tx] -= x;\n        if (tx\
+    \ < w && ty < h) dat[ty][tx] += x;\n    }\n\n    void build() {\n        rep(i,\
+    \ 0, h) {\n            rep(j, 0, w - 1) { dat[i][j + 1] += dat[i][j]; }\n    \
+    \    }\n        rep(j, 0, w) {\n            rep(i, 0, h - 1) { dat[i + 1][j] +=\
+    \ dat[i][j]; }\n        }\n        f = true;\n    }\n\n    T imos_get(int i, int\
+    \ j) { return dat[i][j]; }\n};\n/*\n@brief 2\u6B21\u5143imos\u6CD5\n\n*/\n#line\
+    \ 4 \"verify/Datastructure_imos2d.test.cpp\"\n\nint main() { \n    int n;\n  \
+    \  cin >> n;\n    imos2d<ll> sum(1001, 1001);\n\n    rep(i, 0, n) {\n        int\
+    \ sx, sy, tx, ty;\n        cin >> sx >> sy >> tx >> ty;\n        sum.imos_add(sy,\
+    \ ty, sx, tx, 1);\n    }\n\n    sum.build();\n    int ans = 0;\n    rep(i, 0,\
+    \ 1001) {\n        rep(j, 0, 1001){ \n            chmax(ans, sum.imos_get(i, j));\n\
+    \        }\n    }\n\n    cout << ans << endl;\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=DSL_5_B&lang=ja\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/imos2d.hpp\"\
     \n\nint main() { \n    int n;\n    cin >> n;\n    imos2d<ll> sum(1001, 1001);\n\
@@ -61,7 +61,7 @@ data:
   isVerificationFile: true
   path: verify/Datastructure_imos2d.test.cpp
   requiredBy: []
-  timestamp: '2025-01-10 00:00:54+09:00'
+  timestamp: '2025-02-19 15:03:47+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_imos2d.test.cpp

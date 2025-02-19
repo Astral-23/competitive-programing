@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/static2dsum.hpp
     title: Datastructure/static2dsum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0560
@@ -57,9 +57,9 @@ data:
     \ >> a;\n        if(a=='J') J.add(i, j, 1);\n        if(a=='O') O.add(i, j, 1);\n\
     \        if(a=='I') I.add(i, j, 1);\n    }\n\n    J.build();O.build();I.build();\n\
     \n\n    while(k--) {\n        int sy, sx, ty, tx;\n        cin >> sy >> sx >>\
-    \ ty >> tx;\n        sy--, sx--;\n        cout << J.prod(sy, ty, sx, tx) << \"\
-    \ \";\n        cout << O.prod(sy, ty, sx, tx) << \" \";\n        cout << I.prod(sy,\
-    \ ty, sx, tx) << endl;\n\n    }\n\t\n\n}\n"
+    \ ty >> tx;\n        sy--, sx--;\n        cout << J.prod(sx, tx, sy, ty) << \"\
+    \ \";\n        cout << O.prod(sx, tx, sy, ty) << \" \";\n        cout << I.prod(sx,\
+    \ tx, sy, ty) << endl;\n\n    }\n\t\n\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=0560\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Datastructure/static2dsum.hpp\"\
     \n\nint main() {\n    int h, w;\n    cin >> h >> w;\n    int k;\n    cin >> k;\n\
@@ -68,17 +68,17 @@ data:
     \ >> a;\n        if(a=='J') J.add(i, j, 1);\n        if(a=='O') O.add(i, j, 1);\n\
     \        if(a=='I') I.add(i, j, 1);\n    }\n\n    J.build();O.build();I.build();\n\
     \n\n    while(k--) {\n        int sy, sx, ty, tx;\n        cin >> sy >> sx >>\
-    \ ty >> tx;\n        sy--, sx--;\n        cout << J.prod(sy, ty, sx, tx) << \"\
-    \ \";\n        cout << O.prod(sy, ty, sx, tx) << \" \";\n        cout << I.prod(sy,\
-    \ ty, sx, tx) << endl;\n\n    }\n\t\n\n}"
+    \ ty >> tx;\n        sy--, sx--;\n        cout << J.prod(sx, tx, sy, ty) << \"\
+    \ \";\n        cout << O.prod(sx, tx, sy, ty) << \" \";\n        cout << I.prod(sx,\
+    \ tx, sy, ty) << endl;\n\n    }\n\t\n\n}"
   dependsOn:
   - Utility/template.hpp
   - Datastructure/static2dsum.hpp
   isVerificationFile: true
   path: verify/Datastructure_static2dsum.test.cpp
   requiredBy: []
-  timestamp: '2025-02-19 12:40:07+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-02-19 15:02:43+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_static2dsum.test.cpp
 layout: document

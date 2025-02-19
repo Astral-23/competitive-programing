@@ -3,15 +3,12 @@ data:
   _extendedDependsOn: []
   _extendedRequiredBy: []
   _extendedVerifiedWith:
-  - icon: ':x:'
-    path: verify/Datastructure_static1dsum.test.cpp
-    title: verify/Datastructure_static1dsum.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Datastructure_static2dsum.test.cpp
     title: verify/Datastructure_static2dsum.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Datastructure/static2dsum.hpp\"\nTT struct static2dsum {\n\
@@ -63,9 +60,8 @@ data:
   path: Datastructure/static2dsum.hpp
   requiredBy: []
   timestamp: '2025-02-19 12:40:07+09:00'
-  verificationStatus: LIBRARY_ALL_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Datastructure_static1dsum.test.cpp
   - verify/Datastructure_static2dsum.test.cpp
 documentation_of: Datastructure/static2dsum.hpp
 layout: document

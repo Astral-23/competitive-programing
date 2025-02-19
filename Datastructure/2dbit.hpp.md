@@ -6,12 +6,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Datastructure_2dbit.test.cpp
     title: verify/Datastructure_2dbit.test.cpp
-  - icon: ':x:'
-    path: verify/Datastructure_2dbit_imos.test.cpp
-    title: verify/Datastructure_2dbit_imos.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Datastructure/2dbit.hpp\"\nTT struct bit2d {\n    int h,\
@@ -46,10 +43,9 @@ data:
   path: Datastructure/2dbit.hpp
   requiredBy: []
   timestamp: '2025-02-19 12:40:07+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Datastructure_2dbit.test.cpp
-  - verify/Datastructure_2dbit_imos.test.cpp
 documentation_of: Datastructure/2dbit.hpp
 layout: document
 redirect_from:

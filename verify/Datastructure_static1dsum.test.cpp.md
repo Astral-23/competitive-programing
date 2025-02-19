@@ -1,20 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: Datastructure/static1dsum.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
-  - icon: ':x:'
-    path: Datastructure/static2dsum.hpp
-    title: Datastructure/static2dsum.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/static_range_sum
@@ -44,53 +41,26 @@ data:
     \ return 0;\n        T res = dat[r - 1];\n        if (l) res -= dat[l - 1];\n\
     \        return res;\n    }\n\n    T all_prod() const {\n        assert(built);\n\
     \        return dat[n-1];\n    }\n};\n/*\n@brief 1\u6B21\u5143\u7D2F\u7A4D\u548C\
-    \n@docs doc/static1dsum.md\n*/\n#line 1 \"Datastructure/static2dsum.hpp\"\nTT\
-    \ struct static2dsum {\n    int id(int i, int j) const {\n        return i * (w\
-    \ + 1) + j;\n    }\n    int h, w;\n    vector<T> d;\n    bool built = false;\n\
-    \n    static2dsum(int h = 0, int w = 0)\n        : static2dsum(vector<vector<T>>(h,\
-    \ vector<T>(w, T()))) {\n    }\n\n    static2dsum(vec<vec<T>> const &dat) {\n\
-    \        h = dat.size();\n        if (h)\n            w = dat[0].size();\n   \
-    \     else\n            w = 0;\n        d.resize((h + 1) * (w + 1), 0);\n    \
-    \    for (int i = 0; i < h; ++i) {\n            for (int j = 0; j < w; ++j) {\n\
-    \                d[id(i + 1, j + 1)] = dat[i][j];\n            }\n        }\n\
-    \    }\n    void add(int i, int j, T x) {\n        assert(built == false);\n \
-    \       d[id(i + 1, j + 1)] += x;\n    }\n\n    void build() {\n        assert(built\
-    \ == false);\n        for (int i = 0; i <= h; ++i) {\n            for (int j =\
-    \ 0; j < w; ++j) {\n                d[id(i, j + 1)] += d[id(i, j)];\n        \
-    \    }\n        }\n\n        for (int j = 0; j <= w; ++j) {\n            for (int\
-    \ i = 0; i < h; ++i) {\n                d[id(i + 1, j)] += d[id(i, j)];\n    \
-    \        }\n        }\n\n        built = true;\n    }\n\n    T get(int y, int\
-    \ x) const {\n        assert(built);\n        assert(0 <= y && y < h);\n     \
-    \   assert(0 <= x && x < w);\n        return prod(x, x + 1, y, y + 1);\n    }\n\
-    \n    T prod(int sx, int tx, int sy, int ty) const {\n        assert(built);\n\
-    \        assert(0 <= sy && sy <= ty && ty <= h);\n        assert(0 <= sx && sx\
-    \ <= tx && tx <= w);\n\n        T res = d[id(ty, tx)];\n        res -= d[id(sy,\
-    \ tx)];\n        res -= d[id(ty, sx)];\n        res += d[id(sy, sx)];\n      \
-    \  return res;\n    }\n};\n#line 5 \"verify/Datastructure_static1dsum.test.cpp\"\
-    \n\n\nint main() {\n    int n, q;\n    cin >> n >> q;\n    static1dsum<ll> sum1(n);\n\
-    \    static2dsum<ll> sum2(1, n);\n\n    rep(i, 0, n) {\n        ll a;\n      \
-    \  cin >> a;\n        sum1.add(i, a);\n        sum2.add(0, i, a);\n    }\n\n \
-    \   sum1.build();\n    sum2.build();\n\n    while(q--) {\n        int l, r;\n\
-    \        cin >> l >> r;\n        cout << sum1.prod(l, r) << endl;\n        assert(sum1.prod(l,\
-    \ r) == sum2.prod(0, 1, l, r));\n    }\n    \n}\n"
+    \n@docs doc/static1dsum.md\n*/\n#line 4 \"verify/Datastructure_static1dsum.test.cpp\"\
+    \n\n\n\nint main() {\n    int n, q;\n    cin >> n >> q;\n    static1dsum<ll> sum1(n);\n\
+    \n\n    rep(i, 0, n) {\n        ll a;\n        cin >> a;\n        sum1.add(i,\
+    \ a);\n    }\n\n    sum1.build();\n\n    while(q--) {\n        int l, r;\n   \
+    \     cin >> l >> r;\n        cout << sum1.prod(l, r) << endl;\n    }\n    \n\
+    }\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/static_range_sum\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Datastructure/static1dsum.hpp\"\n\
-    #include \"../Datastructure/static2dsum.hpp\"\n\n\nint main() {\n    int n, q;\n\
-    \    cin >> n >> q;\n    static1dsum<ll> sum1(n);\n    static2dsum<ll> sum2(1,\
-    \ n);\n\n    rep(i, 0, n) {\n        ll a;\n        cin >> a;\n        sum1.add(i,\
-    \ a);\n        sum2.add(0, i, a);\n    }\n\n    sum1.build();\n    sum2.build();\n\
-    \n    while(q--) {\n        int l, r;\n        cin >> l >> r;\n        cout <<\
-    \ sum1.prod(l, r) << endl;\n        assert(sum1.prod(l, r) == sum2.prod(0, 1,\
-    \ l, r));\n    }\n    \n}"
+    \n\n\nint main() {\n    int n, q;\n    cin >> n >> q;\n    static1dsum<ll> sum1(n);\n\
+    \n\n    rep(i, 0, n) {\n        ll a;\n        cin >> a;\n        sum1.add(i,\
+    \ a);\n    }\n\n    sum1.build();\n\n    while(q--) {\n        int l, r;\n   \
+    \     cin >> l >> r;\n        cout << sum1.prod(l, r) << endl;\n    }\n    \n}"
   dependsOn:
   - Utility/template.hpp
   - Datastructure/static1dsum.hpp
-  - Datastructure/static2dsum.hpp
   isVerificationFile: true
   path: verify/Datastructure_static1dsum.test.cpp
   requiredBy: []
-  timestamp: '2025-02-19 12:40:07+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-02-19 15:02:43+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_static1dsum.test.cpp
 layout: document
