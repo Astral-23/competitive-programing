@@ -6,7 +6,7 @@ struct HLD {
     vec<ll> dep_w;
     //          親/成分のtop/inの中身→頂点番号
     int n, r;  // 頂点数、根
-
+    
     static vec<vec<int>> extract_graph(const vec<vec<pll>> &G) {
         vec<vec<int>> g(G.size());
         for (int i = 0; i < int(G.size()); i++) {
