@@ -32,8 +32,8 @@ data:
     \ using pll = pair<long long, long long>;\n    vi in, out, par, root, rev, dep,\
     \ pre_vs;\n    vec<ll> dep_w;\n    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\
     \u4E2D\u8EAB\u2192\u9802\u70B9\u756A\u53F7\n    int n, r;  // \u9802\u70B9\u6570\
-    \u3001\u6839\n\n    static vec<vec<int>> extract_graph(const vec<vec<pll>> &G)\
-    \ {\n        vec<vec<int>> g(G.size());\n        for (int i = 0; i < int(G.size());\
+    \u3001\u6839\n    \n    static vec<vec<int>> extract_graph(const vec<vec<pll>>\
+    \ &G) {\n        vec<vec<int>> g(G.size());\n        for (int i = 0; i < int(G.size());\
     \ i++) {\n            for (auto [w, to] : G[i])\n                if (i < to) {\n\
     \                    g[i].push_back(to);\n                    g[to].push_back(i);\n\
     \                }\n        }\n        return g;\n    }\n    HLD(const vec<vec<pll>>\
@@ -113,7 +113,7 @@ data:
   isVerificationFile: true
   path: verify/jumpontree.test.cpp
   requiredBy: []
-  timestamp: '2025-01-10 00:18:09+09:00'
+  timestamp: '2025-02-20 17:16:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/jumpontree.test.cpp

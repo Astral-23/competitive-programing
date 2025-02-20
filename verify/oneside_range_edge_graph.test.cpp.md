@@ -64,27 +64,27 @@ data:
     \    using vi = vec<int>;\n    using pi = pair<int, int>;\n    using pll = pair<long\
     \ long, long long>;\n    vi in, out, par, root, rev, dep, pre_vs;\n    vec<ll>\
     \ dep_w;\n    //          \u89AA/\u6210\u5206\u306Etop/in\u306E\u4E2D\u8EAB\u2192\
-    \u9802\u70B9\u756A\u53F7\n    int n, r;  // \u9802\u70B9\u6570\u3001\u6839\n\n\
-    \    static vec<vec<int>> extract_graph(const vec<vec<pll>> &G) {\n        vec<vec<int>>\
-    \ g(G.size());\n        for (int i = 0; i < int(G.size()); i++) {\n          \
-    \  for (auto [w, to] : G[i])\n                if (i < to) {\n                \
-    \    g[i].push_back(to);\n                    g[to].push_back(i);\n          \
-    \      }\n        }\n        return g;\n    }\n    HLD(const vec<vec<pll>> &g,\
-    \ int a) : HLD(extract_graph(g), a) {\n        auto dfs = [&](auto f, int v) ->\
-    \ void {\n            for (auto [w, to] : g[v])\n                if (to != par[v])\
-    \ {\n                    dep_w[to] = dep_w[v] + w;\n                    f(f, to);\n\
-    \                }\n        };\n        dfs(dfs, r);\n    }\n\n    HLD(vec<vi>\
-    \ g, int a) : n(g.size()), r(a) {\n        vi siz(n, 0);\n        in = out = root\
-    \ = rev = vi(n);\n        par = vi(n, -1);\n        dep = vi(n, 0);\n        dep_w\
-    \ = vec<ll>(n, 0);\n        root[r] = r;\n\n        auto dfs_siz = [&](auto f,\
-    \ int v) -> void {\n            siz[v]++;\n            for (int &to : g[v])\n\
-    \                if (to != par[v]) {\n                    dep[to] = dep[v] + 1;\n\
-    \                    par[to] = v;\n                    f(f, to);\n           \
-    \         siz[v] += siz[to];\n                    if (siz[to] > siz[g[v][0]] ||\
-    \ g[v][0] == par[v])\n                        swap(to, g[v][0]);\n           \
-    \     }\n            return;\n        };\n\n        dfs_siz(dfs_siz, r);\n\n \
-    \       int t = 0;\n\n        auto dfs_hld = [&](auto f, int v) -> void {\n  \
-    \          rev[t] = v;\n            in[v] = t++;\n            for (int to : g[v])\n\
+    \u9802\u70B9\u756A\u53F7\n    int n, r;  // \u9802\u70B9\u6570\u3001\u6839\n \
+    \   \n    static vec<vec<int>> extract_graph(const vec<vec<pll>> &G) {\n     \
+    \   vec<vec<int>> g(G.size());\n        for (int i = 0; i < int(G.size()); i++)\
+    \ {\n            for (auto [w, to] : G[i])\n                if (i < to) {\n  \
+    \                  g[i].push_back(to);\n                    g[to].push_back(i);\n\
+    \                }\n        }\n        return g;\n    }\n    HLD(const vec<vec<pll>>\
+    \ &g, int a) : HLD(extract_graph(g), a) {\n        auto dfs = [&](auto f, int\
+    \ v) -> void {\n            for (auto [w, to] : g[v])\n                if (to\
+    \ != par[v]) {\n                    dep_w[to] = dep_w[v] + w;\n              \
+    \      f(f, to);\n                }\n        };\n        dfs(dfs, r);\n    }\n\
+    \n    HLD(vec<vi> g, int a) : n(g.size()), r(a) {\n        vi siz(n, 0);\n   \
+    \     in = out = root = rev = vi(n);\n        par = vi(n, -1);\n        dep =\
+    \ vi(n, 0);\n        dep_w = vec<ll>(n, 0);\n        root[r] = r;\n\n        auto\
+    \ dfs_siz = [&](auto f, int v) -> void {\n            siz[v]++;\n            for\
+    \ (int &to : g[v])\n                if (to != par[v]) {\n                    dep[to]\
+    \ = dep[v] + 1;\n                    par[to] = v;\n                    f(f, to);\n\
+    \                    siz[v] += siz[to];\n                    if (siz[to] > siz[g[v][0]]\
+    \ || g[v][0] == par[v])\n                        swap(to, g[v][0]);\n        \
+    \        }\n            return;\n        };\n\n        dfs_siz(dfs_siz, r);\n\n\
+    \        int t = 0;\n\n        auto dfs_hld = [&](auto f, int v) -> void {\n \
+    \           rev[t] = v;\n            in[v] = t++;\n            for (int to : g[v])\n\
     \                if (to != par[v]) {\n                    root[to] = (to == g[v][0]\
     \ ? root[v] : to);\n                    f(f, to);\n                }\n       \
     \     out[v] = t;\n        };\n\n        dfs_hld(dfs_hld, r);\n        for (int\
@@ -204,7 +204,7 @@ data:
   isVerificationFile: true
   path: verify/oneside_range_edge_graph.test.cpp
   requiredBy: []
-  timestamp: '2025-01-10 00:18:09+09:00'
+  timestamp: '2025-02-20 17:16:43+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/oneside_range_edge_graph.test.cpp
