@@ -152,11 +152,11 @@ data:
   timestamp: '2025-01-16 07:24:58+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
+  - verify/fps_pow.test.cpp
+  - verify/fps_count_subset_sum.test.cpp
+  - verify/fps_inv.test.cpp
   - verify/fps_log.test.cpp
   - verify/fps_exp.test.cpp
-  - verify/fps_count_subset_sum.test.cpp
-  - verify/fps_pow.test.cpp
-  - verify/fps_inv.test.cpp
 documentation_of: Fps/fps.hpp
 layout: document
 redirect_from:

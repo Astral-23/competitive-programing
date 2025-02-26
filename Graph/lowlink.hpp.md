@@ -102,8 +102,8 @@ data:
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/bi_connected.test.cpp
-  - verify/lowlink_bridge.test.cpp
   - verify/lowlink_joint.test.cpp
+  - verify/lowlink_bridge.test.cpp
   - verify/two_edge_connected.test.cpp
 documentation_of: Graph/lowlink.hpp
 layout: document
