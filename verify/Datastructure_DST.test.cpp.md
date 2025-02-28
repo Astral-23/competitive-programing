@@ -35,8 +35,8 @@ data:
     \n    // \u6F70\u308C\u305F\u533A\u9593\u3082\u30C0\u30E1\n    S prod_assertless(int\
     \ l, int r) const {\n        if (r - l == 1) return v[l];\n        r--;\n    \
     \    int k = msb(l ^ r);\n        return op(d[k][l], d[k][r]);\n    }\n\n  public:\n\
-    \    disjoint_sparse_table(int n) : disjoint_sparse_table(vector<S>(n, e())) {}\n\
-    \    disjoint_sparse_table(vector<S> const &dat)\n        : n(int(dat.size())),\
+    \    disjoint_sparse_table(){}\n    disjoint_sparse_table(int n) : disjoint_sparse_table(vector<S>(n,\
+    \ e())) {}\n    disjoint_sparse_table(vector<S> const &dat)\n        : n(int(dat.size())),\
     \ lg(0), v(dat) {\n        while ((1 << lg) < n) {\n            lg++;\n      \
     \  }\n        v.resize(1 << lg, e());\n    }\n\n    void build() {\n        built\
     \ = true;\n        int sz = 1 << lg;\n        d.resize(lg, vector<S>(sz, e()));\n\
@@ -86,7 +86,7 @@ data:
   isVerificationFile: true
   path: verify/Datastructure_DST.test.cpp
   requiredBy: []
-  timestamp: '2025-01-18 06:13:30+09:00'
+  timestamp: '2025-02-28 10:35:38+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_DST.test.cpp
