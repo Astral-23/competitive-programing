@@ -16,6 +16,7 @@ template <class S, S (*op)(S, S), S (*e)()> struct disjoint_sparse_table {
     }
 
   public:
+    disjoint_sparse_table(){}
     disjoint_sparse_table(int n) : disjoint_sparse_table(vector<S>(n, e())) {}
     disjoint_sparse_table(vector<S> const &dat)
         : n(int(dat.size())), lg(0), v(dat) {
