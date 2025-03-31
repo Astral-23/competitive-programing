@@ -135,38 +135,50 @@ data:
     \ = i;\n    }\n\n    vector<T> ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n  \
     \  for (int i = 1; i < n; i++) {\n        if (chmax(d, ds2[i])) v = i;\n    }\n\
     \    pair<T, pair<int, int>> res;\n    res.first = d;\n    res.second.first =\
-    \ u;\n    res.second.second = v;\n    return res;\n}\n#undef inf\n};  // namespace\
-    \ Tree_lib\n#line 2 \"Graph/scc.hpp\"\n\nnamespace SCC {\ntemplate <typename T>\
-    \ vector<int> ids(const Graph<T, true> &g) {\n    int n = g.size();\n    vector<int>\
-    \ vs, cmp(n, -1);\n    vec<bool> seen(n, false), nees(n, false);\n    Graph<T,\
-    \ true> rg(n);\n\n    rep(i, 0, n) for (auto e : g[i]) rg.add(e.to, i, e.cost,\
-    \ e.id);\n    auto dfs = [&](auto f, int v) -> void {\n        seen[v] = true;\n\
-    \        for (auto e : g[v])\n            if (!seen[e.to]) f(f, e.to);\n     \
-    \   vs.push_back(v);\n        return;\n    };\n\n    int k = 0;\n\n    auto sfd\
-    \ = [&](auto f, int v) -> void {\n        nees[v] = true;\n        cmp[v] = k;\n\
-    \        for (auto e : rg[v])\n            if (!nees[e.to]) f(f, e.to);\n    \
-    \    return;\n    };\n\n    rep(i, 0, n) if (!seen[i]) dfs(dfs, i);\n    rrep(i,\
-    \ 0, vs.size()) if (!nees[vs[i]]) sfd(sfd, vs[i]), k++;\n    return cmp;\n}\n\n\
-    template <typename T> vector<vector<int>> groups(const Graph<T, true> &g) {\n\
-    \    int n = g.size();\n    vector<int> id = ids<T>(g);\n    vector<vector<int>>\
-    \ gs(n);\n    rep(i, 0, n) gs[id[i]].push_back(i);\n    while (gs.empty() == false\
-    \ && gs.back().empty() == true) {\n        gs.pop_back();\n    }\n    return gs;\n\
-    }\n\ntemplate <typename T> Graph<T, true> graph(const Graph<T, true> &g) {\n \
-    \   vector<int> id = ids<T>(g);\n    int n = 0;\n    rep(i, 0, g.size()) chmax(n,\
-    \ id[i] + 1);\n\n    Graph<T, true> ng(n);\n    rep(i, 0, g.size()) for (auto\
-    \ e : g[i]) {\n        if (id[i] == id[e.to]) continue;\n        ng.add(id[i],\
-    \ id[e.to], e.cost, e.id);\n    }\n    return ng;\n}\n\ntemplate <typename T>\
-    \ Graph<T, true> graph_rev(const Graph<T, true> &g) {\n    auto ser = graph<T>(g);\n\
-    \    int n = ser.size();\n    Graph<T, true> res(n);\n    rep(i, 0, n) for (auto\
-    \ e : ser[i]) { res.add(e.to, i, e.cost, e.id); }\n    return res;\n}\n\n}  //\
-    \ namespace SCC\n\n/*\n@brief scc(\u5F37\u9023\u7D50\u6210\u5206\u5206\u89E3)\n\
-    @docs doc/scc.md\n*/\n#line 4 \"verify/Graph_scc.test.cpp\"\n\nint main() {\n\
-    \    int n, m;\n    cin >> n >> m;\n    Graph<int, true> g(n);\n    rep(i, 0,\
-    \ m) {\n        int u, v;\n        cin >> u >> v;\n        g.add(u, v, 0);\n \
-    \   }\n\n    auto res = SCC::groups(g);\n    \n    cout << res.size() << endl;\n\
-    \n    rep(i, 0, res.size()) {\n        cout << res[i].size() << \" \";\n     \
-    \   for(auto v : res[i]) cout << v << \" \";\n        cout << endl;\n    }\n}\n\
-    \n"
+    \ u;\n    res.second.second = v;\n    return res;\n}\n\n\ntemplate <typename T>\n\
+    vector<pair<int, int>> maximum_matching(Tree<T> const &tr) {\n    vector<pair<int,\
+    \ int>> ret;\n    auto dfs = [&](auto f, int v, int p) -> bool {\n        bool\
+    \ used = false;\n        for (auto &e : tr[v])\n            if (e.to != p) {\n\
+    \                bool used_to = f(f, e.to, v);\n                if (used_to ==\
+    \ false && used == false) {\n                    used = true;\n              \
+    \      ret.emplace_back(v, e.to);\n                }\n            }\n        return\
+    \ used;\n    };\n\n    dfs(dfs, 0, -1);\n\n    return ret;\n}\n\n//{\u5B58\u5728\
+    \u3059\u308B\u304B\u3001\u9802\u70B9\u306E\u30DA\u30A2\u306E\u96C6\u5408}\ntemplate\
+    \ <typename T>\npair<bool, vector<pair<int, int>>> perfect_matching(Tree<T> const\
+    \ &tr) {\n    if (tr.size() % 2 == 1)\n        return {false, {}};\n\n    auto\
+    \ match = maximum_matching(tr);\n    if (match.size() * 2 == tr.size()) {\n  \
+    \      return {true, match};\n    } else {\n        return {false, match};\n \
+    \   }\n}\n#undef inf\n};  // namespace Tree_lib\n#line 2 \"Graph/scc.hpp\"\n\n\
+    namespace SCC {\ntemplate <typename T> vector<int> ids(const Graph<T, true> &g)\
+    \ {\n    int n = g.size();\n    vector<int> vs, cmp(n, -1);\n    vec<bool> seen(n,\
+    \ false), nees(n, false);\n    Graph<T, true> rg(n);\n\n    rep(i, 0, n) for (auto\
+    \ e : g[i]) rg.add(e.to, i, e.cost, e.id);\n    auto dfs = [&](auto f, int v)\
+    \ -> void {\n        seen[v] = true;\n        for (auto e : g[v])\n          \
+    \  if (!seen[e.to]) f(f, e.to);\n        vs.push_back(v);\n        return;\n \
+    \   };\n\n    int k = 0;\n\n    auto sfd = [&](auto f, int v) -> void {\n    \
+    \    nees[v] = true;\n        cmp[v] = k;\n        for (auto e : rg[v])\n    \
+    \        if (!nees[e.to]) f(f, e.to);\n        return;\n    };\n\n    rep(i, 0,\
+    \ n) if (!seen[i]) dfs(dfs, i);\n    rrep(i, 0, vs.size()) if (!nees[vs[i]]) sfd(sfd,\
+    \ vs[i]), k++;\n    return cmp;\n}\n\ntemplate <typename T> vector<vector<int>>\
+    \ groups(const Graph<T, true> &g) {\n    int n = g.size();\n    vector<int> id\
+    \ = ids<T>(g);\n    vector<vector<int>> gs(n);\n    rep(i, 0, n) gs[id[i]].push_back(i);\n\
+    \    while (gs.empty() == false && gs.back().empty() == true) {\n        gs.pop_back();\n\
+    \    }\n    return gs;\n}\n\ntemplate <typename T> Graph<T, true> graph(const\
+    \ Graph<T, true> &g) {\n    vector<int> id = ids<T>(g);\n    int n = 0;\n    rep(i,\
+    \ 0, g.size()) chmax(n, id[i] + 1);\n\n    Graph<T, true> ng(n);\n    rep(i, 0,\
+    \ g.size()) for (auto e : g[i]) {\n        if (id[i] == id[e.to]) continue;\n\
+    \        ng.add(id[i], id[e.to], e.cost, e.id);\n    }\n    return ng;\n}\n\n\
+    template <typename T> Graph<T, true> graph_rev(const Graph<T, true> &g) {\n  \
+    \  auto ser = graph<T>(g);\n    int n = ser.size();\n    Graph<T, true> res(n);\n\
+    \    rep(i, 0, n) for (auto e : ser[i]) { res.add(e.to, i, e.cost, e.id); }\n\
+    \    return res;\n}\n\n}  // namespace SCC\n\n/*\n@brief scc(\u5F37\u9023\u7D50\
+    \u6210\u5206\u5206\u89E3)\n@docs doc/scc.md\n*/\n#line 4 \"verify/Graph_scc.test.cpp\"\
+    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, true> g(n);\n\
+    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        g.add(u,\
+    \ v, 0);\n    }\n\n    auto res = SCC::groups(g);\n    \n    cout << res.size()\
+    \ << endl;\n\n    rep(i, 0, res.size()) {\n        cout << res[i].size() << \"\
+    \ \";\n        for(auto v : res[i]) cout << v << \" \";\n        cout << endl;\n\
+    \    }\n}\n\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/scc\"\n#include \"../Utility/template.hpp\"\
     \n#include \"../Graph/scc.hpp\"\n\nint main() {\n    int n, m;\n    cin >> n >>\
     \ m;\n    Graph<int, true> g(n);\n    rep(i, 0, m) {\n        int u, v;\n    \
@@ -181,7 +193,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_scc.test.cpp
   requiredBy: []
-  timestamp: '2025-01-22 19:13:44+09:00'
+  timestamp: '2025-03-31 23:50:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_scc.test.cpp

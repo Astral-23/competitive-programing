@@ -133,17 +133,29 @@ data:
     \ = i;\n    }\n\n    vector<T> ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n  \
     \  for (int i = 1; i < n; i++) {\n        if (chmax(d, ds2[i])) v = i;\n    }\n\
     \    pair<T, pair<int, int>> res;\n    res.first = d;\n    res.second.first =\
-    \ u;\n    res.second.second = v;\n    return res;\n}\n#undef inf\n};  // namespace\
-    \ Tree_lib\n#line 4 \"verify/Graph_graph_bellman_and_warshall.test.cpp\"\nint\
-    \ main() {\n    ll n, m;\n    cin >> n >> m;\n    Graph<ll, true> g(n);\n    rep(i,\
-    \ 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n        g.add(s,\
-    \ t, w);\n    }\n\n    if (Graph_lib::has_negative_cycle(g)) {\n        cout <<\
-    \ \"NEGATIVE CYCLE\" << endl;\n        return 0;\n    }\n\n    auto d = Graph_lib::warshall(g);\n\
-    \    for (int i = 0; i < n; i++) {\n        for (int j = 0; j < n; j++) {\n  \
-    \          if (d[i][j] == Edge<ll>::INF) {\n                cout << \"INF\";\n\
-    \            } else {\n                cout << d[i][j];\n            }\n     \
-    \       if (j != n - 1) cout << \" \";\n        }\n        cout << endl;\n   \
-    \ }\n}\n"
+    \ u;\n    res.second.second = v;\n    return res;\n}\n\n\ntemplate <typename T>\n\
+    vector<pair<int, int>> maximum_matching(Tree<T> const &tr) {\n    vector<pair<int,\
+    \ int>> ret;\n    auto dfs = [&](auto f, int v, int p) -> bool {\n        bool\
+    \ used = false;\n        for (auto &e : tr[v])\n            if (e.to != p) {\n\
+    \                bool used_to = f(f, e.to, v);\n                if (used_to ==\
+    \ false && used == false) {\n                    used = true;\n              \
+    \      ret.emplace_back(v, e.to);\n                }\n            }\n        return\
+    \ used;\n    };\n\n    dfs(dfs, 0, -1);\n\n    return ret;\n}\n\n//{\u5B58\u5728\
+    \u3059\u308B\u304B\u3001\u9802\u70B9\u306E\u30DA\u30A2\u306E\u96C6\u5408}\ntemplate\
+    \ <typename T>\npair<bool, vector<pair<int, int>>> perfect_matching(Tree<T> const\
+    \ &tr) {\n    if (tr.size() % 2 == 1)\n        return {false, {}};\n\n    auto\
+    \ match = maximum_matching(tr);\n    if (match.size() * 2 == tr.size()) {\n  \
+    \      return {true, match};\n    } else {\n        return {false, match};\n \
+    \   }\n}\n#undef inf\n};  // namespace Tree_lib\n#line 4 \"verify/Graph_graph_bellman_and_warshall.test.cpp\"\
+    \nint main() {\n    ll n, m;\n    cin >> n >> m;\n    Graph<ll, true> g(n);\n\
+    \    rep(i, 0, m) {\n        ll s, t, w;\n        cin >> s >> t >> w;\n      \
+    \  g.add(s, t, w);\n    }\n\n    if (Graph_lib::has_negative_cycle(g)) {\n   \
+    \     cout << \"NEGATIVE CYCLE\" << endl;\n        return 0;\n    }\n\n    auto\
+    \ d = Graph_lib::warshall(g);\n    for (int i = 0; i < n; i++) {\n        for\
+    \ (int j = 0; j < n; j++) {\n            if (d[i][j] == Edge<ll>::INF) {\n   \
+    \             cout << \"INF\";\n            } else {\n                cout <<\
+    \ d[i][j];\n            }\n            if (j != n - 1) cout << \" \";\n      \
+    \  }\n        cout << endl;\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.u-aizu.ac.jp/onlinejudge/description.jsp?id=GRL_1_C\"\
     \n#include \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\nint main()\
     \ {\n    ll n, m;\n    cin >> n >> m;\n    Graph<ll, true> g(n);\n    rep(i, 0,\
@@ -161,7 +173,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_bellman_and_warshall.test.cpp
   requiredBy: []
-  timestamp: '2025-01-22 19:13:44+09:00'
+  timestamp: '2025-03-31 23:50:22+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_bellman_and_warshall.test.cpp
