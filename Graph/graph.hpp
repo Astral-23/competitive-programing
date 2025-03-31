@@ -299,5 +299,41 @@ template <typename T> pair<T, pair<int, int>> diam(Tree<T> const &tr) {
     res.second.second = v;
     return res;
 }
+
+
+template <typename T>
+vector<pair<int, int>> maximum_matching(Tree<T> const &tr) {
+    vector<pair<int, int>> ret;
+    auto dfs = [&](auto f, int v, int p) -> bool {
+        bool used = false;
+        for (auto &e : tr[v])
+            if (e.to != p) {
+                bool used_to = f(f, e.to, v);
+                if (used_to == false && used == false) {
+                    used = true;
+                    ret.emplace_back(v, e.to);
+                }
+            }
+        return used;
+    };
+
+    dfs(dfs, 0, -1);
+
+    return ret;
+}
+
+//{存在するか、頂点のペアの集合}
+template <typename T>
+pair<bool, vector<pair<int, int>>> perfect_matching(Tree<T> const &tr) {
+    if (tr.size() % 2 == 1)
+        return {false, {}};
+
+    auto match = maximum_matching(tr);
+    if (match.size() * 2 == tr.size()) {
+        return {true, match};
+    } else {
+        return {false, match};
+    }
+}
 #undef inf
 };  // namespace Tree_lib
