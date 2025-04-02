@@ -12,11 +12,11 @@
 
 証明: 辞書順比較の定義から、そうでないと矛盾
 
-> 命題: $S[i, n)$ と $S[j, n)$ の lcp は、 それぞれに対応する suffix_array 上の添字を $a, b$ とした時、 $\min_{a \le j < b}$ $\text{lcp array}[i]$ と一致する 
+> 補題: $S[i, n)$ と $S[j, n)$ の lcp は、 それぞれに対応する suffix_array 上の添字を $a, b$ とした時、 $\min_{a \le j < b}$ $\text{lcp array}[i]$ と一致する 
 
 証明: lcp長を $k$ とすると、上命題よりこの値は $k$ 以上。 かつ、 $k+1$ 以上を取らない。
 
-> 命題: $S[sa[i], n)$ について、 $S[sa[i], sa[i] + lcp[i-1]+1), S[sa[i], sa[i] + lcp[i-1] + 2)...$ はそれより上位のsuffixのprefixではない    
+> 補題: $S[sa[i], n)$ について、 $S[sa[i], sa[i] + lcp[i-1]+1), S[sa[i], sa[i] + lcp[i-1] + 2)...$ はそれより上位のsuffixのprefixではない    
 
 証明: 2こ上の命題より、prefixならば、suffix arrayにおいて 1 つ上位のものも同じprefixをしていているが、lcp array の値に矛盾
 

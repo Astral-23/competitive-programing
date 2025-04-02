@@ -25,7 +25,7 @@ template <typename T, bool merge_adju> struct rangeset : public std::map<T, T> {
         return make_pair(l, r);
     }
 
-    pair<T, T> insert(T p) { insert(p, p + 1); }
+    pair<T, T> insert(T p) { return insert(p, p + 1); }
 
     //[l, r)
     void erase(T l, T r) {

@@ -3,13 +3,13 @@ template <typename T> struct Edge {
     T cost;
     int id;
     static constexpr T INF = numeric_limits<T>::max() / 2;
-    Edge(int to = 0, T cost = 0, int id = -1) : to(to), cost(cost), id(id) {}
+    Edge(int to = 0, T cost = 1, int id = -1) : to(to), cost(cost), id(id) {}
 };
 
 template <typename T, bool directed> struct Graph : vector<vector<Edge<T>>> {
 #define n int(this->size())
     using vector<vector<Edge<T>>>::vector;
-    void add(int s, int t, T w = 0, int id = -1) {
+    void add(int s, int t, T w = 1, int id = -1) {
         (*this)[s].emplace_back(t, w, id);
         if constexpr (directed == false) {
             (*this)[t].emplace_back(s, w, id);
@@ -190,9 +190,9 @@ pair<vector<int>, vector<int>> cycle_detection(Graph<T, directed> const &g,
     return make_pair(vs, es);
 }
 
-//ret[v] := vを含む連結成分が
-// -1 : 二部グラフでない  0 : 色塗ったら0  1 : 色塗ったら1
-//　色塗りは0から始める
+// ret[v] := vを含む連結成分が
+//  -1 : 二部グラフでない  0 : 色塗ったら0  1 : 色塗ったら1
+// 　色塗りは0から始める
 template <typename T, bool directed>
 vector<int> bipartite_check(Graph<T, directed> const &g) {
     int n = g.size();
@@ -255,18 +255,17 @@ template <typename T> vector<T> dist(Tree<T> const &tr, int s) {
     return res;
 }
 
-template <typename T> vector<Edge<T>> path(Tree<T> const &tr, int s, int t) {
-    vector<Edge<T>> res;
+template <typename T> vector<int> path(Tree<T> const &tr, int s, int t) {
+    vector<int> res;
     auto dfs = [&](auto f, int v, int p = -1) -> bool {
         if (v == t) {
-            res.push_back(v);
             return true;
         }
 
         for (auto &e : tr[v])
             if (e.to != p) {
                 if (f(f, e.to, v)) {
-                    res.push_back(e);
+                    res.push_back(e.to);
                     return true;
                 }
             }
@@ -274,6 +273,8 @@ template <typename T> vector<Edge<T>> path(Tree<T> const &tr, int s, int t) {
     };
 
     dfs(dfs, s);
+    res.push_back(s);
+    reverse(res.begin(), res.end());
     return res;
 }
 
@@ -300,6 +301,16 @@ template <typename T> pair<T, pair<int, int>> diam(Tree<T> const &tr) {
     return res;
 }
 
+// {直径0, 直径1 or -1}
+template <typename T> pair<int, int> center(Tree<T> const &tr) {
+    auto [d, p] = diam(tr);
+    auto ph = path(tr, p.first, p.second);
+    int m = (ph.size() + 1) / 2 - 1;
+    if (ph.size() % 2 == 1)
+        return {ph[m], -1};
+    else
+        return {ph[m], ph[m + 1]};
+}
 
 template <typename T>
 vector<pair<int, int>> maximum_matching(Tree<T> const &tr) {
@@ -325,8 +336,7 @@ vector<pair<int, int>> maximum_matching(Tree<T> const &tr) {
 //{存在するか、頂点のペアの集合}
 template <typename T>
 pair<bool, vector<pair<int, int>>> perfect_matching(Tree<T> const &tr) {
-    if (tr.size() % 2 == 1)
-        return {false, {}};
+    if (tr.size() % 2 == 1) return {false, {}};
 
     auto match = maximum_matching(tr);
     if (match.size() * 2 == tr.size()) {
