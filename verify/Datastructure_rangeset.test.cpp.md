@@ -39,9 +39,9 @@ data:
     \       if (itl != itr) {\n            if (itl->first < l) l = itl->first;\n \
     \           if (prev(itr)->second > r) r = prev(itr)->second;\n            map<T,\
     \ T>::erase(itl, itr);\n        }\n        (*this)[l] = r;\n        return make_pair(l,\
-    \ r);\n    }\n\n    pair<T, T> insert(T p) { insert(p, p + 1); }\n\n    //[l,\
-    \ r)\n    void erase(T l, T r) {\n        if (l == r) return;\n        assert(l\
-    \ <= r);\n        auto itl = (*this).upper_bound(l), itr = (*this).lower_bound(r);\n\
+    \ r);\n    }\n\n    pair<T, T> insert(T p) { return insert(p, p + 1); }\n\n  \
+    \  //[l, r)\n    void erase(T l, T r) {\n        if (l == r) return;\n       \
+    \ assert(l <= r);\n        auto itl = (*this).upper_bound(l), itr = (*this).lower_bound(r);\n\
     \        if (itl != (*this).begin() && (--itl)->second <= l) {\n            ++itl;\n\
     \        }\n        if (itl == itr) return;\n        T tl = l, tr = r;\n     \
     \   if (itl->first < l) tl = itl->first;\n        if (prev(itr)->second > r) tr\
@@ -93,7 +93,7 @@ data:
   isVerificationFile: true
   path: verify/Datastructure_rangeset.test.cpp
   requiredBy: []
-  timestamp: '2025-01-21 09:19:50+09:00'
+  timestamp: '2025-04-03 05:20:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Datastructure_rangeset.test.cpp

@@ -31,10 +31,10 @@ data:
     \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\ntemplate\
     \ <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n    static\
     \ constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to = 0, T cost\
-    \ = 0, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate <typename\
+    \ = 1, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate <typename\
     \ T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define n int(this->size())\n\
     \    using vector<vector<Edge<T>>>::vector;\n    void add(int s, int t, T w =\
-    \ 0, int id = -1) {\n        (*this)[s].emplace_back(t, w, id);\n        if constexpr\
+    \ 1, int id = -1) {\n        (*this)[s].emplace_back(t, w, id);\n        if constexpr\
     \ (directed == false) {\n            (*this)[t].emplace_back(s, w, id);\n    \
     \    }\n    }\n#undef n\n};\n\ntemplate <typename T> struct Tree : Graph<T, false>\
     \ {\n#define n int(this->size())\n    using Graph<T, false>::Graph;\n#undef n\n\
@@ -97,9 +97,9 @@ data:
     \  dfs(dfs, i, -1);\n            if (vs.empty() == false) {\n                reverse(vs.begin(),\
     \ vs.end());\n                reverse(es.begin(), es.end());\n               \
     \ return make_pair(vs, es);\n            }\n        }\n    }\n    return make_pair(vs,\
-    \ es);\n}\n\n//ret[v] := v\u3092\u542B\u3080\u9023\u7D50\u6210\u5206\u304C\n//\
-    \ -1 : \u4E8C\u90E8\u30B0\u30E9\u30D5\u3067\u306A\u3044  0 : \u8272\u5857\u3063\
-    \u305F\u30890  1 : \u8272\u5857\u3063\u305F\u30891\n//\u3000\u8272\u5857\u308A\
+    \ es);\n}\n\n// ret[v] := v\u3092\u542B\u3080\u9023\u7D50\u6210\u5206\u304C\n\
+    //  -1 : \u4E8C\u90E8\u30B0\u30E9\u30D5\u3067\u306A\u3044  0 : \u8272\u5857\u3063\
+    \u305F\u30890  1 : \u8272\u5857\u3063\u305F\u30891\n// \u3000\u8272\u5857\u308A\
     \u306F0\u304B\u3089\u59CB\u3081\u308B\ntemplate <typename T, bool directed>\n\
     vector<int> bipartite_check(Graph<T, directed> const &g) {\n    int n = g.size();\n\
     \    vector<int> col(n, -1);\n    vector<vector<int>> gs;\n\n    auto dfs = [&](auto\
@@ -119,40 +119,45 @@ data:
     \ {\n        int v = que.front();\n        que.pop();\n        for (auto &e :\
     \ tr[v])\n            if (chmin(res[e.to], res[v] + e.cost)) {\n             \
     \   que.push(e.to);\n            }\n    }\n    return res;\n}\n\ntemplate <typename\
-    \ T> vector<Edge<T>> path(Tree<T> const &tr, int s, int t) {\n    vector<Edge<T>>\
-    \ res;\n    auto dfs = [&](auto f, int v, int p = -1) -> bool {\n        if (v\
-    \ == t) {\n            res.push_back(v);\n            return true;\n        }\n\
-    \n        for (auto &e : tr[v])\n            if (e.to != p) {\n              \
-    \  if (f(f, e.to, v)) {\n                    res.push_back(e);\n             \
-    \       return true;\n                }\n            }\n        return false;\n\
-    \    };\n\n    dfs(dfs, s);\n    return res;\n}\n\n// diam() ... (\u76F4\u5F84\
-    , (\u76F4\u5F84\u306E\u7AEFu, \u76F4\u5F84\u306E\u7AEFv))\ntemplate <typename\
-    \ T> pair<T, pair<int, int>> diam(Tree<T> const &tr) {\n    int n = tr.size();\n\
-    \    int u, v;\n    T d, tmp;\n    vector<T> ds = dist(tr, 0);\n    tmp = ds[0],\
-    \ u = 0;\n    for (int i = 1; i < n; i++) {\n        if (chmax(tmp, ds[i])) u\
-    \ = i;\n    }\n\n    vector<T> ds2 = dist(tr, u);\n    d = ds2[0], v = 0;\n  \
-    \  for (int i = 1; i < n; i++) {\n        if (chmax(d, ds2[i])) v = i;\n    }\n\
-    \    pair<T, pair<int, int>> res;\n    res.first = d;\n    res.second.first =\
-    \ u;\n    res.second.second = v;\n    return res;\n}\n\n\ntemplate <typename T>\n\
-    vector<pair<int, int>> maximum_matching(Tree<T> const &tr) {\n    vector<pair<int,\
-    \ int>> ret;\n    auto dfs = [&](auto f, int v, int p) -> bool {\n        bool\
-    \ used = false;\n        for (auto &e : tr[v])\n            if (e.to != p) {\n\
-    \                bool used_to = f(f, e.to, v);\n                if (used_to ==\
-    \ false && used == false) {\n                    used = true;\n              \
-    \      ret.emplace_back(v, e.to);\n                }\n            }\n        return\
-    \ used;\n    };\n\n    dfs(dfs, 0, -1);\n\n    return ret;\n}\n\n//{\u5B58\u5728\
-    \u3059\u308B\u304B\u3001\u9802\u70B9\u306E\u30DA\u30A2\u306E\u96C6\u5408}\ntemplate\
-    \ <typename T>\npair<bool, vector<pair<int, int>>> perfect_matching(Tree<T> const\
-    \ &tr) {\n    if (tr.size() % 2 == 1)\n        return {false, {}};\n\n    auto\
-    \ match = maximum_matching(tr);\n    if (match.size() * 2 == tr.size()) {\n  \
-    \      return {true, match};\n    } else {\n        return {false, match};\n \
-    \   }\n}\n#undef inf\n};  // namespace Tree_lib\n#line 4 \"verify/Graph_graph_cycle_detection_directed.test.cpp\"\
-    \n\nint main() {\n    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n\
-    \    rep(i, 0, m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add(u,\
-    \ v, 0, i);\n    }\n    auto [vs, es] = Graph_lib::cycle_detection(cyc);\n   \
-    \ if (vs.empty()) {\n        cout << -1 << endl;\n    } else {\n        cout <<\
-    \ vs.size() << endl;\n        // cout << vs << endl;\n        for (int id : es)\
-    \ {\n            cout << id << endl;\n        }\n    }\n}\n"
+    \ T> vector<int> path(Tree<T> const &tr, int s, int t) {\n    vector<int> res;\n\
+    \    auto dfs = [&](auto f, int v, int p = -1) -> bool {\n        if (v == t)\
+    \ {\n            return true;\n        }\n\n        for (auto &e : tr[v])\n  \
+    \          if (e.to != p) {\n                if (f(f, e.to, v)) {\n          \
+    \          res.push_back(e.to);\n                    return true;\n          \
+    \      }\n            }\n        return false;\n    };\n\n    dfs(dfs, s);\n \
+    \   res.push_back(s);\n    reverse(res.begin(), res.end());\n    return res;\n\
+    }\n\n// diam() ... (\u76F4\u5F84, (\u76F4\u5F84\u306E\u7AEFu, \u76F4\u5F84\u306E\
+    \u7AEFv))\ntemplate <typename T> pair<T, pair<int, int>> diam(Tree<T> const &tr)\
+    \ {\n    int n = tr.size();\n    int u, v;\n    T d, tmp;\n    vector<T> ds =\
+    \ dist(tr, 0);\n    tmp = ds[0], u = 0;\n    for (int i = 1; i < n; i++) {\n \
+    \       if (chmax(tmp, ds[i])) u = i;\n    }\n\n    vector<T> ds2 = dist(tr, u);\n\
+    \    d = ds2[0], v = 0;\n    for (int i = 1; i < n; i++) {\n        if (chmax(d,\
+    \ ds2[i])) v = i;\n    }\n    pair<T, pair<int, int>> res;\n    res.first = d;\n\
+    \    res.second.first = u;\n    res.second.second = v;\n    return res;\n}\n\n\
+    // {\u76F4\u5F840, \u76F4\u5F841 or -1}\ntemplate <typename T> pair<int, int>\
+    \ center(Tree<T> const &tr) {\n    auto [d, p] = diam(tr);\n    auto ph = path(tr,\
+    \ p.first, p.second);\n    int m = (ph.size() + 1) / 2 - 1;\n    if (ph.size()\
+    \ % 2 == 1)\n        return {ph[m], -1};\n    else\n        return {ph[m], ph[m\
+    \ + 1]};\n}\n\ntemplate <typename T>\nvector<pair<int, int>> maximum_matching(Tree<T>\
+    \ const &tr) {\n    vector<pair<int, int>> ret;\n    auto dfs = [&](auto f, int\
+    \ v, int p) -> bool {\n        bool used = false;\n        for (auto &e : tr[v])\n\
+    \            if (e.to != p) {\n                bool used_to = f(f, e.to, v);\n\
+    \                if (used_to == false && used == false) {\n                  \
+    \  used = true;\n                    ret.emplace_back(v, e.to);\n            \
+    \    }\n            }\n        return used;\n    };\n\n    dfs(dfs, 0, -1);\n\n\
+    \    return ret;\n}\n\n//{\u5B58\u5728\u3059\u308B\u304B\u3001\u9802\u70B9\u306E\
+    \u30DA\u30A2\u306E\u96C6\u5408}\ntemplate <typename T>\npair<bool, vector<pair<int,\
+    \ int>>> perfect_matching(Tree<T> const &tr) {\n    if (tr.size() % 2 == 1) return\
+    \ {false, {}};\n\n    auto match = maximum_matching(tr);\n    if (match.size()\
+    \ * 2 == tr.size()) {\n        return {true, match};\n    } else {\n        return\
+    \ {false, match};\n    }\n}\n#undef inf\n};  // namespace Tree_lib\n#line 4 \"\
+    verify/Graph_graph_cycle_detection_directed.test.cpp\"\n\nint main() {\n    int\
+    \ n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n    rep(i, 0, m) {\n\
+    \        int u, v;\n        cin >> u >> v;\n        cyc.add(u, v, 0, i);\n   \
+    \ }\n    auto [vs, es] = Graph_lib::cycle_detection(cyc);\n    if (vs.empty())\
+    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
+    \        // cout << vs << endl;\n        for (int id : es) {\n            cout\
+    \ << id << endl;\n        }\n    }\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\n\nint main() {\n\
     \    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n    rep(i, 0,\
@@ -167,7 +172,7 @@ data:
   isVerificationFile: true
   path: verify/Graph_graph_cycle_detection_directed.test.cpp
   requiredBy: []
-  timestamp: '2025-03-31 23:50:22+09:00'
+  timestamp: '2025-04-03 05:20:23+09:00'
   verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_cycle_detection_directed.test.cpp
