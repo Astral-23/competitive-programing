@@ -162,6 +162,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_cycle_detection_undirected.test.cpp
     title: verify/Graph_graph_cycle_detection_undirected.test.cpp
+  - icon: ':x:'
+    path: verify/Graph_graph_diameter.test.cpp
+    title: verify/Graph_graph_diameter.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_dijkstra.test.cpp
     title: verify/Graph_graph_dijkstra.test.cpp
@@ -285,9 +288,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: "\u7802\u5834/swag.test.cpp"
     title: "\u7802\u5834/swag.test.cpp"
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     document_title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     links: []
@@ -325,7 +328,7 @@ data:
   - "\u7802\u5834/binarytrie.example.cpp"
   - verify/Convolution_gcd_convolution_test.cpp
   timestamp: '2024-12-28 00:04:13+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - "\u7802\u5834/swag.test.cpp"
   - verify/Algorithm_bisect_max_right.test.cpp
@@ -407,6 +410,7 @@ data:
   - verify/Graph_cycle_detection_1.test.cpp
   - verify/fps_log.test.cpp
   - verify/Graph_graph_cycle_detection_undirected.test.cpp
+  - verify/Graph_graph_diameter.test.cpp
   - verify/Graph_graph_bellman_and_warshall.test.cpp
   - verify/Graph_graph_cycle_detection_directed.test.cpp
   - verify/fps_exp.test.cpp

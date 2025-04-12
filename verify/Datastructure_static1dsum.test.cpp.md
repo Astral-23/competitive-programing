@@ -4,7 +4,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: Datastructure/static1dsum.hpp
     title: "1\u6B21\u5143\u7D2F\u7A4D\u548C"
-  - icon: ':heavy_check_mark:'
+  - icon: ':question:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []

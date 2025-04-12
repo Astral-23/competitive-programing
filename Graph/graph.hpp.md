@@ -21,15 +21,18 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_cycle_detection_undirected.test.cpp
     title: verify/Graph_graph_cycle_detection_undirected.test.cpp
+  - icon: ':x:'
+    path: verify/Graph_graph_diameter.test.cpp
+    title: verify/Graph_graph_diameter.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_dijkstra.test.cpp
     title: verify/Graph_graph_dijkstra.test.cpp
   - icon: ':heavy_check_mark:'
     path: verify/Graph_scc.test.cpp
     title: verify/Graph_scc.test.cpp
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: hpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':question:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n\
@@ -282,13 +285,14 @@ data:
   requiredBy:
   - Graph/scc.hpp
   timestamp: '2025-04-03 05:20:23+09:00'
-  verificationStatus: LIBRARY_ALL_AC
+  verificationStatus: LIBRARY_SOME_WA
   verifiedWith:
   - verify/Graph_graph_dijkstra.test.cpp
   - verify/Graph_scc.test.cpp
   - verify/Graph_graph_bellman.test.cpp
   - verify/Algorithm_doubling.test.cpp
   - verify/Graph_graph_cycle_detection_undirected.test.cpp
+  - verify/Graph_graph_diameter.test.cpp
   - verify/Graph_graph_bellman_and_warshall.test.cpp
   - verify/Graph_graph_cycle_detection_directed.test.cpp
 documentation_of: Graph/graph.hpp

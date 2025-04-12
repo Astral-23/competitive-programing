@@ -9,43 +9,42 @@ data:
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: false
+  _isVerificationFailed: true
   _pathExtension: cpp
-  _verificationStatusIcon: ':heavy_check_mark:'
+  _verificationStatusIcon: ':x:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
-    PROBLEM: https://judge.yosupo.jp/problem/cycle_detection
+    PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
     links:
-    - https://judge.yosupo.jp/problem/cycle_detection
-  bundledCode: "#line 1 \"verify/Graph_graph_cycle_detection_directed.test.cpp\"\n\
-    #define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n#line 1 \"\
-    Utility/template.hpp\"\n#include <bits/stdc++.h>\nusing namespace std;\nusing\
-    \ ll = long long;\n#define rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define\
-    \ rrep(i, s, t) for (ll i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x),\
-    \ end(x)\n\n#define TT template <typename T>\nTT using vec = vector<T>;\ntemplate\
-    \ <class T1, class T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true)\
-    \ : false;\n}\ntemplate <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return\
-    \ x < y ? (x = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n   \
-    \     ios::sync_with_stdio(false);\n        std::cin.tie(nullptr);\n        cout\
-    \ << fixed << setprecision(15);\n    }\n} io_setup;\n\n/*\n@brief verify\u7528\
-    \u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\n*/\n#line 1 \"Graph/graph.hpp\"\ntemplate\
-    \ <typename T> struct Edge {\n    int to;\n    T cost;\n    int id;\n    static\
-    \ constexpr T INF = numeric_limits<T>::max() / 2;\n    Edge(int to = 0, T cost\
-    \ = 1, int id = -1) : to(to), cost(cost), id(id) {}\n};\n\ntemplate <typename\
-    \ T, bool directed> struct Graph : vector<vector<Edge<T>>> {\n#define n int(this->size())\n\
-    \    using vector<vector<Edge<T>>>::vector;\n    void add(int s, int t, T w =\
-    \ 1, int id = -1) {\n        (*this)[s].emplace_back(t, w, id);\n        if constexpr\
-    \ (directed == false) {\n            (*this)[t].emplace_back(s, w, id);\n    \
-    \    }\n    }\n#undef n\n};\n\ntemplate <typename T> struct Tree : Graph<T, false>\
-    \ {\n#define n int(this->size())\n    using Graph<T, false>::Graph;\n#undef n\n\
-    };\n\nnamespace Graph_lib {\n\n#define inf Edge<T>::INF\ntemplate <typename T,\
-    \ bool directed>\nvector<T> DFS(Graph<T, directed> const &g, int s) {\n    int\
-    \ n = g.size();\n    assert(0 <= s && s < n);\n    vector<T> d(n, inf);\n    d[s]\
-    \ = 0;\n    queue<int> que;\n    que.push(s);\n    while (que.empty() == false)\
-    \ {\n        int v = que.front();\n        que.pop();\n        for (auto &e :\
-    \ g[v]) {\n            assert(e.cost == 1);\n            if (chmin(d[e.to], d[v]\
-    \ + e.cost)) {\n                que.push(e.to);\n            }\n        }\n  \
-    \  }\n    return d;\n}\n\ntemplate <typename T, bool directed>\nvector<T> dijkstra(Graph<T,\
+    - https://judge.yosupo.jp/problem/tree_diameter
+  bundledCode: "#line 1 \"verify/Graph_graph_diameter.test.cpp\"\n#define PROBLEM\
+    \ \"https://judge.yosupo.jp/problem/tree_diameter\"\n#line 1 \"Utility/template.hpp\"\
+    \n#include <bits/stdc++.h>\nusing namespace std;\nusing ll = long long;\n#define\
+    \ rep(i, s, t) for (ll i = s; i < (ll)(t); i++)\n#define rrep(i, s, t) for (ll\
+    \ i = (ll)(t) - 1; i >= (ll)(s); i--)\n#define all(x) begin(x), end(x)\n\n#define\
+    \ TT template <typename T>\nTT using vec = vector<T>;\ntemplate <class T1, class\
+    \ T2> bool chmin(T1 &x, T2 y) {\n    return x > y ? (x = y, true) : false;\n}\n\
+    template <class T1, class T2> bool chmax(T1 &x, T2 y) {\n    return x < y ? (x\
+    \ = y, true) : false;\n}\nstruct io_setup {\n    io_setup() {\n        ios::sync_with_stdio(false);\n\
+    \        std::cin.tie(nullptr);\n        cout << fixed << setprecision(15);\n\
+    \    }\n} io_setup;\n\n/*\n@brief verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8\
+    \n*/\n#line 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n    int\
+    \ to;\n    T cost;\n    int id;\n    static constexpr T INF = numeric_limits<T>::max()\
+    \ / 2;\n    Edge(int to = 0, T cost = 1, int id = -1) : to(to), cost(cost), id(id)\
+    \ {}\n};\n\ntemplate <typename T, bool directed> struct Graph : vector<vector<Edge<T>>>\
+    \ {\n#define n int(this->size())\n    using vector<vector<Edge<T>>>::vector;\n\
+    \    void add(int s, int t, T w = 1, int id = -1) {\n        (*this)[s].emplace_back(t,\
+    \ w, id);\n        if constexpr (directed == false) {\n            (*this)[t].emplace_back(s,\
+    \ w, id);\n        }\n    }\n#undef n\n};\n\ntemplate <typename T> struct Tree\
+    \ : Graph<T, false> {\n#define n int(this->size())\n    using Graph<T, false>::Graph;\n\
+    #undef n\n};\n\nnamespace Graph_lib {\n\n#define inf Edge<T>::INF\ntemplate <typename\
+    \ T, bool directed>\nvector<T> DFS(Graph<T, directed> const &g, int s) {\n   \
+    \ int n = g.size();\n    assert(0 <= s && s < n);\n    vector<T> d(n, inf);\n\
+    \    d[s] = 0;\n    queue<int> que;\n    que.push(s);\n    while (que.empty()\
+    \ == false) {\n        int v = que.front();\n        que.pop();\n        for (auto\
+    \ &e : g[v]) {\n            assert(e.cost == 1);\n            if (chmin(d[e.to],\
+    \ d[v] + e.cost)) {\n                que.push(e.to);\n            }\n        }\n\
+    \    }\n    return d;\n}\n\ntemplate <typename T, bool directed>\nvector<T> dijkstra(Graph<T,\
     \ directed> const &g, int s) {\n    int n = g.size();\n    vector<T> d(n, inf);\n\
     \    d[s] = 0;\n    priority_queue<pair<T, int>, vector<pair<T, int>>, greater<pair<T,\
     \ int>>>\n        que;\n    que.push({d[s], s});\n    while (que.empty() == false)\
@@ -151,34 +150,32 @@ data:
     \ {false, {}};\n\n    auto match = maximum_matching(tr);\n    if (match.size()\
     \ * 2 == tr.size()) {\n        return {true, match};\n    } else {\n        return\
     \ {false, match};\n    }\n}\n#undef inf\n};  // namespace Tree_lib\n#line 4 \"\
-    verify/Graph_graph_cycle_detection_directed.test.cpp\"\n\nint main() {\n    int\
-    \ n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n    rep(i, 0, m) {\n\
-    \        int u, v;\n        cin >> u >> v;\n        cyc.add(u, v, 0, i);\n   \
-    \ }\n    auto [vs, es] = Graph_lib::cycle_detection(cyc);\n    if (vs.empty())\
-    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
-    \        // cout << vs << endl;\n        for (int id : es) {\n            cout\
-    \ << id << endl;\n        }\n    }\n}\n"
-  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/cycle_detection\"\n#include\
-    \ \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\n\nint main() {\n\
-    \    int n, m;\n    cin >> n >> m;\n    Graph<int, true> cyc(n);\n    rep(i, 0,\
-    \ m) {\n        int u, v;\n        cin >> u >> v;\n        cyc.add(u, v, 0, i);\n\
-    \    }\n    auto [vs, es] = Graph_lib::cycle_detection(cyc);\n    if (vs.empty())\
-    \ {\n        cout << -1 << endl;\n    } else {\n        cout << vs.size() << endl;\n\
-    \        // cout << vs << endl;\n        for (int id : es) {\n            cout\
-    \ << id << endl;\n        }\n    }\n}"
+    verify/Graph_graph_diameter.test.cpp\"\n\n\nint main() {\n    int n;\n    cin\
+    \ >> n;\n    Tree<ll> cyc(n);\n    rep(i, 0, n-1) {\n        ll u, v, c;\n   \
+    \     cin >> u >> v >> c;\n        cyc.add(u, v, c);\n    }\n\n    auto [len,\
+    \ uv] = Tree_lib::diam(cyc);\n    auto [u, v] = uv;\n    auto ps = Tree_lib::path(cyc,\
+    \ u, v);\n    cout << u << \" \" << v << endl;\n    for(auto vv : ps) cout <<\
+    \ vv << \" \";\n}\n"
+  code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#include\
+    \ \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\n\n\nint main()\
+    \ {\n    int n;\n    cin >> n;\n    Tree<ll> cyc(n);\n    rep(i, 0, n-1) {\n \
+    \       ll u, v, c;\n        cin >> u >> v >> c;\n        cyc.add(u, v, c);\n\
+    \    }\n\n    auto [len, uv] = Tree_lib::diam(cyc);\n    auto [u, v] = uv;\n \
+    \   auto ps = Tree_lib::path(cyc, u, v);\n    cout << u << \" \" << v << endl;\n\
+    \    for(auto vv : ps) cout << vv << \" \";\n}"
   dependsOn:
   - Utility/template.hpp
   - Graph/graph.hpp
   isVerificationFile: true
-  path: verify/Graph_graph_cycle_detection_directed.test.cpp
+  path: verify/Graph_graph_diameter.test.cpp
   requiredBy: []
-  timestamp: '2025-04-03 05:20:23+09:00'
-  verificationStatus: TEST_ACCEPTED
+  timestamp: '2025-04-12 22:30:58+09:00'
+  verificationStatus: TEST_WRONG_ANSWER
   verifiedWith: []
-documentation_of: verify/Graph_graph_cycle_detection_directed.test.cpp
+documentation_of: verify/Graph_graph_diameter.test.cpp
 layout: document
 redirect_from:
-- /verify/verify/Graph_graph_cycle_detection_directed.test.cpp
-- /verify/verify/Graph_graph_cycle_detection_directed.test.cpp.html
-title: verify/Graph_graph_cycle_detection_directed.test.cpp
+- /verify/verify/Graph_graph_diameter.test.cpp
+- /verify/verify/Graph_graph_diameter.test.cpp.html
+title: verify/Graph_graph_diameter.test.cpp
 ---
