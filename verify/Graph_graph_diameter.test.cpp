@@ -16,6 +16,6 @@ int main() {
     auto [len, uv] = Tree_lib::diam(cyc);
     auto [u, v] = uv;
     auto ps = Tree_lib::path(cyc, u, v);
-    cout << u << " " << v << endl;
+    cout << len << " " << ps.size() << endl;
     for(auto vv : ps) cout << vv << " ";
 }
