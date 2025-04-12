@@ -44,6 +44,7 @@
 "verify/Graph_graph_bellman_and_warshall.test.cpp": "2025-04-03 05:20:23 +0900",
 "verify/Graph_graph_cycle_detection_directed.test.cpp": "2025-04-03 05:20:23 +0900",
 "verify/Graph_graph_cycle_detection_undirected.test.cpp": "2025-04-03 05:20:23 +0900",
+"verify/Graph_graph_diameter.test.cpp": "2025-04-12 22:33:03 +0900",
 "verify/Graph_graph_dijkstra.test.cpp": "2025-04-03 05:20:23 +0900",
 "verify/Graph_scc.test.cpp": "2025-04-03 05:20:23 +0900",
 "verify/Graph_scc_old.test.cpp": "2025-01-11 19:51:13 +0900",
