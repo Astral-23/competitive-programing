@@ -1,17 +1,17 @@
 ---
 data:
   _extendedDependsOn:
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Graph/graph.hpp
     title: Graph/graph.hpp
-  - icon: ':question:'
+  - icon: ':heavy_check_mark:'
     path: Utility/template.hpp
     title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
   _extendedRequiredBy: []
   _extendedVerifiedWith: []
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: cpp
-  _verificationStatusIcon: ':x:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     '*NOT_SPECIAL_COMMENTS*': ''
     PROBLEM: https://judge.yosupo.jp/problem/tree_diameter
@@ -154,23 +154,23 @@ data:
     \ >> n;\n    Tree<ll> cyc(n);\n    rep(i, 0, n-1) {\n        ll u, v, c;\n   \
     \     cin >> u >> v >> c;\n        cyc.add(u, v, c);\n    }\n\n    auto [len,\
     \ uv] = Tree_lib::diam(cyc);\n    auto [u, v] = uv;\n    auto ps = Tree_lib::path(cyc,\
-    \ u, v);\n    cout << u << \" \" << v << endl;\n    for(auto vv : ps) cout <<\
-    \ vv << \" \";\n}\n"
+    \ u, v);\n    cout << len << \" \" << ps.size() << endl;\n    for(auto vv : ps)\
+    \ cout << vv << \" \";\n}\n"
   code: "#define PROBLEM \"https://judge.yosupo.jp/problem/tree_diameter\"\n#include\
     \ \"../Utility/template.hpp\"\n#include \"../Graph/graph.hpp\"\n\n\nint main()\
     \ {\n    int n;\n    cin >> n;\n    Tree<ll> cyc(n);\n    rep(i, 0, n-1) {\n \
     \       ll u, v, c;\n        cin >> u >> v >> c;\n        cyc.add(u, v, c);\n\
     \    }\n\n    auto [len, uv] = Tree_lib::diam(cyc);\n    auto [u, v] = uv;\n \
-    \   auto ps = Tree_lib::path(cyc, u, v);\n    cout << u << \" \" << v << endl;\n\
-    \    for(auto vv : ps) cout << vv << \" \";\n}"
+    \   auto ps = Tree_lib::path(cyc, u, v);\n    cout << len << \" \" << ps.size()\
+    \ << endl;\n    for(auto vv : ps) cout << vv << \" \";\n}"
   dependsOn:
   - Utility/template.hpp
   - Graph/graph.hpp
   isVerificationFile: true
   path: verify/Graph_graph_diameter.test.cpp
   requiredBy: []
-  timestamp: '2025-04-12 22:30:58+09:00'
-  verificationStatus: TEST_WRONG_ANSWER
+  timestamp: '2025-04-12 22:33:03+09:00'
+  verificationStatus: TEST_ACCEPTED
   verifiedWith: []
 documentation_of: verify/Graph_graph_diameter.test.cpp
 layout: document

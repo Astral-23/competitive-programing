@@ -175,7 +175,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Graph/cycle_detection.hpp
       title: cycle_detection
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Graph/graph.hpp
       title: Graph/graph.hpp
     - icon: ':heavy_check_mark:'
@@ -268,7 +268,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint
-    - icon: ':question:'
+    - icon: ':heavy_check_mark:'
       path: Utility/template.hpp
       title: "verify\u7528\u30C6\u30F3\u30D7\u30EC\u30FC\u30C8"
     - icon: ':warning:'
@@ -514,7 +514,7 @@ data:
     - icon: ':heavy_check_mark:'
       path: verify/Graph_graph_cycle_detection_undirected.test.cpp
       title: verify/Graph_graph_cycle_detection_undirected.test.cpp
-    - icon: ':x:'
+    - icon: ':heavy_check_mark:'
       path: verify/Graph_graph_diameter.test.cpp
       title: verify/Graph_graph_diameter.test.cpp
     - icon: ':heavy_check_mark:'

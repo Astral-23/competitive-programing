@@ -21,7 +21,7 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_cycle_detection_undirected.test.cpp
     title: verify/Graph_graph_cycle_detection_undirected.test.cpp
-  - icon: ':x:'
+  - icon: ':heavy_check_mark:'
     path: verify/Graph_graph_diameter.test.cpp
     title: verify/Graph_graph_diameter.test.cpp
   - icon: ':heavy_check_mark:'
@@ -30,9 +30,9 @@ data:
   - icon: ':heavy_check_mark:'
     path: verify/Graph_scc.test.cpp
     title: verify/Graph_scc.test.cpp
-  _isVerificationFailed: true
+  _isVerificationFailed: false
   _pathExtension: hpp
-  _verificationStatusIcon: ':question:'
+  _verificationStatusIcon: ':heavy_check_mark:'
   attributes:
     links: []
   bundledCode: "#line 1 \"Graph/graph.hpp\"\ntemplate <typename T> struct Edge {\n\
@@ -285,7 +285,7 @@ data:
   requiredBy:
   - Graph/scc.hpp
   timestamp: '2025-04-03 05:20:23+09:00'
-  verificationStatus: LIBRARY_SOME_WA
+  verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
   - verify/Graph_graph_dijkstra.test.cpp
   - verify/Graph_scc.test.cpp
