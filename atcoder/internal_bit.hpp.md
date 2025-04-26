@@ -79,23 +79,23 @@ data:
   isVerificationFile: false
   path: atcoder/internal_bit.hpp
   requiredBy:
-  - verify/Convolution_gcd_convolution_test.cpp
-  - Math/sieve2.hpp
   - Others/icpc_template.hpp
   - atcoder/lazysegtree.hpp
-  - atcoder/segtree.hpp
   - atcoder/convolution.hpp
+  - atcoder/segtree.hpp
+  - Math/sieve2.hpp
+  - verify/Convolution_gcd_convolution_test.cpp
   timestamp: '2024-12-22 14:16:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Math_combination.test.cpp
   - verify/fps_pow.test.cpp
-  - verify/fps_count_subset_sum.test.cpp
-  - verify/Convolution_gcd_convolution.test.cpp
-  - verify/Math_combination_more.test.cpp
-  - verify/fps_inv.test.cpp
+  - verify/Math_combination.test.cpp
   - verify/fps_log.test.cpp
   - verify/fps_exp.test.cpp
+  - verify/Convolution_gcd_convolution.test.cpp
+  - verify/fps_inv.test.cpp
+  - verify/Math_combination_more.test.cpp
+  - verify/fps_count_subset_sum.test.cpp
 documentation_of: atcoder/internal_bit.hpp
 layout: document
 redirect_from:

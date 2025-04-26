@@ -101,8 +101,8 @@ data:
   verifiedWith:
   - verify/mo.test.cpp
   - verify/Datastructure_seg_prod.test.cpp
-  - verify/hld.test.cpp
   - verify/Datastructure_compress.test.cpp
+  - verify/hld.test.cpp
   - verify/Datastructure_segtree.test.cpp
 documentation_of: Datastructure/segtree.hpp
 layout: document

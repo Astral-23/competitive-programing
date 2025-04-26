@@ -43,8 +43,8 @@ data:
   timestamp: '2025-01-11 20:14:38+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Algorithm_bisect_max_right.test.cpp
   - verify/Algorithm_bisect_min_left.test.cpp
+  - verify/Algorithm_bisect_max_right.test.cpp
 documentation_of: Algorithm/bisect.hpp
 layout: document
 redirect_from:
