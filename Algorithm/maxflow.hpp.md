@@ -109,8 +109,8 @@ data:
   timestamp: '2024-07-19 19:51:39+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/maxflow.test.cpp
   - verify/maxflow_lowerbound.test.cpp
+  - verify/maxflow.test.cpp
 documentation_of: Algorithm/maxflow.hpp
 layout: document
 redirect_from:

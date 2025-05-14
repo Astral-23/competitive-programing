@@ -183,8 +183,8 @@ data:
   timestamp: '2025-03-31 23:50:22+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Rhash_more.test.cpp
   - verify/Rhash.test.cpp
+  - verify/Rhash_more.test.cpp
 documentation_of: String/Rhash.hpp
 layout: document
 redirect_from:

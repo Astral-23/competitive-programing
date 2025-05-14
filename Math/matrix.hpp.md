@@ -141,12 +141,12 @@ data:
   timestamp: '2025-01-10 23:29:41+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/matrix.test.cpp
   - verify/Math_matrix_inv.test.cpp
-  - verify/Math_matrix_rank.test.cpp
+  - verify/Math_matrix_pow.test.cpp
+  - verify/matrix.test.cpp
   - verify/Math_matrix_det.test.cpp
   - verify/mat_det.test.cpp
-  - verify/Math_matrix_pow.test.cpp
+  - verify/Math_matrix_rank.test.cpp
 documentation_of: Math/matrix.hpp
 layout: document
 redirect_from:

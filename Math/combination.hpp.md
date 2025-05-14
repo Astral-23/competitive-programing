@@ -112,8 +112,8 @@ data:
   timestamp: '2025-01-17 23:58:33+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/Math_combination.test.cpp
   - verify/Math_combination_more.test.cpp
+  - verify/Math_combination.test.cpp
 documentation_of: Math/combination.hpp
 layout: document
 redirect_from:
