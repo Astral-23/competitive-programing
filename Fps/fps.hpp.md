@@ -155,8 +155,8 @@ data:
   - verify/fps_log.test.cpp
   - verify/fps_count_subset_sum.test.cpp
   - verify/fps_exp.test.cpp
-  - verify/fps_inv.test.cpp
   - verify/fps_pow.test.cpp
+  - verify/fps_inv.test.cpp
 documentation_of: Fps/fps.hpp
 layout: document
 redirect_from:
