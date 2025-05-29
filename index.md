@@ -265,6 +265,9 @@ data:
     - icon: ':warning:'
       path: Utility/bigmodint.hpp
       title: big_modint
+    - icon: ':warning:'
+      path: Utility/icpc_template.cpp
+      title: Utility/icpc_template.cpp
     - icon: ':heavy_check_mark:'
       path: Utility/modint.hpp
       title: modint

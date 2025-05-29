@@ -12,6 +12,9 @@ data:
     path: Others/icpc_template.hpp
     title: Others/icpc_template.hpp
   - icon: ':warning:'
+    path: Utility/icpc_template.cpp
+    title: Utility/icpc_template.cpp
+  - icon: ':warning:'
     path: verify/Convolution_gcd_convolution_test.cpp
     title: verify/Convolution_gcd_convolution_test.cpp
   _extendedVerifiedWith:
@@ -153,6 +156,7 @@ data:
   requiredBy:
   - Others/icpc_template.hpp
   - verify/Convolution_gcd_convolution_test.cpp
+  - Utility/icpc_template.cpp
   - Math/sieve2.hpp
   timestamp: '2024-12-22 14:16:49+09:00'
   verificationStatus: LIBRARY_ALL_AC

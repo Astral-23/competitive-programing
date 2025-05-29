@@ -8,6 +8,9 @@ data:
   - icon: ':warning:'
     path: Others/icpc_template.hpp
     title: Others/icpc_template.hpp
+  - icon: ':warning:'
+    path: Utility/icpc_template.cpp
+    title: Utility/icpc_template.cpp
   - icon: ':heavy_check_mark:'
     path: atcoder/maxflow.hpp
     title: atcoder/maxflow.hpp
@@ -73,6 +76,7 @@ data:
   - verify/Convolution_gcd_convolution_test.cpp
   - atcoder/mincostflow.hpp
   - atcoder/maxflow.hpp
+  - Utility/icpc_template.cpp
   - Math/sieve2.hpp
   timestamp: '2024-12-22 14:16:49+09:00'
   verificationStatus: LIBRARY_ALL_AC
