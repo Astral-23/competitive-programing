@@ -352,6 +352,29 @@ data:
     - icon: ':warning:'
       path: example/simple_treap.example.cpp
       title: example/simple_treap.example.cpp
+  - name: icpc_Others/geometory
+    pages:
+    - icon: ':warning:'
+      path: icpc_Others/geometory/circles.cpp
+      title: icpc_Others/geometory/circles.cpp
+    - icon: ':warning:'
+      path: icpc_Others/geometory/closest_pair.cpp
+      title: icpc_Others/geometory/closest_pair.cpp
+    - icon: ':warning:'
+      path: icpc_Others/geometory/convex_polygon.cpp
+      title: icpc_Others/geometory/convex_polygon.cpp
+    - icon: ':warning:'
+      path: icpc_Others/geometory/geometry.cpp
+      title: icpc_Others/geometory/geometry.cpp
+    - icon: ':warning:'
+      path: icpc_Others/geometory/points_and_vectors.cpp
+      title: icpc_Others/geometory/points_and_vectors.cpp
+    - icon: ':warning:'
+      path: icpc_Others/geometory/polygon.cpp
+      title: icpc_Others/geometory/polygon.cpp
+    - icon: ':warning:'
+      path: icpc_Others/geometory/segments_and_lines.cpp
+      title: icpc_Others/geometory/segments_and_lines.cpp
   - name: random
     pages:
     - icon: ':warning:'
