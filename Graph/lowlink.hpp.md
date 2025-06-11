@@ -101,9 +101,9 @@ data:
   timestamp: '2025-01-11 19:51:13+09:00'
   verificationStatus: LIBRARY_ALL_AC
   verifiedWith:
-  - verify/two_edge_connected.test.cpp
-  - verify/lowlink_joint.test.cpp
   - verify/lowlink_bridge.test.cpp
+  - verify/lowlink_joint.test.cpp
+  - verify/two_edge_connected.test.cpp
   - verify/bi_connected.test.cpp
 documentation_of: Graph/lowlink.hpp
 layout: document

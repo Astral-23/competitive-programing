@@ -249,6 +249,11 @@ data:
     - icon: ':warning:'
       path: Others/xorshift.hpp
       title: xorshift
+  - name: Parallel
+    pages:
+    - icon: ':warning:'
+      path: Parallel/sum_array_parralel.cpp
+      title: Parallel/sum_array_parralel.cpp
   - name: String
     pages:
     - icon: ':heavy_check_mark:'
